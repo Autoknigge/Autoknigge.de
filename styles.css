@@ -1121,3 +1121,272 @@ footer.site-footer {
   margin-top: 0.4rem;
 }
 
+
+/* =============================================================
+   Partner Deals — Premium Kachel-Grid
+   ============================================================= */
+
+.partner-deals {
+  margin: 3rem 0;
+  padding: 2.8rem 2rem 2.2rem;
+  background: linear-gradient(135deg, var(--knigge-green-dark) 0%, var(--knigge-green) 100%);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--knigge-gold-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.partner-deals::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(197, 168, 128, 0.18), transparent 60%);
+  pointer-events: none;
+}
+
+.partner-deals h2 {
+  color: #ffffff;
+  font-size: 1.65rem;
+  margin-bottom: 0.4rem;
+  position: relative;
+  z-index: 2;
+}
+
+.partner-deals .section-lead {
+  color: rgba(255, 255, 255, 0.72);
+  margin-bottom: 1.8rem;
+  position: relative;
+  z-index: 2;
+}
+
+.partner-deals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 0.85rem;
+  position: relative;
+  z-index: 2;
+}
+
+a.partner-deal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: var(--radius-md);
+  padding: 1.1rem 1.15rem 1rem;
+  text-decoration: none;
+  color: #ffffff;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+a.partner-deal:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: var(--knigge-gold);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+  color: #ffffff;
+}
+
+a.partner-deal::after {
+  content: "Jetzt vergleichen \2192";
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--knigge-green-dark);
+  background: var(--knigge-gold);
+  padding: 0.24rem 0.7rem;
+  border-radius: var(--radius-pill);
+  align-self: flex-start;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+a.partner-deal:hover::after {
+  background: #ffffff;
+  color: var(--knigge-green-dark);
+}
+
+@media (max-width: 600px) {
+  .partner-deals-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .partner-deals {
+    padding: 2rem 1.2rem 1.8rem;
+  }
+}
+
+
+/* =============================================================
+   Artikel-Seiten — gemeinsame Styles
+   ============================================================= */
+
+.article-head {
+  padding: 2.5rem 0 1.5rem;
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 2rem;
+}
+
+.article-head h1 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  margin-bottom: 0.4rem;
+  line-height: 1.2;
+}
+
+.breadcrumb {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+}
+.breadcrumb a { color: var(--text-muted); }
+.breadcrumb a:hover { color: var(--knigge-gold); }
+
+.read-time {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--knigge-green);
+  background: rgba(27, 54, 44, 0.07);
+  border: 1px solid rgba(27, 54, 44, 0.12);
+  padding: 0.22rem 0.7rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 1rem;
+}
+
+.article-body { max-width: 72ch; }
+.article-body h2 { font-size: 1.5rem; margin-top: 2rem; }
+.article-body p, .article-body li {
+  font-size: 0.97rem;
+  line-height: 1.75;
+  color: var(--text-body);
+}
+.article-body ul, .article-body ol {
+  padding-left: 1.3rem;
+  margin: 0.8rem 0;
+}
+.article-body li { margin-bottom: 0.4rem; }
+
+.vergleich-cta {
+  background: linear-gradient(135deg, var(--knigge-green-dark) 0%, var(--knigge-green) 100%);
+  color: #ffffff;
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.75rem;
+  margin: 2rem 0;
+  border: 1px solid var(--knigge-gold-border);
+  box-shadow: var(--shadow-md);
+}
+.vergleich-cta strong {
+  display: block;
+  color: var(--knigge-gold);
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+}
+.vergleich-cta p {
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 1.1rem;
+  font-size: 0.94rem;
+}
+
+.vergleich-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--knigge-gold);
+  color: var(--knigge-green-dark);
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.65rem 1.5rem;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-gold);
+}
+.vergleich-button:hover {
+  background: #ffffff;
+  color: var(--knigge-green-dark);
+  transform: translateY(-2px);
+}
+
+.related-articles {
+  margin: 3rem 0 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-light);
+}
+.related-heading { font-size: 1.3rem; margin-bottom: 1.2rem; }
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+.related-card {
+  display: block;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-left: 4px solid var(--knigge-green);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.2rem;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+.related-card:hover {
+  border-left-color: var(--knigge-gold);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-md);
+}
+.related-label {
+  display: block;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  margin-bottom: 0.3rem;
+}
+.related-card:hover .related-label { color: var(--knigge-green); }
+.related-desc {
+  display: block;
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.foot-links {
+  display: flex;
+  gap: 0.6rem 1.2rem;
+  flex-wrap: wrap;
+  margin-top: 0.6rem;
+}
+.foot-links a {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.85rem;
+  transition: color var(--transition-fast);
+}
+.foot-links a:hover { color: var(--knigge-gold); }
+
+.affiliate-note {
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.42);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 0.8rem;
+}
+
+.compare-note {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-top: 0.6rem;
+}
+.compare-table td.ok { color: #276749; font-weight: 700; }
+.compare-table td.no { color: #c0392b; font-weight: 700; }

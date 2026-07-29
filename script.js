@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // 1. Header scroll animation
   var header = document.querySelector('.site-header');
   var backToTopBtn = document.getElementById('backToTop');
+  var searchInput = document.getElementById('heroSearchInput');
 
   var ENTER = 60;
   var EXIT = 20;
@@ -45,16 +46,41 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // 3. Live Search & Category Filtering
-  var searchInput = document.getElementById('heroSearchInput');
+  // 3. Keyboard shortcut: Press '/' to focus search (unless in input/textarea)
+  document.addEventListener('keydown', function (e) {
+    if (e.key === '/' && searchInput && !e.ctrlKey && !e.metaKey && !e.altKey) {
+      var tag = document.activeElement && document.activeElement.tagName;
+      if (tag !== 'INPUT' && tag !== 'TEXTAREA' && tag !== 'SELECT') {
+        e.preventDefault();
+        searchInput.focus();
+        // Select all text for quick replacement
+        searchInput.select();
+      }
+    }
+    // Escape key to blur search
+    if (e.key === 'Escape' && searchInput && document.activeElement === searchInput) {
+      searchInput.blur();
+    }
+  });
+
+  // 4. Live Search & Category Filtering
   var filterButtons = document.querySelectorAll('.filter-btn');
   var cards = document.querySelectorAll('.card');
   var topicSections = document.querySelectorAll('.topic-section');
+  var searchResultsCount = document.createElement('div');
+  searchResultsCount.className = 'search-results-count';
+  searchResultsCount.setAttribute('aria-live', 'polite');
+  searchResultsCount.style.cssText = 'font-size:0.85rem;color:var(--text-muted);margin-top:4px;min-height:1.5em;';
+  if (searchInput && searchInput.parentNode) {
+    searchInput.parentNode.appendChild(searchResultsCount);
+  }
 
   function filterContent() {
     var query = searchInput ? searchInput.value.toLowerCase().trim() : '';
     var activeCategory = document.querySelector('.filter-btn.active');
     var categoryFilter = activeCategory ? activeCategory.getAttribute('data-category') : 'all';
+
+    var visibleCount = 0;
 
     cards.forEach(function (card) {
       var cardText = card.textContent.toLowerCase();
@@ -66,15 +92,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (matchesQuery && matchesCategory) {
         card.style.display = 'flex';
+        visibleCount++;
       } else {
         card.style.display = 'none';
       }
     });
 
+    // Update results count
+    if (searchResultsCount) {
+      if (query !== '' || categoryFilter !== 'all') {
+        searchResultsCount.textContent = visibleCount + ' Artikel gefunden' + (visibleCount !== 1 ? 'en' : '');
+      } else {
+        searchResultsCount.textContent = '';
+      }
+    }
+
     // Hide section head rows if all cards inside are hidden
     topicSections.forEach(function (section) {
       var visibleCards = section.querySelectorAll('.card[style*="display: flex"], .card:not([style*="display: none"])');
-      // If filtering active, hide empty sections
       if (query !== '' || categoryFilter !== 'all') {
         if (visibleCards.length === 0) {
           section.style.display = 'none';
@@ -89,6 +124,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (searchInput) {
     searchInput.addEventListener('input', filterContent);
+    // Clear on escape key
+    searchInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        this.blur();
+      }
+    });
   }
 
   filterButtons.forEach(function (btn) {
@@ -106,4 +147,17 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
+
+  // 5. Mobile menu: Close on link click (better UX)
+  var navToggle = document.getElementById('nav-toggle');
+  if (navToggle) {
+    var navLinks = document.querySelectorAll('.header-nav-list a');
+    navLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (window.innerWidth <= 768 && navToggle.checked) {
+          navToggle.checked = false;
+        }
+      });
+    });
+  }
 });
