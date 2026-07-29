@@ -1,5 +1,5 @@
 /* ============================================
-   AUTOKNIGGE – BASE STYLES
+   AUTOKNIGGE – BASE STYLES (korrigiert)
    ============================================ */
 
 :root {
@@ -35,7 +35,7 @@ a:hover { color: var(--gold); }
 .wrap {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1.5rem;  /* ← Wichtig für Abstand zum Rand */
 }
 
 /* ============================================
