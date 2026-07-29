@@ -1,0 +1,275 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SF-Klassen Rechner – Ihre Schadenfreiheitsklasse berechnen | Autoknigge</title>
+<meta name="description" content="Berechnen Sie Ihre Schadenfreiheitsklasse (SF-Klasse) für die Kfz-Versicherung. Einfach, schnell und kostenlos.">
+<link rel="canonical" href="https://autoknigge.de/sf-klassen-rechner.html">
+<link rel="stylesheet" href="styles.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0f241d">
+<style>
+  .calculator-box { background: #f8f9fa; border-radius: 16px; padding: 2rem; margin: 2rem 0; max-width: 700px; }
+  .calculator-box label { font-weight: 600; display: block; margin-top: 1rem; }
+  .calculator-box select, .calculator-box input { width: 100%; padding: 0.6rem 1rem; border: 2px solid #dee2e6; border-radius: 8px; font-size: 1rem; margin-top: 0.25rem; }
+  .calculator-box select:focus, .calculator-box input:focus { outline: none; border-color: #0f241d; box-shadow: 0 0 0 3px rgba(15,36,29,0.1); }
+  .result-box { margin-top: 1.5rem; padding: 1.5rem; background: #ffffff; border-radius: 12px; border: 1px solid #e9ecef; display: none; }
+  .result-box.visible { display: block; }
+  .result-box .sf-class { font-size: 2.5rem; font-weight: 700; color: #0f241d; }
+  .result-box .sf-detail { color: #495057; line-height: 1.6; }
+  .info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem; margin-top: 1rem; }
+  .info-grid .info-item { background: #fff; padding: 0.5rem 0.75rem; border-radius: 8px; border: 1px solid #e9ecef; font-size: 0.85rem; }
+</style>
+</head>
+<body>
+
+<header class="site-header header-logo-large" id="top">
+  <div class="header-inner">
+    <a href="index.html" aria-label="Autoknigge Startseite">
+      <img src="logo.png" alt="Autoknigge Logo" class="header-logo-mini">
+    </a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+    <label for="nav-toggle" class="menu-compact"><span class="menu-icon">&#9776;</span> Menü</label>
+    <nav class="main-nav">
+      <ul class="header-nav-list">
+        <li><a href="index.html">Start</a></li>
+        <li><a href="kategorie-versicherung.html">Versicherung</a></li>
+        <li><a href="kategorie-zulassung.html">Zulassung</a></li>
+        <li><a href="kategorie-kauf.html">Kauf</a></li>
+        <li><a href="kategorie-pflege.html">Pflege</a></li>
+        <li><a href="kategorie-recht.html">Recht</a></li>
+        <li><a href="kategorie-geld-sparen.html">Clever sparen</a></li>
+        <li><a href="regionalklassen.html">Regionalklassen</a></li>
+        <li><a href="sf-klassen-rechner.html" aria-current="page">SF-Rechner</a></li>
+        <li><a href="artikel-sf-klassen-erklaert.html">SF-Klassen erklärt</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <nav aria-label="Breadcrumb" class="breadcrumb">
+      <a href="index.html">Start</a> / 
+      <a href="kategorie-versicherung.html">Versicherung</a> / 
+      <span>SF-Klassen Rechner</span>
+    </nav>
+
+    <h1>SF-Klassen Rechner</h1>
+    <p class="lead">Berechnen Sie Ihre Schadenfreiheitsklasse (SF-Klasse) für die Kfz-Versicherung. Geben Sie Ihre Daten ein und erfahren Sie, wie Ihre Einstufung aussieht.</p>
+
+    <div class="calculator-box">
+      <h3 style="margin-top: 0;">📊 Ihre Daten</h3>
+      <p style="color: #6c757d;">Beantworten Sie die folgenden Fragen, um Ihre SF-Klasse zu ermitteln.</p>
+
+      <label for="fahrerfahrung">Wie viele Jahre fahren Sie bereits ohne Schaden? (Anzahl der unfallfreien Jahre)</label>
+      <select id="fahrerfahrung">
+        <option value="0">Weniger als 1 Jahr</option>
+        <option value="1">1 Jahr</option>
+        <option value="2">2 Jahre</option>
+        <option value="3">3 Jahre</option>
+        <option value="4">4 Jahre</option>
+        <option value="5">5 Jahre</option>
+        <option value="6">6 Jahre</option>
+        <option value="7">7 Jahre</option>
+        <option value="8">8 Jahre</option>
+        <option value="9">9 Jahre</option>
+        <option value="10">10 Jahre</option>
+        <option value="15">15 Jahre</option>
+        <option value="20">20 Jahre oder mehr</option>
+      </select>
+
+      <label for="schaden">Hatten Sie in den letzten Jahren einen selbst verschuldeten Unfall?</label>
+      <select id="schaden">
+        <option value="0">Nein, keinen Schaden</option>
+        <option value="1">Ja, einen Schaden</option>
+        <option value="2">Ja, mehrere Schäden</option>
+      </select>
+
+      <label for="sf-uebertrag">Übertragen Sie Ihre SF-Klasse von einem anderen Fahrzeug oder einer anderen Versicherung?</label>
+      <select id="sf-uebertrag">
+        <option value="0">Nein</option>
+        <option value="1">Ja, von einem anderen Fahrzeug</option>
+        <option value="2">Ja, von einer anderen Versicherung</option>
+      </select>
+
+      <button id="calculate-btn" style="margin-top: 1.5rem; padding: 0.8rem 2rem; background: #0f241d; color: #fff; border: none; border-radius: 10px; font-weight: 600; font-size: 1rem; cursor: pointer; width: 100%; transition: background 0.2s;">
+        SF-Klasse berechnen
+      </button>
+
+      <div id="result-area" class="result-box">
+        <div class="result-header" style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+          <span class="badge" style="background: #0f241d; color: #fff; padding: 0.2rem 0.8rem; border-radius: 20px; font-weight: 600; font-size: 0.85rem;">Ergebnis</span>
+        </div>
+        <div class="sf-class" id="sf-class-display">—</div>
+        <div class="sf-detail" id="sf-detail-display">
+          <p>Bitte füllen Sie alle Felder aus und klicken Sie auf "Berechnen".</p>
+        </div>
+      </div>
+    </div>
+
+    <section style="margin-top: 2rem;">
+      <h2>Was ist die SF-Klasse?</h2>
+      <p>Die Schadenfreiheitsklasse (SF-Klasse) ist ein entscheidender Faktor für Ihre Kfz-Versicherungsprämie. Sie gibt an, wie viele Jahre Sie bereits unfallfrei gefahren sind. Je höher die SF-Klasse, desto niedriger ist in der Regel Ihr Versicherungsbeitrag.</p>
+      <p>Die SF-Klasse wird von der Versicherung auf Basis Ihrer Schadenhistorie berechnet. Jedes unfallfreie Jahr verbessert Ihre Klasse, während ein selbst verschuldeter Unfall zu einer Rückstufung führen kann.</p>
+    </section>
+
+    <section style="margin-top: 2rem;">
+      <h2>SF-Klassen im Überblick</h2>
+      <div class="info-grid">
+        <div class="info-item"><strong>SF 0</strong> – Fahranfänger / Weniger als 1 Jahr</div>
+        <div class="info-item"><strong>SF 1</strong> – 1 Jahr unfallfrei</div>
+        <div class="info-item"><strong>SF 2</strong> – 2 Jahre unfallfrei</div>
+        <div class="info-item"><strong>SF 3</strong> – 3 Jahre unfallfrei</div>
+        <div class="info-item"><strong>SF 5</strong> – 5 Jahre unfallfrei</div>
+        <div class="info-item"><strong>SF 10</strong> – 10 Jahre unfallfrei</div>
+        <div class="info-item"><strong>SF 15</strong> – 15 Jahre unfallfrei</div>
+        <div class="info-item"><strong>SF 20</strong> – 20 Jahre unfallfrei</div>
+        <div class="info-item"><strong>SF 25</strong> – 25 Jahre unfallfrei</div>
+        <div class="info-item"><strong>SF 30</strong> – 30 Jahre unfallfrei</div>
+        <div class="info-item"><strong>SF 35</strong> – 35 Jahre unfallfrei</div>
+        <div class="info-item"><strong>SF 40</strong> – 40 Jahre unfallfrei</div>
+      </div>
+    </section>
+
+    <div class="partner-section" style="margin: 2rem 0;">
+      <h3>🛡 Kfz-Versicherung vergleichen</h3>
+      <p class="partner-desc">Nachdem Sie Ihre SF-Klasse kennen, lohnt sich ein Blick auf die verschiedenen Versicherungsangebote.</p>
+      <div class="partner-buttons">
+        <a href="https://tarifcheck.com/SFKBdbP" target="_blank" rel="noopener sponsored" class="partner-button">
+          <span class="partner-icon">🛡</span>
+          <span class="partner-name">Kfz-Versicherung vergleichen</span>
+          <span class="partner-arrow">→</span>
+        </a>
+      </div>
+      <p style="font-size: 0.85rem; color: #6c757d; margin-top: 0.5rem;">
+        * Als Partner unterstütze ich diese Empfehlung. Für Sie entstehen dadurch selbstverständlich keine Mehrkosten.
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<button id="backToTop" class="back-to-top" aria-label="Nach oben scrollen">↑</button>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Autoknigge</h3>
+        <p>Ihr unabhängiger Ratgeber für stilvolles, sicheres und wirtschaftlich cleveres Verhalten rund um das Automobil.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Kategorien</h4>
+        <ul class="footer-links-list">
+          <li><a href="kategorie-versicherung.html">Kfz-Versicherung</a></li>
+          <li><a href="kategorie-zulassung.html">Zulassung & Behörde</a></li>
+          <li><a href="kategorie-kauf.html">Autokauf & Verkauf</a></li>
+          <li><a href="kategorie-pflege.html">Fahrzeugpflege</a></li>
+          <li><a href="kategorie-recht.html">Recht & Etikette</a></li>
+          <li><a href="kategorie-geld-sparen.html">Clever sparen</a></li>
+          <li><a href="regionalklassen.html">Regionalklassen</a></li>
+          <li><a href="sf-klassen-rechner.html">SF-Rechner</a></li>
+          <li><a href="artikel-sf-klassen-erklaert.html">SF-Klassen erklärt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Downloads</h4>
+        <ul class="footer-links-list">
+          <li><a href="kfz-kaufvertrag.pdf" download>Kfz-Kaufvertrag (PDF)</a></li>
+          <li><a href="vollmacht-kfz-zulassung.pdf" download>Zulassungsvollmacht (PDF)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Autoknigge — Alle Rechte vorbehalten. Unabhängige Ratgeber-Plattform.</div>
+      <div class="foot-links">
+        <a href="impressum.html">Impressum</a> •
+        <a href="datenschutz.html">Datenschutz</a> •
+        <a href="#" id="cookie-settings-link">Cookie-Einstellungen</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="cookie-consent.js"></script>
+
+<script>
+  (function() {
+    'use strict';
+
+    const fahrerfahrung = document.getElementById('fahrerfahrung');
+    const schaden = document.getElementById('schaden');
+    const sfUebertrag = document.getElementById('sf-uebertrag');
+    const calculateBtn = document.getElementById('calculate-btn');
+    const resultArea = document.getElementById('result-area');
+    const sfClassDisplay = document.getElementById('sf-class-display');
+    const sfDetailDisplay = document.getElementById('sf-detail-display');
+
+    function calculateSF() {
+      const unfallfreieJahre = parseInt(fahrerfahrung.value, 10);
+      const schadenValue = parseInt(schaden.value, 10);
+      const uebertragValue = parseInt(sfUebertrag.value, 10);
+
+      let sfClass = 0;
+      let description = '';
+
+      if (uebertragValue > 0) {
+        sfClass = unfallfreieJahre;
+        description = 'SF-Klasse wird von anderem Fahrzeug oder Versicherung übernommen.';
+      } else {
+        sfClass = unfallfreieJahre;
+        description = 'SF-Klasse basierend auf Ihren unfallfreien Jahren.';
+      }
+
+      if (schadenValue === 1) {
+        sfClass = Math.max(0, sfClass - 3);
+        description += ' Ein Schaden führt zu einer Rückstufung um 3 Klassen.';
+      } else if (schadenValue === 2) {
+        sfClass = Math.max(0, sfClass - 6);
+        description += ' Mehrere Schäden führen zu einer Rückstufung um 6 Klassen.';
+      }
+
+      if (unfallfreieJahre < 1) {
+        sfClass = 0;
+        description = 'SF 0 für Fahranfänger oder weniger als 1 Jahr unfallfrei.';
+      }
+
+      sfClass = Math.min(40, sfClass);
+
+      resultArea.classList.add('visible');
+      sfClassDisplay.textContent = `SF ${sfClass}`;
+
+      let detailHtml = `<p><strong>Ihre SF-Klasse:</strong> SF ${sfClass}</p>`;
+      detailHtml += `<p>${description}</p>`;
+      
+      if (sfClass >= 20) {
+        detailHtml += `<p style="color: #28a745;">✔️ Sie haben eine sehr gute SF-Klasse. Sie profitieren von niedrigen Versicherungsbeiträgen.</p>`;
+      } else if (sfClass >= 10) {
+        detailHtml += `<p style="color: #ffc107;">⚡ Sie haben eine gute SF-Klasse. Ein Vergleich der Versicherungsangebote könnte sich lohnen.</p>`;
+      } else if (sfClass >= 5) {
+        detailHtml += `<p style="color: #fd7e14;">💡 Sie haben eine mittlere SF-Klasse. Ein Wechsel der Versicherung oder ein Telematik-Tarif könnte helfen, zu sparen.</p>`;
+      } else {
+        detailHtml += `<p style="color: #dc3545;">⚠️ Sie haben eine niedrige SF-Klasse. Vergleichen Sie Angebote und prüfen Sie Telematik-Tarife, um Ihre Prämie zu senken.</p>`;
+      }
+
+      detailHtml += `<p style="font-size: 0.9rem; color: #6c757d; margin-top: 0.5rem;">💡 <strong>Tipp:</strong> Ein Wechsel der Kfz-Versicherung kann sich lohnen, um von besseren Konditionen zu profitieren.</p>`;
+
+      sfDetailDisplay.innerHTML = detailHtml;
+    }
+
+    calculateBtn.addEventListener('click', calculateSF);
+
+    document.querySelector('.calculator-box').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        calculateSF();
+      }
+    });
+
+  })();
+</script>
+</body>
+</html>

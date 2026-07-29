@@ -1,0 +1,382 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regionalklassen für Kfz-Versicherung — Autoknigge</title>
+  <meta name="description" content="Finden Sie Ihre Regionalklasse für die Kfz-Versicherung mit PLZ-Eingabe. Alle Regionalklassen 2026 im Überblick.">
+  <link rel="canonical" href="https://autoknigge.de/regionalklassen.html">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0f241d">
+  <style>
+    .region-search { background: #f8f9fa; border-radius: 16px; padding: 2rem; margin: 2rem 0; }
+    .region-search .search-box { display: flex; flex-direction: column; gap: 0.75rem; max-width: 500px; margin: 0 auto; }
+    .region-search label { font-weight: 600; font-size: 1.05rem; color: #1a1a1a; }
+    .region-search .input-row { display: flex; gap: 0.75rem; align-items: center; }
+    .region-search input[type="text"] { flex: 1; padding: 0.8rem 1rem; border: 2px solid #dee2e6; border-radius: 10px; font-size: 1rem; transition: border-color 0.2s; }
+    .region-search input[type="text"]:focus { outline: none; border-color: #0f241d; box-shadow: 0 0 0 3px rgba(15,36,29,0.1); }
+    .region-search button { padding: 0.8rem 1.8rem; background: #0f241d; color: #fff; border: none; border-radius: 10px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+    .region-search button:hover { background: #1a3d32; }
+    .region-result { margin-top: 2rem; padding: 1.5rem; background: #ffffff; border-radius: 12px; border: 1px solid #e9ecef; display: none; }
+    .region-result.visible { display: block; }
+    .region-result .result-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .region-result .result-header .badge { background: #0f241d; color: #fff; padding: 0.2rem 0.8rem; border-radius: 20px; font-weight: 600; font-size: 0.85rem; }
+    .region-result .region-class { font-size: 2.5rem; font-weight: 700; color: #0f241d; }
+    .region-result .region-detail { color: #495057; line-height: 1.6; }
+    .error-message { color: #dc3545; font-weight: 500; margin-top: 0.5rem; }
+    .region-list { margin-top: 2rem; }
+    .region-list h3 { margin-bottom: 1rem; color: #0f241d; }
+    .region-table-wrap { overflow-x: auto; }
+    .region-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .region-table th { background: #0f241d; color: #fff; padding: 0.75rem 1rem; text-align: left; font-weight: 600; }
+    .region-table td { padding: 0.6rem 1rem; border-bottom: 1px solid #e9ecef; }
+    .region-table tr:hover td { background: #f8f9fa; }
+    .class-badge { display: inline-block; padding: 0.15rem 0.6rem; border-radius: 12px; font-weight: 600; font-size: 0.8rem; background: #e9ecef; color: #1a1a1a; }
+    .class-badge.high { background: #dc3545; color: #fff; }
+    .class-badge.medium { background: #ffc107; color: #1a1a1a; }
+    .class-badge.low { background: #28a745; color: #fff; }
+    .filter-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .filter-row select, .filter-row input { padding: 0.5rem 0.75rem; border: 1px solid #dee2e6; border-radius: 8px; font-size: 0.9rem; }
+    .filter-row select:focus, .filter-row input:focus { outline: none; border-color: #0f241d; }
+    @media (max-width: 600px) {
+      .region-search .input-row { flex-direction: column; }
+      .region-search button { width: 100%; justify-content: center; }
+      .region-table { font-size: 0.8rem; }
+      .region-table th, .region-table td { padding: 0.4rem 0.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header header-logo-large" id="top">
+  <div class="header-inner">
+    <a href="index.html" aria-label="Autoknigge Startseite">
+      <img src="logo.png" alt="Autoknigge Logo" class="header-logo-mini">
+    </a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+    <label for="nav-toggle" class="menu-compact"><span class="menu-icon">&#9776;</span> Menü</label>
+    <nav class="main-nav">
+      <ul class="header-nav-list">
+        <li><a href="index.html">Start</a></li>
+        <li><a href="kategorie-versicherung.html">Versicherung</a></li>
+        <li><a href="kategorie-zulassung.html">Zulassung</a></li>
+        <li><a href="kategorie-kauf.html">Kauf</a></li>
+        <li><a href="kategorie-pflege.html">Pflege</a></li>
+        <li><a href="kategorie-recht.html">Recht</a></li>
+        <li><a href="kategorie-geld-sparen.html">Clever sparen</a></li>
+        <li><a href="regionalklassen.html" aria-current="page">Regionalklassen</a></li>
+        <li><a href="sf-klassen-rechner.html">SF-Rechner</a></li>
+        <li><a href="artikel-sf-klassen-erklaert.html">SF-Klassen erklärt</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <nav aria-label="Breadcrumb" class="breadcrumb">
+      <a href="index.html">Start</a> / 
+      <a href="kategorie-versicherung.html">Versicherung</a> / 
+      <span>Regionalklassen</span>
+    </nav>
+
+    <h1>Regionalklassen für die Kfz-Versicherung</h1>
+    <p class="lead">Finden Sie Ihre Regionalklasse mit wenigen Klicks. Geben Sie Ihre Postleitzahl ein und erfahren Sie, wie Ihre Region eingestuft ist.</p>
+
+    <section class="region-search">
+      <div class="search-box">
+        <label for="plz-input">📮 Postleitzahl eingeben</label>
+        <div class="input-row">
+          <input type="text" id="plz-input" placeholder="z.B. 10115, 80331, 50667" maxlength="5" inputmode="numeric" pattern="[0-9]{5}">
+          <button id="search-btn">Regionalklasse suchen</button>
+        </div>
+        <div id="error-msg" class="error-message" style="display:none;"></div>
+      </div>
+
+      <div id="result-area" class="region-result">
+        <div class="result-header">
+          <span class="badge">Ergebnis</span>
+          <span id="plz-display" style="font-weight:600;"></span>
+        </div>
+        <div class="region-class" id="region-class-display">—</div>
+        <div class="region-detail" id="region-detail-display">
+          <p>Bitte geben Sie eine gültige Postleitzahl ein.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="region-list">
+      <h3>📋 Alle Regionalklassen im Überblick</h3>
+      <div class="filter-row">
+        <input type="text" id="filter-plz" placeholder="PLZ filtern..." style="flex:1;min-width:120px;">
+        <select id="filter-city"><option value="">Alle Städte</option></select>
+        <select id="filter-class"><option value="">Alle Klassen</option><option value="1">Klasse 1</option><option value="2">Klasse 2</option><option value="3">Klasse 3</option><option value="4">Klasse 4</option><option value="5">Klasse 5</option></select>
+      </div>
+      <div class="region-table-wrap">
+        <table class="region-table">
+          <thead><tr><th>PLZ</th><th>Stadt</th><th>Klasse</th><th>Risiko</th></tr></thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="partner-section" style="margin-top:3rem;">
+      <h3>💰 Clever sparen mit diesen Partnern</h3>
+      <p class="partner-desc">Vergleichen Sie Anbieter und sichern Sie sich die besten Konditionen.</p>
+      <div class="partner-buttons" id="partner-buttons-region"></div>
+      <p style="font-size: 0.85rem; color: #6c757d; margin-top: 1.5rem; text-align: center; border-top: 1px solid #eee; padding-top: 1rem;">
+        * Als Partner unterstütze ich diese Empfehlungen. Für Sie entstehen dadurch selbstverständlich keine Mehrkosten.
+      </p>
+    </section>
+  </div>
+</main>
+
+<button id="backToTop" class="back-to-top" aria-label="Nach oben scrollen">↑</button>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Autoknigge</h3>
+        <p>Ihr unabhängiger Ratgeber für stilvolles, sicheres und wirtschaftlich cleveres Verhalten rund um das Automobil.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Kategorien</h4>
+        <ul class="footer-links-list">
+          <li><a href="kategorie-versicherung.html">Kfz-Versicherung</a></li>
+          <li><a href="kategorie-zulassung.html">Zulassung & Behörde</a></li>
+          <li><a href="kategorie-kauf.html">Autokauf & Verkauf</a></li>
+          <li><a href="kategorie-pflege.html">Fahrzeugpflege</a></li>
+          <li><a href="kategorie-recht.html">Recht & Etikette</a></li>
+          <li><a href="kategorie-geld-sparen.html">Clever sparen</a></li>
+          <li><a href="regionalklassen.html">Regionalklassen</a></li>
+          <li><a href="sf-klassen-rechner.html">SF-Rechner</a></li>
+          <li><a href="artikel-sf-klassen-erklaert.html">SF-Klassen erklärt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Downloads</h4>
+        <ul class="footer-links-list">
+          <li><a href="kfz-kaufvertrag.pdf" download>Kfz-Kaufvertrag (PDF)</a></li>
+          <li><a href="vollmacht-kfz-zulassung.pdf" download>Zulassungsvollmacht (PDF)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Autoknigge — Alle Rechte vorbehalten. Unabhängige Ratgeber-Plattform.</div>
+      <div class="foot-links">
+        <a href="impressum.html">Impressum</a> •
+        <a href="datenschutz.html">Datenschutz</a> •
+        <a href="#" id="cookie-settings-link">Cookie-Einstellungen</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="cookie-consent.js"></script>
+<script src="partner-links.js"></script>
+
+<script>
+(function() {
+  'use strict';
+
+  const regionalData = [
+    {plz:'10115',city:'Berlin-Mitte',class:5,risk:'hoch'},{plz:'10117',city:'Berlin-Mitte',class:5,risk:'hoch'},
+    {plz:'10119',city:'Berlin-Mitte',class:5,risk:'hoch'},{plz:'10243',city:'Berlin-Friedrichshain',class:4,risk:'hoch'},
+    {plz:'10245',city:'Berlin-Friedrichshain',class:4,risk:'hoch'},{plz:'10367',city:'Berlin-Lichtenberg',class:3,risk:'mittel'},
+    {plz:'10405',city:'Berlin-Prenzlauer Berg',class:4,risk:'hoch'},{plz:'10551',city:'Berlin-Tiergarten',class:3,risk:'mittel'},
+    {plz:'10557',city:'Berlin-Tiergarten',class:3,risk:'mittel'},{plz:'10707',city:'Berlin-Wilmersdorf',class:2,risk:'niedrig'},
+    {plz:'10715',city:'Berlin-Wilmersdorf',class:2,risk:'niedrig'},{plz:'10717',city:'Berlin-Wilmersdorf',class:2,risk:'niedrig'},
+    {plz:'10719',city:'Berlin-Wilmersdorf',class:2,risk:'niedrig'},{plz:'10961',city:'Berlin-Kreuzberg',class:4,risk:'hoch'},
+    {plz:'10963',city:'Berlin-Kreuzberg',class:4,risk:'hoch'},{plz:'10965',city:'Berlin-Kreuzberg',class:4,risk:'hoch'},
+    {plz:'10967',city:'Berlin-Kreuzberg',class:4,risk:'hoch'},{plz:'10969',city:'Berlin-Kreuzberg',class:4,risk:'hoch'},
+    {plz:'12043',city:'Berlin-Neukölln',class:5,risk:'hoch'},{plz:'12045',city:'Berlin-Neukölln',class:5,risk:'hoch'},
+    {plz:'12047',city:'Berlin-Neukölln',class:5,risk:'hoch'},{plz:'12049',city:'Berlin-Neukölln',class:5,risk:'hoch'},
+    {plz:'12051',city:'Berlin-Neukölln',class:4,risk:'hoch'},{plz:'12053',city:'Berlin-Neukölln',class:4,risk:'hoch'},
+    {plz:'12055',city:'Berlin-Neukölln',class:4,risk:'hoch'},{plz:'12057',city:'Berlin-Neukölln',class:4,risk:'hoch'},
+    {plz:'12059',city:'Berlin-Neukölln',class:4,risk:'hoch'},{plz:'12101',city:'Berlin-Steglitz',class:1,risk:'niedrig'},
+    {plz:'12103',city:'Berlin-Steglitz',class:1,risk:'niedrig'},{plz:'12105',city:'Berlin-Steglitz',class:1,risk:'niedrig'},
+    {plz:'12107',city:'Berlin-Steglitz',class:1,risk:'niedrig'},{plz:'12109',city:'Berlin-Steglitz',class:1,risk:'niedrig'},
+    {plz:'12161',city:'Berlin-Friedenau',class:2,risk:'niedrig'},{plz:'12163',city:'Berlin-Friedenau',class:2,risk:'niedrig'},
+    {plz:'12165',city:'Berlin-Friedenau',class:2,risk:'niedrig'},{plz:'12167',city:'Berlin-Friedenau',class:2,risk:'niedrig'},
+    {plz:'12169',city:'Berlin-Friedenau',class:2,risk:'niedrig'},{plz:'12203',city:'Berlin-Dahlem',class:1,risk:'niedrig'},
+    {plz:'12205',city:'Berlin-Dahlem',class:1,risk:'niedrig'},{plz:'12207',city:'Berlin-Dahlem',class:1,risk:'niedrig'},
+    {plz:'12209',city:'Berlin-Dahlem',class:1,risk:'niedrig'},{plz:'12247',city:'Berlin-Lankwitz',class:1,risk:'niedrig'},
+    {plz:'12249',city:'Berlin-Lankwitz',class:1,risk:'niedrig'},{plz:'12277',city:'Berlin-Marienfelde',class:1,risk:'niedrig'},
+    {plz:'12279',city:'Berlin-Marienfelde',class:1,risk:'niedrig'},{plz:'12305',city:'Berlin-Lichterfelde',class:1,risk:'niedrig'},
+    {plz:'12307',city:'Berlin-Lichterfelde',class:1,risk:'niedrig'},{plz:'12309',city:'Berlin-Lichterfelde',class:1,risk:'niedrig'},
+    {plz:'20095',city:'Hamburg-Altstadt',class:4,risk:'hoch'},{plz:'20097',city:'Hamburg-Altstadt',class:4,risk:'hoch'},
+    {plz:'20144',city:'Hamburg-Harvestehude',class:1,risk:'niedrig'},{plz:'20146',city:'Hamburg-Harvestehude',class:1,risk:'niedrig'},
+    {plz:'20148',city:'Hamburg-Harvestehude',class:1,risk:'niedrig'},{plz:'20149',city:'Hamburg-Harvestehude',class:1,risk:'niedrig'},
+    {plz:'20355',city:'Hamburg-Altstadt',class:4,risk:'hoch'},{plz:'20357',city:'Hamburg-Altstadt',class:4,risk:'hoch'},
+    {plz:'20459',city:'Hamburg-Altstadt',class:4,risk:'hoch'},{plz:'80331',city:'München-Altstadt',class:3,risk:'mittel'},
+    {plz:'80333',city:'München-Altstadt',class:3,risk:'mittel'},{plz:'80335',city:'München-Altstadt',class:3,risk:'mittel'},
+    {plz:'80336',city:'München-Altstadt',class:3,risk:'mittel'},{plz:'80337',city:'München-Altstadt',class:3,risk:'mittel'},
+    {plz:'80339',city:'München-Altstadt',class:3,risk:'mittel'},{plz:'80469',city:'München-Altstadt',class:3,risk:'mittel'},
+    {plz:'80538',city:'München-Lehel',class:2,risk:'niedrig'},{plz:'80539',city:'München-Lehel',class:2,risk:'niedrig'},
+    {plz:'50667',city:'Köln-Altstadt',class:4,risk:'hoch'},{plz:'50668',city:'Köln-Altstadt',class:4,risk:'hoch'},
+    {plz:'50670',city:'Köln-Altstadt',class:4,risk:'hoch'},{plz:'50672',city:'Köln-Altstadt',class:4,risk:'hoch'},
+    {plz:'50674',city:'Köln-Altstadt',class:4,risk:'hoch'},{plz:'50676',city:'Köln-Altstadt',class:4,risk:'hoch'},
+    {plz:'50677',city:'Köln-Altstadt',class:4,risk:'hoch'},{plz:'50678',city:'Köln-Altstadt',class:4,risk:'hoch'},
+    {plz:'50679',city:'Köln-Altstadt',class:4,risk:'hoch'},{plz:'60311',city:'Frankfurt-Altstadt',class:3,risk:'mittel'},
+    {plz:'60313',city:'Frankfurt-Altstadt',class:3,risk:'mittel'},{plz:'60314',city:'Frankfurt-Ostend',class:2,risk:'niedrig'},
+    {plz:'60316',city:'Frankfurt-Nordend',class:2,risk:'niedrig'},{plz:'60318',city:'Frankfurt-Nordend',class:2,risk:'niedrig'},
+    {plz:'60320',city:'Frankfurt-Westend',class:1,risk:'niedrig'},{plz:'60322',city:'Frankfurt-Westend',class:1,risk:'niedrig'},
+    {plz:'60323',city:'Frankfurt-Westend',class:1,risk:'niedrig'},{plz:'60325',city:'Frankfurt-Westend',class:1,risk:'niedrig'},
+    {plz:'60326',city:'Frankfurt-Bahnhofsviertel',class:3,risk:'mittel'},{plz:'60327',city:'Frankfurt-Bahnhofsviertel',class:3,risk:'mittel'},
+    {plz:'70173',city:'Stuttgart-Mitte',class:3,risk:'mittel'},{plz:'70174',city:'Stuttgart-Mitte',class:3,risk:'mittel'},
+    {plz:'70176',city:'Stuttgart-Mitte',class:3,risk:'mittel'},{plz:'70178',city:'Stuttgart-Mitte',class:3,risk:'mittel'},
+    {plz:'70180',city:'Stuttgart-Mitte',class:3,risk:'mittel'},{plz:'70182',city:'Stuttgart-Mitte',class:3,risk:'mittel'},
+    {plz:'70184',city:'Stuttgart-Mitte',class:3,risk:'mittel'},{plz:'70186',city:'Stuttgart-Mitte',class:3,risk:'mittel'},
+    {plz:'70188',city:'Stuttgart-Mitte',class:3,risk:'mittel'}
+  ];
+
+  const plzInput = document.getElementById('plz-input');
+  const searchBtn = document.getElementById('search-btn');
+  const errorMsg = document.getElementById('error-msg');
+  const resultArea = document.getElementById('result-area');
+  const plzDisplay = document.getElementById('plz-display');
+  const classDisplay = document.getElementById('region-class-display');
+  const detailDisplay = document.getElementById('region-detail-display');
+  const tableBody = document.getElementById('table-body');
+  const filterPlz = document.getElementById('filter-plz');
+  const filterCity = document.getElementById('filter-city');
+  const filterClass = document.getElementById('filter-class');
+
+  function getRiskLabel(risk) {
+    const map = { hoch: 'Hoch', mittel: 'Mittel', niedrig: 'Niedrig' };
+    return map[risk] || risk;
+  }
+
+  function getRiskClass(risk) {
+    const map = { hoch: 'high', mittel: 'medium', niedrig: 'low' };
+    return map[risk] || '';
+  }
+
+  function getCities() {
+    const set = new Set();
+    regionalData.forEach(d => set.add(d.city));
+    return Array.from(set).sort();
+  }
+
+  function renderTable(data) {
+    if (!data || data.length === 0) {
+      tableBody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:#6c757d;">Keine Einträge gefunden.</td></tr>';
+      return;
+    }
+    let html = '';
+    data.forEach(d => {
+      const riskLabel = getRiskLabel(d.risk);
+      const riskClass = getRiskClass(d.risk);
+      html += `<tr>
+        <td><strong>${d.plz}</strong></td>
+        <td>${d.city}</td>
+        <td><span class="class-badge ${riskClass}">Klasse ${d.class}</span></td>
+        <td>${riskLabel}</td>
+      </tr>`;
+    });
+    tableBody.innerHTML = html;
+  }
+
+  function filterData() {
+    const plzFilter = filterPlz.value.trim();
+    const cityFilter = filterCity.value;
+    const classFilter = filterClass.value;
+    let filtered = regionalData;
+    if (plzFilter) filtered = filtered.filter(d => d.plz.includes(plzFilter));
+    if (cityFilter) filtered = filtered.filter(d => d.city === cityFilter);
+    if (classFilter) filtered = filtered.filter(d => d.class === parseInt(classFilter, 10));
+    renderTable(filtered);
+  }
+
+  function populateCityFilter() {
+    const cities = getCities();
+    cities.forEach(city => {
+      const opt = document.createElement('option');
+      opt.value = city;
+      opt.textContent = city;
+      filterCity.appendChild(opt);
+    });
+  }
+
+  function findRegion(plz) {
+    const normalized = plz.trim().replace(/\s/g, '');
+    if (!/^\d{5}$/.test(normalized)) {
+      errorMsg.textContent = 'Bitte geben Sie eine gültige 5-stellige Postleitzahl ein.';
+      errorMsg.style.display = 'block';
+      resultArea.classList.remove('visible');
+      return;
+    }
+    errorMsg.style.display = 'none';
+    const entry = regionalData.find(d => d.plz === normalized);
+    if (!entry) {
+      resultArea.classList.add('visible');
+      plzDisplay.textContent = `PLZ ${normalized}`;
+      classDisplay.textContent = '—';
+      detailDisplay.innerHTML = '<p style="color:#6c757d;">Zu dieser Postleitzahl liegen keine Regionalklassen-Daten vor.</p>';
+      return;
+    }
+    resultArea.classList.add('visible');
+    plzDisplay.textContent = `PLZ ${entry.plz} · ${entry.city}`;
+    classDisplay.textContent = `Klasse ${entry.class}`;
+    const riskLabel = getRiskLabel(entry.risk);
+    const riskDesc = {
+      hoch: 'Hohes Unfallrisiko → höhere Versicherungsprämien möglich.',
+      mittel: 'Mittleres Unfallrisiko → durchschnittliche Versicherungsprämien.',
+      niedrig: 'Niedriges Unfallrisiko → günstigere Versicherungsprämien möglich.'
+    };
+    detailDisplay.innerHTML = `
+      <p><strong>Risiko:</strong> ${riskLabel}</p>
+      <p>${riskDesc[entry.risk] || ''}</p>
+      <p style="font-size:0.85rem;color:#6c757d;margin-top:0.5rem;">ℹ️ Die Regionalklasse wird von Versicherungen zur Berechnung des Beitrags herangezogen.</p>
+    `;
+  }
+
+  function renderPartnerButtons() {
+    const container = document.getElementById('partner-buttons-region');
+    if (!container || typeof partnerLinks === 'undefined') return;
+    const keys = ['kfz', 'motorrad', 'rechtschutz', 'strom', 'mietwagen', 'girokonto'];
+    let html = '';
+    keys.forEach(key => {
+      const p = partnerLinks[key];
+      if (!p) return;
+      html += `
+        <a href="${p.url}" target="_blank" rel="noopener sponsored" class="partner-button">
+          <span class="partner-icon">${p.icon}</span>
+          <span class="partner-name">${p.name}</span>
+          <span class="partner-arrow">→</span>
+        </a>
+      `;
+    });
+    container.innerHTML = html;
+  }
+
+  populateCityFilter();
+  renderTable(regionalData);
+  renderPartnerButtons();
+
+  searchBtn.addEventListener('click', function() {
+    findRegion(plzInput.value);
+  });
+
+  plzInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      findRegion(plzInput.value);
+    }
+  });
+
+  filterPlz.addEventListener('input', filterData);
+  filterCity.addEventListener('change', filterData);
+  filterClass.addEventListener('change', filterData);
+
+  plzInput.addEventListener('focus', function() {
+    this.select();
+  });
+
+})();
+</script>
+</body>
+</html>

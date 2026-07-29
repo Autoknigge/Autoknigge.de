@@ -3,37 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kfz-Leasing Ratgeber & Rechner: Lohnt sich das? | Autoknigge</title>
-<meta name="description" content="Kfz-Leasing verständlich erklärt: Leasing vs. Finanzierung, Kilometer- vs. Restwertleasing, interaktiver Leasingrechner und Tipps zur Rückgabe.">
+<title>Kfz-Leasing – Vor- und Nachteile | Autoknigge</title>
+<meta name="description" content="Was ist Leasing und lohnt es sich für Sie? Alle Vor- und Nachteile, Kosten und Tipps.">
 <link rel="canonical" href="https://autoknigge.de/artikel-kfz-leasing.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="Autoknigge">
-<meta property="og:locale" content="de_DE">
-<meta property="og:title" content="Kfz-Leasing Ratgeber & Rechner: Lohnt sich das? | Autoknigge">
-<meta property="og:description" content="Kfz-Leasing verständlich erklärt: Leasing vs. Finanzierung, Kilometer- vs. Restwertleasing, interaktiver Leasingrechner und Tipps zur Rückgabe.">
-<meta property="og:url" content="https://autoknigge.de/artikel-kfz-leasing.html">
-<meta property="og:image" content="https://autoknigge.de/logo.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Kfz-Leasing Ratgeber & Rechner: Lohnt sich das? | Autoknigge">
-<meta name="twitter:description" content="Kfz-Leasing verständlich erklärt: Leasing vs. Finanzierung, Kilometer- vs. Restwertleasing, interaktiver Leasingrechner und Tipps zur Rückgabe.">
-<meta name="twitter:image" content="https://autoknigge.de/logo.png">
 <link rel="stylesheet" href="styles.css">
-<style>
-.leasing-calc { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; align-items: start; margin: 1.5rem 0; }
-.leasing-calc-form .form-group { margin-bottom: 1rem; }
-.leasing-calc-form label { display: block; font-weight: 600; margin-bottom: 0.35rem; font-size: 0.88rem; color: var(--knigge-green); }
-.leasing-calc-form input, .leasing-calc-form select { width: 100%; padding: 0.55rem 0.8rem; border: 1px solid var(--border); border-radius: 6px; font-size: 0.95rem; font-family: inherit; }
-.calc-result { background: #f4f2ec; border: 1px solid var(--knigge-gold); border-radius: var(--radius); padding: 1.6rem; text-align: center; }
-.calc-result .rate-title { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
-.calc-result .rate-value { font-size: 2.3rem; font-weight: 700; color: var(--knigge-green); margin: 0.5rem 0; font-family: 'Playfair Display', Georgia, serif; }
-.calc-details { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); text-align: left; font-size: 0.88rem; }
-.calc-details div { display: flex; justify-content: space-between; margin-bottom: 0.4rem; }
-</style></head>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0f241d">
+</head>
 <body>
-
-<header class="site-header" id="top">
+<header class="site-header header-logo-large" id="top">
   <div class="header-inner">
+    <a href="index.html" aria-label="Autoknigge Startseite">
+      <img src="logo.png" alt="Autoknigge Logo" class="header-logo-mini">
+    </a>
     <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+    <label for="nav-toggle" class="menu-compact"><span class="menu-icon">&#9776;</span> Menü</label>
     <nav class="main-nav">
       <ul class="header-nav-list">
         <li><a href="index.html">Start</a></li>
@@ -42,173 +26,88 @@
         <li><a href="kategorie-kauf.html">Kauf</a></li>
         <li><a href="kategorie-pflege.html">Pflege</a></li>
         <li><a href="kategorie-recht.html">Recht</a></li>
-        <li><a href="kategorie-geld-sparen.html">Geld sparen</a></li>
+        <li><a href="kategorie-geld-sparen.html">Clever sparen</a></li>
+        <li><a href="regionalklassen.html">Regionalklassen</a></li>
+        <li><a href="sf-klassen-rechner.html">SF-Rechner</a></li>
+        <li><a href="artikel-sf-klassen-erklaert.html">SF-Klassen erklärt</a></li>
       </ul>
     </nav>
-    <label for="nav-toggle" class="menu-compact"><span class="menu-icon">&#9776;</span> Menü</label>
-    <img src="logo.png" alt="Autoknigge" class="header-logo-mini">
   </div>
 </header>
-
-<main class="wrap">
-  <div class="article-head">
-    <div class="breadcrumb"><a href="index.html">Start</a> / <a href="kategorie-kauf.html">Kauf</a> / Kfz-Leasing</div>
-    <span class="read-time">⏱ 5 Min. Lesezeit</span>
-    <h1>Kfz-Leasing: Ratgeber und Rechner</h1>
+<main>
+  <div class="wrap">
+    <nav aria-label="Breadcrumb" class="breadcrumb">
+      <a href="index.html">Start</a> / 
+      <a href="kategorie-kauf.html">Kauf</a> / 
+      <span>Kfz-Leasing</span>
+    </nav>
+    <h1>Kfz-Leasing – Vor- und Nachteile</h1>
+    <p class="lead">Was ist Leasing und lohnt es sich für Sie? Alle Vor- und Nachteile, Kosten und Tipps.</p>
+    <section>
+      <h2>Was ist Leasing?</h2>
+      <p>Beim Leasing zahlen Sie eine monatliche Rate für die Nutzung eines Fahrzeugs, ohne es zu kaufen. Nach der Vertragslaufzeit geben Sie das Fahrzeug zurück oder können es zu einem festgelegten Restwert übernehmen.</p>
+    </section>
+    <section>
+      <h2>Vorteile des Leasings</h2>
+      <ul>
+        <li><strong>Geringe monatliche Rate:</strong> Oft niedriger als eine Finanzierungsrate.</li>
+        <li><strong>Kein Wertverlust:</strong> Das Risiko des Wertverlusts trägt der Leasinggeber.</li>
+        <li><strong>Immer ein neues Auto:</strong> Sie können alle 2–4 Jahre ein neues Fahrzeug fahren.</li>
+        <li><strong>Wartung inklusive:</strong> Viele Leasingverträge enthalten Wartung und Verschleißteile.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Nachteile des Leasings</h2>
+      <ul>
+        <li><strong>Kein Eigentum:</strong> Sie besitzen das Fahrzeug nicht.</li>
+        <li><strong>Kilometerbegrenzung:</strong> Bei Überschreitung fallen hohe Kosten an.</li>
+        <li><strong>Schäden und Abnutzung:</strong> Bei Rückgabe können Kosten für Schäden anfallen.</li>
+        <li><strong>Vertragsbindung:</strong> Sie sind für die gesamte Laufzeit gebunden.</li>
+      </ul>
+    </section>
   </div>
-
-  <article class="article-body">
-
-    <p>Leasing statt Kauf ist längst nicht mehr nur etwas für Firmenwagen — auch privat entscheiden sich immer mehr Autofahrer dafür. Was dabei wirklich zählt, und wie viel Ihr Wunschauto monatlich kosten würde, erfahren Sie hier.</p>
-
-    <h2>Leasing vs. Finanzierung im Vergleich</h2>
-    <div class="compare-table-wrap">
-      <table class="compare-table">
-        <thead>
-          <tr><th>Kriterium</th><th>Leasing</th><th>Finanzierung (Kredit)</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Eigentum</td><td>Bleibt beim Leasinggeber, Sie sind nur Nutzer</td><td>Geht nach vollständiger Tilgung auf Sie über</td></tr>
-          <tr><td>Monatliche Rate</td><td class="ok">meist niedriger (deckt nur den Wertverlust)</td><td>meist höher (deckt den vollen Kaufpreis)</td></tr>
-          <tr><td>Laufzeitende</td><td>Einfache Rückgabe oder Wechsel auf Neuwagen</td><td>Auto bleibt Ihr Eigentum, Wiederverkauf liegt bei Ihnen</td></tr>
-          <tr><td>Steuer (Gewerbe)</td><td>Raten oft direkt als Betriebsausgabe absetzbar</td><td>Abschreibung über die Nutzungsdauer (AfA)</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h2>Die wichtigsten Leasing-Arten</h2>
-    <ul>
-      <li><strong>Kilometerleasing (für die meisten empfehlenswert):</strong> Sie vereinbaren vorab eine Gesamtkilometerleistung (z. B. 10.000 km/Jahr). Fahren Sie mehr, zahlen Sie pro Zusatzkilometer nach; fahren Sie weniger, bekommen Sie teils Geld zurück. Das Verwertungs- und Marktwertrisiko trägt der Leasinggeber.</li>
-      <li><strong>Restwertleasing (Vorsicht geboten):</strong> Hier wird zu Vertragsbeginn ein geschätzter Restwert für das Laufzeitende festgelegt. Sinkt der tatsächliche Marktwert stärker als angenommen — etwa durch Marktschwankungen oder neue Fahrverbote —, müssen Sie die Differenz nachzahlen. Das Risiko liegt hier bei Ihnen als Leasingnehmer.</li>
-    </ul>
-
-    <div class="box-info">
-      <strong>Unser Rat:</strong> Für Privatpersonen ist Kilometerleasing in aller Regel die risikoärmere und empfehlenswertere Variante — das unkalkulierbare Restwertrisiko bleibt beim Anbieter statt bei Ihnen.
-    </div>
-
-    <h2>Interaktiver Leasingrechner</h2>
-    <p>Geben Sie Ihre Eckdaten ein, um eine grobe monatliche Rate zu überschlagen — eine unverbindliche Orientierung, kein verbindliches Angebot.</p>
-
-    <div class="leasing-calc">
-      <form id="leasingForm" class="leasing-calc-form">
-        <div class="form-group">
-          <label for="price">Fahrzeugpreis / Bruttolistenpreis (€)</label>
-          <input type="number" id="price" value="35000" step="500">
-        </div>
-        <div class="form-group">
-          <label for="deposit">Anzahlung / Sonderzahlung (€)</label>
-          <input type="number" id="deposit" value="3000" step="250">
-        </div>
-        <div class="form-group">
-          <label for="months">Laufzeit (Monate)</label>
-          <select id="months">
-            <option value="24">24 Monate</option>
-            <option value="36" selected>36 Monate</option>
-            <option value="48">48 Monate</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="residualPercent">Geschätzter Restwert (% vom Kaufpreis)</label>
-          <input type="number" id="residualPercent" value="50" min="10" max="90">
-        </div>
-        <div class="form-group">
-          <label for="interest">Sollzins p. a. (%)</label>
-          <input type="number" id="interest" value="3.9" step="0.1">
-        </div>
-      </form>
-
-      <div class="calc-result">
-        <div class="rate-title">Geschätzte Monatsrate</div>
-        <div class="rate-value" id="monthlyRate">0,00 €</div>
-        <div class="calc-details">
-          <div><span>Restwert (€)</span><strong id="residualVal">0 €</strong></div>
-          <div><span>Wertverlust gesamt</span><strong id="depreciationVal">0 €</strong></div>
-          <div><span>Gesamtkosten Leasing</span><strong id="totalCostVal">0 €</strong></div>
-          <div><span>Leasingfaktor</span><strong id="leasingFactor">0,00</strong></div>
-        </div>
-      </div>
-    </div>
-    <p class="compare-note">Der Leasingfaktor (Monatsrate ÷ Kaufpreis × 100) ist ein gängiges Vergleichsmaß zwischen verschiedenen Leasingangeboten — Faustregel: Werte unter 1,0 gelten meist als fair, deutlich darüber lohnt sich ein Vergleichsangebot.</p>
-
-    <h2>Restwert & worauf Sie bei der Rückgabe achten sollten</h2>
-    <p>Der Restwert ist der kalkulierte Fahrzeugwert am Laufzeitende. Bei der Rückgabe prüft ein Gutachter das Fahrzeug auf Mängel — diese Punkte helfen, teure Nachforderungen zu vermeiden:</p>
-    <ul>
-      <li><strong>Gebrauchsspuren vs. Schäden unterscheiden:</strong> Normale Gebrauchsspuren (kleine Steinschläge, minimale Abnutzung) sind durch die Rate bereits abgegolten. Echte Schäden (Dellen, tiefe Kratzer, stark abgefahrene Reifen) werden gesondert berechnet.</li>
-      <li><strong>Fahrzeug vorab aufbereiten lassen:</strong> Eine professionelle Innen- und Außenreinigung (ca. 100–200 €) lohnt sich fast immer, um Abzüge zu vermeiden.</li>
-      <li><strong>Wartungen und Inspektionen einhalten:</strong> Werden Herstellervorgaben für Inspektionen verpasst, drohen hohe Vertragsstrafen.</li>
-      <li><strong>Kleine Schäden vorab reparieren lassen:</strong> Lack- oder Felgenschäden lassen sich im Smart-Repair-Verfahren oft deutlich günstiger beheben als über die Nachforderung der Leasinggesellschaft.</li>
-      <li><strong>Detailliertes Übergabeprotokoll verlangen:</strong> Quittieren Sie bei der Fahrzeugabgabe jeden Punkt im Protokoll und lassen Sie sich ein unterschriebenes Exemplar inklusive Fotos aushändigen.</li>
-    </ul>
-
-    <div class="box-tip">
-      <strong>Vor der Entscheidung vergleichen:</strong> Ob Leasing oder klassischer Kauf mit Kredit günstiger ist, hängt stark vom individuellen Zinssatz ab.<br><br>
-      → <a href="https://www.tarifcheck.com/SFKBdbP" target="_blank" rel="noopener noreferrer sponsored">Passende Kfz-Versicherung fürs Leasingfahrzeug vergleichen*</a>
-    </div>
-
-  </article>
-
-  <section class="related-articles">
-    <h2 class="related-heading">Das könnte Sie auch interessieren</h2>
-    <div class="related-grid">
-      <a class="related-card" href="artikel-e-auto-vs-benziner.html">
-        <span class="related-label">E-Auto vs. Benziner</span>
-        <span class="related-desc">Kostenvergleich: Was lohnt sich wirklich?</span>
-      </a>
-      <a class="related-card" href="artikel-kfz-versicherung-wechseln.html">
-        <span class="related-label">Kfz-Versicherung wechseln</span>
-        <span class="related-desc">Fristen, SF-Klassen und Spartipps im Überblick.</span>
-      </a>
-      <a class="related-card" href="artikel-auto-verkaufen.html">
-        <span class="related-label">Auto privat verkaufen</span>
-        <span class="related-desc">Kaufvertrag, Übergabe und Pflichten als Verkäufer.</span>
-      </a>
-    </div>
-  </section>
-
-
 </main>
-
+<button id="backToTop" class="back-to-top" aria-label="Nach oben scrollen">↑</button>
 <footer class="site-footer">
   <div class="wrap">
-    <div>© 2026 Autoknigge — Unabhängiger Ratgeber rund um Mobilität, Verhalten und Fahrzeugrecht. Alle Inhalte wurden sorgfältig recherchiert. Im Zweifel gilt bei rechtlichen Fragen oder Gebühren stets die Auskunft der jeweiligen Behörden oder Prüfstellen.</div>
-    <div class="foot-links">
-      <a href="impressum.html">Impressum</a>
-      <a href="datenschutz.html">Datenschutz</a>
-      <a href="#" id="cookie-settings-link">Cookie-Einstellungen</a>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Autoknigge</h3>
+        <p>Ihr unabhängiger Ratgeber für stilvolles, sicheres und wirtschaftlich cleveres Verhalten rund um das Automobil.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Kategorien</h4>
+        <ul class="footer-links-list">
+          <li><a href="kategorie-versicherung.html">Kfz-Versicherung</a></li>
+          <li><a href="kategorie-zulassung.html">Zulassung & Behörde</a></li>
+          <li><a href="kategorie-kauf.html">Autokauf & Verkauf</a></li>
+          <li><a href="kategorie-pflege.html">Fahrzeugpflege</a></li>
+          <li><a href="kategorie-recht.html">Recht & Etikette</a></li>
+          <li><a href="kategorie-geld-sparen.html">Clever sparen</a></li>
+          <li><a href="regionalklassen.html">Regionalklassen</a></li>
+          <li><a href="sf-klassen-rechner.html">SF-Rechner</a></li>
+          <li><a href="artikel-sf-klassen-erklaert.html">SF-Klassen erklärt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Downloads</h4>
+        <ul class="footer-links-list">
+          <li><a href="kfz-kaufvertrag.pdf" download>Kfz-Kaufvertrag (PDF)</a></li>
+          <li><a href="vollmacht-kfz-zulassung.pdf" download>Zulassungsvollmacht (PDF)</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="affiliate-note">* Mit einem Sternchen gekennzeichnete Links sind Affiliate-Links. Kaufen Sie darüber etwas ein, erhalten wir ggf. eine kleine Provision — für Sie entstehen dadurch keine Mehrkosten.</div>
+    <div class="footer-bottom">
+      <div>© 2026 Autoknigge — Alle Rechte vorbehalten. Unabhängige Ratgeber-Plattform.</div>
+      <div class="foot-links">
+        <a href="impressum.html">Impressum</a> •
+        <a href="datenschutz.html">Datenschutz</a> •
+        <a href="#" id="cookie-settings-link">Cookie-Einstellungen</a>
+      </div>
+    </div>
   </div>
 </footer>
-
 <script src="script.js"></script>
 <script src="cookie-consent.js"></script>
-<script>
-function calculateLeasing() {
-  var price = parseFloat(document.getElementById('price').value) || 0;
-  var deposit = parseFloat(document.getElementById('deposit').value) || 0;
-  var months = parseInt(document.getElementById('months').value) || 36;
-  var residualPercent = parseFloat(document.getElementById('residualPercent').value) || 0;
-  var interestRate = parseFloat(document.getElementById('interest').value) || 0;
-
-  var residualValue = price * (residualPercent / 100);
-  var netCapital = price - deposit;
-  var depreciation = netCapital - residualValue;
-  var monthlyDepreciation = depreciation / months;
-  var interestBase = (netCapital + residualValue) / 2;
-  var monthlyInterest = interestBase * (interestRate / 100 / 12);
-  var monthlyRate = Math.max(0, monthlyDepreciation + monthlyInterest);
-  var totalCost = deposit + (monthlyRate * months);
-  var leasingFactor = price > 0 ? (monthlyRate / price) * 100 : 0;
-
-  document.getElementById('monthlyRate').textContent = monthlyRate.toFixed(2).replace('.', ',') + ' €';
-  document.getElementById('residualVal').textContent = residualValue.toFixed(2).replace('.', ',') + ' €';
-  document.getElementById('depreciationVal').textContent = Math.max(0, depreciation).toFixed(2).replace('.', ',') + ' €';
-  document.getElementById('totalCostVal').textContent = totalCost.toFixed(2).replace('.', ',') + ' €';
-  document.getElementById('leasingFactor').textContent = leasingFactor.toFixed(2).replace('.', ',');
-}
-document.querySelectorAll('#leasingForm input, #leasingForm select').forEach(function(el) {
-  el.addEventListener('input', calculateLeasing);
-});
-calculateLeasing();
-</script></body>
+</body>
 </html>
