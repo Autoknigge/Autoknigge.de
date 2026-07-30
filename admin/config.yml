@@ -12,26 +12,10 @@ collections:
       - file: "index.html"
         label: "Startseite (index.html)"
         name: "index"
+        extension: "html"
+        format: "raw"
         fields:
-          - label: "Seitentitel (SEO)"
-            name: "title"
-            widget: "string"
-
-          - label: "Hero-Bereich"
-            name: "hero"
-            widget: "object"
-            fields:
-              - { label: "Badge-Text", name: "badge", widget: "string" }
-              - { label: "Hauptüberschrift (H1)", name: "heading", widget: "string" }
-              - { label: "Einleitungstext", name: "lead", widget: "text" }
-
-          - label: "Kategorie: Versicherung"
-            name: "cat_versicherung"
-            widget: "object"
-            fields:
-              - { label: "Beschreibung", name: "description", widget: "text" }
-
-          - label: "HTML Code bearbeiten"
+          - label: "HTML Quellcode"
             name: "body"
             widget: "code"
             default_language: "html"
