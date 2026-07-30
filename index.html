@@ -16,42 +16,63 @@
       --accent-color: #2563eb;
       --bg-light: #f8fafc;
     }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: system-ui, -apple-system, sans-serif;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
       background-color: var(--bg-light);
       color: #334155;
     }
+
     .hero-section {
       background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
       color: white;
-      padding: 80px 0 60px;
+      padding: 90px 0 70px;
     }
+
     .card-custom {
       border: none;
       border-radius: 12px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
+
     .card-custom:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08) !important;
+      transform: translateY(-5px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08) !important;
     }
+
     .badge-soft {
       background-color: rgba(37, 99, 235, 0.1);
       color: var(--accent-color);
+      font-weight: 600;
+    }
+
+    .icon-box {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="#"><i class="fa-solid font-awesome me-2"></i>AUTOKNIGGE</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <a class="navbar-brand fw-bold text-uppercase tracking-wide" href="#">
+        <i class="fa-solid fa-car-side text-primary me-2"></i>AUTOKNIGGE
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Navigation umschalten">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-menu navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto gap-lg-2">
           <li class="nav-item"><a class="nav-link" href="#versicherung">Versicherung</a></li>
           <li class="nav-item"><a class="nav-link" href="#bussgeld">Bußgelder</a></li>
           <li class="nav-item"><a class="nav-link" href="#checkliste">Checklisten</a></li>
@@ -63,27 +84,32 @@
   <!-- Hero Bereich -->
   <header class="hero-section text-center">
     <div class="container">
-      <span class="badge bg-primary px-3 py-2 rounded-pill mb-3">Sicher, stilvoll & clever mobil</span>
+      <span class="badge bg-primary px-3 py-2 rounded-pill mb-3 text-uppercase fs-7 fw-semibold">Sicher, stilvoll & clever mobil</span>
       <h1 class="display-4 fw-bold mb-3">Dein moderner Ratgeber rund ums Auto</h1>
-      <p class="lead text-light opacity-75 max-width-600 mx-auto mb-4">
-        Von Versicherungsvergleichen über Bußgeld-Tipps bis hin zu praktischen Alltags-Tipps für jeden Autofahrer.
+      <p class="lead text-light opacity-75 mx-auto mb-4" style="max-width: 650px;">
+        Von Versicherungsvergleichen über Bußgeld-Tipps bis hin zu praktischen Alltags-Checklisten für jeden Autofahrer.
       </p>
-      <a href="#versicherung" class="btn btn-primary btn-lg me-2"><i class="fa-solid fa-shield-halved me-2"></i>Tipps entdecken</a>
+      <a href="#versicherung" class="btn btn-primary btn-lg px-4 me-2 my-1 shadow-sm">
+        <i class="fa-solid fa-shield-halved me-2"></i>Tipps entdecken
+      </a>
+      <a href="#checkliste" class="btn btn-outline-light btn-lg px-4 my-1">
+        <i class="fa-solid fa-list-check me-2"></i>Checklisten
+      </a>
     </div>
   </header>
 
   <!-- Hauptinhalt -->
-  <main class="container my-5">
+  <main class="container my-5 pt-3">
     
     <!-- Kategorie 1: Versicherung -->
-    <section id="versicherung" class="mb-5">
+    <section id="versicherung" class="mb-5 pt-3">
       <div class="d-flex align-items-center mb-4">
-        <div class="p-3 bg-primary text-white rounded-3 me-3">
-          <i class="fa-solid fa-shield-halved fa-xl"></i>
+        <div class="icon-box bg-primary text-white me-3">
+          <i class="fa-solid fa-shield-halved fa-lg"></i>
         </div>
         <div>
-          <h2 class="h3 mb-0">Kfz-Versicherung & Sparen</h2>
-          <p class="text-muted mb-0">Die wichtigsten Tipps zu Tarifen, SF-Klassen und Rechten</p>
+          <h2 class="h3 mb-0 fw-bold">Kfz-Versicherung & Sparen</h2>
+          <p class="text-muted mb-0">Die wichtigsten Tipps zu Tarifen, SF-Klassen und deinen Rechten</p>
         </div>
       </div>
 
@@ -92,7 +118,7 @@
           <div class="card card-custom h-100 shadow-sm p-3">
             <div class="card-body">
               <span class="badge badge-soft mb-2">Grundlagen</span>
-              <h5 class="card-title fw-bold">SF-Klassen verstehen</h5>
+              <h3 class="h5 card-title fw-bold">SF-Klassen verstehen</h3>
               <p class="card-text text-muted">Wie Schadenfreiheitsklassen funktionieren und wie du deinen Rabatt optimal schützt.</p>
             </div>
           </div>
@@ -102,8 +128,8 @@
           <div class="card card-custom h-100 shadow-sm p-3">
             <div class="card-body">
               <span class="badge badge-soft mb-2">Spartipp</span>
-              <h5 class="card-title fw-bold">Telematik-Tarife</h5>
-              <p class="card-text text-muted">Durch vorsichtiges Fahren bis zu 30 % Beitrag bei der Kfz-Versicherung sparen.</p>
+              <h3 class="h5 card-title fw-bold">Telematik-Tarife</h3>
+              <p class="card-text text-muted">Durch vorausschauendes Fahren bis zu 30 % Beitrag bei der Kfz-Versicherung sparen.</p>
             </div>
           </div>
         </div>
@@ -112,8 +138,8 @@
           <div class="card card-custom h-100 shadow-sm p-3">
             <div class="card-body">
               <span class="badge badge-soft mb-2">Wechsel</span>
-              <h5 class="card-title fw-bold">Fristen & Kündigung</h5>
-              <p class="card-text text-muted">Worauf du beim Stichtag im November achten musst, um nahtlos zu wechseln.</p>
+              <h3 class="h5 card-title fw-bold">Fristen & Kündigung</h3>
+              <p class="card-text text-muted">Worauf du beim Stichtag im November achten musst, um nahtlos und günstig zu wechseln.</p>
             </div>
           </div>
         </div>
@@ -121,13 +147,13 @@
     </section>
 
     <!-- Kategorie 2: Bußgeld & Recht -->
-    <section id="bussgeld" class="mb-5">
+    <section id="bussgeld" class="mb-5 pt-3">
       <div class="d-flex align-items-center mb-4">
-        <div class="p-3 bg-danger text-white rounded-3 me-3">
-          <i class="fa-solid fa-gavel fa-xl"></i>
+        <div class="icon-box bg-danger text-white me-3">
+          <i class="fa-solid fa-gavel fa-lg"></i>
         </div>
         <div>
-          <h2 class="h3 mb-0">Bußgeld & Verkehrsrecht</h2>
+          <h2 class="h3 mb-0 fw-bold">Bußgeld & Verkehrsrecht</h2>
           <p class="text-muted mb-0">Punkte, Blitzer und was im Ernstfall zu tun ist</p>
         </div>
       </div>
@@ -136,8 +162,10 @@
         <div class="col-md-6">
           <div class="card card-custom h-100 shadow-sm p-3">
             <div class="card-body">
-              <h5 class="card-title fw-bold"><i class="fa-solid fa-triangle-exclamation text-warning me-2"></i>Anhörungsbogen erhalten?</h5>
-              <p class="card-text text-muted">So verhältst du dich richtig, wenn Post von der Bußgeldstelle im Briefkasten liegt.</p>
+              <h3 class="h5 card-title fw-bold">
+                <i class="fa-solid fa-triangle-exclamation text-warning me-2"></i>Anhörungsbogen erhalten?
+              </h3>
+              <p class="card-text text-muted">So verhältst du dich richtig, wenn Post von der Bußgeldstelle im Briefkasten liegt und welche Fristen gelten.</p>
             </div>
           </div>
         </div>
@@ -145,8 +173,55 @@
         <div class="col-md-6">
           <div class="card card-custom h-100 shadow-sm p-3">
             <div class="card-body">
-              <h5 class="card-title fw-bold"><i class="fa-solid fa-ban text-danger me-2"></i>Fahrverbot umgehen</h5>
-              <p class="card-text text-muted">In welchen Ausnahmefällen ein Fahrverbot in ein höheres Bußgeld umgewandelt werden kann.</p>
+              <h3 class="h5 card-title fw-bold">
+                <i class="fa-solid fa-ban text-danger me-2"></i>Fahrverbot umgehen
+              </h3>
+              <p class="card-text text-muted">In welchen Ausnahmefällen ein drohendes Fahrverbot in eine höhere Geldbuße umgewandelt werden kann.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kategorie 3: Checklisten -->
+    <section id="checkliste" class="mb-5 pt-3">
+      <div class="d-flex align-items-center mb-4">
+        <div class="icon-box bg-success text-white me-3">
+          <i class="fa-solid fa-list-check fa-lg"></i>
+        </div>
+        <div>
+          <h2 class="h3 mb-0 fw-bold">Praktische Checklisten</h2>
+          <p class="text-muted mb-0">Gut vorbereitet für Alltag, Urlaub und Notfälle</p>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card card-custom h-100 shadow-sm p-3">
+            <div class="card-body">
+              <span class="badge bg-success bg-opacity-10 text-success mb-2 fw-semibold">Saison</span>
+              <h3 class="h5 card-title fw-bold">Winter-Checkup</h3>
+              <p class="card-text text-muted">Frostschutz, Batterie und Türgummis: So machst du dein Auto fit für die kalte Jahreszeit.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card card-custom h-100 shadow-sm p-3">
+            <div class="card-body">
+              <span class="badge bg-success bg-opacity-10 text-success mb-2 fw-semibold">Reise</span>
+              <h3 class="h5 card-title fw-bold">Autourlaub im Ausland</h3>
+              <p class="card-text text-muted">Maut, Warnwesten-Pflichten und grüne Versicherungskarte: Das gehört ins Gepäck.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card card-custom h-100 shadow-sm p-3">
+            <div class="card-body">
+              <span class="badge bg-success bg-opacity-10 text-success mb-2 fw-semibold">Notfall</span>
+              <h3 class="h5 card-title fw-bold">Unfall-Set</h3>
+              <p class="card-text text-muted">Unfallbericht, Europäischer Bogen und Fotografieren der Unfallstelle richtig gemacht.</p>
             </div>
           </div>
         </div>
