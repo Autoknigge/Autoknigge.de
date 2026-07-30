@@ -1,0 +1,45 @@
+backend:
+  name: github
+  repo: Autokoenig/Autoknigge.de
+  branch: main
+
+media_folder: "" # Speicherort für hochgeladene Bilder
+public_folder: "/"
+
+collections:
+  - name: "pages"
+    label: "Seiten"
+    files:
+      - file: "index.html"
+        label: "Startseite (index.html)"
+        name: "index"
+        fields:
+          - { label: "Seitentitel (SEO)", name: "title", widget: "string", default: "Autoknigge — Der Leitfaden für Verhalten, Pflege & Autokauf" }
+          
+          # Hero-Bereich oben auf der Seite
+          - label: "Hero-Bereich"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Badge-Text", name: "badge", widget: "string", default: "Stand 2026 • Unabhängiger Ratgeber" }
+              - { label: "Hauptüberschrift (H1)", name: "heading", widget: "string", default: "Sicher, stilvoll & clever mobil" }
+              - { label: "Einleitungstext", name: "lead", widget: "text" }
+
+          # Kategorie 1: Versicherung
+          - label: "Kategorie: Versicherung"
+            name: "cat_versicherung"
+            widget: "object"
+            fields:
+              - { label: "Kategorie Beschreibung", name: "description", widget: "text" }
+              - label: "Artikel-Karten"
+                name: "cards"
+                widget: "list"
+                fields:
+                  - { label: "Titel", name: "title", widget: "string" }
+                  - { label: "Kategorie/Step-Badge", name: "step", widget: "string" }
+                  - { label: "Lesezeit", name: "readtime", widget: "string" }
+                  - { label: "Kurzbeschreibung", name: "text", widget: "text" }
+                  - { label: "Link zur Seite", name: "url", widget: "string" }
+
+          # Weitere Inhalte/HTML-Abschnitte direkt anpassen
+          - { label: "Gesamter Seiteninhalt (HTML)", name: "body", widget: "code", default_language: "html" }
