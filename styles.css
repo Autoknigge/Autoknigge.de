@@ -224,6 +224,91 @@ p { color: var(--text-body); }
   }
 }
 
+
+/* ===== SUBMENU (Versicherung dropdown) ===== */
+.has-submenu { position: relative; }
+.has-submenu > .submenu-toggle { cursor: pointer; }
+.has-submenu .caret {
+  font-size: 0.7rem;
+  display: inline-block;
+  transition: transform var(--transition-fast);
+  opacity: 0.7;
+}
+.has-submenu.open .caret { transform: rotate(180deg); }
+
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: 0.5rem;
+  margin-top: 0.35rem;
+  list-style: none;
+  flex-direction: column !important;
+  gap: 0 !important;
+  align-items: stretch !important;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast), visibility var(--transition-fast);
+  z-index: 110;
+}
+.has-submenu:hover > .submenu,
+.has-submenu.open > .submenu,
+.has-submenu:focus-within > .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.submenu li { width: 100%; }
+.submenu li a {
+  display: block;
+  color: var(--text-body) !important;
+  background: transparent !important;
+  border-radius: 8px;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.submenu li a:hover {
+  background: var(--green-50) !important;
+  color: var(--green-700) !important;
+}
+.submenu li a[aria-current="page"] {
+  color: var(--green-700) !important;
+  background: var(--green-100) !important;
+  font-weight: 700;
+  box-shadow: none !important;
+}
+
+@media (max-width: 980px) {
+  .submenu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    background: rgba(255,255,255,0.06);
+    border-radius: 10px;
+    margin: 0.25rem 0 0.5rem 0.75rem;
+    padding: 0.35rem;
+    min-width: auto;
+  }
+  .submenu li a {
+    color: rgba(255,255,255,0.78) !important;
+    padding: 0.5rem 0.85rem;
+  }
+  .submenu li a:hover {
+    background: rgba(255,255,255,0.1) !important;
+    color: #fff !important;
+  }
+  .has-submenu .caret { display: inline-block; }
+}
+
 /* ===== BREADCRUMB ===== */
 .breadcrumb {
   font-size: 0.85rem;

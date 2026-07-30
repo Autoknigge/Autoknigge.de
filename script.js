@@ -148,7 +148,52 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // 5. Mobile menu: Close on link click (better UX)
+  // 5. Scroll reveal animations
+  var revealEls = document.querySelectorAll('.reveal');
+  if (revealEls.length && 'IntersectionObserver' in window) {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(function (el) { revealObserver.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+  }
+
+
+  // 7. Submenu toggle (mobile + keyboard)
+  var submenuToggles = document.querySelectorAll('.has-submenu > .submenu-toggle');
+  submenuToggles.forEach(function (toggle) {
+    toggle.addEventListener('click', function (e) {
+      var parent = toggle.parentElement;
+      var isOpen = parent.classList.contains('open');
+      // Close all other submenus
+      document.querySelectorAll('.has-submenu.open').forEach(function (el) {
+        if (el !== parent) { el.classList.remove('open'); el.querySelector('.submenu-toggle').setAttribute('aria-expanded', 'false'); }
+      });
+      if (window.innerWidth <= 980) {
+        e.preventDefault();
+        parent.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', parent.classList.contains('open') ? 'true' : 'false');
+      }
+    });
+  });
+  // Close submenu when clicking outside
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.has-submenu')) {
+      document.querySelectorAll('.has-submenu.open').forEach(function (el) {
+        el.classList.remove('open');
+        var t = el.querySelector('.submenu-toggle');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
+  // 6. Mobile menu: Close on link click (better UX)
   var navToggle = document.getElementById('nav-toggle');
   if (navToggle) {
     var navLinks = document.querySelectorAll('.header-nav-list a');
