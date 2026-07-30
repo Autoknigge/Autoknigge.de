@@ -12,6 +12,10 @@ collections:
       - file: "index.html"
         label: "Startseite"
         name: "index"
+        extension: "html"
+        format: "raw"
         fields:
-          - { label: "Titel", name: "title", widget: "string" }
-          - { label: "HTML Quellcode", name: "body", widget: "code", default_language: "html" }
+          - label: "HTML Quellcode"
+            name: "body"
+            widget: "code"
+            default_language: "html"
