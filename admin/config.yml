@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: Autokoenig/Autoknigge.de
+  name: git-gateway
   branch: main
 
 media_folder: "" # Speicherort für hochgeladene Bilder
