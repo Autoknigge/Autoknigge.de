@@ -1,281 +1,360 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Autoknigge — Sicher, stilvoll & clever mobil</title>
-  
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <style>
-    :root {
-      --primary-color: #0f172a;
-      --accent-color: #2563eb;
-      --bg-light: #f8fafc;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      background-color: var(--bg-light);
-      color: #334155;
-    }
-
-    /* Navigation Fixes */
-    .navbar {
-      z-index: 1030;
-    }
-
-    .navbar-brand {
-      display: flex;
-      align-items: center;
-      z-index: 1031;
-    }
-
-    .navbar-brand img {
-      height: 55px; /* Skaliert das Logo auf Desktop angemessen */
-      width: auto;
-      max-width: 100%;
-      object-fit: contain;
-      transition: height 0.2s ease;
-    }
-
-    @media (max-width: 768px) {
-      .navbar-brand img {
-        height: 40px; /* Passt das Logo auf Smartphones an */
-      }
-    }
-
-    .nav-link {
-      font-weight: 500;
-      cursor: pointer;
-    }
-
-    /* Hero Bereich */
-    .hero-section {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      color: white;
-      padding: 80px 0 60px;
-    }
-
-    /* Karten Design */
-    .card-custom {
-      border: none;
-      border-radius: 12px;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      background-color: #ffffff;
-    }
-
-    .card-custom:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08) !important;
-    }
-
-    .badge-soft {
-      background-color: rgba(37, 99, 235, 0.1);
-      color: var(--accent-color);
-      font-weight: 600;
-    }
-
-    .icon-box {
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 10px;
-      flex-shrink: 0;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autoknigge — Der Leitfaden für Verhalten, Pflege & Autokauf</title>
+<meta name="description" content="Autoknigge ist Ihr unabhängiger Premium-Ratgeber für gutes Benehmen im Straßenverkehr, Fahrzeugpflege, Autokauf, Versicherung und Behördengänge.">
+<link rel="canonical" href="https://autoknigge.de/index.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Autoknigge">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="Autoknigge — Der Leitfaden für Verhalten, Pflege & Autokauf">
+<meta property="og:description" content="Autoknigge ist Ihr unabhängiger Premium-Ratgeber für gutes Benehmen im Straßenverkehr, Fahrzeugpflege, Autokauf, Versicherung und Behördengänge.">
+<meta property="og:url" content="https://autoknigge.de/index.html">
+<meta property="og:image" content="https://autoknigge.de/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Autoknigge — Der Leitfaden für Verhalten, Pflege & Autokauf">
+<meta name="twitter:description" content="Autoknigge ist Ihr unabhängiger Premium-Ratgeber für gutes Benehmen im Straßenverkehr, Fahrzeugpflege, Autokauf, Versicherung und Behördengänge.">
+<meta name="twitter:image" content="https://autoknigge.de/logo.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Autoknigge", "url": "https://autoknigge.de/", "description": "Autoknigge ist Ihr unabhängiger Ratgeber für gutes Benehmen im Straßenverkehr, die richtige Fahrzeugpflege und den stressfreien Autokauf inklusive aller Zulassungsfragen.", "inLanguage": "de-DE", "potentialAction": {"@type": "SearchAction", "target": "https://autoknigge.de/?s={search_term_string}", "query-input": "required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Autoknigge", "url": "https://autoknigge.de/", "logo": "https://autoknigge.de/logo.png"}</script>
+<link rel="stylesheet" href="styles.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0f241d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="/logo.png">
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <img src="logo.png" alt="Autoknigge Logo">
-      </a>
-      
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Navigation umschalten">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto gap-2 py-2 py-lg-0">
-          <li class="nav-item"><a class="nav-link px-3" href="#versicherung">Versicherung</a></li>
-          <li class="nav-item"><a class="nav-link px-3" href="#bussgeld">Bußgelder</a></li>
-          <li class="nav-item"><a class="nav-link px-3" href="#checkliste">Checklisten</a></li>
+<header class="site-header header-logo-large" id="top">
+  <div class="header-inner">
+    <a href="index.html" aria-label="Autoknigge Startseite">
+<img src="logo.png" alt="Autoknigge Logo" class="header-logo-mini">
+    </a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+    <label for="nav-toggle" class="menu-compact"><span class="menu-icon">&#9776;</span> Menü</label>
+    <nav class="main-nav">
+      <ul class="header-nav-list">
+        <li><a href="index.html" aria-current="page">Start</a></li>
+        <li><a href="kategorie-versicherung.html">Versicherung</a></li>
+        <li><a href="kategorie-zulassung.html">Zulassung</a></li>
+        <li><a href="kategorie-kauf.html">Kauf</a></li>
+        <li><a href="kategorie-pflege.html">Pflege</a></li>
+        <li><a href="kategorie-recht.html">Recht</a></li>
+        <li><a href="kategorie-geld-sparen.html">Clever sparen</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="dot"></span> Stand 2026 • Unabhängiger Ratgeber
+          </div>
+          <h1>Sicher, stilvoll & <span class="gold">clever mobil</span></h1>
+          <p class="lead">Der moderne Autoknigge verbindet souveränes Verhalten im Straßenverkehr mit praxisnahen Anleitungen zur Fahrzeugpflege, Behördengängen und den besten Spartipps für Versicherung und Autokauf.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- KATEGORIE 1: VERSICHERUNG -->
+    <section id="versicherung" class="topic-section">
+      <div class="section-head-row">
+        <div>
+          <div class="cat-heading-wrap">
+            <span class="cat-number-badge">01</span>
+            <h2 class="cat-heading">
+              <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Versicherung
+            </h2>
+          </div>
+          <p class="section-lead">Die richtige Kfz-Versicherung finden, wechseln und sparen – mit allen wichtigen Fakten zu SF-Klassen und Regionalklassen.</p>
+        </div>
+        <a class="section-link" href="kategorie-versicherung.html">Alle Artikel ansehen →</a>
+      </div>
+      <div class="grid">
+        <a class="card" href="artikel-sf-klassen.html">
+          <div class="card-meta"><span class="step">SF-Klassen</span><span class="card-readtime">⏱ 2 Min.</span></div>
+          <h3>SF-Klassen verstehen</h3>
+          <p>Was bedeuten SF-Klassen und wie können Sie Ihre Schadenfreiheitsklasse verbessern?</p>
+        </a>
+        <a class="card" href="artikel-telematik-tarife.html">
+          <div class="card-meta"><span class="step">Telematik</span><span class="card-readtime">⏱ 2 Min.</span></div>
+          <h3>Telematik-Tarife</h3>
+          <p>Wie funktionieren Telematik-Tarife und für wen lohnen sie sich?</p>
+        </a>
+        <a class="card" href="artikel-fahranfaenger-versicherung.html">
+          <div class="card-meta"><span class="step">Fahranfänger</span><span class="card-readtime">⏱ 2 Min.</span></div>
+          <h3>Fahranfänger versicherung</h3>
+          <p>Tipps für Fahranfänger, um die Kfz-Versicherung günstig zu halten.</p>
+        </a>
+        <a class="card" href="artikel-kfz-versicherung-wechseln.html">
+          <div class="card-meta"><span class="step">Versicherung</span><span class="card-readtime">⏱ 2 Min.</span></div>
+          <h3>Kfz-Versicherung wechseln</h3>
+          <p>So wechseln Sie Ihre Kfz-Versicherung und sparen bis zu 300 € im Jahr.</p>
+        </a>
+        <a class="card" href="artikel-regionalklassen-erklaert.html">
+          <div class="card-meta"><span class="step">Versicherung</span><span class="card-readtime">⏱ 3 Min.</span></div>
+          <h3>Regionalklassen erklärt</h3>
+          <p>Alles Wissenswerte zu Regionalklassen – wie sie berechnet werden, was sie bedeuten und wie Sie sparen können.</p>
+        </a>
+        <a class="card" href="sf-klassen-rechner.html">
+          <div class="card-meta"><span class="step">Versicherung</span><span class="card-readtime">⏱ 2 Min.</span></div>
+          <h3>SF-Klassen Rechner</h3>
+          <p>Berechnen Sie Ihre Schadenfreiheitsklasse (SF-Klasse) für die Kfz-Versicherung – einfach und kostenlos.</p>
+        </a>
+        <a class="card" href="artikel-sf-klassen-erklaert.html">
+          <div class="card-meta"><span class="step">Versicherung</span><span class="card-readtime">⏱ 3 Min.</span></div>
+          <h3>SF-Klassen erklärt</h3>
+          <p>Alles Wissenswerte zur Schadenfreiheitsklasse – wie sie berechnet wird, was sie bedeutet und wie Sie sparen können.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- KATEGORIE 2: ZULASSUNG -->
+    <section id="zulassung" class="topic-section">
+      <div class="section-head-row">
+        <div>
+          <div class="cat-heading-wrap">
+            <span class="cat-number-badge">02</span>
+            <h2 class="cat-heading">
+              <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 7v10M15 7v10M3 11h18M3 15h18"/></svg>
+              Zulassung
+            </h2>
+          </div>
+          <p class="section-lead">Alles rund um An-, Ab- und Ummeldung, Kennzeichen und Online-Zulassung – stressfrei durch den Behördendschungel.</p>
+        </div>
+        <a class="section-link" href="kategorie-zulassung.html">Alle Artikel ansehen →</a>
+      </div>
+      <div class="grid">
+        <a class="card" href="artikel-auto-anmelden.html">
+          <div class="card-meta"><span class="step">Anmeldung</span><span class="card-readtime">⏱ 2 Min.</span></div>
+          <h3>Auto anmelden</h3>
+          <p>Schritt-für-Schritt zur Zulassung – welche Unterlagen Sie brauchen.</p>
+        </a>
+        <a class="card" href="artikel-auto-abmelden.html">
+          <div class="card-meta"><span class="step">Abmeldung</span><span class="card-readtime">⏱ 2 Min.</span></div>
+          <h3>Auto abmelden</h3>
+          <p>So melden Sie Ihr Auto ab – online oder vor Ort.</p>
+        </a>
+        <a class="card" href="artikel-auto-ummelden.html">
+          <div class="card-meta"><span class="step">Ummeldung</span><span class="card-readtime">⏱ 2 Min.</span></div>
+          <h3>Auto ummelden</h3>
+          <p>Bei Umzug oder Kennzeichenwechsel – so geht die Ummeldung.</p>
+        </a>
+        <a class="card" href="artikel-kennzeichen-reservieren.html">
+          <div class="card-meta"><span class="step">Kennzeichen</span><span class="card-readtime">⏱ 2 Min.</span></div>
+          <h3>Kennzeichen reservieren</h3>
+          <p>Wunschkennzeichen online reservieren – so einfach geht es.</p>
+        </a>
+        <a class="card" href="online-zulassung.html">
+          <div class="card-meta"><span class="step">Online-Zulassung</span><span class="card-readtime">⏱ 2 Min.</span></div>
+          <h3>Online-Zulassung</h3>
+          <p>Das Auto online zulassen – ohne Behördengang.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- KATEGORIE 3: KAUF -->
+    <section id="kauf" class="topic-section">
+      <div class="section-head-row">
+        <div>
+          <div class="cat-heading-wrap">
+            <span class="cat-number-badge">03</span>
+            <h2 class="cat-heading">
+              <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+              Kauf
+            </h2>
+          </div>
+          <p class="section-lead">Der sichere Autokauf – vom Neuwagen über Gebrauchte bis zu Leasing und Verkauf.</p>
+        </div>
+        <a class="section-link" href="kategorie-kauf.html">Alle Artikel ansehen →</a>
+      </div>
+      <div class="grid">
+        <a class="card" href="artikel-e-auto-vs-benziner.html">
+          <div class="card-meta"><span class="step">E-Auto</span><span class="card-readtime">⏱ 2 Min.</span></div>
+          <h3>E-Auto vs. Benziner</h3>
+          <p>Was ist günstiger? Ein Vergleich der Gesamtkosten.</p>
+        </a>
+        <a class="card" href="artikel-gebrauchtwagen-historie-carvertical.html">
+          <div class="card-meta"><span class="step">Gebrauchtwagen</span><span class="card-readtime">⏱ 2 Min.</span></div>
+          <h3>Gebrauchtwagen-Historie</h3>
+          <p>Warum Sie vor dem Kauf die Fahrzeughistorie prüfen sollten.</p>
+        </a>
+        <a class="card" href="artikel-kfz-leasing.html">
+          <div class="card-meta"><span class="step">Leasing</span><span class="card-readtime">⏱ 2 Min.</span></div>
+          <h3>Kfz-Leasing</h3>
+          <p>Was ist Leasing und lohnt es sich für Sie?</p>
+        </a>
+        <a class="card" href="artikel-auto-verkaufen.html">
+          <div class="card-meta"><span class="step">Verkauf</span><span class="card-readtime">⏱ 2 Min.</span></div>
+          <h3>Auto verkaufen</h3>
+          <p>Worauf Sie beim Verkauf achten sollten – vom Preis bis zum Vertrag.</p>
+        </a>
+        <a class="card" href="artikel-e-auto-kaufpraemie.html">
+          <div class="card-meta"><span class="step">E-Auto</span><span class="card-readtime">⏱ 2 Min.</span></div>
+          <h3>E-Auto Kaufprämie</h3>
+          <p>Welche Förderungen gibt es für Elektroautos 2026?</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- KATEGORIE 4: PFLEGE -->
+    <section id="pflege" class="topic-section">
+      <div class="section-head-row">
+        <div>
+          <div class="cat-heading-wrap">
+            <span class="cat-number-badge">04</span>
+            <h2 class="cat-heading">
+              <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v4M12 18v4M4 12H2M22 12h-2M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+              Pflege
+            </h2>
+          </div>
+          <p class="section-lead">Damit Ihr Auto glänzt – innen wie außen. Praktische Pflegetipps für Werterhalt und Optik.</p>
+        </div>
+        <a class="section-link" href="kategorie-pflege.html">Alle Artikel ansehen →</a>
+      </div>
+      <div class="grid">
+        <a class="card" href="artikel-auto-waschen-knigge.html">
+          <div class="card-meta"><span class="step">Exterieur</span><span class="card-readtime">⏱ 2 Min.</span></div>
+          <h3>Auto waschen – der Knigge</h3>
+          <p>Von der Handwäsche bis zur Waschstraße – so waschen Sie Ihr Auto richtig.</p>
+        </a>
+        <a class="card" href="artikel-innenraum-werterhalt.html">
+          <div class="card-meta"><span class="step">Interieur</span><span class="card-readtime">⏱ 3 Min.</span></div>
+          <h3>Innenraum-Werterhalt</h3>
+          <p>So bleibt Ihr Auto innen hygienisch sauber – mit praktischen Tipps und Produktempfehlungen.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- KATEGORIE 5: RECHT & ETIKETTE -->
+    <section id="recht" class="topic-section">
+      <div class="section-head-row">
+        <div>
+          <div class="cat-heading-wrap">
+            <span class="cat-number-badge">05</span>
+            <h2 class="cat-heading">
+              <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              Recht & Etikette
+            </h2>
+          </div>
+          <p class="section-lead">Was ist erlaubt, was nicht? Verhaltensregeln und rechtliche Grundlagen für Autofahrer.</p>
+        </div>
+        <a class="section-link" href="kategorie-recht.html">Alle Artikel ansehen →</a>
+      </div>
+      <div class="grid">
+        <a class="card" href="artikel-rettungsgasse-reissverschluss.html">
+          <div class="card-meta"><span class="step">Verhalten</span><span class="card-readtime">⏱ 2 Min.</span></div>
+          <h3>Rettungsgasse & Reißverschluss</h3>
+          <p>So bilden Sie richtig eine Rettungsgasse und verhalten sich im Stau.</p>
+        </a>
+        <a class="card" href="artikel-lichthupe-draengler.html">
+          <div class="card-meta"><span class="step">Verhalten</span><span class="card-readtime">⏱ 2 Min.</span></div>
+          <h3>Lichthupe, Drängler & Co.</h3>
+          <p>Wann Warnsignale rechtlich erlaubt sind und wie Sie bei aggressivem Verhalten anderer gelassen bleiben.</p>
+        </a>
+        <a class="card" href="artikel-pannenstatistik.html">
+          <div class="card-meta"><span class="step">Statistik</span><span class="card-readtime">⏱ 2 Min.</span></div>
+          <h3>Pannenstatistik</h3>
+          <p>Welche Autos sind am zuverlässigsten? Die aktuellen Pannenstatistiken im Überblick.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- KATEGORIE 6: CLEVER SPAREN -->
+    <section id="geld-sparen" class="topic-section">
+      <div class="section-head-row">
+        <div>
+          <div class="cat-heading-wrap">
+            <span class="cat-number-badge">06</span>
+            <h2 class="cat-heading">
+              <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="9" r="6"/><circle cx="15" cy="15" r="6"/><path d="M9 9h.01" stroke-linecap="round"/></svg>
+              Clever sparen
+            </h2>
+          </div>
+          <p class="section-lead">Die besten Kniffe und Spartipps rund um Versicherungen, Schilderkauf und Unterhalt.</p>
+        </div>
+        <a class="section-link" href="kategorie-geld-sparen.html">Alle Artikel ansehen →</a>
+      </div>
+      <div class="grid">
+        <a class="card" href="artikel-zweitwagen-versicherung.html">
+          <div class="card-meta"><span class="step">Versicherung</span><span class="card-readtime">⏱ 2 Min.</span></div>
+          <h3>Zweitwagen clever versichern</h3>
+          <p>Mit der Einstufung über Eltern oder Partner hunderte Euro bei der Zweitwagen-Police sparen.</p>
+        </a>
+        <a class="card" href="artikel-kennzeichen-reservieren.html">
+          <div class="card-meta"><span class="step">Schilder</span><span class="card-readtime">⏱ 2 Min.</span></div>
+          <h3>Kennzeichen online bestellen</h3>
+          <p>Bis zu 70 % günstiger im Vergleich zum Prägen an der Zulassungsstelle vor Ort.</p>
+        </a>
+      </div>
+      <p style="font-size: 0.85rem; color: #6c757d; margin-top: 1.5rem; text-align: center; border-top: 1px solid #eee; padding-top: 1rem;">
+        * Als Partner unterstütze ich diese Empfehlungen. Für Sie entstehen dadurch selbstverständlich keine Mehrkosten.
+      </p>
+    </section>
+
+  </div>
+</main>
+
+<button id="backToTop" class="back-to-top" aria-label="Nach oben scrollen">↑</button>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Autoknigge</h3>
+        <p>Ihr unabhängiger Ratgeber für stilvolles, sicheres und wirtschaftlich cleveres Verhalten rund um das Automobil.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Kategorien</h4>
+        <ul class="footer-links-list">
+          <li><a href="kategorie-versicherung.html">Kfz-Versicherung</a></li>
+          <li><a href="kategorie-zulassung.html">Zulassung & Behörde</a></li>
+          <li><a href="kategorie-kauf.html">Autokauf & Verkauf</a></li>
+          <li><a href="kategorie-pflege.html">Fahrzeugpflege</a></li>
+          <li><a href="kategorie-recht.html">Recht & Etikette</a></li>
+          <li><a href="kategorie-geld-sparen.html">Clever sparen</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Downloads</h4>
+        <ul class="footer-links-list">
+          <li><a href="kfz-kaufvertrag.pdf" download>Kfz-Kaufvertrag (PDF)</a></li>
+          <li><a href="vollmacht-kfz-zulassung.pdf" download>Zulassungsvollmacht (PDF)</a></li>
         </ul>
       </div>
     </div>
-  </nav>
-
-  <!-- Hero Bereich -->
-  <header class="hero-section text-center">
-    <div class="container">
-      <span class="badge bg-primary px-3 py-2 rounded-pill mb-3 text-uppercase fs-7 fw-semibold">Sicher, stilvoll & clever mobil</span>
-      <h1 class="display-4 fw-bold mb-3">Dein moderner Ratgeber rund ums Auto</h1>
-      <p class="lead text-light opacity-75 mx-auto mb-4" style="max-width: 650px;">
-        Von Versicherungsvergleichen über Bußgeld-Tipps bis hin zu praktischen Alltags-Checklisten für jeden Autofahrer.
-      </p>
-      <div class="d-flex justify-content-center gap-2 flex-wrap">
-        <a href="#versicherung" class="btn btn-primary btn-lg px-4 shadow-sm">
-          <i class="fa-solid fa-shield-halved me-2"></i>Tipps entdecken
-        </a>
-        <a href="#checkliste" class="btn btn-outline-light btn-lg px-4">
-          <i class="fa-solid fa-list-check me-2"></i>Checklisten
-        </a>
+    <div class="footer-bottom">
+      <div>© 2026 Autoknigge — Alle Rechte vorbehalten. Unabhängige Ratgeber-Plattform.</div>
+      <div class="foot-links">
+        <a href="impressum.html">Impressum</a> •
+        <a href="datenschutz.html">Datenschutz</a> •
+        <a href="#" id="cookie-settings-link">Cookie-Einstellungen</a>
       </div>
     </div>
-  </header>
+  </div>
+</footer>
 
-  <!-- Hauptinhalt -->
-  <main class="container my-5">
-    
-    <!-- Kategorie 1: Versicherung -->
-    <section id="versicherung" class="mb-5 pt-4">
-      <div class="d-flex align-items-center mb-4">
-        <div class="icon-box bg-primary text-white me-3">
-          <i class="fa-solid fa-shield-halved fa-lg"></i>
-        </div>
-        <div>
-          <h2 class="h3 mb-0 fw-bold">Kfz-Versicherung & Sparen</h2>
-          <p class="text-muted mb-0">Die wichtigsten Tipps zu Tarifen, SF-Klassen und deinen Rechten</p>
-        </div>
-      </div>
+<script src="script.js"></script>
+<script src="cookie-consent.js"></script>
 
-      <div class="row g-4 row-cols-1 row-cols-md-3">
-        <div class="col">
-          <div class="card card-custom h-100 shadow-sm p-3">
-            <div class="card-body">
-              <span class="badge badge-soft mb-2">Grundlagen</span>
-              <h3 class="h5 card-title fw-bold">SF-Klassen verstehen</h3>
-              <p class="card-text text-muted">Wie Schadenfreiheitsklassen funktionieren und wie du deinen Rabatt optimal schützt.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card card-custom h-100 shadow-sm p-3">
-            <div class="card-body">
-              <span class="badge badge-soft mb-2">Spartipp</span>
-              <h3 class="h5 card-title fw-bold">Telematik-Tarife</h3>
-              <p class="card-text text-muted">Durch vorausschauendes Fahren bis zu 30 % Beitrag bei der Kfz-Versicherung sparen.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card card-custom h-100 shadow-sm p-3">
-            <div class="card-body">
-              <span class="badge badge-soft mb-2">Wechsel</span>
-              <h3 class="h5 card-title fw-bold">Fristen & Kündigung</h3>
-              <p class="card-text text-muted">Worauf du beim Stichtag im November achten musst, um nahtlos und günstig zu wechseln.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Kategorie 2: Bußgeld & Recht -->
-    <section id="bussgeld" class="mb-5 pt-4">
-      <div class="d-flex align-items-center mb-4">
-        <div class="icon-box bg-danger text-white me-3">
-          <i class="fa-solid fa-gavel fa-lg"></i>
-        </div>
-        <div>
-          <h2 class="h3 mb-0 fw-bold">Bußgeld & Verkehrsrecht</h2>
-          <p class="text-muted mb-0">Punkte, Blitzer und was im Ernstfall zu tun ist</p>
-        </div>
-      </div>
-
-      <div class="row g-4 row-cols-1 row-cols-md-2">
-        <div class="col">
-          <div class="card card-custom h-100 shadow-sm p-3">
-            <div class="card-body">
-              <h3 class="h5 card-title fw-bold">
-                <i class="fa-solid fa-triangle-exclamation text-warning me-2"></i>Anhörungsbogen erhalten?
-              </h3>
-              <p class="card-text text-muted">So verhältst du dich richtig, wenn Post von der Bußgeldstelle im Briefkasten liegt und welche Fristen gelten.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card card-custom h-100 shadow-sm p-3">
-            <div class="card-body">
-              <h3 class="h5 card-title fw-bold">
-                <i class="fa-solid fa-ban text-danger me-2"></i>Fahrverbot umgehen
-              </h3>
-              <p class="card-text text-muted">In welchen Ausnahmefällen ein drohendes Fahrverbot in eine höhere Geldbuße umgewandelt werden kann.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Kategorie 3: Checklisten -->
-    <section id="checkliste" class="mb-5 pt-4">
-      <div class="d-flex align-items-center mb-4">
-        <div class="icon-box bg-success text-white me-3">
-          <i class="fa-solid fa-list-check fa-lg"></i>
-        </div>
-        <div>
-          <h2 class="h3 mb-0 fw-bold">Praktische Checklisten</h2>
-          <p class="text-muted mb-0">Gut vorbereitet für Alltag, Urlaub und Notfälle</p>
-        </div>
-      </div>
-
-      <div class="row g-4 row-cols-1 row-cols-md-3">
-        <div class="col">
-          <div class="card card-custom h-100 shadow-sm p-3">
-            <div class="card-body">
-              <span class="badge bg-success bg-opacity-10 text-success mb-2 fw-semibold">Saison</span>
-              <h3 class="h5 card-title fw-bold">Winter-Checkup</h3>
-              <p class="card-text text-muted">Frostschutz, Batterie und Türgummis: So machst du dein Auto fit für die kalte Jahreszeit.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card card-custom h-100 shadow-sm p-3">
-            <div class="card-body">
-              <span class="badge bg-success bg-opacity-10 text-success mb-2 fw-semibold">Reise</span>
-              <h3 class="h5 card-title fw-bold">Autourlaub im Ausland</h3>
-              <p class="card-text text-muted">Maut, Warnwesten-Pflichten und grüne Versicherungskarte: Das gehört ins Gepäck.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card card-custom h-100 shadow-sm p-3">
-            <div class="card-body">
-              <span class="badge bg-success bg-opacity-10 text-success mb-2 fw-semibold">Notfall</span>
-              <h3 class="h5 card-title fw-bold">Unfall-Set</h3>
-              <p class="card-text text-muted">Unfallbericht, Europäischer Bogen und Fotografieren der Unfallstelle richtig gemacht.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="bg-dark text-white text-center py-4 mt-5">
-    <div class="container">
-      <p class="mb-0 text-muted">&copy; Autoknigge.de — Alle Rechte vorbehalten.</p>
-    </div>
-  </footer>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/bootstrap.bundle.min.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(function (reg) {
+        console.log('[App] Service Worker registered successfully');
+      })
+      .catch(function (err) {
+        console.warn('[App] Service Worker registration failed:', err);
+      });
+  }
+</script>
 </body>
 </html>
