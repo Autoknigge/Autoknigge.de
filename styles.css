@@ -563,4 +563,14 @@ a:hover { color: var(--gold); }
   .section-head-row {
     flex-direction: column;
   }
+   
+}
+/* ===== LOGO FIX ===== */
+.header-logo-mini {
+  height: 42px !important;
+  width: auto !important;
+  max-width: 200px !important;
+  display: block !important;
+  object-fit: contain !important;
+  filter: none !important; /* Hebt den fehlerhaften Invert-Filter auf */
 }
