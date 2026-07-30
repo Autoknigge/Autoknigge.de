@@ -27,12 +27,20 @@
       color: #334155;
     }
 
+    /* Navigation */
+    .navbar-brand img {
+      max-height: 40px;
+      width: auto;
+    }
+
+    /* Hero Bereich */
     .hero-section {
       background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
       color: white;
       padding: 90px 0 70px;
     }
 
+    /* Karten Design */
     .card-custom {
       border: none;
       border-radius: 12px;
@@ -65,12 +73,19 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
     <div class="container">
-      <a class="navbar-brand fw-bold text-uppercase tracking-wide" href="#">
-        <i class="fa-solid fa-car-side text-primary me-2"></i>AUTOKNIGGE
+      <a class="navbar-brand fw-bold text-uppercase d-flex align-items-center" href="#">
+        <!-- FALL 1: Eigenes Bild-Logo (Falls du eine logo.png auf GitHub hast, entferne die Kommentarzeichen) -->
+        <!-- <img src="logo.png" alt="Autoknigge Logo" class="me-2"> -->
+        
+        <!-- FALL 2: Text-Logo mit Auto-Icon -->
+        <i class="fa-solid fa-car-side text-primary fs-3 me-2"></i>
+        <span>AUTOKNIGGE</span>
       </a>
+      
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Navigation umschalten">
         <span class="navbar-toggler-icon"></span>
       </button>
+      
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto gap-lg-2">
           <li class="nav-item"><a class="nav-link" href="#versicherung">Versicherung</a></li>
