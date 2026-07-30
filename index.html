@@ -27,10 +27,11 @@
       color: #334155;
     }
 
-    /* Navigation */
+    /* Logo Styling */
     .navbar-brand img {
-      max-height: 40px;
+      height: 40px;
       width: auto;
+      object-fit: contain;
     }
 
     /* Hero Bereich */
@@ -73,13 +74,8 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
     <div class="container">
-      <a class="navbar-brand fw-bold text-uppercase d-flex align-items-center" href="#">
-        <!-- FALL 1: Eigenes Bild-Logo (Falls du eine logo.png auf GitHub hast, entferne die Kommentarzeichen) -->
-        <!-- <img src="logo.png" alt="Autoknigge Logo" class="me-2"> -->
-        
-        <!-- FALL 2: Text-Logo mit Auto-Icon -->
-        <i class="fa-solid fa-car-side text-primary fs-3 me-2"></i>
-        <span>AUTOKNIGGE</span>
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="logo.png" alt="Autoknigge Logo">
       </a>
       
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Navigation umschalten">
