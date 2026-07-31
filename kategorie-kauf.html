@@ -10,28 +10,96 @@
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f241d">
 <style>
-  /* Spezielles Styling für die hervorgehobene carVertical-Karte */
-  .card-featured {
-    grid-column: span 1;
-    background-color: #f4f8f6;
-    border: 2px solid #163a2f;
-    position: relative;
-    overflow: hidden;
+  /* Spezielles Hervorhebungs-Styling für die carVertical Partner-Karte */
+  .card-featured-carvertical {
+    grid-column: 1 / -1; /* Nimmt auf mobilen & Desktop-Geräten die volle Breite ein */
+    background: linear-gradient(135deg, #f4f8f6 0%, #e8f2ed 100%);
+    border: 2px solid #0f241d;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  @media (min-width: 768px) {
-    .card-featured {
-      grid-column: span 2; /* Auf Desktop-Bildschirmen etwas breiter hervorheben */
-    }
+  .card-featured-carvertical:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
   }
-  .badge-discount {
-    display: inline-block;
+  .cv-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .cv-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .cv-title {
+    margin: 0;
+    font-size: 1.3rem;
+    color: #0f241d;
+  }
+  .cv-badge {
     background-color: #0f241d;
     color: #ffffff;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 700;
-    padding: 0.25rem 0.6rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .cv-features {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.6rem;
+  }
+  .cv-features li {
+    font-size: 0.9rem;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .cv-coupon-box {
+    background-color: #ffffff;
+    border: 1px dashed #163a2f;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .cv-code {
+    font-family: monospace;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0f241d;
+    background: #eef6f3;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+  }
+  .cv-btn {
+    background-color: #0f241d;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.6rem 1.2rem;
     border-radius: 6px;
-    margin-top: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
   }
 </style>
 </head>
@@ -62,7 +130,7 @@
   <div class="wrap">
     <div class="cat-page-header cat-kauf">
       <div class="cat-page-title-wrap">
-        <h1>Autokauf und -verkauf</h1>
+        <h1>Autoknopfen und -verkauf</h1>
       </div>
       <p class="lead">Alles rund um Autokauf und Verkauf: Neuwagen, Gebrauchtwagen, Leasing, E-Auto und mehr.</p>
       <div class="quick-info-line">
@@ -78,12 +146,35 @@
           <p>Anschaffungs-, Lade- und Unterhaltskosten im direkten Vergleich.</p>
         </a>
 
-        <!-- HERVORGEHOBENE CARVERTICAL KARTE MIT 20% RABATT -->
-        <a class="card card-featured" href="https://www.carvertical.com/de/landing/v3?voucher=IHR-RABATTCODE" target="_blank" rel="noopener sponsored">
-          <div class="card-symbol">🔍</div>
-          <h3>Gebrauchtwagen-Historie prüfen (carVertical)</h3>
-          <p>Deckst du Unfallschäden & Tachoabweichungen vor dem Kauf auf. Mit Autoknigge jetzt <strong>20 % Rabatt</strong> auf den carVertical-Bericht sichern.</p>
-          <span class="badge-discount">🎉 20 % Autoknigge Rabatt-Code aktiviert ↗</span>
+        <!-- ELEGANTE, HERVORGEHOBENE CARVERTICAL-BOX BEISPIELEN UND RABATT -->
+        <a class="card-featured-carvertical" href="https://www.carvertical.com/de/landing/v3?voucher=DEIN-CODE" target="_blank" rel="noopener sponsored">
+          <div class="cv-header">
+            <div class="cv-title-wrap">
+              <span style="font-size: 1.8rem;">🔍</span>
+              <h3 class="cv-title">Gebrauchtwagen-Historie prüfen mit carVertical</h3>
+            </div>
+            <span class="cv-badge">💥 20 % RABATT</span>
+          </div>
+          
+          <p style="margin: 0.5rem 0; color: #333; line-height: 1.45;">
+            Schützen Sie sich vor teuren Überraschungen beim Gebrauchtwagenkauf. Eine Abfrage per Fahrgestellnummer (FIN) deckt versteckte Mängel auf:
+          </p>
+
+          <!-- BEISPIELE FÜR DIE VORZÜGE -->
+          <ul class="cv-features">
+            <li>✅ <strong>Tacho-Manipulations-Check:</strong> Erkenne zurückgedrehte Kilometerstände.</li>
+            <li>✅ <strong>Versteckte Unfallschäden:</strong> Einblick in alte Gutachten & Reparaturkosten.</li>
+            <li>✅ <strong>Diebstahl-Datenbank:</strong> Abgleich mit internationalen Polizeiregistern.</li>
+            <li>✅ <strong>Historische Fotos:</strong> Bilder aus früheren Verkaufs- & Auktionsinseraten.</li>
+          </ul>
+
+          <div class="cv-coupon-box">
+            <div>
+              <span style="font-size: 0.85rem; color: #555; display: block;">Ihr exklusiver Autoknigge-Gutscheincode:</span>
+              <span class="cv-code">DEIN-CODE</span> <small style="color: #666;">(20% Ersparnis)</small>
+            </div>
+            <span class="cv-btn">Jetzt Historie prüfen ↗</span>
+          </div>
         </a>
 
         <a class="card" href="artikel-pannenstatistik.html">
