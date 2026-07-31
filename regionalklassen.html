@@ -4,47 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Regionalklassen für Kfz-Versicherung — Autoknigge</title>
-  <meta name="description" content="Finden Sie Ihre Regionalklasse für die Kfz-Versicherung mit PLZ-Eingabe. Alle Regionalklassen 2026 im Überblick.">
+  <meta name="description" content="Alle Regionalklassen im Überblick: Kfz-Haftpflicht (1-12), Vollkasko (1-9) und Teilkasko (1-16). Inklusive Direkt-Abfrage.">
   <link rel="canonical" href="https://autoknigge.de/regionalklassen.html">
   <link rel="stylesheet" href="styles.css">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#0f241d">
   <style>
-    .region-search { background: #f8f9fa; border-radius: 16px; padding: 2rem; margin: 2rem 0; }
-    .region-search .search-box { display: flex; flex-direction: column; gap: 0.75rem; max-width: 500px; margin: 0 auto; }
-    .region-search label { font-weight: 600; font-size: 1.05rem; color: #1a1a1a; }
-    .region-search .input-row { display: flex; gap: 0.75rem; align-items: center; }
-    .region-search input[type="text"] { flex: 1; padding: 0.8rem 1rem; border: 2px solid #dee2e6; border-radius: 10px; font-size: 1rem; transition: border-color 0.2s; }
-    .region-search input[type="text"]:focus { outline: none; border-color: #0f241d; box-shadow: 0 0 0 3px rgba(15,36,29,0.1); }
-    .region-search button { padding: 0.8rem 1.8rem; background: #0f241d; color: #fff; border: none; border-radius: 10px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
-    .region-search button:hover { background: #1a3d32; }
-    .region-result { margin-top: 2rem; padding: 1.5rem; background: #ffffff; border-radius: 12px; border: 1px solid #e9ecef; display: none; }
-    .region-result.visible { display: block; }
-    .region-result .result-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
-    .region-result .result-header .badge { background: #0f241d; color: #fff; padding: 0.2rem 0.8rem; border-radius: 20px; font-weight: 600; font-size: 0.85rem; }
-    .region-result .region-class { font-size: 2.5rem; font-weight: 700; color: #0f241d; }
-    .region-result .region-detail { color: #495057; line-height: 1.6; }
-    .error-message { color: #dc3545; font-weight: 500; margin-top: 0.5rem; }
-    .region-list { margin-top: 2rem; }
-    .region-list h3 { margin-bottom: 1rem; color: #0f241d; }
-    .region-table-wrap { overflow-x: auto; }
-    .region-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-    .region-table th { background: #0f241d; color: #fff; padding: 0.75rem 1rem; text-align: left; font-weight: 600; }
-    .region-table td { padding: 0.6rem 1rem; border-bottom: 1px solid #e9ecef; }
-    .region-table tr:hover td { background: #f8f9fa; }
-    .class-badge { display: inline-block; padding: 0.15rem 0.6rem; border-radius: 12px; font-weight: 600; font-size: 0.8rem; background: #e9ecef; color: #1a1a1a; }
-    .class-badge.high { background: #dc3545; color: #fff; }
-    .class-badge.medium { background: #ffc107; color: #1a1a1a; }
-    .class-badge.low { background: #28a745; color: #fff; }
-    .filter-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem; }
-    .filter-row select, .filter-row input { padding: 0.5rem 0.75rem; border: 1px solid #dee2e6; border-radius: 8px; font-size: 0.9rem; }
-    .filter-row select:focus, .filter-row input:focus { outline: none; border-color: #0f241d; }
-    @media (max-width: 600px) {
-      .region-search .input-row { flex-direction: column; }
-      .region-search button { width: 100%; justify-content: center; }
-      .region-table { font-size: 0.8rem; }
-      .region-table th, .region-table td { padding: 0.4rem 0.6rem; }
-    }
+    .info-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+    .info-card { background: #fff; border: 1px solid #e9ecef; border-radius: 12px; padding: 1.5rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+    .info-card h4 { color: #0f241d; margin-bottom: 0.5rem; font-size: 1.2rem; }
+    .info-card .class-range { font-size: 2rem; font-weight: 700; color: #163a2f; margin: 0.5rem 0; }
+    .info-card .avg { font-size: 0.85rem; color: #6c757d; }
+    
+    .external-tool-box { background: #eef6f3; border: 2px solid #163a2f; border-radius: 16px; padding: 2rem; text-align: center; margin: 2.5rem 0; }
+    .external-tool-box h3 { color: #0f241d; margin-bottom: 0.75rem; }
+    .external-tool-box p { color: #2c3e50; max-width: 650px; margin: 0 auto 1.5rem auto; line-height: 1.6; }
+    .btn-gdv { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 2rem; background: #0f241d; color: #fff; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 1.05rem; transition: background 0.2s, transform 0.1s; }
+    .btn-gdv:hover { background: #1a3d32; transform: translateY(-2px); }
+
+    .gdv-details { background: #f8f9fa; border-radius: 12px; padding: 1.5rem; margin-top: 2rem; border-left: 4px solid #0f241d; }
+    .gdv-details h4 { margin-top: 0; color: #0f241d; }
+    .gdv-details ul { padding-left: 1.2rem; margin-bottom: 0; }
+    .gdv-details li { margin-bottom: 0.5rem; color: #495057; }
   </style>
 </head>
 <body>
@@ -83,762 +64,81 @@
 
     <div class="cat-page-header cat-versicherung">
       <div class="cat-page-title-wrap">
-        <h1>Regionalklassen für die Kfz-Versicherung</h1>
+        <h1>Regionalklassen in der Kfz-Versicherung</h1>
       </div>
-      <p class="lead">Finden Sie Ihre Regionalklasse mit wenigen Klicks. Geben Sie Ihre Postleitzahl ein und erfahren Sie, wie Ihre Region eingestuft ist.</p>
+      <p class="lead">Die Regionalklasse spiegelt die Schaden- und Unfallbilanz Ihres Zulassungsbezirks wider. Hier finden Sie alle Grunddaten sowie den direkten Zugriff auf die Datenbank des GDV.</p>
     </div>
 
-    <div style="background: #eef6f3; border: 1px solid #c2e0d3; border-left: 4px solid #163a2f; border-radius: 8px; padding: 0.9rem 1.1rem; margin: 1rem 0; font-size: 0.92rem; color: #0f241d; line-height: 1.5;">
-      <strong>ℹ️ Funktionsweise der Regionalklassen-Suche:</strong> Die Regionalklasse wird vom GDV (Gesamtverband der Deutschen Versicherungswirtschaft) für jeden <strong>Zulassungsbezirk</strong> festgelegt. Dieser Rechner ordnet Ihre Postleitzahl dem zuständigen Zulassungsbezirk zu und zeigt die dort geltende Klasse. Für alle 5-stelligen PLZ liefert die Suche ein Ergebnis: bei direkt erfassten Städten den Bezirkswert, ansonsten die Einstufung der übergeordneten PLZ-Region.
-    </div>
-
-    <section class="region-search">
-      <div class="search-box">
-        <label for="plz-input">📮 Postleitzahl oder Stadt eingeben</label>
-        <div class="input-row">
-          <input type="text" id="plz-input" placeholder="z.B. 10115, 80331, 50667, Potsdam, Trier" maxlength="20">
-          <button id="search-btn">Regionalklasse suchen</button>
+    <!-- WICHTIGE INFORMATIONEN DIREKT AUF DEINER SEITE -->
+    <section>
+      <h2>Das 3-Säulen-System der Regionalklassen</h2>
+      <p>Die Regionalklassen werden einmal jährlich vom Gesamtverband der Deutschen Versicherungswirtschaft (GDV) für die über 400 deutschen Zulassungsbezirke berechnet. Es gibt unterschiedliche Einteilungen für jede Versicherungsart:</p>
+      
+      <div class="info-card-grid">
+        <div class="info-card">
+          <h4>Kfz-Haftpflicht</h4>
+          <div class="class-range">1 – 12</div>
+          <p class="avg">Bundesdurchschnitt = Klasse 6 (Index 100)</p>
+          <p style="font-size:0.85rem; margin-top:0.5rem; color:#555;">Maßgeblich: Anzahl der verursachten Unfälle & Schadenhöhe der Autofahrer im Bezirk.</p>
         </div>
-        <div id="error-msg" class="error-message" style="display:none;"></div>
-      </div>
-
-      <div id="result-area" class="region-result">
-        <div class="result-header">
-          <span class="badge" id="result-badge">Ergebnis</span>
-          <span id="plz-display" style="font-weight:600;"></span>
+        
+        <div class="info-card">
+          <h4>Vollkasko</h4>
+          <div class="class-range">1 – 9</div>
+          <p class="avg">Bundesdurchschnitt = Klasse 4 (Index 100)</p>
+          <p style="font-size:0.85rem; margin-top:0.5rem; color:#555;">Maßgeblich: Vandalismus, Eigenverschulden und Teilkasko-Einflüsse.</p>
         </div>
-        <div class="region-class" id="region-class-display">—</div>
-        <div class="region-detail" id="region-detail-display">
-          <p>Bitte geben Sie eine gültige Postleitzahl oder eine Stadt ein.</p>
+
+        <div class="info-card">
+          <h4>Teilkasko</h4>
+          <div class="class-range">1 – 16</div>
+          <p class="avg">Bundesdurchschnitt = Klasse 7 (Index 100)</p>
+          <p style="font-size:0.85rem; margin-top:0.5rem; color:#555;">Maßgeblich: Diebstahl, Wildunfälle, Sturm, Hagel & Glasbruch.</p>
         </div>
       </div>
     </section>
 
-    <section class="region-list">
-      <h3>📋 Alle Regionalklassen im Überblick</h3>
-      <p style="color:#6c757d; font-size:0.9rem; margin-bottom:1rem;">
-        Die Tabelle listet die direkt erfassten Zulassungsbezirke mit ihren Regionalklassen. 
-        Postleitzahlen außerhalb dieser Liste werden der passenden PLZ-Region zugeordnet.
+    <!-- DIREKT-ABFRAGE / VERWEIS-BOX -->
+    <section class="external-tool-box">
+      <h3>🔍 Offizielle Regionalklasse abfragen</h3>
+      <p>
+        Erfahren Sie die exakten Einstufungen für Ihre Postleitzahl oder Ihren Zulassungsbezirk (inkl. Vorjahresvergleich und Indexwerten) direkt aus der offiziellen GDV-Datenbank.
       </p>
-      <div class="filter-row">
-        <input type="text" id="filter-plz" placeholder="PLZ filtern..." style="flex:1;min-width:120px;">
-        <select id="filter-city"><option value="">Alle Städte</option></select>
-        <select id="filter-class"><option value="">Alle Klassen</option><option value="1">Klasse 1</option><option value="2">Klasse 2</option><option value="3">Klasse 3</option><option value="4">Klasse 4</option><option value="5">Klasse 5</option></select>
-      </div>
-      <div class="region-table-wrap">
-        <table class="region-table">
-          <thead><tr><th>PLZ</th><th>Stadt</th><th>Klasse</th><th>Risiko</th></tr></thead>
-          <tbody id="table-body"></tbody>
-        </table>
-      </div>
+      
+      <a href="https://www.dieversicherer.de/versicherer/auto/regionalklassen-abfrage" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="btn-gdv">
+         🌐 Regionalklasse auf DieVersicherer.de abfragen ↗
+      </a>
+      <p style="font-size: 0.8rem; color: #6c757d; margin-top: 1rem;">
+        (Öffnet die offizielle Abfrage des GDV sicher in einem neuen Fenster/Tab)
+      </p>
     </section>
 
-    <section class="partner-section" style="margin-top:3rem;">
-      <h3>💰 Clever sparen mit diesen Partnern</h3>
-      <p class="partner-desc">Vergleichen Sie Anbieter und sichern Sie sich die besten Konditionen.</p>
-      <div class="partner-buttons" id="partner-buttons-region"></div>
-      <p style="font-size: 0.85rem; color: #6c757d; margin-top: 1.5rem; text-align: center; border-top: 1px solid #eee; padding-top: 1rem;">
-        * Als Partner unterstütze ich diese Empfehlungen. Für Sie entstehen dadurch selbstverständlich keine Mehrkosten.
-      </p>
+    <!-- ZUSÄTZLICHE FACHINFOS AUF DEINER SEITE -->
+    <section class="gdv-details">
+      <h4>💡 Was Sie zu den Regionalklassen wissen müssen:</h4>
+      <ul>
+        <li><strong>Zulassungsbezirk entscheidend:</strong> Die Regionalklasse gilt für Ihren gesamten Landkreis bzw. Ihre kreisfreie Stadt – nicht für einzelne Postleitzahlen innerhalb einer Stadt.</li>
+        <li><strong>Gültigkeit:</strong> Die Einstufungen gelten unverbindlich für Verträge des kommenden Versicherungsjahres.</li>
+        <li><strong>Sonderkündigungsrecht:</strong> Stuft Ihr Versicherer Ihren Bezirk in eine höhere Regionalklasse ein und erhöht sich dadurch Ihr Beitrag, haben Sie ein 4-wöchiges Sonderkündigungsrecht!</li>
+      </ul>
     </section>
   </div>
 </main>
 
-<button id="backToTop" class="back-to-top" aria-label="Nach oben scrollen">↑</button>
-
 <footer class="site-footer">
   <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <h3>Autoknigge</h3>
-        <p>Ihr unabhängiger Ratgeber für stilvolles, sicheres und wirtschaftlich cleveres Verhalten rund um das Automobil.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Kategorien</h4>
-        <ul class="footer-links-list">
-          <li><a href="kategorie-versicherung.html">Kfz-Versicherung</a></li>
-          <li><a href="kategorie-zulassung.html">Auto an-, um- & abmelden ohne Stress</a></li>
-          <li><a href="kategorie-kauf.html">Autokauf und -verkauf</a></li>
-          <li><a href="kategorie-pflege.html">Fahrzeugpflege</a></li>
-          <li><a href="kategorie-recht.html">Recht & Etikette</a></li>
-          <li><a href="kategorie-geld-sparen.html">Clever sparen</a></li>
-          <li><a href="regionalklassen.html">Regionalklassen</a></li>
-          <li><a href="sf-klassen-rechner.html">SF-Rechner</a></li>
-          <li><a href="artikel-sf-klassen-erklaert.html">SF-Klassen erklärt</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Downloads</h4>
-        <ul class="footer-links-list">
-          <li><a href="kfz-kaufvertrag.pdf" download>Kfz-Kaufvertrag (PDF)</a></li>
-          <li><a href="vollmacht-kfz-zulassung.pdf" download>Zulassungsvollmacht (PDF)</a></li>
-        </ul>
-      </div>
-    </div>
     <div class="footer-bottom">
       <div>© 2026 Autoknigge — Alle Rechte vorbehalten. Unabhängige Ratgeber-Plattform.</div>
       <div class="foot-links">
         <a href="impressum.html">Impressum</a> •
-        <a href="datenschutz.html">Datenschutz</a> •
-        <a href="#" id="cookie-settings-link">Cookie-Einstellungen</a>
+        <a href="datenschutz.html">Datenschutz</a>
       </div>
     </div>
   </div>
 </footer>
 
-<script src="script.js"></script>
-<script src="cookie-consent.js"></script>
-<script src="partner-links.js"></script>
-
-<script>
-(function() {
-  'use strict';
-
-  // ============================================================
-  // REGIONALKLASSEN-DATEN — Orientierungswerte je Zulassungsbezirk
-  // Grundlage: GDV-Regionalklassensystem (Gesamtverband der
-  // Deutschen Versicherungswirtschaft). Die offizielle Einstufung
-  // erfolgt pro Zulassungsbezirk; dieser Rechner ordnet die PLZ
-  // dem jeweils zuständigen Bezirk zu.
-  //   Klasse 1 = niedrigstes Risiko  →  Klasse 5 = höchstes Risiko
-  // ============================================================
-  const fixedData = [
-    // ── Berlin (Zulassungsbezirk: Berlin, unterschiedlich dicht) ──
-    {plz:'10115',city:'Berlin',class:5,risk:'sehr hoch'},
-    {plz:'10117',city:'Berlin',class:5,risk:'sehr hoch'},
-    {plz:'10178',city:'Berlin',class:5,risk:'sehr hoch'},
-    {plz:'10243',city:'Berlin',class:4,risk:'hoch'},
-    {plz:'10245',city:'Berlin',class:4,risk:'hoch'},
-    {plz:'10315',city:'Berlin',class:4,risk:'hoch'},
-    {plz:'10405',city:'Berlin',class:4,risk:'hoch'},
-    {plz:'10551',city:'Berlin',class:3,risk:'mittel'},
-    {plz:'10557',city:'Berlin',class:4,risk:'hoch'},
-    {plz:'10623',city:'Berlin',class:3,risk:'mittel'},
-    {plz:'10707',city:'Berlin',class:3,risk:'mittel'},
-    {plz:'10713',city:'Berlin',class:3,risk:'mittel'},
-    {plz:'10823',city:'Berlin',class:4,risk:'hoch'},
-    {plz:'10961',city:'Berlin',class:4,risk:'hoch'},
-    {plz:'10999',city:'Berlin',class:4,risk:'hoch'},
-    {plz:'12043',city:'Berlin',class:4,risk:'hoch'},
-    {plz:'12099',city:'Berlin',class:4,risk:'hoch'},
-    {plz:'12101',city:'Berlin',class:2,risk:'gering'},
-    {plz:'12169',city:'Berlin',class:3,risk:'mittel'},
-    {plz:'12247',city:'Berlin',class:3,risk:'mittel'},
-    {plz:'12305',city:'Berlin',class:3,risk:'mittel'},
-    {plz:'13053',city:'Berlin',class:3,risk:'mittel'},
-    {plz:'13187',city:'Berlin',class:2,risk:'gering'},
-    {plz:'13585',city:'Berlin',class:2,risk:'gering'},
-    {plz:'14050',city:'Berlin',class:2,risk:'gering'},
-    {plz:'14193',city:'Berlin',class:2,risk:'gering'},
-
-    // ── Brandenburg ──
-    {plz:'14467',city:'Potsdam',class:2,risk:'gering'},
-    {plz:'14482',city:'Potsdam',class:2,risk:'gering'},
-    {plz:'14770',city:'Brandenburg an der Havel',class:2,risk:'gering'},
-    {plz:'15230',city:'Frankfurt (Oder)',class:2,risk:'gering'},
-    {plz:'03046',city:'Cottbus',class:2,risk:'gering'},
-    {plz:'16303',city:'Schwedt',class:1,risk:'niedrig'},
-    {plz:'16537',city:'Oberkrämer',class:1,risk:'niedrig'},
-    {plz:'16727',city:'Oberhavel',class:1,risk:'niedrig'},
-    {plz:'16816',city:'Prenzlau',class:1,risk:'niedrig'},
-    {plz:'17033',city:'Neubrandenburg',class:2,risk:'gering'},
-    {plz:'17235',city:'Neustrelitz',class:1,risk:'niedrig'},
-
-    // ── Mecklenburg-Vorpommern ──
-    {plz:'18055',city:'Rostock',class:2,risk:'gering'},
-    {plz:'18059',city:'Rostock',class:2,risk:'gering'},
-    {plz:'18435',city:'Stralsund',class:2,risk:'gering'},
-    {plz:'17489',city:'Greifswald',class:1,risk:'niedrig'},
-    {plz:'19053',city:'Schwerin',class:1,risk:'niedrig'},
-    {plz:'19243',city:'Wismar',class:1,risk:'niedrig'},
-
-    // ── Hamburg ──
-    {plz:'20095',city:'Hamburg',class:4,risk:'hoch'},
-    {plz:'20097',city:'Hamburg',class:4,risk:'hoch'},
-    {plz:'20144',city:'Hamburg',class:3,risk:'mittel'},
-    {plz:'20148',city:'Hamburg',class:3,risk:'mittel'},
-    {plz:'20249',city:'Hamburg',class:3,risk:'mittel'},
-    {plz:'20354',city:'Hamburg',class:4,risk:'hoch'},
-    {plz:'20357',city:'Hamburg',class:4,risk:'hoch'},
-    {plz:'20535',city:'Hamburg',class:3,risk:'mittel'},
-    {plz:'21029',city:'Hamburg',class:2,risk:'gering'},
-    {plz:'21107',city:'Hamburg',class:3,risk:'mittel'},
-    {plz:'22083',city:'Hamburg',class:3,risk:'mittel'},
-    {plz:'22335',city:'Hamburg',class:2,risk:'gering'},
-    {plz:'22525',city:'Hamburg',class:3,risk:'mittel'},
-    {plz:'22765',city:'Hamburg',class:2,risk:'gering'},
-
-    // ── Schleswig-Holstein ──
-    {plz:'23552',city:'Lübeck',class:2,risk:'gering'},
-    {plz:'23560',city:'Lübeck',class:2,risk:'gering'},
-    {plz:'24103',city:'Kiel',class:2,risk:'gering'},
-    {plz:'24143',city:'Kiel',class:2,risk:'gering'},
-    {plz:'24534',city:'Neumünster',class:2,risk:'gering'},
-    {plz:'24937',city:'Flensburg',class:1,risk:'niedrig'},
-    {plz:'24837',city:'Schleswig',class:1,risk:'niedrig'},
-    {plz:'25813',city:'Husum',class:1,risk:'niedrig'},
-    {plz:'25704',city:'Heide',class:1,risk:'niedrig'},
-
-    // ── Bremen ──
-    {plz:'28195',city:'Bremen',class:4,risk:'hoch'},
-    {plz:'28201',city:'Bremen',class:3,risk:'mittel'},
-    {plz:'28307',city:'Bremen',class:3,risk:'mittel'},
-    {plz:'27568',city:'Bremerhaven',class:3,risk:'mittel'},
-    {plz:'27570',city:'Bremerhaven',class:3,risk:'mittel'},
-
-    // ── Niedersachsen ──
-    {plz:'30159',city:'Hannover',class:3,risk:'mittel'},
-    {plz:'30169',city:'Hannover',class:3,risk:'mittel'},
-    {plz:'30449',city:'Hannover',class:3,risk:'mittel'},
-    {plz:'26122',city:'Oldenburg',class:2,risk:'gering'},
-    {plz:'26127',city:'Oldenburg',class:2,risk:'gering'},
-    {plz:'38100',city:'Braunschweig',class:2,risk:'gering'},
-    {plz:'38114',city:'Braunschweig',class:2,risk:'gering'},
-    {plz:'38440',city:'Wolfsburg',class:2,risk:'gering'},
-    {plz:'37073',city:'Göttingen',class:2,risk:'gering'},
-    {plz:'38640',city:'Goslar',class:1,risk:'niedrig'},
-    {plz:'49074',city:'Osnabrück',class:2,risk:'gering'},
-    {plz:'49080',city:'Osnabrück',class:2,risk:'gering'},
-    {plz:'21335',city:'Lüneburg',class:1,risk:'niedrig'},
-    {plz:'29221',city:'Celle',class:1,risk:'niedrig'},
-    {plz:'31134',city:'Hildesheim',class:2,risk:'gering'},
-    {plz:'31785',city:'Hameln',class:1,risk:'niedrig'},
-    {plz:'32423',city:'Minden',class:2,risk:'gering'},
-    {plz:'32052',city:'Herford',class:2,risk:'gering'},
-    {plz:'26721',city:'Emden',class:1,risk:'niedrig'},
-    {plz:'26441',city:'Jever',class:1,risk:'niedrig'},
-    {plz:'27576',city:'Cuxhaven',class:1,risk:'niedrig'},
-
-    // ── Nordrhein-Westfalen — Rheinland (Köln, Bonn, Aachen) ──
-    {plz:'50667',city:'Köln',class:5,risk:'sehr hoch'},
-    {plz:'50668',city:'Köln',class:5,risk:'sehr hoch'},
-    {plz:'50670',city:'Köln',class:4,risk:'hoch'},
-    {plz:'50823',city:'Köln',class:4,risk:'hoch'},
-    {plz:'50933',city:'Köln',class:4,risk:'hoch'},
-    {plz:'51103',city:'Köln',class:4,risk:'hoch'},
-    {plz:'53111',city:'Bonn',class:3,risk:'mittel'},
-    {plz:'53119',city:'Bonn',class:3,risk:'mittel'},
-    {plz:'51373',city:'Leverkusen',class:3,risk:'mittel'},
-    {plz:'52062',city:'Aachen',class:3,risk:'mittel'},
-    {plz:'52070',city:'Aachen',class:3,risk:'mittel'},
-    {plz:'52525',city:'Heinsberg',class:2,risk:'gering'},
-    {plz:'53424',city:'Remagen',class:2,risk:'gering'},
-
-    // ── NRW — Düsseldorf / Niederrhein ──
-    {plz:'40210',city:'Düsseldorf',class:4,risk:'hoch'},
-    {plz:'40213',city:'Düsseldorf',class:4,risk:'hoch'},
-    {plz:'40477',city:'Düsseldorf',class:3,risk:'mittel'},
-    {plz:'41061',city:'Mönchengladbach',class:3,risk:'mittel'},
-    {plz:'41063',city:'Mönchengladbach',class:3,risk:'mittel'},
-    {plz:'41460',city:'Neuss',class:3,risk:'mittel'},
-    {plz:'41539',city:'Dormagen',class:2,risk:'gering'},
-    {plz:'46539',city:'Dinslaken',class:2,risk:'gering'},
-    {plz:'47051',city:'Duisburg',class:4,risk:'hoch'},
-    {plz:'47167',city:'Duisburg',class:4,risk:'hoch'},
-    {plz:'46047',city:'Oberhausen',class:3,risk:'mittel'},
-    {plz:'46395',city:'Bottrop',class:3,risk:'mittel'},
-    {plz:'46562',city:'Voerde',class:2,risk:'gering'},
-    {plz:'47608',city:'Geldern',class:2,risk:'gering'},
-
-    // ── NRW — Ruhrgebiet ──
-    {plz:'44135',city:'Dortmund',class:4,risk:'hoch'},
-    {plz:'44139',city:'Dortmund',class:4,risk:'hoch'},
-    {plz:'44787',city:'Bochum',class:3,risk:'mittel'},
-    {plz:'44793',city:'Bochum',class:3,risk:'mittel'},
-    {plz:'45127',city:'Essen',class:4,risk:'hoch'},
-    {plz:'45131',city:'Essen',class:4,risk:'hoch'},
-    {plz:'45879',city:'Gelsenkirchen',class:4,risk:'hoch'},
-    {plz:'45881',city:'Gelsenkirchen',class:4,risk:'hoch'},
-    {plz:'47798',city:'Krefeld',class:3,risk:'mittel'},
-    {plz:'45657',city:'Recklinghausen',class:3,risk:'mittel'},
-    {plz:'45868',city:'Castrop-Rauxel',class:2,risk:'gering'},
-    {plz:'46065',city:'Herne',class:3,risk:'mittel'},
-
-    // ── NRW — Bergisches Land / Münsterland / Ostwestfalen ──
-    {plz:'42103',city:'Wuppertal',class:3,risk:'mittel'},
-    {plz:'42117',city:'Wuppertal',class:3,risk:'mittel'},
-    {plz:'42651',city:'Solingen',class:2,risk:'gering'},
-    {plz:'58636',city:'Iserlohn',class:2,risk:'gering'},
-    {plz:'57072',city:'Siegen',class:2,risk:'gering'},
-    {plz:'58089',city:'Hagen',class:3,risk:'mittel'},
-    {plz:'58511',city:'Lüdenscheid',class:2,risk:'gering'},
-    {plz:'48143',city:'Münster',class:2,risk:'gering'},
-    {plz:'48151',city:'Münster',class:2,risk:'gering'},
-    {plz:'59065',city:'Hamm',class:3,risk:'mittel'},
-    {plz:'59423',city:'Unna',class:2,risk:'gering'},
-    {plz:'33330',city:'Gütersloh',class:2,risk:'gering'},
-    {plz:'33602',city:'Bielefeld',class:2,risk:'gering'},
-    {plz:'33613',city:'Bielefeld',class:2,risk:'gering'},
-    {plz:'33098',city:'Paderborn',class:2,risk:'gering'},
-    {plz:'33739',city:'Bielefeld',class:2,risk:'gering'},
-
-    // ── Hessen ──
-    {plz:'60311',city:'Frankfurt am Main',class:5,risk:'sehr hoch'},
-    {plz:'60313',city:'Frankfurt am Main',class:5,risk:'sehr hoch'},
-    {plz:'60486',city:'Frankfurt am Main',class:4,risk:'hoch'},
-    {plz:'60528',city:'Frankfurt am Main',class:4,risk:'hoch'},
-    {plz:'61348',city:'Bad Homburg',class:2,risk:'gering'},
-    {plz:'61118',city:'Friedberg',class:2,risk:'gering'},
-    {plz:'63065',city:'Offenbach',class:4,risk:'hoch'},
-    {plz:'63067',city:'Offenbach',class:4,risk:'hoch'},
-    {plz:'64283',city:'Darmstadt',class:3,risk:'mittel'},
-    {plz:'64285',city:'Darmstadt',class:3,risk:'mittel'},
-    {plz:'64625',city:'Bensheim',class:2,risk:'gering'},
-    {plz:'65183',city:'Wiesbaden',class:3,risk:'mittel'},
-    {plz:'65187',city:'Wiesbaden',class:3,risk:'mittel'},
-    {plz:'34117',city:'Kassel',class:3,risk:'mittel'},
-    {plz:'34121',city:'Kassel',class:3,risk:'mittel'},
-    {plz:'35390',city:'Gießen',class:2,risk:'gering'},
-    {plz:'35037',city:'Marburg',class:2,risk:'gering'},
-    {plz:'35576',city:'Wetzlar',class:2,risk:'gering'},
-    {plz:'36037',city:'Fulda',class:2,risk:'gering'},
-
-    // ── Rheinland-Pfalz ──
-    {plz:'55116',city:'Mainz',class:3,risk:'mittel'},
-    {plz:'55128',city:'Mainz',class:3,risk:'mittel'},
-    {plz:'56068',city:'Koblenz',class:2,risk:'gering'},
-    {plz:'56070',city:'Koblenz',class:2,risk:'gering'},
-    {plz:'54290',city:'Trier',class:2,risk:'gering'},
-    {plz:'54292',city:'Trier',class:2,risk:'gering'},
-    {plz:'67059',city:'Ludwigshafen',class:4,risk:'hoch'},
-    {plz:'67061',city:'Ludwigshafen',class:4,risk:'hoch'},
-    {plz:'67346',city:'Speyer',class:2,risk:'gering'},
-    {plz:'67655',city:'Kaiserslautern',class:2,risk:'gering'},
-    {plz:'55543',city:'Bad Kreuznach',class:2,risk:'gering'},
-    {plz:'56564',city:'Neuwied',class:2,risk:'gering'},
-    {plz:'67433',city:'Speyer',class:2,risk:'gering'},
-    {plz:'67547',city:'Worms',class:2,risk:'gering'},
-
-    // ── Saarland ──
-    {plz:'66111',city:'Saarbrücken',class:3,risk:'mittel'},
-    {plz:'66121',city:'Saarbrücken',class:3,risk:'mittel'},
-    {plz:'66740',city:'Saarlouis',class:2,risk:'gering'},
-    {plz:'66606',city:'St. Wendel',class:1,risk:'niedrig'},
-    {plz:'66386',city:'St. Ingbert',class:2,risk:'gering'},
-
-    // ── Baden-Württemberg ──
-    {plz:'70173',city:'Stuttgart',class:4,risk:'hoch'},
-    {plz:'70174',city:'Stuttgart',class:4,risk:'hoch'},
-    {plz:'70180',city:'Stuttgart',class:4,risk:'hoch'},
-    {plz:'70327',city:'Stuttgart',class:3,risk:'mittel'},
-    {plz:'71063',city:'Sindelfingen',class:3,risk:'mittel'},
-    {plz:'71638',city:'Ludwigsburg',class:3,risk:'mittel'},
-    {plz:'73728',city:'Esslingen',class:3,risk:'mittel'},
-    {plz:'73033',city:'Göppingen',class:2,risk:'gering'},
-    {plz:'72070',city:'Tübingen',class:2,risk:'gering'},
-    {plz:'72764',city:'Reutlingen',class:2,risk:'gering'},
-    {plz:'74072',city:'Heilbronn',class:3,risk:'mittel'},
-    {plz:'75172',city:'Pforzheim',class:3,risk:'mittel'},
-    {plz:'76133',city:'Karlsruhe',class:3,risk:'mittel'},
-    {plz:'76135',city:'Karlsruhe',class:3,risk:'mittel'},
-    {plz:'77652',city:'Offenburg',class:2,risk:'gering'},
-    {plz:'78048',city:'Villingen-Schwenningen',class:2,risk:'gering'},
-    {plz:'78224',city:'Singen',class:2,risk:'gering'},
-    {plz:'79098',city:'Freiburg im Breisgau',class:2,risk:'gering'},
-    {plz:'79102',city:'Freiburg im Breisgau',class:2,risk:'gering'},
-    {plz:'88045',city:'Friedrichshafen',class:2,risk:'gering'},
-    {plz:'88048',city:'Friedrichshafen',class:2,risk:'gering'},
-    {plz:'88069',city:'Kressbronn',class:1,risk:'niedrig'},
-    {plz:'88214',city:'Ravensburg',class:2,risk:'gering'},
-    {plz:'78462',city:'Konstanz',class:2,risk:'gering'},
-    {plz:'68159',city:'Mannheim',class:4,risk:'hoch'},
-    {plz:'68161',city:'Mannheim',class:4,risk:'hoch'},
-    {plz:'69115',city:'Heidelberg',class:2,risk:'gering'},
-    {plz:'69117',city:'Heidelberg',class:2,risk:'gering'},
-    {plz:'69123',city:'Heidelberg',class:2,risk:'gering'},
-    {plz:'89073',city:'Ulm',class:2,risk:'gering'},
-    {plz:'89075',city:'Ulm',class:2,risk:'gering'},
-
-    // ── Bayern — München & Südbayern ──
-    {plz:'80331',city:'München',class:5,risk:'sehr hoch'},
-    {plz:'80333',city:'München',class:5,risk:'sehr hoch'},
-    {plz:'80336',city:'München',class:5,risk:'sehr hoch'},
-    {plz:'80538',city:'München',class:4,risk:'hoch'},
-    {plz:'80801',city:'München',class:4,risk:'hoch'},
-    {plz:'80802',city:'München',class:4,risk:'hoch'},
-    {plz:'81369',city:'München',class:4,risk:'hoch'},
-    {plz:'81543',city:'München',class:4,risk:'hoch'},
-    {plz:'81925',city:'München',class:3,risk:'mittel'},
-    {plz:'82152',city:'Planegg',class:2,risk:'gering'},
-    {plz:'82234',city:'Starnberg',class:2,risk:'gering'},
-    {plz:'82256',city:'Fürstenfeldbruck',class:2,risk:'gering'},
-    {plz:'85354',city:'Freising',class:2,risk:'gering'},
-    {plz:'83022',city:'Rosenheim',class:3,risk:'mittel'},
-    {plz:'83024',city:'Rosenheim',class:3,risk:'mittel'},
-
-    // ── Bayern — weitere Bezirke ──
-    {plz:'84028',city:'Landshut',class:2,risk:'gering'},
-    {plz:'85049',city:'Ingolstadt',class:3,risk:'mittel'},
-    {plz:'85051',city:'Ingolstadt',class:3,risk:'mittel'},
-    {plz:'86150',city:'Augsburg',class:3,risk:'mittel'},
-    {plz:'86152',city:'Augsburg',class:3,risk:'mittel'},
-    {plz:'87435',city:'Kempten (Allgäu)',class:2,risk:'gering'},
-    {plz:'87600',city:'Kaufbeuren',class:2,risk:'gering'},
-    {plz:'90402',city:'Nürnberg',class:4,risk:'hoch'},
-    {plz:'90419',city:'Nürnberg',class:4,risk:'hoch'},
-    {plz:'90762',city:'Fürth',class:3,risk:'mittel'},
-    {plz:'91052',city:'Erlangen',class:2,risk:'gering'},
-    {plz:'91056',city:'Erlangen',class:2,risk:'gering'},
-    {plz:'91522',city:'Ansbach',class:2,risk:'gering'},
-    {plz:'92637',city:'Weiden',class:2,risk:'gering'},
-    {plz:'92224',city:'Amberg',class:2,risk:'gering'},
-    {plz:'93047',city:'Regensburg',class:3,risk:'mittel'},
-    {plz:'93049',city:'Regensburg',class:3,risk:'mittel'},
-    {plz:'94032',city:'Passau',class:2,risk:'gering'},
-    {plz:'95444',city:'Bayreuth',class:2,risk:'gering'},
-    {plz:'95447',city:'Bayreuth',class:2,risk:'gering'},
-    {plz:'96047',city:'Bamberg',class:2,risk:'gering'},
-    {plz:'96450',city:'Coburg',class:2,risk:'gering'},
-    {plz:'95028',city:'Hof',class:2,risk:'gering'},
-    {plz:'63739',city:'Aschaffenburg',class:2,risk:'gering'},
-    {plz:'63741',city:'Aschaffenburg',class:2,risk:'gering'},
-    {plz:'97070',city:'Würzburg',class:2,risk:'gering'},
-    {plz:'97072',city:'Würzburg',class:2,risk:'gering'},
-    {plz:'97421',city:'Schweinfurt',class:2,risk:'gering'},
-    {plz:'97762',city:'Hammelburg',class:1,risk:'niedrig'},
-
-    // ── Sachsen ──
-    {plz:'01067',city:'Dresden',class:3,risk:'mittel'},
-    {plz:'01069',city:'Dresden',class:3,risk:'mittel'},
-    {plz:'01187',city:'Dresden',class:3,risk:'mittel'},
-    {plz:'04109',city:'Leipzig',class:3,risk:'mittel'},
-    {plz:'04229',city:'Leipzig',class:3,risk:'mittel'},
-    {plz:'04347',city:'Leipzig',class:3,risk:'mittel'},
-    {plz:'09111',city:'Chemnitz',class:2,risk:'gering'},
-    {plz:'09113',city:'Chemnitz',class:2,risk:'gering'},
-    {plz:'02625',city:'Bautzen',class:1,risk:'niedrig'},
-    {plz:'02826',city:'Görlitz',class:1,risk:'niedrig'},
-    {plz:'08056',city:'Zwickau',class:2,risk:'gering'},
-    {plz:'08525',city:'Plauen',class:2,risk:'gering'},
-
-    // ── Thüringen ──
-    {plz:'99084',city:'Erfurt',class:2,risk:'gering'},
-    {plz:'99085',city:'Erfurt',class:2,risk:'gering'},
-    {plz:'07743',city:'Jena',class:2,risk:'gering'},
-    {plz:'07745',city:'Jena',class:2,risk:'gering'},
-    {plz:'07545',city:'Gera',class:2,risk:'gering'},
-    {plz:'07749',city:'Jena',class:2,risk:'gering'},
-    {plz:'98527',city:'Suhl',class:2,risk:'gering'},
-    {plz:'99734',city:'Nordhausen',class:1,risk:'niedrig'},
-    {plz:'99867',city:'Gotha',class:1,risk:'niedrig'},
-    {plz:'99974',city:'Mühlhausen',class:1,risk:'niedrig'},
-    {plz:'06618',city:'Naumburg',class:1,risk:'niedrig'},
-
-    // ── Sachsen-Anhalt ──
-    {plz:'06108',city:'Halle (Saale)',class:3,risk:'mittel'},
-    {plz:'06110',city:'Halle (Saale)',class:3,risk:'mittel'},
-    {plz:'06114',city:'Halle (Saale)',class:3,risk:'mittel'},
-    {plz:'39104',city:'Magdeburg',class:3,risk:'mittel'},
-    {plz:'39108',city:'Magdeburg',class:3,risk:'mittel'},
-    {plz:'06842',city:'Dessau-Roßlau',class:2,risk:'gering'},
-    {plz:'06847',city:'Dessau-Roßlau',class:2,risk:'gering'},
-    {plz:'39576',city:'Stendal',class:1,risk:'niedrig'},
-    {plz:'38820',city:'Halberstadt',class:1,risk:'niedrig'}
-  ];
-
-  // ============================================================
-  // PLZ PREFIX REGION MAP FOR ESTIMATING UNLISTED LOCATIONS
-  // ============================================================
-  const plzRegions = {
-    "01": { region: "Dresden / Ostsachsen", class: 2, risk: "gering" },
-    "02": { region: "Oberlausitz / Bautzen", class: 1, risk: "niedrig" },
-    "03": { region: "Cottbus / Niederlausitz", class: 2, risk: "gering" },
-    "04": { region: "Leipzig / Nordsachsen", class: 3, risk: "mittel" },
-    "06": { region: "Halle (Saale) / Mansfeld", class: 2, risk: "gering" },
-    "07": { region: "Ostthüringen / Gera / Jena", class: 2, risk: "gering" },
-    "08": { region: "Vogtland / Zwickau", class: 2, risk: "gering" },
-    "09": { region: "Erzgebirge / Chemnitz Land", class: 2, risk: "gering" },
-    "10": { region: "Berlin Zentrum", class: 5, risk: "sehr hoch" },
-    "12": { region: "Berlin Süd/Ost", class: 4, risk: "hoch" },
-    "13": { region: "Berlin Nord", class: 3, risk: "mittel" },
-    "14": { region: "Potsdam / Havelland", class: 2, risk: "gering" },
-    "15": { region: "Oderland / Spree-Neiße", class: 2, risk: "gering" },
-    "16": { region: "Oberhavel / Uckermark", class: 1, risk: "niedrig" },
-    "17": { region: "Mecklenburgische Seenplatte", class: 1, risk: "niedrig" },
-    "18": { region: "Rostock / Ostseeküste", class: 2, risk: "gering" },
-    "19": { region: "Schwerin / Westmecklenburg", class: 1, risk: "niedrig" },
-    "20": { region: "Hamburg Mitte/Alster", class: 4, risk: "hoch" },
-    "21": { region: "Hamburg Süd / Harburg Land", class: 2, risk: "gering" },
-    "22": { region: "Hamburg Nord/West", class: 3, risk: "mittel" },
-    "23": { region: "Lübeck / Ostholstein", class: 2, risk: "gering" },
-    "24": { region: "Kiel / Flensburg / Schleswig", class: 2, risk: "gering" },
-    "25": { region: "Nordfriesland / Dithmarschen", class: 1, risk: "niedrig" },
-    "26": { region: "Ostfriesland / Oldenburg Land", class: 1, risk: "niedrig" },
-    "27": { region: "Cuxhaven / Bremerhaven Land", class: 2, risk: "gering" },
-    "28": { region: "Bremen / Umland", class: 3, risk: "mittel" },
-    "29": { region: "Lüneburger Heide / Celle", class: 1, risk: "niedrig" },
-    "30": { region: "Hannover Region", class: 3, risk: "mittel" },
-    "31": { region: "Hildesheim / Hameln", class: 2, risk: "gering" },
-    "32": { region: "Minden / Herford", class: 2, risk: "gering" },
-    "33": { region: "Bielefeld / Paderborn Land", class: 2, risk: "gering" },
-    "34": { region: "Kassel / Waldeck / Nordhessen", class: 2, risk: "gering" },
-    "35": { region: "Mittelhessen / Gießen / Marburg", class: 2, risk: "gering" },
-    "36": { region: "Fulda / Rhön", class: 1, risk: "niedrig" },
-    "37": { region: "Göttingen / Harz", class: 2, risk: "gering" },
-    "38": { region: "Braunschweig / Wolfsburg / Harz", class: 2, risk: "gering" },
-    "39": { region: "Magdeburg / Altmark", class: 2, risk: "gering" },
-    "40": { region: "Düsseldorf", class: 4, risk: "hoch" },
-    "41": { region: "Mönchengladbach / Niederrhein", class: 3, risk: "mittel" },
-    "42": { region: "Bergisches Land / Wuppertal", class: 3, risk: "mittel" },
-    "44": { region: "Dortmund / Bochum", class: 4, risk: "hoch" },
-    "45": { region: "Essen / Gelsenkirchen", class: 4, risk: "hoch" },
-    "46": { region: "Oberhausen / Wesel", class: 3, risk: "mittel" },
-    "47": { region: "Duisburg / Kleve", class: 4, risk: "hoch" },
-    "48": { region: "Münsterland", class: 2, risk: "gering" },
-    "49": { region: "Osnabrücker Land", class: 2, risk: "gering" },
-    "50": { region: "Köln Region", class: 5, risk: "sehr hoch" },
-    "51": { region: "Leverkusen / Oberberg", class: 3, risk: "mittel" },
-    "52": { region: "Aachen / Eifel", class: 2, risk: "gering" },
-    "53": { region: "Bonn / Rhein-Sieg", class: 3, risk: "mittel" },
-    "54": { region: "Trier / Mosel / Eifel", class: 1, risk: "niedrig" },
-    "55": { region: "Mainz / Rheinhessen", class: 2, risk: "gering" },
-    "56": { region: "Koblenz / Westerwald", class: 2, risk: "gering" },
-    "57": { region: "Siegerland / Olpe", class: 2, risk: "gering" },
-    "58": { region: "Märkischer Kreis / Hagen", class: 3, risk: "mittel" },
-    "59": { region: "Sauerland / Soest / Hamm", class: 2, risk: "gering" },
-    "60": { region: "Frankfurt am Main", class: 5, risk: "sehr hoch" },
-    "61": { region: "Taunus / Wetterau", class: 2, risk: "gering" },
-    "63": { region: "Offenbach / Main-Kinzig", class: 4, risk: "hoch" },
-    "64": { region: "Darmstadt / Odenwald", class: 2, risk: "gering" },
-    "65": { region: "Wiesbaden / Rheingau", class: 3, risk: "mittel" },
-    "66": { region: "Saarland", class: 2, risk: "gering" },
-    "67": { region: "Pfalz / Kaiserslautern / Speyer", class: 2, risk: "gering" },
-    "68": { region: "Mannheim / Rhein-Neckar", class: 4, risk: "hoch" },
-    "69": { region: "Heidelberg / Odenwald", class: 2, risk: "gering" },
-    "70": { region: "Stuttgart Region", class: 4, risk: "hoch" },
-    "71": { region: "Böblingen / Ludwigsburg", class: 3, risk: "mittel" },
-    "72": { region: "Tübingen / Zollernalb", class: 1, risk: "niedrig" },
-    "73": { region: "Esslingen / Göppingen", class: 2, risk: "gering" },
-    "74": { region: "Heilbronn / Hohenlohe", class: 2, risk: "gering" },
-    "75": { region: "Pforzheim / Enzkreis", class: 3, risk: "mittel" },
-    "76": { region: "Karlsruhe Region", class: 3, risk: "mittel" },
-    "77": { region: "Ortenau / Offenburg", class: 2, risk: "gering" },
-    "78": { region: "Schwarzwald-Baar / Singen", class: 1, risk: "niedrig" },
-    "79": { region: "Freiburg / Hochrhein", class: 2, risk: "gering" },
-    "80": { region: "München Stadt", class: 5, risk: "sehr hoch" },
-    "81": { region: "München Stadt/Land", class: 4, risk: "hoch" },
-    "82": { region: "Starnberg / Fürstenfeldbruck", class: 3, risk: "mittel" },
-    "83": { region: "Rosenheim / Chiemgau", class: 2, risk: "gering" },
-    "84": { region: "Niederbayern / Landshut", class: 2, risk: "gering" },
-    "85": { region: "Ingolstadt / Freising", class: 3, risk: "mittel" },
-    "86": { region: "Augsburg / Nordschwaben", class: 3, risk: "mittel" },
-    "87": { region: "Allgäu / Kempten", class: 1, risk: "niedrig" },
-    "88": { region: "Bodensee / Ravensburg", class: 2, risk: "gering" },
-    "89": { region: "Ulm / Donau-Iller", class: 2, risk: "gering" },
-    "90": { region: "Nürnberg Region", class: 4, risk: "hoch" },
-    "91": { region: "Erlangen / Mittelfranken", class: 2, risk: "gering" },
-    "92": { region: "Oberpfalz / Amberg", class: 2, risk: "gering" },
-    "93": { region: "Regensburg Region", class: 3, risk: "mittel" },
-    "94": { region: "Passau / Niederbayern Nord", class: 2, risk: "gering" },
-    "95": { region: "Bayreuth / Fichtelgebirge", class: 2, risk: "gering" },
-    "96": { region: "Bamberg / Coburg", class: 2, risk: "gering" },
-    "97": { region: "Würzburg / Unterfranken", class: 2, risk: "gering" },
-    "98": { region: "Südthüringen / Suhl", class: 1, risk: "niedrig" },
-    "99": { region: "Erfurt / Weimar / Mittelthüringen", class: 2, risk: "gering" }
-  };
-
-  const singleDigitFallback = {
-    "0": { region: "Sachsen / Thüringen Region", class: 2, risk: "gering" },
-    "1": { region: "Berlin / Brandenburg / MV Region", class: 2, risk: "gering" },
-    "2": { region: "Norddeutschland Region", class: 2, risk: "gering" },
-    "3": { region: "Niedersachsen / Hessen Region", class: 2, risk: "gering" },
-    "4": { region: "NRW Nord / Ruhrgebiet Region", class: 3, risk: "mittel" },
-    "5": { region: "NRW Süd / Rheinland Region", class: 2, risk: "gering" },
-    "6": { region: "Hessen / Rhein-Main / Saarland Region", class: 3, risk: "mittel" },
-    "7": { region: "Baden-Württemberg Region", class: 2, risk: "gering" },
-    "8": { region: "Südbayern / Schwaben Region", class: 3, risk: "mittel" },
-    "9": { region: "Nordbayern / Thüringen Region", class: 2, risk: "gering" }
-  };
-
-  // Helper for risk badge class
-  function getRiskBadgeHTML(risk) {
-    const r = (risk || '').toLowerCase();
-    const bgClass = (r === 'hoch' || r === 'sehr hoch') ? 'high' : (r === 'mittel' ? 'medium' : 'low');
-    return `<span class="class-badge ${bgClass}">Risiko: ${risk.toUpperCase()}</span>`;
-  }
-
-  // DOM Elements
-  const plzInput = document.getElementById('plz-input');
-  const searchBtn = document.getElementById('search-btn');
-  const errorMsg = document.getElementById('error-msg');
-  const resultArea = document.getElementById('result-area');
-  const resultBadge = document.getElementById('result-badge');
-  const plzDisplay = document.getElementById('plz-display');
-  const regionClassDisplay = document.getElementById('region-class-display');
-  const regionDetailDisplay = document.getElementById('region-detail-display');
-
-  const tableBody = document.getElementById('table-body');
-  const filterPlz = document.getElementById('filter-plz');
-  const filterCity = document.getElementById('filter-city');
-  const filterClass = document.getElementById('filter-class');
-
-  // Perform search
-  function performSearch() {
-    errorMsg.style.display = 'none';
-    const query = (plzInput.value || '').trim();
-
-    if (!query) {
-      errorMsg.textContent = 'Bitte geben Sie eine 5-stellige Postleitzahl oder einen Städtenamen ein.';
-      errorMsg.style.display = 'block';
-      resultArea.classList.remove('visible');
-      return;
-    }
-
-    const isNumericPLZ = /^[0-9]{5}$/.test(query);
-
-    if (isNumericPLZ) {
-      // 1. Check exact match in database
-      const exactMatch = fixedData.find(d => d.plz === query);
-
-      if (exactMatch) {
-        resultArea.classList.add('visible');
-        if (resultBadge) {
-          resultBadge.textContent = '✅ Zulassungsbezirk';
-          resultBadge.style.background = '#28a745';
-        }
-        plzDisplay.textContent = `PLZ ${exactMatch.plz} — ${exactMatch.city}`;
-        regionClassDisplay.textContent = `Klasse ${exactMatch.class}`;
-        regionDetailDisplay.innerHTML = `
-          <p style="margin-bottom:0.5rem;"><strong>Einstufung:</strong> Regionalklasse des Zulassungsbezirks ${exactMatch.city}.</p>
-          <p><strong>Risikostufe:</strong> ${getRiskBadgeHTML(exactMatch.risk)}</p>
-          <p style="font-size:0.85rem; color:#6c757d; margin-top:0.75rem;">
-            Diese Klasse gilt für den gesamten Zulassungsbezirk ${exactMatch.city}. Der tatsächliche Beitrag hängt zusätzlich von Typklasse, SF-Klasse und individuellen Rabatten ab.
-          </p>
-        `;
-        return;
-      }
-
-      // 2. Unlisted smaller location -> Perform approximation based on PLZ prefix
-      const p2 = query.substring(0, 2);
-      const p1 = query.substring(0, 1);
-      const approx = plzRegions[p2] || singleDigitFallback[p1] || { region: "Deutschland Allgemein", class: 2, risk: "gering" };
-
-      resultArea.classList.add('visible');
-      if (resultBadge) {
-        resultBadge.textContent = '📍 PLZ-Region';
-        resultBadge.style.background = '#e67e22';
-      }
-      plzDisplay.textContent = `PLZ ${query} — Region ${approx.region}`;
-      regionClassDisplay.textContent = `Klasse ${approx.class}`;
-      regionDetailDisplay.innerHTML = `
-        <p style="margin-bottom:0.5rem;"><strong>Risikostufe der Region:</strong> ${getRiskBadgeHTML(approx.risk)}</p>
-        <div style="background:#fff8e6; border:1px solid #ffeba8; border-left:4px solid #f39c12; padding:0.85rem 1rem; border-radius:8px; margin-top:0.75rem; color:#8a5700; font-size:0.92rem; line-height:1.5;">
-          <strong>ℹ️ Zuordnung:</strong> Für die PLZ <strong>${query}</strong> liegt kein eigener Zulassungsbezirk vor. Sie wird der <strong>PLZ-Region ${approx.region}</strong> zugeordnet, deren Regionalklasse hier angezeigt wird.
-        </div>
-      `;
-      return;
-    }
-
-    // Search by city name or text
-    const queryLower = query.toLowerCase();
-    const cityMatches = fixedData.filter(d => d.city.toLowerCase().includes(queryLower));
-
-    if (cityMatches.length > 0) {
-      resultArea.classList.add('visible');
-      if (resultBadge) {
-        resultBadge.textContent = '✅ Stadt gefunden';
-        resultBadge.style.background = '#28a745';
-      }
-      const first = cityMatches[0];
-      plzDisplay.textContent = `${first.city} (Gefundene PLZ: ${cityMatches.map(m=>m.plz).join(', ')})`;
-      regionClassDisplay.textContent = `Klasse ${first.class}`;
-      regionDetailDisplay.innerHTML = `
-        <p style="margin-bottom:0.5rem;"><strong>Ergebnis für "${query}":</strong> ${cityMatches.length} passende(r) Eintrag/Einträge in der Datenbank.</p>
-        <p><strong>Beispiel-Risiko (${first.plz}):</strong> ${getRiskBadgeHTML(first.risk)}</p>
-        <ul style="margin-top:0.5rem; padding-left:1.2rem; font-size:0.9rem;">
-          ${cityMatches.map(m => `<li>PLZ ${m.plz}: <strong>Klasse ${m.class}</strong> (${m.risk})</li>`).join('')}
-        </ul>
-      `;
-      return;
-    }
-
-    // Input is a number with wrong length or unrecognized string
-    if (/^[0-9]+$/.test(query)) {
-      errorMsg.textContent = 'Bitte geben Sie eine vollständige 5-stellige deutsche Postleitzahl ein.';
-    } else {
-      errorMsg.textContent = `Kein Eintrag für "${query}" gefunden. Bitte versuchen Sie es mit einer 5-stelligen PLZ oder einer bekannten Stadt.`;
-    }
-    errorMsg.style.display = 'block';
-    resultArea.classList.remove('visible');
-  }
-
-  // Populate filter dropdowns & table
-  function populateTable() {
-    if (!tableBody) return;
-
-    // Distinct cities
-    const cities = Array.from(new Set(fixedData.map(d => d.city))).sort();
-    if (filterCity) {
-      filterCity.innerHTML = '<option value="">Alle Städte</option>' + 
-        cities.map(c => `<option value="${c}">${c}</option>`).join('');
-    }
-
-    renderTableRows(fixedData);
-  }
-
-  function renderTableRows(data) {
-    if (!tableBody) return;
-    tableBody.innerHTML = '';
-
-    if (data.length === 0) {
-      tableBody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding:1.5rem; color:#6c757d;">Keine Ergebnisse für diese Filterkombination.</td></tr>';
-      return;
-    }
-
-    data.forEach(item => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td><strong>${item.plz}</strong></td>
-        <td>${item.city}</td>
-        <td>Klasse ${item.class}</td>
-        <td>${getRiskBadgeHTML(item.risk)}</td>
-      `;
-      tableBody.appendChild(tr);
-    });
-  }
-
-  function applyFilters() {
-    const plzVal = (filterPlz ? filterPlz.value : '').trim().toLowerCase();
-    const cityVal = (filterCity ? filterCity.value : '').trim();
-    const classVal = (filterClass ? filterClass.value : '').trim();
-
-    const filtered = fixedData.filter(item => {
-      const matchPlz = !plzVal || item.plz.toLowerCase().includes(plzVal);
-      const matchCity = !cityVal || item.city === cityVal;
-      const matchClass = !classVal || String(item.class) === classVal;
-      return matchPlz && matchCity && matchClass;
-    });
-
-    renderTableRows(filtered);
-  }
-
-  // Event Listeners
-  if (searchBtn) {
-    searchBtn.addEventListener('click', performSearch);
-  }
-
-  if (plzInput) {
-    plzInput.addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        performSearch();
-      }
-    });
-  }
-
-  if (filterPlz) filterPlz.addEventListener('input', applyFilters);
-  if (filterCity) filterCity.addEventListener('change', applyFilters);
-  if (filterClass) filterClass.addEventListener('change', applyFilters);
-
-  // Initialize
-  populateTable();
-
-  // Check URL params e.g. ?plz=80331
-  const urlParams = new URLSearchParams(window.location.search);
-  const paramPlz = urlParams.get('plz') || urlParams.get('q');
-  if (paramPlz && plzInput) {
-    plzInput.value = paramPlz;
-    performSearch();
-  }
-
-})();
-</script>
+</body>
+</html>
