@@ -1,0 +1,8 @@
+{
+  "name": "Autoknigge",
+  "description": "Der Leitfaden für Verhalten, Pflege & Autokauf",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

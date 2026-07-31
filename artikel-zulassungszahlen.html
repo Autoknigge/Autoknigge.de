@@ -36,37 +36,176 @@
 </header>
 <main>
   <div class="wrap">
-    <nav aria-label="Breadcrumb" class="breadcrumb">
-      <a href="index.html">Start</a> / 
-      <a href="kategorie-kauf.html">Kauf</a> / 
-      <span>Zulassungszahlen</span>
-    </nav>
-    <h1>Zulassungszahlen – Aktuelle Trends auf dem Automarkt</h1>
-    <p class="lead">Aktuelle Zulassungszahlen und Trends auf dem deutschen Automarkt – welche Marken und Modelle sind besonders gefragt?</p>
-    <section>
-      <h2>Die beliebtesten Marken 2026</h2>
-      <ul>
-        <li><strong>Volkswagen:</strong> Nach wie vor Marktführer in Deutschland mit einem Marktanteil von über 20 %.</li>
-        <li><strong>Mercedes-Benz:</strong> Stark im Premium-Segment und bei Elektrofahrzeugen.</li>
-        <li><strong>BMW:</strong> Beliebt bei jungen Käufern und in der Oberklasse.</li>
-        <li><strong>E-Autos:</strong> Tesla und VW sind führend bei Elektrofahrzeugen.</li>
+    <div class="cat-page-header cat-kauf">
+      <div class="cat-page-title-wrap">
+        <h1>Zulassungszahlen – Aktuelle Trends vom Kraftfahrt-Bundesamt</h1>
+      </div>
+      <p class="lead">Offizielle Neuzulassungszahlen und Antriebstrends des KBA (www.kba.de) auf einen Blick – veranschaulicht nach Elektro, Benzin, Diesel, Verbrenner insgesamt, Hybrid und weiteren Marktstatistiken.</p>
+      <div class="quick-info-line">
+        <a href="#kba-übersicht" class="quick-info-badge" style="text-decoration: none;">Infobox <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 20l-7.5-7.5h5V4h5v8.5h5L12 20z"/></svg></a>
+      </div>
+    </div>
+
+    <!-- Key Metrics Grid -->
+    <div class="kba-metrics-grid">
+      <div class="kba-metric-box">
+        <div class="kba-metric-number">~2,84 Mio.</div>
+        <div class="kba-metric-label">PKW-Neuzulassungen p.a.</div>
+      </div>
+      <div class="kba-metric-box">
+        <div class="kba-metric-number">67,1 %</div>
+        <div class="kba-metric-label">Gewerbliche Zulassungen</div>
+      </div>
+      <div class="kba-metric-box">
+        <div class="kba-metric-number">30,2 %</div>
+        <div class="kba-metric-label">SUV-Anteil (Marktführer Segment)</div>
+      </div>
+      <div class="kba-metric-box">
+        <div class="kba-metric-number">10,3 Jahre</div>
+        <div class="kba-metric-label">Durchschnittliches PKW-Alter</div>
+      </div>
+    </div>
+
+    <!-- KBA Visual Breakdown -->
+    <section id="kba-übersicht" class="kba-stats-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+        <h2 style="margin: 0; font-size: 1.35rem; color: var(--green-900);">📊 Neuzulassungen nach Antriebsarten</h2>
+        <span class="kba-badge-source">Quelle: KBA (www.kba.de)</span>
+      </div>
+      <p style="color: var(--text-muted); font-size: 0.93rem; margin-bottom: 1.5rem;">
+        Verteilung der Antriebsarten auf dem deutschen Automarkt.
+      </p>
+
+      <!-- 1. Reine Benziner -->
+      <div class="stats-item">
+        <div class="stats-label-group">
+          <span class="stats-label-title">⛽ Reine Benziner</span>
+          <span class="stats-val" style="color: #d97706;">33,3 %</span>
+        </div>
+        <div class="stats-track">
+          <div class="stats-bar benzin" style="width: 33.3%;"></div>
+        </div>
+      </div>
+
+      <!-- 2. Hybride Gesamt -->
+      <div class="stats-item" style="margin-top: 1.25rem;">
+        <div class="stats-label-group">
+          <span class="stats-label-title">🔋⛽ Hybrid-Antriebe (Voll-, Mild- & Plug-in-Hybrid)</span>
+          <span class="stats-val" style="color: #1d4ed8;">36,5 %</span>
+        </div>
+        <div class="stats-track">
+          <div class="stats-bar hybrid" style="width: 36.5%;"></div>
+        </div>
+        <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.35rem; padding-left: 0.2rem;">
+          ↳ Davon Plug-in-Hybride (PHEV): <strong>6,8 %</strong> | Reine Hybride ohne Stecker: <strong>29,7 %</strong>
+        </div>
+      </div>
+
+      <!-- 3. Elektro BEV -->
+      <div class="stats-item" style="margin-top: 1.25rem;">
+        <div class="stats-label-group">
+          <span class="stats-label-title">⚡ Reine Elektroautos (BEV - Batterieelektrisch)</span>
+          <span class="stats-val" style="color: #059669;">15,5 %</span>
+        </div>
+        <div class="stats-track">
+          <div class="stats-bar elektro" style="width: 15.5%;"></div>
+        </div>
+      </div>
+
+      <!-- 4. Reine Diesel -->
+      <div class="stats-item" style="margin-top: 1.25rem;">
+        <div class="stats-label-group">
+          <span class="stats-label-title">🛢️ Reine Diesel</span>
+          <span class="stats-val" style="color: #475569;">14,5 %</span>
+        </div>
+        <div class="stats-track">
+          <div class="stats-bar diesel" style="width: 14.5%;"></div>
+        </div>
+      </div>
+
+      <!-- 5. Verbrenner Insgesamt Summary Box -->
+      <div style="margin-top: 1.75rem; background: #fff7ed; border: 1.5px solid #ffedd5; border-radius: 12px; padding: 1.15rem 1.25rem;">
+        <div class="stats-label-group" style="margin-bottom: 0.5rem;">
+          <span class="stats-label-title" style="color: #9a3412; font-size: 1.05rem; font-weight: 800;">🔥 Verbrenner insgesamt (Reiner Benzin + Diesel)</span>
+          <span class="stats-val" style="color: #c2410c; font-size: 1.2rem;">47,8 %</span>
+        </div>
+        <div class="stats-track" style="height: 14px; background: #ffedd5;">
+          <div class="stats-bar verbrenner-gesamt" style="width: 47.8%;"></div>
+        </div>
+        <p style="margin: 0.6rem 0 0 0; font-size: 0.88rem; color: #9a3412; line-height: 1.5;">
+          <strong>Hinweis:</strong> Nahezu die Hälfte aller Neuzulassungen besitzt einen ausschließlichen Verbrennungsmotor. Bezieht man Hybridfahrzeuge mit ein (die ebenfalls einen Verbrenner nutzen), verfügen über <strong>84 %</strong> aller Neuwagen weiterhin über einen Verbrennungsmotor an Bord!
+        </p>
+      </div>
+
+      <!-- 6. Sonstige -->
+      <div class="stats-item" style="margin-top: 1.25rem;">
+        <div class="stats-label-group">
+          <span class="stats-label-title">🎈 Flüssiggas (LPG), Erdgas (CNG) & Wasserstoff</span>
+          <span class="stats-val" style="color: #7e22ce;">0,2 %</span>
+        </div>
+        <div class="stats-track">
+          <div class="stats-bar sonstige" style="width: 2%;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beliebteste Marken & Segmente -->
+    <section style="margin-bottom: 2.5rem;">
+      <h2 style="font-size: 1.35rem; color: var(--green-900); margin-bottom: 1rem;">🏆 Top Automarken nach KBA-Marktanteilen</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+        <div style="background: #fff; border: 1px solid var(--border-light); padding: 1.25rem; border-radius: 12px;">
+          <h3 style="margin: 0 0 0.5rem; font-size: 1.1rem; color: var(--text-dark);">1. Volkswagen (VW)</h3>
+          <p style="margin: 0; font-size: 0.92rem; color: var(--text-muted); line-height: 1.5;">Unangefochtener Marktführer in Deutschland mit ca. <strong>19,5 %</strong> Marktanteil (über 550.000 Fahrzeuge/Jahr).</p>
+        </div>
+        <div style="background: #fff; border: 1px solid var(--border-light); padding: 1.25rem; border-radius: 12px;">
+          <h3 style="margin: 0 0 0.5rem; font-size: 1.1rem; color: var(--text-dark);">2. Mercedes-Benz</h3>
+          <p style="margin: 0; font-size: 0.92rem; color: var(--text-muted); line-height: 1.5;">Stark im Premium- und Dienstwagensegment mit ca. <strong>9,8 %</strong> Marktanteil.</p>
+        </div>
+        <div style="background: #fff; border: 1px solid var(--border-light); padding: 1.25rem; border-radius: 12px;">
+          <h3 style="margin: 0 0 0.5rem; font-size: 1.1rem; color: var(--text-dark);">3. BMW</h3>
+          <p style="margin: 0; font-size: 0.92rem; color: var(--text-muted); line-height: 1.5;">Liefert sich ein enges Rennen um Platz 2 mit ca. <strong>8,5 %</strong> Marktanteil.</p>
+        </div>
+        <div style="background: #fff; border: 1px solid var(--border-light); padding: 1.25rem; border-radius: 12px;">
+          <h3 style="margin: 0 0 0.5rem; font-size: 1.1rem; color: var(--text-dark);">4. Audi & Skoda</h3>
+          <p style="margin: 0; font-size: 0.92rem; color: var(--text-muted); line-height: 1.5;">Audi erreicht ca. <strong>7,8 %</strong>, dicht gefolgt von Skoda (<strong>6,5 %</strong>) als stärkster Importmarke.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Spannende Zusatzfakten des KBA -->
+    <section style="margin-bottom: 2.5rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.75rem;">
+      <h2 style="font-size: 1.35rem; color: var(--green-900); margin-bottom: 1rem;">💡 Weitere interessante KBA-Erkenntnisse</h2>
+      <ul style="display: grid; gap: 0.85rem; padding-left: 1.2rem; color: var(--text-dark); line-height: 1.6;">
+        <li><strong>Gewerbe dominiert den Neuwagenmarkt:</strong> Rund 67 % aller Erstzulassungen entfallen auf Firmen, Fuhrparks und Autovermieter. Private Käufer nutzen hingegen überwiegend den Gebrauchtwagenmarkt (über 6 Millionen Besitzumschreibungen pro Jahr).</li>
+        <li><strong>Allrad-Boom (4x4):</strong> Fast jeder vierte Neuwagen (ca. 24,5 %) wird mit Allradantrieb ausgeliefert.</li>
+        <li><strong>Farbklassiker dominieren:</strong> Über 75 % aller Neuwagen tragen die Farben Schwarz (ca. 30 %), Grau/Silber (ca. 27 %) oder Weiß (ca. 19 %). Bunte Farben wie Rot oder Blau bleiben seltene Ausnahmen.</li>
+        <li><strong>Durchschnittsalter steigt:</strong> Der PKW-Bestand auf deutschen Straßen altert seit Jahren kontinuierlich und liegt aktuell bei einem Rekordwert von 10,3 Jahren.</li>
       </ul>
     </section>
-    <section>
-      <h2>Trends beim Antrieb</h2>
-      <ul>
-        <li><strong>Elektroautos:</strong> Der Marktanteil von Elektroautos steigt kontinuierlich – 2026 bereits über 30 %.</li>
-        <li><strong>Hybride:</strong> Hybridfahrzeuge sind ebenfalls auf dem Vormarsch.</li>
-        <li><strong>Verbrenner:</strong> Benziner und Diesel verlieren zunehmend an Bedeutung.</li>
-      </ul>
+
+    <!-- Partner / Quick tools -->
+    <section class="partner-section">
+      <h3>✨ Nützliche Rechner & Ratgeber für Autokäufer</h3>
+      <p class="partner-desc">Finden Sie vor dem Autokauf die passende Versicherung oder berechnen Sie Ihre Schadenfreiheitsklasse:</p>
+      <div class="partner-buttons">
+        <a href="sf-klassen-rechner.html" class="partner-button">
+          <span class="partner-icon">📊</span>
+          <span class="partner-name">SF-Klassen Rechner</span>
+          <span class="partner-arrow">→</span>
+        </a>
+        <a href="regionalklassen.html" class="partner-button">
+          <span class="partner-icon">🗺️</span>
+          <span class="partner-name">Regionalklassen prüfen</span>
+          <span class="partner-arrow">→</span>
+        </a>
+        <a href="kategorie-kauf.html" class="partner-button">
+          <span class="partner-icon">🚗</span>
+          <span class="partner-name">Autokauf und -verkauf Ratgeber</span>
+          <span class="partner-arrow">→</span>
+        </a>
+      </div>
     </section>
-    <section>
-      <h2>Regionale Unterschiede</h2>
-      <ul>
-        <li><strong>Großstädte:</strong> In Großstädten sind E-Autos und Hybride besonders beliebt.</li>
-        <li><strong>Ländliche Gebiete:</strong> Hier sind Verbrenner noch häufiger vertreten, aber auch hier steigt der Anteil von E-Autos.</li>
-      </ul>
-    </section>
+
   </div>
 </main>
 <button id="backToTop" class="back-to-top" aria-label="Nach oben scrollen">↑</button>
@@ -82,7 +221,7 @@
         <ul class="footer-links-list">
           <li><a href="kategorie-versicherung.html">Kfz-Versicherung</a></li>
           <li><a href="kategorie-zulassung.html">Auto an-, um- & abmelden ohne Stress</a></li>
-          <li><a href="kategorie-kauf.html">Autokauf & Verkauf</a></li>
+          <li><a href="kategorie-kauf.html">Autokauf und -verkauf</a></li>
           <li><a href="kategorie-pflege.html">Fahrzeugpflege</a></li>
           <li><a href="kategorie-recht.html">Recht & Etikette</a></li>
           <li><a href="kategorie-geld-sparen.html">Clever sparen</a></li>
