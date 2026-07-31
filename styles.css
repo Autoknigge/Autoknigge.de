@@ -738,6 +738,100 @@ main .wrap > .lead {
   background: #fde68a;
 }
 
+/* ===== CATEGORY-COLORED CARDS (Startseite) =====
+   Each topic section gets its own accent tint so cards are
+   visually grouped by category while text stays high-contrast. */
+
+/* Versicherung – Amber/Gold */
+#versicherung .card {
+  background: #fef7ed;
+  border-color: #f4d8a8;
+}
+#versicherung .card::before {
+  background: linear-gradient(90deg, #d97706, #f59e0b);
+}
+#versicherung .card-symbol {
+  background: #fde6c4;
+  border-color: #f3c98a;
+}
+#versicherung .card:hover .card-symbol { background: #f9d49a; }
+#versicherung .card:hover h3 { color: #b45309; }
+
+/* Zulassung – Slate */
+#zulassung .card {
+  background: #f4f6f9;
+  border-color: #d3dbe5;
+}
+#zulassung .card::before {
+  background: linear-gradient(90deg, #64748b, #94a3b8);
+}
+#zulassung .card-symbol {
+  background: #e4e9f1;
+  border-color: #c3cdda;
+}
+#zulassung .card:hover .card-symbol { background: #d4dbe7; }
+#zulassung .card:hover h3 { color: #475569; }
+
+/* Kauf – Orange */
+#kauf .card {
+  background: #fff4ed;
+  border-color: #fdd4b8;
+}
+#kauf .card::before {
+  background: linear-gradient(90deg, #ea580c, #f97316);
+}
+#kauf .card-symbol {
+  background: #fde2d1;
+  border-color: #f7bd93;
+}
+#kauf .card:hover .card-symbol { background: #f9c9a8; }
+#kauf .card:hover h3 { color: #c2410c; }
+
+/* Pflege – Emerald */
+#pflege .card {
+  background: #edf8f3;
+  border-color: #c0e4d3;
+}
+#pflege .card::before {
+  background: linear-gradient(90deg, #059669, #10b981);
+}
+#pflege .card-symbol {
+  background: #d4efe2;
+  border-color: #a3dcc2;
+}
+#pflege .card:hover .card-symbol { background: #bce5d0; }
+#pflege .card:hover h3 { color: #047857; }
+
+/* Recht & Etikette – Red */
+#recht .card {
+  background: #fdf2f2;
+  border-color: #f6caca;
+}
+#recht .card::before {
+  background: linear-gradient(90deg, #dc2626, #ef4444);
+}
+#recht .card-symbol {
+  background: #fbe0e0;
+  border-color: #f3b5b5;
+}
+#recht .card:hover .card-symbol { background: #f6caca; }
+#recht .card:hover h3 { color: #b91c1c; }
+
+/* Clever sparen – Yellow/Gold */
+#geld-sparen .card {
+  background: #fefce8;
+  border-color: #f3e09a;
+}
+#geld-sparen .card::before {
+  background: linear-gradient(90deg, #ca8a04, #eab308);
+}
+#geld-sparen .card-symbol {
+  background: #fcf0c4;
+  border-color: #eddb8a;
+}
+#geld-sparen .card:hover .card-symbol { background: #f9e69a; }
+#geld-sparen .card:hover h3 { color: #a16207; }
+
 .partner-card:hover {
   border-color: var(--green-700);
   transform: translateY(-4px);
