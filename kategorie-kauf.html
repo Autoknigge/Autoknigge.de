@@ -85,38 +85,44 @@
   .cv-coupon-box {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 10px;
-    padding: 0.85rem 1.2rem;
+    padding: 1rem 1.25rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 0.75rem;
+    gap: 1rem;
     margin-top: 1.25rem;
     color: #0f241d;
   }
   .cv-code {
     font-family: monospace;
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     font-weight: 800;
     color: #0f241d;
     background: #eef6f3;
-    padding: 0.25rem 0.6rem;
+    padding: 0.25rem 0.75rem;
     border-radius: 6px;
     border: 1px dashed #163a2f;
+    display: inline-block;
   }
-  .cv-auto-notice {
-    font-size: 0.8rem;
-    color: #2e7d32;
-    font-weight: 600;
-    display: block;
-    margin-top: 0.2rem;
+  /* Klares, hervorgehobenes Hinweisfeld */
+  .cv-auto-notice-badge {
+    display: inline-block;
+    background-color: #e8f5e9;
+    color: #1b5e20;
+    border: 1px solid #c8e6c9;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    margin-top: 0.4rem;
   }
   .cv-btn {
     background-color: #163a2f;
     color: #ffffff;
     font-weight: 700;
     font-size: 0.95rem;
-    padding: 0.7rem 1.3rem;
+    padding: 0.75rem 1.4rem;
     border-radius: 8px;
     display: inline-flex;
     align-items: center;
@@ -171,7 +177,7 @@
           <p>Anschaffungs-, Lade- und Unterhaltskosten im direkten Vergleich.</p>
         </a>
 
-        <!-- CARVERTICAL AKTIONSS-BOX MIT CODE & AUTOMATISCHEM HINWEIS -->
+        <!-- CARVERTICAL AKTIONSS-BOX MIT DEUTLICHEM HINWEIS -->
         <a class="card-featured-carvertical" href="https://www.carvertical.com/de/landing/v3?voucher=Autoknigge" target="_blank" rel="noopener sponsored">
           <div class="cv-header">
             <div class="cv-title-wrap">
@@ -195,11 +201,13 @@
 
           <div class="cv-coupon-box">
             <div>
-              <span style="font-size: 0.85rem; color: #555; display: block; font-weight: 600;">Exklusiver Rabattcode:</span>
-              <span><strong class="cv-code">Autoknigge</strong></span>
-              <span class="cv-auto-notice">✓ Wird beim Klick auf den Button automatisch an der Kasse hinterlegt!</span>
+              <span style="font-size: 0.85rem; color: #555; display: block; font-weight: 600;">Exklusiver Rabattcode: <strong class="cv-code">Autoknigge</strong></span>
+              <!-- KONTRASTREICHER HINWEIS -->
+              <div class="cv-auto-notice-badge">
+                ⚡ Der 20% Rabatt wird beim Klick automatisch berücksichtigt!
+              </div>
             </div>
-            <span class="cv-btn">Jetzt 20% sparen & prüfen ↗</span>
+            <span class="cv-btn">Jetzt Historie prüfen ↗</span>
           </div>
         </a>
 
