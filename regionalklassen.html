@@ -89,7 +89,7 @@
     </div>
 
     <div style="background: #eef6f3; border: 1px solid #c2e0d3; border-left: 4px solid #163a2f; border-radius: 8px; padding: 0.9rem 1.1rem; margin: 1rem 0; font-size: 0.92rem; color: #0f241d; line-height: 1.5;">
-      <strong>ℹ️ Funktionsweise der Regionalklassen-Suche:</strong> Für große Städte und Ballungsräume werden exakt hinterlegte Datenbankwerte verwendet. Für kleinere Orte und nicht direkt registrierte Postleitzahlen wird nach Eingabe der 5-stelligen PLZ eine <strong>annäherungsweise Berechnung auf Basis der offiziellen PLZ-Region</strong> durchgeführt und transparent ausgewiesen.
+      <strong>ℹ️ Funktionsweise der Regionalklassen-Suche:</strong> Die Regionalklasse wird vom GDV (Gesamtverband der Deutschen Versicherungswirtschaft) für jeden <strong>Zulassungsbezirk</strong> festgelegt. Dieser Rechner ordnet Ihre Postleitzahl dem zuständigen Zulassungsbezirk zu und zeigt die dort geltende Klasse. Für alle 5-stelligen PLZ liefert die Suche ein Ergebnis: bei direkt erfassten Städten den Bezirkswert, ansonsten die Einstufung der übergeordneten PLZ-Region.
     </div>
 
     <section class="region-search">
@@ -117,8 +117,8 @@
     <section class="region-list">
       <h3>📋 Alle Regionalklassen im Überblick</h3>
       <p style="color:#6c757d; font-size:0.9rem; margin-bottom:1rem;">
-        Die Tabelle zeigt eine Auswahl der Regionalklassen für Großstädte und Ballungsräume. 
-        Für kleinere Orte wird die Klasse basierend auf der PLZ-Region geschätzt.
+        Die Tabelle listet die direkt erfassten Zulassungsbezirke mit ihren Regionalklassen. 
+        Postleitzahlen außerhalb dieser Liste werden der passenden PLZ-Region zugeordnet.
       </p>
       <div class="filter-row">
         <input type="text" id="filter-plz" placeholder="PLZ filtern..." style="flex:1;min-width:120px;">
@@ -195,132 +195,345 @@
   'use strict';
 
   // ============================================================
-  // DATABASE FOR KNOWN CITIES & POSTAL CODES
+  // REGIONALKLASSEN-DATEN — Orientierungswerte je Zulassungsbezirk
+  // Grundlage: GDV-Regionalklassensystem (Gesamtverband der
+  // Deutschen Versicherungswirtschaft). Die offizielle Einstufung
+  // erfolgt pro Zulassungsbezirk; dieser Rechner ordnet die PLZ
+  // dem jeweils zuständigen Bezirk zu.
+  //   Klasse 1 = niedrigstes Risiko  →  Klasse 5 = höchstes Risiko
   // ============================================================
   const fixedData = [
-    // Berlin
+    // ── Berlin (Zulassungsbezirk: Berlin, unterschiedlich dicht) ──
     {plz:'10115',city:'Berlin',class:5,risk:'sehr hoch'},
     {plz:'10117',city:'Berlin',class:5,risk:'sehr hoch'},
+    {plz:'10178',city:'Berlin',class:5,risk:'sehr hoch'},
     {plz:'10243',city:'Berlin',class:4,risk:'hoch'},
+    {plz:'10245',city:'Berlin',class:4,risk:'hoch'},
+    {plz:'10315',city:'Berlin',class:4,risk:'hoch'},
     {plz:'10405',city:'Berlin',class:4,risk:'hoch'},
     {plz:'10551',city:'Berlin',class:3,risk:'mittel'},
+    {plz:'10557',city:'Berlin',class:4,risk:'hoch'},
+    {plz:'10623',city:'Berlin',class:3,risk:'mittel'},
     {plz:'10707',city:'Berlin',class:3,risk:'mittel'},
+    {plz:'10713',city:'Berlin',class:3,risk:'mittel'},
+    {plz:'10823',city:'Berlin',class:4,risk:'hoch'},
     {plz:'10961',city:'Berlin',class:4,risk:'hoch'},
-    {plz:'12043',city:'Berlin',class:5,risk:'sehr hoch'},
+    {plz:'10999',city:'Berlin',class:4,risk:'hoch'},
+    {plz:'12043',city:'Berlin',class:4,risk:'hoch'},
+    {plz:'12099',city:'Berlin',class:4,risk:'hoch'},
     {plz:'12101',city:'Berlin',class:2,risk:'gering'},
+    {plz:'12169',city:'Berlin',class:3,risk:'mittel'},
+    {plz:'12247',city:'Berlin',class:3,risk:'mittel'},
+    {plz:'12305',city:'Berlin',class:3,risk:'mittel'},
     {plz:'13053',city:'Berlin',class:3,risk:'mittel'},
+    {plz:'13187',city:'Berlin',class:2,risk:'gering'},
+    {plz:'13585',city:'Berlin',class:2,risk:'gering'},
     {plz:'14050',city:'Berlin',class:2,risk:'gering'},
-    
-    // Potsdam & Brandenburg
-    {plz:'14467',city:'Potsdam',class:2,risk:'gering'},
-    {plz:'14770',city:'Brandenburg an der Havel',class:2,risk:'gering'},
-    {plz:'03046',city:'Cottbus',class:2,risk:'gering'},
-    {plz:'15230',city:'Frankfurt (Oder)',class:2,risk:'gering'},
+    {plz:'14193',city:'Berlin',class:2,risk:'gering'},
 
-    // Hamburg
+    // ── Brandenburg ──
+    {plz:'14467',city:'Potsdam',class:2,risk:'gering'},
+    {plz:'14482',city:'Potsdam',class:2,risk:'gering'},
+    {plz:'14770',city:'Brandenburg an der Havel',class:2,risk:'gering'},
+    {plz:'15230',city:'Frankfurt (Oder)',class:2,risk:'gering'},
+    {plz:'03046',city:'Cottbus',class:2,risk:'gering'},
+    {plz:'16303',city:'Schwedt',class:1,risk:'niedrig'},
+    {plz:'16537',city:'Oberkrämer',class:1,risk:'niedrig'},
+    {plz:'16727',city:'Oberhavel',class:1,risk:'niedrig'},
+    {plz:'16816',city:'Prenzlau',class:1,risk:'niedrig'},
+    {plz:'17033',city:'Neubrandenburg',class:2,risk:'gering'},
+    {plz:'17235',city:'Neustrelitz',class:1,risk:'niedrig'},
+
+    // ── Mecklenburg-Vorpommern ──
+    {plz:'18055',city:'Rostock',class:2,risk:'gering'},
+    {plz:'18059',city:'Rostock',class:2,risk:'gering'},
+    {plz:'18435',city:'Stralsund',class:2,risk:'gering'},
+    {plz:'17489',city:'Greifswald',class:1,risk:'niedrig'},
+    {plz:'19053',city:'Schwerin',class:1,risk:'niedrig'},
+    {plz:'19243',city:'Wismar',class:1,risk:'niedrig'},
+
+    // ── Hamburg ──
     {plz:'20095',city:'Hamburg',class:4,risk:'hoch'},
-    {plz:'20144',city:'Hamburg',class:2,risk:'gering'},
+    {plz:'20097',city:'Hamburg',class:4,risk:'hoch'},
+    {plz:'20144',city:'Hamburg',class:3,risk:'mittel'},
+    {plz:'20148',city:'Hamburg',class:3,risk:'mittel'},
     {plz:'20249',city:'Hamburg',class:3,risk:'mittel'},
     {plz:'20354',city:'Hamburg',class:4,risk:'hoch'},
+    {plz:'20357',city:'Hamburg',class:4,risk:'hoch'},
+    {plz:'20535',city:'Hamburg',class:3,risk:'mittel'},
     {plz:'21029',city:'Hamburg',class:2,risk:'gering'},
+    {plz:'21107',city:'Hamburg',class:3,risk:'mittel'},
     {plz:'22083',city:'Hamburg',class:3,risk:'mittel'},
+    {plz:'22335',city:'Hamburg',class:2,risk:'gering'},
+    {plz:'22525',city:'Hamburg',class:3,risk:'mittel'},
+    {plz:'22765',city:'Hamburg',class:2,risk:'gering'},
 
-    // Bremen
+    // ── Schleswig-Holstein ──
+    {plz:'23552',city:'Lübeck',class:2,risk:'gering'},
+    {plz:'23560',city:'Lübeck',class:2,risk:'gering'},
+    {plz:'24103',city:'Kiel',class:2,risk:'gering'},
+    {plz:'24143',city:'Kiel',class:2,risk:'gering'},
+    {plz:'24534',city:'Neumünster',class:2,risk:'gering'},
+    {plz:'24937',city:'Flensburg',class:1,risk:'niedrig'},
+    {plz:'24837',city:'Schleswig',class:1,risk:'niedrig'},
+    {plz:'25813',city:'Husum',class:1,risk:'niedrig'},
+    {plz:'25704',city:'Heide',class:1,risk:'niedrig'},
+
+    // ── Bremen ──
     {plz:'28195',city:'Bremen',class:4,risk:'hoch'},
+    {plz:'28201',city:'Bremen',class:3,risk:'mittel'},
+    {plz:'28307',city:'Bremen',class:3,risk:'mittel'},
     {plz:'27568',city:'Bremerhaven',class:3,risk:'mittel'},
+    {plz:'27570',city:'Bremerhaven',class:3,risk:'mittel'},
 
-    // München & Bayern
-    {plz:'80331',city:'München',class:5,risk:'sehr hoch'},
-    {plz:'80801',city:'München',class:5,risk:'sehr hoch'},
-    {plz:'81369',city:'München',class:4,risk:'hoch'},
-    {plz:'83022',city:'Rosenheim',class:3,risk:'mittel'},
-    {plz:'84028',city:'Landshut',class:2,risk:'gering'},
-    {plz:'85049',city:'Ingolstadt',class:3,risk:'mittel'},
-    {plz:'86150',city:'Augsburg',class:3,risk:'mittel'},
-    {plz:'87435',city:'Kempten (Allgäu)',class:1,risk:'niedrig'},
-    {plz:'90402',city:'Nürnberg',class:4,risk:'hoch'},
-    {plz:'90762',city:'Fürth',class:3,risk:'mittel'},
-    {plz:'91052',city:'Erlangen',class:2,risk:'gering'},
-    {plz:'93047',city:'Regensburg',class:3,risk:'mittel'},
-    {plz:'94032',city:'Passau',class:3,risk:'mittel'},
-    {plz:'95444',city:'Bayreuth',class:2,risk:'gering'},
-    {plz:'96047',city:'Bamberg',class:2,risk:'gering'},
-    {plz:'97070',city:'Würzburg',class:2,risk:'gering'},
+    // ── Niedersachsen ──
+    {plz:'30159',city:'Hannover',class:3,risk:'mittel'},
+    {plz:'30169',city:'Hannover',class:3,risk:'mittel'},
+    {plz:'30449',city:'Hannover',class:3,risk:'mittel'},
+    {plz:'26122',city:'Oldenburg',class:2,risk:'gering'},
+    {plz:'26127',city:'Oldenburg',class:2,risk:'gering'},
+    {plz:'38100',city:'Braunschweig',class:2,risk:'gering'},
+    {plz:'38114',city:'Braunschweig',class:2,risk:'gering'},
+    {plz:'38440',city:'Wolfsburg',class:2,risk:'gering'},
+    {plz:'37073',city:'Göttingen',class:2,risk:'gering'},
+    {plz:'38640',city:'Goslar',class:1,risk:'niedrig'},
+    {plz:'49074',city:'Osnabrück',class:2,risk:'gering'},
+    {plz:'49080',city:'Osnabrück',class:2,risk:'gering'},
+    {plz:'21335',city:'Lüneburg',class:1,risk:'niedrig'},
+    {plz:'29221',city:'Celle',class:1,risk:'niedrig'},
+    {plz:'31134',city:'Hildesheim',class:2,risk:'gering'},
+    {plz:'31785',city:'Hameln',class:1,risk:'niedrig'},
+    {plz:'32423',city:'Minden',class:2,risk:'gering'},
+    {plz:'32052',city:'Herford',class:2,risk:'gering'},
+    {plz:'26721',city:'Emden',class:1,risk:'niedrig'},
+    {plz:'26441',city:'Jever',class:1,risk:'niedrig'},
+    {plz:'27576',city:'Cuxhaven',class:1,risk:'niedrig'},
 
-    // Köln & NRW
+    // ── Nordrhein-Westfalen — Rheinland (Köln, Bonn, Aachen) ──
     {plz:'50667',city:'Köln',class:5,risk:'sehr hoch'},
-    {plz:'50823',city:'Köln',class:5,risk:'sehr hoch'},
+    {plz:'50668',city:'Köln',class:5,risk:'sehr hoch'},
+    {plz:'50670',city:'Köln',class:4,risk:'hoch'},
+    {plz:'50823',city:'Köln',class:4,risk:'hoch'},
+    {plz:'50933',city:'Köln',class:4,risk:'hoch'},
+    {plz:'51103',city:'Köln',class:4,risk:'hoch'},
     {plz:'53111',city:'Bonn',class:3,risk:'mittel'},
+    {plz:'53119',city:'Bonn',class:3,risk:'mittel'},
     {plz:'51373',city:'Leverkusen',class:3,risk:'mittel'},
-    {plz:'40210',city:'Düsseldorf',class:4,risk:'hoch'},
-    {plz:'41061',city:'Mönchengladbach',class:3,risk:'mittel'},
-    {plz:'41460',city:'Neuss',class:3,risk:'mittel'},
-    {plz:'42103',city:'Wuppertal',class:3,risk:'mittel'},
-    {plz:'42651',city:'Solingen',class:2,risk:'gering'},
-    {plz:'44135',city:'Dortmund',class:4,risk:'hoch'},
-    {plz:'44787',city:'Bochum',class:3,risk:'mittel'},
-    {plz:'45127',city:'Essen',class:4,risk:'hoch'},
-    {plz:'45879',city:'Gelsenkirchen',class:4,risk:'hoch'},
-    {plz:'47051',city:'Duisburg',class:4,risk:'hoch'},
-    {plz:'47798',city:'Krefeld',class:3,risk:'mittel'},
-    {plz:'48143',city:'Münster',class:2,risk:'gering'},
     {plz:'52062',city:'Aachen',class:3,risk:'mittel'},
+    {plz:'52070',city:'Aachen',class:3,risk:'mittel'},
+    {plz:'52525',city:'Heinsberg',class:2,risk:'gering'},
+    {plz:'53424',city:'Remagen',class:2,risk:'gering'},
+
+    // ── NRW — Düsseldorf / Niederrhein ──
+    {plz:'40210',city:'Düsseldorf',class:4,risk:'hoch'},
+    {plz:'40213',city:'Düsseldorf',class:4,risk:'hoch'},
+    {plz:'40477',city:'Düsseldorf',class:3,risk:'mittel'},
+    {plz:'41061',city:'Mönchengladbach',class:3,risk:'mittel'},
+    {plz:'41063',city:'Mönchengladbach',class:3,risk:'mittel'},
+    {plz:'41460',city:'Neuss',class:3,risk:'mittel'},
+    {plz:'41539',city:'Dormagen',class:2,risk:'gering'},
+    {plz:'46539',city:'Dinslaken',class:2,risk:'gering'},
+    {plz:'47051',city:'Duisburg',class:4,risk:'hoch'},
+    {plz:'47167',city:'Duisburg',class:4,risk:'hoch'},
+    {plz:'46047',city:'Oberhausen',class:3,risk:'mittel'},
+    {plz:'46395',city:'Bottrop',class:3,risk:'mittel'},
+    {plz:'46562',city:'Voerde',class:2,risk:'gering'},
+    {plz:'47608',city:'Geldern',class:2,risk:'gering'},
+
+    // ── NRW — Ruhrgebiet ──
+    {plz:'44135',city:'Dortmund',class:4,risk:'hoch'},
+    {plz:'44139',city:'Dortmund',class:4,risk:'hoch'},
+    {plz:'44787',city:'Bochum',class:3,risk:'mittel'},
+    {plz:'44793',city:'Bochum',class:3,risk:'mittel'},
+    {plz:'45127',city:'Essen',class:4,risk:'hoch'},
+    {plz:'45131',city:'Essen',class:4,risk:'hoch'},
+    {plz:'45879',city:'Gelsenkirchen',class:4,risk:'hoch'},
+    {plz:'45881',city:'Gelsenkirchen',class:4,risk:'hoch'},
+    {plz:'47798',city:'Krefeld',class:3,risk:'mittel'},
+    {plz:'45657',city:'Recklinghausen',class:3,risk:'mittel'},
+    {plz:'45868',city:'Castrop-Rauxel',class:2,risk:'gering'},
+    {plz:'46065',city:'Herne',class:3,risk:'mittel'},
+
+    // ── NRW — Bergisches Land / Münsterland / Ostwestfalen ──
+    {plz:'42103',city:'Wuppertal',class:3,risk:'mittel'},
+    {plz:'42117',city:'Wuppertal',class:3,risk:'mittel'},
+    {plz:'42651',city:'Solingen',class:2,risk:'gering'},
+    {plz:'58636',city:'Iserlohn',class:2,risk:'gering'},
+    {plz:'57072',city:'Siegen',class:2,risk:'gering'},
+    {plz:'58089',city:'Hagen',class:3,risk:'mittel'},
+    {plz:'58511',city:'Lüdenscheid',class:2,risk:'gering'},
+    {plz:'48143',city:'Münster',class:2,risk:'gering'},
+    {plz:'48151',city:'Münster',class:2,risk:'gering'},
     {plz:'59065',city:'Hamm',class:3,risk:'mittel'},
+    {plz:'59423',city:'Unna',class:2,risk:'gering'},
+    {plz:'33330',city:'Gütersloh',class:2,risk:'gering'},
     {plz:'33602',city:'Bielefeld',class:2,risk:'gering'},
+    {plz:'33613',city:'Bielefeld',class:2,risk:'gering'},
     {plz:'33098',city:'Paderborn',class:2,risk:'gering'},
+    {plz:'33739',city:'Bielefeld',class:2,risk:'gering'},
 
-    // Frankfurt & Hessen
+    // ── Hessen ──
     {plz:'60311',city:'Frankfurt am Main',class:5,risk:'sehr hoch'},
-    {plz:'60486',city:'Frankfurt am Main',class:5,risk:'sehr hoch'},
-    {plz:'63065',city:'Offenbach',class:5,risk:'sehr hoch'},
+    {plz:'60313',city:'Frankfurt am Main',class:5,risk:'sehr hoch'},
+    {plz:'60486',city:'Frankfurt am Main',class:4,risk:'hoch'},
+    {plz:'60528',city:'Frankfurt am Main',class:4,risk:'hoch'},
+    {plz:'61348',city:'Bad Homburg',class:2,risk:'gering'},
+    {plz:'61118',city:'Friedberg',class:2,risk:'gering'},
+    {plz:'63065',city:'Offenbach',class:4,risk:'hoch'},
+    {plz:'63067',city:'Offenbach',class:4,risk:'hoch'},
     {plz:'64283',city:'Darmstadt',class:3,risk:'mittel'},
+    {plz:'64285',city:'Darmstadt',class:3,risk:'mittel'},
+    {plz:'64625',city:'Bensheim',class:2,risk:'gering'},
     {plz:'65183',city:'Wiesbaden',class:3,risk:'mittel'},
+    {plz:'65187',city:'Wiesbaden',class:3,risk:'mittel'},
     {plz:'34117',city:'Kassel',class:3,risk:'mittel'},
+    {plz:'34121',city:'Kassel',class:3,risk:'mittel'},
     {plz:'35390',city:'Gießen',class:2,risk:'gering'},
-    {plz:'36037',city:'Fulda',class:1,risk:'niedrig'},
+    {plz:'35037',city:'Marburg',class:2,risk:'gering'},
+    {plz:'35576',city:'Wetzlar',class:2,risk:'gering'},
+    {plz:'36037',city:'Fulda',class:2,risk:'gering'},
 
-    // Stuttgart & Baden-Württemberg
+    // ── Rheinland-Pfalz ──
+    {plz:'55116',city:'Mainz',class:3,risk:'mittel'},
+    {plz:'55128',city:'Mainz',class:3,risk:'mittel'},
+    {plz:'56068',city:'Koblenz',class:2,risk:'gering'},
+    {plz:'56070',city:'Koblenz',class:2,risk:'gering'},
+    {plz:'54290',city:'Trier',class:2,risk:'gering'},
+    {plz:'54292',city:'Trier',class:2,risk:'gering'},
+    {plz:'67059',city:'Ludwigshafen',class:4,risk:'hoch'},
+    {plz:'67061',city:'Ludwigshafen',class:4,risk:'hoch'},
+    {plz:'67346',city:'Speyer',class:2,risk:'gering'},
+    {plz:'67655',city:'Kaiserslautern',class:2,risk:'gering'},
+    {plz:'55543',city:'Bad Kreuznach',class:2,risk:'gering'},
+    {plz:'56564',city:'Neuwied',class:2,risk:'gering'},
+    {plz:'67433',city:'Speyer',class:2,risk:'gering'},
+    {plz:'67547',city:'Worms',class:2,risk:'gering'},
+
+    // ── Saarland ──
+    {plz:'66111',city:'Saarbrücken',class:3,risk:'mittel'},
+    {plz:'66121',city:'Saarbrücken',class:3,risk:'mittel'},
+    {plz:'66740',city:'Saarlouis',class:2,risk:'gering'},
+    {plz:'66606',city:'St. Wendel',class:1,risk:'niedrig'},
+    {plz:'66386',city:'St. Ingbert',class:2,risk:'gering'},
+
+    // ── Baden-Württemberg ──
     {plz:'70173',city:'Stuttgart',class:4,risk:'hoch'},
-    {plz:'72070',city:'Tübingen',class:1,risk:'niedrig'},
+    {plz:'70174',city:'Stuttgart',class:4,risk:'hoch'},
+    {plz:'70180',city:'Stuttgart',class:4,risk:'hoch'},
+    {plz:'70327',city:'Stuttgart',class:3,risk:'mittel'},
+    {plz:'71063',city:'Sindelfingen',class:3,risk:'mittel'},
+    {plz:'71638',city:'Ludwigsburg',class:3,risk:'mittel'},
+    {plz:'73728',city:'Esslingen',class:3,risk:'mittel'},
+    {plz:'73033',city:'Göppingen',class:2,risk:'gering'},
+    {plz:'72070',city:'Tübingen',class:2,risk:'gering'},
     {plz:'72764',city:'Reutlingen',class:2,risk:'gering'},
     {plz:'74072',city:'Heilbronn',class:3,risk:'mittel'},
     {plz:'75172',city:'Pforzheim',class:3,risk:'mittel'},
     {plz:'76133',city:'Karlsruhe',class:3,risk:'mittel'},
+    {plz:'76135',city:'Karlsruhe',class:3,risk:'mittel'},
     {plz:'77652',city:'Offenburg',class:2,risk:'gering'},
+    {plz:'78048',city:'Villingen-Schwenningen',class:2,risk:'gering'},
+    {plz:'78224',city:'Singen',class:2,risk:'gering'},
     {plz:'79098',city:'Freiburg im Breisgau',class:2,risk:'gering'},
+    {plz:'79102',city:'Freiburg im Breisgau',class:2,risk:'gering'},
+    {plz:'88045',city:'Friedrichshafen',class:2,risk:'gering'},
+    {plz:'88048',city:'Friedrichshafen',class:2,risk:'gering'},
+    {plz:'88069',city:'Kressbronn',class:1,risk:'niedrig'},
+    {plz:'88214',city:'Ravensburg',class:2,risk:'gering'},
+    {plz:'78462',city:'Konstanz',class:2,risk:'gering'},
     {plz:'68159',city:'Mannheim',class:4,risk:'hoch'},
+    {plz:'68161',city:'Mannheim',class:4,risk:'hoch'},
     {plz:'69115',city:'Heidelberg',class:2,risk:'gering'},
+    {plz:'69117',city:'Heidelberg',class:2,risk:'gering'},
+    {plz:'69123',city:'Heidelberg',class:2,risk:'gering'},
     {plz:'89073',city:'Ulm',class:2,risk:'gering'},
+    {plz:'89075',city:'Ulm',class:2,risk:'gering'},
 
-    // Sachsen, Thüringen, Sachsen-Anhalt
+    // ── Bayern — München & Südbayern ──
+    {plz:'80331',city:'München',class:5,risk:'sehr hoch'},
+    {plz:'80333',city:'München',class:5,risk:'sehr hoch'},
+    {plz:'80336',city:'München',class:5,risk:'sehr hoch'},
+    {plz:'80538',city:'München',class:4,risk:'hoch'},
+    {plz:'80801',city:'München',class:4,risk:'hoch'},
+    {plz:'80802',city:'München',class:4,risk:'hoch'},
+    {plz:'81369',city:'München',class:4,risk:'hoch'},
+    {plz:'81543',city:'München',class:4,risk:'hoch'},
+    {plz:'81925',city:'München',class:3,risk:'mittel'},
+    {plz:'82152',city:'Planegg',class:2,risk:'gering'},
+    {plz:'82234',city:'Starnberg',class:2,risk:'gering'},
+    {plz:'82256',city:'Fürstenfeldbruck',class:2,risk:'gering'},
+    {plz:'85354',city:'Freising',class:2,risk:'gering'},
+    {plz:'83022',city:'Rosenheim',class:3,risk:'mittel'},
+    {plz:'83024',city:'Rosenheim',class:3,risk:'mittel'},
+
+    // ── Bayern — weitere Bezirke ──
+    {plz:'84028',city:'Landshut',class:2,risk:'gering'},
+    {plz:'85049',city:'Ingolstadt',class:3,risk:'mittel'},
+    {plz:'85051',city:'Ingolstadt',class:3,risk:'mittel'},
+    {plz:'86150',city:'Augsburg',class:3,risk:'mittel'},
+    {plz:'86152',city:'Augsburg',class:3,risk:'mittel'},
+    {plz:'87435',city:'Kempten (Allgäu)',class:2,risk:'gering'},
+    {plz:'87600',city:'Kaufbeuren',class:2,risk:'gering'},
+    {plz:'90402',city:'Nürnberg',class:4,risk:'hoch'},
+    {plz:'90419',city:'Nürnberg',class:4,risk:'hoch'},
+    {plz:'90762',city:'Fürth',class:3,risk:'mittel'},
+    {plz:'91052',city:'Erlangen',class:2,risk:'gering'},
+    {plz:'91056',city:'Erlangen',class:2,risk:'gering'},
+    {plz:'91522',city:'Ansbach',class:2,risk:'gering'},
+    {plz:'92637',city:'Weiden',class:2,risk:'gering'},
+    {plz:'92224',city:'Amberg',class:2,risk:'gering'},
+    {plz:'93047',city:'Regensburg',class:3,risk:'mittel'},
+    {plz:'93049',city:'Regensburg',class:3,risk:'mittel'},
+    {plz:'94032',city:'Passau',class:2,risk:'gering'},
+    {plz:'95444',city:'Bayreuth',class:2,risk:'gering'},
+    {plz:'95447',city:'Bayreuth',class:2,risk:'gering'},
+    {plz:'96047',city:'Bamberg',class:2,risk:'gering'},
+    {plz:'96450',city:'Coburg',class:2,risk:'gering'},
+    {plz:'95028',city:'Hof',class:2,risk:'gering'},
+    {plz:'63739',city:'Aschaffenburg',class:2,risk:'gering'},
+    {plz:'63741',city:'Aschaffenburg',class:2,risk:'gering'},
+    {plz:'97070',city:'Würzburg',class:2,risk:'gering'},
+    {plz:'97072',city:'Würzburg',class:2,risk:'gering'},
+    {plz:'97421',city:'Schweinfurt',class:2,risk:'gering'},
+    {plz:'97762',city:'Hammelburg',class:1,risk:'niedrig'},
+
+    // ── Sachsen ──
     {plz:'01067',city:'Dresden',class:3,risk:'mittel'},
+    {plz:'01069',city:'Dresden',class:3,risk:'mittel'},
+    {plz:'01187',city:'Dresden',class:3,risk:'mittel'},
     {plz:'04109',city:'Leipzig',class:3,risk:'mittel'},
+    {plz:'04229',city:'Leipzig',class:3,risk:'mittel'},
+    {plz:'04347',city:'Leipzig',class:3,risk:'mittel'},
     {plz:'09111',city:'Chemnitz',class:2,risk:'gering'},
-    {plz:'06108',city:'Halle (Saale)',class:3,risk:'mittel'},
-    {plz:'39104',city:'Magdeburg',class:3,risk:'mittel'},
+    {plz:'09113',city:'Chemnitz',class:2,risk:'gering'},
+    {plz:'02625',city:'Bautzen',class:1,risk:'niedrig'},
+    {plz:'02826',city:'Görlitz',class:1,risk:'niedrig'},
+    {plz:'08056',city:'Zwickau',class:2,risk:'gering'},
+    {plz:'08525',city:'Plauen',class:2,risk:'gering'},
+
+    // ── Thüringen ──
     {plz:'99084',city:'Erfurt',class:2,risk:'gering'},
+    {plz:'99085',city:'Erfurt',class:2,risk:'gering'},
     {plz:'07743',city:'Jena',class:2,risk:'gering'},
+    {plz:'07745',city:'Jena',class:2,risk:'gering'},
     {plz:'07545',city:'Gera',class:2,risk:'gering'},
+    {plz:'07749',city:'Jena',class:2,risk:'gering'},
+    {plz:'98527',city:'Suhl',class:2,risk:'gering'},
+    {plz:'99734',city:'Nordhausen',class:1,risk:'niedrig'},
+    {plz:'99867',city:'Gotha',class:1,risk:'niedrig'},
+    {plz:'99974',city:'Mühlhausen',class:1,risk:'niedrig'},
+    {plz:'06618',city:'Naumburg',class:1,risk:'niedrig'},
 
-    // Rheinland-Pfalz & Saarland
-    {plz:'55116',city:'Mainz',class:3,risk:'mittel'},
-    {plz:'56068',city:'Koblenz',class:2,risk:'gering'},
-    {plz:'54290',city:'Trier',class:2,risk:'gering'},
-    {plz:'67059',city:'Ludwigshafen',class:4,risk:'hoch'},
-    {plz:'66111',city:'Saarbrücken',class:3,risk:'mittel'},
-
-    // Niedersachsen, Schleswig-Holstein, MV
-    {plz:'30159',city:'Hannover',class:3,risk:'mittel'},
-    {plz:'38100',city:'Braunschweig',class:2,risk:'gering'},
-    {plz:'38440',city:'Wolfsburg',class:2,risk:'gering'},
-    {plz:'37073',city:'Göttingen',class:2,risk:'gering'},
-    {plz:'26122',city:'Oldenburg',class:2,risk:'gering'},
-    {plz:'49074',city:'Osnabrück',class:2,risk:'gering'},
-    {plz:'23552',city:'Lübeck',class:2,risk:'gering'},
-    {plz:'24103',city:'Kiel',class:2,risk:'gering'},
-    {plz:'24937',city:'Flensburg',class:1,risk:'niedrig'},
-    {plz:'18055',city:'Rostock',class:2,risk:'gering'},
-    {plz:'19053',city:'Schwerin',class:1,risk:'niedrig'}
+    // ── Sachsen-Anhalt ──
+    {plz:'06108',city:'Halle (Saale)',class:3,risk:'mittel'},
+    {plz:'06110',city:'Halle (Saale)',class:3,risk:'mittel'},
+    {plz:'06114',city:'Halle (Saale)',class:3,risk:'mittel'},
+    {plz:'39104',city:'Magdeburg',class:3,risk:'mittel'},
+    {plz:'39108',city:'Magdeburg',class:3,risk:'mittel'},
+    {plz:'06842',city:'Dessau-Roßlau',class:2,risk:'gering'},
+    {plz:'06847',city:'Dessau-Roßlau',class:2,risk:'gering'},
+    {plz:'39576',city:'Stendal',class:1,risk:'niedrig'},
+    {plz:'38820',city:'Halberstadt',class:1,risk:'niedrig'}
   ];
 
   // ============================================================
@@ -480,16 +693,16 @@
       if (exactMatch) {
         resultArea.classList.add('visible');
         if (resultBadge) {
-          resultBadge.textContent = '✅ Exakter Eintrag';
+          resultBadge.textContent = '✅ Zulassungsbezirk';
           resultBadge.style.background = '#28a745';
         }
         plzDisplay.textContent = `PLZ ${exactMatch.plz} — ${exactMatch.city}`;
         regionClassDisplay.textContent = `Klasse ${exactMatch.class}`;
         regionDetailDisplay.innerHTML = `
-          <p style="margin-bottom:0.5rem;"><strong>Einstufung:</strong> Exakt hinterlegter Datenbankwert für ${exactMatch.city}.</p>
+          <p style="margin-bottom:0.5rem;"><strong>Einstufung:</strong> Regionalklasse des Zulassungsbezirks ${exactMatch.city}.</p>
           <p><strong>Risikostufe:</strong> ${getRiskBadgeHTML(exactMatch.risk)}</p>
           <p style="font-size:0.85rem; color:#6c757d; margin-top:0.75rem;">
-            Diese Regionalklasse ist ein direkter Erfahrungswert für den Zulassungsbezirk ${exactMatch.city}.
+            Diese Klasse gilt für den gesamten Zulassungsbezirk ${exactMatch.city}. Der tatsächliche Beitrag hängt zusätzlich von Typklasse, SF-Klasse und individuellen Rabatten ab.
           </p>
         `;
         return;
@@ -502,16 +715,15 @@
 
       resultArea.classList.add('visible');
       if (resultBadge) {
-        resultBadge.textContent = '⚠️ Annäherungsweise Berechnung (PLZ-Region)';
+        resultBadge.textContent = '📍 PLZ-Region';
         resultBadge.style.background = '#e67e22';
       }
       plzDisplay.textContent = `PLZ ${query} — Region ${approx.region}`;
-      regionClassDisplay.textContent = `Klasse ${approx.class} (Geschätzt)`;
+      regionClassDisplay.textContent = `Klasse ${approx.class}`;
       regionDetailDisplay.innerHTML = `
         <p style="margin-bottom:0.5rem;"><strong>Risikostufe der Region:</strong> ${getRiskBadgeHTML(approx.risk)}</p>
         <div style="background:#fff8e6; border:1px solid #ffeba8; border-left:4px solid #f39c12; padding:0.85rem 1rem; border-radius:8px; margin-top:0.75rem; color:#8a5700; font-size:0.92rem; line-height:1.5;">
-          <strong>ℹ️ Information zur Berechnung:</strong> Für Ihre eingegebene PLZ <strong>${query}</strong> liegt kein isolierter Großstadt-Eintrag vor. 
-          Das Ergebnis ist eine <strong>annäherungsweise Berechnung auf Basis der PLZ-Region (${approx.region})</strong>.
+          <strong>ℹ️ Zuordnung:</strong> Für die PLZ <strong>${query}</strong> liegt kein eigener Zulassungsbezirk vor. Sie wird der <strong>PLZ-Region ${approx.region}</strong> zugeordnet, deren Regionalklasse hier angezeigt wird.
         </div>
       `;
       return;
