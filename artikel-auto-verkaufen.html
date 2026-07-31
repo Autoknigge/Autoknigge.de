@@ -10,7 +10,7 @@
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f241d">
 <style>
-  /* Moderne Styles für strukturiere Info-Boxen & Buttons */
+  /* Allgemeine Layout- & Card-Styles */
   .info-card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -42,6 +42,72 @@
     color: #333;
   }
 
+  /* carVertical Spezial-Sektion (Ganz oben) */
+  .carvertical-section {
+    background: #ffffff;
+    border: 1.5px solid #0066ff;
+    border-radius: 12px;
+    padding: 1.75rem;
+    margin: 1.5rem 0 2.5rem 0;
+    box-shadow: 0 4px 14px rgba(0, 102, 255, 0.08);
+  }
+
+  .carvertical-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e8eeff;
+  }
+
+  .carvertical-logo {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .carvertical-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* 4 Themen-Boxen: Icons OBERHALB der Themen */
+  .carvertical-feature-card {
+    background: #f4f7ff;
+    border-radius: 8px;
+    padding: 1.25rem 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .carvertical-feature-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem; /* Abstand nach unten, damit die Schrift nicht gedrängt ist */
+    display: block;
+    line-height: 1;
+  }
+
+  .carvertical-feature-card h4 {
+    margin: 0 0 0.4rem 0;
+    color: #0b2545;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .carvertical-feature-card p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #4a5568;
+    line-height: 1.4;
+  }
+
   /* Spezielle Highlighting-Boxen */
   .highlight-box {
     background: #eef6f3;
@@ -56,7 +122,7 @@
     color: #0f241d;
   }
 
-  /* Auffälliger Button für den Kaufvertrag */
+  /* Buttons & CTA Styles */
   .btn-download-cta {
     display: inline-flex;
     align-items: center;
@@ -81,7 +147,6 @@
     text-decoration: none;
   }
 
-  /* Aufwertung Partner-Box & Zweizeiliger Partner-Button */
   .partner-section-enhanced {
     background: linear-gradient(135deg, #f4f8f6 0%, #e5efe9 100%);
     border-radius: 12px;
@@ -90,7 +155,11 @@
     margin: 2rem 0;
   }
 
-  .partner-buttons {
+  /* Button-Gruppierung ganz unten */
+  .partner-buttons-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
     margin-top: 1.25rem;
     width: 100%;
   }
@@ -111,7 +180,6 @@
     box-sizing: border-box;
     line-height: 1.3;
     text-align: left;
-    margin-top: 0.75rem;
   }
 
   .partner-button-clean:hover {
@@ -139,6 +207,14 @@
     font-size: 0.8rem;
     opacity: 0.85;
     font-weight: 400;
+  }
+
+  /* carVertical spezifischer Button */
+  .btn-carvertical {
+    background-color: #0066ff;
+  }
+  .btn-carvertical:hover {
+    background-color: #0052cc;
   }
 </style>
 </head>
@@ -177,6 +253,48 @@
     <h1>Auto verkaufen – Checkliste für ein gutes Gelingen</h1>
     <p class="lead">Ob privater Verkauf, Inzahlungnahme oder Leasingrückgabe: Mit der richtigen Vorbereitung, gepflegter Optik und einem lückenlosen Vertrag vermeiden Sie Fallstricke und sichern sich den besten Erlös.</p>
 
+    <!-- CARVERTICAL SEKTION (GANZ OBEN) -->
+    <section class="carvertical-section">
+      <div class="carvertical-header">
+        <img src="carVertical Primary.png" alt="carVertical Logo" class="carvertical-logo">
+        <span style="font-size: 0.85rem; font-weight: 600; background: #e8eeff; color: #0066ff; padding: 0.35rem 0.75rem; border-radius: 20px;">Fahrzeughistorie-Check</span>
+      </div>
+
+      <p style="margin-bottom: 1.25rem;">Prüfen Sie die Fahrzeughistorie vor dem Kauf oder Verkauf anhand der Fahrgestellnummer (FIN). Schützen Sie sich vor bösen Überraschungen:</p>
+
+      <!-- 4 THEMEN MIT ICONS OBERHALB -->
+      <div class="carvertical-grid">
+        <div class="carvertical-feature-card">
+          <span class="carvertical-feature-icon">💥</span>
+          <h4>Versteckte Unfallschäden</h4>
+          <p>Bisherige Unfälle, Schäden & Reparaturkosten transparent einsehen.</p>
+        </div>
+        <div class="carvertical-feature-card">
+          <span class="carvertical-feature-icon">⏱️</span>
+          <h4>Tachoabweichung</h4>
+          <p>Manipulierte Kilometerstände erkennen und Betrug vorbeugen.</p>
+        </div>
+        <div class="carvertical-feature-card">
+          <span class="carvertical-feature-icon">🚔</span>
+          <h4>Diebstahl-Check</h4>
+          <p>Abgleich mit internationalen Polizeidatenbanken auf Diebstahl.</p>
+        </div>
+        <div class="carvertical-feature-card">
+          <span class="carvertical-feature-icon">📋</span>
+          <h4>Servicehistorie</h4>
+          <p>Wartungen, Inspektionsberichte & frühere Verkaufsfotos prüfen.</p>
+        </div>
+      </div>
+
+      <a href="https://www.carvertical.com/de/" target="_blank" rel="noopener sponsored" class="partner-button-clean btn-carvertical">
+        <span class="partner-icon">🔍</span>
+        <span class="partner-text">
+          <span class="partner-title">Fahrzeughistorie jetzt bei carVertical prüfen*</span>
+          <span class="partner-sub">FIN / Fahrgestellnummer eingeben & detaillierten Bericht erhalten →</span>
+        </span>
+      </a>
+    </section>
+
     <!-- SAUBERKEITS-SEKTION -->
     <section class="partner-section-enhanced">
       <h2>✨ Warum Sauberkeit entscheidend ist</h2>
@@ -190,7 +308,7 @@
             <strong>Erfahrung aus der Praxis:</strong> Vor dem Verkauf meines eigenen Gebrauchten sah der Lack durch die ständigen Waschstraßenbesuche ziemlich stumpf aus und war voller feiner Swirls. Ich habe das Auto an einem Nachmittag per Hand mit dieser Politur aufbereitet – der Tiefenglanz kam direkt zurück und selbst leichte Kratzer an den Türgriffen waren wie weggezaubert. Der Käufer war bei der Besichtigung sofort begeistert vom Neuwagen-Finish!
           </p>
 
-          <a href="https://link.amazon/B02F42UBt" target="_blank" rel="noopener sponsored" class="partner-button-clean">
+          <a href="https://link.amazon/B02F42UBt" target="_blank" rel="noopener sponsored" class="partner-button-clean" style="margin-top: 0.75rem;">
             <span class="partner-icon">✨</span>
             <span class="partner-text">
               <span class="partner-title">Empfohlene Autopolitur ansehen*</span>
@@ -210,13 +328,22 @@
         </div>
       </div>
 
-      <!-- ZWEIZEILIGER KLARER AFFILIATE-BUTTON -->
-      <div class="partner-buttons">
+      <!-- GEGRUPPIERTE BUTTONS (inkl. E-Auto vs Benziner) -->
+      <div class="partner-buttons-group">
         <a href="https://link.amazon/B0hxdeNk1" target="_blank" rel="noopener sponsored" class="partner-button-clean">
           <span class="partner-icon">🧹</span>
           <span class="partner-text">
             <span class="partner-title">Staubsauger & Nasssauger für Fahrzeugpflege*</span>
             <span class="partner-sub">Empfehlenswerte Geräte für Polster & Teppich ansehen →</span>
+          </span>
+        </a>
+
+        <!-- HIER HINGEHOERT: E-Auto vs. Benziner Button -->
+        <a href="artikel-e-auto-vs-benziner.html" class="partner-button-clean">
+          <span class="partner-icon">⚡</span>
+          <span class="partner-text">
+            <span class="partner-title">Ratgeber: E-Auto vs. Benziner im Kostenvergleich</span>
+            <span class="partner-sub">Welcher Antrieb rechnet sich beim Fahrzeugwechsel für Sie? →</span>
           </span>
         </a>
       </div>
@@ -237,7 +364,7 @@
             <strong>Selbst ausprobiert:</strong> Bei speckigen Lenkrädern, Schuhabrieb an den Einstiegsleisten und hartnäckigen Flecken auf den Stoffsitzen greife ich seit Jahren zu diesem Reiniger. Ich war erst skeptisch, ob er speckiges Leder wirklich wieder matt bekommt – aber er löst den Dreck extrem schonend, ohne Kunststoff oder Stoffe auszubleichen. Das Auto riecht danach wieder neutral und wie frisch vom Aufbereiter.
           </p>
 
-          <a href="https://link.amazon/B04N7fO92" target="_blank" rel="noopener sponsored" class="partner-button-clean">
+          <a href="https://link.amazon/B04N7fO92" target="_blank" rel="noopener sponsored" class="partner-button-clean" style="margin-top: 0.75rem;">
             <span class="partner-icon">🧼</span>
             <span class="partner-text">
               <span class="partner-title">Effektiven Innenraumreiniger ansehen*</span>
@@ -256,7 +383,7 @@
             <em>Wichtig:</em> Viele Werkstätten akzeptieren eigenes Öl problemlos. Es muss lediglich <strong>original verschlossen</strong> sein und exakt den <strong>Herstellervorgaben bzw. Freigaben</strong> (z. B. VW 504.00, BMW Longlife, etc.) entsprechen.
           </p>
 
-          <a href="https://link.amazon/B0dVJGHjO" target="_blank" rel="noopener sponsored" class="partner-button-clean">
+          <a href="https://link.amazon/B0dVJGHjO" target="_blank" rel="noopener sponsored" class="partner-button-clean" style="margin-top: 0.75rem;">
             <span class="partner-icon">🛢️</span>
             <span class="partner-text">
               <span class="partner-title">Passendes Marken-Motoröl finden*</span>
