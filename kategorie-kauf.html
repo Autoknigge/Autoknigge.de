@@ -9,6 +9,31 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f241d">
+<style>
+  /* Spezielles Styling für die hervorgehobene carVertical-Karte */
+  .card-featured {
+    grid-column: span 1;
+    background-color: #f4f8f6;
+    border: 2px solid #163a2f;
+    position: relative;
+    overflow: hidden;
+  }
+  @media (min-width: 768px) {
+    .card-featured {
+      grid-column: span 2; /* Auf Desktop-Bildschirmen etwas breiter hervorheben */
+    }
+  }
+  .badge-discount {
+    display: inline-block;
+    background-color: #0f241d;
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    margin-top: 0.5rem;
+  }
+</style>
 </head>
 <body>
 
@@ -52,11 +77,15 @@
           <h3>E-Auto vs. Benziner</h3>
           <p>Anschaffungs-, Lade- und Unterhaltskosten im direkten Vergleich.</p>
         </a>
-        <a class="card" href="artikel-gebrauchtwagen-historie-carvertical.html">
+
+        <!-- HERVORGEHOBENE CARVERTICAL KARTE MIT 20% RABATT -->
+        <a class="card card-featured" href="https://www.carvertical.com/de/landing/v3?voucher=IHR-RABATTCODE" target="_blank" rel="noopener sponsored">
           <div class="card-symbol">🔍</div>
-          <h3>Gebrauchtwagen-Historie prüfen</h3>
-          <p>Unfallschäden und Tachoabweichungen vor dem Kauf aufdecken.</p>
+          <h3>Gebrauchtwagen-Historie prüfen (carVertical)</h3>
+          <p>Deckst du Unfallschäden & Tachoabweichungen vor dem Kauf auf. Mit Autoknigge jetzt <strong>20 % Rabatt</strong> auf den carVertical-Bericht sichern.</p>
+          <span class="badge-discount">🎉 20 % Autoknigge Rabatt-Code aktiviert ↗</span>
         </a>
+
         <a class="card" href="artikel-pannenstatistik.html">
           <div class="card-symbol">🚨</div>
           <h3>Pannenstatistik</h3>
