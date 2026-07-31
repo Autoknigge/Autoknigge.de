@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Auto erfolgreich verkaufen | Autoknigge</title>
+<title>Auto verkaufen – Checkliste für ein gutes Gelingen | Autoknigge</title>
 <meta name="description" content="Worauf Sie beim Autoverkauf achten sollten – Vorbereitung - Fotos - Vertrag - Bezahlung.">
 <link rel="canonical" href="https://autoknigge.de/artikel-auto-verkaufen.html">
 <link rel="stylesheet" href="styles.css">
@@ -70,6 +70,8 @@
     box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
     transition: transform 0.2s, background-color 0.2s;
     margin: 0.75rem 0;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .btn-download-cta:hover {
@@ -78,13 +80,46 @@
     text-decoration: none;
   }
 
-  /* Aufwertung Partner-Box */
+  /* Aufwertung Partner-Box & Responsive Partner-Button */
   .partner-section-enhanced {
     background: linear-gradient(135deg, #f4f8f6 0%, #e5efe9 100%);
     border-radius: 12px;
     padding: 1.75rem;
     border: 1px solid #d0e2d8;
     margin: 2rem 0;
+  }
+
+  .partner-buttons {
+    margin-top: 1.25rem;
+    width: 100%;
+  }
+
+  .partner-button {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: #ffffff;
+    border: 1px solid #163a2f;
+    color: #163a2f;
+    padding: 0.85rem 1.2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .partner-button:hover {
+    background-color: #163a2f;
+    color: #ffffff;
+  }
+
+  .partner-name {
+    flex: 1;
+    white-space: normal; /* Erlaubt Umbruch auf Mobilgeräten */
+    word-break: break-word;
   }
 </style>
 </head>
@@ -119,17 +154,34 @@
       <a href="kategorie-kauf.html">Kauf</a> / 
       <span>Auto verkaufen</span>
     </nav>
-    <h1>Auto verkaufen – So erzielen Sie den Höchstpreis & vermeiden Ärger</h1>
-    <p class="lead">Ob privater Verkauf oder Inzahlungnahme: Mit der richtigen Vorbereitung, gepflegter Optik und einem lückenlosen Vertrag vermeiden Sie Fallstricke und sichern sich den besten Erlös.</p>
 
-    <!-- MEHRWERT VOR DEM NASSSAUGER: KOMFORT, GESUNDHEIT & PROFI-AUFBEREITUNG -->
+    <!-- KNACKIGE ÜBERSCHRIFT -->
+    <h1>Auto verkaufen – Checkliste für ein gutes Gelingen</h1>
+    <p class="lead">Ob privater Verkauf, Inzahlungnahme oder Leasingrückgabe: Mit der richtigen Vorbereitung, gepflegter Optik und einem lückenlosen Vertrag vermeiden Sie Fallstricke und sichern sich den besten Erlös.</p>
+
+    <!-- ÜBERSICHTLICHE SAUBERKEITS-SEKTION IN RASTER-STRUCTURE -->
     <section class="partner-section-enhanced">
-      <h2>✨ Sauberkeit als Wertgarantie & Gesundheitsplus</h2>
-      <p>Eine tiefengründliche Innenraumreinigung lohnt sich keineswegs nur für den Verkauf. Über die Jahre lagern sich in Polstern und Teppichen Unmengen an <strong>Feinstaub, Pollen, Bakterien und Allergenen</strong> ab, die das Raumklima belasten und unangenehme Gerüche verursachen. Eine gründliche Extraktion sorgt für ein frisches Fahrgefühl und spürbaren Komfortgewinn im Alltag.</p>
+      <h2>✨ Warum Sauberkeit entscheidend ist</h2>
+      
+      <div class="info-card-grid" style="margin-bottom: 1.5rem;">
+        <div class="info-card">
+          <h4>🛡️ Werterhalt & Korrosionsschutz</h4>
+          <p>Regelmäßiges Entfernen von Schmutz, Streusalz und Ackerresten an der Karosserie und im Radkasten schützt den Lack nachhaltig und minimiert das Rostrisiko drastisch.</p>
+        </div>
 
-      <p><strong>Verkaufstipp:</strong> Auch aus finanzieller Sicht zahlt sich Sauberkeit aus. Ein verharzter oder fleckiger Innenraum drückt den Verkaufspreis oft um viele hundert Euro. Eine investierte <strong>professionelle Fahrzeugaufbereitung</strong> (oder die gründliche Eigenleistung) lässt das Auto Jahre jünger wirken und steigert den Verkaufserlös oft um ein Vielfaches der Reinigungskosten!</p>
+        <div class="info-card">
+          <h4>🌿 Gesundheit & Wohlbefinden</h4>
+          <p>Über die Jahre sammeln sich Pollen, Bakterien und Allergene im Innenraum. Wechseln Sie regelmäßig den <strong>Innenraumfilter (am besten Aktivkohle)</strong> für frische Luft und spürbar mehr Fahrkomfort.</p>
+        </div>
 
-      <div class="partner-buttons" style="margin-top: 1.25rem;">
+        <div class="info-card">
+          <h4>💶 Verkauf, Inzahlungnahme & Leasing</h4>
+          <p>Ob Privatverkauf, Händler-Inzahlungnahme oder Leasingrückgabe: Ein gepflegter, geruchsfreier Innenraum verhindert teure Nachzahlungen oder Abzüge und sichert den Höchstpreis.</p>
+        </div>
+      </div>
+
+      <!-- PARTNER-BUTTON GEFLUSST & FULLY RESPONSIVE -->
+      <div class="partner-buttons">
         <a href="https://link.amazon/B0hxdeNk1" target="_blank" rel="noopener sponsored" class="partner-button">
           <span class="partner-icon">🧹</span>
           <span class="partner-name">Nasssauger für Polster & Teppich ansehen</span>
@@ -139,7 +191,7 @@
       <p style="font-size: 0.85rem; color: #6c757d; margin-top: 0.5rem;">* Als Partner unterstütze ich diese Empfehlung. Für Sie entstehen dadurch selbstverständlich keine Mehrkosten.</p>
     </section>
 
-    <!-- SAUBER STRUKTURIERTE CARDS STATT ALTBACKENER LISTE -->
+    <!-- CHECKLISTEN -->
     <section>
       <h2>🚗 Checkliste Vorbereitung: Werterhalt & Historie</h2>
       <p>Bevor die ersten Fotos entstehen, bringen Sie Optik und Papiere auf Vordermann:</p>
@@ -182,12 +234,11 @@
       </div>
     </section>
 
-    <!-- HIGHLIGHT-BOX FÜR DEUTLICH SICHTBAREN KAUFVERTRAG-DOWNLOAD -->
+    <!-- KAUFVERTRAG SECTION -->
     <section class="highlight-box">
       <h3>📝 Rechtssicherer Kaufvertrag & Gewährleistung</h3>
       <p>Ein schriftlicher Vertrag schützt Verkäufer und Käufer gleichermaßen. Laden Sie sich hier direkt die kostenlose Vorlage herunter:</p>
       
-      <!-- BUTTON KLAR FARBLICH ABGEHOBEN -->
       <div>
         <a href="kfz-kaufvertrag.pdf" download class="btn-download-cta">
           <span>📄</span> Autoknigge Muster-Kaufvertrag (PDF) herunterladen
@@ -195,9 +246,10 @@
       </div>
 
       <p style="margin-top: 1rem;"><strong>Der Gewährleistungsausschluss beim Privatverkauf:</strong><br>
-      Als privater Verkäufer haben Sie die Möglichkeit, die gesetzliche <em>Sachmängelhaftung (Gewährleistung)</em> im Vertrag explizit auszuschließen ("Gekauft wie gesehen unter Ausschluss jeglicher Gewährleistung"). Dies schützt Sie vor nachträglichen Forderungen bei späteren Defekten. Natürlich steht es Ihnen frei, das Fahrzeug auch <em>mit</em> Gewährleistung zu verkaufen (z.B. wenn noch Restgarantie besteht oder Sie absolute Sicherheit bieten wollen).</p>
+      Als privater Verkäufer haben Sie die Möglichkeit, die gesetzliche <em>Sachmängelhaftung (Gewährleistung)</em> im Vertrag explizit auszuschließen ("Gekauft wie gesehen unter Ausschluss jeglicher Gewährleistung"). Dies schützt Sie vor nachträglichen Forderungen bei späteren Defekten.</p>
     </section>
 
+    <!-- SICHERHEIT & BEZAHLUNG -->
     <section>
       <h2>🛡️ Bezahlung, Bargeldregeln & Sicherheitsstandards</h2>
       <p>Bei der Übergabe und der Bezahlung sollten Sie keine Kompromisse eingehen. Beachten Sie die folgenden Grundregeln:</p>
