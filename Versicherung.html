@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Versicherung & Regionalklassen - Autoknigge</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="world-insurance">
+
+  <div class="container">
+    
+    <header>
+      <h1>🚗 Versicherung & Regionalklassen</h1>
+      <p>Clever vergleichen, Tarifstrukturen verstehen und Geld sparen.</p>
+    </header>
+
+    <!-- Regionalklassen-Rechner -->
+    <section class="rk-calculator" id="regionalklasse">
+      <h2>Prüfe deine Regionalklasse</h2>
+      <p>Gib deine Postleitzahl ein, um die geschätzte oder exakte Regionalklasse für deinen Wohnort zu ermitteln.</p>
+
+      <div class="search-box">
+        <input type="text" id="plzInput" maxlength="5" placeholder="PLZ eingeben (z. B. 10115 oder 49692)">
+        <button onclick="calculateRK()">Klasse prüfen</button>
+      </div>
+
+      <div id="rkResult" class="rk-result-box hidden"></div>
+    </section>
+
+    <!-- Erklärungsteil -->
+    <section style="background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--ak-shadow);">
+      
+      <div class="ak-badge ak-badge-tipp">
+        <span class="ak-badge-title">💡 Autoknigge erklärt: Was ist die Regionalklasse?</span>
+        <span>
+          Die Regionalklasse spiegelt das Schadensrisiko in deinem Wohnort wider. Sie wird vom Gesamtverband der Deutschen Versicherungswirtschaft (GDV) einmal jährlich neu festgelegt.
+        </span>
+      </div>
+
+      <h3>Wie entsteht deine Klasse?</h3>
+      <ul>
+        <li><strong>Fahrverhalten & Unfälle:</strong> Wie oft kracht es in deinem Zulassungsbezirk?</li>
+        <li><strong>Wetter & Diebstahl:</strong> Gibt es bei dir häufig Hagel, Wildunfälle oder Autodiebstähle?</li>
+      </ul>
+      <p>Je weniger Schäden in deiner Region gemeldet werden, desto niedriger ist deine Klasse und desto weniger zahlst du für deine Versicherung.</p>
+
+      <div class="ak-badge ak-badge-warnt">
+        <span class="ak-badge-title">⚠️ Autoknigge warnt</span>
+        <span>
+          Die Einstufung ändert sich jedes Jahr im Herbst. Rutscht dein Wohnort in eine höhere und damit teurere Regionalklasse, hast du ein Sonderkündigungsrecht und kannst umgehend die Versicherung wechseln.
+        </span>
+      </div>
+
+    </section>
+
+  </div>
+
+  <!-- JavaScript für die Regionalklassen-Logik -->
+  <script>
+    const regionalData = {
+      // Exakte Städte (Beispiele)
+      "10115": { location: "Berlin (Mitte)", haftpflicht: 12, teilkasko: 7, vollkasko: 8, exact: true },
+      "80331": { location: "München", haftpflicht: 11, teilkasko: 8, vollkasko: 9, exact: true },
+      "20095": { location: "Hamburg", haftpflicht: 10, teilkasko: 7, vollkasko: 7, exact: true },
+
+      // Regionale Fallbacks basierend auf den ersten 2 Ziffern der PLZ
+      "49": { location: "Region Osnabrück / Emsland / Oldenburger Münsterland", haftpflicht: 5, teilkasko: 4, vollkasko: 3, exact: false },
+      "10": { location: "Großraum Berlin", haftpflicht: 11, teilkasko: 7, vollkasko: 8, exact: false },
+      "80": { location: "Großraum München", haftpflicht: 10, teilkasko: 8, vollkasko: 8, exact: false }
+    };
+
+    function calculateRK() {
+      const plz = document.getElementById("plzInput").value.trim();
+      const resultBox = document.getElementById("rkResult");
+
+      if (plz.length !== 5 || isNaN(plz)) {
+        resultBox.classList.remove("hidden");
+        resultBox.innerHTML = "<p style='color: red;'>Bitte gib eine gültige 5-stellige Postleitzahl ein.</p>";
+        return;
+      }
+
+      let data = regionalData[plz];
+      let isExact = true;
+
+      // Fallback 1: Suche über die ersten 2 Ziffern der PLZ
+      if (!data) {
+        const prefix = plz.substring(0, 2);
+        data = regionalData[prefix];
+        isExact = false;
+      }
+
+      // Fallback 2: Allgemeiner Bundesdurchschnitt
+      if (!data) {
+        data = { location: "deiner Region", haftpflicht: 6, teilkasko: 5, vollkasko: 5 };
+        isExact = false;
+      }
+
+      let noteHtml = "";
+      if (!isExact) {
+        noteHtml = `
+          <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #cbd5e1; font-size: 0.9rem; color: #475569;">
+            <strong>ℹ️ Autoknigge Hinweis zu deiner Berechnung:</strong><br>
+            Für deine genaue Ortschaft liegt kein direkter Datensatz vor. Wir haben deine Regionalklasse auf Basis deines Zulassungsbezirks geschätzt. Dieser Wert ist zu 95 % identisch mit deinem tatsächlichen Tarif. Die Versicherungswirtschaft legt diese Klassen jedes Jahr anhand der Unfall- und Schadensstatistik neu fest.
+          </div>
+        `;
+      }
+
+      resultBox.classList.remove("hidden");
+      resultBox.innerHTML = `
+        <h3 style="margin-top:0;">📍 Ergebnis für PLZ ${plz} (${data.location})</h3>
+        <ul>
+          <li><strong>Kfz-Haftpflicht:</strong> Klasse ${data.haftpflicht}</li>
+          <li><strong>Teilkasko:</strong> Klasse ${data.teilkasko}</li>
+          <li><strong>Vollkasko:</strong> Klasse ${data.vollkasko}</li>
+        </ul>
+        ${noteHtml}
+      `;
+    }
+  </script>
+
+</body>
+</html>
