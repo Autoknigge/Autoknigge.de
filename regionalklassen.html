@@ -10,22 +10,160 @@
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#0f241d">
   <style>
-    .info-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
-    .info-card { background: #fff; border: 1px solid #e9ecef; border-radius: 12px; padding: 1.5rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-    .info-card h4 { color: #0f241d; margin-bottom: 0.5rem; font-size: 1.2rem; }
-    .info-card .class-range { font-size: 2rem; font-weight: 700; color: #163a2f; margin: 0.5rem 0; }
-    .info-card .avg { font-size: 0.85rem; color: #6c757d; }
+    /* Raster für die 3 Karten */
+    .info-card-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+      gap: 1.5rem; 
+      margin: 2rem 0; 
+    }
     
-    .external-tool-box { background: #eef6f3; border: 2px solid #163a2f; border-radius: 16px; padding: 2rem; text-align: center; margin: 2.5rem 0; }
-    .external-tool-box h3 { color: #0f241d; margin-bottom: 0.75rem; }
-    .external-tool-box p { color: #2c3e50; max-width: 650px; margin: 0 auto 1.5rem auto; line-height: 1.6; }
-    .btn-gdv { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 2rem; background: #0f241d; color: #fff; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 1.05rem; transition: background 0.2s, transform 0.1s; }
-    .btn-gdv:hover { background: #1a3d32; transform: translateY(-2px); }
+    /* Basis-Styling für alle Karten */
+    .info-card { 
+      border-radius: 12px; 
+      padding: 1.75rem 1.5rem; 
+      text-align: center; 
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .info-card h4 { 
+      margin-top: 0;
+      margin-bottom: 0.5rem; 
+      font-size: 1.3rem; 
+      font-weight: 700;
+    }
 
-    .gdv-details { background: #f8f9fa; border-radius: 12px; padding: 1.5rem; margin-top: 2rem; border-left: 4px solid #0f241d; }
-    .gdv-details h4 { margin-top: 0; color: #0f241d; }
-    .gdv-details ul { padding-left: 1.2rem; margin-bottom: 0; }
-    .gdv-details li { margin-bottom: 0.5rem; color: #495057; }
+    .info-card .class-range { 
+      font-size: 2.4rem; 
+      font-weight: 800; 
+      margin: 0.6rem 0; 
+      line-height: 1;
+    }
+
+    .info-card .avg { 
+      font-size: 0.85rem; 
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .info-card .desc {
+      font-size: 0.9rem;
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    /* ----------------------------------------------------
+       FARBLICHE UNTERSCHIEDE (MIT HOHEM KONTRAST)
+       ---------------------------------------------------- */
+    
+    /* 1. Kfz-Haftpflicht (Sanftes Blau) */
+    .card-haftpflicht {
+      background-color: #ebf3fa;
+      border-top: 5px solid #1d609b;
+    }
+    .card-haftpflicht h4, 
+    .card-haftpflicht .class-range {
+      color: #0d3b66;
+    }
+    .card-haftpflicht .avg {
+      color: #1d609b;
+    }
+    .card-haftpflicht .desc {
+      color: #1a334e;
+    }
+
+    /* 2. Vollkasko (Sanftes Grün / Petrol) */
+    .card-vollkasko {
+      background-color: #eaf5f2;
+      border-top: 5px solid #165b4c;
+    }
+    .card-vollkasko h4, 
+    .card-vollkasko .class-range {
+      color: #09372e;
+    }
+    .card-vollkasko .avg {
+      color: #165b4c;
+    }
+    .card-vollkasko .desc {
+      color: #14352d;
+    }
+
+    /* 3. Teilkasko (Sanftes Bernstein / Warmes Gelb-Orange) */
+    .card-teilkasko {
+      background-color: #fff6e5;
+      border-top: 5px solid #b86e00;
+    }
+    .card-teilkasko h4, 
+    .card-teilkasko .class-range {
+      color: #5c3400;
+    }
+    .card-teilkasko .avg {
+      color: #8f5200;
+    }
+    .card-teilkasko .desc {
+      color: #472b03;
+    }
+
+    /* Externe Direktabfrage-Box */
+    .external-tool-box { 
+      background: #f8f9fa; 
+      border: 2px solid #0f241d; 
+      border-radius: 16px; 
+      padding: 2rem; 
+      text-align: center; 
+      margin: 2.5rem 0; 
+    }
+    .external-tool-box h3 { 
+      color: #0f241d; 
+      margin-bottom: 0.75rem; 
+    }
+    .external-tool-box p { 
+      color: #2c3e50; 
+      max-width: 650px; 
+      margin: 0 auto 1.5rem auto; 
+      line-height: 1.6; 
+    }
+    .btn-gdv { 
+      display: inline-flex; 
+      align-items: center; 
+      gap: 0.5rem; 
+      padding: 0.9rem 2rem; 
+      background: #0f241d; 
+      color: #fff; 
+      text-decoration: none; 
+      border-radius: 10px; 
+      font-weight: 600; 
+      font-size: 1.05rem; 
+      transition: background 0.2s, transform 0.1s; 
+    }
+    .btn-gdv:hover { 
+      background: #1a3d32; 
+      transform: translateY(-2px); 
+    }
+
+    .gdv-details { 
+      background: #ffffff; 
+      border-radius: 12px; 
+      padding: 1.5rem; 
+      margin-top: 2rem; 
+      border: 1px solid #e9ecef;
+      border-left: 4px solid #0f241d; 
+    }
+    .gdv-details h4 { 
+      margin-top: 0; 
+      color: #0f241d; 
+    }
+    .gdv-details ul { 
+      padding-left: 1.2rem; 
+      margin-bottom: 0; 
+    }
+    .gdv-details li { 
+      margin-bottom: 0.5rem; 
+      color: #495057; 
+    }
   </style>
 </head>
 <body>
@@ -66,39 +204,44 @@
       <div class="cat-page-title-wrap">
         <h1>Regionalklassen in der Kfz-Versicherung</h1>
       </div>
-      <p class="lead">Die Regionalklasse spiegelt die Schaden- und Unfallbilanz Ihres Zulassungsbezirks wider. Hier finden Sie alle Grunddaten sowie den direkten Zugriff auf die Datenbank des GDV.</p>
+      <p class="lead">Die Regionalklasse spiegelt die Schaden- und Unfallbilanz Ihres Zulassungsbezirks wider. Hier finden Sie die Aufteilung sowie den direkten Zugriff auf die Datenbank des GDV.</p>
     </div>
 
-    <!-- WICHTIGE INFORMATIONEN DIREKT AUF DEINER SEITE -->
+    <!-- 3 SPARTEN FARIEN UNTERSCHIEDLICH FARBLICH UNTERLEGT -->
     <section>
       <h2>Das 3-Säulen-System der Regionalklassen</h2>
-      <p>Die Regionalklassen werden einmal jährlich vom Gesamtverband der Deutschen Versicherungswirtschaft (GDV) für die über 400 deutschen Zulassungsbezirke berechnet. Es gibt unterschiedliche Einteilungen für jede Versicherungsart:</p>
+      <p>Die Regionalklassen werden einmal jährlich vom Gesamtverband der Deutschen Versicherungswirtschaft (GDV) für alle 400 deutschen Zulassungsbezirke berechnet. Jede Versicherungsart hat dabei eigene Skalen:</p>
       
       <div class="info-card-grid">
-        <div class="info-card">
+        
+        <!-- 1. KFZ-HAFTPFLICHT (BLAU) -->
+        <div class="info-card card-haftpflicht">
           <h4>Kfz-Haftpflicht</h4>
           <div class="class-range">1 – 12</div>
-          <p class="avg">Bundesdurchschnitt = Klasse 6 (Index 100)</p>
-          <p style="font-size:0.85rem; margin-top:0.5rem; color:#555;">Maßgeblich: Anzahl der verursachten Unfälle & Schadenhöhe der Autofahrer im Bezirk.</p>
+          <div class="avg">Bundesdurchschnitt = Klasse 6</div>
+          <p class="desc"><strong>Maßgeblich:</strong> Anzahl der verursachten Unfälle & die Gesamtschadenhöhe der Autofahrer im Bezirk.</p>
         </div>
         
-        <div class="info-card">
+        <!-- 2. VOLLKASKO (GRÜN/PETROL) -->
+        <div class="info-card card-vollkasko">
           <h4>Vollkasko</h4>
           <div class="class-range">1 – 9</div>
-          <p class="avg">Bundesdurchschnitt = Klasse 4 (Index 100)</p>
-          <p style="font-size:0.85rem; margin-top:0.5rem; color:#555;">Maßgeblich: Vandalismus, Eigenverschulden und Teilkasko-Einflüsse.</p>
+          <div class="avg">Bundesdurchschnitt = Klasse 4</div>
+          <p class="desc"><strong>Maßgeblich:</strong> Vandalismus, Eigenverschulden sowie alle Teilkasko-Einflüsse.</p>
         </div>
 
-        <div class="info-card">
+        <!-- 3. TEILKASKO (ORANGE/BERNSTEIN) -->
+        <div class="info-card card-teilkasko">
           <h4>Teilkasko</h4>
           <div class="class-range">1 – 16</div>
-          <p class="avg">Bundesdurchschnitt = Klasse 7 (Index 100)</p>
-          <p style="font-size:0.85rem; margin-top:0.5rem; color:#555;">Maßgeblich: Diebstahl, Wildunfälle, Sturm, Hagel & Glasbruch.</p>
+          <div class="avg">Bundesdurchschnitt = Klasse 7</div>
+          <p class="desc"><strong>Maßgeblich:</strong> Diebstahl, Wildunfälle, Sturm, Hagel, Überschwemmungen & Glasbruch.</p>
         </div>
+
       </div>
     </section>
 
-    <!-- DIREKT-ABFRAGE / VERWEIS-BOX -->
+    <!-- DIREKT-ABFRAGE VERWEIS-BOX -->
     <section class="external-tool-box">
       <h3>🔍 Offizielle Regionalklasse abfragen</h3>
       <p>
@@ -120,8 +263,8 @@
     <section class="gdv-details">
       <h4>💡 Was Sie zu den Regionalklassen wissen müssen:</h4>
       <ul>
-        <li><strong>Zulassungsbezirk entscheidend:</strong> Die Regionalklasse gilt für Ihren gesamten Landkreis bzw. Ihre kreisfreie Stadt – nicht für einzelne Postleitzahlen innerhalb einer Stadt.</li>
-        <li><strong>Gültigkeit:</strong> Die Einstufungen gelten unverbindlich für Verträge des kommenden Versicherungsjahres.</li>
+        <li><strong>Zulassungsbezirk entscheidend:</strong> Die Regionalklasse gilt einheitlich für Ihren gesamten Landkreis bzw. Ihre kreisfreie Stadt – nicht für einzelne Stadtteile.</li>
+        <li><strong>Gültigkeit:</strong> Die Einstufungen gelten unverbindlich für Neu- und Bestandskunden des kommenden Versicherungsjahres.</li>
         <li><strong>Sonderkündigungsrecht:</strong> Stuft Ihr Versicherer Ihren Bezirk in eine höhere Regionalklasse ein und erhöht sich dadurch Ihr Beitrag, haben Sie ein 4-wöchiges Sonderkündigungsrecht!</li>
       </ul>
     </section>
