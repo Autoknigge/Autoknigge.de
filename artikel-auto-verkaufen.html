@@ -72,6 +72,7 @@
     margin: 0.75rem 0;
     max-width: 100%;
     box-sizing: border-box;
+    white-space: normal;
   }
 
   .btn-download-cta:hover {
@@ -80,7 +81,7 @@
     text-decoration: none;
   }
 
-  /* Aufwertung Partner-Box & Responsive Partner-Button */
+  /* Aufwertung Partner-Box & Zweizeiliger Partner-Button */
   .partner-section-enhanced {
     background: linear-gradient(135deg, #f4f8f6 0%, #e5efe9 100%);
     border-radius: 12px;
@@ -94,32 +95,49 @@
     width: 100%;
   }
 
-  .partner-button {
-    display: flex;
+  .partner-button-clean {
+    display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
-    background-color: #ffffff;
-    border: 1px solid #163a2f;
-    color: #163a2f;
-    padding: 0.85rem 1.2rem;
+    gap: 0.8rem;
+    background-color: #163a2f;
+    color: #ffffff !important;
+    padding: 0.85rem 1.25rem;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    transition: all 0.2s ease;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    transition: background-color 0.2s, transform 0.2s;
     max-width: 100%;
     box-sizing: border-box;
+    line-height: 1.3;
+    text-align: left;
   }
 
-  .partner-button:hover {
-    background-color: #163a2f;
-    color: #ffffff;
+  .partner-button-clean:hover {
+    background-color: #0f241d;
+    transform: translateY(-2px);
+    text-decoration: none;
   }
 
-  .partner-name {
-    flex: 1;
-    white-space: normal; /* Erlaubt Umbruch auf Mobilgeräten */
-    word-break: break-word;
+  .partner-button-clean .partner-icon {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  .partner-button-clean .partner-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .partner-button-clean .partner-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .partner-button-clean .partner-sub {
+    font-size: 0.8rem;
+    opacity: 0.85;
+    font-weight: 400;
   }
 </style>
 </head>
@@ -155,11 +173,10 @@
       <span>Auto verkaufen</span>
     </nav>
 
-    <!-- KNACKIGE ÜBERSCHRIFT -->
     <h1>Auto verkaufen – Checkliste für ein gutes Gelingen</h1>
     <p class="lead">Ob privater Verkauf, Inzahlungnahme oder Leasingrückgabe: Mit der richtigen Vorbereitung, gepflegter Optik und einem lückenlosen Vertrag vermeiden Sie Fallstricke und sichern sich den besten Erlös.</p>
 
-    <!-- ÜBERSICHTLICHE SAUBERKEITS-SEKTION IN RASTER-STRUCTURE -->
+    <!-- SAUBERKEITS-SEKTION -->
     <section class="partner-section-enhanced">
       <h2>✨ Warum Sauberkeit entscheidend ist</h2>
       
@@ -180,12 +197,14 @@
         </div>
       </div>
 
-      <!-- PARTNER-BUTTON GEFLUSST & FULLY RESPONSIVE -->
+      <!-- ZWEIZEILIGER KLARER AFFILIATE-BUTTON -->
       <div class="partner-buttons">
-        <a href="https://link.amazon/B0hxdeNk1" target="_blank" rel="noopener sponsored" class="partner-button">
+        <a href="https://link.amazon/B0hxdeNk1" target="_blank" rel="noopener sponsored" class="partner-button-clean">
           <span class="partner-icon">🧹</span>
-          <span class="partner-name">Nasssauger für Polster & Teppich ansehen</span>
-          <span class="partner-arrow">→</span>
+          <span class="partner-text">
+            <span class="partner-title">Staubsauger & Nasssauger für Fahrzeugpflege</span>
+            <span class="partner-sub">Empfehlenswerte Geräte für Polster & Teppich ansehen →</span>
+          </span>
         </a>
       </div>
       <p style="font-size: 0.85rem; color: #6c757d; margin-top: 0.5rem;">* Als Partner unterstütze ich diese Empfehlung. Für Sie entstehen dadurch selbstverständlich keine Mehrkosten.</p>
@@ -249,30 +268,30 @@
       Als privater Verkäufer haben Sie die Möglichkeit, die gesetzliche <em>Sachmängelhaftung (Gewährleistung)</em> im Vertrag explizit auszuschließen ("Gekauft wie gesehen unter Ausschluss jeglicher Gewährleistung"). Dies schützt Sie vor nachträglichen Forderungen bei späteren Defekten.</p>
     </section>
 
-    <!-- SICHERHEIT & BEZAHLUNG -->
+    <!-- BARGELD- UND REGELUNGEN / OBERGRENZEN -->
     <section>
-      <h2>🛡️ Bezahlung, Bargeldregeln & Sicherheitsstandards</h2>
-      <p>Bei der Übergabe und der Bezahlung sollten Sie keine Kompromisse eingehen. Beachten Sie die folgenden Grundregeln:</p>
+      <h2>🛡️ Bezahlung & Bargeldregeln: Wie viel Bargeld ist erlaubt?</h2>
+      <p>Bargeld ist beim Autoverkauf nach wie vor beliebt. Es gelten rechtliche Regeln und Obergrenzen für Privat- und Gewerbeverkäufe:</p>
 
       <div class="info-card-grid">
-        <div class="info-card" style="border-left-color: #e74c3c;">
-          <h4>🆔 Ausweispflicht & Identität</h4>
-          <p>Gleichen Sie den Personalausweis oder Reisepass des Käufers zwingend mit den Daten im Kaufvertrag ab. Notieren Sie die Ausweisnummer und prüfen Sie das Foto!</p>
+        <div class="info-card" style="border-left-color: #27ae60;">
+          <h4>🤝 Privat an Privat: Keine Obergrenze</h4>
+          <p><strong>Wann es NICHT gilt:</strong> Beim Verkäufen von Privatperson zu Privatperson gibt es kein gesetzliches Bargeldlimit. Sie dürfen Ihr Auto also auch legal für 15.000 € oder mehr gegen Barzahlung verkaufen und die Summe mitnehmen.</p>
         </div>
 
-        <div class="info-card" style="border-left-color: #27ae60;">
-          <h4>💶 Bargeld & Obergrenzen</h4>
-          <p>Für Barzahlungen gelten strikte Regeln: Ab 2.500 € sind Banken zur Identitätsprüfung verpflichtet, ab 10.000 € gilt in Deutschland eine Nachweispflicht der Geldherkunft (EU-Obergrenze für Bargeldzahlungen).</p>
+        <div class="info-card" style="border-left-color: #e74c3c;">
+          <h4>🏢 Gewerblicher Verkauf: 10.000 € EU-Obergrenze</h4>
+          <p><strong>Wann es gilt:</strong> Wer gewerblich ein Auto verkauft oder an einen Händler veräußert, fällt unter die gesetzlichen Bargeldobergrenzen. In der EU gilt für geschäftliche Transaktionen ein absolutes Barzahlungsverbot ab 10.000 €.</p>
         </div>
 
         <div class="info-card" style="border-left-color: #f39c12;">
-          <h4>⚡ SEPA-Echtzeitüberweisung</h4>
-          <p>Die sicherste Alternative zu großen Bargeldmengen: Lassen Sie sich das Geld direkt vor Ort per <em>SEPA-Instant / Echtzeitüberweisung</em> auf Ihr Bankkonto senden und prüfen Sie den Eingang in Ihrer Banking-App.</p>
+          <h4>🏦 Einzahlung bei der Bank: Nachweispflicht ab 10.000 €</h4>
+          <p>Wer als Privatperson <strong>ab 10.000 € Bargeld</strong> auf das eigene Girokonto einzahlen möchte, muss nach dem Geldwäschegesetz (§ 10 GwG) die Mittelherkunft nachweisen. Reichen Sie dazu einfach den unterzeichneten <strong>Kaufvertrag</strong> bei der Bank ein.</p>
         </div>
 
         <div class="info-card" style="border-left-color: #2980b9;">
-          <h4>🚘 Übergabe & Abmeldung</h4>
-          <p>Händigen Sie Schlüssel und Papiere erst aus, wenn das Geld vollständig vorliegt. Melden Sie den Verkauf unverzüglich Ihrer Zulassungsstelle und Versicherung.</p>
+          <h4>⚡ SEPA-Echtzeitüberweisung als Alternative</h4>
+          <p>Vermeiden Sie Risiken wie Falschgeld oder Diebstahl beim Geldtransport. Die sicherste Methode ist die <strong>SEPA-Echtzeitüberweisung (SEPA Instant)</strong> vor Ort: Das Geld geht unumkehrbar in Sekunden auf Ihrem Bankkonto ein.</p>
         </div>
       </div>
     </section>
