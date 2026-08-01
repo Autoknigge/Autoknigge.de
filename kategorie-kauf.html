@@ -10,7 +10,7 @@
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f241d">
 <style>
-  /* Spannendes & Auffälliges Styling für die carVertical-Box */
+  /* carVertical Box Styling */
   .card-featured-carvertical {
     grid-column: 1 / -1;
     background: linear-gradient(135deg, #0f241d 0%, #1a3d32 100%);
@@ -18,133 +18,200 @@
     border-radius: 14px;
     padding: 1.75rem;
     box-shadow: 0 8px 20px rgba(15, 36, 29, 0.15);
-    text-decoration: none;
     display: block;
     position: relative;
     overflow: hidden;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .card-featured-carvertical:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 24px rgba(15, 36, 29, 0.25);
+  /* Deckt die gesamte Fläche als Link ab – klickbar egal wo, außer über den eigenen Elementen darüber */
+  .cv-full-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
   }
-  .cv-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-bottom: 0.75rem;
-  }
-  .cv-title-wrap {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  .cv-title {
-    margin: 0;
-    font-size: 1.4rem;
-    color: #ffffff;
+  .cv-top-star {
+    position: absolute;
+    top: 0.9rem;
+    right: 1.1rem;
+    font-size: 1rem;
     font-weight: 700;
-  }
-  .cv-badge {
-    background: #ff5252;
-    color: #ffffff;
-    font-size: 0.85rem;
-    font-weight: 800;
-    padding: 0.35rem 0.85rem;
-    border-radius: 20px;
-    letter-spacing: 0.5px;
-    box-shadow: 0 2px 8px rgba(255, 82, 82, 0.4);
-  }
-  .cv-hook {
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: #a3e6cd;
-    margin: 0.5rem 0;
-    line-height: 1.35;
-  }
-  .cv-features {
-    list-style: none;
-    padding: 0;
-    margin: 1.25rem 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 0.75rem;
-  }
-  .cv-features li {
-    font-size: 0.95rem;
-    color: #e2e8f0;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    background: rgba(255, 255, 255, 0.07);
-    padding: 0.6rem 0.8rem;
-    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.5);
+    z-index: 2;
   }
 
-  /* Aufgeräumte Gutschein-Box */
-  .cv-coupon-box {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 10px;
-    padding: 1.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 1.25rem;
-    color: #0f241d;
-  }
-  .cv-coupon-info {
+  /* 1. Ganz oben: Logo (feste Breite, auf weißer Pille für Kontrast) + Autoknigge-Schriftzug */
+  .cv-top-brand {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.4rem;
+    align-items: center;
+    text-align: center;
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   }
-  .cv-code-row {
-    font-size: 0.9rem;
-    color: #333333;
+  .cv-logo-pill {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 0.7rem 1.4rem;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 2;
+  }
+  .cv-logo-pill img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  /* 2. Die 4 Feature-Symbole */
+  .cv-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.85rem;
+    margin-bottom: 1.25rem;
+  }
+  .cv-feature-item {
+    background: rgba(255, 255, 255, 0.07);
+    padding: 0.85rem 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    transition: background 0.2s ease, transform 0.2s ease;
+    position: relative;
+    z-index: 2;
+  }
+  .cv-feature-item:hover {
+    background: rgba(255, 255, 255, 0.13);
+    transform: translateY(-2px);
+  }
+  .cv-feature-item-header {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-  }
-  .cv-code {
-    font-family: monospace;
-    font-size: 1.15rem;
-    font-weight: 800;
-    color: #0f241d;
-    background: #eef6f3;
-    padding: 0.2rem 0.6rem;
-    border-radius: 6px;
-    border: 1px dashed #163a2f;
-  }
-  .cv-auto-notice-badge {
-    background-color: #e8f5e9;
-    color: #1b5e20;
-    border: 1px solid #c8e6c9;
-    font-size: 0.85rem;
-    font-weight: 600;
-    padding: 0.35rem 0.65rem;
-    border-radius: 6px;
-    display: block;
-    margin: 0;
-  }
-  .cv-btn {
-    background-color: #163a2f;
-    color: #ffffff;
     font-weight: 700;
     font-size: 0.95rem;
-    padding: 0.75rem 1.4rem;
-    border-radius: 8px;
+    color: #a3e6cd;
+  }
+  .cv-feature-item-desc {
+    font-size: 0.85rem;
+    color: #cbd5e1;
+  }
+
+  /* 3. In der Mitte: Dein Text */
+  .cv-intro-title {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+  .cv-intro-text {
+    color: #e2e8f0;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+  .cv-intro-text p {
+    margin-bottom: 0.8rem;
+  }
+  .cv-intro-text p:last-child {
+    margin-bottom: 0;
+  }
+  .cv-intro-text strong {
+    color: #ffffff;
+    font-size: 1.15rem;
+  }
+
+  /* 4. Ganz unten: Die zentrierten Buttons */
+  .cv-bottom-action {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 0.85rem;
+    margin-top: 1rem;
+  }
+  .cv-gold-btn {
+    background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa7c11 100%);
+    color: #0f241d;
+    padding: 0.9rem 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    text-decoration: none;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    z-index: 2;
+  }
+  .cv-gold-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+  }
+  .cv-gold-btn-line1 {
+    font-size: 1.15rem;
+    font-weight: 800;
+  }
+  .cv-gold-btn-line2 {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  .cv-fin-btn {
+    background: transparent;
+    color: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.5);
+    padding: 0.9rem 1.75rem;
+    border-radius: 16px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
-    transition: background-color 0.2s;
-    white-space: nowrap;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    position: relative;
+    z-index: 2;
   }
-  .card-featured-carvertical:hover .cv-btn {
-    background-color: #245747;
+  .cv-fin-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+  }
+  .cv-action-note {
+    text-align: center;
+    margin-top: 0.85rem;
+  }
+  .cv-action-note p {
+    margin: 0.25rem 0 0 0;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.5;
+  }
+  .cv-action-note strong {
+    color: rgba(255, 255, 255, 0.75);
+  }
+  .cv-star {
+    font-weight: 700;
+    opacity: 0.75;
+  }
+  .footer-affiliate-note {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 0.6rem;
   }
 </style>
 </head>
@@ -177,55 +244,81 @@
       <div class="cat-page-title-wrap">
         <h1>Autokauf und -verkauf</h1>
       </div>
-      <p class="lead">Alles rund um Autokauf und Verkauf: Neuwagen, Gebrauchtwagen, Leasing, E-Auto und mehr.</p>
-      <div class="quick-info-line">
-        <span class="quick-info-badge">Infobox <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 20l-7.5-7.5h5V4h5v8.5h5L12 20z"/></svg></span>
-      </div>
+      <p class="lead">Neu- oder Gebrauchtwagen, Kauf oder Leasing.</p>
     </div>
 
     <section>
       <div class="grid">
+
+        <!-- 1. carVertical Box GANZ OBEN -->
+        <div class="card-featured-carvertical">
+
+          <!-- Deckt die komplette Fläche als Klick-Link ab -->
+          <a class="cv-full-overlay" href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener sponsored" aria-label="carVertical Fahrzeughistorie prüfen – 20% Rabatt sichern"></a>
+          <span class="cv-top-star" aria-hidden="true">*</span>
+
+          <!-- POS 1: Logo (feste Breite) -->
+          <div class="cv-top-brand">
+            <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener sponsored" class="cv-logo-pill">
+              <img src="carvertical-logo.png" alt="carVertical Logo">
+            </a>
+          </div>
+
+          <!-- POS 2: Die Geschichte mit dem SUV -->
+          <div class="cv-intro-text">
+            <div class="cv-intro-title">
+              <span>Prüfe dein neues Gefährt</span>
+              <span>vor dem Kauf</span>
+            </div>
+            <p>
+              Ein schönes Äußeres täuscht schnell über eine miserable Fahrzeughistorie hinweg. Ein vermeintlich gepflegter SUV wird mit 120.000 km als „unfallfrei“ angeboten. Eine kurze Abfrage bei carVertical deckt jedoch auf, dass der Wagen vor zwei Jahren mit 210.000 km und einem schweren Heckschaden im Ausland repariert wurde.
+            </p>
+            <p>
+              Schütze dich beim nächsten Kauf vor Fehlentscheidungen und bösen Überraschungen.
+            </p>
+          </div>
+
+          <!-- POS 3: Die 4 Kategorien -->
+          <div class="cv-features-grid">
+            <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener sponsored" class="cv-feature-item">
+              <div class="cv-feature-item-header">⏱️ Tachostand-Check</div>
+              <div class="cv-feature-item-desc">Deckt KM-Manipulationsversuche lückenlos auf</div>
+            </a>
+            <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener sponsored" class="cv-feature-item">
+              <div class="cv-feature-item-header">💥 Unfallhistorie</div>
+              <div class="cv-feature-item-desc">Zeigt verdeckte Schäden & geschätzte Reparaturkosten</div>
+            </a>
+            <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener sponsored" class="cv-feature-item">
+              <div class="cv-feature-item-header">🚨 Diebstahl-Abgleich</div>
+              <div class="cv-feature-item-desc">Prüfung in internationalen Polizeidatenbanken</div>
+            </a>
+            <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener sponsored" class="cv-feature-item">
+              <div class="cv-feature-item-header">📸 Historische Fotos</div>
+              <div class="cv-feature-item-desc">Fotos aus früheren Auktions- & Verkaufs-Inseraten</div>
+            </a>
+          </div>
+
+          <!-- POS 4: Die zentrierten Buttons -->
+          <div class="cv-bottom-action">
+            <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener sponsored" class="cv-gold-btn">
+              <span class="cv-gold-btn-line1">Prüfe dein Auto jetzt</span>
+              <span class="cv-gold-btn-line2">mit 20% Gutschein<span class="cv-star">*</span></span>
+            </a>
+            <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?uid=37&source_id=AFF&sub1=autoknigge&sub3=" target="_blank" rel="noopener sponsored" class="cv-fin-btn">
+              🔎 FIN oder Kennzeichen eintragen<span class="cv-star">*</span>
+            </a>
+          </div>
+          <div class="cv-action-note">
+            <p>Die 20% Rabatt werden beim Klick automatisch abgezogen – der Code <strong>„Autoknigge"</strong> wird direkt eingetragen.</p>
+          </div>
+
+        </div>
+
+        <!-- 2. Karte: E-Auto vs Verbrenner DIREKT DARUNTER -->
         <a class="card" href="artikel-e-auto-vs-benziner.html">
           <div class="card-symbol">⚡</div>
-          <h3>E-Auto vs. Benziner</h3>
+          <h3>E-Auto vs. Verbrenner</h3>
           <p>Anschaffungs-, Lade- und Unterhaltskosten im direkten Vergleich.</p>
-        </a>
-
-        <!-- CARVERTICAL AKTIONSS-BOX IN SAUBEREM, FLUCHTENDEM DESIGN -->
-        <a class="card-featured-carvertical" href="https://www.carvertical.com/de/landing/v3?voucher=Autoknigge" target="_blank" rel="noopener sponsored">
-          <div class="cv-header">
-            <div class="cv-title-wrap">
-              <span style="font-size: 1.8rem;">🚨</span>
-              <h3 class="cv-title">Unfallwagen im Visier? Bitte unbedingt checken!</h3>
-            </div>
-            <span class="cv-badge">🔥 20 % SPAREN</span>
-          </div>
-          
-          <div class="cv-hook">
-            Lassen Sie sich nicht täuschen – prüfen Sie die Historie per Fahrgestellnummer (FIN) bei carVertical, bevor Sie unterschreiben!
-          </div>
-
-          <!-- BEISPIELE FÜR DIE VORZÜGE (KORRIGIERTE TRENNUNG BEI UNFALL-SCHÄDEN) -->
-          <ul class="cv-features">
-            <li>💥 <strong>Versteckte Unfall-Schäden:</strong> Entlarven Sie teure Rahmenschäden & alte Gutachten.</li>
-            <li>⏱️ <strong>Tacho-Betrug aufdecken:</strong> Sehen Sie den echten Kilometerverlauf ein.</li>
-            <li>🚓 <strong>Diebstahl-Abgleich:</strong> Prüfen Sie die FIN in internationalen Polizeidatenbanken.</li>
-            <li>📸 <strong>Historische Bilder:</strong> Entdecken Sie Fotos aus früheren Auktions- & Verkaufs-Inseraten.</li>
-          </ul>
-
-          <!-- SAUBER STRUKTURIERTE UND AUSGERICHTETE BOTTOM-BOX -->
-          <div class="cv-coupon-box">
-            <div class="cv-coupon-info">
-              <div class="cv-code-row">
-                <span>Rabattcode:</span>
-                <strong class="cv-code">Autoknigge</strong>
-              </div>
-              <div class="cv-auto-notice-badge">
-                ✓ Rabatt wird beim Klick automatisch berücksichtigt!
-              </div>
-            </div>
-            <span class="cv-btn">Jetzt Historie prüfen ↗</span>
-          </div>
         </a>
 
         <a class="card" href="artikel-pannenstatistik.html">
@@ -287,6 +380,7 @@
       </div>
     </div>
     <div class="footer-bottom">
+      <div class="footer-affiliate-note">* Werbung · Affiliate-Link — Als Partner unterstütze ich diese Empfehlung. Sie profitieren mit einem Rabatt.</div>
       <div>© 2026 Autoknigge — Alle Rechte vorbehalten. Unabhängige Ratgeber-Plattform.</div>
       <div class="foot-links">
         <a href="impressum.html">Impressum</a> •
