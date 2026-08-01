@@ -6,31 +6,30 @@
   <title>Gebrauchtwagenkauf Ratgeber & VIN-Check — AutoKnigge</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Spezifische Layout-Feinjustierungen für die carVertical-Box */
+    /* Exakte Zentrierung für den carVertical-Header-Bereich */
     .cv-header-center {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 1.25rem;
+      text-align: center;
+      gap: 1rem;
       margin-bottom: 1.5rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-      padding-bottom: 1.25rem;
+      padding-bottom: 1.5rem;
     }
 
-    .brand-group {
+    .cv-brand-block {
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
-      gap: 0.35rem;
+      gap: 0.4rem;
     }
 
-    .brand-subtext {
-      color: rgba(255, 255, 255, 0.85);
-      font-size: 0.95rem;
+    .cv-brand-sub {
+      color: var(--gold-500);
+      font-size: 0.85rem;
       font-weight: 700;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
     }
   </style>
@@ -84,24 +83,25 @@
       <!-- CARVERTICAL SPECIAL BOX -->
       <section class="carvertical-box reveal">
         
-        <!-- Zentrierter Header mit carVertical-Logo, AutoKnigge-Text & Mittigem 20%-Button -->
+        <!-- ZENTRIERTER HEADER -->
         <div class="cv-header-center">
-          <div class="brand-group">
+          
+          <!-- Logo & Sub-Text untereinander zentriert -->
+          <div class="cv-brand-block">
             <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener noreferrer" class="carvertical-logo-link">
-              <!-- carVertical Logo -->
               <img src="https://static.carvertical.com/assets/img/carvertical-logo-white.svg" alt="carVertical Logo" class="carvertical-logo">
             </a>
-            <!-- Zentrierter Text unter der ersten Reihe -->
-            <span class="brand-subtext">AutoKnigge</span>
+            <span class="cv-brand-sub">AutoKnigge Empfehlung</span>
           </div>
 
-          <!-- Zentrierter Rabatt-Button -->
+          <!-- Button mittig ausgerichtet -->
           <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener noreferrer" class="gold-coupon-btn">
             ⚡ 20% Rabatt sichern
           </a>
+
         </div>
 
-        <!-- Praxis-Text -->
+        <!-- DEIN NEUER KNACKIGER TEXT -->
         <div class="cv-intro-text">
           <p>
             <strong>Prüfe dein neues Gefährt vor dem Kauf</strong>
@@ -114,7 +114,7 @@
           </p>
         </div>
 
-        <!-- Interactive Feature Cards Grid (Fahrzeugspezifische Links) -->
+        <!-- FEATURE CARDS -->
         <div class="cv-features-grid">
           <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?uid=37&source_id=AFF&sub1=autoknigge&sub3=[FIN%20oder%20Kennzeichen]" target="_blank" rel="noopener noreferrer" class="cv-feature-card">
             <span class="cv-feature-icon">⏱️</span>
