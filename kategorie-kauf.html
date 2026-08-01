@@ -10,7 +10,7 @@
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f241d">
 <style>
-  /* Spannendes & Auffälliges Styling für die carVertical-Box */
+  /* carVertical Box Styling */
   .card-featured-carvertical {
     grid-column: 1 / -1;
     background: linear-gradient(135deg, #0f241d 0%, #1a3d32 100%);
@@ -22,88 +22,38 @@
     display: block;
     position: relative;
     overflow: hidden;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .card-featured-carvertical:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 24px rgba(15, 36, 29, 0.25);
-  }
-  
-  /* Zentrierter Header-Bereich für Logo, AutoKnigge & Rabatt-Button */
-  .cv-header-center {
+
+  /* Oberster Bereich: Logo und AutoKnigge zentriert */
+  .cv-top-brand {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 1.2rem;
-    margin-bottom: 1.25rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
     padding-bottom: 1.25rem;
-  }
-  .cv-brand-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.35rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   }
   .cv-logo-img {
-    height: 38px;
-    width: auto;
+    width: 160px;
+    height: auto;
     display: block;
-    transition: transform 0.2s ease;
   }
-  .card-featured-carvertical:hover .cv-logo-img {
-    transform: scale(1.03);
-  }
-  .cv-brand-subtext {
+  .cv-brand-sub {
     color: rgba(255, 255, 255, 0.85);
     font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
-  .cv-gold-btn {
-    background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa7c11 100%);
-    color: #0f241d;
-    font-size: 1rem;
-    font-weight: 800;
-    padding: 0.75rem 1.8rem;
-    border-radius: 30px;
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .cv-gold-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
-  }
 
-  .cv-intro-text {
-    color: #e2e8f0;
-    line-height: 1.6;
-    margin-bottom: 1.25rem;
-  }
-  .cv-intro-text p {
-    margin-bottom: 0.8rem;
-  }
-  .cv-intro-text p:last-child {
-    margin-bottom: 0;
-  }
-  .cv-intro-text strong {
-    color: #ffffff;
-    font-size: 1.15rem;
-  }
-
-  /* Grid für fahrzeugspezifische Features */
+  /* 4 Symbole / Feature-Grid OBERHALB des Textes */
   .cv-features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 0.85rem;
-    margin-top: 1.25rem;
+    margin-bottom: 1.5rem;
   }
   .cv-feature-item {
     background: rgba(255, 255, 255, 0.07);
@@ -132,6 +82,51 @@
   .cv-feature-item-desc {
     font-size: 0.85rem;
     color: #cbd5e1;
+  }
+
+  /* Textbereich in der Mitte */
+  .cv-intro-text {
+    color: #e2e8f0;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+  .cv-intro-text p {
+    margin-bottom: 0.8rem;
+  }
+  .cv-intro-text p:last-child {
+    margin-bottom: 0;
+  }
+  .cv-intro-text strong {
+    color: #ffffff;
+    font-size: 1.15rem;
+  }
+
+  /* Unterster Bereich: Zentrierter Gutschein-Button */
+  .cv-bottom-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  .cv-gold-btn {
+    background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa7c11 100%);
+    color: #0f241d;
+    font-size: 1.05rem;
+    font-weight: 800;
+    padding: 0.85rem 2rem;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .cv-gold-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
   }
 </style>
 </head>
@@ -172,41 +167,26 @@
 
     <section>
       <div class="grid">
+        
+        <!-- 1. Karte: E-Auto vs Verbrenner -->
         <a class="card" href="artikel-e-auto-vs-benziner.html">
           <div class="card-symbol">⚡</div>
-          <h3>E-Auto vs. Benziner</h3>
+          <h3>E-Auto vs. Verbrenner</h3>
           <p>Anschaffungs-, Lade- und Unterhaltskosten im direkten Vergleich.</p>
         </a>
 
-        <!-- CARVERTICAL AKTIONSS-BOX IN EXAKTEM, ANGEPASSTEM DESIGN -->
+        <!-- 2. carVertical Box DIREKT DARUNTER PLATZIERT -->
         <div class="card-featured-carvertical">
           
-          <!-- Zentrierter Header Bereich -->
-          <div class="cv-header-center">
-            <div class="cv-brand-group">
-              <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener sponsored">
-                <img src="https://static.carvertical.com/assets/img/carvertical-logo-white.svg" alt="carVertical Logo" class="cv-logo-img">
-              </a>
-              <span class="cv-brand-subtext">AutoKnigge</span>
-            </div>
-
-            <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener sponsored" class="cv-gold-btn">
-              ⚡ 20% Rabatt sichern
+          <!-- Oben: Logo & AutoKnigge zentriert -->
+          <div class="cv-top-brand">
+            <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener sponsored">
+              <img src="https://static.carvertical.com/assets/img/carvertical-logo-white.svg" alt="carVertical Logo" class="cv-logo-img">
             </a>
+            <span class="cv-brand-sub">AutoKnigge</span>
           </div>
 
-          <!-- Neuer geglätteter Text -->
-          <div class="cv-intro-text">
-            <p><strong>Prüfe dein neues Gefährt vor dem Kauf</strong></p>
-            <p>
-              Ein schönes Äußeres täuscht schnell über eine miserable Fahrzeughistorie hinweg. Ein vermeintlich gepflegter SUV wird mit 120.000 km als „unfallfrei“ angeboten. Eine kurze Abfrage bei carvertical deckt jedoch auf, dass der Wagen vor zwei Jahren mit 210.000 km und einem schweren Heckschaden im Ausland repariert wurde.
-            </p>
-            <p>
-              Schütze dich beim nächsten Kauf vor Fehlentscheidungen und bösen Überraschungen.
-            </p>
-          </div>
-
-          <!-- Fahrzeugspezifische Feature-Karten mit Sub3-Affiliate-Links -->
+          <!-- OBERHALB DES TEXTES: Die 4 Feature-Symbole -->
           <div class="cv-features-grid">
             <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?uid=37&source_id=AFF&sub1=autoknigge&sub3=[FIN%20oder%20Kennzeichen]" target="_blank" rel="noopener sponsored" class="cv-feature-item">
               <div class="cv-feature-item-header">⏱️ Tachostand-Check</div>
@@ -222,7 +202,25 @@
             </a>
             <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?uid=37&source_id=AFF&sub1=autoknigge&sub3=[FIN%20oder%20Kennzeichen]" target="_blank" rel="noopener sponsored" class="cv-feature-item">
               <div class="cv-feature-item-header">📸 Historische Fotos</div>
-              <div class="cv-feature-desc">Fotos aus früheren Auktions- & Verkaufs-Inseraten</div>
+              <div class="cv-feature-item-desc">Fotos aus früheren Auktions- & Verkaufs-Inseraten</div>
+            </a>
+          </div>
+
+          <!-- MITTE: Dein geglätteter Text -->
+          <div class="cv-intro-text">
+            <p><strong>Prüfe dein neues Gefährt vor dem Kauf</strong></p>
+            <p>
+              Ein schönes Äußeres täuscht schnell über eine miserable Fahrzeughistorie hinweg. Ein vermeintlich gepflegter SUV wird mit 120.000 km als „unfallfrei“ angeboten. Eine kurze Abfrage bei carvertical deckt jedoch auf, dass der Wagen vor zwei Jahren mit 210.000 km und einem schweren Heckschaden im Ausland repariert wurde.
+            </p>
+            <p>
+              Schütze dich beim nächsten Kauf vor Fehlentscheidungen und bösen Überraschungen.
+            </p>
+          </div>
+
+          <!-- UNTEN: Der zentrierte Gutschein-Button -->
+          <div class="cv-bottom-action">
+            <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener sponsored" class="cv-gold-btn">
+              ⚡ 20% Rabatt sichern
             </a>
           </div>
 
@@ -301,3 +299,4 @@
 <script src="cookie-consent.js"></script>
 </body>
 </html>
+][span_5](start_span)[span_5](end_span)
