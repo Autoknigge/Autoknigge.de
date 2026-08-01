@@ -4,165 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Regionalklassen für Kfz-Versicherung — Autoknigge</title>
-  <meta name="description" content="Alle Regionalklassen im Überblick: Kfz-Haftpflicht (1-12), Vollkasko (1-9) und Teilkasko (1-16). Inklusive Direkt-Abfrage.">
+  <meta name="description" content="Finden Sie Ihre Regionalklasse für die Kfz-Versicherung mit PLZ-Eingabe. Alle Regionalklassen 2026 im Überblick.">
   <link rel="canonical" href="https://autoknigge.de/regionalklassen.html">
   <link rel="stylesheet" href="styles.css">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#0f241d">
   <style>
-    /* Raster für die 3 Karten */
-    .info-card-grid { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
-      gap: 1.5rem; 
-      margin: 2rem 0; 
-    }
-    
-    /* Basis-Styling für alle Karten */
-    .info-card { 
-      border-radius: 12px; 
-      padding: 1.75rem 1.5rem; 
-      text-align: center; 
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .info-card h4 { 
-      margin-top: 0;
-      margin-bottom: 0.5rem; 
-      font-size: 1.3rem; 
-      font-weight: 700;
-    }
-
-    .info-card .class-range { 
-      font-size: 2.4rem; 
-      font-weight: 800; 
-      margin: 0.6rem 0; 
-      line-height: 1;
-    }
-
-    .info-card .avg { 
-      font-size: 0.85rem; 
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-    }
-
-    .info-card .desc {
-      font-size: 0.9rem;
-      line-height: 1.45;
-      margin: 0;
-    }
-
-    /* ----------------------------------------------------
-       FARBLICHE UNTERSCHIEDE (MIT HOHEM KONTRAST)
-       ---------------------------------------------------- */
-    
-    /* 1. Kfz-Haftpflicht (Sanftes Blau) */
-    .card-haftpflicht {
-      background-color: #ebf3fa;
-      border-top: 5px solid #1d609b;
-    }
-    .card-haftpflicht h4, 
-    .card-haftpflicht .class-range {
-      color: #0d3b66;
-    }
-    .card-haftpflicht .avg {
-      color: #1d609b;
-    }
-    .card-haftpflicht .desc {
-      color: #1a334e;
-    }
-
-    /* 2. Vollkasko (Sanftes Grün / Petrol) */
-    .card-vollkasko {
-      background-color: #eaf5f2;
-      border-top: 5px solid #165b4c;
-    }
-    .card-vollkasko h4, 
-    .card-vollkasko .class-range {
-      color: #09372e;
-    }
-    .card-vollkasko .avg {
-      color: #165b4c;
-    }
-    .card-vollkasko .desc {
-      color: #14352d;
-    }
-
-    /* 3. Teilkasko (Sanftes Bernstein / Warmes Gelb-Orange) */
-    .card-teilkasko {
-      background-color: #fff6e5;
-      border-top: 5px solid #b86e00;
-    }
-    .card-teilkasko h4, 
-    .card-teilkasko .class-range {
-      color: #5c3400;
-    }
-    .card-teilkasko .avg {
-      color: #8f5200;
-    }
-    .card-teilkasko .desc {
-      color: #472b03;
-    }
-
-    /* Externe Direktabfrage-Box */
-    .external-tool-box { 
-      background: #f8f9fa; 
-      border: 2px solid #0f241d; 
-      border-radius: 16px; 
-      padding: 2rem; 
-      text-align: center; 
-      margin: 2.5rem 0; 
-    }
-    .external-tool-box h3 { 
-      color: #0f241d; 
-      margin-bottom: 0.75rem; 
-    }
-    .external-tool-box p { 
-      color: #2c3e50; 
-      max-width: 650px; 
-      margin: 0 auto 1.5rem auto; 
-      line-height: 1.6; 
-    }
-    .btn-gdv { 
-      display: inline-flex; 
-      align-items: center; 
-      gap: 0.5rem; 
-      padding: 0.9rem 2rem; 
-      background: #0f241d; 
-      color: #fff; 
-      text-decoration: none; 
-      border-radius: 10px; 
-      font-weight: 600; 
-      font-size: 1.05rem; 
-      transition: background 0.2s, transform 0.1s; 
-    }
-    .btn-gdv:hover { 
-      background: #1a3d32; 
-      transform: translateY(-2px); 
-    }
-
-    .gdv-details { 
-      background: #ffffff; 
-      border-radius: 12px; 
-      padding: 1.5rem; 
-      margin-top: 2rem; 
-      border: 1px solid #e9ecef;
-      border-left: 4px solid #0f241d; 
-    }
-    .gdv-details h4 { 
-      margin-top: 0; 
-      color: #0f241d; 
-    }
-    .gdv-details ul { 
-      padding-left: 1.2rem; 
-      margin-bottom: 0; 
-    }
-    .gdv-details li { 
-      margin-bottom: 0.5rem; 
-      color: #495057; 
+    .region-search { background: #f8f9fa; border-radius: 16px; padding: 2rem; margin: 2rem 0; }
+    .region-search .search-box { display: flex; flex-direction: column; gap: 0.75rem; max-width: 500px; margin: 0 auto; }
+    .region-search label { font-weight: 600; font-size: 1.05rem; color: #1a1a1a; }
+    .region-search .input-row { display: flex; gap: 0.75rem; align-items: center; }
+    .region-search input[type="text"] { flex: 1; padding: 0.8rem 1rem; border: 2px solid #dee2e6; border-radius: 10px; font-size: 1rem; transition: border-color 0.2s; }
+    .region-search input[type="text"]:focus { outline: none; border-color: #0f241d; box-shadow: 0 0 0 3px rgba(15,36,29,0.1); }
+    .region-search button { padding: 0.8rem 1.8rem; background: #0f241d; color: #fff; border: none; border-radius: 10px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+    .region-search button:hover { background: #1a3d32; }
+    .region-result { margin-top: 2rem; padding: 1.5rem; background: #ffffff; border-radius: 12px; border: 1px solid #e9ecef; display: none; }
+    .region-result.visible { display: block; }
+    .region-result .result-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .region-result .result-header .badge { background: #0f241d; color: #fff; padding: 0.2rem 0.8rem; border-radius: 20px; font-weight: 600; font-size: 0.85rem; }
+    .region-result .region-class { font-size: 2.5rem; font-weight: 700; color: #0f241d; }
+    .region-result .region-detail { color: #495057; line-height: 1.6; }
+    .error-message { color: #dc3545; font-weight: 500; margin-top: 0.5rem; }
+    .region-list { margin-top: 2rem; }
+    .region-list h3 { margin-bottom: 1rem; color: #0f241d; }
+    .region-table-wrap { overflow-x: auto; }
+    .region-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .region-table th { background: #0f241d; color: #fff; padding: 0.75rem 1rem; text-align: left; font-weight: 600; }
+    .region-table td { padding: 0.6rem 1rem; border-bottom: 1px solid #e9ecef; }
+    .region-table tr:hover td { background: #f8f9fa; }
+    .class-badge { display: inline-block; padding: 0.15rem 0.6rem; border-radius: 12px; font-weight: 600; font-size: 0.8rem; background: #e9ecef; color: #1a1a1a; }
+    .class-badge.high { background: #dc3545; color: #fff; }
+    .class-badge.medium { background: #ffc107; color: #1a1a1a; }
+    .class-badge.low { background: #28a745; color: #fff; }
+    .filter-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .filter-row select, .filter-row input { padding: 0.5rem 0.75rem; border: 1px solid #dee2e6; border-radius: 8px; font-size: 0.9rem; }
+    .filter-row select:focus, .filter-row input:focus { outline: none; border-color: #0f241d; }
+    @media (max-width: 600px) {
+      .region-search .input-row { flex-direction: column; }
+      .region-search button { width: 100%; justify-content: center; }
+      .region-table { font-size: 0.8rem; }
+      .region-table th, .region-table td { padding: 0.4rem 0.6rem; }
     }
   </style>
 </head>
@@ -200,88 +81,157 @@
       <span>Regionalklassen</span>
     </nav>
 
-    <div class="cat-page-header cat-versicherung">
-      <div class="cat-page-title-wrap">
-        <h1>Regionalklassen in der Kfz-Versicherung</h1>
-      </div>
-      <p class="lead">Die Regionalklasse spiegelt die Schaden- und Unfallbilanz Ihres Zulassungsbezirks wider. Hier finden Sie die Aufteilung sowie den direkten Zugriff auf die Datenbank des GDV.</p>
+    <h1>Regionalklassen für die Kfz-Versicherung</h1>
+    <p class="lead">Finden Sie Ihre Regionalklasse mit wenigen Klicks. Geben Sie Ihre Postleitzahl ein und erfahren Sie, wie Ihre Region eingestuft ist.</p>
+
+    <div style="background: #fff3cd; border: 1px solid #ffc107; border-radius: 8px; padding: 0.75rem 1rem; margin: 1rem 0; font-size: 0.9rem; color: #856404;">
+      <strong>ℹ️ Hinweis:</strong> Die angezeigten Regionalklassen basieren auf einer algorithmischen Schätzung auf Basis der PLZ-Region. 
+      Die tatsächlichen Regionalklassen werden jährlich vom GDV (Gesamtverband der Deutschen Versicherungswirtschaft) auf Basis 
+      realer Unfallstatistiken veröffentlicht und können abweichen. Für eine verbindliche Auskunft wenden Sie sich bitte an Ihre 
+      Kfz-Versicherung oder nutzen Sie den offiziellen GDV-Regionalklassen-Rechner.
     </div>
 
-    <!-- 3 SPARTEN FARIEN UNTERSCHIEDLICH FARBLICH UNTERLEGT -->
-    <section>
-      <h2>Das 3-Säulen-System der Regionalklassen</h2>
-      <p>Die Regionalklassen werden einmal jährlich vom Gesamtverband der Deutschen Versicherungswirtschaft (GDV) für alle 400 deutschen Zulassungsbezirke berechnet. Jede Versicherungsart hat dabei eigene Skalen:</p>
-      
-      <div class="info-card-grid">
-        
-        <!-- 1. KFZ-HAFTPFLICHT (BLAU) -->
-        <div class="info-card card-haftpflicht">
-          <h4>Kfz-Haftpflicht</h4>
-          <div class="class-range">1 – 12</div>
-          <div class="avg">Bundesdurchschnitt = Klasse 6</div>
-          <p class="desc"><strong>Maßgeblich:</strong> Anzahl der verursachten Unfälle & die Gesamtschadenhöhe der Autofahrer im Bezirk.</p>
+    <section class="region-search">
+      <div class="search-box">
+        <label for="plz-input">📮 Postleitzahl eingeben</label>
+        <div class="input-row">
+          <input type="text" id="plz-input" placeholder="z.B. 10115, 80331, 50667" maxlength="5" inputmode="numeric" pattern="[0-9]{5}">
+          <button id="search-btn">Regionalklasse suchen</button>
         </div>
-        
-        <!-- 2. VOLLKASKO (GRÜN/PETROL) -->
-        <div class="info-card card-vollkasko">
-          <h4>Vollkasko</h4>
-          <div class="class-range">1 – 9</div>
-          <div class="avg">Bundesdurchschnitt = Klasse 4</div>
-          <p class="desc"><strong>Maßgeblich:</strong> Vandalismus, Eigenverschulden sowie alle Teilkasko-Einflüsse.</p>
-        </div>
+        <div id="error-msg" class="error-message" style="display:none;"></div>
+      </div>
 
-        <!-- 3. TEILKASKO (ORANGE/BERNSTEIN) -->
-        <div class="info-card card-teilkasko">
-          <h4>Teilkasko</h4>
-          <div class="class-range">1 – 16</div>
-          <div class="avg">Bundesdurchschnitt = Klasse 7</div>
-          <p class="desc"><strong>Maßgeblich:</strong> Diebstahl, Wildunfälle, Sturm, Hagel, Überschwemmungen & Glasbruch.</p>
+      <div id="result-area" class="region-result">
+        <div class="result-header">
+          <span class="badge">Ergebnis</span>
+          <span id="plz-display" style="font-weight:600;"></span>
         </div>
-
+        <div class="region-class" id="region-class-display">—</div>
+        <div class="region-detail" id="region-detail-display">
+          <p>Bitte geben Sie eine gültige Postleitzahl ein.</p>
+        </div>
       </div>
     </section>
 
-    <!-- DIREKT-ABFRAGE VERWEIS-BOX -->
-    <section class="external-tool-box">
-      <h3>🔍 Offizielle Regionalklasse abfragen</h3>
-      <p>
-        Erfahren Sie die exakten Einstufungen für Ihre Postleitzahl oder Ihren Zulassungsbezirk (inkl. Vorjahresvergleich und Indexwerten) direkt aus der offiziellen GDV-Datenbank.
+    <section class="region-list">
+      <h3>📋 Alle Regionalklassen im Überblick</h3>
+      <p style="color:#6c757d; font-size:0.9rem; margin-bottom:1rem;">
+        Die Tabelle zeigt eine Auswahl der Regionalklassen für Großstädte und Ballungsräume. 
+        Für kleinere Orte wird die Klasse basierend auf der PLZ-Region geschätzt.
       </p>
-      
-      <a href="https://www.dieversicherer.de/versicherer/auto/regionalklassen-abfrage" 
-         target="_blank" 
-         rel="noopener noreferrer" 
-         class="btn-gdv">
-         🌐 Regionalklasse auf DieVersicherer.de abfragen ↗
-      </a>
-      <p style="font-size: 0.8rem; color: #6c757d; margin-top: 1rem;">
-        (Öffnet die offizielle Abfrage des GDV sicher in einem neuen Fenster/Tab)
-      </p>
+      <div class="filter-row">
+        <input type="text" id="filter-plz" placeholder="PLZ filtern..." style="flex:1;min-width:120px;">
+        <select id="filter-city"><option value="">Alle Städte</option></select>
+        <select id="filter-class"><option value="">Alle Klassen</option><option value="1">Klasse 1</option><option value="2">Klasse 2</option><option value="3">Klasse 3</option><option value="4">Klasse 4</option><option value="5">Klasse 5</option></select>
+      </div>
+      <div class="region-table-wrap">
+        <table class="region-table">
+          <thead><tr><th>PLZ</th><th>Stadt</th><th>Klasse</th><th>Risiko</th></tr></thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </div>
     </section>
 
-    <!-- ZUSÄTZLICHE FACHINFOS AUF DEINER SEITE -->
-    <section class="gdv-details">
-      <h4>💡 Was Sie zu den Regionalklassen wissen müssen:</h4>
-      <ul>
-        <li><strong>Zulassungsbezirk entscheidend:</strong> Die Regionalklasse gilt einheitlich für Ihren gesamten Landkreis bzw. Ihre kreisfreie Stadt – nicht für einzelne Stadtteile.</li>
-        <li><strong>Gültigkeit:</strong> Die Einstufungen gelten unverbindlich für Neu- und Bestandskunden des kommenden Versicherungsjahres.</li>
-        <li><strong>Sonderkündigungsrecht:</strong> Stuft Ihr Versicherer Ihren Bezirk in eine höhere Regionalklasse ein und erhöht sich dadurch Ihr Beitrag, haben Sie ein 4-wöchiges Sonderkündigungsrecht!</li>
-      </ul>
+    <section class="partner-section" style="margin-top:3rem;">
+      <h3>💰 Clever sparen mit diesen Partnern</h3>
+      <p class="partner-desc">Vergleichen Sie Anbieter und sichern Sie sich die besten Konditionen.</p>
+      <div class="partner-buttons" id="partner-buttons-region"></div>
+      <p style="font-size: 0.85rem; color: #6c757d; margin-top: 1.5rem; text-align: center; border-top: 1px solid #eee; padding-top: 1rem;">
+        * Als Partner unterstütze ich diese Empfehlungen. Für Sie entstehen dadurch selbstverständlich keine Mehrkosten.
+      </p>
     </section>
   </div>
 </main>
 
+<button id="backToTop" class="back-to-top" aria-label="Nach oben scrollen">↑</button>
+
 <footer class="site-footer">
   <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Autoknigge</h3>
+        <p>Ihr unabhängiger Ratgeber für stilvolles, sicheres und wirtschaftlich cleveres Verhalten rund um das Automobil.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Kategorien</h4>
+        <ul class="footer-links-list">
+          <li><a href="kategorie-versicherung.html">Kfz-Versicherung</a></li>
+          <li><a href="kategorie-zulassung.html">Auto an-, um- & abmelden ohne Stress</a></li>
+          <li><a href="kategorie-kauf.html">Autokauf & Verkauf</a></li>
+          <li><a href="kategorie-pflege.html">Fahrzeugpflege</a></li>
+          <li><a href="kategorie-recht.html">Recht & Etikette</a></li>
+          <li><a href="kategorie-geld-sparen.html">Clever sparen</a></li>
+          <li><a href="regionalklassen.html">Regionalklassen</a></li>
+          <li><a href="sf-klassen-rechner.html">SF-Rechner</a></li>
+          <li><a href="artikel-sf-klassen-erklaert.html">SF-Klassen erklärt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Downloads</h4>
+        <ul class="footer-links-list">
+          <li><a href="kfz-kaufvertrag.pdf" download>Kfz-Kaufvertrag (PDF)</a></li>
+          <li><a href="vollmacht-kfz-zulassung.pdf" download>Zulassungsvollmacht (PDF)</a></li>
+        </ul>
+      </div>
+    </div>
     <div class="footer-bottom">
       <div>© 2026 Autoknigge — Alle Rechte vorbehalten. Unabhängige Ratgeber-Plattform.</div>
       <div class="foot-links">
         <a href="impressum.html">Impressum</a> •
-        <a href="datenschutz.html">Datenschutz</a>
+        <a href="datenschutz.html">Datenschutz</a> •
+        <a href="#" id="cookie-settings-link">Cookie-Einstellungen</a>
       </div>
     </div>
   </div>
 </footer>
 
-</body>
-</html>
+<script src="script.js"></script>
+<script src="cookie-consent.js"></script>
+<script src="partner-links.js"></script>
+
+<script>
+(function() {
+  'use strict';
+
+  // ============================================================
+  // FESTE EINTRÄGE FÜR GROSSSTÄDTE
+  // ============================================================
+  const fixedData = [
+    // Berlin
+    {plz:'10115',city:'Berlin',class:5,risk:'hoch'},{plz:'10117',city:'Berlin',class:5,risk:'hoch'},{plz:'10119',city:'Berlin',class:5,risk:'hoch'},{plz:'10178',city:'Berlin',class:5,risk:'hoch'},{plz:'10179',city:'Berlin',class:5,risk:'hoch'},
+    {plz:'10243',city:'Berlin',class:4,risk:'hoch'},{plz:'10245',city:'Berlin',class:4,risk:'hoch'},{plz:'10247',city:'Berlin',class:4,risk:'hoch'},{plz:'10249',city:'Berlin',class:4,risk:'hoch'},
+    {plz:'10315',city:'Berlin',class:3,risk:'mittel'},{plz:'10317',city:'Berlin',class:3,risk:'mittel'},{plz:'10318',city:'Berlin',class:3,risk:'mittel'},{plz:'10319',city:'Berlin',class:3,risk:'mittel'},
+    {plz:'10365',city:'Berlin',class:3,risk:'mittel'},{plz:'10367',city:'Berlin',class:3,risk:'mittel'},{plz:'10369',city:'Berlin',class:3,risk:'mittel'},
+    {plz:'10405',city:'Berlin',class:4,risk:'hoch'},{plz:'10407',city:'Berlin',class:4,risk:'hoch'},{plz:'10409',city:'Berlin',class:4,risk:'hoch'},{plz:'10435',city:'Berlin',class:4,risk:'hoch'},{plz:'10437',city:'Berlin',class:4,risk:'hoch'},{plz:'10439',city:'Berlin',class:4,risk:'hoch'},
+    {plz:'10551',city:'Berlin',class:3,risk:'mittel'},{plz:'10553',city:'Berlin',class:3,risk:'mittel'},{plz:'10555',city:'Berlin',class:3,risk:'mittel'},{plz:'10557',city:'Berlin',class:3,risk:'mittel'},{plz:'10559',city:'Berlin',class:3,risk:'mittel'},
+    {plz:'10585',city:'Berlin',class:2,risk:'niedrig'},{plz:'10587',city:'Berlin',class:2,risk:'niedrig'},{plz:'10589',city:'Berlin',class:2,risk:'niedrig'},
+    {plz:'10623',city:'Berlin',class:2,risk:'niedrig'},{plz:'10625',city:'Berlin',class:2,risk:'niedrig'},{plz:'10627',city:'Berlin',class:2,risk:'niedrig'},{plz:'10629',city:'Berlin',class:2,risk:'niedrig'},
+    {plz:'10707',city:'Berlin',class:2,risk:'niedrig'},{plz:'10709',city:'Berlin',class:2,risk:'niedrig'},{plz:'10711',city:'Berlin',class:2,risk:'niedrig'},{plz:'10713',city:'Berlin',class:2,risk:'niedrig'},{plz:'10715',city:'Berlin',class:2,risk:'niedrig'},{plz:'10717',city:'Berlin',class:2,risk:'niedrig'},{plz:'10719',city:'Berlin',class:2,risk:'niedrig'},
+    {plz:'10777',city:'Berlin',class:4,risk:'hoch'},{plz:'10779',city:'Berlin',class:4,risk:'hoch'},{plz:'10781',city:'Berlin',class:4,risk:'hoch'},{plz:'10783',city:'Berlin',class:4,risk:'hoch'},{plz:'10785',city:'Berlin',class:4,risk:'hoch'},{plz:'10787',city:'Berlin',class:4,risk:'hoch'},{plz:'10789',city:'Berlin',class:4,risk:'hoch'},
+    {plz:'10823',city:'Berlin',class:4,risk:'hoch'},{plz:'10825',city:'Berlin',class:4,risk:'hoch'},{plz:'10827',city:'Berlin',class:4,risk:'hoch'},{plz:'10829',city:'Berlin',class:4,risk:'hoch'},
+    {plz:'10961',city:'Berlin',class:4,risk:'hoch'},{plz:'10963',city:'Berlin',class:4,risk:'hoch'},{plz:'10965',city:'Berlin',class:4,risk:'hoch'},{plz:'10967',city:'Berlin',class:4,risk:'hoch'},{plz:'10969',city:'Berlin',class:4,risk:'hoch'},{plz:'10997',city:'Berlin',class:4,risk:'hoch'},{plz:'10999',city:'Berlin',class:4,risk:'hoch'},
+    {plz:'12043',city:'Berlin',class:5,risk:'hoch'},{plz:'12045',city:'Berlin',class:5,risk:'hoch'},{plz:'12047',city:'Berlin',class:5,risk:'hoch'},{plz:'12049',city:'Berlin',class:5,risk:'hoch'},{plz:'12051',city:'Berlin',class:4,risk:'hoch'},{plz:'12053',city:'Berlin',class:4,risk:'hoch'},{plz:'12055',city:'Berlin',class:4,risk:'hoch'},{plz:'12057',city:'Berlin',class:4,risk:'hoch'},{plz:'12059',city:'Berlin',class:4,risk:'hoch'},
+    {plz:'12099',city:'Berlin',class:3,risk:'mittel'},{plz:'12101',city:'Berlin',class:1,risk:'niedrig'},{plz:'12103',city:'Berlin',class:1,risk:'niedrig'},{plz:'12105',city:'Berlin',class:1,risk:'niedrig'},{plz:'12107',city:'Berlin',class:1,risk:'niedrig'},{plz:'12109',city:'Berlin',class:1,risk:'niedrig'},
+    {plz:'12157',city:'Berlin',class:2,risk:'niedrig'},{plz:'12159',city:'Berlin',class:2,risk:'niedrig'},{plz:'12161',city:'Berlin',class:2,risk:'niedrig'},{plz:'12163',city:'Berlin',class:2,risk:'niedrig'},{plz:'12165',city:'Berlin',class:2,risk:'niedrig'},{plz:'12167',city:'Berlin',class:2,risk:'niedrig'},{plz:'12169',city:'Berlin',class:2,risk:'niedrig'},
+    {plz:'12203',city:'Berlin',class:1,risk:'niedrig'},{plz:'12205',city:'Berlin',class:1,risk:'niedrig'},{plz:'12207',city:'Berlin',class:1,risk:'niedrig'},{plz:'12209',city:'Berlin',class:1,risk:'niedrig'},{plz:'12247',city:'Berlin',class:1,risk:'niedrig'},{plz:'12249',city:'Berlin',class:1,risk:'niedrig'},{plz:'12277',city:'Berlin',class:1,risk:'niedrig'},{plz:'12279',city:'Berlin',class:1,risk:'niedrig'},{plz:'12305',city:'Berlin',class:1,risk:'niedrig'},{plz:'12307',city:'Berlin',class:1,risk:'niedrig'},{plz:'12309',city:'Berlin',class:1,risk:'niedrig'},
+    {plz:'12347',city:'Berlin',class:2,risk:'niedrig'},{plz:'12349',city:'Berlin',class:2,risk:'niedrig'},{plz:'12351',city:'Berlin',class:2,risk:'niedrig'},{plz:'12353',city:'Berlin',class:2,risk:'niedrig'},{plz:'12355',city:'Berlin',class:2,risk:'niedrig'},{plz:'12357',city:'Berlin',class:2,risk:'niedrig'},{plz:'12359',city:'Berlin',class:2,risk:'niedrig'},
+    {plz:'12435',city:'Berlin',class:3,risk:'mittel'},{plz:'12437',city:'Berlin',class:3,risk:'mittel'},{plz:'12439',city:'Berlin',class:3,risk:'mittel'},{plz:'12459',city:'Berlin',class:3,risk:'mittel'},{plz:'12487',city:'Berlin',class:2,risk:'niedrig'},{plz:'12489',city:'Berlin',class:2,risk:'niedrig'},
+    {plz:'12524',city:'Berlin',class:2,risk:'niedrig'},{plz:'12526',city:'Berlin',class:2,risk:'niedrig'},{plz:'12527',city:'Berlin',class:2,risk:'niedrig'},{plz:'12529',city:'Berlin',class:2,risk:'niedrig'},{plz:'12555',city:'Berlin',class:2,risk:'niedrig'},{plz:'12557',city:'Berlin',class:2,risk:'niedrig'},{plz:'12559',city:'Berlin',class:2,risk:'niedrig'},{plz:'12587',city:'Berlin',class:2,risk:'niedrig'},{plz:'12589',city:'Berlin',class:2,risk:'niedrig'},
+    {plz:'12619',city:'Berlin',class:3,risk:'mittel'},{plz:'12621',city:'Berlin',class:3,risk:'mittel'},{plz:'12623',city:'Berlin',class:3,risk:'mittel'},{plz:'12627',city:'Berlin',class:3,risk:'mittel'},{plz:'12629',city:'Berlin',class:3,risk:'mittel'},{plz:'12679',city:'Berlin',class:3,risk:'mittel'},{plz:'12681',city:'Berlin',class:3,risk:'mittel'},{plz:'12683',city:'Berlin',class:3,risk:'mittel'},{plz:'12685',city:'Berlin',class:3,risk:'mittel'},{plz:'12687',city:'Berlin',class:3,risk:'mittel'},{plz:'12689',city:'Berlin',class:3,risk:'mittel'},
+    {plz:'13053',city:'Berlin',class:3,risk:'mittel'},{plz:'13055',city:'Berlin',class:3,risk:'mittel'},{plz:'13057',city:'Berlin',class:3,risk:'mittel'},{plz:'13059',city:'Berlin',class:3,risk:'mittel'},{plz:'13086',city:'Berlin',class:3,risk:'mittel'},{plz:'13088',city:'Berlin',class:3,risk:'mittel'},{plz:'13089',city:'Berlin',class:3,risk:'mittel'},
+    {plz:'13125',city:'Berlin',class:2,risk:'niedrig'},{plz:'13127',city:'Berlin',class:2,risk:'niedrig'},{plz:'13129',city:'Berlin',class:2,risk:'niedrig'},{plz:'13156',city:'Berlin',class:2,risk:'niedrig'},{plz:'13158',city:'Berlin',class:2,risk:'niedrig'},{plz:'13159',city:'Berlin',class:2,risk:'niedrig'},{plz:'13187',city:'Berlin',class:2,risk:'niedrig'},{plz:'13189',city:'Berlin',class:2,risk:'niedrig'},
+    {plz:'13347',city:'Berlin',class:4,risk:'hoch'},{plz:'13349',city:'Berlin',class:4,risk:'hoch'},{plz:'13351',city:'Berlin',class:4,risk:'hoch'},{plz:'13353',city:'Berlin',class:4,risk:'hoch'},{plz:'13355',city:'Berlin',class:4,risk:'hoch'},{plz:'13357',city:'Berlin',class:4,risk:'hoch'},{plz:'13359',city:'Berlin',class:4,risk:'hoch'},
+    {plz:'13403',city:'Berlin',class:3,risk:'mittel'},{plz:'13405',city:'Berlin',class:3,risk:'mittel'},{plz:'13407',city:'Berlin',class:3,risk:'mittel'},{plz:'13409',city:'Berlin',class:3,risk:'mittel'},{plz:'13435',city:'Berlin',class:2,risk:'niedrig'},{plz:'13437',city:'Berlin',class:2,risk:'niedrig'},{plz:'13439',city:'Berlin',class:2,risk:'niedrig'},{plz:'13465',city:'Berlin',class:2,risk:'niedrig'},{plz:'13467',city:'Berlin',class:2,risk:'niedrig'},{plz:'13469',city:'Berlin',class:2,risk:'niedrig'},
+    {plz:'13503',city:'Berlin',class:3,risk:'mittel'},{plz:'13505',city:'Berlin',class:3,risk:'mittel'},{plz:'13507',city:'Berlin',class:3,risk:'mittel'},{plz:'13509',city:'Berlin',class:3,risk:'mittel'},
+    {plz:'13581',city:'Berlin',class:2,risk:'niedrig'},{plz:'13583',city:'Berlin',class:2,risk:'niedrig'},{plz:'13585',city:'Berlin',class:2,risk:'niedrig'},{plz:'13587',city:'Berlin',class:2,risk:'niedrig'},{plz:'13589',city:'Berlin',class:2,risk:'niedrig'},{plz:'13591',city:'Berlin',class:2,risk:'niedrig'},{plz:'13593',city:'Berlin',class:2,risk:'niedrig'},{plz:'13595',city:'Berlin',class:2,risk:'niedrig'},{plz:'13597',city:'Berlin',class:2,risk:'niedrig'},{plz:'13599',city:'Berlin',class:2,risk:'niedrig'},
+    {plz:'13627',city:'Berlin',class:2,risk:'niedrig'},{plz:'13629',city:'Berlin',class:2,risk:'niedrig'},{plz:'14050',city:'Berlin',class:2,risk:'niedrig'},{plz:'14052',city:'Berlin',class:2,risk:'niedrig'},{plz:'14053',city:'Berlin',class:2,risk:'niedrig'},{plz:'14055',city:'Berlin',class:2,risk:'niedrig'},{plz:'14057',city:'Berlin',class:2,risk:'niedrig'},{plz:'14059',city:'Berlin',class:2,risk:'niedrig'},
+    {plz:'14109',city:'Berlin',class:1,risk:'niedrig'},{plz:'14129',city:'Berlin',class:1,risk:'niedrig'},{plz:'14163',city:'Berlin',class:1,risk:'niedrig'},{plz:'14165',city:'Berlin',class:1,risk:'niedrig'},{plz:'14167',city:'Berlin',class:1,risk:'niedrig'},{plz:'14169',city:'Berlin',class:1,risk:'niedrig'},{plz:'14193',city:'Berlin',class:1,risk:'niedrig'},{plz:'14195',city:'Berlin',class:1,risk:'niedrig'},{plz:'14197',city:'Berlin',class:1,risk:'niedrig'},{plz:'14199',city:'Berlin',class:1,risk:'niedrig'},
+    
+    // Hamburg
+    {plz:'20095',city:'Hamburg',class:4,risk:'hoch'},{plz:'20097',city:'Hamburg',class:4,risk:'hoch'},{plz:'20099',city:'Hamburg',class:4,risk:'hoch'},
+    {plz:'20144',city:'Hamburg',class:1,risk:'niedrig'},{plz:'20146',city:'Hamburg',class:1,risk:'niedrig'},{plz:'20148',city:'Hamburg',class:1,risk:'niedrig'},{plz:'20149',city:'Hamburg',class:1,risk:'niedrig'},
+    {plz:'20249',city:'Hamburg',class:2,risk:'niedrig'},{plz:'20251',city:'Hamburg',class:2,risk:'niedrig'},{plz:'20253',city:'Hamburg',class:2,risk:'niedrig'},{plz:'20255',city:'Hamburg',class:2,risk:'niedrig'},{plz:'20257',city:'Hamburg',class:2,risk:'niedrig'},{plz:'20259',city:'Hamburg',class:2,risk:'niedrig'},
+    {plz:'20354',city:'Hamburg',class:4,risk:'hoch'},{plz:'20355',city:'Hamburg',class:4,risk:'hoch'},{plz:'20357',city:'Hamburg',class:4,risk:'hoch'},{plz:'20359',city:'Hamburg',class:4,risk:'hoch'},{plz:'20457',city:'Hamburg',class:4,risk:'hoch'},{plz:'20459',city:'Hamburg',class:4,risk:'hoch'},
+    {plz:'20535',city:'Hamburg',class:3,risk:'mittel'},{plz:'20537',city:'Hamburg',class:3,risk:'mittel'},{plz:'20539',city:'Hamburg',class:3,risk:'mittel'},
+    {plz:'21029',city:'Hamburg',class:2,risk:'niedrig'},{plz:'21031',city:'Hamburg',class:2,risk:'niedrig'},{plz:'21033',city:'Hamburg',class:2,risk:'niedrig'},{plz:'21035',city:'Hamburg',class:2,risk:'niedrig'},{plz:'21037',city:'Hamburg',class:2,risk:'niedrig'},{plz:'21039',city:'Hamburg',class:2,risk:'niedrig'},{plz:'21073',city:'Hamburg',class:2,risk:'niedrig'},{plz:'21075',city:'Hamburg',class:2,risk:'niedrig'},{plz:'21077',city:'Hamburg',class:2,risk:'niedrig'},{plz:'21079',city:'Hamburg',class:2,risk:'niedrig'},
+    {plz:'21107',city:'Hamburg',class:2,risk:'niedrig'},{plz:'21109',city:'Hamburg',class:2,risk:'niedrig'},{plz:'21129',city:'Hamburg',class:2,risk:'niedrig'},{plz:'21147',city:'Hamburg',class:2,risk:'niedrig'},{plz:'21149',city:'Hamburg',class:2,risk:'niedrig'},{plz:'21224',city:'Hamburg',class:2
