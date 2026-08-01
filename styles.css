@@ -246,7 +246,7 @@ p { color: var(--text-body); }
   border-radius: 0 0 36px 36px;
   margin-bottom: 1rem;
   position: relative;
-  overflow: visible;
+  overflow: hidden;
 }
 .hero::after {
   content: '';
@@ -1064,102 +1064,6 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
   font-size: 0.88rem;
   color: var(--text-muted);
   font-weight: 500;
-}
-
-/* ===== MASCOT (Markenfigur "Knigge") ===== */
-.mascot-svg { width: 100%; height: 100%; display: block; }
-
-.mascot-home {
-  position: absolute;
-  right: 1.5%;
-  bottom: -6px;
-  width: 145px;
-  height: 210px;
-  z-index: 2;
-  pointer-events: none;
-  animation: mascotHomeFloat 4.5s ease-in-out infinite;
-}
-.mascot-home .mascot-figure { width: 100%; height: 100%; filter: drop-shadow(0 8px 16px rgba(0,0,0,.3)); }
-
-.mascot-fixed {
-  position: fixed;
-  right: 1.25rem;
-  bottom: 1.25rem;
-  z-index: 900;
-  display: flex;
-  align-items: flex-end;
-  gap: .5rem;
-  pointer-events: none;
-  max-width: 360px;
-}
-
-.mascot-bubble {
-  background: #fff;
-  border: 2px solid var(--gold-500);
-  border-radius: 14px;
-  padding: .65rem 1rem;
-  box-shadow: 0 6px 20px rgba(0,0,0,.13);
-  display: flex;
-  flex-direction: column;
-  gap: .15rem;
-  position: relative;
-  margin-bottom: 30px;
-  max-width: 250px;
-  opacity: 0;
-  transform: translateX(12px);
-  animation: mascotBubbleIn .5s ease-out .3s forwards;
-  transition: opacity .4s ease, transform .4s ease;
-}
-.mascot-bubble--hidden { opacity: 0; transform: translateX(12px); pointer-events: none; }
-.mascot-bubble::after {
-  content: '';
-  position: absolute;
-  right: -10px;
-  bottom: 14px;
-  width: 0; height: 0;
-  border: 10px solid transparent;
-  border-left-color: #fff;
-  border-right: 0;
-  filter: drop-shadow(2px 0 0 var(--gold-500));
-}
-.mascot-bubble-label {
-  font-weight: 800;
-  font-size: .82rem;
-  color: var(--green-800);
-}
-.mascot-bubble-msg {
-  font-size: .8rem;
-  color: var(--text-dark);
-  line-height: 1.4;
-}
-
-.mascot-fixed .mascot-figure {
-  width: 80px;
-  height: 115px;
-  flex-shrink: 0;
-  filter: drop-shadow(0 4px 10px rgba(0,0,0,.2));
-  animation: mascotFloat 3.5s ease-in-out infinite;
-  cursor: pointer;
-  pointer-events: auto;
-  transition: transform .3s ease;
-}
-.mascot-fixed .mascot-figure:hover { transform: scale(1.08); }
-
-@keyframes mascotFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
-@keyframes mascotHomeFloat { 0%,100%{transform:translateY(0) rotate(-1deg)} 50%{transform:translateY(-8px) rotate(1deg)} }
-@keyframes mascotBubbleIn { to{opacity:1;transform:translateX(0)} }
-
-@media (max-width: 768px) {
-  .mascot-fixed { right: .5rem; bottom: .5rem; max-width: 300px; }
-  .mascot-fixed .mascot-figure { width: 58px; height: 84px; }
-  .mascot-bubble { max-width: 180px; padding: .5rem .75rem; margin-bottom: 20px; }
-  .mascot-bubble-label { font-size: .75rem; }
-  .mascot-bubble-msg { font-size: .72rem; }
-  .mascot-home { width: 95px; height: 137px; }
-}
-@media (max-width: 480px) { .mascot-fixed { display: none; } }
-@media (prefers-reduced-motion: reduce) {
-  .mascot-fixed .mascot-figure, .mascot-home { animation: none; }
 }
 
 /* ===== RESPONSIVE TWEAKS ===== */
