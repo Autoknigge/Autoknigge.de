@@ -10,25 +10,44 @@
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f241d">
 <style>
-  /* Styling für den goldfarbenen Button */
+  /* Themen-Karten mit hohem Kontrast */
+  .section-card {
+    background-color: #ffffff;
+    border: 2px solid #0f241d;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(15, 36, 29, 0.08);
+  }
+
+  /* Einheitlicher Gold-Button Stil */
   .gold-button {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa7c11 100%);
-    color: #1a1a1a;
+    color: #1a1a1a !important;
     font-weight: bold;
-    padding: 0.75rem 1.5rem;
+    padding: 0.85rem 1.75rem;
     border-radius: 6px;
     text-decoration: none;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
-    border: none;
+    border: 1px solid #b89728;
+    cursor: pointer;
   }
   .gold-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
-    color: #000;
+    box-shadow: 0 6px 15px rgba(212, 175, 55, 0.5);
+    color: #000 !important;
+  }
+
+  /* Zentrierung für Buttons */
+  .button-center-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
   }
 </style>
 </head>
@@ -66,21 +85,22 @@
     <h1>E-Auto Kaufprämie 2026 – Checkliste Förderung</h1>
     <p class="lead">Der Kauf eines Elektroautos wird in Deutschland finanziell und steuerlich stark gefördert. Alle Informationen zu Kaufprämien, gewerblichen Abschreibungen und Steuervorteilen auf einen Blick.</p>
     
-    <div class="partner-section">
-      <h3>⚡ Zu Hause günstig tanken:</h3>
+    <!-- Partner-Modul (Gekapseltes Feld) -->
+    <div class="section-card partner-section">
+      <h3>⚡ Zu Hause günstig tanken</h3>
       <p class="partner-desc">Wechsle jetzt deinen Stromanbieter und profitiere von günstigen Tarifen für dein E-Auto.</p>
-      <div class="partner-buttons">
-        <a href="https://www.check24.net/stromanbieter-wechseln" target="_blank" rel="noopener sponsored" class="partner-button">
-          <span class="partner-icon">⚡</span>
-          <span class="partner-name">Stromanbieter wechseln</span>
-          <span class="partner-arrow">→</span>
+      <div class="button-center-wrapper">
+        <a href="https://www.check24.net/stromanbieter-wechseln" target="_blank" rel="noopener sponsored" class="gold-button">
+          <span>⚡</span>
+          <span>Stromanbieter wechseln</span>
+          <span>→</span>
         </a>
       </div>
-      <p style="font-size: 0.85rem; color: #6c757d; margin-top: 0.5rem;">* Als Partner unterstütze ich diese Empfehlung. Für dich entstehen dadurch selbstverständlich keine Mehrkosten.</p>
+      <p style="font-size: 0.85rem; color: #555; margin-top: 1rem; text-align: center;">* Als Partner unterstütze ich diese Empfehlung. Für dich entstehen dadurch selbstverständlich keine Mehrkosten.</p>
     </div>
 
-    <!-- 1. Staatliche Förderung (BAFA) -->
-    <section>
+    <!-- Thema 1: Staatliche Förderung (BAFA) -->
+    <section class="section-card">
       <h2>Die Umweltprämie (BAFA-Förderung)</h2>
       <p>Die Umweltprämie wird vom Bundesamt für Wirtschaft und Ausfuhrkontrolle (BAFA) als Zuschuss des Bundes sowie durch einen Herstelleranteil gewährt.</p>
       <ul>
@@ -88,15 +108,15 @@
         <li><strong>Voraussetzung:</strong> Das Fahrzeug muss neu zugelassen werden und einen Nettobasispreis unter der jeweils aktuellen Fördergrenze haben.</li>
         <li><strong>Antragstellung:</strong> Der Antrag wird online direkt über das BAFA-Portal gestellt – häufig übernimmt aber auch dein Autohändler die Abwicklung für dich.</li>
       </ul>
-      <p style="margin-top: 1.5rem;">
+      <div class="button-center-wrapper">
         <a href="https://www.bafa.de/DE/Energie/Energieeffizienz/E-Auto_Foerderung_2026/E-Auto_Foerderung_2026_node.html" target="_blank" rel="noopener" class="gold-button">
-          📥 Förderseite
+          📝 Zum BAFA-Förderantrag
         </a>
-      </p>
+      </div>
     </section>
 
-    <!-- 2. Steuerliche Vorteile & Sonderabschreibung für Unternehmer -->
-    <section>
+    <!-- Thema 2: Steuerliche Vorteile & Sonderabschreibung -->
+    <section class="section-card">
       <h2>Steuervorteile & Sonderabschreibung für Unternehmer</h2>
       <p>Für Unternehmen, Selbstständige und Gewerbetreibende bieten reine Elektrofahrzeuge erhebliche steuerliche Liquiditätsvorteile im Jahr der Anschaffung:</p>
       
@@ -108,8 +128,8 @@
       </ul>
 
       <!-- Praxisbeispiel -->
-      <div style="background-color: #f8f9fa; border-left: 4px solid #0f241d; padding: 1.25rem; margin: 1.5rem 0; border-radius: 4px;">
-        <h4 style="margin-top:0;">📊 Rechenbeispiel für deine Firma (z. B. Tesla Model Y):</h4>
+      <div style="background-color: #f0f4f2; border-left: 5px solid #0f241d; padding: 1.25rem; margin: 1.5rem 0; border-radius: 4px;">
+        <h4 style="margin-top:0; color: #0f241d;">📊 Rechenbeispiel für deine Firma (z. B. Tesla Model Y):</h4>
         <ul style="margin-bottom:0;">
           <li><strong>Brutto-Kaufpreis:</strong> 52.000 €</li>
           <li><strong>Vorsteuerabzug (19 % MwSt.):</strong> 8.302,52 € erstattet dir das Finanzamt direkt zurück.</li>
@@ -127,8 +147,8 @@
       </ul>
     </section>
 
-    <!-- 3. Eigenen Solarstrom nutzen (Photovoltaik) -->
-    <section>
+    <!-- Thema 3: Solarstrom -->
+    <section class="section-card">
       <h2>Eigenen Solarstrom nutzen (PV-Anlage)</h2>
       <p>Die Kombination aus Elektroauto und einer eigenen Photovoltaikanlage bietet sowohl privat als auch für deinen Gewerbebetrieb enorme wirtschaftliche Synergien:</p>
       <ul>
@@ -138,16 +158,16 @@
       </ul>
     </section>
 
-    <!-- 4. Vorteile für Privatpersonen -->
-    <section>
+    <!-- Thema 4: Steuervorteile Privat -->
+    <section class="section-card">
       <h2>Steuervorteile für Privatpersonen</h2>
       <ul>
         <li><strong>Kfz-Steuer-Befreiung:</strong> Dein rein elektrisches Fahrzeug ist ab Erstzulassung für bis zu 10 Jahre vollständig von der Kfz-Steuer befreit (bei Erstzulassung bis Ende 2030).</li>
       </ul>
     </section>
 
-    <!-- 5. Weitere Fördermöglichkeiten -->
-    <section>
+    <!-- Thema 5: Weitere Förderungen -->
+    <section class="section-card">
       <h2>Weitere Fördermöglichkeiten & Boni</h2>
       <ul>
         <li><strong>Ladesäulen- & Wallbox-Förderung:</strong> Zuschüsse von Bund, Ländern und Kommunen für die Installation deiner privaten oder gewerblichen Wallbox.</li>
