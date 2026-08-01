@@ -33,17 +33,36 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 0.75rem;
+    gap: 1rem;
     margin-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding-bottom: 0.75rem;
   }
   .cv-title-wrap {
     display: flex;
     align-items: center;
     gap: 0.75rem;
   }
+  
+  /* Styling für das hochgeladene Logo */
+  .carvertical-logo-link {
+    display: inline-block;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+  }
+  .carvertical-logo-link:hover {
+    transform: scale(1.03);
+  }
+  .carvertical-logo {
+    max-height: 40px;
+    width: auto;
+    display: block;
+  }
+
   .cv-title {
     margin: 0;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: #ffffff;
     font-weight: 700;
   }
@@ -57,13 +76,19 @@
     letter-spacing: 0.5px;
     box-shadow: 0 2px 8px rgba(255, 82, 82, 0.4);
   }
+  
+  /* Hoher Kontrast für gute Lesbarkeit */
   .cv-hook {
     font-size: 1.15rem;
     font-weight: 700;
-    color: #a3e6cd;
-    margin: 0.5rem 0;
-    line-height: 1.35;
+    color: #ffffff;
+    margin: 0.8rem 0;
+    line-height: 1.4;
   }
+  .cv-hook highlight {
+    color: #a3e6cd;
+  }
+
   .cv-features {
     list-style: none;
     padding: 0;
@@ -74,18 +99,22 @@
   }
   .cv-features li {
     font-size: 0.95rem;
-    color: #e2e8f0;
+    color: #ffffff; /* Reines Weiß für perfekten Kontrast */
     display: flex;
     align-items: center;
     gap: 0.6rem;
-    background: rgba(255, 255, 255, 0.07);
-    padding: 0.6rem 0.8rem;
+    background: rgba(255, 255, 255, 0.12); /* Hellerer Hintergrund */
+    padding: 0.65rem 0.85rem;
     border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .cv-features strong {
+    color: #d1fae5; /* Helles Mintgrün zur Hervorhebung */
   }
 
   /* Aufgeräumte Gutschein-Box */
   .cv-coupon-box {
-    background: rgba(255, 255, 255, 0.95);
+    background: #ffffff;
     border-radius: 10px;
     padding: 1.25rem;
     display: flex;
@@ -103,15 +132,16 @@
     gap: 0.4rem;
   }
   .cv-code-row {
-    font-size: 0.9rem;
-    color: #333333;
+    font-size: 0.95rem;
+    color: #111827; /* Dunkle, sehr gut lesbare Schrift */
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    font-weight: 600;
   }
   .cv-code {
     font-family: monospace;
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     font-weight: 800;
     color: #0f241d;
     background: #eef6f3;
@@ -177,7 +207,8 @@
       <div class="cat-page-title-wrap">
         <h1>Autokauf und -verkauf</h1>
       </div>
-      <p class="lead">Alles rund um Autokauf und Verkauf: Neuwagen, Gebrauchtwagen, Leasing, E-Auto und mehr.</p>
+      <!-- Text im Du-Stil angepasst -->
+      <p class="lead">Alles rund um deinen Autokauf und -verkauf: Finde nützliche Tipps für Neuwagen, Gebrauchtwagen, Leasing, E-Autos und mehr.</p>
       <div class="quick-info-line">
         <span class="quick-info-badge">Infobox <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 20l-7.5-7.5h5V4h5v8.5h5L12 20z"/></svg></span>
       </div>
@@ -188,36 +219,39 @@
         <a class="card" href="artikel-e-auto-vs-benziner.html">
           <div class="card-symbol">⚡</div>
           <h3>E-Auto vs. Benziner</h3>
-          <p>Anschaffungs-, Lade- und Unterhaltskosten im direkten Vergleich.</p>
+          <p>Anschaffungs-, Lade- und Unterhaltskosten für dich im direkten Vergleich.</p>
         </a>
 
-        <!-- CARVERTICAL AKTIONSS-BOX IN SAUBEREM, FLUCHTENDEM DESIGN -->
+        <!-- CARVERTICAL AKTIONSS-BOX MIT EMBEDDED LOGO UNTER DEM LINK -->
         <a class="card-featured-carvertical" href="https://www.carvertical.com/de/landing/v3?voucher=Autoknigge" target="_blank" rel="noopener sponsored">
           <div class="cv-header">
             <div class="cv-title-wrap">
-              <span style="font-size: 1.8rem;">🚨</span>
-              <h3 class="cv-title">Unfallwagen im Visier? Bitte unbedingt checken!</h3>
+              <!-- Das ausgewählte Logo direkt im Header eingebunden -->
+              <span class="carvertical-logo-link">
+                <img src="1000192481.jpg" alt="carVertical Logo" class="carvertical-logo">
+              </span>
             </div>
             <span class="cv-badge">🔥 20 % SPAREN</span>
           </div>
           
+          <!-- Text durchgängig im Du-Stil -->
           <div class="cv-hook">
-            Lassen Sie sich nicht täuschen – prüfen Sie die Historie per Fahrgestellnummer (FIN) bei carVertical, bevor Sie unterschreiben!
+            🚨 Unfallwagen im Visier? Lass dich nicht täuschen – prüfe die Historie per Fahrgestellnummer (FIN) bei carVertical, bevor du unterschreibst!
           </div>
 
-          <!-- BEISPIELE FÜR DIE VORZÜGE (KORRIGIERTE TRENNUNG BEI UNFALL-SCHÄDEN) -->
+          <!-- Feature-Liste mit hohem Kontrast -->
           <ul class="cv-features">
-            <li>💥 <strong>Versteckte Unfall-Schäden:</strong> Entlarven Sie teure Rahmenschäden & alte Gutachten.</li>
-            <li>⏱️ <strong>Tacho-Betrug aufdecken:</strong> Sehen Sie den echten Kilometerverlauf ein.</li>
-            <li>🚓 <strong>Diebstahl-Abgleich:</strong> Prüfen Sie die FIN in internationalen Polizeidatenbanken.</li>
-            <li>📸 <strong>Historische Bilder:</strong> Entdecken Sie Fotos aus früheren Auktions- & Verkaufs-Inseraten.</li>
+            <li>💥 <strong>Versteckte Unfall-Schäden:</strong> Entlarve teure Rahmenschäden & alte Gutachten.</li>
+            <li>⏱️ <strong>Tacho-Betrug aufdecken:</strong> Sieh den echten Kilometerverlauf ein.</li>
+            <li>🚓 <strong>Diebstahl-Abgleich:</strong> Prüfe die FIN in internationalen Polizeidatenbanken.</li>
+            <li>📸 <strong>Historische Bilder:</strong> Entdecke Fotos aus früheren Auktions- & Verkaufs-Inseraten.</li>
           </ul>
 
-          <!-- SAUBER STRUKTURIERTE UND AUSGERICHTETE BOTTOM-BOX -->
+          <!-- Gutschein-Bereich im Du-Stil -->
           <div class="cv-coupon-box">
             <div class="cv-coupon-info">
               <div class="cv-code-row">
-                <span>Rabattcode:</span>
+                <span>Dein Rabattcode:</span>
                 <strong class="cv-code">Autoknigge</strong>
               </div>
               <div class="cv-auto-notice-badge">
@@ -231,27 +265,27 @@
         <a class="card" href="artikel-pannenstatistik.html">
           <div class="card-symbol">🚨</div>
           <h3>Pannenstatistik</h3>
-          <p>Zuverlässige Modelle und häufige Defekte im Überblick.</p>
+          <p>Zuverlässige Modelle und häufige Defekte auf einen Blick.</p>
         </a>
         <a class="card" href="artikel-kfz-leasing.html">
           <div class="card-symbol">🔑</div>
           <h3>Kfz-Leasing</h3>
-          <p>Vor- und Nachteile sowie versteckte Kostenfallen verstehen.</p>
+          <p>Vor- und Nachteile sowie versteckte Kostenfallen ganz einfach verstehen.</p>
         </a>
         <a class="card" href="artikel-auto-verkaufen.html">
           <div class="card-symbol">🤝</div>
           <h3>Verkaufen</h3>
-          <p>Vom Wertgutachten bis zum sicheren Kaufvertrag.</p>
+          <p>Vom ersten Wertgutachten bis zum sicheren Kaufvertrag für dein Auto.</p>
         </a>
         <a class="card" href="artikel-e-auto-kaufpraemie.html">
           <div class="card-symbol">💶</div>
           <h3>E-Auto Kaufprämie</h3>
-          <p>Aktuelle steuerliche Vorteile und Förderungen nutzen.</p>
+          <p>Aktuelle steuerliche Vorteile und staatliche Förderungen optimal nutzen.</p>
         </a>
         <a class="card" href="artikel-zulassungszahlen.html">
           <div class="card-symbol">📈</div>
           <h3>Zulassungszahlen</h3>
-          <p>Beliebte Modelle und Markttrends auf einen Blick.</p>
+          <p>Beliebte Modelle und die neusten Markttrends auf einen Blick.</p>
         </a>
       </div>
     </section>
@@ -265,7 +299,8 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <h3>Autoknigge</h3>
-        <p>Ihr unabhängiger Ratgeber für stilvolles, sicheres und wirtschaftlich cleveres Verhalten rund um das Automobil.</p>
+        <!-- Footer-Beschreibung im Du-Stil -->
+        <p>Dein unabhängiger Ratgeber für stilvolles, sicheres und wirtschaftlich cleveres Verhalten rund um das Automobil.</p>
       </div>
       <div class="footer-col">
         <h4>Kategorien</h4>
