@@ -5,6 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gebrauchtwagenkauf Ratgeber & VIN-Check — AutoKnigge</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Spezifische Layout-Feinjustierungen für diese Wünsche */
+    .cv-header-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding-bottom: 1.25rem;
+    }
+
+    .brand-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.35rem;
+    }
+
+    .brand-subtext {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+  </style>
 </head>
 <body>
 
@@ -55,23 +84,31 @@
       <!-- CARVERTICAL SPECIAL BOX -->
       <section class="carvertical-box reveal">
         
-        <!-- Header mit Logo & Rabatt-Button (Allgemeiner Link) -->
-        <div class="carvertical-header">
-          <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener noreferrer" class="carvertical-logo-link">
-            <img src="https://static.carvertical.com/assets/img/carvertical-logo-white.svg" alt="carVertical Logo" class="carvertical-logo">
-          </a>
+        <!-- Zentrierter Header mit Logo, Text & Mittigem 20%-Button -->
+        <div class="cv-header-center">
+          <div class="brand-group">
+            <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener noreferrer" class="carvertical-logo-link">
+              <img src="https://static.carvertical.com/assets/img/carvertical-logo-white.svg" alt="carVertical Logo" class="carvertical-logo">
+            </a>
+            <span class="brand-subtext">AutoKnigge</span>
+          </div>
+
+          <!-- Zentrierter Button -->
           <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener noreferrer" class="gold-coupon-btn">
             ⚡ 20% Rabatt sichern
           </a>
         </div>
 
-        <!-- Praxis-Story / Erfahrungsbericht -->
+        <!-- Neuer, knackiger Praxis-Text -->
         <div class="cv-intro-text">
           <p>
-            <strong>Warum wir carVertical empfehlen:</strong> Beim Gebrauchtwagenkauf zählt Vertrauen, aber Kontrolle ist besser. Ein optisch makelloser Wagen kann eine Vergangenheit als Totalschaden oder einen zurückgedrehten Tacho haben.
+            <strong>Prüfe dein neues Gefährt vor dem Kauf</strong>
           </p>
           <p>
-            Mit der Fahrgestellnummer (FIN / VIN) greift carVertical auf Milliarden von Datenpunkten aus Polizeidatenbanken, Versicherungen, nationalen Registern und Werkstätten zu. Ein kleiner Check vor dem Kauf bewahrt dich vor vierstelligen Fehlkäufen.
+            Ein schönes Äußeres täuscht schnell über eine miserable Fahrzeughistorie hinweg. Ein vermeintlich gepflegter SUV wird mit 120.000 km als „unfallfrei“ angeboten. Eine kurze Abfrage bei <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener" style="color: var(--gold-500); text-decoration: underline;">carVertical</a> deckt jedoch auf, dass der Wagen vor zwei Jahren mit 210.000 km und einem schweren Heckschaden im Ausland repariert wurde.
+          </p>
+          <p>
+            Schütze dich beim nächsten Kauf vor Fehlentscheidungen und bösen Überraschungen.
           </p>
         </div>
 
