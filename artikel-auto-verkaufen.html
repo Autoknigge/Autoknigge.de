@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#0f241d">
 
 <style>
-/* ===== Fahrzeughistorie / Verkauf – eigenständiger Partner-Block ===== */
+/* ===== Fahrzeughistorie / Verkauf – überarbeiteter Partner-Block ===== */
 .history-sale-card{
   margin:2.6rem 0 3rem;
   padding:1.5rem;
@@ -40,12 +40,17 @@
 .history-badge>span{display:grid;place-items:center;width:31px;height:31px;border-radius:9px;margin-bottom:.55rem;font-weight:900}
 .history-badge strong{display:block;font-size:.88rem;color:#fff}.history-badge small{display:block;color:rgba(255,255,255,.58);font-size:.72rem;margin-top:.18rem;line-height:1.35}
 .badge-damage{background:rgba(218,104,104,.075);border-color:rgba(218,104,104,.18)}.badge-mileage{background:rgba(86,164,129,.075);border-color:rgba(86,164,129,.18)}.badge-data{background:rgba(91,139,194,.075);border-color:rgba(91,139,194,.18)}.badge-value{background:rgba(212,168,67,.085);border-color:rgba(212,168,67,.2)}.badge-damage>span{background:rgba(218,104,104,.22);color:#f0a6a6}.badge-mileage>span{background:rgba(86,164,129,.22);color:#9be0bd}.badge-data>span{background:rgba(91,139,194,.22);color:#a8c9ee}.badge-value>span{background:rgba(212,168,67,.2);color:#f5d77d}
-.history-sale-bottom{align-items:stretch;margin-top:.25rem}.history-actions{display:flex;gap:.65rem;flex-wrap:wrap;align-items:center}.history-cta.secondary{background:rgba(255,255,255,.08);color:#fff!important;border:1px solid rgba(255,255,255,.2);box-shadow:none}.history-cta.secondary:hover{color:#fff!important;background:rgba(255,255,255,.14)}
-.history-note{font-size:.78rem;line-height:1.5;color:rgba(255,255,255,.65);max-width:58%}.history-note strong{color:#fff}
-.history-cta{display:inline-flex;align-items:center;justify-content:center;gap:1rem;min-width:225px;padding:.85rem 1.15rem;border-radius:999px;background:linear-gradient(135deg,#d4a843,#f0c65d);color:#17251f!important;text-decoration:none!important;font-weight:800;box-shadow:0 8px 20px rgba(0,0,0,.18);transition:transform .2s ease,box-shadow .2s ease}
+.history-sale-bottom{align-items:stretch;margin-top:.25rem}
+.history-actions{display:flex;gap:.65rem;flex-wrap:wrap;align-items:center}
+.history-cta{display:inline-flex;align-items:center;justify-content:center;gap:0.75rem;padding:.85rem 1.15rem;border-radius:999px;background:linear-gradient(135deg,#d4a843,#f0c65d);color:#17251f!important;text-decoration:none!important;font-weight:800;box-shadow:0 8px 20px rgba(0,0,0,.18);transition:transform .2s ease,box-shadow .2s ease;min-width:175px;border:none;font-size:.95rem}
 .history-cta:hover{color:#17251f!important;transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.24)}
-.history-cta b{font-size:1.25rem}.history-disclaimer{position:relative;z-index:1;margin:.95rem 0 0;color:rgba(255,255,255,.43);font-size:.68rem;line-height:1.45}
-@media(max-width:700px){.history-sale-card{padding:1.2rem;border-radius:20px}.history-sale-top{align-items:flex-start}.history-label{display:none}.history-badges{grid-template-columns:repeat(2,1fr)}.history-sale-bottom{flex-direction:column}.history-note{max-width:none}.history-cta{width:100%}}
+.history-cta .cta-highlight{background:#17251f;color:#f5c542;padding:.1rem .6rem;border-radius:99px;font-size:.7rem;font-weight:700;letter-spacing:.02em;margin-left:.15rem;white-space:nowrap}
+.history-cta.secondary{background:rgba(255,255,255,.08);color:#fff!important;border:1px solid rgba(255,255,255,.2);box-shadow:none;min-width:160px}
+.history-cta.secondary:hover{color:#fff!important;background:rgba(255,255,255,.14)}
+.history-cta b{font-size:1.2rem;line-height:1}
+.history-note{font-size:.78rem;line-height:1.5;color:rgba(255,255,255,.65);max-width:58%}.history-note strong{color:#fff}
+.history-disclaimer{position:relative;z-index:1;margin:.95rem 0 0;color:rgba(255,255,255,.43);font-size:.68rem;line-height:1.45}
+@media(max-width:700px){.history-sale-card{padding:1.2rem;border-radius:20px}.history-sale-top{align-items:flex-start}.history-label{display:none}.history-badges{grid-template-columns:repeat(2,1fr)}.history-sale-bottom{flex-direction:column}.history-note{max-width:none}.history-cta{width:100%;min-width:unset}.history-actions{flex-direction:column;width:100%}.history-cta.secondary{width:100%}}
 
 /* ===== Verkaufsseite: alle Inhalte als übersichtliche Karten ===== */
 .sell-card{
@@ -80,6 +85,9 @@
 .history-offer{display:inline-block;margin:.35rem 0 0;padding:.45rem .75rem;border-radius:999px;background:rgba(212,168,67,.16);color:#f5d77d;font-weight:800;font-size:.88rem}
 @media(max-width:700px){.sell-card,.partner-section{padding:1.15rem !important;border-radius:17px}.price-platforms{display:grid;grid-template-columns:1fr}.price-platforms a{justify-content:center}}
 
+/* ===== Button-Vereinheitlichung (wie in Versicherung) ===== */
+.btn-group-vertical{display:flex;flex-direction:column;gap:.65rem;width:100%;max-width:380px}
+.btn-group-vertical .history-cta{width:100%;justify-content:center}
 </style>
 
 </head>
@@ -116,6 +124,7 @@
     </nav>
     <h1>Auto verkaufen – So gelingt der Verkauf</h1>
     <p class="lead">Der Verkauf eines Autos kann auf verschiedene Weise erfolgen. Mit der richtigen Vorbereitung und den passenden Tipps erzielen Sie den besten Preis und vermeiden Ärger.</p>
+    
     <div class="partner-section" style="margin: 2rem 0;">
       <h3>🧼 Gründliche Reinigung für bessere Fotos & mehr Wert</h3>
       <p class="partner-desc">Ein sauberer Innenraum ist das A und O für aussagekräftige Verkaufsfotos und macht bei Besichtigungen einen hervorragenden Eindruck. Ein Nasssauger entfernt selbst tiefsitzenden Schmutz aus Polstern und Teppichen – perfekt, um Ihr Auto in neuem Glanz zu präsentieren und den Wiederverkaufswert zu steigern.</p>
@@ -126,8 +135,9 @@
           <span class="partner-arrow">→</span>
         </a>
       </div>
-      
     </div>
+
+    <!-- ===== ÜBERARBEITETER CARVERTICAL-BLOCK MIT VERKÄUFERPERSPEKTIVE ===== -->
     <section class="history-sale-card">
       <div class="history-sale-top">
         <div class="history-brand" aria-label="carVertical">
@@ -137,8 +147,8 @@
       </div>
       <div class="history-sale-copy">
         <h2>Eine saubere Historie kann bares Geld wert sein.</h2>
-        <p>Beim Verkauf zählt nicht nur, wie gut das Auto aussieht. Wer die Vorgeschichte seines Fahrzeugs nachvollziehbar dokumentieren kann, schafft Vertrauen – und hat bessere Argumente für einen fairen Verkaufspreis.</p>
-        <p class="history-emphasis"><strong>Nicht nur behaupten, dass das Auto gut ist. Zeigen, was seine Geschichte sagt.</strong></p>
+        <p>Als Verkäufer stehen Sie vor der Herausforderung, den Wert Ihres Fahrzeugs glaubwürdig zu vermitteln. Ein <strong>carVertical-Fahrzeughistorie-Bericht</strong> ist Ihr stärkstes Argument: Er dokumentiert nachvollziehbar Kilometerstände, Schadensfreiheit und technische Details – und schafft so <strong>Vertrauen beim Käufer</strong>.</p>
+        <p class="history-emphasis"><strong>Statt nur zu behaupten, dass Ihr Auto gut ist – zeigen Sie, was seine Geschichte sagt. Das rechtfertigt Ihren Preis und beschleunigt die Entscheidung.</strong></p>
         <span class="history-offer">20 % Gutschrift auf den Bericht*</span>
       </div>
       <div class="history-badges" aria-label="Mögliche Inhalte eines carVertical-Berichts">
@@ -148,17 +158,16 @@
         <div class="history-badge badge-value"><span>€</span><strong>Marktwert</strong><small>zusätzliche Orientierung</small></div>
       </div>
       <div class="history-sale-bottom">
-        <div class="history-note"><strong>Warum beim Verkauf?</strong><br>Eine nachvollziehbare Historie kann Vertrauen schaffen, Rückfragen reduzieren und dir helfen, deinen Preis gegenüber Interessenten besser zu begründen.</div>
+        <div class="history-note"><strong>Ihr Vorteil als Verkäufer:</strong><br>Ein geprüfter Bericht belegt die Echtheit Ihrer Angaben, entkräftet Zweifel und hilft Ihnen, Ihren Preis mit Fakten zu untermauern – für einen fairen und schnellen Verkauf.</div>
         <div class="history-actions">
           <a class="history-cta" href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&amp;sub1=autoknigge" target="_blank" rel="noopener sponsored">
-            <span>Historie prüfen *</span><b>→</b>
+            <span>Historie prüfen</span><span class="cta-highlight">−20%</span><b>→</b>
           </a>
           <a class="history-cta secondary" href="https://www.carvertical.deal/2HLM53N/5MJ263/?uid=37&amp;source_id=AFF&amp;sub1=autoknigge&amp;sub3=FIN" target="_blank" rel="noopener sponsored">
-            <span>FIN / Kennzeichen *</span><b>↗</b>
+            <span>FIN / Kennzeichen</span><b>↗</b>
           </a>
         </div>
       </div>
-      
     </section>
 
     <section class="sell-card">
@@ -170,6 +179,7 @@
         <li><strong>Unterlagen bereitlegen:</strong> Legen Sie alle Servicehefte, Rechnungen, Gutachten und die aktuelle TÜV-Bescheinigung bereit.</li>
       </ul>
     </section>
+
     <section class="sell-card">
       <h2>Gute Fotos machen den Unterschied</h2>
       <p>Inserate mit guten Fotos erzielen deutlich mehr Anfragen und höhere Preise. Nehmen Sie sich Zeit für aussagekräftige Bilder.</p>
@@ -179,6 +189,7 @@
         <li><strong>Details:</strong> Fotografieren Sie Besonderheiten wie Felgen, Ausstattung oder den Kilometerstand.</li>
       </ul>
     </section>
+
     <section class="sell-card">
       <h2>Preisermittlung und Verhandlung</h2>
       <p>Ein realistischer Preis ist der Schlüssel zu einem schnellen Verkauf. Entscheidend ist deshalb nicht nur ein einzelner Wert, sondern ein sauberer <strong>Preisvergleich mit tatsächlich angebotenen Fahrzeugen</strong>.</p>
@@ -194,6 +205,7 @@
         <a href="https://www.kleinanzeigen.de/" target="_blank" rel="noopener">↗ Kleinanzeigen – besonders bei günstigeren Autos</a>
       </div>
     </section>
+
     <section class="sell-card">
       <h2>Der Vertrag</h2>
       <p>Ein schriftlicher Kaufvertrag schützt beide Seiten. Nutzen Sie einen Mustervertrag und dokumentieren Sie alle Vereinbarungen.</p>
