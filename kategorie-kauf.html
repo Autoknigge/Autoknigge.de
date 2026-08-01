@@ -16,7 +16,7 @@
     color: #ffffff;
     border-radius: 12px;
     padding: 1.5rem;
-    margin: 2rem 0 1rem 0;
+    margin: 1.5rem 0;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
   }
   .carvertical-header {
@@ -25,13 +25,14 @@
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 15px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
     border-bottom: 1px solid #1e293b;
     padding-bottom: 1rem;
   }
   .carvertical-logo {
-    max-height: 40px;
+    max-height: 38px;
     width: auto;
+    display: block;
   }
   
   /* Goldener Rabatt-Button */
@@ -39,26 +40,35 @@
     background: linear-gradient(135deg, #ffd700, #ffa500);
     color: #000000;
     font-weight: bold;
-    padding: 10px 20px;
+    padding: 8px 16px;
     border-radius: 50px;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.4);
-    text-decoration: none;
-    font-size: 0.95rem;
+    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
+    font-size: 0.9rem;
   }
 
-  /* Platzsparendes Grid mit Symbol ÜBER dem Text */
+  .cv-intro-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #cbd5e1;
+    margin-bottom: 1.5rem;
+  }
+  .cv-intro-text strong {
+    color: #ffffff;
+  }
+
+  /* Platzsparendes Grid: Icon ÜBER Titel + Erläuterung */
   .cv-features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 12px;
   }
   .cv-feature-card {
     background: #1e293b;
     border-radius: 8px;
-    padding: 12px 8px;
+    padding: 14px 10px;
     text-align: center;
   }
   .cv-feature-icon {
@@ -67,10 +77,15 @@
     margin-bottom: 6px;
   }
   .cv-feature-title {
-    font-size: 0.85rem;
-    font-weight: 600;
-    line-height: 1.2;
-    color: #e2e8f0;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 4px;
+  }
+  .cv-feature-desc {
+    font-size: 0.78rem;
+    color: #94a3b8;
+    line-height: 1.3;
   }
 
   /* Partner Buttons Bereich unter der Anzeige */
@@ -122,6 +137,75 @@
       </div>
     </div>
 
+    <!-- CARVERTICAL ABSCHNITT DIRECT UNTER DEM HEADER -->
+    <div class="carvertical-box">
+      <div class="carvertical-header">
+        <img src="1000192418.webp" alt="carVertical Logo" class="carvertical-logo">
+        <div class="gold-coupon-btn">
+          🏷️ Dein 20% Rabattcode: Autoknigge
+        </div>
+      </div>
+
+      <!-- Persönliche Ansprache mit Beispiel -->
+      <div class="cv-intro-text">
+        <p><strong>Warum du deinen Traumwagen immer vor dem Kauf prüfen solltest:</strong></p>
+        <p>Ein glänzender Lack täuscht schnell über eine teure Vergangenheit hinweg. Ein typisches Beispiel aus der Praxis: Ein vermeintlich gepflegter Kombi wird mit 120.000 km als „unfallfrei“ angeboten. Eine kurze Abfrage deckt jedoch auf, dass der Wagen vor zwei Jahren mit 210.000 km und einem schweren Heckschaden im Ausland versteigert wurde.</p>
+        <p>Schütze dich vor teuren Fehlkäufen und bösen Überraschungen in der Werkstatt – eine einfache Fahrgestellnummer-Prüfung entlarvt Betrüger in Sekunden!</p>
+      </div>
+
+      <!-- Feature Grid mit Icon OBERHALB von Titel & Erläuterung -->
+      <div class="cv-features-grid">
+        <div class="cv-feature-card">
+          <span class="cv-feature-icon">🚗💥</span>
+          <div class="cv-feature-title">Versteckte Unfallschäden</div>
+          <div class="cv-feature-desc">Deckung von verheimlichten Rahmenschäden und teuren Vorschäden.</div>
+        </div>
+
+        <div class="cv-feature-card">
+          <span class="cv-feature-icon">⏱️</span>
+          <div class="cv-feature-title">Tachoabweichungen</div>
+          <div class="cv-feature-desc">Entlarvt manipulierte Kilometerstände anhand historischer Einträge.</div>
+        </div>
+
+        <div class="cv-feature-card">
+          <span class="cv-feature-icon">📸</span>
+          <div class="cv-feature-title">Historische Fotos</div>
+          <div class="cv-feature-desc">Echte Archivbilder von früheren Verkäufen oder Unfallaufnahmen.</div>
+        </div>
+
+        <div class="cv-feature-card">
+          <span class="cv-feature-icon">🚨</span>
+          <div class="cv-feature-title">Diebstahleinträge</div>
+          <div class="cv-feature-desc">Prüfung in internationalen Polizeidatenbanken auf Diebstahlmeldungen.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GESAMMELTE BUTTONS UNTER DEM CARVERTICAL ABSCHNITT -->
+    <div class="partner-section" style="margin: 1.5rem 0 2.5rem 0;">
+      <h3>🛡 Empfohlene Services & Vergleiche</h3>
+      <p class="partner-desc">Nutze diese geprüften Tools für deine Historienprüfung und den Versicherungsvergleich:</p>
+
+      <div class="partner-buttons-wrapper">
+        <a href="https://www.carvertical.com/de/landing/v3?voucher=Autoknigge" target="_blank" rel="noopener sponsored" class="partner-button">
+          <span class="partner-icon">🔍</span>
+          <span class="partner-name">Fahrzeughistorie bei carVertical prüfen</span>
+          <span class="partner-arrow">→</span>
+        </a>
+
+        <a href="https://tarifcheck.com/SFKBdbP" target="_blank" rel="noopener sponsored" class="partner-button">
+          <span class="partner-icon">🛡</span>
+          <span class="partner-name">Kfz-Versicherung vergleichen</span>
+          <span class="partner-arrow">→</span>
+        </a>
+      </div>
+
+      <p style="font-size: 0.85rem; color: #6c757d; margin-top: 0.75rem;">
+        * Als Partner unterstützen wir diese Empfehlungen. Für Sie entstehen dadurch selbstverständlich keine Mehrkosten.
+      </p>
+    </div>
+
+    <!-- RASTLICHE KARTEN / RECHNER -->
     <section>
       <div class="grid">
         <a class="card" href="regionalklassen.html">
@@ -171,60 +255,6 @@
         </a>
       </div>
     </section>
-
-    <!-- CARVERTICAL ABSCHNITT -->
-    <div class="carvertical-box">
-      <div class="carvertical-header">
-        <img src="1000192418.webp" alt="carVertical Logo" class="carvertical-logo">
-        <div class="gold-coupon-btn">
-          🏷️ Dein 20% Rabattcode: Autoknigge
-        </div>
-      </div>
-
-      <!-- Compact Feature Grid mit Icons ÜBER dem Text -->
-      <div class="cv-features-grid">
-        <div class="cv-feature-card">
-          <span class="cv-feature-icon">🚗💥</span>
-          <div class="cv-feature-title">Versteckte Unfallschäden</div>
-        </div>
-        <div class="cv-feature-card">
-          <span class="cv-feature-icon">⏱️</span>
-          <div class="cv-feature-title">Tachoabweichungen</div>
-        </div>
-        <div class="cv-feature-card">
-          <span class="cv-feature-icon">📸</span>
-          <div class="cv-feature-title">Historische Fotos</div>
-        </div>
-        <div class="cv-feature-card">
-          <span class="cv-feature-icon">🚨</span>
-          <div class="cv-feature-title">Diebstahleinträge</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- GESAMMELTE PARTNER BUTTONS UNTER CARVERTICAL -->
-    <div class="partner-section" style="margin: 1.5rem 0;">
-      <h3>🛡 Empfohlene Services & Vergleiche</h3>
-      <p class="partner-desc">Nutzen Sie diese geprüften Tools für die Historienprüfung und den Versicherungsvergleich:</p>
-
-      <div class="partner-buttons-wrapper">
-        <a href="https://www.carvertical.com/de/landing/v3?voucher=Autoknigge" target="_blank" rel="noopener sponsored" class="partner-button">
-          <span class="partner-icon">🔍</span>
-          <span class="partner-name">Fahrzeughistorie bei carVertical prüfen</span>
-          <span class="partner-arrow">→</span>
-        </a>
-
-        <a href="https://tarifcheck.com/SFKBdbP" target="_blank" rel="noopener sponsored" class="partner-button">
-          <span class="partner-icon">🛡</span>
-          <span class="partner-name">Kfz-Versicherung vergleichen</span>
-          <span class="partner-arrow">→</span>
-        </a>
-      </div>
-
-      <p style="font-size: 0.85rem; color: #6c757d; margin-top: 0.75rem;">
-        * Als Partner unterstützen wir diese Empfehlungen. Für Sie entstehen dadurch selbstverständlich keine Mehrkosten.
-      </p>
-    </div>
 
   </div>
 </main>
