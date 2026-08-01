@@ -4,12 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>E-Auto Kaufprämie 2026 – Bafa Förderung | Autoknigge</title>
-<meta name="description" content="Informationen zur Kaufprämie, Steuervorteilen, gewerblicher Sonderabschreibung und Photovoltaik-Eigenstrom.">
+<meta name="description" content="Informationen zur Kaufprämie, Einkommensgrenzen, Kinderbonus, gewerblicher Sonderabschreibung und Photovoltaik-Eigenstrom.">
 <link rel="canonical" href="https://autoknigge.de/artikel-e-auto-kaufpraemie.html">
 <link rel="stylesheet" href="styles.css">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f241d">
 <style>
+  /* Leicht abgerundeter Header mit modernem Schatten */
+  .site-header {
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+
   /* Themen-Karten mit hohem Kontrast */
   .section-card {
     background-color: #ffffff;
@@ -18,6 +24,29 @@
     padding: 1.5rem;
     margin-bottom: 2rem;
     box-shadow: 0 4px 12px rgba(15, 36, 29, 0.08);
+  }
+
+  /* Styling für die Förder-Tabelle */
+  .foerder-table-wrapper {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+  .foerder-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.95rem;
+  }
+  .foerder-table th, .foerder-table td {
+    padding: 0.75rem 1rem;
+    border: 1px solid #0f241d;
+  }
+  .foerder-table th {
+    background-color: #0f241d;
+    color: #ffffff;
+  }
+  .foerder-table tr:nth-child(even) {
+    background-color: #f8f9fa;
   }
 
   /* Einheitlicher Gold-Button Stil */
@@ -83,9 +112,9 @@
       <span>E-Auto Kaufprämie</span>
     </nav>
     <h1>E-Auto Kaufprämie 2026 – Checkliste Förderung</h1>
-    <p class="lead">Der Kauf eines Elektroautos wird in Deutschland finanziell und steuerlich stark gefördert. Alle Informationen zu Kaufprämien, gewerblichen Abschreibungen und Steuervorteilen auf einen Blick.</p>
+    <p class="lead">Der Kauf eines Elektroautos wird in Deutschland finanziell und steuerlich stark gefördert. Alle Informationen zu Einkommensgrenzen, Fristen, Kinderboni sowie gewerblichen Sonderabschreibungen auf einen Blick.</p>
     
-    <!-- Partner-Modul (Gekapseltes Feld) -->
+    <!-- Partner-Modul -->
     <div class="section-card partner-section">
       <h3>⚡ Zu Hause günstig tanken</h3>
       <p class="partner-desc">Wechsle jetzt deinen Stromanbieter und profitiere von günstigen Tarifen für dein E-Auto.</p>
@@ -99,15 +128,69 @@
       <p style="font-size: 0.85rem; color: #555; margin-top: 1rem; text-align: center;">* Als Partner unterstütze ich diese Empfehlung. Für dich entstehen dadurch selbstverständlich keine Mehrkosten.</p>
     </div>
 
-    <!-- Thema 1: Staatliche Förderung (BAFA) -->
+    <!-- Thema 1: Staatliche Förderung (BAFA) mit Staffelung & Einkommensgrenzen -->
     <section class="section-card">
-      <h2>Die Umweltprämie (BAFA-Förderung)</h2>
-      <p>Die Umweltprämie wird vom Bundesamt für Wirtschaft und Ausfuhrkontrolle (BAFA) als Zuschuss des Bundes sowie durch einen Herstelleranteil gewährt.</p>
+      <h2>Die BAFA-Umweltprämie für Privatpersonen (bis zu 6.000 €)</h2>
+      <p>Die staatliche Kaufprämie für private Elektrofahrzeuge ist sozial gestaffelt und berücksichtigt das zu versteuernde Haushaltseinkommen (zvE) sowie die Anzahl minderjähriger Kinder.</p>
+      
+      <h3>1. Übersicht der Förderhöhen (Reine E-Autos / BEV)</h3>
+      <div class="foerder-table-wrapper">
+        <table class="foerder-table">
+          <thead>
+            <tr>
+              <th>Zu versteuerndes Haushaltseinkommen (zvE)</th>
+              <th>Haushalt ohne Kinder</th>
+              <th>Haushalt mit 1 Kind</th>
+              <th>Haushalt mit 2+ Kindern</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>bis 45.000 €</strong></td>
+              <td>5.000 €</td>
+              <td>5.500 €</td>
+              <td><strong>6.000 € (Maximum)</strong></td>
+            </tr>
+            <tr>
+              <td><strong>45.001 € bis 60.000 €</strong></td>
+              <td>4.000 €</td>
+              <td>4.500 €</td>
+              <td>5.000 €</td>
+            </tr>
+            <tr>
+              <td><strong>60.001 € bis 80.000 €</strong></td>
+              <td>3.000 €</td>
+              <td>3.500 €</td>
+              <td>4.000 €</td>
+            </tr>
+            <tr>
+              <td><strong>80.001 € bis 85.000 €</strong></td>
+              <td><em>Keine Förderung</em></td>
+              <td>3.500 €</td>
+              <td>4.000 €</td>
+            </tr>
+            <tr>
+              <td><strong>85.001 € bis 90.000 €</strong></td>
+              <td><em>Keine Förderung</em></td>
+              <td><em>Keine Förderung</em></td>
+              <td>4.000 €</td>
+            </tr>
+            <tr>
+              <td><strong>über 90.000 €</strong></td>
+              <td colspan="3" style="text-align: center;"><em>Keine Förderung möglich</em></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>2. Wichtige Fristen & Nachweis-Zeiträume</h3>
       <ul>
-        <li><strong>Fördersatz:</strong> Bis zu 4.500 € für reine Elektroautos (abhängig vom Listenpreis).</li>
-        <li><strong>Voraussetzung:</strong> Das Fahrzeug muss neu zugelassen werden und einen Nettobasispreis unter der jeweils aktuellen Fördergrenze haben.</li>
-        <li><strong>Antragstellung:</strong> Der Antrag wird online direkt über das BAFA-Portal gestellt – häufig übernimmt aber auch dein Autohändler die Abwicklung für dich.</li>
+        <li><strong>Zulassungszeitraum:</strong> Das Fahrzeug muss ab dem <strong>01. Januar 2026</strong> erstmals in Deutschland neu zugelassen worden sein.</li>
+        <li><strong>Antragsfrist:</strong> Der Online-Antrag kann rückwirkend gestellt werden, muss jedoch spätestens <strong>innerhalb von 12 Monaten nach Erstzulassung</strong> eingereicht werden.</li>
+        <li><strong>Mindesthaltedauer:</strong> Du musst das geförderte Fahrzeug mindestens <strong>36 Monate (3 Jahre)</strong> ab Erstzulassung auf deinen Namen halten.</li>
+        <li><strong>Nachweis des Einkommens:</strong> Als Nachweis gilt der Durchschnitt der **zwei aktuellsten Einkommensteuerbescheide** aller im Haushalt lebenden Personen. Diese dürfen zum Antragszeitpunkt maximal 3 Kalenderjahre alt sein.</li>
       </ul>
+
       <div class="button-center-wrapper">
         <a href="https://www.bafa.de/DE/Energie/Energieeffizienz/E-Auto_Foerderung_2026/E-Auto_Foerderung_2026_node.html" target="_blank" rel="noopener" class="gold-button">
           📝 Zum BAFA-Förderantrag
@@ -115,13 +198,13 @@
       </div>
     </section>
 
-    <!-- Thema 2: Steuerliche Vorteile & Sonderabschreibung -->
+    <!-- Thema 2: Steuerliche Vorteile & Sonderabschreibung für Unternehmer -->
     <section class="section-card">
       <h2>Steuervorteile & Sonderabschreibung für Unternehmer</h2>
       <p>Für Unternehmen, Selbstständige und Gewerbetreibende bieten reine Elektrofahrzeuge erhebliche steuerliche Liquiditätsvorteile im Jahr der Anschaffung:</p>
       
       <h3>75 % Turbo-Abschreibung (Sonder-AfA) im 1. Jahr</h3>
-      <p>Für neu angeschaffte, rein elektrische Betriebsfahrzeuge gilt ein stark beschleunigtes Abschreibungsmodell (§ 7 Abs. 2a EStG):</p>
+      <p>Für neu angeschaffte, rein elektrische Betriebsfahrzeuge gilt ein beschleunigtes Abschreibungsmodell (§ 7 Abs. 2a EStG):</p>
       <ul>
         <li><strong>1. Jahr (Anschaffungsjahr):</strong> 75 % der Netto-Anschaffungskosten kannst du sofort steuerlich gewinnmindernd geltend machen.</li>
         <li><strong>Folgejahre:</strong> 10 % im 2. Jahr, je 5 % im 3. und 4. Jahr, 3 % im 5. Jahr und 2 % im 6. Jahr.</li>
