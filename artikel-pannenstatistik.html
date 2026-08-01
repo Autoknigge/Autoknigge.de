@@ -3,12 +3,75 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pannenstatistik – Welche Autos sind zuverlässig? | Autoknigge</title>
-<meta name="description" content="Welche Autos sind am zuverlässigsten? Die aktuellen Pannenstatistiken im Überblick.">
+<title>Pannenstatistik 2026: Welche Autos sind zuverlässig? | Autoknigge</title>
+<meta name="description" content="Pannenstatistik 2026: aktuelle Zahlen zu Pannenursachen, zuverlässigen Fahrzeugen, E-Autos und Verbrennern – mit Daten, Fakten und Gebrauchtwagen-Tipps.">
 <link rel="canonical" href="https://autoknigge.de/artikel-pannenstatistik.html">
 <link rel="stylesheet" href="styles.css">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f241d">
+
+<style>
+/* Pannenstatistik – eigenständige Visualisierung, passend zum Autoknigge-Design */
+.pannen-hero{background:linear-gradient(135deg,#0f241d 0%,#163a2f 68%,#1e5141 100%);color:#fff;border-radius:18px;padding:2.3rem 2.2rem;margin:1rem 0 1.4rem;box-shadow:0 12px 30px rgba(15,36,29,.16);position:relative;overflow:hidden}
+.pannen-hero:after{content:"";position:absolute;width:230px;height:230px;border:1px solid rgba(255,255,255,.12);border-radius:50%;right:-60px;top:-80px;box-shadow:0 0 0 35px rgba(255,255,255,.025),0 0 0 70px rgba(255,255,255,.02)}
+.pannen-kicker,.eyebrow{font-size:.74rem;letter-spacing:.12em;font-weight:800;color:#d49a45;text-transform:uppercase}
+.pannen-hero h1{color:#fff;margin:.45rem 0 .75rem;font-size:clamp(2rem,4.5vw,3.25rem);line-height:1.08;max-width:850px}
+.pannen-hero .lead{color:rgba(255,255,255,.86);max-width:850px;margin:0;font-size:1.08rem;line-height:1.65}
+.pannen-source-pill{display:inline-block;margin-top:1.2rem;padding:.48rem .8rem;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);border-radius:999px;font-size:.82rem;font-weight:700}
+.pannen-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:0 0 2rem}
+.pannen-metric{background:#fff;border:1px solid #e3ebe7;border-radius:14px;padding:1.15rem 1rem;text-align:center;box-shadow:0 4px 14px rgba(15,36,29,.05)}
+.pannen-metric-icon{display:block;font-size:1.5rem;margin-bottom:.25rem}
+.pannen-metric strong{display:block;color:#0f241d;font-size:1.55rem;line-height:1.2}
+.pannen-metric span:last-child{display:block;color:#64746d;font-size:.82rem;margin-top:.25rem}
+.pannen-callout{background:#fff8ed;border:1px solid #f0d6a8;border-left:5px solid #d49a45;border-radius:13px;padding:1.4rem 1.5rem;margin:0 0 2.5rem}
+.pannen-callout-number{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:800;color:#9b6a28}
+.pannen-callout h2{margin:.3rem 0 .45rem;color:#342a1d;font-size:1.35rem}
+.pannen-callout p{margin:0;color:#5e5141;line-height:1.6}
+.pannen-section{margin:0 0 3rem}
+.section-heading-row{display:flex;justify-content:space-between;align-items:end;gap:1rem;margin-bottom:1.1rem}
+.section-heading-row h2{margin:.25rem 0 0;color:#0f241d}
+.source-badge{font-size:.75rem;font-weight:700;background:#eef5f1;color:#31594c;border-radius:999px;padding:.45rem .7rem;white-space:nowrap}
+.pannen-chart-card{background:#fff;border:1px solid #e2e9e5;border-radius:15px;padding:1.35rem 1.4rem;box-shadow:0 5px 18px rgba(15,36,29,.045)}
+.pannen-chart-intro{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;margin-bottom:1.25rem}
+.pannen-chart-intro strong{font-size:1.1rem;color:#0f241d}
+.pannen-chart-intro span{font-size:.8rem;color:#78857f}
+.bar-row{margin:1.05rem 0}
+.bar-label{display:flex;justify-content:space-between;gap:1rem;font-size:.92rem;margin-bottom:.42rem;color:#33443d}
+.bar-label strong{color:#0f241d}
+.bar-track{height:11px;background:#edf2ef;border-radius:99px;overflow:hidden}
+.bar-fill{height:100%;background:#497d69;border-radius:99px;min-width:4px}
+.bar-battery{background:#d49a45}
+.pannen-chart-foot{margin-top:1.35rem;padding-top:1rem;border-top:1px solid #edf0ee;font-size:.88rem;color:#68756f}
+.trend-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.trend-card{border:1px solid #e0e8e4;background:#f9fbfa;border-radius:15px;padding:1.35rem}
+.trend-card-highlight{background:#f3f8f5;border-color:#cbded5}
+.trend-age{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:#68756f}
+.trend-numbers{display:flex;align-items:center;gap:.7rem;margin:.6rem 0 .1rem}
+.trend-numbers span,.trend-numbers strong{font-size:1.8rem}
+.trend-numbers span{color:#8b9691}.trend-numbers strong{color:#0f241d}.trend-numbers b{color:#d49a45}
+.trend-label{display:flex;justify-content:space-between;color:#8a9590;font-size:.75rem}
+.mini-track{height:7px;background:#e5ebe8;border-radius:99px;margin:.4rem 0 1rem;overflow:hidden}.mini-track div{height:100%;background:#6b8e7f;border-radius:99px}
+.trend-card p{font-size:.88rem;line-height:1.55;color:#5c6a64;margin:.5rem 0 0}
+.age-fact{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:1rem;background:#0f241d;color:#fff;border-radius:15px;padding:1.3rem 1.5rem;margin-top:1rem}
+.age-fact-big{font-size:2.5rem;font-weight:850;color:#d49a45}.age-fact strong{color:#fff}.age-arrow{font-size:1.5rem;color:#d49a45}.age-fact-muted{font-size:.82rem;color:#bdc9c3}
+.section-intro{color:#596962;line-height:1.6}
+.drive-compare{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem}
+.drive-card{background:#f2f8f5;border:1px solid #cfe0d8;border-radius:15px;padding:1.35rem;text-align:center}
+.drive-card-ice{background:#fff8ed;border-color:#efd9b1}
+.drive-title{font-weight:800;color:#0f241d}.drive-value{font-size:3rem;line-height:1.05;font-weight:900;color:#17614a;margin:.45rem 0 .1rem}.drive-card-ice .drive-value{color:#a96f21}
+.drive-unit,.drive-age{font-size:.78rem;color:#738079}.drive-age{font-weight:800;margin:.6rem 0}.compare-track{height:12px;background:#e2e9e5;border-radius:99px;overflow:hidden}.compare-track div{height:100%;background:#4d806d;border-radius:99px}.drive-card-ice .compare-track div{background:#d49a45}.drive-card p{font-size:.85rem;color:#40544b;margin:.75rem 0 0}.drive-vs{font-size:.75rem;font-weight:900;color:#89958f}
+.ev-fact{display:flex;align-items:center;gap:.8rem;background:#eaf4ef;border-radius:12px;padding:.95rem 1.1rem;margin-top:1rem;color:#36584c}.ev-fact strong{font-size:1.15rem;color:#17614a;white-space:nowrap}
+.model-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.model-card{background:#fff;border:1px solid #e1e8e4;border-radius:14px;padding:1.2rem;box-shadow:0 4px 12px rgba(15,36,29,.035)}
+.model-class{font-size:.68rem;letter-spacing:.1em;font-weight:800;color:#8a9690}.model-card h3{margin:.35rem 0 .35rem;color:#0f241d}.model-card p{font-size:.84rem;line-height:1.5;color:#69756f;min-height:2.6em}.model-badge{display:inline-block;font-size:.72rem;font-weight:800;background:#e9f4ee;color:#27604d;padding:.38rem .55rem;border-radius:999px}
+.warning-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}.warning-card{display:flex;gap:.8rem;background:#fff6e8;border:1px solid #efd6a8;border-radius:13px;padding:1.05rem}.warning-card:nth-child(2){background:#f4f1eb;border-color:#ded7c9}.warning-icon{font-size:1.35rem}.warning-card strong{color:#493a26}.warning-card p{font-size:.83rem;line-height:1.5;color:#685d4e;margin:.3rem 0 0}
+.check-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.85rem}.check-item{background:#f8faf9;border:1px solid #e1e8e4;border-radius:13px;padding:1rem}.check-item span{display:inline-flex;width:28px;height:28px;border-radius:50%;align-items:center;justify-content:center;background:#163a2f;color:#fff;font-size:.7rem;font-weight:800}.check-item strong{display:block;margin:.65rem 0 .25rem;color:#18352b}.check-item p{font-size:.82rem;line-height:1.5;color:#6b7771;margin:0}
+.pannen-bottom-line{display:flex;gap:1.25rem;align-items:flex-start;background:linear-gradient(135deg,#eef5f1,#f8faf9);border:1px solid #d6e4dd;border-radius:16px;padding:1.5rem;margin:0 0 1.5rem}.bottom-line-icon{font-size:2rem}.pannen-bottom-line h2{margin:.25rem 0 .5rem;color:#0f241d}.pannen-bottom-line p{margin:0;color:#56665f;line-height:1.6}
+.source-note{font-size:.78rem;line-height:1.6;color:#77837e;border-top:1px solid #e5eae7;padding:1.2rem 0 0}.source-note a{color:#315f4f;font-weight:700}
+@media(max-width:850px){.pannen-metrics{grid-template-columns:repeat(2,1fr)}.model-grid{grid-template-columns:1fr 1fr}.check-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.pannen-hero{padding:1.7rem 1.2rem;border-radius:14px}.pannen-metrics,.trend-grid,.warning-grid,.model-grid,.check-grid{grid-template-columns:1fr}.pannen-chart-card{padding:1rem}.section-heading-row{display:block}.source-badge{display:inline-block;margin-top:.6rem}.pannen-chart-intro{display:block}.pannen-chart-intro span{display:block;margin-top:.25rem}.age-fact{grid-template-columns:auto 1fr}.age-arrow{display:none}.age-fact-muted{grid-column:2}.drive-compare{grid-template-columns:1fr}.drive-vs{text-align:center}.ev-fact{align-items:flex-start;flex-direction:column}.pannen-bottom-line{flex-direction:column}}
+</style>
+
 </head>
 <body>
 <header class="site-header header-logo-large" id="top">
@@ -34,33 +97,232 @@
     </nav>
   </div>
 </header>
+
 <main>
   <div class="wrap">
     <nav aria-label="Breadcrumb" class="breadcrumb">
-      <a href="index.html">Start</a> / 
-      <a href="kategorie-kauf.html">Autokauf und -verkauf</a> / 
+      <a href="index.html">Start</a> /
+      <a href="kategorie-kauf.html">Autokauf und -verkauf</a> /
       <span>Pannenstatistik</span>
     </nav>
-    <h1>Pannenstatistik – Welche Autos sind zuverlässig?</h1>
-    <p class="lead">Welche Autos sind am zuverlässigsten? Die aktuellen Pannenstatistiken im Überblick.</p>
-    <section>
-      <h2>Die zuverlässigsten Marken</h2>
-      <ul>
-        <li><strong>Asiatische Hersteller:</strong> Toyota, Honda und Mazda führen oft die Zuverlässigkeitsrankings an.</li>
-        <li><strong>Deutsche Hersteller:</strong> Porsche und BMW schneiden ebenfalls gut ab, während andere Marken durchwachsene Ergebnisse liefern.</li>
-      </ul>
+
+    <section class="pannen-hero">
+      <div class="pannen-kicker">DATEN &amp; FAKTEN · STAND 2026</div>
+      <h1>Pannenstatistik: Welche Autos sind wirklich zuverlässig?</h1>
+      <p class="lead">Nicht das lauteste Versprechen zählt, sondern die Statistik. Die aktuelle ADAC-Auswertung zeigt, welche Fahrzeuge selten liegen bleiben, wo die größten Schwachstellen liegen – und warum ein Elektroauto bei Pannen überraschend gut abschneidet.</p>
+      <div class="pannen-source-pill">Auswertung der Pannen aus 2025 · 158 Baureihen · 27 Marken</div>
     </section>
-    <section>
-      <h2>Die häufigsten Pannenursachen</h2>
-      <ul>
-        <li><strong>Batterieprobleme:</strong> Die häufigste Pannenursache – besonders bei älteren Fahrzeugen.</li>
-        <li><strong>Reifenschäden:</strong> Platte Reifen oder Reifenpannen sind ebenfalls sehr häufig.</li>
-        <li><strong>Probleme mit der Elektrik:</strong> Defekte Sensoren oder elektrische Komponenten.</li>
-        <li><strong>Motorprobleme:</strong> Besonders bei älteren Fahrzeugen mit hoher Laufleistung.</li>
-      </ul>
+
+    <section class="pannen-metrics" aria-label="Die wichtigsten Kennzahlen">
+      <div class="pannen-metric">
+        <span class="pannen-metric-icon">🚗</span>
+        <strong>3,69 Mio.</strong>
+        <span>ADAC-Pannenhilfen 2025</span>
+      </div>
+      <div class="pannen-metric">
+        <span class="pannen-metric-icon">⏱️</span>
+        <strong>≈ 1 / 9 Sek.</strong>
+        <span>ein Pannenhilfe-Einsatz</span>
+      </div>
+      <div class="pannen-metric">
+        <span class="pannen-metric-icon">🔋</span>
+        <strong>45,4 %</strong>
+        <span>wegen der 12-Volt-Batterie</span>
+      </div>
+      <div class="pannen-metric">
+        <span class="pannen-metric-icon">📉</span>
+        <strong>−52 %</strong>
+        <span>Pannenrisiko bei 10-Jährigen seit 2015</span>
+      </div>
     </section>
+
+    <div class="pannen-callout">
+      <div class="pannen-callout-number">Die überraschende Nachricht</div>
+      <h2>Autos werden trotz mehr Technik nicht automatisch unzuverlässiger.</h2>
+      <p>Bei fünfjährigen Fahrzeugen sank die Pannenwahrscheinlichkeit laut ADAC von <strong>3,6 % (2015)</strong> auf <strong>2,1 % (2025)</strong>. Bei zehnjährigen Autos ging sie von <strong>6,5 % auf 3,1 %</strong> zurück.</p>
+    </div>
+
+    <section class="pannen-section">
+      <div class="section-heading-row">
+        <div>
+          <span class="eyebrow">01 · DAS PROBLEM</span>
+          <h2>Was bringt Autofahrer tatsächlich zum Stehen?</h2>
+        </div>
+        <span class="source-badge">ADAC · Pannenjahr 2025</span>
+      </div>
+
+      <div class="pannen-chart-card">
+        <div class="pannen-chart-intro">
+          <strong>Die Top-5-Pannenursachen</strong>
+          <span>Werte in Prozent aller ausgewerteten Pannen</span>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-label"><span>🔋 Starterbatterie / 12 V</span><strong>45,4 %</strong></div>
+          <div class="bar-track"><div class="bar-fill bar-battery" style="width:45.4%"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>⚙️ Motor / Motorelektronik</span><strong>21,8 %</strong></div>
+          <div class="bar-track"><div class="bar-fill" style="width:21.8%"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>💡 Anlasser / Generator / Bordnetz / Licht</span><strong>10,4 %</strong></div>
+          <div class="bar-track"><div class="bar-fill" style="width:10.4%"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>🛞 Reifen</span><strong>8,9 %</strong></div>
+          <div class="bar-track"><div class="bar-fill" style="width:8.9%"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>🔐 Schließsysteme</span><strong>6,8 %</strong></div>
+          <div class="bar-track"><div class="bar-fill" style="width:6.8%"></div></div>
+        </div>
+
+        <div class="pannen-chart-foot">Allein Batterie + Motor/Motorelektronik machen damit rund <strong>zwei Drittel</strong> der genannten Pannenursachen aus.</div>
+      </div>
+    </section>
+
+    <section class="pannen-section">
+      <div class="section-heading-row">
+        <div>
+          <span class="eyebrow">02 · DER LANGZEITTREND</span>
+          <h2>Ältere Autos bleiben häufiger liegen – aber der Abstand schrumpft</h2>
+        </div>
+      </div>
+
+      <div class="trend-grid">
+        <div class="trend-card">
+          <div class="trend-age">5 Jahre alt</div>
+          <div class="trend-numbers"><span>3,6 %</span><b>→</b><strong>2,1 %</strong></div>
+          <div class="trend-label"><span>2015</span><span>2025</span></div>
+          <div class="mini-track"><div style="width:58.3%"></div></div>
+          <p>Das Pannenrisiko ist innerhalb von zehn Jahren um rund <strong>42 %</strong> gesunken.</p>
+        </div>
+        <div class="trend-card trend-card-highlight">
+          <div class="trend-age">10 Jahre alt</div>
+          <div class="trend-numbers"><span>6,5 %</span><b>→</b><strong>3,1 %</strong></div>
+          <div class="trend-label"><span>2015</span><span>2025</span></div>
+          <div class="mini-track"><div style="width:47.7%"></div></div>
+          <p>Hier hat sich die Pannenwahrscheinlichkeit sogar <strong>mehr als halbiert</strong>.</p>
+        </div>
+      </div>
+
+      <div class="age-fact">
+        <span class="age-fact-big">≈ 14</span>
+        <div><strong>Jahre</strong><br>betrug 2025 ungefähr das Durchschnittsalter eines Pannenfahrzeugs.</div>
+        <span class="age-arrow">↑</span>
+        <div class="age-fact-muted"><strong>≈ 11 Jahre</strong><br>Durchschnittsalter aller zugelassenen Pkw</div>
+      </div>
+    </section>
+
+    <section class="pannen-section">
+      <div class="section-heading-row">
+        <div>
+          <span class="eyebrow">03 · ANTRIEB IM VERGLEICH</span>
+          <h2>E-Auto oder Verbrenner – wer bleibt häufiger stehen?</h2>
+        </div>
+      </div>
+
+      <p class="section-intro">Für einen fairen Vergleich betrachtet der ADAC Fahrzeuge gleicher Altersklassen. Das Ergebnis der aktuellen Statistik ist eindeutig:</p>
+
+      <div class="drive-compare">
+        <div class="drive-card">
+          <div class="drive-title">⚡ Elektroauto</div>
+          <div class="drive-value">2,1</div>
+          <div class="drive-unit">Pannen je 1.000 Fahrzeuge</div>
+          <div class="drive-age">2 Jahre alt</div>
+          <div class="compare-track"><div style="width:36.2%"></div></div>
+          <p><strong>deutlich weniger Pannen</strong></p>
+        </div>
+        <div class="drive-vs">VS.</div>
+        <div class="drive-card drive-card-ice">
+          <div class="drive-title">⛽ Verbrenner</div>
+          <div class="drive-value">5,8</div>
+          <div class="drive-unit">Pannen je 1.000 Fahrzeuge</div>
+          <div class="drive-age">2 Jahre alt</div>
+          <div class="compare-track"><div style="width:100%"></div></div>
+          <p><strong>2,8× so viele Pannen</strong></p>
+        </div>
+      </div>
+
+      <div class="ev-fact">
+        <strong>40 % weniger</strong>
+        <span>Pannen hatten laut ADAC fünfjährige Elektroautos gegenüber gleich alten Verbrennern.</span>
+      </div>
+    </section>
+
+    <section class="pannen-section">
+      <div class="section-heading-row">
+        <div>
+          <span class="eyebrow">04 · GEBRAUCHTWAGEN-CHECK</span>
+          <h2>Welche Modelle fallen positiv auf?</h2>
+        </div>
+        <span class="source-badge">Auswahl aus der ADAC-Auswertung</span>
+      </div>
+
+      <div class="model-grid">
+        <div class="model-card">
+          <span class="model-class">KLEINSTWAGEN</span>
+          <h3>Dacia Spring</h3><p>Škoda Citigo · Suzuki Ignis · Toyota Aygo · VW up!</p>
+          <span class="model-badge">✓ zuverlässig eingestuft</span>
+        </div>
+        <div class="model-card">
+          <span class="model-class">KLEINWAGEN</span>
+          <h3>VW Polo</h3><p>Audi A1 · BMW i3 · Mazda 2 · Suzuki Swift · Škoda Fabia u. a.</p>
+          <span class="model-badge">✓ zuverlässig eingestuft</span>
+        </div>
+        <div class="model-card">
+          <span class="model-class">MITTELKLASSE</span>
+          <h3>Audi A4</h3><p>BMW 3er · Mercedes GLC · Škoda Enyaq · Tesla Model 3 · VW Passat u. a.</p>
+          <span class="model-badge">✓ zuverlässig eingestuft</span>
+        </div>
+      </div>
+
+      <div class="warning-grid">
+        <div class="warning-card">
+          <div class="warning-icon">⚠️</div>
+          <div><strong>Aufgefallen: Toyota</strong><p>Yaris, Yaris Cross, C-HR und RAV4 zeigen in mehreren Baujahren auffällig hohe Pannenwerte – vor allem wegen der Startbatterie.</p></div>
+        </div>
+        <div class="warning-card">
+          <div class="warning-icon">⚡</div>
+          <div><strong>Auch E-Autos sind nicht unfehlbar</strong><p>Der Hyundai Ioniq 5 fällt in den erfassten Baujahren wegen Problemen mit der ICCU besonders auf. Rückruf- und Verbesserungsmaßnahmen laufen bereits.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pannen-section">
+      <div class="section-heading-row">
+        <div>
+          <span class="eyebrow">05 · WAS DIE STATISTIK NICHT SAGT</span>
+          <h2>Eine gute Pannenkennzahl ersetzt keinen Gebrauchtwagen-Check</h2>
+        </div>
+      </div>
+
+      <div class="check-grid">
+        <div class="check-item"><span>01</span><strong>Wartungshistorie</strong><p>Serviceheft, Rechnungen und nachweisbare Reparaturen prüfen.</p></div>
+        <div class="check-item"><span>02</span><strong>Batterie &amp; Elektrik</strong><p>Gerade bei älteren Autos Batterie, Ladung und Fehlerspeicher kontrollieren.</p></div>
+        <div class="check-item"><span>03</span><strong>Typische Schwachstellen</strong><p>Das konkrete Baujahr ist entscheidend – nicht nur der Modellname.</p></div>
+        <div class="check-item"><span>04</span><strong>Profi-Check</strong><p>Vor dem Kauf eine unabhängige Prüfung einplanen. Statistik ist Orientierung, kein Freifahrtschein.</p></div>
+      </div>
+    </section>
+
+    <section class="pannen-bottom-line">
+      <div class="bottom-line-icon">🔧</div>
+      <div>
+        <span class="eyebrow">AUTOKNIGGE-FAZIT</span>
+        <h2>Die beste Pannenstatistik ist die, die du vor dem Kauf kennst.</h2>
+        <p>Ein zuverlässiges Modell ist ein guter Start. Entscheidend sind aber <strong>Baujahr, Wartung, Batterie, Laufleistung und der Zustand des konkreten Fahrzeugs.</strong> Wer diese Punkte zusammen betrachtet, kauft deutlich entspannter.</p>
+      </div>
+    </section>
+
+    <div class="source-note">
+      <strong>Quellen &amp; Einordnung:</strong> Die Kennzahlen auf dieser Seite basieren auf der <strong>ADAC Pannenstatistik 2026</strong> und beziehen sich auf Pannenhilfen bzw. Pannen aus dem Jahr 2025. Die Modellbewertung ist eine statistische Orientierung und sagt nichts über jedes einzelne Fahrzeug aus.
+      <br><br>
+      <a href="https://www.adac.de/rund-ums-fahrzeug/unfall-schaden-panne/adac-pannenstatistik-2026/" target="_blank" rel="noopener">Zur vollständigen ADAC Pannenstatistik 2026 →</a>
+    </div>
   </div>
 </main>
+
 <button id="backToTop" class="back-to-top" aria-label="Nach oben scrollen">↑</button>
 <footer class="site-footer">
   <div class="wrap">
