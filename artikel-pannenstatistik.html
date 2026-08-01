@@ -3,216 +3,105 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pannenstatistik 2026: Welche Autos sind zuverlässig? | Autoknigge</title>
-<meta name="description" content="Pannenstatistik 2026: 3,69 Millionen ADAC-Einsätze, häufigste Pannenursachen, E-Auto gegen Verbrenner und zuverlässige Modelle im Überblick.">
+<title>Pannenstatistik – Welche Autos sind zuverlässig? | Autoknigge</title>
+<meta name="description" content="Welche Autos sind am zuverlässigsten? Die aktuellen Pannenstatistiken im Überblick.">
 <link rel="canonical" href="https://autoknigge.de/artikel-pannenstatistik.html">
 <link rel="stylesheet" href="styles.css">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f241d">
-<style>
-/* ===== PANNENSTATISTIK — MAGAZINSEITE ===== */
-.pannen-page { padding-bottom: 4rem; }
-.pannen-hero {
-  margin: 0 calc(50% - 50vw) 2.5rem;
-  padding: 4.5rem max(2rem, calc((100vw - 1200px)/2 + 2rem)) 3.8rem;
-  color:#fff; position:relative; overflow:hidden;
-  background:
-    radial-gradient(circle at 85% 20%, rgba(212,168,67,.28), transparent 28%),
-    radial-gradient(circle at 10% 100%, rgba(58,128,100,.34), transparent 34%),
-    linear-gradient(135deg,#081a14 0%,#12372b 58%,#0b241c 100%);
-  border-radius:0 0 34px 34px;
-}
-.pannen-hero:before { content:""; position:absolute; inset:0; opacity:.3; background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px); background-size:32px 32px; }
-.pannen-hero-inner { max-width:1200px; margin:auto; position:relative; z-index:1; }
-.pannen-kicker { display:inline-flex; gap:.5rem; align-items:center; padding:.4rem .8rem; border:1px solid rgba(212,168,67,.45); background:rgba(212,168,67,.12); border-radius:999px; color:#f1d487; font-weight:800; font-size:.78rem; text-transform:uppercase; letter-spacing:.08em; }
-.pannen-hero h1 { color:#fff; font-size:clamp(2.35rem,6vw,4.6rem); max-width:850px; margin:1rem 0 1rem; letter-spacing:-.045em; }
-.pannen-hero .hero-sub { max-width:760px; font-size:clamp(1.05rem,2vw,1.3rem); color:rgba(255,255,255,.78); line-height:1.65; }
-.pannen-source { margin-top:1.2rem; font-size:.78rem; color:rgba(255,255,255,.58); }
-.pannen-source a { color:#f1d487; text-decoration:underline; text-underline-offset:3px; }
-.stat-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin:-1.1rem 0 3.5rem; position:relative; z-index:3; }
-.stat-card { background:#fff; border:1px solid var(--neutral-200); border-radius:20px; padding:1.35rem 1.25rem; box-shadow:var(--shadow-md); }
-.stat-number { font-size:clamp(2rem,4vw,3rem); line-height:1; font-weight:800; letter-spacing:-.05em; color:var(--green-800); }
-.stat-label { margin-top:.45rem; font-weight:700; color:var(--neutral-700); }
-.stat-note { margin-top:.35rem; font-size:.78rem; color:var(--neutral-500); }
-.section-intro { max-width:780px; margin-bottom:1.4rem; }
-.section-intro h2 { font-size:clamp(1.8rem,4vw,2.7rem); margin-bottom:.65rem; }
-.section-intro p { font-size:1.05rem; }
-.fact-strip { display:grid; grid-template-columns:1.25fr .9fr .9fr; gap:1rem; margin:1.5rem 0 3.5rem; }
-.fact-main,.fact-mini { border-radius:22px; padding:1.5rem; position:relative; overflow:hidden; }
-.fact-main { background:var(--green-800); color:#fff; }
-.fact-main:after { content:"45,4%"; position:absolute; right:-.15rem; bottom:-1.8rem; font-size:7rem; font-weight:800; color:rgba(255,255,255,.055); }
-.fact-mini { background:var(--green-50); border:1px solid var(--green-100); }
-.fact-big { font-size:3.1rem; line-height:1; font-weight:800; letter-spacing:-.05em; }
-.fact-main .fact-big { color:#f1d487; }
-.fact-title { font-weight:800; margin:.5rem 0 .35rem; }
-.fact-main p { color:rgba(255,255,255,.75); font-size:.9rem; }
-.fact-mini p { font-size:.88rem; color:var(--neutral-700); }
-.chart-card { background:#fff; border:1px solid var(--neutral-200); border-radius:22px; padding:1.5rem; box-shadow:var(--shadow-sm); margin:1.25rem 0 3rem; }
-.chart-head { display:flex; justify-content:space-between; align-items:flex-end; gap:1rem; margin-bottom:1.3rem; }
-.chart-head h3 { font-size:1.25rem; }
-.chart-head span { font-size:.78rem; color:var(--text-muted); }
-.bar-row { display:grid; grid-template-columns:210px 1fr 65px; align-items:center; gap:.75rem; margin:.85rem 0; }
-.bar-label { font-size:.88rem; font-weight:700; }
-.bar-track { height:14px; background:var(--neutral-100); border-radius:999px; overflow:hidden; }
-.bar-fill { height:100%; border-radius:999px; background:linear-gradient(90deg,var(--green-700),var(--gold-500)); }
-.bar-value { text-align:right; font-weight:800; font-size:.9rem; }
-.age-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
-.age-card { border:1px solid var(--neutral-200); border-radius:18px; padding:1.25rem; background:#fff; }
-.age-title { font-weight:800; margin-bottom:1rem; }
-.compare { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
-.compare-col { border-radius:18px; padding:1.25rem; border:1px solid var(--neutral-200); background:var(--neutral-100); }
-.compare-col.ev { background:var(--green-50); border-color:var(--green-100); }
-.compare-col h4 { font-size:1.1rem; margin-bottom:.9rem; }
-.compare-number { font-size:2.5rem; font-weight:800; letter-spacing:-.05em; }
-.compare-col.ev .compare-number { color:var(--green-700); }
-.compare-unit { color:var(--text-muted); font-size:.78rem; }
-.compare-bar { margin-top:1rem; height:16px; background:rgba(0,0,0,.07); border-radius:999px; overflow:hidden; }
-.compare-bar span { display:block; height:100%; border-radius:999px; background:var(--green-700); }
-.model-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
-.model-card { background:#fff; border:1px solid var(--neutral-200); border-radius:20px; padding:1.25rem; box-shadow:var(--shadow-xs); }
-.model-rank { font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:var(--gold-700); }
-.model-card h3 { font-size:1.1rem; margin:.45rem 0 .25rem; }
-.model-pkz { font-size:2.2rem; font-weight:800; color:var(--green-800); letter-spacing:-.05em; }
-.model-pkz small { font-size:.72rem; letter-spacing:0; font-weight:600; color:var(--text-muted); }
-.warning-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.5rem 0 3.5rem; }
-.warning { border-radius:22px; padding:1.5rem; border:1px solid #eadfb9; background:linear-gradient(135deg,#fffdf4,#f7f1d8); }
-.warning h3 { font-size:1.35rem; margin-bottom:.5rem; }
-.warning .warning-tag { display:inline-block; background:#ead79c; color:#5b4508; padding:.25rem .55rem; border-radius:999px; font-size:.7rem; font-weight:800; text-transform:uppercase; }
-.check-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; counter-reset:check; }
-.check { background:#fff; border:1px solid var(--neutral-200); border-radius:18px; padding:1.25rem; position:relative; }
-.check:before { counter-increment:check; content:counter(check); display:grid; place-items:center; width:34px; height:34px; border-radius:50%; background:var(--green-800); color:#fff; font-weight:800; margin-bottom:.8rem; }
-.check h3 { font-size:1rem; margin-bottom:.35rem; }
-.check p { font-size:.85rem; }
-.knigge-fazit { margin-top:3.5rem; border-radius:28px; padding:2rem; color:#fff; background:linear-gradient(135deg,var(--green-900),var(--green-700)); position:relative; overflow:hidden; }
-.knigge-fazit:after { content:"✓"; position:absolute; right:1rem; bottom:-2.5rem; font-size:11rem; line-height:1; color:rgba(255,255,255,.045); font-weight:800; }
-.knigge-fazit h2 { color:#fff; margin-bottom:.6rem; }
-.knigge-fazit p { color:rgba(255,255,255,.78); max-width:820px; }
-.method { margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--neutral-200); }
-.method summary { cursor:pointer; font-weight:800; color:var(--green-800); }
-.method p { margin-top:.9rem; font-size:.86rem; }
-@media (max-width:900px) { .stat-grid,.model-grid,.check-grid { grid-template-columns:repeat(2,1fr); } .fact-strip { grid-template-columns:1fr; } .bar-row { grid-template-columns:170px 1fr 55px; } }
-@media (max-width:650px) { .pannen-hero { padding:3rem 1.25rem 3rem; border-radius:0 0 26px 26px; } .stat-grid { grid-template-columns:1fr 1fr; gap:.7rem; margin-top:-.6rem; } .stat-card { padding:1rem; } .stat-number { font-size:1.8rem; } .stat-label { font-size:.78rem; } .stat-note { font-size:.68rem; } .age-grid,.compare,.warning-grid,.model-grid,.check-grid { grid-template-columns:1fr; } .chart-card { padding:1rem; } .bar-row { grid-template-columns:1fr 58px; gap:.35rem; } .bar-track { grid-column:1 / 2; } .bar-value { grid-column:2; grid-row:1 / span 2; } .bar-label { grid-column:1; } .bar-track { grid-column:1; } .pannen-hero h1 { font-size:2.55rem; } }
-</style>
 </head>
 <body>
 <header class="site-header header-logo-large" id="top">
   <div class="header-inner">
-    <a href="index.html" aria-label="Autoknigge Startseite"><img src="logo.png" alt="Autoknigge Logo" class="header-logo-mini"></a>
+    <a href="index.html" aria-label="Autoknigge Startseite">
+      <img src="logo.png" alt="Autoknigge Logo" class="header-logo-mini">
+    </a>
     <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
     <label for="nav-toggle" class="menu-compact"><span class="menu-icon">&#9776;</span> Menü</label>
-    <nav class="main-nav"><ul class="header-nav-list">
-      <li><a href="index.html">Start</a></li><li><a href="kategorie-versicherung.html">Versicherung</a></li><li><a href="kategorie-zulassung.html">Zulassung</a></li><li><a href="kategorie-kauf.html">Kauf</a></li><li><a href="kategorie-pflege.html">Pflege</a></li><li><a href="kategorie-recht.html">Recht</a></li><li><a href="kategorie-geld-sparen.html">Clever sparen</a></li><li><a href="regionalklassen.html">Regionalklassen</a></li><li><a href="sf-klassen-rechner.html">SF-Rechner</a></li><li><a href="artikel-sf-klassen-erklaert.html">SF-Klassen erklärt</a></li>
-    </ul></nav>
+    <nav class="main-nav">
+      <ul class="header-nav-list">
+        <li><a href="index.html">Start</a></li>
+        <li><a href="kategorie-versicherung.html">Versicherung</a></li>
+        <li><a href="kategorie-zulassung.html">Zulassung</a></li>
+        <li><a href="kategorie-kauf.html">Kauf</a></li>
+        <li><a href="kategorie-pflege.html">Pflege</a></li>
+        <li><a href="kategorie-recht.html">Recht</a></li>
+        <li><a href="kategorie-geld-sparen.html">Clever sparen</a></li>
+        <li><a href="regionalklassen.html">Regionalklassen</a></li>
+        <li><a href="sf-klassen-rechner.html">SF-Rechner</a></li>
+        <li><a href="artikel-sf-klassen.html">SF-Klassen verstehen</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
-
-<main class="pannen-page">
+<main>
   <div class="wrap">
-    <nav aria-label="Breadcrumb" class="breadcrumb"><a href="index.html">Start</a> / <a href="kategorie-kauf.html">Autokauf und -verkauf</a> / <span>Pannenstatistik</span></nav>
-  </div>
-
-  <section class="pannen-hero">
-    <div class="pannen-hero-inner">
-      <span class="pannen-kicker">Pannenstatistik 2026 · Datenjahr 2025</span>
-      <h1>Welches Auto bleibt stehen – und welches fährt einfach weiter?</h1>
-      <p class="hero-sub">Die aktuelle ADAC-Pannenstatistik liefert überraschende Antworten: Autos werden zuverlässiger, Elektroautos schneiden bei vergleichbarem Alter besser ab – und die Batterie bleibt der größte Schwachpunkt.</p>
-      <p class="pannen-source">Datenbasis: ADAC Pannenstatistik 2026 · 158 Fahrzeugreihen · 27 Marken · Pannenjahr 2025</p>
-    </div>
-  </section>
-
-  <div class="wrap">
-    <section class="stat-grid" aria-label="Pannenstatistik in Zahlen">
-      <article class="stat-card"><div class="stat-number">3,69 Mio.</div><div class="stat-label">Pannenhilfe-Einsätze</div><div class="stat-note">ADAC im Jahr 2025</div></article>
-      <article class="stat-card"><div class="stat-number">45,4 %</div><div class="stat-label">Batterieprobleme</div><div class="stat-note">häufigste Pannenursache</div></article>
-      <article class="stat-card"><div class="stat-number">158</div><div class="stat-label">Fahrzeugreihen</div><div class="stat-note">aus 27 Marken ausgewertet</div></article>
-      <article class="stat-card"><div class="stat-number">≈ 14 Jahre</div><div class="stat-label">Pannenalter</div><div class="stat-note">Durchschnitt der havarierten Pkw</div></article>
-    </section>
-
+    <nav aria-label="Breadcrumb" class="breadcrumb">
+      <a href="index.html">Start" / 
+      <a href="kategorie-recht.html">Recht & Etikette</a> / 
+      <span>Pannenstatistik</span>
+    </nav>
+    <h1>Pannenstatistik – Welche Autos sind zuverlässig?</h1>
+    <p class="lead">Welche Autos sind am zuverlässigsten? Die aktuellen Pannenstatistiken im Überblick.</p>
     <section>
-      <div class="section-intro"><h2>Die gute Nachricht: Autos werden zuverlässiger</h2><p>Obwohl die Fahrzeuge auf Deutschlands Straßen immer älter werden, sinkt die Pannenwahrscheinlichkeit. Besonders deutlich zeigt sich das beim Vergleich über zehn Jahre.</p></div>
-      <div class="fact-strip">
-        <article class="fact-main"><div class="fact-big">3,1 %</div><div class="fact-title">Pannenwahrscheinlichkeit bei 10 Jahre alten Autos</div><p>2025 – gegenüber 6,5 % im Jahr 2015. Das Risiko hat sich damit mehr als halbiert.</p></article>
-        <article class="fact-mini"><div class="fact-big">2,1 %</div><div class="fact-title">5 Jahre alt · 2025</div><p>2015 waren es noch 3,6 %. Moderne Fahrzeuge zeigen trotz komplexerer Technik keine höhere Pannenanfälligkeit.</p></article>
-        <article class="fact-mini"><div class="fact-big">+1,6 %</div><div class="fact-title">Einsätze gegenüber 2024</div><p>Das Alter des Fahrzeugbestands sorgt trotzdem für mehr absolute Pannenhilfe-Einsätze.</p></article>
-      </div>
+      <h2>Die zuverlässigsten Marken</h2>
+      <ul>
+        <li><strong>Asiatische Hersteller:</strong> Toyota, Honda und Mazda führen oft die Zuverlässigkeitsrankings an.</li>
+        <li><strong>Deutsche Hersteller:</strong> Porsche und BMW schneiden ebenfalls gut ab, während andere Marken durchwachsene Ergebnisse liefern.</li>
+      </ul>
     </section>
-
     <section>
-      <div class="section-intro"><h2>Was bringt Autofahrer am häufigsten zum Stehen?</h2><p>Die klare Nummer eins ist nicht der Motor, nicht der Reifen und auch nicht die Elektronik: Es ist die 12-Volt-Batterie.</p></div>
-      <div class="chart-card">
-        <div class="chart-head"><h3>Pannenursachen 2025</h3><span>Anteil an den ausgewerteten Pannen</span></div>
-        <div class="bar-row"><div class="bar-label">12-Volt-Batterie</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="bar-value">45,4 %</div></div>
-        <div class="bar-row"><div class="bar-label">Motor / Motormanagement / HV</div><div class="bar-track"><div class="bar-fill" style="width:48%"></div></div><div class="bar-value">21,8 %</div></div>
-        <div class="bar-row"><div class="bar-label">Anlasser / Generator / Bordnetz / Licht</div><div class="bar-track"><div class="bar-fill" style="width:23%"></div></div><div class="bar-value">10,4 %</div></div>
-        <div class="bar-row"><div class="bar-label">Reifen</div><div class="bar-track"><div class="bar-fill" style="width:19.6%"></div></div><div class="bar-value">8,9 %</div></div>
-        <div class="bar-row"><div class="bar-label">Schließsysteme</div><div class="bar-track"><div class="bar-fill" style="width:15%"></div></div><div class="bar-value">6,8 %</div></div>
-      </div>
+      <h2>Die häufigsten Pannenursachen</h2>
+      <ul>
+        <li><strong>Batterieprobleme:</strong> Die häufigste Pannenursache – besonders bei älteren Fahrzeugen.</li>
+        <li><strong>Reifenschäden:</strong> Platte Reifen oder Reifenpannen sind ebenfalls sehr häufig.</li>
+        <li><strong>Probleme mit der Elektrik:</strong> Defekte Sensoren oder elektrische Komponenten.</li>
+        <li><strong>Motorprobleme:</strong> Besonders bei älteren Fahrzeugen mit hoher Laufleistung.</li>
+      </ul>
     </section>
-
-    <section>
-      <div class="section-intro"><h2>E-Auto oder Verbrenner?</h2><p>Bei gleichem Fahrzeugalter zeigt sich ein deutlicher Vorteil für reine Elektroautos. Der Vergleich ist deshalb besonders interessant, weil ältere Autos grundsätzlich häufiger ausfallen.</p></div>
-      <div class="compare">
-        <article class="compare-col ev"><h4>⚡ Elektroauto · 5 Jahre</h4><div class="compare-number">10,3</div><div class="compare-unit">Pannen je 1.000 Fahrzeuge</div><div class="compare-bar"><span style="width:59%"></span></div></article>
-        <article class="compare-col"><h4>⛽ Verbrenner · 5 Jahre</h4><div class="compare-number">17,4</div><div class="compare-unit">Pannen je 1.000 Fahrzeuge</div><div class="compare-bar"><span style="width:100%"></span></div></article>
-      </div>
-      <div class="chart-card" style="margin-top:1rem">
-        <div class="chart-head"><h3>Noch deutlicher bei jungen Fahrzeugen</h3><span>Pannenkennziffer · Jahr 2025</span></div>
-        <div class="age-grid">
-          <article class="age-card"><div class="age-title">2 Jahre alt</div><div class="bar-row"><div class="bar-label">E-Auto</div><div class="bar-track"><div class="bar-fill" style="width:36%"></div></div><div class="bar-value">2,1</div></div><div class="bar-row"><div class="bar-label">Verbrenner</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="bar-value">5,8</div></div></article>
-          <article class="age-card"><div class="age-title">4 Jahre alt</div><div class="bar-row"><div class="bar-label">E-Auto</div><div class="bar-track"><div class="bar-fill" style="width:52%"></div></div><div class="bar-value">6,5</div></div><div class="bar-row"><div class="bar-label">Verbrenner</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="bar-value">12,5</div></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="section-intro"><h2>Die pannenärmsten Modelle</h2><p>Bei dreijährigen Fahrzeugen stechen einige Modelle besonders positiv hervor. Die Pannenkennziffer (PKZ) zeigt die Pannen pro 1.000 zugelassene Fahrzeuge.</p></div>
-      <div class="model-grid">
-        <article class="model-card"><div class="model-rank">Elektro · Platz 1</div><h3>BMW i3</h3><div class="model-pkz">0,4 <small>PKZ</small></div></article>
-        <article class="model-card"><div class="model-rank">Elektro · Platz 2</div><h3>Tesla Model 3</h3><div class="model-pkz">0,7 <small>PKZ</small></div></article>
-        <article class="model-card"><div class="model-rank">Verbrenner · Top</div><h3>MINI</h3><div class="model-pkz">0,8 <small>PKZ</small></div></article>
-        <article class="model-card"><div class="model-rank">Verbrenner · Top</div><h3>BMW X2</h3><div class="model-pkz">0,8 <small>PKZ</small></div></article>
-      </div>
-    </section>
-
-    <section>
-      <div class="section-intro"><h2>Aber Vorsicht: Auch gute Marken haben Problemkinder</h2><p>Eine Markenpauschale ist bei der Pannenstatistik wenig sinnvoll. Entscheidend sind Modell, Baujahr und konkrete Schwachstellen.</p></div>
-      <div class="warning-grid">
-        <article class="warning"><span class="warning-tag">Auffällig</span><h3>Toyota: Batterie statt Unzerstörbarkeit</h3><p>Der Toyota C-HR sowie RAV4, Yaris/Yaris Cross und Corolla fallen in mehreren Jahrgängen durch hohe Pannenwerte auf. Laut ADAC ist dabei insbesondere die 12-Volt-Batterie das Problem.</p></article>
-        <article class="warning"><span class="warning-tag">Auffällig</span><h3>Hyundai IONIQ 5: Stromversorgung im Fokus</h3><p>Der IONIQ 5 fällt wegen Problemen mit der integrierten Ladesteuereinheit (ICCU) auf. Nach der Rückrufaktion verbesserte sich die Pannenkennziffer bereits deutlich – die Statistik 2027 dürfte den Effekt stärker zeigen.</p></article>
-      </div>
-    </section>
-
-    <section>
-      <div class="section-intro"><h2>Was bedeutet das für deinen Gebrauchtwagenkauf?</h2><p>Eine gute Statistik ist ein starkes Indiz – aber kein Freifahrtschein. Beim konkreten Auto zählen Zustand, Wartung und Historie.</p></div>
-      <div class="check-grid">
-        <article class="check"><h3>Baujahr prüfen</h3><p>Nicht nur nach Marke suchen. Die ADAC-Werte unterscheiden sich teils erheblich zwischen den Erstzulassungsjahren.</p></article>
-        <article class="check"><h3>Batterie testen</h3><p>Fast jede zweite Panne hängt mit der Batterie zusammen. Alter und Zustand der 12-Volt-Batterie sind daher bares Geld wert.</p></article>
-        <article class="check"><h3>Historie ansehen</h3><p>Wartungsnachweise, Rechnungen und Rückrufaktionen können wichtiger sein als ein guter Durchschnittswert.</p></article>
-        <article class="check"><h3>Vor Kauf prüfen lassen</h3><p>Eine professionelle Gebrauchtwagenprüfung kann Schwachstellen aufdecken, die keine Pannenstatistik erfassen kann.</p></article>
-      </div>
-    </section>
-
-    <section class="knigge-fazit">
-      <h2>Autoknigge-Fazit</h2>
-      <p><strong>Das zuverlässigste Auto ist nicht automatisch das mit dem besten Markenruf.</strong> Die aktuelle Statistik zeigt: Fahrzeugalter, Modelljahr und konkrete Bauteile entscheiden. Besonders interessant ist der direkte Vergleich der Antriebe – gleich alte Elektroautos bleiben deutlich seltener liegen als Verbrenner. Wer einen Gebrauchten kauft, sollte deshalb nicht auf ein pauschales „Toyota ist zuverlässig“ oder „Elektroautos sind kompliziert“ vertrauen, sondern auf Daten, Historie und einen gründlichen Fahrzeugcheck.</p>
-    </section>
-
-    <details class="method">
-      <summary>So liest du die ADAC-Pannenstatistik richtig</summary>
-      <p>Die ADAC Pannenstatistik 2026 wertet 158 Fahrzeugreihen von 27 Marken aus. Berücksichtigt werden Pannen aus dem Jahr 2025 und Fahrzeuge mit passenden Zulassungszahlen. Die Pannenkennziffer beschreibt die Anzahl der Pannen pro 1.000 Fahrzeuge. Sie ist eine Orientierungshilfe und sagt nichts über Defekte aus, die keine Panne verursacht haben. Selbstverschuldete Ursachen und bestimmte Fälle werden für die modellbezogene Statistik nicht berücksichtigt.</p>
-      <p><strong>Quelle:</strong> ADAC, Pannenstatistik 2026, veröffentlicht am 23.04.2026. Stand der Seite: 01.08.2026.</p>
-    </details>
   </div>
 </main>
-
 <button id="backToTop" class="back-to-top" aria-label="Nach oben scrollen">↑</button>
 <footer class="site-footer">
-  <div class="wrap"><div class="footer-grid">
-    <div class="footer-brand"><h3>Autoknigge</h3><p>Ihr unabhängiger Ratgeber für stilvolles, sicheres und wirtschaftlich cleveres Verhalten rund um das Automobil.</p></div>
-    <div class="footer-col"><h4>Kategorien</h4><ul class="footer-links-list"><li><a href="kategorie-versicherung.html">Kfz-Versicherung</a></li><li><a href="kategorie-zulassung.html">Auto an-, um- & abmelden ohne Stress</a></li><li><a href="kategorie-kauf.html">Autokauf und -verkauf</a></li><li><a href="kategorie-pflege.html">Fahrzeugpflege</a></li><li><a href="kategorie-recht.html">Recht & Etikette</a></li><li><a href="kategorie-geld-sparen.html">Clever sparen</a></li><li><a href="regionalklassen.html">Regionalklassen</a></li><li><a href="sf-klassen-rechner.html">SF-Rechner</a></li><li><a href="artikel-sf-klassen-erklaert.html">SF-Klassen erklärt</a></li></ul></div>
-    <div class="footer-col"><h4>Downloads</h4><ul class="footer-links-list"><li><a href="kfz-kaufvertrag.pdf" download>Kfz-Kaufvertrag (PDF)</a></li><li><a href="vollmacht-kfz-zulassung.pdf" download>Zulassungsvollmacht (PDF)</a></li></ul></div>
-  </div><div class="footer-bottom"><div>© 2026 Autoknigge — Alle Rechte vorbehalten. Unabhängige Ratgeber-Plattform.</div><div class="foot-links"><a href="impressum.html">Impressum</a> • <a href="datenschutz.html">Datenschutz</a> • <a href="#" id="cookie-settings-link">Cookie-Einstellungen</a></div></div></div>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Autoknigge</h3>
+        <p>Ihr unabhängiger Ratgeber für stilvolles, sicheres und wirtschaftlich cleveres Verhalten rund um das Automobil.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Kategorien</h4>
+        <ul class="footer-links-list">
+          <li><a href="kategorie-versicherung.html">Kfz-Versicherung</a></li>
+          <li><a href="kategorie-zulassung.html">Auto an-, um- & abmelden ohne Stress</a></li>
+          <li><a href="kategorie-kauf.html">Autokauf & Verkauf</a></li>
+          <li><a href="kategorie-pflege.html">Fahrzeugpflege</a></li>
+          <li><a href="kategorie-recht.html">Recht & Etikette</a></li>
+          <li><a href="kategorie-geld-sparen.html">Clever sparen</a></li>
+          <li><a href="regionalklassen.html">Regionalklassen</a></li>
+          <li><a href="sf-klassen-rechner.html">SF-Rechner</a></li>
+          <li><a href="artikel-sf-klassen.html">SF-Klassen verstehen</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Downloads</h4>
+        <ul class="footer-links-list">
+          <li><a href="kfz-kaufvertrag.pdf" download>Kfz-Kaufvertrag (PDF)</a></li>
+          <li><a href="vollmacht-kfz-zulassung.pdf" download>Zulassungsvollmacht (PDF)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Autoknigge — Alle Rechte vorbehalten. Unabhängige Ratgeber-Plattform.</div>
+      <div class="foot-links">
+        <a href="impressum.html">Impressum</a> •
+        <a href="datenschutz.html">Datenschutz</a> •
+        <a href="#" id="cookie-settings-link">Cookie-Einstellungen</a>
+      </div>
+    </div>
+  </div>
 </footer>
-<script src="script.js"></script><script src="cookie-consent.js"></script>
+<script src="script.js"></script>
+<script src="cookie-consent.js"></script>
 </body>
 </html>
