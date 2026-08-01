@@ -24,31 +24,35 @@
     overflow: hidden;
   }
 
-  /* 1. Ganz oben: Garantiert sichtbarer Marken-Header */
+  /* 1. Ganz oben: Logo (feste Breite, auf weißer Pille für Kontrast) + Autoknigge-Schriftzug */
   .cv-top-brand {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 0.2rem;
+    gap: 0.6rem;
     margin-bottom: 1.25rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   }
-  .cv-brand-main {
-    font-size: 1.7rem;
-    font-weight: 900;
-    letter-spacing: 0.05em;
-    color: #ffffff;
-    text-transform: uppercase;
-    text-decoration: none;
+  .cv-logo-pill {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 0.7rem 1.4rem;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
-  .cv-brand-main span {
-    color: #a3e6cd;
+  .cv-logo-pill img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
   .cv-brand-sub {
     color: rgba(255, 255, 255, 0.85);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -173,23 +177,16 @@
 
     <section>
       <div class="grid">
-        
-        <!-- 1. Karte: E-Auto vs Verbrenner -->
-        <a class="card" href="artikel-e-auto-vs-benziner.html">
-          <div class="card-symbol">⚡</div>
-          <h3>E-Auto vs. Verbrenner</h3>
-          <p>Anschaffungs-, Lade- und Unterhaltskosten im direkten Vergleich.</p>
-        </a>
 
-        <!-- 2. carVertical Box DIREKT DARUNTER -->
+        <!-- 1. carVertical Box GANZ OBEN -->
         <div class="card-featured-carvertical">
-          
-          <!-- POS 1: Marken-Header & AutoKnigge (Ganz oben) -->
+
+          <!-- POS 1: Logo (feste Breite) & Autoknigge (Ganz oben) -->
           <div class="cv-top-brand">
-            <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener sponsored" class="cv-brand-main">
-              car<span>Vertical</span>
+            <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener sponsored" class="cv-logo-pill">
+              <img src="carvertical-logo.png" alt="carVertical Logo">
             </a>
-            <span class="cv-brand-sub">AutoKnigge</span>
+            <span class="cv-brand-sub">Autoknigge</span>
           </div>
 
           <!-- POS 2: Die 4 Feature-Symbole (Oberhalb des Textes) -->
@@ -216,7 +213,7 @@
           <div class="cv-intro-text">
             <p><strong>Prüfe dein neues Gefährt vor dem Kauf</strong></p>
             <p>
-              Ein schönes Äußeres täuscht schnell über eine miserable Fahrzeughistorie hinweg. Ein vermeintlich gepflegter SUV wird mit 120.000 km als „unfallfrei“ angeboten. Eine kurze Abfrage bei carvertical deckt jedoch auf, dass der Wagen vor zwei Jahren mit 210.000 km und einem schweren Heckschaden im Ausland repariert wurde.
+              Ein schönes Äußeres täuscht schnell über eine miserable Fahrzeughistorie hinweg. Ein vermeintlich gepflegter SUV wird mit 120.000 km als „unfallfrei“ angeboten. Eine kurze Abfrage bei carVertical deckt jedoch auf, dass der Wagen vor zwei Jahren mit 210.000 km und einem schweren Heckschaden im Ausland repariert wurde.
             </p>
             <p>
               Schütze dich beim nächsten Kauf vor Fehlentscheidungen und bösen Überraschungen.
@@ -231,6 +228,13 @@
           </div>
 
         </div>
+
+        <!-- 2. Karte: E-Auto vs Verbrenner DIREKT DARUNTER -->
+        <a class="card" href="artikel-e-auto-vs-benziner.html">
+          <div class="card-symbol">⚡</div>
+          <h3>E-Auto vs. Verbrenner</h3>
+          <p>Anschaffungs-, Lade- und Unterhaltskosten im direkten Vergleich.</p>
+        </a>
 
         <a class="card" href="artikel-pannenstatistik.html">
           <div class="card-symbol">🚨</div>
