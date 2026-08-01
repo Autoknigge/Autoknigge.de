@@ -9,6 +9,28 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f241d">
+<style>
+  /* Styling für den goldfarbenen Button */
+  .gold-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa7c11 100%);
+    color: #1a1a1a;
+    font-weight: bold;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    border: none;
+  }
+  .gold-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
+    color: #000;
+  }
+</style>
 </head>
 <body>
 <header class="site-header header-logo-large" id="top">
@@ -66,8 +88,10 @@
         <li><strong>Voraussetzung:</strong> Das Fahrzeug muss neu zugelassen werden und einen Nettobasispreis unter der jeweils aktuellen Fördergrenze haben.</li>
         <li><strong>Antragstellung:</strong> Der Antrag wird online direkt über das BAFA-Portal gestellt – häufig übernimmt aber auch dein Autohändler die Abwicklung für dich.</li>
       </ul>
-      <p style="margin-top: 1rem;">
-        🔗 <strong>Direktlink zum Förderportal:</strong> <a href="https://www.bafa.de/DE/Energie/Energieeffizienz/Elektromobilitaet/elektromobilitaet_node.html" target="_blank" rel="noopener">www.bafa.de – BAFA Förderantrag Elektromobilität</a>
+      <p style="margin-top: 1.5rem;">
+        <a href="https://www.bafa.de/DE/Energie/Energieeffizienz/E-Auto_Foerderung_2026/E-Auto_Foerderung_2026_node.html" target="_blank" rel="noopener" class="gold-button">
+          📥 Förderseite
+        </a>
       </p>
     </section>
 
