@@ -26,16 +26,26 @@
     flex-wrap: wrap;
     gap: 15px;
     margin-bottom: 1.2rem;
-    border-bottom: 1px solid #1e293b;
-    padding-bottom: 1rem;
+    background: #ffffff; 
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  /* Link-Styling für das Logo */
+  .carvertical-logo-link {
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+  .carvertical-logo-link:hover {
+    transform: scale(1.03);
   }
   .carvertical-logo {
-    max-height: 38px;
+    max-height: 35px;
     width: auto;
     display: block;
   }
   
-  /* Goldener Rabatt-Button */
+  /* Goldener Rabatt-Button als Link */
   .gold-coupon-btn {
     background: linear-gradient(135deg, #ffd700, #ffa500);
     color: #000000;
@@ -47,19 +57,28 @@
     gap: 8px;
     box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
     font-size: 0.9rem;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .gold-coupon-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 215, 0, 0.5);
+    color: #000000;
   }
 
   .cv-intro-text {
     font-size: 0.95rem;
     line-height: 1.5;
-    color: #cbd5e1;
+    color: #ffffff; 
     margin-bottom: 1.5rem;
   }
   .cv-intro-text strong {
     color: #ffffff;
+    border-bottom: 1px solid #ffd700;
+    padding-bottom: 2px;
   }
 
-  /* Platzsparendes Grid: Icon ÜBER Titel + Erläuterung */
+  /* Platzsparendes Grid: Icons & Text als klickbare Karten */
   .cv-features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -70,6 +89,15 @@
     border-radius: 8px;
     padding: 14px 10px;
     text-align: center;
+    border: 1px solid #334155;
+    text-decoration: none;
+    display: block;
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  }
+  .cv-feature-card:hover {
+    background: #283548;
+    border-color: #ffd700;
+    transform: translateY(-3px);
   }
   .cv-feature-icon {
     font-size: 1.8rem;
@@ -83,9 +111,9 @@
     margin-bottom: 4px;
   }
   .cv-feature-desc {
-    font-size: 0.78rem;
-    color: #94a3b8;
-    line-height: 1.3;
+    font-size: 0.8rem;
+    color: #cbd5e1; 
+    line-height: 1.4;
   }
 
   /* Partner Buttons Bereich unter der Anzeige */
@@ -140,10 +168,14 @@
     <!-- CARVERTICAL ABSCHNITT DIRECT UNTER DEM HEADER -->
     <div class="carvertical-box">
       <div class="carvertical-header">
-        <img src="1000192418.webp" alt="carVertical Logo" class="carvertical-logo">
-        <div class="gold-coupon-btn">
+        <!-- Logo verlinkt mit Rabattcode -->
+        <a href="https://www.carvertical.com/de/landing/v3?voucher=Autoknigge" target="_blank" rel="noopener sponsored" class="carvertical-logo-link" aria-label="carVertical Fahrzeughistorie prüfen">
+          <img src="image_0.png" alt="carVertical Logo" class="carvertical-logo">
+        </a>
+        <!-- Rabatt-Button verlinkt -->
+        <a href="https://www.carvertical.com/de/landing/v3?voucher=Autoknigge" target="_blank" rel="noopener sponsored" class="gold-coupon-btn">
           🏷️ Dein 20% Rabattcode: Autoknigge
-        </div>
+        </a>
       </div>
 
       <!-- Persönliche Ansprache mit Beispiel -->
@@ -153,31 +185,31 @@
         <p>Schütze dich vor teuren Fehlkäufen und bösen Überraschungen in der Werkstatt – eine einfache Fahrgestellnummer-Prüfung entlarvt Betrüger in Sekunden!</p>
       </div>
 
-      <!-- Feature Grid mit Icon OBERHALB von Titel & Erläuterung -->
+      <!-- Feature Grid: Jetzt als klickbare Partner-Karten -->
       <div class="cv-features-grid">
-        <div class="cv-feature-card">
+        <a href="https://www.carvertical.com/de/landing/v3?voucher=Autoknigge" target="_blank" rel="noopener sponsored" class="cv-feature-card">
           <span class="cv-feature-icon">🚗💥</span>
           <div class="cv-feature-title">Versteckte Unfallschäden</div>
           <div class="cv-feature-desc">Deckung von verheimlichten Rahmenschäden und teuren Vorschäden.</div>
-        </div>
+        </a>
 
-        <div class="cv-feature-card">
+        <a href="https://www.carvertical.com/de/landing/v3?voucher=Autoknigge" target="_blank" rel="noopener sponsored" class="cv-feature-card">
           <span class="cv-feature-icon">⏱️</span>
           <div class="cv-feature-title">Tachoabweichungen</div>
           <div class="cv-feature-desc">Entlarvt manipulierte Kilometerstände anhand historischer Einträge.</div>
-        </div>
+        </a>
 
-        <div class="cv-feature-card">
+        <a href="https://www.carvertical.com/de/landing/v3?voucher=Autoknigge" target="_blank" rel="noopener sponsored" class="cv-feature-card">
           <span class="cv-feature-icon">📸</span>
           <div class="cv-feature-title">Historische Fotos</div>
           <div class="cv-feature-desc">Echte Archivbilder von früheren Verkäufen oder Unfallaufnahmen.</div>
-        </div>
+        </a>
 
-        <div class="cv-feature-card">
+        <a href="https://www.carvertical.com/de/landing/v3?voucher=Autoknigge" target="_blank" rel="noopener sponsored" class="cv-feature-card">
           <span class="cv-feature-icon">🚨</span>
           <div class="cv-feature-title">Diebstahleinträge</div>
           <div class="cv-feature-desc">Prüfung in internationalen Polizeidatenbanken auf Diebstahlmeldungen.</div>
-        </div>
+        </a>
       </div>
     </div>
 
@@ -205,7 +237,7 @@
       </p>
     </div>
 
-    <!-- RASTLICHE KARTEN / RECHNER -->
+    <!-- RESTLICHE KARTEN / RECHNER -->
     <section>
       <div class="grid">
         <a class="card" href="regionalklassen.html">
