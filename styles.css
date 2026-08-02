@@ -1266,3 +1266,209 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
   .knigge-scene-image, .knigge-scene-image img { min-height: 190px; max-height: 260px; }
   .knigge-scene .knigge-tip-body { padding: 0.5rem 0.75rem 0.75rem; }
 }
+
+/* =========================================================
+   KNIGGE 2.0 — Expertenstimme statt fertiger Sprechblasen
+   Die gelieferten Bilder dienen nur als Figur/Atmosphäre.
+   Der Text wird von der Website selbst gesetzt.
+   ========================================================= */
+.knigge-voice {
+  position: relative;
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  align-items: center;
+  gap: 1.15rem;
+  min-height: 220px;
+  margin: 1.8rem 0 2.1rem;
+  padding: .7rem;
+  border: 1px solid var(--green-100);
+  border-left: 4px solid var(--gold-600);
+  border-radius: 18px;
+  background: linear-gradient(135deg, #fff 0%, var(--green-50) 100%);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.knigge-voice-figure {
+  position: relative;
+  height: 205px;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #e9eee9;
+}
+.knigge-voice-figure img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: 28% center;
+}
+.knigge-voice-bubble {
+  position: relative;
+  margin-right: .8rem;
+  padding: 1.25rem 1.45rem;
+  background: #fff;
+  border: 2px solid #17221e;
+  border-radius: 24px;
+  box-shadow: 0 8px 22px rgba(10,28,22,.09);
+}
+.knigge-voice-bubble::before {
+  content: "";
+  position: absolute;
+  left: -17px;
+  top: 42%;
+  width: 28px;
+  height: 28px;
+  background: #fff;
+  border-left: 2px solid #17221e;
+  border-bottom: 2px solid #17221e;
+  transform: rotate(45deg);
+}
+.knigge-voice-label {
+  position: relative;
+  display: block;
+  margin-bottom: .35rem;
+  color: var(--green-800);
+  font-size: .82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+}
+.knigge-voice-bubble p {
+  position: relative;
+  margin: 0;
+  color: var(--text-body);
+  font-size: 1.04rem;
+  line-height: 1.58;
+}
+
+/* Variante: Knigge steht neben seinem Rat */
+.knigge-side {
+  grid-template-columns: minmax(0, 1fr) 210px;
+  background: #fff;
+  border-left: 0;
+  border-right: 4px solid var(--gold-600);
+}
+.knigge-side .knigge-voice-figure { order: 2; height: 225px; border-radius: 90px 90px 18px 18px; }
+.knigge-side .knigge-voice-bubble { order: 1; margin-left: .8rem; margin-right: 0; }
+.knigge-side .knigge-voice-bubble::before {
+  left: auto;
+  right: -17px;
+  border-left: 0;
+  border-bottom: 0;
+  border-right: 2px solid #17221e;
+  border-top: 2px solid #17221e;
+}
+.knigge-side .knigge-voice-figure img { object-position: 25% center; }
+
+/* Variante: Knigge scheint als Hintergrundfigur hinter dem Rat durch */
+.knigge-watermark {
+  display: block;
+  min-height: 205px;
+  padding: 1.25rem 1.5rem;
+  background: #f8faf8;
+  border-left: 4px solid var(--gold-600);
+}
+.knigge-watermark .knigge-voice-figure {
+  position: absolute;
+  right: -15px;
+  bottom: -45px;
+  width: 285px;
+  height: 285px;
+  opacity: .18;
+  border-radius: 50%;
+  filter: saturate(.7);
+}
+.knigge-watermark .knigge-voice-figure img { object-position: 28% center; }
+.knigge-watermark .knigge-voice-bubble {
+  position: relative;
+  z-index: 2;
+  width: min(72%, 680px);
+  margin: 0;
+  background: rgba(255,255,255,.94);
+}
+.knigge-watermark .knigge-voice-bubble::before { display: none; }
+
+@media (max-width: 680px) {
+  .knigge-voice,
+  .knigge-side { grid-template-columns: 1fr; gap: .7rem; padding: .65rem; }
+  .knigge-voice-figure,
+  .knigge-side .knigge-voice-figure { order: 1; height: 185px; border-radius: 14px; }
+  .knigge-voice-bubble,
+  .knigge-side .knigge-voice-bubble { order: 2; margin: 0; }
+  .knigge-voice-bubble::before,
+  .knigge-side .knigge-voice-bubble::before { display: none; }
+  .knigge-watermark { min-height: 250px; padding: 1rem; }
+  .knigge-watermark .knigge-voice-bubble { width: 100%; }
+  .knigge-watermark .knigge-voice-figure { width: 220px; height: 220px; right: -30px; bottom: -45px; }
+}
+
+
+/* ===== KNIGGE FIGUR – einheitlich erkennbar, unterschiedliche Inszenierung ===== */
+.knigge-voice-figure {
+  background: #e9eee9;
+  border: 1px solid rgba(23,34,30,.10);
+}
+.knigge-voice-figure img {
+  object-fit: cover;
+  object-position: 50% 42%;
+}
+
+/* Sprechblasen-Variante: Knigge links, sein eigener Text rechts */
+.knigge-speech {
+  grid-template-columns: 230px minmax(0,1fr);
+}
+.knigge-speech .knigge-voice-figure {
+  height: 235px;
+  border-radius: 18px 80px 18px 80px;
+}
+.knigge-speech .knigge-voice-bubble {
+  background: #fff;
+  border: 2px solid #17221e;
+  border-radius: 28px 28px 28px 8px;
+}
+.knigge-speech .knigge-voice-bubble::before {
+  display: block;
+}
+
+/* Neben-dem-Text-Variante */
+.knigge-side .knigge-voice-figure {
+  height: 250px;
+  border-radius: 80px 18px 80px 18px;
+}
+
+/* Wasserzeichen: Knigge bleibt sichtbar, aber der Text steht im Vordergrund */
+.knigge-watermark .knigge-voice-figure {
+  width: 300px;
+  height: 300px;
+  opacity: .22;
+  border-radius: 50%;
+  overflow: hidden;
+  right: -10px;
+  bottom: -55px;
+}
+.knigge-watermark .knigge-voice-bubble {
+  width: min(74%, 700px);
+}
+
+/* Kleine, eindeutige Signatur: Damit Knigge auch bei kleinen Darstellungen sofort erkennbar bleibt. */
+.knigge-voice-figure::after {
+  content: "KNIGGE";
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  padding: .25rem .55rem;
+  border-radius: 999px;
+  background: rgba(23,34,30,.88);
+  color: #fff;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .09em;
+  z-index: 2;
+}
+.knigge-watermark .knigge-voice-figure::after { opacity: .9; }
+
+@media (max-width:680px) {
+  .knigge-speech .knigge-voice-figure,
+  .knigge-side .knigge-voice-figure { height: 205px; border-radius: 18px; }
+  .knigge-watermark .knigge-voice-figure { width: 230px; height: 230px; }
+}
