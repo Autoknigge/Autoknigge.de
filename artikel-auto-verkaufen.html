@@ -3,220 +3,85 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Auto verkaufen – Checkliste für ein gutes Gelingen | Autoknigge</title>
-<meta name="description" content="Worauf Sie beim Autoverkauf achten sollten – Vorbereitung - Fotos - Vertrag - Bezahlung.">
+<title>Auto verkaufen – Tipps für einen erfolgreichen Verkauf | Autoknigge</title>
+<meta name="description" content="Worauf Sie beim Autoverkauf achten sollten – von der Vorbereitung über Fotos bis zum Vertrag. Mit Tipps für mehr Wert und einen schnellen Verkauf.">
 <link rel="canonical" href="https://autoknigge.de/artikel-auto-verkaufen.html">
 <link rel="stylesheet" href="styles.css">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f241d">
+
 <style>
-  /* Allgemeine Layout- & Card-Styles */
-  .info-card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.25rem;
-    margin: 1.5rem 0 2.5rem 0;
-  }
-  
-  .info-card {
-    background: #f8faf9;
-    border-left: 4px solid #163a2f;
-    border-radius: 8px;
-    padding: 1.25rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  }
+/* ===== Fahrzeughistorie / Verkauf – eigenständiger Partner-Block ===== */
+.history-sale-card{
+  margin:2.6rem 0 3rem;
+  padding:1.5rem;
+  border-radius:24px;
+  background:linear-gradient(145deg,#0a1c16 0%,#12372b 72%,#173f31 100%);
+  color:#fff;
+  box-shadow:0 18px 45px rgba(10,28,22,.14);
+  position:relative;
+  overflow:hidden;
+}
+.history-sale-card:before{
+  content:"";position:absolute;inset:auto -70px -100px auto;width:260px;height:260px;border-radius:50%;
+  background:rgba(212,168,67,.12);pointer-events:none;
+}
+.history-sale-top,.history-sale-bottom{display:flex;align-items:center;justify-content:space-between;gap:1rem;position:relative;z-index:1}
+.history-brand{display:inline-flex;align-items:center;gap:.55rem;font-weight:800;font-size:1.2rem;letter-spacing:-.03em}
+.cv-mark{display:grid;place-items:center;width:28px;height:28px;border-radius:8px;background:#f5c542;color:#10241d;font-weight:900}
+.cv-word{color:#fff}.cv-word span{color:#f5c542}
+.history-label{font-size:.7rem;letter-spacing:.12em;color:rgba(255,255,255,.62);font-weight:700}
+.history-sale-copy{position:relative;z-index:1;max-width:780px;padding:1.35rem 0 .9rem}
+.history-sale-copy h2{color:#fff;font-size:clamp(1.55rem,3.5vw,2.25rem);margin:0 0 .65rem}
+.history-sale-copy p{color:rgba(255,255,255,.8);margin:0 0 .7rem;line-height:1.65}
+.history-sale-copy .history-emphasis{color:#f5d77d;font-size:1.02rem}
+.history-badges{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;position:relative;z-index:1;margin:1rem 0 1.2rem}
+.history-badge{border-radius:15px;padding:.9rem .8rem;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.1);min-height:112px;transition:transform .2s ease,background .2s ease,border-color .2s ease}.history-badge:hover{transform:translateY(-2px)}
+.history-badge>span{display:grid;place-items:center;width:31px;height:31px;border-radius:9px;margin-bottom:.55rem;font-weight:900}
+.history-badge strong{display:block;font-size:.88rem;color:#fff}.history-badge small{display:block;color:rgba(255,255,255,.58);font-size:.72rem;margin-top:.18rem;line-height:1.35}
+.badge-damage{background:rgba(218,104,104,.075);border-color:rgba(218,104,104,.18)}.badge-mileage{background:rgba(86,164,129,.075);border-color:rgba(86,164,129,.18)}.badge-data{background:rgba(91,139,194,.075);border-color:rgba(91,139,194,.18)}.badge-value{background:rgba(212,168,67,.085);border-color:rgba(212,168,67,.2)}.badge-damage>span{background:rgba(218,104,104,.22);color:#f0a6a6}.badge-mileage>span{background:rgba(86,164,129,.22);color:#9be0bd}.badge-data>span{background:rgba(91,139,194,.22);color:#a8c9ee}.badge-value>span{background:rgba(212,168,67,.2);color:#f5d77d}
+.history-sale-bottom{align-items:stretch;margin-top:.25rem}.history-actions{display:flex;gap:.65rem;flex-wrap:wrap;align-items:center}.history-cta.secondary{background:rgba(255,255,255,.08);color:#fff!important;border:1px solid rgba(255,255,255,.2);box-shadow:none}.history-cta.secondary:hover{color:#fff!important;background:rgba(255,255,255,.14)}
+.history-note{font-size:.78rem;line-height:1.5;color:rgba(255,255,255,.65);max-width:58%}.history-note strong{color:#fff}
+.history-cta{display:inline-flex;align-items:center;justify-content:center;gap:1rem;min-width:225px;padding:.85rem 1.15rem;border-radius:999px;background:linear-gradient(135deg,#d4a843,#f0c65d);color:#17251f!important;text-decoration:none!important;font-weight:800;box-shadow:0 8px 20px rgba(0,0,0,.18);transition:transform .2s ease,box-shadow .2s ease}
+.history-cta:hover{color:#17251f!important;transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.24)}
+.history-cta b{font-size:1.25rem}.history-disclaimer{position:relative;z-index:1;margin:.95rem 0 0;color:rgba(255,255,255,.43);font-size:.68rem;line-height:1.45}
+@media(max-width:700px){.history-sale-card{padding:1.2rem;border-radius:20px}.history-sale-top{align-items:flex-start}.history-label{display:none}.history-badges{grid-template-columns:repeat(2,1fr)}.history-sale-bottom{flex-direction:column}.history-note{max-width:none}.history-cta{width:100%}}
 
-  .info-card h4 {
-    margin: 0 0 0.5rem 0;
-    color: #0f241d;
-    font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
+/* ===== Verkaufsseite: alle Inhalte als übersichtliche Karten ===== */
+.sell-card{
+  margin:1.35rem 0;
+  padding:1.45rem 1.5rem;
+  border:1px solid rgba(15,36,29,.14);
+  border-radius:20px;
+  background:#fff;
+  box-shadow:0 7px 24px rgba(15,36,29,.055);
+}
+.sell-card h2{margin-top:0;margin-bottom:.7rem}
+.sell-card p:last-child,.sell-card ul:last-child{margin-bottom:0}
+.partner-section{
+  padding:1.35rem 1.5rem !important;
+  border:1px solid rgba(15,36,29,.14);
+  border-radius:20px;
+  background:#fff;
+  box-shadow:0 7px 24px rgba(15,36,29,.055);
+}
+.affiliate-note{
+  margin:2rem 0 0;
+  padding:1rem 1.2rem;
+  border-top:1px solid rgba(15,36,29,.12);
+  color:#65706b;
+  font-size:.82rem;
+  line-height:1.6;
+}
+.affiliate-note strong{color:#24352e}
+.price-platforms{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1rem}
+.price-platforms a{display:inline-flex;align-items:center;padding:.55rem .85rem;border:1px solid rgba(15,36,29,.13);border-radius:999px;text-decoration:none;font-weight:700;background:#f8faf8;color:#17382c}
+.price-platforms a:hover{border-color:#d4a843;transform:translateY(-1px)}
+.history-offer{display:inline-block;margin:.35rem 0 0;padding:.45rem .75rem;border-radius:999px;background:rgba(212,168,67,.16);color:#f5d77d;font-weight:800;font-size:.88rem}
+@media(max-width:700px){.sell-card,.partner-section{padding:1.15rem !important;border-radius:17px}.price-platforms{display:grid;grid-template-columns:1fr}.price-platforms a{justify-content:center}}
 
-  .info-card p {
-    margin: 0;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: #333;
-  }
-
-  /* carVertical Spezial-Sektion (Ganz oben) */
-  .carvertical-section {
-    background: #ffffff;
-    border: 1.5px solid #0066ff;
-    border-radius: 12px;
-    padding: 1.75rem;
-    margin: 1.5rem 0 2.5rem 0;
-    box-shadow: 0 4px 14px rgba(0, 102, 255, 0.08);
-  }
-
-  .carvertical-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #e8eeff;
-  }
-
-  .carvertical-logo {
-    height: 32px;
-    width: auto;
-    object-fit: contain;
-  }
-
-  .carvertical-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.25rem;
-    margin-bottom: 1.5rem;
-  }
-
-  /* 4 Themen-Boxen: Icons OBERHALB der Themen */
-  .carvertical-feature-card {
-    background: #f4f7ff;
-    border-radius: 8px;
-    padding: 1.25rem 1rem;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .carvertical-feature-icon {
-    font-size: 2rem;
-    margin-bottom: 0.75rem; /* Abstand nach unten, damit die Schrift nicht gedrängt ist */
-    display: block;
-    line-height: 1;
-  }
-
-  .carvertical-feature-card h4 {
-    margin: 0 0 0.4rem 0;
-    color: #0b2545;
-    font-size: 1rem;
-    font-weight: 700;
-  }
-
-  .carvertical-feature-card p {
-    margin: 0;
-    font-size: 0.85rem;
-    color: #4a5568;
-    line-height: 1.4;
-  }
-
-  /* Spezielle Highlighting-Boxen */
-  .highlight-box {
-    background: #eef6f3;
-    border: 1px solid #c3e2d6;
-    border-radius: 10px;
-    padding: 1.25rem;
-    margin: 1.5rem 0;
-  }
-
-  .highlight-box h3 {
-    margin-top: 0;
-    color: #0f241d;
-  }
-
-  /* Buttons & CTA Styles */
-  .btn-download-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    background-color: #e67e22;
-    color: #ffffff !important;
-    font-weight: 700;
-    padding: 0.75rem 1.3rem;
-    border-radius: 8px;
-    text-decoration: none;
-    box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
-    transition: transform 0.2s, background-color 0.2s;
-    margin: 0.75rem 0;
-    max-width: 100%;
-    box-sizing: border-box;
-    white-space: normal;
-  }
-
-  .btn-download-cta:hover {
-    background-color: #d35400;
-    transform: translateY(-2px);
-    text-decoration: none;
-  }
-
-  .partner-section-enhanced {
-    background: linear-gradient(135deg, #f4f8f6 0%, #e5efe9 100%);
-    border-radius: 12px;
-    padding: 1.75rem;
-    border: 1px solid #d0e2d8;
-    margin: 2rem 0;
-  }
-
-  /* Button-Gruppierung ganz unten */
-  .partner-buttons-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin-top: 1.25rem;
-    width: 100%;
-  }
-
-  .partner-button-clean {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.8rem;
-    background-color: #163a2f;
-    color: #ffffff !important;
-    padding: 0.85rem 1.25rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-    transition: background-color 0.2s, transform 0.2s;
-    max-width: 100%;
-    box-sizing: border-box;
-    line-height: 1.3;
-    text-align: left;
-  }
-
-  .partner-button-clean:hover {
-    background-color: #0f241d;
-    transform: translateY(-2px);
-    text-decoration: none;
-  }
-
-  .partner-button-clean .partner-icon {
-    font-size: 1.3rem;
-    flex-shrink: 0;
-  }
-
-  .partner-button-clean .partner-text {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .partner-button-clean .partner-title {
-    font-size: 0.95rem;
-    font-weight: 700;
-  }
-
-  .partner-button-clean .partner-sub {
-    font-size: 0.8rem;
-    opacity: 0.85;
-    font-weight: 400;
-  }
-
-  /* carVertical spezifischer Button */
-  .btn-carvertical {
-    background-color: #0066ff;
-  }
-  .btn-carvertical:hover {
-    background-color: #0052cc;
-  }
 </style>
+
 </head>
 <body>
 <header class="site-header header-logo-large" id="top">
@@ -249,232 +114,99 @@
       <a href="kategorie-kauf.html">Kauf</a> / 
       <span>Auto verkaufen</span>
     </nav>
-
-    <h1>Auto verkaufen – Checkliste für ein gutes Gelingen</h1>
-    <p class="lead">Ob privater Verkauf, Inzahlungnahme oder Leasingrückgabe: Mit der richtigen Vorbereitung, gepflegter Optik und einem lückenlosen Vertrag vermeiden Sie Fallstricke und sichern sich den besten Erlös.</p>
-
-    <!-- CARVERTICAL SEKTION (GANZ OBEN) -->
-    <section class="carvertical-section">
-      <div class="carvertical-header">
-        <img src="carVertical Primary.png" alt="carVertical Logo" class="carvertical-logo">
-        <span style="font-size: 0.85rem; font-weight: 600; background: #e8eeff; color: #0066ff; padding: 0.35rem 0.75rem; border-radius: 20px;">Fahrzeughistorie-Check</span>
-      </div>
-
-      <p style="margin-bottom: 1.25rem;">Prüfen Sie die Fahrzeughistorie vor dem Kauf oder Verkauf anhand der Fahrgestellnummer (FIN). Schützen Sie sich vor bösen Überraschungen:</p>
-
-      <!-- 4 THEMEN MIT ICONS OBERHALB -->
-      <div class="carvertical-grid">
-        <div class="carvertical-feature-card">
-          <span class="carvertical-feature-icon">💥</span>
-          <h4>Versteckte Unfallschäden</h4>
-          <p>Bisherige Unfälle, Schäden & Reparaturkosten transparent einsehen.</p>
-        </div>
-        <div class="carvertical-feature-card">
-          <span class="carvertical-feature-icon">⏱️</span>
-          <h4>Tachoabweichung</h4>
-          <p>Manipulierte Kilometerstände erkennen und Betrug vorbeugen.</p>
-        </div>
-        <div class="carvertical-feature-card">
-          <span class="carvertical-feature-icon">🚔</span>
-          <h4>Diebstahl-Check</h4>
-          <p>Abgleich mit internationalen Polizeidatenbanken auf Diebstahl.</p>
-        </div>
-        <div class="carvertical-feature-card">
-          <span class="carvertical-feature-icon">📋</span>
-          <h4>Servicehistorie</h4>
-          <p>Wartungen, Inspektionsberichte & frühere Verkaufsfotos prüfen.</p>
-        </div>
-      </div>
-
-      <a href="https://www.carvertical.com/de/" target="_blank" rel="noopener sponsored" class="partner-button-clean btn-carvertical">
-        <span class="partner-icon">🔍</span>
-        <span class="partner-text">
-          <span class="partner-title">Fahrzeughistorie jetzt bei carVertical prüfen*</span>
-          <span class="partner-sub">FIN / Fahrgestellnummer eingeben & detaillierten Bericht erhalten →</span>
-        </span>
-      </a>
-    </section>
-
-    <!-- SAUBERKEITS-SEKTION -->
-    <section class="partner-section-enhanced">
-      <h2>✨ Warum Sauberkeit entscheidend ist</h2>
-      
-      <div class="info-card-grid" style="margin-bottom: 1.5rem;">
-        <div class="info-card">
-          <h4>🛡️ Werterhalt & Schutz außen und innen</h4>
-          <p>Regelmäßiges Entfernen von Schmutz, Streusalz und Tierhaaren schützt Lack und Polster nachhaltig. Auch eine gelegentliche Politur nach der Autowäsche bringt Glanz und versiegelt die Karosserie vor Umwelteinflüssen.</p>
-
-          <p style="margin-top: 0.75rem; font-size: 0.9rem; font-style: italic; color: #444;">
-            <strong>Erfahrung aus der Praxis:</strong> Vor dem Verkauf meines eigenen Gebrauchten sah der Lack durch die ständigen Waschstraßenbesuche ziemlich stumpf aus und war voller feiner Swirls. Ich habe das Auto an einem Nachmittag per Hand mit dieser Politur aufbereitet – der Tiefenglanz kam direkt zurück und selbst leichte Kratzer an den Türgriffen waren wie weggezaubert. Der Käufer war bei der Besichtigung sofort begeistert vom Neuwagen-Finish!
-          </p>
-
-          <a href="https://link.amazon/B02F42UBt" target="_blank" rel="noopener sponsored" class="partner-button-clean" style="margin-top: 0.75rem;">
-            <span class="partner-icon">✨</span>
-            <span class="partner-text">
-              <span class="partner-title">Empfohlene Autopolitur ansehen*</span>
-              <span class="partner-sub">Mein Favorit für Tiefenglanz & Lackschutz auf Amazon →</span>
-            </span>
-          </a>
-        </div>
-
-        <div class="info-card">
-          <h4>🌿 Gesundheit, Wohlbefinden & Polster</h4>
-          <p>Über die Jahre lagern sich Pollen, Bakterien und Allergene ab. Ein neuer <strong>Innenraumfilter (Aktivkohle)</strong> sorgt für frische Luft. Für tief sitzenden Schmutz in Polstern und Teppichen wirkt ein <strong>Nasssauger</strong> Wunder.</p>
-        </div>
-
-        <div class="info-card">
-          <h4>💶 Verkauf, Inzahlungnahme & Leasing</h4>
-          <p>Ein gepflegter Eindruck bringt spürbare Preisvorteile. Bei Privatverkauf, Händler-Inzahlungnahme oder Leasingrückgabe verhindert Sauberkeit teure Abzüge – insbesondere gepflegte Details wie Armaturenbrett, Lenkrad und gepflegtes Leder.</p>
-        </div>
-      </div>
-
-      <!-- GEGRUPPIERTE BUTTONS (inkl. E-Auto vs Benziner) -->
-      <div class="partner-buttons-group">
-        <a href="https://link.amazon/B0hxdeNk1" target="_blank" rel="noopener sponsored" class="partner-button-clean">
+    <h1>Auto verkaufen – So gelingt der Verkauf</h1>
+    <p class="lead">Der Verkauf eines Autos kann auf verschiedene Weise erfolgen. Mit der richtigen Vorbereitung und den passenden Tipps erzielen Sie den besten Preis und vermeiden Ärger.</p>
+    <div class="partner-section" style="margin: 2rem 0;">
+      <h3>🧼 Gründliche Reinigung für bessere Fotos & mehr Wert</h3>
+      <p class="partner-desc">Ein sauberer Innenraum ist das A und O für aussagekräftige Verkaufsfotos und macht bei Besichtigungen einen hervorragenden Eindruck. Ein Nasssauger entfernt selbst tiefsitzenden Schmutz aus Polstern und Teppichen – perfekt, um Ihr Auto in neuem Glanz zu präsentieren und den Wiederverkaufswert zu steigern.</p>
+      <div class="partner-buttons">
+        <a href="https://link.amazon/B0hxdeNk1" target="_blank" rel="noopener sponsored" class="partner-button">
           <span class="partner-icon">🧹</span>
-          <span class="partner-text">
-            <span class="partner-title">Staubsauger & Nasssauger für Fahrzeugpflege*</span>
-            <span class="partner-sub">Empfehlenswerte Geräte für Polster & Teppich ansehen →</span>
-          </span>
-        </a>
-
-        <!-- HIER HINGEHOERT: E-Auto vs. Benziner Button -->
-        <a href="artikel-e-auto-vs-benziner.html" class="partner-button-clean">
-          <span class="partner-icon">⚡</span>
-          <span class="partner-text">
-            <span class="partner-title">Ratgeber: E-Auto vs. Benziner im Kostenvergleich</span>
-            <span class="partner-sub">Welcher Antrieb rechnet sich beim Fahrzeugwechsel für Sie? →</span>
-          </span>
+          <span class="partner-name">Nasssauger für Polster & Teppich *</span>
+          <span class="partner-arrow">→</span>
         </a>
       </div>
-      <p style="font-size: 0.85rem; color: #6c757d; margin-top: 0.5rem;">* Als Partner unterstütze ich diese Empfehlungen. Für Sie entstehen dadurch selbstverständlich keine Mehrkosten.</p>
-    </section>
-
-    <!-- CHECKLISTEN -->
-    <section>
-      <h2>🚗 Checkliste Vorbereitung: Werterhalt & Historie</h2>
-      <p>Bevor die ersten Fotos entstehen, bringen Sie Optik und Papiere auf Vordermann:</p>
-
-      <div class="info-card-grid">
-        <div class="info-card">
-          <h4>🧼 Tiefenreinigung & Innenraumpflege</h4>
-          <p>Fahrzeug waschen, polieren, Scheiben streifenfrei putzen und im Innenraum Armaturenbrett, Lenkrad sowie Leder pflegen. Auch Tierhaare und Schmutz gründlich aussaugen!</p>
-
-          <p style="margin-top: 0.75rem; font-size: 0.9rem; font-style: italic; color: #444;">
-            <strong>Selbst ausprobiert:</strong> Bei speckigen Lenkrädern, Schuhabrieb an den Einstiegsleisten und hartnäckigen Flecken auf den Stoffsitzen greife ich seit Jahren zu diesem Reiniger. Ich war erst skeptisch, ob er speckiges Leder wirklich wieder matt bekommt – aber er löst den Dreck extrem schonend, ohne Kunststoff oder Stoffe auszubleichen. Das Auto riecht danach wieder neutral und wie frisch vom Aufbereiter.
-          </p>
-
-          <a href="https://link.amazon/B04N7fO92" target="_blank" rel="noopener sponsored" class="partner-button-clean" style="margin-top: 0.75rem;">
-            <span class="partner-icon">🧼</span>
-            <span class="partner-text">
-              <span class="partner-title">Effektiven Innenraumreiniger ansehen*</span>
-              <span class="partner-sub">Für Polster, Kunststoffe & Leder – auf Amazon →</span>
-            </span>
-          </a>
-        </div>
-        <div class="info-card">
-          <h4>📖 Scheckheft & Ölservice</h4>
-          <p>Prüfen Sie das Serviceheft! Lassen Sie den regelmäßig fälligen Ölservice immer zeitgerecht machen, damit die Fahrzeughistorie und der Wert nicht zerstört werden.</p>
-
-          <p style="margin-top: 0.75rem; font-size: 0.9rem; color: #333;">
-            💡 <strong>Clever sparen beim Werkstattbesuch:</strong> Vertragswerkstätten verlangen für das Liter-Motoröl oft saftige <strong>25 € bis 35 €</strong>. Wer dasselbe Markenöl im Handel selbst kauft, zahlt meist nur <strong>8 € bis 12 € pro Liter</strong>. Bei einer Füllmenge von 5 Litern sparen Sie so ganz leicht <strong>80 € bis 100 € pro Ölwechsel</strong>!
-          </p>
-          <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #555;">
-            <em>Wichtig:</em> Viele Werkstätten akzeptieren eigenes Öl problemlos. Es muss lediglich <strong>original verschlossen</strong> sein und exakt den <strong>Herstellervorgaben bzw. Freigaben</strong> (z. B. VW 504.00, BMW Longlife, etc.) entsprechen.
-          </p>
-
-          <a href="https://link.amazon/B0dVJGHjO" target="_blank" rel="noopener sponsored" class="partner-button-clean" style="margin-top: 0.75rem;">
-            <span class="partner-icon">🛢️</span>
-            <span class="partner-text">
-              <span class="partner-title">Passendes Marken-Motoröl finden*</span>
-              <span class="partner-sub">Herstellerfreigaben prüfen & günstig bestellen auf Amazon →</span>
-            </span>
-          </a>
-        </div>
-        <div class="info-card">
-          <h4>🛠️ Smart Repair & Details</h4>
-          <p>Kleine Kratzer auspolieren, defekte Glühlampen tauschen und Flüssigkeiten auffüllen. Kleine Investitionen bringen oft ein Vielfaches beim Verkaufspreis.</p>
-        </div>
-        <div class="info-card">
-          <h4>📁 Dokumente ordnen</h4>
-          <p>Legen Sie Fahrzeugschein, Fahrzeugbrief, aktuelle TÜV-Berichte, Rechnungen und alle Schlüssel griffbereit in eine übersichtliche Mappe.</p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>📸 Checkliste Verkaufsfotos: Perfekter Eindruck im Inserat</h2>
-      <div class="info-card-grid">
-        <div class="info-card">
-          <h4>☀️ Licht & Kulisse</h4>
-          <p>Fotografieren Sie bei Tageslicht an einem neutralen Ort (z. B. auf einem sauberen Parkplatz) von allen vier Schräg- und Seitenansichten.</p>
-        </div>
-        <div class="info-card">
-          <h4>💺 Cockpit & Details</h4>
-          <p>Detailaufnahmen von Lenkrad, Tacho mit aktuellem Kilometerstand, Mittelkonsole, Sitzen und dem sauberen Kofferraum knipsen.</p>
-        </div>
-        <div class="info-card">
-          <h4>🤝 Ehrlichkeit punktet</h4>
-          <p>Fotografieren Sie auch kleinere Dellen oder Schrammen transparent. Das verhindert böse Überraschungen bei der Besichtigung und baut Vertrauen auf.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- KAUFVERTRAG SECTION -->
-    <section class="highlight-box">
-      <h3>📝 Rechtssicherer Kaufvertrag & Gewährleistung</h3>
-      <p>Ein schriftlicher Vertrag schützt Verkäufer und Käufer gleichermaßen. Laden Sie sich hier direkt die kostenlose Vorlage herunter:</p>
       
-      <div>
-        <a href="kfz-kaufvertrag.pdf" download class="btn-download-cta">
-          <span>📄</span> Autoknigge Muster-Kaufvertrag (PDF) herunterladen
-        </a>
+    </div>
+    <section class="history-sale-card">
+      <div class="history-sale-top">
+        <div class="history-brand" aria-label="carVertical">
+          <span class="cv-mark">✓</span><span class="cv-word">car<span>Vertical</span></span>
+        </div>
+        <span class="history-label">VERKAUF · VERTRAUEN · WERT</span>
       </div>
-
-      <p style="margin-top: 1rem;"><strong>Der Gewährleistungsausschluss beim Privatverkauf:</strong><br>
-      Als privater Verkäufer haben Sie die Möglichkeit, die gesetzliche <em>Sachmängelhaftung (Gewährleistung)</em> im Vertrag explizit auszuschließen ("Gekauft wie gesehen unter Ausschluss jeglicher Gewährleistung"). Dies schützt Sie vor nachträglichen Forderungen bei späteren Defekten.</p>
-    </section>
-
-    <!-- BARGELD- UND REGELUNGEN / OBERGRENZEN / GRENZÜBERTRITT -->
-    <section>
-      <h2>🛡️ Bezahlung, Bargeldregeln & Grenzüberschreitung</h2>
-      <p>Bargeld ist beim Autoverkauf nach wie vor beliebt, bringt jedoch gesetzliche Vorgaben bei Händlern, Banken und Zoll mit sich:</p>
-
-      <div class="info-card-grid">
-        <div class="info-card" style="border-left-color: #27ae60;">
-          <h4>🤝 Privat an Privat: Keine Obergrenze</h4>
-          <p>Zwischen Privatpersonen bleibt die Barzahlung uneingeschränkt und ohne gesetzliche Obergrenze erlaubt. Sie dürfen Ihr Auto von Privat an Privat völlig legal für beliebige Summen in bar verkaufen.</p>
-        </div>
-
-        <div class="info-card" style="border-left-color: #e67e22;">
-          <h4>🏢 Regelung beim gewerblichen Händler</h4>
-          <p>Aktuell gibt es in Deutschland bei Händlern noch kein absolutes Barzahlungsverbot. Allerdings gelten strenge Auflagen:</p>
-          <ul style="margin: 0.5rem 0 0 1.2rem; padding: 0; font-size: 0.9rem;">
-            <li><strong>Bis 10.000 €:</strong> Barzahlung ohne Sonderformulare möglich.</li>
-            <li><strong>Ab 3.000 €:</strong> Der Händler muss Ihre Identität per Ausweis dokumentieren.</li>
-            <li><strong>Über 10.000 €:</strong> Nur mit gesonderter Identifikation und Erfassung gemäß Geldwäschegesetz erlaubt.</li>
-          </ul>
-          <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #d35400;">
-            ⚠️ <strong>Ausblick:</strong> Ab dem <strong>10. Juli 2027</strong> gilt eine EU-weite Bargeldobergrenze von max. 10.000 € für Händlergeschäfte. Höhere Summen dürfen dann gewerblich nicht mehr bar kassiert werden.
-          </p>
-        </div>
-
-        <div class="info-card" style="border-left-color: #f39c12;">
-          <h4>🏦 Einzahlung bei der Bank: Herkunftsnachweis</h4>
-          <p>Wenn Sie Bargeld aus dem Fahrzeugverkauf auf Ihr Bankkonto einzahlen möchten, verlangen Kreditinstitute je nach Bank bereits bei Bareinzahlungen zwischen <strong>2.500 € und 10.000 €</strong> einen Herkunftsnachweis. Reichen Sie dazu einfach den unterzeichneten <strong>Kaufvertrag</strong> ein.</p>
-        </div>
-
-        <div class="info-card" style="border-left-color: #c0392b;">
-          <h4>🛂 Grenzüberschreitung mit Bargeld (ab 10.000 €)</h4>
-          <p>Führen Sie beim Autokauf oder -verkauf <strong>10.000 € oder mehr</strong> über die deutsche Grenze mit (Ein- oder Ausreise aus Nicht-EU-Ländern), müssen Sie das Geld unaufgefordert schriftlich beim Zoll anmelden. Innerhalb der EU gilt eine Anzeigepflicht auf Befragung durch Beamte. <strong>Bei Nichtbeachtung drohen saftige Bußgelder sowie die vorübergehende Sicherstellung des Geldes!</strong></p>
-        </div>
-
-        <div class="info-card" style="border-left-color: #2980b9;">
-          <h4>💳 Sichere Alternative: Banküberweisung vor Ort</h4>
-          <p>Vermeiden Sie Risiken wie Falschgeld, Diebstahl oder Zoll- und Banknachweise. Lassen Sie den Käufer die Summe direkt vor Ort per Banküberweisung tätigen und prüfen Sie den Geldeingang live in Ihrer Banking-App.</p>
+      <div class="history-sale-copy">
+        <h2>Eine saubere Historie kann bares Geld wert sein.</h2>
+        <p>Beim Verkauf zählt nicht nur, wie gut das Auto aussieht. Wer die Vorgeschichte seines Fahrzeugs nachvollziehbar dokumentieren kann, schafft Vertrauen – und hat bessere Argumente für einen fairen Verkaufspreis.</p>
+        <p class="history-emphasis"><strong>Nicht nur behaupten, dass das Auto gut ist. Zeigen, was seine Geschichte sagt.</strong></p>
+        <span class="history-offer">20 % Gutschrift auf den Bericht*</span>
+      </div>
+      <div class="history-badges" aria-label="Mögliche Inhalte eines carVertical-Berichts">
+        <div class="history-badge badge-damage"><span>◈</span><strong>Schäden</strong><small>bekannte Schadendaten</small></div>
+        <div class="history-badge badge-mileage"><span>↗</span><strong>Kilometerstand</strong><small>Verlauf nachvollziehen</small></div>
+        <div class="history-badge badge-data"><span>⌁</span><strong>Fahrzeugdaten</strong><small>Ausstattung &amp; Historie</small></div>
+        <div class="history-badge badge-value"><span>€</span><strong>Marktwert</strong><small>zusätzliche Orientierung</small></div>
+      </div>
+      <div class="history-sale-bottom">
+        <div class="history-note"><strong>Warum beim Verkauf?</strong><br>Eine nachvollziehbare Historie kann Vertrauen schaffen, Rückfragen reduzieren und dir helfen, deinen Preis gegenüber Interessenten besser zu begründen.</div>
+        <div class="history-actions">
+          <a class="history-cta" href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&amp;sub1=autoknigge" target="_blank" rel="noopener sponsored">
+            <span>Historie prüfen *</span><b>→</b>
+          </a>
+          <a class="history-cta secondary" href="https://www.carvertical.deal/2HLM53N/5MJ263/?uid=37&amp;source_id=AFF&amp;sub1=autoknigge&amp;sub3=FIN" target="_blank" rel="noopener sponsored">
+            <span>FIN / Kennzeichen *</span><b>↗</b>
+          </a>
         </div>
       </div>
+      
     </section>
+
+    <section class="sell-card">
+      <h2>Die richtige Vorbereitung</h2>
+      <p>Bevor Sie Ihr Fahrzeug inserieren oder einem potenziellen Käufer zeigen, lohnt sich eine gründliche Vorbereitung. Ein gepflegtes Auto macht nicht nur optisch viel her, sondern signalisiert dem Käufer auch, dass das Fahrzeug insgesamt gut behandelt wurde.</p>
+      <ul>
+        <li><strong>Gründliche Reinigung:</strong> Waschen Sie das Auto von außen und reinigen Sie den Innenraum gründlich – inklusive Kofferraum und Motorraum.</li>
+        <li><strong>Kleinere Reparaturen:</strong> Beheben Sie kleine Mängel wie Kratzer, lose Verkleidungen oder defekte Leuchten.</li>
+        <li><strong>Unterlagen bereitlegen:</strong> Legen Sie alle Servicehefte, Rechnungen, Gutachten und die aktuelle TÜV-Bescheinigung bereit.</li>
+      </ul>
+    </section>
+    <section class="sell-card">
+      <h2>Gute Fotos machen den Unterschied</h2>
+      <p>Inserate mit guten Fotos erzielen deutlich mehr Anfragen und höhere Preise. Nehmen Sie sich Zeit für aussagekräftige Bilder.</p>
+      <ul>
+        <li><strong>Außenaufnahmen:</strong> Machen Sie Fotos von allen Seiten, bei gutem Licht und an einem neutralen Ort.</li>
+        <li><strong>Innenaufnahmen:</strong> Zeigen Sie den Innenraum, das Armaturenbrett, die Sitze und den Kofferraum.</li>
+        <li><strong>Details:</strong> Fotografieren Sie Besonderheiten wie Felgen, Ausstattung oder den Kilometerstand.</li>
+      </ul>
+    </section>
+    <section class="sell-card">
+      <h2>Preisermittlung und Verhandlung</h2>
+      <p>Ein realistischer Preis ist der Schlüssel zu einem schnellen Verkauf. Entscheidend ist deshalb nicht nur ein einzelner Wert, sondern ein sauberer <strong>Preisvergleich mit tatsächlich angebotenen Fahrzeugen</strong>.</p>
+      <ul>
+        <li><strong>Wertcheck:</strong> Nutzen Sie Online-Plattformen zur Wertermittlung und vergleichen Sie anschließend ähnliche Fahrzeuge nach Baujahr, Laufleistung, Motorisierung, Ausstattung und Zustand.</li>
+        <li><strong>Mobile.de als Marktcheck:</strong> Ein eigenes Inserat auf <a href="https://www.mobile.de/" target="_blank" rel="noopener">mobile.de</a> ist sinnvoll, um zu sehen, wie vergleichbare Fahrzeuge angeboten werden und welche Preispositionierung realistisch ist.</li>
+        <li><strong>Günstigere Fahrzeuge:</strong> Bei Autos im Bereich von etwa <strong>2.000 bis 3.000 €</strong> kann zusätzlich ein Inserat bei <a href="https://www.kleinanzeigen.de/" target="_blank" rel="noopener">Kleinanzeigen</a> sinnvoll sein – gerade wenn Sie Käufer aus der näheren Umgebung erreichen möchten.</li>
+        <li><strong>Verhandlungsspielraum:</strong> Kalkulieren Sie einen kleinen, nachvollziehbaren Spielraum ein, ohne den Wunschpreis künstlich aufzublähen.</li>
+        <li><strong>Sachlich bleiben:</strong> Argumentieren Sie mit Fakten: Zustand, Wartungen, Ausstattung, TÜV, Laufleistung, Vergleichsangebote und eine nachvollziehbare Fahrzeughistorie.</li>
+      </ul>
+      <div class="price-platforms" aria-label="Nützliche Plattformen für den Preisvergleich und Verkauf">
+        <a href="https://www.mobile.de/" target="_blank" rel="noopener">↗ Mobile.de – Markt vergleichen</a>
+        <a href="https://www.kleinanzeigen.de/" target="_blank" rel="noopener">↗ Kleinanzeigen – besonders bei günstigeren Autos</a>
+      </div>
+    </section>
+    <section class="sell-card">
+      <h2>Der Vertrag</h2>
+      <p>Ein schriftlicher Kaufvertrag schützt beide Seiten. Nutzen Sie einen Mustervertrag und dokumentieren Sie alle Vereinbarungen.</p>
+      <ul>
+        <li><strong>Kaufvertrag:</strong> Verwenden Sie den <a href="kfz-kaufvertrag.pdf" download>Muster-Kaufvertrag (PDF)</a> von Autoknigge.</li>
+        <li><strong>Übergabe:</strong> Übergeben Sie das Fahrzeug mit allen Schlüsseln und Unterlagen.</li>
+        <li><strong>Abmeldung:</strong> Informieren Sie sich über die <a href="artikel-auto-abmelden.html">Abmeldung des Fahrzeugs</a>.</li>
+      </ul>
+    </section>
+
+    <div class="affiliate-note">
+      <strong>* Partner-/Affiliate-Hinweis:</strong> Einige mit * gekennzeichnete Links sind Partnerlinks. Wenn Sie darüber einen Kauf bzw. Bericht abschließen, kann Autoknigge eine Provision erhalten oder – bei der aktuellen carVertical-Aktion – eine <strong>20 % Gutschrift</strong> für den Bericht gewährt werden. Für Sie entstehen durch die Affiliate-Links keine zusätzlichen Kosten. Die redaktionellen Inhalte und Empfehlungen werden davon nicht beeinflusst.
+    </div>
   </div>
 </main>
 <button id="backToTop" class="back-to-top" aria-label="Nach oben scrollen">↑</button>
@@ -490,7 +222,7 @@
         <ul class="footer-links-list">
           <li><a href="kategorie-versicherung.html">Kfz-Versicherung</a></li>
           <li><a href="kategorie-zulassung.html">Auto an-, um- & abmelden ohne Stress</a></li>
-          <li><a href="kategorie-kauf.html">Autokauf und -verkauf</a></li>
+          <li><a href="kategorie-kauf.html">Autokauf & Verkauf</a></li>
           <li><a href="kategorie-pflege.html">Fahrzeugpflege</a></li>
           <li><a href="kategorie-recht.html">Recht & Etikette</a></li>
           <li><a href="kategorie-geld-sparen.html">Clever sparen</a></li>
