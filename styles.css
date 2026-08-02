@@ -257,7 +257,34 @@ p { color: var(--text-body); }
   pointer-events: none;
   opacity: 0.6;
 }
-.hero-grid { max-width: var(--max-width); margin: 0 auto; position: relative; z-index: 1; }
+.hero-grid {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+@media (min-width: 860px) {
+  .hero-grid { grid-template-columns: 1.15fr 0.85fr; }
+}
+.hero-portrait {
+  display: none;
+}
+@media (min-width: 860px) {
+  .hero-portrait {
+    display: block;
+    justify-self: center;
+  }
+  .hero-portrait img {
+    max-width: 340px;
+    width: 100%;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+  }
+}
 
 .hero-badge {
   display: inline-flex;
@@ -1142,3 +1169,61 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
   color: rgba(255, 255, 255, 0.75) !important;
   line-height: 1.4;
 }
+
+/* ===== KNIGGE-TIPP (Maskottchen-Hinweisbox) ===== */
+.knigge-tip {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: var(--green-50);
+  border: 1px solid var(--green-100);
+  border-left: 4px solid var(--gold-600);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.3rem;
+  margin: 1.75rem 0;
+  box-shadow: var(--shadow-xs);
+}
+.knigge-tip-avatar {
+  flex: 0 0 auto;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--white);
+  box-shadow: 0 2px 6px rgba(10,28,22,0.18);
+}
+.knigge-tip-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.knigge-tip-body { flex: 1 1 auto; }
+.knigge-tip-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.92rem;
+  color: var(--green-800);
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.knigge-tip-name::after {
+  content: 'Praxis-Tipp';
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gold-700);
+  background: var(--gold-100);
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-pill);
+}
+.knigge-tip-body p {
+  margin: 0;
+  color: var(--text-body);
+  font-size: 0.96rem;
+  line-height: 1.55;
+}
+.knigge-tip-body p + p { margin-top: 0.5rem; }
