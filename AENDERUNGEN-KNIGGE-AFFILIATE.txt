@@ -1,0 +1,13 @@
+Autoknigge – Änderungen
+
+1. Knigge-Szenen
+- Drei bereitgestellte Knigge-Bilder integriert.
+- Bestehende „Knigge meint“-Boxen wurden optisch zu wechselnden Expertenkarten aufgewertet.
+- Die Startseite erhielt zusätzlich eine eigene Knigge-Expertenkarte.
+
+2. Affiliate-Kennzeichnung
+- Bekannte Affiliate-/Partnerlinks wurden mit einem sichtbaren Stern (*) versehen.
+- rel="sponsored" bleibt bei den Partnerlinks erhalten.
+- Im Seitenfuß steht ein einheitlicher Hinweis auf Affiliate-/Partnerlinks.
+
+Die konkrete rechtliche Einordnung einzelner Partnerprogramme sollte bei Änderungen der Vergütungsmodelle erneut geprüft werden.

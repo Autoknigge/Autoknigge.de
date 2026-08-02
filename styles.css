@@ -1207,3 +1207,62 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
   line-height: 1.55;
 }
 .knigge-tip-body p + p { margin-top: 0.5rem; }
+
+
+/* ===== KNIGGE SZENEN — lockere Expertenstimme ===== */
+.knigge-scene {
+  display: grid;
+  grid-template-columns: minmax(190px, 280px) 1fr;
+  align-items: stretch;
+  gap: 1.15rem;
+  background: var(--white);
+  border: 1px solid var(--green-100);
+  border-left: 4px solid var(--gold-600);
+  border-radius: var(--radius-lg);
+  padding: 0.75rem;
+  margin: 1.75rem 0;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.knigge-scene-image {
+  min-height: 150px;
+  border-radius: calc(var(--radius-lg) - 5px);
+  overflow: hidden;
+  background: var(--green-50);
+}
+.knigge-scene-image img {
+  width: 100%;
+  height: 100%;
+  min-height: 150px;
+  object-fit: cover;
+}
+.knigge-scene .knigge-tip-body {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 1rem 0.8rem 0.25rem;
+}
+.knigge-scene .knigge-tip-body p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.knigge-scene .knigge-tip-body strong { color: var(--green-800); }
+.affiliate-mark {
+  color: var(--gold-600);
+  font-weight: 800;
+  font-size: 0.95em;
+  margin-left: 0.18rem;
+}
+.affiliate-note {
+  margin-top: 0.8rem;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.62);
+  width: 100%;
+}
+.affiliate-note strong { color: rgba(255,255,255,0.88); }
+
+@media (max-width: 680px) {
+  .knigge-scene { grid-template-columns: 1fr; gap: 0.65rem; padding: 0.65rem; }
+  .knigge-scene-image, .knigge-scene-image img { min-height: 190px; max-height: 260px; }
+  .knigge-scene .knigge-tip-body { padding: 0.5rem 0.75rem 0.75rem; }
+}
