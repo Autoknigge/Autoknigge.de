@@ -1271,13 +1271,10 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
   letter-spacing: -.02em;
   text-shadow: 0 2px 14px rgba(0,0,0,.28);
 }
+/* Kein zusätzliches Anführungszeichen vor dem Text: Das öffnende deutsche „ steht bereits im blockquote. */
 .knigge-quote-content blockquote::before {
-  content: '“';
-  display: block;
-  font-size: 3.3rem;
-  line-height: .55;
-  margin-bottom: .55rem;
-  color: rgba(255,255,255,.9);
+  content: none;
+  display: none;
 }
 @media (max-width: 760px) {
   .knigge-quote-image { min-height: 390px; background-position: 62% center; }
