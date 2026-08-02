@@ -1271,10 +1271,13 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
   letter-spacing: -.02em;
   text-shadow: 0 2px 14px rgba(0,0,0,.28);
 }
-/* Kein zusätzliches Anführungszeichen vor dem Text: Das öffnende deutsche „ steht bereits im blockquote. */
 .knigge-quote-content blockquote::before {
-  content: none;
-  display: none;
+  content: '“';
+  display: block;
+  font-size: 3.3rem;
+  line-height: .55;
+  margin-bottom: .55rem;
+  color: rgba(255,255,255,.9);
 }
 @media (max-width: 760px) {
   .knigge-quote-image { min-height: 390px; background-position: 62% center; }
@@ -1305,7 +1308,7 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
 .versicherung-tip-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1rem; }
 .versicherung-tip-card { padding: 1.25rem 1.3rem; border-radius: 18px; border: 1px solid rgba(10,28,22,.08); box-shadow: var(--shadow-xs); transition: transform var(--transition-fast), box-shadow var(--transition-fast); }
 .versicherung-tip-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
-.versicherung-tip-card:nth-child(5) { grid-column: 1 / -1; }
+.versicherung-tip-card:nth-child(7) { grid-column: 1 / -1; }
 .versicherung-tip-card h3 { font-size: 1.08rem; margin: .15rem 0 .45rem; }
 .versicherung-tip-card p { margin: 0; font-size: .94rem; line-height: 1.55; }
 .versicherung-tip-card small { display: block; margin-top: .7rem; color: var(--text-muted); font-size: .78rem; line-height: 1.45; }
@@ -1325,9 +1328,54 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
 @media (max-width: 700px) {
   .versicherung-intro-box { align-items: flex-start; } .versicherung-intro-badge { flex-basis: 82px; width: 82px; height: 82px; }
   .versicherung-tip-grid, .versicherung-steps { grid-template-columns: 1fr; }
-  .versicherung-tip-card:nth-child(5) { grid-column: auto; }
+  .versicherung-tip-card:nth-child(7) { grid-column: auto; }
 }
 @media (max-width: 480px) {
   .versicherung-intro-box { flex-direction: column; } .versicherung-intro-badge { align-self: flex-end; }
 }
 .footer-affiliate-note { margin-top: 1.5rem; padding: .8rem 1rem; border-top: 1px solid rgba(255,255,255,.10); color: rgba(255,255,255,.68); font-size: .76rem; line-height: 1.5; }
+
+/* ===== KNIGGE-CHECKLISTE ===== */
+.knigge-checklist-box {
+  background: var(--white);
+  border: 1px solid rgba(10,28,22,.08);
+  border-radius: 18px;
+  padding: 1.4rem 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: var(--shadow-xs);
+}
+.knigge-checklist-box h3 {
+  margin: 0 0 0.9rem;
+  font-size: 1.05rem;
+}
+.knigge-checklist { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+.knigge-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.96rem;
+  line-height: 1.5;
+  color: var(--text-body);
+}
+.knigge-checklist li::before {
+  content: '☑';
+  flex: 0 0 auto;
+  color: var(--green-600);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* ===== EDITORIAL / QUELLEN-BOX ===== */
+.editorial-box {
+  margin: 2.5rem 0 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.editorial-box strong { color: var(--text-body); }
+.editorial-box .editorial-row { display: flex; flex-wrap: wrap; gap: 0.4rem 1.75rem; margin-bottom: 0.5rem; }
+.editorial-box .editorial-row:last-child { margin-bottom: 0; }
+.editorial-box a { color: var(--green-700); }
