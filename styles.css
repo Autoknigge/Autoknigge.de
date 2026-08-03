@@ -1562,13 +1562,43 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
 @media (max-width: 620px) {
   .knigge-advice-box { flex-direction: column; text-align: center; }
 }
-/* Unfallseite: Checkliste + Downloadbereich */
-.unfall-notfall-layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:1.25rem;align-items:stretch;margin:1.5rem 0 2rem}
-.unfall-notfall-layout .knigge-checklist-box{margin:0}
-.unfall-downloads{background:#fff8e8;border:1px solid #e2c878;border-radius:16px;padding:1.15rem;display:flex;flex-direction:column;justify-content:center;gap:.75rem;box-sizing:border-box}
-.unfall-download-title{font-weight:800;color:#0f241d;font-size:1rem}
-.gold-download-button{display:block;text-align:center;text-decoration:none!important;background:#d7b75c;color:#10251e!important;border-radius:10px;padding:.75rem .7rem;font-weight:800;line-height:1.25;box-shadow:0 2px 7px rgba(0,0,0,.08)}
-.gold-download-button:hover{background:#c9a94f}
-.unfall-downloads p{font-size:.78rem;line-height:1.4;color:#6c757d;margin:.1rem 0 0}
-.emergency-number{color:#c62828;font-weight:900;font-size:1.1em}
-@media(max-width:760px){.unfall-notfall-layout{grid-template-columns:1fr}.unfall-downloads{width:100%}}
+
+/* ===== NOTFALL-BOX MIT DOWNLOAD-SPALTE ===== */
+.notfall-box-wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+  margin: 1.75rem 0;
+}
+@media (min-width: 760px) {
+  .notfall-box-wrap { grid-template-columns: 1.5fr 1fr; align-items: stretch; }
+}
+.notfall-box-wrap .knigge-checklist-box { margin: 0; }
+.notfall-downloads {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .8rem;
+  background: var(--green-50);
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius);
+  padding: 1.3rem;
+}
+.notfall-downloads p {
+  margin: 0 0 .2rem;
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--green-800);
+  text-transform: uppercase;
+  letter-spacing: .03em;
+}
+.notfall-downloads .gold-cta-btn {
+  font-size: .92rem;
+  padding: .75rem 1.1rem;
+  justify-content: center;
+  text-align: center;
+}
+.emergency-number {
+  color: #c0392b;
+  font-weight: 800;
+}
