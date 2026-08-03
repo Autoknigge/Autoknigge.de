@@ -1562,3 +1562,13 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
 @media (max-width: 620px) {
   .knigge-advice-box { flex-direction: column; text-align: center; }
 }
+/* Unfallseite: Checkliste + Downloadbereich */
+.unfall-notfall-layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:1.25rem;align-items:stretch;margin:1.5rem 0 2rem}
+.unfall-notfall-layout .knigge-checklist-box{margin:0}
+.unfall-downloads{background:#fff8e8;border:1px solid #e2c878;border-radius:16px;padding:1.15rem;display:flex;flex-direction:column;justify-content:center;gap:.75rem;box-sizing:border-box}
+.unfall-download-title{font-weight:800;color:#0f241d;font-size:1rem}
+.gold-download-button{display:block;text-align:center;text-decoration:none!important;background:#d7b75c;color:#10251e!important;border-radius:10px;padding:.75rem .7rem;font-weight:800;line-height:1.25;box-shadow:0 2px 7px rgba(0,0,0,.08)}
+.gold-download-button:hover{background:#c9a94f}
+.unfall-downloads p{font-size:.78rem;line-height:1.4;color:#6c757d;margin:.1rem 0 0}
+.emergency-number{color:#c62828;font-weight:900;font-size:1.1em}
+@media(max-width:760px){.unfall-notfall-layout{grid-template-columns:1fr}.unfall-downloads{width:100%}}
