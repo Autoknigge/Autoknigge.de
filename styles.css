@@ -1562,3 +1562,5 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
 @media (max-width: 620px) {
   .knigge-advice-box { flex-direction: column; text-align: center; }
 }
+/* Unfall/Notfall: responsive layout */
+.knigge-duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.15rem;margin:1.8rem 0 2.2rem}.knigge-duo .knigge-quote-card{margin:0}.knigge-duo .knigge-quote-image{min-height:400px;background-size:cover;background-position:center}.unfall-notfall-layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:1.2rem;margin:1.5rem 0 2rem}.unfall-downloads{padding:1.25rem;border-radius:18px;background:#fff8e8;border:1px solid #ead9a7;display:flex;flex-direction:column;justify-content:center;gap:.75rem}.unfall-downloads .gold-cta-btn{width:100%;box-sizing:border-box;justify-content:center}.emergency-number{color:#c62828;font-weight:900;font-size:1.08em}@media(max-width:760px){.knigge-duo,.unfall-notfall-layout{grid-template-columns:1fr}}
