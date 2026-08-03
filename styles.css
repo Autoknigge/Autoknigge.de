@@ -1242,6 +1242,10 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
   background-image: url('knigge-dialog.jpg');
   background-position: center 55%;
 }
+.knigge-quote-wechseln .knigge-quote-image {
+  background-image: url('knigge-checkliste.jpg');
+  background-position: center 18%;
+}
 .knigge-quote-shade {
   position: absolute; inset: 0; z-index: -1;
   background: linear-gradient(90deg, rgba(5,12,10,.93) 0%, rgba(5,12,10,.72) 31%, rgba(5,12,10,.18) 57%, rgba(5,12,10,.04) 100%);
@@ -1379,3 +1383,51 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
 .editorial-box .editorial-row { display: flex; flex-wrap: wrap; gap: 0.4rem 1.75rem; margin-bottom: 0.5rem; }
 .editorial-box .editorial-row:last-child { margin-bottom: 0; }
 .editorial-box a { color: var(--green-700); }
+
+/* ===== STELLSCHRAUBEN ALS EINZELNE, ERLÄUTERTE SCHRITTE ===== */
+.lever-list { display: flex; flex-direction: column; gap: 1.1rem; margin-top: 1.2rem; }
+.lever-item {
+  display: flex;
+  gap: 1.1rem;
+  align-items: flex-start;
+  padding: 1.3rem 1.4rem;
+  background: #fff;
+  border: 1px solid rgba(10,28,22,.08);
+  border-radius: 18px;
+  box-shadow: var(--shadow-xs);
+}
+.lever-item > span {
+  flex: 0 0 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--gold-100);
+  color: var(--gold-700);
+  font-weight: 800;
+  font-size: .95rem;
+}
+.lever-item h3 { margin: 0 0 .4rem; font-size: 1.05rem; }
+.lever-item p { margin: 0 0 .55rem; font-size: .95rem; line-height: 1.6; }
+.lever-item p:last-child { margin-bottom: 0; }
+.lever-item .lever-example {
+  margin-top: .6rem;
+  padding: .8rem 1rem;
+  background: var(--green-50);
+  border-radius: 12px;
+  font-size: .88rem;
+  line-height: 1.55;
+  color: var(--text-body);
+}
+.lever-example strong { color: var(--green-800); }
+.lever-note {
+  margin-top: 1rem;
+  padding: .9rem 1.1rem;
+  border-radius: 12px;
+  background: #f4f6f5;
+  color: var(--text-muted);
+  font-size: .88rem;
+  line-height: 1.55;
+}
+.knigge-photo-break { margin: 2.2rem 0; text-align: center; }
+.knigge-photo-break img { max-width: 420px; width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
