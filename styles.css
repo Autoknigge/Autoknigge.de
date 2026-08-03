@@ -1431,3 +1431,22 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
 }
 .knigge-photo-break { margin: 2.2rem 0; text-align: center; }
 .knigge-photo-break img { max-width: 420px; width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
+
+/* ===== GOLDENER AFFILIATE-BUTTON (wiederverwendbar) ===== */
+.gold-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa7c11 100%);
+  color: #0f241d;
+  font-weight: 800;
+  font-size: 1.05rem;
+  padding: 0.9rem 2.2rem;
+  border-radius: 16px;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.gold-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5); }
+.gold-cta-btn .gold-cta-icon { font-size: 1.2rem; }
+.gold-cta-btn .gold-cta-star { font-size: 0.85rem; opacity: 0.7; margin-left: 0.1rem; }
