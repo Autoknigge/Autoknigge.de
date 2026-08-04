@@ -1257,6 +1257,10 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
   background-image: url('knigge-tablet.jpg');
   background-position: center 20%;
 }
+.knigge-quote-ueber .knigge-quote-image {
+  background-image: url('knigge-tablet.jpg');
+  background-position: center 20%;
+}
 .knigge-quote-shade {
   position: absolute; inset: 0; z-index: -1;
   background: linear-gradient(90deg, rgba(5,12,10,.93) 0%, rgba(5,12,10,.72) 31%, rgba(5,12,10,.18) 57%, rgba(5,12,10,.04) 100%);

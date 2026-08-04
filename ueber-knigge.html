@@ -10,10 +10,6 @@
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f241d">
 <style>
-  .about-hero { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; margin: 1.5rem 0 2.5rem; }
-  @media (min-width: 860px) { .about-hero { grid-template-columns: 0.9fr 1.1fr; } }
-  .about-hero img { width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
-  .about-hero h1 { margin-bottom: 0.6rem; }
   .about-standards { display: grid; gap: 1rem; grid-template-columns: 1fr; margin: 1.5rem 0 2.5rem; }
   @media (min-width: 700px) { .about-standards { grid-template-columns: repeat(2, 1fr); } }
   .about-standard-card { background: var(--white); border: 1px solid rgba(10,28,22,.08); border-radius: 16px; padding: 1.3rem 1.4rem; box-shadow: var(--shadow-xs); }
@@ -52,14 +48,16 @@
       <span>Über Knigge</span>
     </nav>
 
-    <div class="about-hero">
-      <img src="knigge-about.jpg" alt="Knigge, die Redaktionsfigur von Autoknigge, an seinem Schreibtisch in der Werkstatt">
-      <div>
-        <h1>Über Knigge</h1>
-        <p class="lead">„Ich erkläre Kfz-Themen so, wie ich sie selbst erklärt bekommen will: einfach, ehrlich, auf den Punkt."</p>
-        <p>Hinter <strong>Knigge</strong> steht kein einzelner Star-Autor, sondern die Redaktion von Autoknigge – ein kleines Team mit praktischer Erfahrung rund ums Auto: aus Werkstatt, Versicherungsvergleich und Zulassungsstelle. Wir haben Knigge als feste redaktionelle Stimme geschaffen, damit jeder Ratgeber auf dieser Seite denselben Anspruch verfolgt: kein Fachchinesisch, keine Verkaufsfloskeln, sondern Tipps, die im Alltag wirklich helfen.</p>
+    <h1>Über Knigge</h1>
+
+    <section class="knigge-quote-card knigge-quote-ueber" aria-label="Knigge-Zitat">
+      <div class="knigge-quote-image" role="img" aria-label="Knigge prüft etwas auf dem Tablet">
+        <div class="knigge-quote-shade"></div>
+        <div class="knigge-quote-content">
+          <blockquote>Ich erkläre Kfz-Themen so, wie ich sie selbst erklärt bekommen will: einfach, ehrlich, auf den Punkt.</blockquote>
+        </div>
       </div>
-    </div>
+    </section>
 
     <section>
       <h2>Warum „Autoknigge"?</h2>
