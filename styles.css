@@ -1610,3 +1610,32 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
   color: #c0392b;
   font-weight: 800;
 }
+
+/* ===== TOPIC-TILES (wiederverwendbares Kachel-Muster für Infoblöcke) ===== */
+.topic-tile-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+  margin: 1.5rem 0;
+}
+@media (min-width: 700px) {
+  .topic-tile-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.topic-tile {
+  background: var(--white);
+  border: 1px solid rgba(10,28,22,.08);
+  border-radius: 16px;
+  padding: 1.4rem 1.5rem;
+  box-shadow: var(--shadow-xs);
+}
+.topic-tile h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 0.8rem;
+  font-size: 1.12rem;
+}
+.topic-tile .tile-icon { font-size: 1.25rem; line-height: 1; }
+.topic-tile ul { margin: 0; padding-left: 1.15rem; }
+.topic-tile li { margin-bottom: 0.5rem; font-size: 0.95rem; line-height: 1.55; color: var(--text-body); }
+.topic-tile li:last-child { margin-bottom: 0; }
