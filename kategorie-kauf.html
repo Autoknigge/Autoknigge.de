@@ -252,6 +252,97 @@
     color: rgba(255, 255, 255, 0.55);
     margin-bottom: 0.6rem;
   }
+
+  /* Kauf-Checkliste */
+  .usedcar-check {
+    margin: 0 0 1.5rem;
+  }
+  .usedcar-check-head {
+    margin-bottom: 1rem;
+  }
+  .usedcar-check-head h2 {
+    margin-bottom: .35rem;
+  }
+  .usedcar-check-head p {
+    margin: 0;
+    color: #475569;
+  }
+  .usedcar-check-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .85rem;
+  }
+  .usedcar-check-item {
+    border-radius: 14px;
+    padding: 1rem 1.05rem;
+    display: flex;
+    gap: .8rem;
+    align-items: flex-start;
+    border: 1px solid rgba(15,36,29,.08);
+    min-height: 92px;
+  }
+  .usedcar-check-item:nth-child(3n+1) { background: #fff1f0; border-color: #ffd8d4; }
+  .usedcar-check-item:nth-child(3n+2) { background: #fff8df; border-color: #f4e4a9; }
+  .usedcar-check-item:nth-child(3n) { background: #eef8f3; border-color: #cce8da; }
+  .usedcar-check-icon {
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+    display: grid;
+    place-items: center;
+    background: rgba(255,255,255,.8);
+    font-size: 1.25rem;
+  }
+  .usedcar-check-item strong {
+    display: block;
+    line-height: 1.35;
+    margin-bottom: .2rem;
+    color: #16251f;
+  }
+  .usedcar-check-item span {
+    display: block;
+    font-size: .86rem;
+    line-height: 1.45;
+    color: #475569;
+  }
+  .usedcar-check-note {
+    margin-top: .9rem;
+    padding: .8rem 1rem;
+    border-left: 4px solid #0f241d;
+    background: #f5f7f6;
+    border-radius: 8px;
+    font-size: .9rem;
+    line-height: 1.5;
+  }
+  .purchase-sections {
+    margin-top: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .purchase-sections h2 {
+    margin-bottom: .8rem;
+  }
+  .purchase-facts {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: .75rem;
+  }
+  .purchase-fact {
+    border-radius: 13px;
+    padding: .9rem;
+    background: #f4f7f6;
+    border: 1px solid #e0e8e4;
+  }
+  .purchase-fact b { display:block; margin-bottom:.25rem; }
+  .purchase-fact span { font-size:.84rem; line-height:1.4; color:#52605a; }
+  @media (max-width: 700px) {
+    .usedcar-check-grid { grid-template-columns: 1fr; }
+    .purchase-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 430px) {
+    .purchase-facts { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
@@ -268,7 +359,7 @@
         <li><a href="index.html">Start</a></li>
         <li><a href="kategorie-versicherung.html">Versicherung</a></li>
         <li><a href="kategorie-zulassung.html">Zulassung</a></li>
-        <li><a href="kategorie-kauf.html" aria-current="page">Kauf</a></li>
+        <li><a href="kategorie-kauf.html" aria-current="page">Kauf und Verkauf</a></li>
         <li><a href="kategorie-pflege.html">Pflege</a></li>
         <li><a href="kategorie-recht.html">Recht</a></li>
         <li><a href="kategorie-geld-sparen.html">Clever sparen</a></li>
@@ -297,6 +388,41 @@
   </div>
 </section>
 
+
+    <section class="usedcar-check" aria-labelledby="gebrauchtwagen-check">
+      <div class="usedcar-check-head">
+        <h2 id="gebrauchtwagen-check">Gebrauchtwagen kaufen: Knigges Checkliste</h2>
+        <p>Diese Warnsignale solltest du vor der Unterschrift prüfen. Je mehr davon zutreffen, desto genauer hinschauen – oder lieber Abstand nehmen.</p>
+      </div>
+
+      <div class="usedcar-check-grid">
+        <div class="usedcar-check-item"><div class="usedcar-check-icon">💶</div><div><strong>Preis auffällig niedrig</strong><span>Deutlich unter vergleichbaren Inseraten – ohne plausible Erklärung.</span></div></div>
+        <div class="usedcar-check-item"><div class="usedcar-check-icon">⏱️</div><div><strong>Zeitdruck oder Barzahlung</strong><span>Der Verkäufer drängt auf eine schnelle Entscheidung oder Barzahlung ohne sauberen Kaufvertrag.</span></div></div>
+        <div class="usedcar-check-item"><div class="usedcar-check-icon">📘</div><div><strong>Servicehistorie lückenhaft</strong><span>Serviceheft fehlt oder passt nicht zur angegebenen Laufleistung und zum Fahrzeugzustand.</span></div></div>
+        <div class="usedcar-check-item"><div class="usedcar-check-icon">📍</div><div><strong>Übergabe an ungewöhnlichem Ort</strong><span>Das Fahrzeug wird nur an einem neutralen Ort statt an der Meldeadresse des Halters gezeigt oder übergeben.</span></div></div>
+        <div class="usedcar-check-item"><div class="usedcar-check-icon">🔢</div><div><strong>Kilometerstände widersprüchlich</strong><span>Inserat, TÜV-Bericht, Rechnungen oder Bordelektronik nennen unterschiedliche Werte.</span></div></div>
+        <div class="usedcar-check-item"><div class="usedcar-check-icon">🆔</div><div><strong>FIN wird nicht genannt</strong><span>Die Fahrgestellnummer (FIN) ist nicht im Inserat einsehbar oder wird auf Nachfrage nicht mitgeteilt.</span></div></div>
+        <div class="usedcar-check-item"><div class="usedcar-check-icon">📄</div><div><strong>Papiere und Halter passen nicht</strong><span>Zulassungsbescheinigung, Verkäufer und tatsächlicher Halter lassen sich nicht schlüssig zuordnen.</span></div></div>
+        <div class="usedcar-check-item"><div class="usedcar-check-icon">🛠️</div><div><strong>Unfall- oder Reparaturangaben bleiben vage</strong><span>Auf Nachfrage kommen ausweichende Antworten wie „nur ein kleiner Schaden“ oder „nichts Wichtiges“.</span></div></div>
+        <div class="usedcar-check-item"><div class="usedcar-check-icon">🔍</div><div><strong>Besichtigung nur bei warmem Motor</strong><span>Das Auto ist bei deiner Ankunft bereits warm – mögliche Kaltstartprobleme bleiben so verborgen.</span></div></div>
+        <div class="usedcar-check-item"><div class="usedcar-check-icon">🚗</div><div><strong>Probefahrt wird verhindert</strong><span>Keine ausreichende Probefahrt, keine Prüfung auf Geräusche, Bremsen, Lenkung und Fahrverhalten.</span></div></div>
+        <div class="usedcar-check-item"><div class="usedcar-check-icon">💧</div><div><strong>Spuren von Flüssigkeiten oder Rost</strong><span>Öl, Kühlmittel, ungewöhnliche Feuchtigkeit, Rost oder ungleichmäßige Spaltmaße fallen auf.</span></div></div>
+        <div class="usedcar-check-item"><div class="usedcar-check-icon">✍️</div><div><strong>Kaufvertrag soll „schnell“ gehen</strong><span>Fahrzeugdaten, Zusicherungen, bekannte Mängel, Zubehör und Preis werden nicht vollständig schriftlich festgehalten.</span></div></div>
+      </div>
+
+      <div class="usedcar-check-note"><strong>Knigges Grundregel:</strong> Erst Fahrzeug, Historie, Papiere und Verkäufer prüfen – dann bezahlen und unterschreiben. Bei mehreren Warnsignalen ist ein Rückzug meist günstiger als ein späterer Rechtsstreit.</div>
+    </section>
+
+    <section class="purchase-sections" aria-labelledby="kauf-wichtig">
+      <h2 id="kauf-wichtig">Die wichtigsten Fakten vor dem Kauf</h2>
+      <div class="purchase-facts">
+        <div class="purchase-fact"><b>🔎 FIN prüfen</b><span>FIN mit Papieren und Fahrzeug vergleichen und vorab nach der Historie fragen.</span></div>
+        <div class="purchase-fact"><b>📑 Unterlagen</b><span>Zulassungsbescheinigung, HU-Berichte, Rechnungen, Servicebelege und Schlüssel prüfen.</span></div>
+        <div class="purchase-fact"><b>🧊 Kaltstart</b><span>Wenn möglich mit kaltem Motor besichtigen. Geräusche, Rauch und Startverhalten beachten.</span></div>
+        <div class="purchase-fact"><b>🤝 Vertrag</b><span>Nur mit vollständigem schriftlichem Kaufvertrag und klar dokumentierten Zusicherungen kaufen.</span></div>
+      </div>
+    </section>
+
     <section>
       <div class="grid">
 
@@ -309,6 +435,7 @@
 
           <!-- POS 1: Logo (feste Breite) -->
           <div class="cv-top-brand">
+            <div style="font-weight:800;font-size:1.05rem;color:#a3e6cd;margin-bottom:.15rem;">🔍 Historie-Check zum Gebrauchtwagenkauf</div>
             <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener sponsored" class="cv-logo-pill">
               <img src="carvertical-logo.png" alt="carVertical Logo">
             </a>
@@ -317,14 +444,14 @@
           <!-- POS 2: Die Geschichte mit dem SUV -->
           <div class="cv-intro-text">
             <div class="cv-intro-title">
-              <span>Prüfe dein neues Gefährt</span>
-              <span>vor dem Kauf</span>
+              <span>Fahrzeughistorie prüfen</span>
+              <span>bevor du kaufst</span>
             </div>
             <p>
-              Ein schönes Äußeres täuscht schnell über eine miserable Fahrzeughistorie hinweg. Ein vermeintlich gepflegter SUV wird mit 120.000 km als „unfallfrei“ angeboten. Eine kurze Abfrage bei carVertical deckt jedoch auf, dass der Wagen vor zwei Jahren mit 210.000 km und einem schweren Heckschaden im Ausland repariert wurde.
+              Passt der Kilometerstand? Gibt es Hinweise auf Unfallschäden, frühere Inserate oder eine problematische Fahrzeughistorie? Eine zusätzliche Historienabfrage kann helfen, Widersprüche aus unserer Checkliste frühzeitig zu erkennen.
             </p>
             <p>
-              Schütze dich beim nächsten Kauf vor Fehlentscheidungen und bösen Überraschungen.
+              <strong>carVertical</strong> kann anhand der FIN zusätzliche historische Fahrzeugdaten liefern – als Ergänzung zu Besichtigung, Probefahrt und Originalunterlagen.
             </p>
           </div>
 
@@ -364,12 +491,6 @@
           </div>
 
         </div>
-
-        <a class="card" href="artikel-gebrauchtwagen-historie-carvertical.html">
-          <div class="card-symbol">🔍</div>
-          <h3>Gebrauchtwagen-Historie prüfen</h3>
-          <p>Warnsignale erkennen und teure Fehlkäufe vermeiden – mit Rotflaggen-Checkliste.</p>
-        </a>
 
         <!-- 2. Karte: E-Auto vs Verbrenner DIREKT DARUNTER -->
         <a class="card" href="artikel-e-auto-vs-benziner.html">
@@ -422,7 +543,7 @@
         <ul class="footer-links-list">
           <li><a href="kategorie-versicherung.html">Kfz-Versicherung</a></li>
           <li><a href="kategorie-zulassung.html">Auto an-, um- & abmelden ohne Stress</a></li>
-          <li><a href="kategorie-kauf.html">Autokauf und -verkauf</a></li>
+          <li><a href="kategorie-kauf.html">Kauf und Verkauf</a></li>
           <li><a href="kategorie-pflege.html">Fahrzeugpflege</a></li>
           <li><a href="kategorie-recht.html">Recht & Etikette</a></li>
           <li><a href="kategorie-geld-sparen.html">Clever sparen</a></li>
