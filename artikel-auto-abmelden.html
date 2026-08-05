@@ -33,20 +33,28 @@
   </div>
 </header>
 <main>
-  <div class="wrap">
-    <nav aria-label="Breadcrumb" class="breadcrumb">
-      <a href="index.html">Start</a> / 
-      <a href="kategorie-zulassung.html">Zulassung</a> / 
-      <span>Auto abmelden</span>
-    </nav>
-    <div class="cat-page-header cat-zulassung">
-      <div class="cat-page-title-wrap">
-        <h1>Auto abmelden – So geht die Abmeldung</h1>
-      </div>
-      <p class="lead">Sie möchten Ihr Auto abmelden? Das geht online oder vor Ort bei Ihrer Zulassungsstelle. Hier erfahren Sie, welche Unterlagen Sie brauchen und wie Sie vorgehen.</p>
-    </div>
+<section class="ak-abmeldung">
+  <style>
+    .ak-abmeldung{max-width:1100px;margin:0 auto;padding:0 16px 40px}
+    .ak-abmeldung .ak-hero{margin-bottom:24px}
+    .ak-abmeldung .ak-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:22px 0}
+    .ak-abmeldung .ak-card{padding:20px;border-radius:18px;border:1px solid rgba(0,0,0,.08);box-shadow:0 4px 14px rgba(0,0,0,.05);background:#f7f8fa;overflow-wrap:anywhere}
+    .ak-abmeldung .ak-card:nth-child(1){background:#eef6ff}
+    .ak-abmeldung .ak-card:nth-child(2){background:#f3f8ef}
+    .ak-abmeldung .ak-card:nth-child(3){background:#fff7e8}
+    .ak-abmeldung .ak-card:nth-child(4){background:#f7efff}
+    .ak-abmeldung .ak-card:nth-child(5){background:#edf8f7}
+    .ak-abmeldung .ak-card:nth-child(6){background:#fff0f0}
+    .ak-abmeldung .ak-icon{font-size:30px;display:block;margin-bottom:8px}
+    .ak-abmeldung h2{margin-top:28px}
+    .ak-abmeldung h3{margin:0 0 8px;font-size:1.1rem}
+    .ak-abmeldung .ak-gold{display:inline-block;background:#c99a2e;color:#fff!important;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700;box-shadow:0 3px 8px rgba(0,0,0,.12);max-width:100%;box-sizing:border-box}
+    .ak-abmeldung .ak-note{background:#f5f5f5;border-left:4px solid #c99a2e;padding:16px 18px;border-radius:10px;margin:22px 0}
+    .ak-abmeldung ul{padding-left:22px}
+    @media(max-width:700px){.ak-abmeldung .ak-grid{grid-template-columns:1fr}.ak-abmeldung .ak-card{padding:16px}.ak-abmeldung{padding-left:12px;padding-right:12px}}
+  </style>
 
-    <section class="knigge-quote-card knigge-quote-zulassung" aria-label="Knigge-Tipp: Zulassung">
+  <div class="ak-hero"><section class="knigge-quote-card knigge-quote-zulassung" aria-label="Knigge-Tipp: Zulassung">
   <div class="knigge-quote-image" role="img" aria-label="Knigge im passenden Umfeld zum Thema Zulassung">
     <div class="knigge-quote-shade"></div>
     <div class="knigge-quote-content">
@@ -54,34 +62,46 @@
       <blockquote>„Vergiss nicht, deine Kfz-Versicherung nach der Abmeldung zu informieren – oft bekommst du einen Teil des Beitrags für die restliche Laufzeit zurückerstattet.“</blockquote>
     </div>
   </div>
-</section>
-    <section>
-      <h2>📋 Checkliste Abmeldung: Was du mitbringen musst</h2>
-      <ul>
-        <li><strong>Personalausweis oder Reisepass</strong> (bei Vertretung mit schriftlicher Vollmacht)</li>
-        <li><strong>Zulassungsbescheinigung Teil I</strong> (Fahrzeugschein)</li>
-        <li><strong>Zulassungsbescheinigung Teil II</strong> (Fahrzeugbrief – zwingend bei Verschrottung/Verwertung)</li>
-        <li><strong>Beide Nummernschilder / Kennzeichen</strong> (zur Entwertungs-Plakettenentfernung vor Ort)</li>
-        <li><strong>Bei i-Kfz Online-Abmeldung:</strong> Freigelegte Sicherheitscodes auf Fahrzeugschein & Stempelplaketten + Perso mit Online-ID</li>
-      </ul>
-    </section>
-    <section>
-      <h2>⚡ Abmeldung Ablauf: In 3 einfachen Schritten</h2>
-      <ol>
-        <li><strong>Weg wählen:</strong> Entscheide dich für den Gang zur Zulassungsstelle (oft ohne Termin für Abmeldungen) oder die bequeme i-Kfz Online-Außerbetriebsetzung.</li>
-        <li><strong>Kennzeichen entwerten:</strong> Vor Ort werden die Siegelplaketten von der Behörde zerkratzt/entwertet. Bei i-Kfz rubbelst du die Sicherheitscodes auf den Schilder-Plaketten frei.</li>
-        <li><strong>Bestätigung erhalten:</strong> Du erhältst einen Außerbetriebsetzungsnachweis. Die Kfz-Versicherung und die Zollbehörde (Kfz-Steuer) werden automatisch informiert.</li>
-      </ol>
-    </section>
-    <section>
-      <h2>💰 Gebühren & Kosten: Wie viel die Abmeldung kostet</h2>
-      <ul>
-        <li><strong>Außerbetriebsetzung vor Ort:</strong> <span class="cost-badge">Ca. 16,50 €</span> bundesweit Richtwert</li>
-        <li><strong>Online-Abmeldung (i-Kfz):</strong> <span class="cost-badge">Ca. 2,70 €</span> deutlich günstiger und ortsunabhängig</li>
-        <li><strong>Kennzeichen reservieren fürs nächste Auto:</strong> <span class="cost-badge">Ca. 12,80 €</span> direkte Reservierung des Alt-Kennzeichens</li>
-      </ul>
-    </section>
+</section></div>
+
+  <h1>Auto abmelden</h1>
+  <p>Du willst dein Fahrzeug vorübergehend oder endgültig aus dem Verkehr nehmen? Mit den richtigen Unterlagen ist die Abmeldung meist schnell erledigt.</p>
+
+  <div class="ak-grid">
+    <article class="ak-card"><span class="ak-icon">📄</span><h3>1. Unterlagen bereitlegen</h3>
+      <p>In der Regel brauchst du die <strong>Zulassungsbescheinigung Teil I</strong> und die <strong>Kennzeichenschilder</strong>. Bei besonderen Fällen können weitere Unterlagen erforderlich sein.</p>
+    </article>
+    <article class="ak-card"><span class="ak-icon">🏛️</span><h3>2. Zulassungsstelle oder online</h3>
+      <p>Die Außerbetriebsetzung ist bei der zuständigen Zulassungsbehörde möglich. Je nach Voraussetzungen kann sie auch über <strong>i-Kfz online</strong> erfolgen.</p>
+    </article>
+    <article class="ak-card"><span class="ak-icon">🔖</span><h3>3. Kennzeichen entwerten</h3>
+      <p>Die Kennzeichenschilder werden bei der Abmeldung entwertet. Eine spätere Wiederzulassung oder erneute Nutzung hängt vom jeweiligen Vorgang ab.</p>
+    </article>
+    <article class="ak-card"><span class="ak-icon">💶</span><h3>4. Gebühren &amp; Kosten</h3>
+      <p>Für die Außerbetriebsetzung fallen in der Regel Verwaltungsgebühren an. Die konkrete Höhe kann je nach Behörde und Vorgang variieren.</p>
+    </article>
+    <article class="ak-card"><span class="ak-icon">🛡️</span><h3>5. Versicherung &amp; Steuer</h3>
+      <p>Nach der Abmeldung werden die zuständigen Stellen informiert. Versicherungsschutz und Kraftfahrzeugsteuer ändern sich entsprechend dem Status des Fahrzeugs.</p>
+    </article>
+    <article class="ak-card"><span class="ak-icon">🚗</span><h3>6. Was passiert mit dem Auto?</h3>
+      <p>Nach der Abmeldung darf das Fahrzeug grundsätzlich nicht mehr regulär auf öffentlichen Straßen gefahren oder dort abgestellt werden. Plane Transport und Abstellort entsprechend.</p>
+    </article>
   </div>
+
+  <div class="ak-note">
+    <strong>📥 Vollmacht</strong><br>
+    Du lässt die Abmeldung von einer anderen Person erledigen? Dann kannst du die <strong>Kfz-Vollmacht</strong> hier direkt herunterladen:
+    <div style="margin-top:12px"><a class="ak-gold" href="vollmacht-kfz-zulassung.pdf">📄 Kfz-Vollmacht als PDF herunterladen</a></div>
+  </div>
+
+  <h2>Vor der Abmeldung kurz prüfen</h2>
+  <ul>
+    <li>Fahrzeugpapiere und Kennzeichenschilder vollständig?</li>
+    <li>Wird die Abmeldung selbst erledigt oder durch eine bevollmächtigte Person?</li>
+    <li>Ist geklärt, wo das abgemeldete Fahrzeug anschließend sicher steht?</li>
+    <li>Bei Verkauf: Kaufvertrag, Übergabe und Nachweis der Abmeldung sauber dokumentieren.</li>
+  </ul>
+</section>
 </main>
 <button id="backToTop" class="back-to-top" aria-label="Nach oben scrollen">↑</button>
 <footer class="site-footer">
