@@ -1350,6 +1350,37 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
   .knigge-quote-content blockquote { font-size: 1.25rem; }
 }
 
+
+/* ===== AUTOWÄSCHE – KNIGGE-FOTO WIE AUF DEN ANDEREN RATGEBERSEITEN ===== */
+.wash-page-title {
+  margin: .55rem 0 1.25rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.05;
+  color: var(--text-heading, #0f241d);
+}
+.knigge-quote-autowaesche .knigge-quote-image {
+  background-image: url('knigge-auto-waschen.jpg');
+  background-position: center center;
+}
+.knigge-quote-autowaesche .knigge-quote-content {
+  margin-left: auto;
+}
+.knigge-quote-autowaesche .knigge-quote-shade {
+  background: linear-gradient(90deg, rgba(5,12,10,.04) 0%, rgba(5,12,10,.10) 38%, rgba(5,12,10,.62) 64%, rgba(5,12,10,.92) 100%);
+}
+@media (max-width: 760px) {
+  .knigge-quote-autowaesche .knigge-quote-image {
+    min-height: 420px;
+    background-position: 48% center;
+  }
+  .knigge-quote-autowaesche .knigge-quote-content {
+    margin-left: 0;
+  }
+  .knigge-quote-autowaesche .knigge-quote-shade {
+    background: linear-gradient(0deg, rgba(5,12,10,.94) 0%, rgba(5,12,10,.72) 46%, rgba(5,12,10,.08) 100%);
+  }
+}
+
 /* ===== KFZ-VERSICHERUNG WECHSELN — REDESIGN ===== */
 .versicherung-intro-box {
   display: flex;
