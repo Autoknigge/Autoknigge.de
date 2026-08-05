@@ -1227,47 +1227,47 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
   background-position: center;
   isolation: isolate;
 }
+/* Neue Knigge-Bildsprache: Gesicht und Augen bleiben frei, der Tipp liegt in einem ruhigen Bildbereich. */
 .knigge-quote-versicherung .knigge-quote-image,
+.knigge-quote-sparen .knigge-quote-image,
+.knigge-quote-recht .knigge-quote-image,
+.knigge-quote-wechseln .knigge-quote-image,
+.knigge-quote-schaden .knigge-quote-image,
+.knigge-quote-ueber .knigge-quote-image,
+.knigge-quote-unfallrat .knigge-quote-image {
+  background-image: url('knigge-neu-gespraech.jpg');
+  background-position: center center;
+}
+.knigge-quote-leasing .knigge-quote-image {
+  background-image: url('knigge-neu-gespraech.jpg');
+  background-position: center center;
+}
+.knigge-quote-leasing .knigge-quote-content { margin-left: 0; margin-right: auto; }
 .knigge-quote-zulassung .knigge-quote-image,
-.knigge-quote-sparen .knigge-quote-image {
-  background-image: url('knigge-laptop.jpg');
-  background-position: center 52%;
-}
 .knigge-quote-kauf .knigge-quote-image,
-.knigge-quote-pflege .knigge-quote-image {
-  background-image: url('knigge-werkstatt.jpg');
-  background-position: center 52%;
+.knigge-quote-pflege .knigge-quote-image,
+.knigge-quote-rabatt .knigge-quote-image,
+.knigge-quote-kennzeichen .knigge-quote-image {
+  background-image: url('knigge-neu-werkstatt-wide.jpg');
+  background-position: center center;
 }
-.knigge-quote-recht .knigge-quote-image {
-  background-image: url('knigge-dialog.jpg');
-  background-position: center 55%;
-}
-.knigge-quote-wechseln .knigge-quote-image {
-  background-image: url('knigge-checkliste.jpg');
-  background-position: center 18%;
+.knigge-quote-versicherung .knigge-quote-content,
+.knigge-quote-sparen .knigge-quote-content,
+.knigge-quote-recht .knigge-quote-content,
+.knigge-quote-wechseln .knigge-quote-content,
+.knigge-quote-schaden .knigge-quote-content,
+.knigge-quote-ueber .knigge-quote-content,
+.knigge-quote-unfallrat .knigge-quote-content,
+.knigge-quote-zulassung .knigge-quote-content,
+.knigge-quote-kauf .knigge-quote-content,
+.knigge-quote-pflege .knigge-quote-content,
+.knigge-quote-rabatt .knigge-quote-content,
+.knigge-quote-kennzeichen .knigge-quote-content {
+  margin-right: auto;
+  margin-left: 0;
 }
 .knigge-quote-wechseln .knigge-quote-content blockquote::before {
   display: none !important;
-}
-.knigge-quote-schaden .knigge-quote-image {
-  background-image: url('knigge-telefon.jpg');
-  background-position: center 20%;
-}
-.knigge-quote-rabatt .knigge-quote-image {
-  background-image: url('knigge-tablet.jpg');
-  background-position: center 20%;
-}
-.knigge-quote-ueber .knigge-quote-image {
-  background-image: url('knigge-tablet.jpg');
-  background-position: center 20%;
-}
-.knigge-quote-kennzeichen .knigge-quote-image {
-  background-image: url('knigge-smartphone.jpg');
-  background-position: center 15%;
-}
-.knigge-quote-unfallrat .knigge-quote-image {
-  background-image: url('knigge-motorrad.jpg');
-  background-position: center 15%;
 }
 
 /* ===== EINGEFÄRBTE VERTIEFUNGS-KACHELN ===== */
@@ -1359,11 +1359,12 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
   color: var(--text-heading, #0f241d);
 }
 .knigge-quote-autowaesche .knigge-quote-image {
-  background-image: url('knigge-auto-waschen.jpg');
+  background-image: url('knigge-neu-gespraech.jpg');
   background-position: center center;
 }
 .knigge-quote-autowaesche .knigge-quote-content {
-  margin-left: auto;
+  margin-left: 0;
+  margin-right: auto;
 }
 .knigge-quote-autowaesche .knigge-quote-shade {
   background: linear-gradient(90deg, rgba(5,12,10,.04) 0%, rgba(5,12,10,.10) 38%, rgba(5,12,10,.62) 64%, rgba(5,12,10,.92) 100%);
@@ -1796,4 +1797,22 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
   .leasing-calc-note { grid-column:auto; }
   .leasing-tile,.leasing-panel,.leasing-check,.leasing-intro-card,.leasing-return-tip { overflow-wrap:anywhere; word-break:normal; }
   .leasing-intro-card p,.leasing-tile p,.leasing-bullet-list li,.leasing-check,.leasing-return-tip p { font-size:.92rem; }
+}
+
+/* Knigge-Ölwechsel: neues Werkstattmotiv mit sichtbarem Gesicht. */
+.oil-hero-image { background-image: linear-gradient(90deg,rgba(5,13,20,.06) 0%,rgba(5,13,20,.12) 42%,rgba(5,13,20,.72) 100%), url('knigge-neu-werkstatt-wide.jpg') !important; background-position:center center !important; }
+@media(max-width:560px){ .oil-hero-image { background-image: linear-gradient(0deg,rgba(5,13,20,.88) 0%,rgba(5,13,20,.20) 65%), url('knigge-neu-werkstatt-mobile.jpg') !important; background-position:center center !important; } }
+@media (max-width:760px) {
+  .knigge-quote-zulassung .knigge-quote-image,
+  .knigge-quote-kauf .knigge-quote-image,
+  .knigge-quote-pflege .knigge-quote-image,
+  .knigge-quote-rabatt .knigge-quote-image,
+  .knigge-quote-kennzeichen .knigge-quote-image {
+    background-image: url('knigge-neu-werkstatt-mobile.jpg');
+    background-position: center center;
+  }
+  .knigge-quote-leasing .knigge-quote-image {
+    background-image: url('knigge-neu-gespraech.jpg');
+    background-position: center center;
+  }
 }
