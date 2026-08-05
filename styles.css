@@ -121,6 +121,13 @@ p { color: var(--text-body); }
   box-shadow: 0 2px 24px rgba(10,28,22,0.22);
   border-bottom: 1px solid rgba(255,255,255,0.06);
   transition: padding var(--transition-fast), background var(--transition-fast);
+  /* Erzwingt eine eigene Compositing-Ebene: verhindert das bekannte
+     Android-Chrome-Problem, bei dem ein sticky Header mit backdrop-filter
+     nach dem Laden/Navigieren kurzzeitig eine leere Fläche unter sich
+     stehen lässt, bis gescrollt wird. */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
 }
 .site-header.is-scrolled {
   padding: 0.45rem 0;
