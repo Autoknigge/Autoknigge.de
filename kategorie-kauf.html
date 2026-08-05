@@ -191,6 +191,45 @@
     border-color: rgba(255, 255, 255, 0.8);
     transform: translateY(-2px);
   }
+  .cv-fin-form {
+    display: flex;
+    align-items: stretch;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    border-radius: 16px;
+    padding: 0.35rem 0.35rem 0.35rem 1rem;
+    position: relative;
+    z-index: 2;
+  }
+  .cv-fin-form input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    min-width: 0;
+    width: 170px;
+  }
+  .cv-fin-form input::placeholder { color: rgba(255, 255, 255, 0.65); }
+  .cv-fin-form button {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 0.65rem 1.1rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s ease;
+  }
+  .cv-fin-form button:hover { background: rgba(255, 255, 255, 0.28); }
+  @media (max-width: 480px) {
+    .cv-fin-form { flex-direction: column; padding: 0.7rem; }
+    .cv-fin-form input { width: 100%; padding: 0.4rem 0.2rem; }
+  }
   .cv-action-note {
     text-align: center;
     margin-top: 0.85rem;
@@ -315,9 +354,10 @@
               <span class="cv-gold-btn-line1">Prüfe dein Auto jetzt</span>
               <span class="cv-gold-btn-line2">mit 20% Gutschein<span class="cv-star">*</span></span>
             </a>
-            <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?uid=37&source_id=AFF&sub1=autoknigge&sub3=" target="_blank" rel="noopener sponsored" class="cv-fin-btn">
-              🔎 FIN oder Kennzeichen eintragen<span class="cv-star">*</span>
-            </a>
+            <form class="cv-fin-form" action="https://www.carvertical.deal/2HLM53N/5MJ263/" method="get" target="_blank" rel="noopener sponsored" onsubmit="var v=this.querySelector('input').value.trim(); if(!v){return false;} this.action='https://www.carvertical.deal/2HLM53N/5MJ263/?uid=37&source_id=AFF&sub1=autoknigge&sub3=' + encodeURIComponent(v);">
+              <input type="text" placeholder="FIN oder Kennzeichen" aria-label="FIN oder Kennzeichen eingeben" required>
+              <button type="submit">🔎 Prüfen<span class="cv-star">*</span></button>
+            </form>
           </div>
           <div class="cv-action-note">
             <p>Die 20% Rabatt werden beim Klick automatisch abgezogen – der Code <strong>„Autoknigge"</strong> wird direkt eingetragen.</p>

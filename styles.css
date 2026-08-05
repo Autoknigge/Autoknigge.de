@@ -1265,6 +1265,40 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
   background-image: url('knigge-smartphone.jpg');
   background-position: center 15%;
 }
+.knigge-quote-unfallrat .knigge-quote-image {
+  background-image: url('knigge-motorrad.jpg');
+  background-position: center 15%;
+}
+
+/* ===== EINGEFÄRBTE VERTIEFUNGS-KACHELN ===== */
+.deep-tile-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+  margin: 1.5rem 0;
+}
+@media (min-width: 700px) {
+  .deep-tile-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.deep-tile {
+  border-radius: 16px;
+  padding: 1.3rem 1.4rem;
+  border: 1px solid rgba(10,28,22,.07);
+}
+.deep-tile h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 0.6rem;
+  font-size: 1.05rem;
+}
+.deep-tile .tile-icon { font-size: 1.25rem; line-height: 1; }
+.deep-tile p { margin: 0; font-size: 0.94rem; line-height: 1.6; color: var(--text-body); }
+.deep-tile.tint-a { background: #fef7ed; border-color: #f4d8a8; }
+.deep-tile.tint-b { background: #f4f6f9; border-color: #d3dbe5; }
+.deep-tile.tint-c { background: #fff4ed; border-color: #fdd4b8; }
+.deep-tile.tint-d { background: #edf8f3; border-color: #c0e4d3; }
+.deep-tile.tint-e { background: #fdf2f2; border-color: #f6caca; grid-column: 1 / -1; }
 .knigge-quote-content blockquote a {
   color: var(--gold-300, #f3e5ab);
   text-decoration: underline;
