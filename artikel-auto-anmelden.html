@@ -4,50 +4,101 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Auto anmelden – Schritt für Schritt zur Zulassung | Autoknigge</title>
-<meta name="description" content="Alles zur Auto-Anmeldung: Welche Unterlagen Sie brauchen, wie Sie vorgehen und worauf Sie achten sollten.">
+<meta name="description" content="Auto anmelden: Unterlagen, eVB, Termin, Wunschkennzeichen, Kennzeichen prägen lassen, Kosten und i-Kfz übersichtlich erklärt.">
 <link rel="canonical" href="https://autoknigge.de/artikel-auto-anmelden.html">
 <link rel="stylesheet" href="styles.css">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f241d">
+<style>
+/* ===== AUTO ANMELDEN – MODERNISIERUNG ===== */
+.zulassung-page-intro { margin: .6rem 0 1.5rem; }
+.zulassung-page-intro h1 { margin-bottom: .6rem; }
+.zulassung-page-intro .lead { max-width: 900px; }
+.zulassung-hero .knigge-quote-image { background-image: url('knigge-neu-werkstatt-wide.jpg'); background-position: 62% center; }
+@media (max-width:760px) {
+  .zulassung-hero .knigge-quote-image { background-image: url('knigge-neu-werkstatt-mobile.jpg'); background-position: center center; min-height: 500px; }
+}
+.zulassung-section-title { margin-top: 2.2rem; margin-bottom: .45rem; }
+.zulassung-section-lead { margin-top: 0; max-width: 900px; color: var(--text-muted); }
+.zulassung-tile-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1rem;
+  margin:1.15rem 0 2rem;
+}
+.zulassung-tile {
+  min-width:0;
+  border-radius:18px;
+  padding:1.25rem 1.25rem 1.3rem;
+  border:1px solid rgba(10,28,22,.08);
+  box-shadow:var(--shadow-xs);
+}
+.zulassung-tile:nth-child(1){background:#eef6ff;border-color:#cbdff5}
+.zulassung-tile:nth-child(2){background:#edf8f3;border-color:#c8e5d7}
+.zulassung-tile:nth-child(3){background:#fff8ea;border-color:#f0d9a5}
+.zulassung-tile:nth-child(4){background:#f4f1fb;border-color:#ddd2f0}
+.zulassung-tile:nth-child(5){background:#fdf2f2;border-color:#f1cccc}
+.zulassung-tile:nth-child(6){background:#f0f8f8;border-color:#cbe3e3}
+.zulassung-tile .tile-icon { font-size:1.65rem; line-height:1; margin-bottom:.65rem; }
+.zulassung-tile h3 { margin:0 0 .45rem; font-size:1.08rem; color:var(--text-heading); overflow-wrap:anywhere; }
+.zulassung-tile p { margin:0; font-size:.94rem; line-height:1.55; color:var(--text-body); overflow-wrap:anywhere; }
+.zulassung-tile strong { color:var(--text-heading); }
+.zulassung-steps { counter-reset: zulstep; }
+.zulassung-step {
+  display:grid; grid-template-columns:48px minmax(0,1fr); gap:.9rem; align-items:start;
+  padding:1rem 1.1rem; margin:.75rem 0; border:1px solid var(--border-light); border-radius:16px; background:#fff;
+  box-shadow:var(--shadow-xs);
+}
+.zulassung-step-number { width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#eef6ff;color:#1769aa;font-weight:800; }
+.zulassung-step h3 { margin:.05rem 0 .3rem; font-size:1.02rem; }
+.zulassung-step p { margin:0; font-size:.94rem; line-height:1.55; color:var(--text-body); overflow-wrap:anywhere; }
+.zulassung-kennzeichen { background:linear-gradient(135deg,#fff8e8,#fffdf7); border:1px solid #ecd79e; border-radius:20px; padding:1.35rem; margin:1.3rem 0 1rem; }
+.zulassung-kennzeichen-head { display:flex; gap:.8rem; align-items:flex-start; }
+.zulassung-kennzeichen-icon { font-size:1.8rem; line-height:1; }
+.zulassung-kennzeichen h3 { margin:0 0 .35rem; font-size:1.2rem; }
+.zulassung-kennzeichen p { margin:.35rem 0; line-height:1.55; color:var(--text-body); overflow-wrap:anywhere; }
+.zulassung-affiliate { margin-top:1rem; padding:1rem 1.1rem; border-radius:14px; background:#fff; border:1px dashed #d9c37f; }
+.zulassung-affiliate a { display:inline-flex; align-items:center; gap:.45rem; margin-top:.65rem; padding:.72rem 1rem; border-radius:10px; background:var(--green-700,#176b4d); color:#fff; text-decoration:none; font-weight:800; max-width:100%; overflow-wrap:anywhere; }
+.zulassung-affiliate a:hover { opacity:.92; }
+.zulassung-affiliate small { display:block; margin-top:.55rem; color:var(--text-muted); line-height:1.45; }
+.zulassung-note { display:flex; gap:.8rem; align-items:flex-start; padding:1.15rem 1.25rem; border-radius:16px; background:#eef6ff; border:1px solid #cbdff5; margin:1.2rem 0; }
+.zulassung-note-icon { font-size:1.35rem; line-height:1; }
+.zulassung-note p { margin:0; line-height:1.55; overflow-wrap:anywhere; }
+.zulassung-cost-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; margin:1rem 0 1.5rem; }
+.zulassung-cost { border-radius:16px; padding:1.1rem; border:1px solid var(--border-light); background:#fafcfb; min-width:0; }
+.zulassung-cost strong { display:block; font-size:1.3rem; color:var(--text-heading); margin:.25rem 0; }
+.zulassung-cost span { font-size:.88rem; color:var(--text-muted); line-height:1.4; display:block; overflow-wrap:anywhere; }
+.zulassung-disclosure { margin:2rem 0 1rem; padding:.9rem 1rem; border-top:1px solid var(--border-light); color:var(--text-muted); font-size:.78rem; line-height:1.5; }
+@media (max-width:760px){
+ .zulassung-tile-grid,.zulassung-cost-grid{grid-template-columns:1fr}
+ .zulassung-step{grid-template-columns:40px minmax(0,1fr);gap:.7rem}
+ .zulassung-step-number{width:36px;height:36px}
+ .zulassung-kennzeichen{padding:1.1rem}
+ .zulassung-affiliate a{width:100%; justify-content:center; text-align:center}
+}
+</style>
 </head>
 <body>
 <header class="site-header header-logo-large" id="top">
   <div class="header-inner">
-    <a href="index.html" aria-label="Autoknigge Startseite">
-      <img src="logo.png" alt="Autoknigge Logo" class="header-logo-mini">
-    </a>
+    <a href="index.html" aria-label="Autoknigge Startseite"><img src="logo.png" alt="Autoknigge Logo" class="header-logo-mini"></a>
     <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
     <label for="nav-toggle" class="menu-compact"><span class="menu-icon">&#9776;</span> Menü</label>
-    <nav class="main-nav">
-      <ul class="header-nav-list">
-        <li><a href="index.html">Start</a></li>
-        <li><a href="kategorie-versicherung.html">Versicherung</a></li>
-        <li><a href="kategorie-zulassung.html">Zulassung</a></li>
-        <li><a href="kategorie-kauf.html">Kauf und Verkauf</a></li>
-        <li><a href="kategorie-pflege.html">Pflege</a></li>
-        <li><a href="kategorie-recht.html">Recht</a></li>
-        <li><a href="kategorie-geld-sparen.html">Clever sparen</a></li>
-        <li><a href="ueber-knigge.html">Über Knigge</a></li>
-      </ul>
-    </nav>
+    <nav class="main-nav"><ul class="header-nav-list">
+      <li><a href="index.html">Start</a></li><li><a href="kategorie-versicherung.html">Versicherung</a></li><li><a href="kategorie-zulassung.html">Zulassung</a></li><li><a href="kategorie-kauf.html">Kauf und Verkauf</a></li><li><a href="kategorie-pflege.html">Pflege</a></li><li><a href="kategorie-recht.html">Recht</a></li><li><a href="kategorie-geld-sparen.html">Clever sparen</a></li><li><a href="ueber-knigge.html">Über Knigge</a></li>
+    </ul></nav>
   </div>
 </header>
 <main>
-  <div class="wrap">
-    <nav aria-label="Breadcrumb" class="breadcrumb">
-      <a href="index.html">Start</a> / 
-      <a href="kategorie-zulassung.html">Zulassung</a> / 
-      <span>Auto anmelden</span>
-    </nav>
-    <div class="cat-page-header cat-zulassung">
-      <div class="cat-page-title-wrap">
-        <h1>Auto anmelden – Schritt für Schritt zur Zulassung</h1>
-      </div>
-      <p class="lead">Die Zulassung eines Fahrzeugs ist einfacher als Sie denken. Hier erfahren Sie, welche Unterlagen Sie brauchen und wie Sie Schritt für Schritt vorgehen.</p>
-    </div>
+<div class="wrap">
+<nav aria-label="Breadcrumb" class="breadcrumb"><a href="index.html">Start</a> / <a href="kategorie-zulassung.html">Zulassung</a> / <span>Auto anmelden</span></nav>
+<div class="cat-page-header cat-zulassung zulassung-page-intro">
+  <div class="cat-page-title-wrap"><h1>Auto anmelden</h1></div>
+  <p class="lead">Von der eVB-Nummer bis zum fertigen Kennzeichen: So klappt die Fahrzeugzulassung ohne unnötige Wege.</p>
+</div>
 
-    <section class="knigge-quote-card knigge-quote-zulassung" aria-label="Knigge-Tipp: Zulassung">
-  <div class="knigge-quote-image" role="img" aria-label="Knigge im passenden Umfeld zum Thema Zulassung">
+<section class="knigge-quote-card knigge-quote-zulassung zulassung-hero" aria-label="Knigge-Tipp zur Fahrzeugzulassung">
+  <div class="knigge-quote-image" role="img" aria-label="Knigge in einer Werkstatt">
     <div class="knigge-quote-shade"></div>
     <div class="knigge-quote-content">
       <div class="knigge-quote-kicker">KNIGGE EMPFIEHLT</div>
@@ -55,79 +106,56 @@
     </div>
   </div>
 </section>
-    <section>
-      <h2>📋 Checkliste: Was du mitbringen musst</h2>
-      <ul>
-        <li><strong>Personalausweis oder Reisepass</strong> mit aktueller Meldebescheinigung</li>
-        <li><strong>Zulassungsbescheinigung Teil I & II</strong> (Fahrzeugschein und Fahrzeugbrief)</li>
-        <li><strong>Gültige Hauptuntersuchung (TÜV)</strong> – Prüfbericht im Original</li>
-        <li><strong>eVB-Nummer</strong> (elektronische Versicherungsbestätigung deiner Kfz-Versicherung)</li>
-        <li><strong>SEPA-Lastschriftmandat</strong> für die Kfz-Steuer (gehört zur Grundausstattung)</li>
-        <li><strong>Bei Gebrauchtwagen:</strong> Bisherige Kennzeichen (falls umgemeldet wird) oder Abmeldebescheinigung</li>
-        <li><strong>Bei Neuwagen:</strong> Herstellerbescheinigung / CoC-Papier (Certificate of Conformity)</li>
-      </ul>
-    </section>
-    <section>
-      <h2>🚀 Checkliste Anmeldung: An alles gedacht?</h2>
-      <ol>
-        <li><strong>Versicherung abschließen:</strong> Holen Sie sich direkt Ihre eVB-Nummer bei der Kfz-Versicherung (per SMS oder E-Mail).</li>
-        <li><strong>Termin vereinbaren:</strong> Buchen Sie rechtzeitig online oder telefonisch einen Termin bei Ihrer örtlichen Zulassungsstelle.</li>
-        <li><strong>Wunschkennzeichen reservieren (optional):</strong> Sichern Sie sich Ihre Lieblingskombination bequem vorab online.</li>
-        <li><strong>Zulassung beantragen:</strong> Legen Sie die Dokumente bei der Zulassungsstelle vor und begleichen Sie die Gebühren.</li>
-        <li><strong>Kennzeichen prägen lassen:</strong> Lassen Sie Ihre Kennzeichen direkt vor Ort prägen oder bestellen Sie sie vorher im Netz (spart bis zu 70 %).</li>
-        <li><strong>Plakette & Papiere abholen:</strong> Sie erhalten die abgestempelten Kennzeichen und Ihre Zulassungspapiere.</li>
-      </ol>
-    </section>
-    <section>
-      <h2>💰 Kostenübersicht: Wie viel die Zulassung kostet</h2>
-      <ul>
-        <li><strong>Zulassungsgebühr Behörde:</strong> <span class="cost-badge">Ca. 20–40 €</span> je nach Landkreis oder Stadt</li>
-        <li><strong>Kennzeichenprägung vor Ort:</strong> <span class="cost-badge">Ca. 25–35 €</span> (Online-Bestellung oft ab 10–12 €)</li>
-        <li><strong>Wunschkennzeichen-Reservierung:</strong> <span class="cost-badge">10,20 € (+ 2,60 € Reservierung)</span> bundesweit einheitlich</li>
-      </ul>
-    </section>
+
+<h2 class="zulassung-section-title">📋 Das brauchst du für die Zulassung</h2>
+<p class="zulassung-section-lead">Die genaue Unterlagenliste hängt vom Zulassungsvorgang ab. Für die normale An-, Um- oder Wiederzulassung sind insbesondere diese Punkte wichtig.</p>
+<section class="zulassung-tile-grid" aria-label="Unterlagen für die Zulassung">
+  <article class="zulassung-tile"><div class="tile-icon">🪪</div><h3>Ausweis</h3><p>Personalausweis oder Reisepass; bei Reisepass in der Regel zusätzlich eine aktuelle Meldebescheinigung.</p></article>
+  <article class="zulassung-tile"><div class="tile-icon">📄</div><h3>Fahrzeugpapiere</h3><p>Zulassungsbescheinigung Teil I und – je nach Vorgang – Teil II. Bei Neuwagen kommt meist das <strong>CoC-Papier</strong> hinzu.</p></article>
+  <article class="zulassung-tile"><div class="tile-icon">🛡️</div><h3>eVB-Nummer</h3><p>Die elektronische Versicherungsbestätigung deiner Kfz-Haftpflicht. Ohne gültigen Versicherungsnachweis keine reguläre Zulassung.</p></article>
+  <article class="zulassung-tile"><div class="tile-icon">🔧</div><h3>HU-Nachweis</h3><p>Wenn für das Fahrzeug bereits eine Hauptuntersuchung erforderlich ist, muss sie gültig sein bzw. nachgewiesen werden.</p></article>
+  <article class="zulassung-tile"><div class="tile-icon">🏦</div><h3>Kfz-Steuer</h3><p>Für die Steuer ist regelmäßig ein SEPA-Lastschriftmandat erforderlich. Sonderfälle können abweichen.</p></article>
+  <article class="zulassung-tile"><div class="tile-icon">✍️</div><h3>Vollmacht</h3><p>Wenn jemand anderes für dich zur Zulassungsstelle geht, brauchst du in der Regel eine passende Vollmacht und die erforderlichen Ausweisdokumente.</p></article>
+</section>
+
+<h2 class="zulassung-section-title">🚦 Die Anmeldung in 6 einfachen Schritten</h2>
+<section class="zulassung-steps" aria-label="Schritte der Fahrzeugzulassung">
+  <article class="zulassung-step"><div class="zulassung-step-number">1</div><div><h3>Versicherung klären</h3><p>Bei deiner Kfz-Versicherung eine <strong>eVB-Nummer</strong> anfordern und bereithalten.</p></div></article>
+  <article class="zulassung-step"><div class="zulassung-step-number">2</div><div><h3>Termin oder i-Kfz prüfen</h3><p>Prüfe zuerst, ob deine Zulassungsstelle einen Online-Termin anbietet oder der Vorgang über <strong>i-Kfz</strong> digital möglich ist.</p></div></article>
+  <article class="zulassung-step"><div class="zulassung-step-number">3</div><div><h3>Wunschkennzeichen reservieren</h3><p>Wenn du eine bestimmte Kombination möchtest, kannst du sie bei vielen Zulassungsstellen vorab online reservieren. Die Reservierungsdauer ist regional unterschiedlich.</p></div></article>
+  <article class="zulassung-step"><div class="zulassung-step-number">4</div><div><h3>Unterlagen vollständig mitnehmen</h3><p>Originale und gegebenenfalls Vollmachten bereitlegen. Was genau benötigt wird, hängt von Erstzulassung, Halterwechsel, Wiederzulassung oder Umzug ab.</p></div></article>
+  <article class="zulassung-step"><div class="zulassung-step-number">5</div><div><h3>Kennzeichen prägen lassen</h3><p>Nach der Zuteilung kannst du die Kennzeichenschilder bei einem Anbieter prägen lassen. <strong>Preise vergleichen lohnt sich</strong> – die Schilder sind nicht automatisch Teil der Behördengebühr.</p></div></article>
+  <article class="zulassung-step"><div class="zulassung-step-number">6</div><div><h3>Stempel, Papiere und los</h3><p>Nach Abschluss erhältst du die abgestempelten Kennzeichen und die aktualisierten Fahrzeugpapiere. Erst danach ist das Fahrzeug regulär für den Straßenverkehr zugelassen.</p></div></article>
+</section>
+
+<section class="zulassung-kennzeichen" aria-labelledby="kennzeichen-heading">
+  <div class="zulassung-kennzeichen-head"><div class="zulassung-kennzeichen-icon">🔖</div><div><h3 id="kennzeichen-heading">Kennzeichen prägen lassen – vorher Preise vergleichen</h3><p>Die Kennzeichenschilder selbst werden von privaten Anbietern geprägt und sind von den behördlichen Zulassungsgebühren zu unterscheiden. Gerade bei der Online-Bestellung können sich die Preise deutlich unterscheiden.</p></div></div>
+  <div class="zulassung-affiliate">
+    <strong>⭐ Kennzeichen bequem online bestellen*</strong>
+    <a href="https://link.amazon/B072ylzC7" target="_blank" rel="sponsored nofollow noopener">🔖 Kennzeichen bei Amazon ansehen*</a>
+    <small>* Affiliate-Link: Wenn du über diesen Link bestellst, kann Autoknigge eine Provision erhalten. Für dich ändert sich der Preis dadurch nicht.</small>
   </div>
+</section>
+
+<div class="zulassung-note"><div class="zulassung-note-icon">💡</div><p><strong>Knigge-Tipp:</strong> Prüfe vor dem Termin die Website deiner örtlich zuständigen Zulassungsstelle. Gebühren, Reservierungsfristen und konkrete Unterlagen können je nach Vorgang und Behörde abweichen.</p></div>
+
+<h2 class="zulassung-section-title">💶 Welche Kosten kommen auf dich zu?</h2>
+<p class="zulassung-section-lead">Die Gebühren hängen vom Zulassungsvorgang und der Behörde ab. Einige Beträge sind bundesweit geregelt, andere Kosten können variieren.</p>
+<section class="zulassung-cost-grid" aria-label="Kostenübersicht">
+  <article class="zulassung-cost"><span>Wunschkennzeichen</span><strong>10,20 €</strong><span>für die Zuteilung der gewünschten Kombination</span></article>
+  <article class="zulassung-cost"><span>Reservierung</span><strong>2,60 €</strong><span>zusätzlich, wenn die Kombination vorab reserviert wird</span></article>
+  <article class="zulassung-cost"><span>Zulassung</span><strong>variabel</strong><span>abhängig von Vorgang, Behörde und möglichen Zusatzleistungen</span></article>
+</section>
+
+<div class="zulassung-disclosure">* <strong>Werbung/Affiliate-Link:</strong> Die mit * gekennzeichnete Verlinkung ist ein Affiliate-Link. Bei einem Kauf kann Autoknigge eine Provision erhalten. Der Kaufpreis für dich bleibt unverändert.</div>
+</div>
 </main>
 <button id="backToTop" class="back-to-top" aria-label="Nach oben scrollen">↑</button>
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <h3>Autoknigge</h3>
-        <p>Ihr unabhängiger Ratgeber für stilvolles, sicheres und wirtschaftlich cleveres Verhalten rund um das Automobil.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Kategorien</h4>
-        <ul class="footer-links-list">
-          <li><a href="kategorie-versicherung.html">Kfz-Versicherung</a></li>
-          <li><a href="kategorie-zulassung.html">Auto an-, um- & abmelden ohne Stress</a></li>
-          <li><a href="kategorie-kauf.html">Kauf und Verkauf</a></li>
-          <li><a href="kategorie-pflege.html">Fahrzeugpflege</a></li>
-          <li><a href="kategorie-recht.html">Recht & Etikette</a></li>
-          <li><a href="kategorie-geld-sparen.html">Clever sparen</a></li>
-          <li><a href="ueber-knigge.html">Über Knigge</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Downloads</h4>
-        <ul class="footer-links-list">
-          <li><a href="kfz-kaufvertrag.pdf" download>Kfz-Kaufvertrag (PDF)</a></li>
-          <li><a href="vollmacht-kfz-zulassung.pdf" download>Zulassungsvollmacht (PDF)</a></li>
-          <li><a href="Notfallcheckliste-Unfall.pdf" download>Notfallcheckliste Unfall (PDF)</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div>© 2026 Autoknigge — Alle Rechte vorbehalten. Unabhängige Ratgeber-Plattform.</div>
-      <div class="foot-links">
-        <a href="impressum.html">Impressum</a> •
-        <a href="datenschutz.html">Datenschutz</a> •
-        <a href="#" id="cookie-settings-link">Cookie-Einstellungen</a>
-      </div>
-    </div>
-  </div>
-</footer>
-<script src="script.js"></script>
-<script src="cookie-consent.js"></script>
+<footer class="site-footer"><div class="wrap"><div class="footer-grid">
+<div class="footer-brand"><h3>Autoknigge</h3><p>Ihr unabhängiger Ratgeber für stilvolles, sicheres und wirtschaftlich cleveres Verhalten rund um das Automobil.</p></div>
+<div class="footer-col"><h4>Kategorien</h4><ul class="footer-links-list"><li><a href="kategorie-versicherung.html">Kfz-Versicherung</a></li><li><a href="kategorie-zulassung.html">Auto an-, um- & abmelden ohne Stress</a></li><li><a href="kategorie-kauf.html">Kauf und Verkauf</a></li><li><a href="kategorie-pflege.html">Fahrzeugpflege</a></li><li><a href="kategorie-recht.html">Recht & Etikette</a></li><li><a href="kategorie-geld-sparen.html">Clever sparen</a></li><li><a href="ueber-knigge.html">Über Knigge</a></li></ul></div>
+<div class="footer-col"><h4>Downloads</h4><ul class="footer-links-list"><li><a href="kfz-kaufvertrag.pdf" download>Kfz-Kaufvertrag (PDF)</a></li><li><a href="vollmacht-kfz-zulassung.pdf" download>Zulassungsvollmacht (PDF)</a></li><li><a href="Notfallcheckliste-Unfall.pdf" download>Notfallcheckliste Unfall (PDF)</a></li></ul></div>
+</div><div class="footer-bottom"><div>© 2026 Autoknigge — Alle Rechte vorbehalten. Unabhängige Ratgeber-Plattform.</div><div class="foot-links"><a href="impressum.html">Impressum</a> • <a href="datenschutz.html">Datenschutz</a> • <a href="#" id="cookie-settings-link">Cookie-Einstellungen</a></div></div></div></footer>
+<script src="script.js"></script><script src="cookie-consent.js"></script>
 </body>
 </html>
