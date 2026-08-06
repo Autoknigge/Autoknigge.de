@@ -43,12 +43,11 @@
 .history-sale-bottom{align-items:stretch;margin-top:.25rem}
 .history-note{font-size:.78rem;line-height:1.5;color:rgba(255,255,255,.65);max-width:58%}.history-note strong{color:#fff}
 .cv-bottom-action{display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:.85rem;margin-top:1rem}
-.cv-gold-btn{background:linear-gradient(135deg,#d4af37 0%,#f3e5ab 50%,#aa7c11 100%);color:#0f241d;padding:.9rem 2.5rem;border-radius:16px;box-shadow:0 4px 15px rgba(212,175,55,.3);text-decoration:none!important;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transition:transform .2s ease,box-shadow .2s ease}
+.cv-gold-btn{background:linear-gradient(135deg,#d4af37 0%,#f3e5ab 50%,#aa7c11 100%);color:#0f241d;padding:.9rem 2.5rem;border-radius:16px;box-shadow:0 4px 15px rgba(212,175,55,.3);text-decoration:none!important;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transition:transform .2s ease,box-shadow .2s ease;cursor:default}
 .cv-gold-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(212,175,55,.5)}
 .cv-gold-btn-line1{font-size:1.15rem;font-weight:800;color:#0f241d}
 .cv-gold-btn-line2{font-size:.9rem;font-weight:600;color:#0f241d}
 .cv-fin-group{display:flex;flex-direction:column;align-items:center;gap:.45rem}
-.cv-fin-label{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.62)}
 .cv-fin-form{display:flex;align-items:stretch;gap:.5rem;background:transparent;border:none;padding:0}
 .cv-fin-form input{flex:1;min-width:0;width:170px;background:#fff;border:1.5px solid rgba(255,255,255,.7);color:#101f19;font-size:.95rem;font-weight:600;padding:.65rem .9rem;border-radius:12px;outline:none;transition:border-color .2s ease,box-shadow .2s ease}
 .cv-fin-form input:focus{border-color:#d4a843;box-shadow:0 0 0 3px rgba(212,168,67,.3)}
@@ -175,15 +174,14 @@
       <div class="history-sale-bottom">
         <div class="history-note"><strong>Warum beim Verkauf?</strong><br>Eine nachvollziehbare Historie kann Vertrauen schaffen, Rückfragen reduzieren und dir helfen, deinen Preis gegenüber Interessenten besser zu begründen.</div>
         <div class="cv-bottom-action">
-          <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener sponsored" class="cv-gold-btn">
-            <span class="cv-gold-btn-line1">Prüfe dein Auto jetzt</span>
+          <div class="cv-gold-btn">
+            <span class="cv-gold-btn-line1">Prüfe dein Auto hier unten ↓</span>
             <span class="cv-gold-btn-line2">mit 20% Gutschein<span class="cv-star">*</span></span>
-          </a>
+          </div>
           <div class="cv-fin-group">
-            <span class="cv-fin-label">oder FIN / Kennzeichen eingeben</span>
             <form class="cv-fin-form" action="https://www.carvertical.deal/2HLM53N/5MJ263/" method="get" target="_blank" rel="noopener sponsored" onsubmit="var v=this.querySelector('input').value.trim(); if(!v){return false;} this.action='https://www.carvertical.deal/2HLM53N/5MJ263/?uid=37&source_id=AFF&sub1=autoknigge&sub3=' + encodeURIComponent(v);">
               <input type="text" placeholder="FIN oder Kennzeichen" aria-label="FIN oder Kennzeichen eingeben" required>
-              <button type="submit">Prüfen<span class="cv-star">*</span></button>
+              <button type="submit">Prüfen ➔<span class="cv-star">*</span></button>
             </form>
           </div>
         </div>
