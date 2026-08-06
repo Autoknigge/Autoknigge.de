@@ -22,12 +22,6 @@
     position: relative;
     overflow: hidden;
   }
-  /* Deckt die gesamte Fläche als Link ab – klickbar egal wo, außer über den eigenen Elementen darüber */
-  .cv-full-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-  }
   .cv-top-star {
     position: absolute;
     top: 0.9rem;
@@ -66,43 +60,22 @@
     height: auto;
     display: block;
   }
-  /* 2. Die 4 Feature-Symbole */
-  .cv-features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 0.85rem;
-    margin-bottom: 1.25rem;
-  }
-  .cv-feature-item {
-    background: rgba(255, 255, 255, 0.07);
-    padding: 0.85rem 1rem;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    text-decoration: none;
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    transition: background 0.2s ease, transform 0.2s ease;
-    position: relative;
-    z-index: 2;
-  }
-  .cv-feature-item:hover {
-    background: rgba(255, 255, 255, 0.13);
-    transform: translateY(-2px);
-  }
-  .cv-feature-item-header {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: #a3e6cd;
-  }
-  .cv-feature-item-desc {
-    font-size: 0.85rem;
-    color: #cbd5e1;
-  }
+  /* 2. Die 4 Kacheln (nicht klickbar, reine Info) */
+  .history-badges { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; margin-bottom: 1.25rem; }
+  .history-badge { border-radius: 15px; padding: 0.9rem 0.8rem; background: rgba(255, 255, 255, 0.055); border: 1px solid rgba(255, 255, 255, 0.1); min-height: 112px; transition: transform 0.2s ease; }
+  .history-badge:hover { transform: translateY(-2px); }
+  .history-badge > span { display: grid; place-items: center; width: 31px; height: 31px; border-radius: 9px; margin-bottom: 0.55rem; font-weight: 900; }
+  .history-badge strong { display: block; font-size: 0.88rem; color: #fff; }
+  .history-badge small { display: block; color: rgba(255, 255, 255, 0.58); font-size: 0.72rem; margin-top: 0.18rem; line-height: 1.35; }
+  .badge-damage { background: rgba(218, 104, 104, 0.075); border-color: rgba(218, 104, 104, 0.18); }
+  .badge-mileage { background: rgba(86, 164, 129, 0.075); border-color: rgba(86, 164, 129, 0.18); }
+  .badge-data { background: rgba(91, 139, 194, 0.075); border-color: rgba(91, 139, 194, 0.18); }
+  .badge-value { background: rgba(212, 168, 67, 0.085); border-color: rgba(212, 168, 67, 0.2); }
+  .badge-damage > span { background: rgba(218, 104, 104, 0.22); color: #f0a6a6; }
+  .badge-mileage > span { background: rgba(86, 164, 129, 0.22); color: #9be0bd; }
+  .badge-data > span { background: rgba(91, 139, 194, 0.22); color: #a8c9ee; }
+  .badge-value > span { background: rgba(212, 168, 67, 0.2); color: #f5d77d; }
+  @media (max-width: 700px) { .history-badges { grid-template-columns: repeat(2, 1fr); } }
 
   /* 3. In der Mitte: Dein Text */
   .cv-intro-title {
@@ -195,12 +168,23 @@
     display: flex;
     align-items: stretch;
     gap: 0.5rem;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1.5px solid rgba(255, 255, 255, 0.45);
     border-radius: 16px;
     padding: 0.35rem 0.35rem 0.35rem 1rem;
     position: relative;
     z-index: 2;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .cv-fin-form:focus-within {
+    border-color: rgba(212, 168, 67, 0.85);
+    background: rgba(255, 255, 255, 0.14);
+  }
+  .cv-fin-icon {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    opacity: 0.85;
   }
   .cv-fin-form input {
     background: transparent;
@@ -226,9 +210,12 @@
     transition: background 0.2s ease;
   }
   .cv-fin-form button:hover { background: rgba(255, 255, 255, 0.28); }
+  .cv-fin-group { display: flex; flex-direction: column; align-items: center; gap: 0.45rem; }
+  .cv-fin-label { font-size: 0.78rem; font-weight: 600; color: rgba(255, 255, 255, 0.62); }
   @media (max-width: 480px) {
     .cv-fin-form { flex-direction: column; padding: 0.7rem; }
     .cv-fin-form input { width: 100%; padding: 0.4rem 0.2rem; }
+    .cv-fin-group { width: 100%; }
   }
   .cv-action-note {
     text-align: center;
@@ -429,8 +416,6 @@
         <!-- 1. carVertical Box GANZ OBEN -->
         <div class="card-featured-carvertical">
 
-          <!-- Deckt die komplette Fläche als Klick-Link ab -->
-          <a class="cv-full-overlay" href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener sponsored" aria-label="carVertical Fahrzeughistorie prüfen – 20% Rabatt sichern"></a>
           <span class="cv-top-star" aria-hidden="true">*</span>
 
           <!-- POS 1: Logo (feste Breite) -->
@@ -455,24 +440,12 @@
             </p>
           </div>
 
-          <!-- POS 3: Die 4 Kategorien -->
-          <div class="cv-features-grid">
-            <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener sponsored" class="cv-feature-item">
-              <div class="cv-feature-item-header">⏱️ Tachostand-Check</div>
-              <div class="cv-feature-item-desc">Deckt KM-Manipulationsversuche lückenlos auf</div>
-            </a>
-            <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener sponsored" class="cv-feature-item">
-              <div class="cv-feature-item-header">💥 Unfallhistorie</div>
-              <div class="cv-feature-item-desc">Zeigt verdeckte Schäden & geschätzte Reparaturkosten</div>
-            </a>
-            <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener sponsored" class="cv-feature-item">
-              <div class="cv-feature-item-header">🚨 Diebstahl-Abgleich</div>
-              <div class="cv-feature-item-desc">Prüfung in internationalen Polizeidatenbanken</div>
-            </a>
-            <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener sponsored" class="cv-feature-item">
-              <div class="cv-feature-item-header">📸 Historische Fotos</div>
-              <div class="cv-feature-item-desc">Fotos aus früheren Auktions- & Verkaufs-Inseraten</div>
-            </a>
+          <!-- POS 3: Die 4 Kacheln -->
+          <div class="history-badges" aria-label="Mögliche Inhalte eines carVertical-Berichts">
+            <div class="history-badge badge-mileage"><span>⏱️</span><strong>Tachostand-Check</strong><small>Deckt KM-Manipulation auf</small></div>
+            <div class="history-badge badge-damage"><span>💥</span><strong>Unfallhistorie</strong><small>Verdeckte Schäden & Kosten</small></div>
+            <div class="history-badge badge-data"><span>🚨</span><strong>Diebstahl-Abgleich</strong><small>Internationale Datenbanken</small></div>
+            <div class="history-badge badge-value"><span>📸</span><strong>Historische Fotos</strong><small>Frühere Verkaufs-Inserate</small></div>
           </div>
 
           <!-- POS 4: Die zentrierten Buttons -->
@@ -481,10 +454,14 @@
               <span class="cv-gold-btn-line1">Prüfe dein Auto jetzt</span>
               <span class="cv-gold-btn-line2">mit 20% Gutschein<span class="cv-star">*</span></span>
             </a>
-            <form class="cv-fin-form" action="https://www.carvertical.deal/2HLM53N/5MJ263/" method="get" target="_blank" rel="noopener sponsored" onsubmit="var v=this.querySelector('input').value.trim(); if(!v){return false;} this.action='https://www.carvertical.deal/2HLM53N/5MJ263/?uid=37&source_id=AFF&sub1=autoknigge&sub3=' + encodeURIComponent(v);">
-              <input type="text" placeholder="FIN oder Kennzeichen" aria-label="FIN oder Kennzeichen eingeben" required>
-              <button type="submit">🔎 Prüfen<span class="cv-star">*</span></button>
-            </form>
+            <div class="cv-fin-group">
+              <span class="cv-fin-label">oder FIN / Kennzeichen eingeben</span>
+              <form class="cv-fin-form" action="https://www.carvertical.deal/2HLM53N/5MJ263/" method="get" target="_blank" rel="noopener sponsored" onsubmit="var v=this.querySelector('input').value.trim(); if(!v){return false;} this.action='https://www.carvertical.deal/2HLM53N/5MJ263/?uid=37&source_id=AFF&sub1=autoknigge&sub3=' + encodeURIComponent(v);">
+                <span class="cv-fin-icon" aria-hidden="true">🔎</span>
+                <input type="text" placeholder="FIN oder Kennzeichen" aria-label="FIN oder Kennzeichen eingeben" required>
+                <button type="submit">Prüfen<span class="cv-star">*</span></button>
+              </form>
+            </div>
           </div>
           <div class="cv-action-note">
             <p>Die 20% Rabatt werden beim Klick automatisch abgezogen – der Code <strong>„Autoknigge"</strong> wird direkt eingetragen.</p>

@@ -40,17 +40,28 @@
 .history-badge>span{display:grid;place-items:center;width:31px;height:31px;border-radius:9px;margin-bottom:.55rem;font-weight:900}
 .history-badge strong{display:block;font-size:.88rem;color:#fff}.history-badge small{display:block;color:rgba(255,255,255,.58);font-size:.72rem;margin-top:.18rem;line-height:1.35}
 .badge-damage{background:rgba(218,104,104,.075);border-color:rgba(218,104,104,.18)}.badge-mileage{background:rgba(86,164,129,.075);border-color:rgba(86,164,129,.18)}.badge-data{background:rgba(91,139,194,.075);border-color:rgba(91,139,194,.18)}.badge-value{background:rgba(212,168,67,.085);border-color:rgba(212,168,67,.2)}.badge-damage>span{background:rgba(218,104,104,.22);color:#f0a6a6}.badge-mileage>span{background:rgba(86,164,129,.22);color:#9be0bd}.badge-data>span{background:rgba(91,139,194,.22);color:#a8c9ee}.badge-value>span{background:rgba(212,168,67,.2);color:#f5d77d}
-.history-sale-bottom{align-items:stretch;margin-top:.25rem}.history-actions{display:flex;gap:.65rem;flex-wrap:wrap;align-items:center}.history-cta.secondary{background:rgba(255,255,255,.08);color:#fff!important;border:1px solid rgba(255,255,255,.2);box-shadow:none}.history-cta.secondary:hover{color:#fff!important;background:rgba(255,255,255,.14)}
+.history-sale-bottom{align-items:stretch;margin-top:.25rem}
 .history-note{font-size:.78rem;line-height:1.5;color:rgba(255,255,255,.65);max-width:58%}.history-note strong{color:#fff}
-.history-cta{display:inline-flex;align-items:center;justify-content:center;gap:1rem;min-width:225px;padding:.85rem 1.15rem;border-radius:999px;background:linear-gradient(135deg,#d4a843,#f0c65d);color:#17251f!important;text-decoration:none!important;font-weight:800;box-shadow:0 8px 20px rgba(0,0,0,.18);transition:transform .2s ease,box-shadow .2s ease}
-.history-cta:hover{color:#17251f!important;transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.24)}
-.history-cta b{font-size:1.25rem}.history-disclaimer{position:relative;z-index:1;margin:.95rem 0 0;color:rgba(255,255,255,.43);font-size:.68rem;line-height:1.45}
-.history-fin-form{display:inline-flex;align-items:center;gap:.4rem;min-width:225px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:.3rem .3rem .3rem 1.05rem}
-.history-fin-form input{flex:1;min-width:0;background:transparent;border:none;color:#fff;font-size:.92rem;padding:.4rem 0;outline:none}
-.history-fin-form input::placeholder{color:rgba(255,255,255,.55)}
-.history-fin-form button{display:inline-flex;align-items:center;gap:.4rem;border:none;border-radius:999px;padding:.65rem 1.05rem;background:linear-gradient(135deg,#d4a843,#f0c65d);color:#17251f;font-weight:800;cursor:pointer;white-space:nowrap;transition:transform .2s ease,box-shadow .2s ease}
-.history-fin-form button:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.2)}
-@media(max-width:700px){.history-sale-card{padding:1.2rem;border-radius:20px}.history-sale-top{align-items:flex-start}.history-label{display:none}.history-badges{grid-template-columns:repeat(2,1fr)}.history-sale-bottom{flex-direction:column}.history-note{max-width:none}.history-cta{width:100%}.history-fin-form{width:100%}}
+.cv-bottom-action{display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:.85rem;margin-top:1rem}
+.cv-gold-btn{background:linear-gradient(135deg,#d4af37 0%,#f3e5ab 50%,#aa7c11 100%);color:#0f241d;padding:.9rem 2.5rem;border-radius:16px;box-shadow:0 4px 15px rgba(212,175,55,.3);text-decoration:none!important;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transition:transform .2s ease,box-shadow .2s ease}
+.cv-gold-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(212,175,55,.5)}
+.cv-gold-btn-line1{font-size:1.15rem;font-weight:800;color:#0f241d}
+.cv-gold-btn-line2{font-size:.9rem;font-weight:600;color:#0f241d}
+.cv-fin-group{display:flex;flex-direction:column;align-items:center;gap:.45rem}
+.cv-fin-label{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.62)}
+.cv-fin-form{display:flex;align-items:stretch;gap:.5rem;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.45);border-radius:16px;padding:.35rem .35rem .35rem 1rem;transition:border-color .2s ease,background .2s ease}
+.cv-fin-form:focus-within{border-color:rgba(212,168,67,.85);background:rgba(255,255,255,.14)}
+.cv-fin-icon{display:flex;align-items:center;font-size:1rem;opacity:.85}
+.cv-fin-form input{flex:1;min-width:0;width:170px;background:transparent;border:none;color:#fff;font-size:.95rem;font-weight:600;padding:.4rem 0;outline:none}
+.cv-fin-form input::placeholder{color:rgba(255,255,255,.65)}
+.cv-fin-form button{background:rgba(255,255,255,.15);color:#fff;border:none;border-radius:12px;padding:.65rem 1.1rem;font-size:.9rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:background .2s ease}
+.cv-fin-form button:hover{background:rgba(255,255,255,.28)}
+.cv-star{font-weight:700;opacity:.75}
+.cv-action-note{text-align:center;margin-top:.85rem;position:relative;z-index:1}
+.cv-action-note p{margin:.25rem 0 0;font-size:.78rem;color:rgba(255,255,255,.55);line-height:1.5}
+.cv-action-note strong{color:rgba(255,255,255,.75)}
+@media(max-width:700px){.history-sale-card{padding:1.2rem;border-radius:20px}.history-sale-top{align-items:flex-start}.history-label{display:none}.history-badges{grid-template-columns:repeat(2,1fr)}.history-sale-bottom{flex-direction:column}.history-note{max-width:none}.cv-gold-btn{width:100%}.cv-fin-group{width:100%}}
+@media(max-width:480px){.cv-fin-form{flex-direction:column;padding:.7rem}.cv-fin-form input{width:100%;padding:.4rem .2rem}}
 
 /* ===== Verkaufsseite: alle Inhalte als übersichtliche Karten ===== */
 .sell-card{
@@ -154,7 +165,6 @@
       <div class="history-sale-copy">
         <h2>Eine saubere Historie kann bares Geld wert sein.</h2>
         <p>Beim Verkauf zählt nicht nur, wie gut das Auto aussieht. Wer die Vorgeschichte seines Fahrzeugs nachvollziehbar dokumentieren kann, schafft Vertrauen – und hat bessere Argumente für einen fairen Verkaufspreis.</p>
-        <p class="history-emphasis"><strong>Nicht nur behaupten, dass das Auto gut ist. Zeigen, was seine Geschichte sagt.</strong></p>
         <span class="history-offer">20 % Gutschrift auf den Bericht*</span>
       </div>
       <div class="history-badges" aria-label="Mögliche Inhalte eines carVertical-Berichts">
@@ -165,17 +175,25 @@
       </div>
       <div class="history-sale-bottom">
         <div class="history-note"><strong>Warum beim Verkauf?</strong><br>Eine nachvollziehbare Historie kann Vertrauen schaffen, Rückfragen reduzieren und dir helfen, deinen Preis gegenüber Interessenten besser zu begründen.</div>
-        <div class="history-actions">
-          <a class="history-cta" href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&amp;sub1=autoknigge" target="_blank" rel="noopener sponsored">
-            <span>Historie prüfen *</span><b>→</b>
+        <div class="cv-bottom-action">
+          <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener sponsored" class="cv-gold-btn">
+            <span class="cv-gold-btn-line1">Prüfe dein Auto jetzt</span>
+            <span class="cv-gold-btn-line2">mit 20% Gutschein<span class="cv-star">*</span></span>
           </a>
-          <form class="history-fin-form" action="https://www.carvertical.deal/2HLM53N/5MJ263/" method="get" target="_blank" rel="noopener sponsored" onsubmit="var v=this.querySelector('input').value.trim(); if(!v){return false;} this.action='https://www.carvertical.deal/2HLM53N/5MJ263/?uid=37&source_id=AFF&sub1=autoknigge&sub3=' + encodeURIComponent(v);">
-            <input type="text" placeholder="FIN oder Kennzeichen" aria-label="FIN oder Kennzeichen eingeben" required>
-            <button type="submit">Prüfen *</button>
-          </form>
+          <div class="cv-fin-group">
+            <span class="cv-fin-label">oder FIN / Kennzeichen eingeben</span>
+            <form class="cv-fin-form" action="https://www.carvertical.deal/2HLM53N/5MJ263/" method="get" target="_blank" rel="noopener sponsored" onsubmit="var v=this.querySelector('input').value.trim(); if(!v){return false;} this.action='https://www.carvertical.deal/2HLM53N/5MJ263/?uid=37&source_id=AFF&sub1=autoknigge&sub3=' + encodeURIComponent(v);">
+              <span class="cv-fin-icon" aria-hidden="true">🔎</span>
+              <input type="text" placeholder="FIN oder Kennzeichen" aria-label="FIN oder Kennzeichen eingeben" required>
+              <button type="submit">Prüfen<span class="cv-star">*</span></button>
+            </form>
+          </div>
         </div>
       </div>
-      
+      <div class="cv-action-note">
+        <p>Die 20% Rabatt werden beim Klick automatisch abgezogen – der Code <strong>„Autoknigge"</strong> wird direkt eingetragen.</p>
+      </div>
+
     </section>
 
     <section class="sell-card">
