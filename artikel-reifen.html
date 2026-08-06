@@ -10,7 +10,7 @@
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f241d">
 <style>
-.tire-tile-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:1.5rem 0 2rem}
+.tire-tile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0 2rem}
 .tire-tile{border-radius:16px;padding:1.2rem 1.25rem;border:1px solid rgba(10,28,22,.08)}
 .tire-tile .tile-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;font-size:1.25rem;margin-bottom:.7rem}
 .tire-tile h3{margin:0 0 .35rem;font-size:1rem}
@@ -23,6 +23,15 @@
 .tire-tile.t-montage{background:#e8f7fa;border-color:#bfe8ef}.tire-tile.t-montage .tile-icon{background:#d3f0f5;color:#0891b2}
 .tire-tile.t-auswuchten{background:#edeffb;border-color:#cdd3f2}.tire-tile.t-auswuchten .tile-icon{background:#dee1f7;color:#4338ca}
 .tire-tile.t-beschaedigung{background:#fdecec;border-color:#f5c6c6}.tire-tile.t-beschaedigung .tile-icon{background:#fad9d9;color:#dc2626}
+.tire-tile.t-aqua{background:#e6f7f5;border-color:#b9e8e2}.tire-tile.t-aqua .tile-icon{background:#c9f0ea;color:#0d9488}
+.tire-tile.t-ursachen{background:#eef1f5;border-color:#d6dce5}.tire-tile.t-ursachen .tile-icon{background:#e2e7ee;color:#475569}
+.tire-tile.t-folgen{background:#fdece2;border-color:#f6cdab}.tire-tile.t-folgen .tile-icon{background:#fbdcc0;color:#c2410c}
+.tire-tile.t-pruefen{background:#eaf7ef;border-color:#c8ecd4}.tire-tile.t-pruefen .tile-icon{background:#d4f0dd;color:#059669}
+.tire-tile.t-premium{background:#fdf6e3;border-color:#f0dfa0}.tire-tile.t-premium .tile-icon{background:#f5e9bd;color:#92640a}
+.tire-tile.t-mittel{background:#eef2f7;border-color:#cfdbe8}.tire-tile.t-mittel .tile-icon{background:#dde7f1;color:#2c5282}
+.tire-tile.t-budget{background:#eef7f0;border-color:#c9e6cf}.tire-tile.t-budget .tile-icon{background:#dcefe0;color:#2f7a43}
+.tire-tile .tile-price{display:block;font-weight:800;font-size:1.1rem;margin:.15rem 0 .4rem;color:inherit}
+.dot-example{display:inline-block;font-family:ui-monospace,Menlo,Consolas,monospace;background:#fff;border:1px solid #eee0b9;border-radius:6px;padding:.1rem .45rem;font-weight:700;color:#8a5a00}
 @media(max-width:900px){.tire-tile-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.tire-tile-grid{grid-template-columns:1fr}}
 </style>
@@ -74,8 +83,6 @@
     </section>
 
     <section>
-      <h2>Regelmäßiger Check spart Sprit und rettet im Ernstfall Leben</h2>
-      <p>Der Reifen ist die einzige Verbindung zwischen Auto und Straße – trotzdem wird er im Alltag oft vernachlässigt. Ein regelmäßiger Blick auf Luftdruck und Profil kostet wenige Minuten, schont dafür aber den Geldbeutel beim Spritverbrauch und kann im Ernstfall über Bremsweg und Spurhaltung entscheiden.</p>
       <div class="tire-tile-grid">
         <div class="tire-tile t-wechsel">
           <div class="tile-icon">🔄</div>
@@ -86,6 +93,11 @@
           <div class="tile-icon">📏</div>
           <h3>Profiltiefe</h3>
           <p>Gesetzlich sind 1,6 mm vorgeschrieben – empfohlen werden 3 mm (Sommer) bzw. 4 mm (Winter) für sichere Fahreigenschaften bei Nässe.</p>
+        </div>
+        <div class="tire-tile t-aqua">
+          <div class="tile-icon">🌊</div>
+          <h3>Aquaplaning</h3>
+          <p>Das Profil leitet Wasser aus der Aufstandsfläche ab. Je geringer die Profiltiefe, desto weniger Wasser passt in die Rillen – ab etwa 3 mm steigt das Risiko bei Starkregen und hohem Tempo spürbar.</p>
         </div>
         <div class="tire-tile t-einlagerung">
           <div class="tile-icon">📦</div>
@@ -123,24 +135,64 @@
     <section>
       <h2>Sommer-, Winter- und Ganzjahresreifen im Detail</h2>
       <p>Entscheidend ist seit 2018 nicht mehr das alte „M+S“-Symbol, sondern das <strong>Alpine-Symbol</strong> (Schneeflocke im Bergpiktogramm, kurz 3PMSF). Nur Reifen mit diesem Symbol gelten in Deutschland als rechtssicherer Winterreifen – die Übergangsfrist für reine M+S-Reifen ist inzwischen abgelaufen. Gesetzlich vorgeschrieben ist außerdem keine feste Kalenderpflicht, sondern die sogenannte <strong>situative Winterreifenpflicht</strong>: Bei Glätte, Schnee oder Reifglätte müssen entsprechend ausgestattete Reifen montiert sein, unabhängig vom Datum. Die Faustregel „O bis O“ (Oktober bis Ostern) ist daher nur eine Orientierung, keine feste Vorschrift.</p>
-      <p><strong>Ganzjahresreifen</strong> sind ein Kompromiss: praktisch bei geringer Jahresfahrleistung, milden Regionen ohne extreme Winter oder Sommerhitze und überwiegendem Stadtverkehr. Wer viel fährt, in einer Region mit ausgeprägten Jahreszeiten wohnt oder ein sportliches bzw. schweres Fahrzeug bewegt, fährt mit Spezialisten meist sicherer – in Extremsituationen wie Blitzeis oder sommerlicher Hitze schneiden Ganzjahresreifen bei Bremsweg und Verschleiß gegenüber saisonalen Reifen tendenziell schlechter ab.</p>
+      <div class="deep-tile-grid">
+        <div class="deep-tile tint-a">
+          <h3><span class="tile-icon">❄️</span> Spezialisten sind die bessere Wahl</h3>
+          <p>Bei hoher Jahresfahrleistung, ausgeprägten Jahreszeiten oder einem sportlichen bzw. schweren Fahrzeug: In Extremsituationen wie Blitzeis oder sommerlicher Hitze schneiden Sommer- und Winterreifen bei Bremsweg und Verschleiß besser ab als der Kompromiss.</p>
+        </div>
+        <div class="deep-tile tint-c">
+          <h3><span class="tile-icon">🔄</span> Ganzjahresreifen genügen</h3>
+          <p>Bei geringer Jahresfahrleistung, milden Regionen ohne Extremwinter oder -hitze und überwiegendem Stadtverkehr ist der Kompromiss aus einem Reifensatz praktisch und ausreichend sicher.</p>
+        </div>
+      </div>
     </section>
 
     <section>
       <h2>Markenreifen vs. günstige Reifen – lohnt sich der Aufpreis?</h2>
-      <p>Grob lassen sich drei Preisklassen unterscheiden: <strong>Premium</strong> (etablierte Hersteller wie Continental, Michelin, Bridgestone, Goodyear oder Pirelli), <strong>Mittelklasse</strong> (bekannte Zweitmarken großer Hersteller) und <strong>Budget</strong> (günstige Reifen, oft aus Fernost). Die Qualität der Budget-Reifen hat sich über die Jahre verbessert, in unabhängigen Tests von ADAC, Stiftung Warentest oder GTÜ zeigen sich Unterschiede aber weiterhin vor allem in Extremsituationen: längerer Bremsweg bei Nässe, früheres Aquaplaning und schnellerer Verschleiß.</p>
-      <p>Für wenig gefahrene Kilometer und überwiegend trockene Fahrbedingungen fällt der Unterschied kaum ins Gewicht. Wer viel Autobahn fährt, ein schweres oder leistungsstarkes Auto bewegt oder häufig mit Familie unterwegs ist, sollte den Aufpreis für Premium-Reifen als Sicherheitsinvestition betrachten – gerade an den sicherheitsrelevanten Achsen.</p>
-    </section>
-
-    <section>
-      <h2>Preise und Testergebnisse richtig einordnen</h2>
-      <p>Als grobe Orientierung für eine gängige Größe wie 205/55 R16: Budget-Reifen liegen häufig bei rund 50–70 €, Mittelklasse bei 70–100 € und Premium-Modelle bei 100–160 € und mehr pro Reifen – abhängig von Größe, Saison und Anbieter. Da sich Preise und Testsieger laufend ändern, lohnt sich vor dem Kauf immer ein Blick in aktuelle Tests von ADAC, Stiftung Warentest oder GTÜ statt sich auf ältere Empfehlungen zu verlassen.</p>
-      <p>Wichtig beim Lesen von Tests: Hersteller konstruieren dieselbe Modellreihe je nach Dimension leicht unterschiedlich. Ein Testsieger in einer Größe schneidet in einer anderen Dimension nicht automatisch genauso gut ab – am besten gezielt nach der eigenen Reifengröße suchen.</p>
+      <p>Die Qualität von Budget-Reifen hat sich über die Jahre verbessert, in unabhängigen Tests von ADAC, Stiftung Warentest oder GTÜ zeigen sich Unterschiede aber weiterhin vor allem in Extremsituationen: längerer Bremsweg bei Nässe, früheres Aquaplaning und schnellerer Verschleiß. Als grobe Preisorientierung für eine gängige Größe wie 205/55 R16:</p>
+      <div class="tire-tile-grid">
+        <div class="tire-tile t-premium">
+          <div class="tile-icon">🏆</div>
+          <h3>Premium</h3>
+          <span class="tile-price">100–160 €+</span>
+          <p>Etablierte Hersteller wie Continental, Michelin, Bridgestone, Goodyear oder Pirelli. Beste Werte bei Nässe, Aquaplaning und Laufleistung.</p>
+        </div>
+        <div class="tire-tile t-mittel">
+          <div class="tile-icon">⚙️</div>
+          <h3>Mittelklasse</h3>
+          <span class="tile-price">70–100 €</span>
+          <p>Bekannte Zweitmarken großer Hersteller. Guter Kompromiss aus Preis und Sicherheitsreserven für die meisten Alltagsfahrer.</p>
+        </div>
+        <div class="tire-tile t-budget">
+          <div class="tile-icon">💶</div>
+          <h3>Budget</h3>
+          <span class="tile-price">50–70 €</span>
+          <p>Günstige Reifen, oft aus Fernost. Für wenig gefahrene Kilometer und trockene Bedingungen meist ausreichend.</p>
+        </div>
+      </div>
+      <p>Wer viel Autobahn fährt, ein schweres oder leistungsstarkes Auto bewegt oder häufig mit Familie unterwegs ist, sollte den Aufpreis für Premium-Reifen als Sicherheitsinvestition betrachten – gerade an den sicherheitsrelevanten Achsen. Da sich Preise und Testsieger laufend ändern, lohnt sich vor dem Kauf immer ein Blick in aktuelle Tests statt sich auf ältere Empfehlungen zu verlassen. Wichtig dabei: Hersteller konstruieren dieselbe Modellreihe je nach Dimension leicht unterschiedlich – am besten gezielt nach der eigenen Reifengröße suchen.</p>
     </section>
 
     <section>
       <h2>Warum regelmäßiges Auswuchten mehr als Komfort ist</h2>
-      <p>Unwuchten entstehen durch Fertigungstoleranzen, Verschleiß oder eine Reparatur am Reifen. Neben dem spürbaren Lenkradflattern sorgen sie für ungleichmäßigen, schnelleren Reifenverschleiß und belasten Radlager, Achsschenkel, Stoßdämpfer und Lenkung zusätzlich – auf Dauer ein Kostenfaktor, der über die Werkstattrechnung fürs Wuchten weit hinausgeht. Pflicht ist das Auswuchten bei jeder Neumontage; zusätzlich lohnt sich eine Prüfung nach spürbarem Flattern, nach Kontakt mit Bordstein oder Schlagloch, oder als Faustregel alle 10.000 bis 15.000 km.</p>
+      <p>Neben dem spürbaren Lenkradflattern sorgen Unwuchten für ungleichmäßigen, schnelleren Reifenverschleiß und belasten Radlager, Achsschenkel, Stoßdämpfer und Lenkung zusätzlich – auf Dauer ein Kostenfaktor, der über die Werkstattrechnung fürs Wuchten weit hinausgeht.</p>
+      <div class="tire-tile-grid">
+        <div class="tire-tile t-ursachen">
+          <div class="tile-icon">🔍</div>
+          <h3>Ursachen</h3>
+          <p>Fertigungstoleranzen, Verschleiß oder eine Reparatur am Reifen bringen die Gewichtsverteilung aus dem Gleichgewicht.</p>
+        </div>
+        <div class="tire-tile t-folgen">
+          <div class="tile-icon">📉</div>
+          <h3>Folgen</h3>
+          <p>Lenkradflattern, schnellerer Verschleiß und zusätzliche Belastung für Radlager, Achsschenkel und Stoßdämpfer.</p>
+        </div>
+        <div class="tire-tile t-pruefen">
+          <div class="tile-icon">🗓️</div>
+          <h3>Wann prüfen</h3>
+          <p>Pflicht bei jeder Neumontage, zusätzlich nach spürbarem Flattern, Bordstein- oder Schlagloch-Kontakt, sonst als Faustregel alle 10.000–15.000 km.</p>
+        </div>
+      </div>
     </section>
 
     <section>
@@ -162,7 +214,7 @@
       <div>
         <h2>Wie alt darf ein Reifen sein?</h2>
         <p>Die Gummimischung altert unabhängig vom Profil: Mit den Jahren entweichen Weichmacher, Sauerstoff, UV-Strahlung und Ozon lassen das Material aushärten und spröde werden. Sichtbares Warnzeichen sind feine Risse in der Flanke – auch bei ausreichender Profiltiefe eine ernste Gefahr, da sie die Struktur schwächen und im schlimmsten Fall zum Platzen führen können. Eine feste gesetzliche Altersgrenze gibt es in Deutschland nicht, ADAC und Reifenhersteller empfehlen aber übereinstimmend: Reifen ab 6 Jahren regelmäßig in der Werkstatt prüfen lassen, spätestens nach 10 Jahren austauschen – unabhängig von der gefahrenen Strecke, denn die Alterung läuft zeitabhängig und betrifft auch kaum genutzte oder eingelagerte Reifen.</p>
-        <p style="margin-top:.7rem">Das Herstellungsdatum steht als vierstellige DOT-Nummer auf der Reifenflanke: Die ersten zwei Ziffern geben die Kalenderwoche an, die letzten zwei das Jahr. „2223" bedeutet also: hergestellt in der 22. Woche des Jahres 2023.</p>
+        <p style="margin-top:.7rem">Das Herstellungsdatum steht als vierstellige DOT-Nummer auf der Reifenflanke: Die ersten zwei Ziffern geben die Kalenderwoche an, die letzten zwei das Jahr. <span class="dot-example">2223</span> bedeutet also: hergestellt in der 22. Woche des Jahres 2023.</p>
       </div>
     </section>
   </div>
