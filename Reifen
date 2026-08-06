@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reifen-Ratgeber: Sicherheit, Pflege & Wechsel | Autoknigge.de</title>
+    
+    <!-- Google Fonts & FontAwesome für Symbole -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Cookie-Consent CSS -->
+    <link rel="stylesheet" href="cookie.css">
+
+    <style>
+        :root {
+            --primary-color: #1e293b;
+            --accent-color: #f59e0b;
+            --bg-color: #f8fafc;
+            --card-radius: 12px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            line-height: 1.6;
+        }
+
+        /* Navigation / Header Bar */
+        .site-nav {
+            background: #0f172a;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .site-nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .site-nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--accent-color) !important;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            color: #94a3b8;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: -3rem auto 4rem auto;
+            padding: 0 1.5rem;
+            position: relative;
+        }
+
+        /* Knigge Tipp Box */
+        .knigge-box {
+            background: white;
+            border-radius: var(--card-radius);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+            margin-bottom: 3rem;
+            border-left: 6px solid var(--accent-color);
+        }
+
+        .knigge-img {
+            flex: 1;
+            min-width: 300px;
+            max-height: 400px;
+            overflow: hidden;
+        }
+
+        .knigge-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .knigge-content {
+            flex: 1.5;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .knigge-content h3 {
+            color: var(--accent-color);
+            margin-top: 0;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Kacheln Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--card-radius);
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+        }
+
+        .c-wechsel::before { background-color: #3b82f6; }
+        .c-profil::before { background-color: #10b981; }
+        .c-einlagerung::before { background-color: #8b5cf6; }
+        .c-arten::before { background-color: #f59e0b; }
+        .c-sprit::before { background-color: #ec4899; }
+        .c-montage::before { background-color: #06b6d4; }
+        .c-auswuchten::before { background-color: #6366f1; }
+        .c-beschaedigung::before { background-color: #ef4444; }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .c-wechsel .card-icon { color: #3b82f6; }
+        .c-profil .card-icon { color: #10b981; }
+        .c-einlagerung .card-icon { color: #8b5cf6; }
+        .c-arten .card-icon { color: #f59e0b; }
+        .c-sprit .card-icon { color: #ec4899; }
+        .c-montage .card-icon { color: #06b6d4; }
+        .c-auswuchten .card-icon { color: #6366f1; }
+        .c-beschaedigung .card-icon { color: #ef4444; }
+
+        .card h3 {
+            margin-top: 0;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card p {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Footer Bereich */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 3rem 1.5rem;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-top: 0;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0 auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid #1e293b;
+            text-align: center;
+            color: #64748b;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            .container { margin-top: -1rem; }
+            .site-nav { flex-direction: column; gap: 1rem; }
+            .site-nav div { display: flex; flex-wrap: wrap; justify-content: center; }
+            .site-nav a { margin: 0 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Obere Navigation / Menüintegration -->
+    <nav class="site-nav">
+        <a href="index.html" class="logo"><i class="fa-solid fa-car"></i> Autoknigge.de</a>
+        <div>
+            <a href="kategorie-kauf.html">Kauf</a>
+            <a href="kategorie-geld-sparen.html">Geld sparen</a>
+            <a href="kategorie-pflege.html">Pflege</a>
+            <a href="kategorie-recht.html">Recht</a>
+            <a href="kategorie-versicherung.html">Versicherung</a>
+            <a href="kategorie-zulassung.html">Zulassung</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Reifen & Sicherheit</h1>
+        <p>Sicherheit, Effizienz und Performance für Ihr Fahrzeug</p>
+    </header>
+
+    <div class="container">
+
+        <!-- Knigge Tipp Box mit Bild -->
+        <div class="knigge-box">
+            <div class="knigge-img">
+                <img src="1000206219.jpg" alt="Knigge bei der professionellen Reifenarbeit in der Werkstatt">
+            </div>
+            <div class="knigge-content">
+                <h3><i class="fa-solid fa-lightbulb"></i> Knigges knackiger Tipp</h3>
+                <p>„Wer am Reifen spart, spart am falschen Ende – er ist schließlich der einzige Kontakt zur Straße! Regelmäßiger Check von Luftdruck und Profil spart Sprit, schont die Nerven und rettet im Ernstfall Leben.“</p>
+            </div>
+        </div>
+
+        <!-- Thematische Kacheln -->
+        <div class="grid">
+            
+            <!-- Reifenwechsel -->
+            <div class="card c-wechsel">
+                <div class="card-icon"><i class="fa-solid fa-rotate"></i></div>
+                <h3>Reifenwechsel</h3>
+                <p>Von O bis O (Oktober bis Ostern): Rechtzeitig auf Sommer- oder Winterreifen wechseln, um bei jeder Witterung optimalen Grip zu haben.</p>
+            </div>
+
+            <!-- Profiltiefe -->
+            <div class="card c-profil">
+                <div class="card-icon"><i class="fa-solid fa-ruler-vertical"></i></div>
+                <h3>Profiltiefe</h3>
+                <p>Gesetzlich sind 1,6 mm vorgeschrieben, empfohlen werden jedoch 3 mm (Sommer) bzw. 4 mm (Winter) für sichere Fahreigenschaften bei Nässe.</p>
+            </div>
+
+            <!-- Einlagerung -->
+            <div class="card c-einlagerung">
+                <div class="card-icon"><i class="fa-solid fa-warehouse"></i></div>
+                <h3>Einlagerung</h3>
+                <p>Kühl, trocken und dunkel lagern – so altern Ihre Gummis deutlich langsamer und behalten ihre Materialeigenschaften bis zur nächsten Saison.</p>
+            </div>
+
+            <!-- Sommer, Winter, Ganzjahresreifen -->
+            <div class="card c-arten">
+                <div class="card-icon"><i class="fa-solid fa-layer-group"></i></div>
+                <h3>Sommer, Winter & Ganzjahresreifen</h3>
+                <p>Spezialisten für extreme Temperaturen oder der praktische Kompromiss für gemäßigte Regionen mit dem alpinen Symbol (3PMSF).</p>
+            </div>
+
+            <!-- Reifenbreite vs. Spritverbrauch -->
+            <div class="card c-sprit">
+                <div class="card-icon"><i class="fa-solid fa-gas-pump"></i></div>
+                <h3>Reifenbreite vs. Spritverbrauch</h3>
+                <p>Breitere Schlappen bieten mehr Grip und Sportlichkeit, erhöhen aber durch den gesteigerten Rollwiderstand spürbar den Kraftstoffverbrauch.</p>
+            </div>
+
+            <!-- Reifenmontage -->
+            <div class="card c-montage">
+                <div class="card-icon"><i class="fa-solid fa-gears"></i></div>
+                <h3>Reifenmontage</h3>
+                <p>Fachgerechtes Aufziehen auf die Felge inklusive Erneuerung der Ventile und exakter Druckprüfung für maximale Langlebigkeit.</p>
+            </div>
+
+            <!-- Auswuchten -->
+            <div class="card c-auswuchten">
+                <div class="card-icon"><i class="fa-solid fa-circle-dot"></i></div>
+                <h3>Auswuchten</h3>
+                <p>Verhindert lästiges Lenkradflattern und ungleichmäßigen, schnellen Reifenverschleiß durch die Korrektur kleinster Gewichtsverteilungen.</p>
+            </div>
+
+            <!-- Beschädigungen -->
+            <div class="card c-beschaedigung">
+                <div class="card-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                <h3>Beschädigungen</h3>
+                <p>Risse, eingefahrene Nägel oder Beulen an der Flanke sind ein Fall für den Profi – im Zweifel hilft hier nur noch der sofortige Austausch.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Footer mit Verweisen auf Dokumente, Rechtliches und Kategorien -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Autoknigge.de</h4>
+                <p>Ihr Ratgeber für Autokauf, Unterhalt, Pflege und Recht.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Wichtige Dokumente</h4>
+                <ul>
+                    <li><a href="kfz-kaufvertrag.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i> Kfz-Kaufvertrag (PDF)</a></li>
+                    <li><a href="Notfallcheckliste-Unfall.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i> Notfallcheckliste Unfall</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Kategorien</h4>
+                <ul>
+                    <li><a href="kategorie-kauf.html">Kauf & Verkauf</a></li>
+                    <li><a href="kategorie-geld-sparen.html">Geld sparen</a></li>
+                    <li><a href="kategorie-pflege.html">Pflege & Werterhalt</a></li>
+                    <li><a href="kategorie-recht.html">Recht & Bußgelder</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Rechtliches</h4>
+                <ul>
+                    <li><a href="impressum.html">Impressum</a></li>
+                    <li><a href="datenschutz.html">Datenschutz</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Autoknigge.de. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+
+    <!-- Cookie Consent Script -->
+    <script src="cookie-consent.js"></script>
+</body>
+</html>
