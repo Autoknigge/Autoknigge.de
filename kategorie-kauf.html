@@ -129,6 +129,7 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     position: relative;
     z-index: 2;
+    cursor: default;
   }
   .cv-gold-btn:hover {
     transform: translateY(-2px);
@@ -141,28 +142,6 @@
   .cv-gold-btn-line2 {
     font-size: 0.9rem;
     font-weight: 600;
-  }
-  .cv-fin-btn {
-    background: transparent;
-    color: #ffffff;
-    border: 1.5px solid rgba(255, 255, 255, 0.5);
-    padding: 0.9rem 1.75rem;
-    border-radius: 16px;
-    font-size: 0.95rem;
-    font-weight: 700;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-    position: relative;
-    z-index: 2;
-  }
-  .cv-fin-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.8);
-    transform: translateY(-2px);
   }
   .cv-fin-form {
     display: flex;
@@ -206,7 +185,6 @@
   }
   .cv-fin-form button:hover { background: rgba(255, 255, 255, 0.28); }
   .cv-fin-group { display: flex; flex-direction: column; align-items: center; gap: 0.45rem; }
-  .cv-fin-label { font-size: 0.78rem; font-weight: 600; color: rgba(255, 255, 255, 0.62); }
   @media (max-width: 480px) {
     .cv-fin-form { flex-direction: column; padding: 0; }
     .cv-fin-form input { width: 100%; }
@@ -357,7 +335,7 @@
       <div class="cat-page-title-wrap">
         <h1>Autokauf und -verkauf</h1>
       </div>
-      <p class="lead">Neu- oder Gebrauchtwagen, Kauf oder Leasing.</p>
+      <p class="lead">Neu- or Gebrauchtwagen, Kauf oder Leasing.</p>
     </div>
 
     <section class="knigge-quote-card knigge-quote-kauf" aria-label="Knigge-Tipp: Autokauf">
@@ -445,15 +423,14 @@
 
           <!-- POS 4: Die zentrierten Buttons -->
           <div class="cv-bottom-action">
-            <a href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&sub1=autoknigge" target="_blank" rel="noopener sponsored" class="cv-gold-btn">
-              <span class="cv-gold-btn-line1">Prüfe dein Auto jetzt</span>
+            <div class="cv-gold-btn">
+              <span class="cv-gold-btn-line1">Prüfe dein Auto hier unten ↓</span>
               <span class="cv-gold-btn-line2">mit 20% Gutschein<span class="cv-star">*</span></span>
-            </a>
+            </div>
             <div class="cv-fin-group">
-              <span class="cv-fin-label">oder FIN / Kennzeichen eingeben</span>
               <form class="cv-fin-form" action="https://www.carvertical.deal/2HLM53N/5MJ263/" method="get" target="_blank" rel="noopener sponsored" onsubmit="var v=this.querySelector('input').value.trim(); if(!v){return false;} this.action='https://www.carvertical.deal/2HLM53N/5MJ263/?uid=37&source_id=AFF&sub1=autoknigge&sub3=' + encodeURIComponent(v);">
                 <input type="text" placeholder="FIN oder Kennzeichen" aria-label="FIN oder Kennzeichen eingeben" required>
-                <button type="submit">Prüfen<span class="cv-star">*</span></button>
+                <button type="submit">Prüfen ➔<span class="cv-star">*</span></button>
               </form>
             </div>
           </div>
