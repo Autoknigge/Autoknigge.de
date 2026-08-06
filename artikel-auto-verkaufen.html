@@ -45,7 +45,12 @@
 .history-cta{display:inline-flex;align-items:center;justify-content:center;gap:1rem;min-width:225px;padding:.85rem 1.15rem;border-radius:999px;background:linear-gradient(135deg,#d4a843,#f0c65d);color:#17251f!important;text-decoration:none!important;font-weight:800;box-shadow:0 8px 20px rgba(0,0,0,.18);transition:transform .2s ease,box-shadow .2s ease}
 .history-cta:hover{color:#17251f!important;transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.24)}
 .history-cta b{font-size:1.25rem}.history-disclaimer{position:relative;z-index:1;margin:.95rem 0 0;color:rgba(255,255,255,.43);font-size:.68rem;line-height:1.45}
-@media(max-width:700px){.history-sale-card{padding:1.2rem;border-radius:20px}.history-sale-top{align-items:flex-start}.history-label{display:none}.history-badges{grid-template-columns:repeat(2,1fr)}.history-sale-bottom{flex-direction:column}.history-note{max-width:none}.history-cta{width:100%}}
+.history-fin-form{display:inline-flex;align-items:center;gap:.4rem;min-width:225px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:.3rem .3rem .3rem 1.05rem}
+.history-fin-form input{flex:1;min-width:0;background:transparent;border:none;color:#fff;font-size:.92rem;padding:.4rem 0;outline:none}
+.history-fin-form input::placeholder{color:rgba(255,255,255,.55)}
+.history-fin-form button{display:inline-flex;align-items:center;gap:.4rem;border:none;border-radius:999px;padding:.65rem 1.05rem;background:linear-gradient(135deg,#d4a843,#f0c65d);color:#17251f;font-weight:800;cursor:pointer;white-space:nowrap;transition:transform .2s ease,box-shadow .2s ease}
+.history-fin-form button:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.2)}
+@media(max-width:700px){.history-sale-card{padding:1.2rem;border-radius:20px}.history-sale-top{align-items:flex-start}.history-label{display:none}.history-badges{grid-template-columns:repeat(2,1fr)}.history-sale-bottom{flex-direction:column}.history-note{max-width:none}.history-cta{width:100%}.history-fin-form{width:100%}}
 
 /* ===== Verkaufsseite: alle Inhalte als übersichtliche Karten ===== */
 .sell-card{
@@ -164,9 +169,10 @@
           <a class="history-cta" href="https://www.carvertical.deal/2HLM53N/5MJ263/?source_id=AFF&amp;sub1=autoknigge" target="_blank" rel="noopener sponsored">
             <span>Historie prüfen *</span><b>→</b>
           </a>
-          <a class="history-cta secondary" href="https://www.carvertical.deal/2HLM53N/5MJ263/?uid=37&amp;source_id=AFF&amp;sub1=autoknigge&amp;sub3=FIN" target="_blank" rel="noopener sponsored">
-            <span>FIN / Kennzeichen *</span><b>↗</b>
-          </a>
+          <form class="history-fin-form" action="https://www.carvertical.deal/2HLM53N/5MJ263/" method="get" target="_blank" rel="noopener sponsored" onsubmit="var v=this.querySelector('input').value.trim(); if(!v){return false;} this.action='https://www.carvertical.deal/2HLM53N/5MJ263/?uid=37&source_id=AFF&sub1=autoknigge&sub3=' + encodeURIComponent(v);">
+            <input type="text" placeholder="FIN oder Kennzeichen" aria-label="FIN oder Kennzeichen eingeben" required>
+            <button type="submit">Prüfen *</button>
+          </form>
         </div>
       </div>
       
