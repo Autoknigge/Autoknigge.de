@@ -18,6 +18,7 @@
             --accent-color: #f59e0b;
             --bg-color: #f8fafc;
             --card-radius: 12px;
+            --affiliate-color: #d97706; /* Warmer Orangeton für Affiliate-Links */
         }
 
         body {
@@ -84,7 +85,11 @@
             position: relative;
         }
 
-        /* Knigge Tipp Box */
+        /* Knigge Tipp Box Container */
+        .knigge-section {
+            margin-bottom: 3rem;
+        }
+
         .knigge-box {
             background: white;
             border-radius: var(--card-radius);
@@ -92,14 +97,13 @@
             display: flex;
             flex-wrap: wrap;
             overflow: hidden;
-            margin-bottom: 3rem;
             border-left: 6px solid var(--accent-color);
         }
 
         .knigge-img {
             flex: 1;
             min-width: 300px;
-            max-height: 400px;
+            max-height: 420px;
             overflow: hidden;
         }
 
@@ -124,6 +128,40 @@
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+
+        .knigge-quote {
+            background-color: #f1f5f9;
+            border-left: 4px solid var(--primary-color);
+            padding: 0.8rem 1.2rem;
+            margin-top: 1rem;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+
+        /* Styling für den Affiliate-Link */
+        a.affiliate-link {
+            color: var(--affiliate-color);
+            font-weight: 700;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            transition: all 0.2s ease-in-out;
+            padding: 0.1rem 0.3rem;
+            background-color: #fffbe6;
+            border-radius: 4px;
+        }
+
+        a.affiliate-link:hover {
+            color: #b45309;
+            background-color: #fef3c7;
+            text-decoration: underline;
+        }
+
+        .affiliate-disclaimer {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin-top: 0.5rem;
+            text-align: right;
         }
 
         /* Kacheln Grid */
@@ -256,7 +294,7 @@
 </head>
 <body>
 
-    <!-- Obere Navigation / Menüintegration -->
+    <!-- Navigation -->
     <nav class="site-nav">
         <a href="index.html" class="logo"><i class="fa-solid fa-car"></i> Autoknigge.de</a>
         <div>
@@ -276,14 +314,24 @@
 
     <div class="container">
 
-        <!-- Knigge Tipp Box mit Bild -->
-        <div class="knigge-box">
-            <div class="knigge-img">
-                <img src="1000206219.jpg" alt="Knigge bei der professionellen Reifenarbeit in der Werkstatt">
+        <!-- Knigge Tipp Box inklusive Wagenheber Affiliate-Link -->
+        <div class="knigge-section">
+            <div class="knigge-box">
+                <div class="knigge-img">
+                    <img src="1000206219.jpg" alt="Knigge bei der professionellen Reifenarbeit in der Werkstatt">
+                </div>
+                <div class="knigge-content">
+                    <h3><i class="fa-solid fa-lightbulb"></i> Knigges knackiger Tipp</h3>
+                    <p>„Wer am Reifen spart, spart am falschen Ende – er ist schließlich der einzige Kontakt zur Straße! Regelmäßiger Check von Luftdruck und Profil spart Sprit, schont die Nerven und rettet im Ernstfall Leben.“</p>
+                    
+                    <div class="knigge-quote">
+                        <i class="fa-solid fa-shield-halved" style="color: #3b82f6; margin-right: 6px;"></i>
+                        „Denk immer an safety first, bevor du an deinem Auto schraubst: <a href="https://link.amazon/B04IjMDDn" target="_blank" rel="nofollow noopener" class="affiliate-link">Ein ordentlicher Wagenheber ist Pflicht*</a>!“
+                    </div>
+                </div>
             </div>
-            <div class="knigge-content">
-                <h3><i class="fa-solid fa-lightbulb"></i> Knigges knackiger Tipp</h3>
-                <p>„Wer am Reifen spart, spart am falschen Ende – er ist schließlich der einzige Kontakt zur Straße! Regelmäßiger Check von Luftdruck und Profil spart Sprit, schont die Nerven und rettet im Ernstfall Leben.“</p>
+            <div class="affiliate-disclaimer">
+                * Hinweis: Bei Links mit einem Sternchen handelt es sich um sogenannte Affiliate-Links. Wenn Sie darüber einkaufen, erhalten wir eine kleine Provision. Für Sie ändert sich der Preis dadurch nicht.
             </div>
         </div>
 
@@ -350,7 +398,7 @@
 
     </div>
 
-    <!-- Footer mit Verweisen auf Dokumente, Rechtliches und Kategorien -->
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-col">
