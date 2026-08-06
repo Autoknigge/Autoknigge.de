@@ -49,19 +49,18 @@
 .cv-gold-btn-line2{font-size:.9rem;font-weight:600;color:#0f241d}
 .cv-fin-group{display:flex;flex-direction:column;align-items:center;gap:.45rem}
 .cv-fin-label{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.62)}
-.cv-fin-form{display:flex;align-items:stretch;gap:.5rem;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.45);border-radius:16px;padding:.35rem .35rem .35rem 1rem;transition:border-color .2s ease,background .2s ease}
-.cv-fin-form:focus-within{border-color:rgba(212,168,67,.85);background:rgba(255,255,255,.14)}
-.cv-fin-icon{display:flex;align-items:center;font-size:1rem;opacity:.85}
-.cv-fin-form input{flex:1;min-width:0;width:170px;background:transparent;border:none;color:#fff;font-size:.95rem;font-weight:600;padding:.4rem 0;outline:none}
-.cv-fin-form input::placeholder{color:rgba(255,255,255,.65)}
-.cv-fin-form button{background:rgba(255,255,255,.15);color:#fff;border:none;border-radius:12px;padding:.65rem 1.1rem;font-size:.9rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:background .2s ease}
+.cv-fin-form{display:flex;align-items:stretch;gap:.5rem;background:transparent;border:none;padding:0}
+.cv-fin-form input{flex:1;min-width:0;width:170px;background:#fff;border:1.5px solid rgba(255,255,255,.7);color:#101f19;font-size:.95rem;font-weight:600;padding:.65rem .9rem;border-radius:12px;outline:none;transition:border-color .2s ease,box-shadow .2s ease}
+.cv-fin-form input:focus{border-color:#d4a843;box-shadow:0 0 0 3px rgba(212,168,67,.3)}
+.cv-fin-form input::placeholder{color:#6b7a74}
+.cv-fin-form button{background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.45);border-radius:12px;padding:.65rem 1.1rem;font-size:.9rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:background .2s ease}
 .cv-fin-form button:hover{background:rgba(255,255,255,.28)}
 .cv-star{font-weight:700;opacity:.75}
 .cv-action-note{text-align:center;margin-top:.85rem;position:relative;z-index:1}
 .cv-action-note p{margin:.25rem 0 0;font-size:.78rem;color:rgba(255,255,255,.55);line-height:1.5}
 .cv-action-note strong{color:rgba(255,255,255,.75)}
 @media(max-width:700px){.history-sale-card{padding:1.2rem;border-radius:20px}.history-sale-top{align-items:flex-start}.history-label{display:none}.history-badges{grid-template-columns:repeat(2,1fr)}.history-sale-bottom{flex-direction:column}.history-note{max-width:none}.cv-gold-btn{width:100%}.cv-fin-group{width:100%}}
-@media(max-width:480px){.cv-fin-form{flex-direction:column;padding:.7rem}.cv-fin-form input{width:100%;padding:.4rem .2rem}}
+@media(max-width:480px){.cv-fin-form{flex-direction:column;padding:0}.cv-fin-form input{width:100%}}
 
 /* ===== Verkaufsseite: alle Inhalte als übersichtliche Karten ===== */
 .sell-card{
@@ -183,7 +182,6 @@
           <div class="cv-fin-group">
             <span class="cv-fin-label">oder FIN / Kennzeichen eingeben</span>
             <form class="cv-fin-form" action="https://www.carvertical.deal/2HLM53N/5MJ263/" method="get" target="_blank" rel="noopener sponsored" onsubmit="var v=this.querySelector('input').value.trim(); if(!v){return false;} this.action='https://www.carvertical.deal/2HLM53N/5MJ263/?uid=37&source_id=AFF&sub1=autoknigge&sub3=' + encodeURIComponent(v);">
-              <span class="cv-fin-icon" aria-hidden="true">🔎</span>
               <input type="text" placeholder="FIN oder Kennzeichen" aria-label="FIN oder Kennzeichen eingeben" required>
               <button type="submit">Prüfen<span class="cv-star">*</span></button>
             </form>

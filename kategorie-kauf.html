@@ -168,39 +168,34 @@
     display: flex;
     align-items: stretch;
     gap: 0.5rem;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1.5px solid rgba(255, 255, 255, 0.45);
-    border-radius: 16px;
-    padding: 0.35rem 0.35rem 0.35rem 1rem;
-    position: relative;
-    z-index: 2;
-    transition: border-color 0.2s ease, background 0.2s ease;
-  }
-  .cv-fin-form:focus-within {
-    border-color: rgba(212, 168, 67, 0.85);
-    background: rgba(255, 255, 255, 0.14);
-  }
-  .cv-fin-icon {
-    display: flex;
-    align-items: center;
-    font-size: 1rem;
-    opacity: 0.85;
-  }
-  .cv-fin-form input {
     background: transparent;
     border: none;
+    padding: 0;
+    position: relative;
+    z-index: 2;
+  }
+  .cv-fin-form input {
+    background: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.7);
     outline: none;
-    color: #ffffff;
+    color: #101f19;
     font-size: 0.95rem;
     font-weight: 600;
     min-width: 0;
     width: 170px;
+    border-radius: 12px;
+    padding: 0.65rem 0.9rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
-  .cv-fin-form input::placeholder { color: rgba(255, 255, 255, 0.65); }
+  .cv-fin-form input:focus {
+    border-color: #d4a843;
+    box-shadow: 0 0 0 3px rgba(212, 168, 67, 0.3);
+  }
+  .cv-fin-form input::placeholder { color: #6b7a74; }
   .cv-fin-form button {
     background: rgba(255, 255, 255, 0.15);
     color: #ffffff;
-    border: none;
+    border: 1.5px solid rgba(255, 255, 255, 0.45);
     border-radius: 12px;
     padding: 0.65rem 1.1rem;
     font-size: 0.9rem;
@@ -213,8 +208,8 @@
   .cv-fin-group { display: flex; flex-direction: column; align-items: center; gap: 0.45rem; }
   .cv-fin-label { font-size: 0.78rem; font-weight: 600; color: rgba(255, 255, 255, 0.62); }
   @media (max-width: 480px) {
-    .cv-fin-form { flex-direction: column; padding: 0.7rem; }
-    .cv-fin-form input { width: 100%; padding: 0.4rem 0.2rem; }
+    .cv-fin-form { flex-direction: column; padding: 0; }
+    .cv-fin-form input { width: 100%; }
     .cv-fin-group { width: 100%; }
   }
   .cv-action-note {
@@ -457,7 +452,6 @@
             <div class="cv-fin-group">
               <span class="cv-fin-label">oder FIN / Kennzeichen eingeben</span>
               <form class="cv-fin-form" action="https://www.carvertical.deal/2HLM53N/5MJ263/" method="get" target="_blank" rel="noopener sponsored" onsubmit="var v=this.querySelector('input').value.trim(); if(!v){return false;} this.action='https://www.carvertical.deal/2HLM53N/5MJ263/?uid=37&source_id=AFF&sub1=autoknigge&sub3=' + encodeURIComponent(v);">
-                <span class="cv-fin-icon" aria-hidden="true">🔎</span>
                 <input type="text" placeholder="FIN oder Kennzeichen" aria-label="FIN oder Kennzeichen eingeben" required>
                 <button type="submit">Prüfen<span class="cv-star">*</span></button>
               </form>
