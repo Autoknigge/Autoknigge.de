@@ -90,7 +90,7 @@
         '<p class="cc-text" id="cc-text">' +
           'Wir verwenden technisch notwendige Speicherungen für den sicheren Betrieb der Website. ' +
           'Optionale Dienste für Statistik und Werbung werden nur aktiviert, wenn Sie ihnen zustimmen. ' +
-          'Ihre Auswahl können Sie jederzeit über <strong>„Cookie-Einstellungen“</strong> im Footer ändern. ' +
+          'Ihre Auswahl können Sie jederzeit über den Link <strong>„Cookie-Einstellungen“</strong> ganz unten auf jeder Seite ändern. ' +
           'Mehr Informationen finden Sie in der <a href="datenschutz.html">Datenschutzerklärung</a> und im ' +
           '<a href="impressum.html">Impressum</a>.' +
         '</p>' +
@@ -134,7 +134,7 @@
           '</div>' +
 
           '<p class="cc-legal-note">' +
-            'Sie können eine erteilte Einwilligung jederzeit mit Wirkung für die Zukunft über den Footer ändern oder widerrufen.' +
+            'Sie können eine erteilte Einwilligung jederzeit mit Wirkung für die Zukunft ändern oder widerrufen – über den Link „Cookie-Einstellungen“ ganz unten auf jeder Seite.' +
           '</p>' +
         '</div>' +
       '</div>';
