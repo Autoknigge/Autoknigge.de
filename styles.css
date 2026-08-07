@@ -1214,21 +1214,25 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
   background-position: center;
   isolation: isolate;
 }
-/* Neue Knigge-Bildsprache: Gesicht und Augen bleiben frei, der Tipp liegt in einem ruhigen Bildbereich. */
-.knigge-quote-versicherung .knigge-quote-image,
-.knigge-quote-sparen .knigge-quote-image,
-.knigge-quote-recht .knigge-quote-image,
-.knigge-quote-wechseln .knigge-quote-image,
-.knigge-quote-schaden .knigge-quote-image,
+/* Neue Knigge-Bildsprache: Gesicht und Augen bleiben frei, der Tipp liegt in einem ruhigen Bildbereich.
+   Drei unterschiedliche Fotos sorgen für Abwechslung statt eines Einheitsbilds über die ganze Seite. */
 .knigge-quote-ueber .knigge-quote-image,
-.knigge-quote-unfallrat .knigge-quote-image,
-.knigge-quote-oel .knigge-quote-image {
+.knigge-quote-wechseln .knigge-quote-image {
   background-image: url('knigge-neu-gespraech.jpg');
   background-position: center center;
 }
+.knigge-quote-versicherung .knigge-quote-image,
+.knigge-quote-sparen .knigge-quote-image,
+.knigge-quote-oel .knigge-quote-image,
 .knigge-quote-leasing .knigge-quote-image {
-  background-image: url('knigge-neu-gespraech.jpg');
-  background-position: center center;
+  background-image: url('knigge-buero-kaffee.jpg');
+  background-position: center 22%;
+}
+.knigge-quote-recht .knigge-quote-image,
+.knigge-quote-schaden .knigge-quote-image,
+.knigge-quote-unfallrat .knigge-quote-image {
+  background-image: url('knigge-auto-handy.jpg');
+  background-position: center 30%;
 }
 .knigge-quote-leasing .knigge-quote-content { margin-left: 0; margin-right: auto; }
 .knigge-quote-zulassung .knigge-quote-image,
