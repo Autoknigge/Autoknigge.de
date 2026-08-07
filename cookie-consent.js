@@ -132,10 +132,6 @@
           '<div class="cc-save-wrap">' +
             '<button type="button" class="cc-btn cc-btn-primary" id="cc-save-selection">Auswahl speichern</button>' +
           '</div>' +
-
-          '<p class="cc-legal-note">' +
-            'Sie können eine erteilte Einwilligung jederzeit mit Wirkung für die Zukunft ändern oder widerrufen – über den Link „Cookie-Einstellungen“ ganz unten auf jeder Seite.' +
-          '</p>' +
         '</div>' +
       '</div>';
 
