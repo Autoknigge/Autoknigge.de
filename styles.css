@@ -1244,8 +1244,36 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
   background-position: center center;
 }
 .knigge-quote-reifen .knigge-quote-image {
-  background-image: url('reifen.jpg');
-  background-position: center 18%;
+  background-image: url('knigge-reifen-werkstatt.jpg');
+  background-position: 55% center;
+}
+.knigge-quote-reifen-auswuchten .knigge-quote-image {
+  background-image: url('knigge-reifen-auswuchten.jpg');
+  background-position: center center;
+  min-height: 390px;
+}
+.knigge-quote-reifen-auswuchten .knigge-quote-shade {
+  background: linear-gradient(0deg, rgba(5,12,10,.88) 0%, rgba(5,12,10,.50) 42%, rgba(5,12,10,.06) 78%);
+}
+.knigge-quote-reifen-auswuchten .knigge-quote-content {
+  margin-left: 0;
+  margin-right: auto;
+  max-width: 760px;
+  align-self: flex-end;
+  padding-bottom: 2.2rem;
+}
+@media (max-width:760px) {
+  .knigge-quote-reifen .knigge-quote-image {
+    background-position: 58% center;
+    min-height: 420px;
+  }
+  .knigge-quote-reifen-auswuchten .knigge-quote-image {
+    min-height: 520px;
+    background-position: center center;
+  }
+  .knigge-quote-reifen-auswuchten .knigge-quote-shade {
+    background: linear-gradient(0deg, rgba(5,12,10,.94) 0%, rgba(5,12,10,.62) 48%, rgba(5,12,10,.08) 82%);
+  }
 }
 .knigge-quote-versicherung .knigge-quote-content,
 .knigge-quote-sparen .knigge-quote-content,
