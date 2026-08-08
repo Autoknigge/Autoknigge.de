@@ -32,15 +32,10 @@
 .licht-scale.s2{background:#eef2fb}.licht-scale.s2 .licht-num{color:#3730a3}
 .licht-scale.s3{background:#e8f7fa}.licht-scale.s3 .licht-num{color:#0891b2}
 .licht-scale.s4{background:#f3eefb}.licht-scale.s4 .licht-num{color:#7c3aed}
-.licht-detail-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1.2rem 0 2rem}
-.licht-detail{border-radius:16px;padding:1.3rem 1.4rem;border:1px solid rgba(10,28,22,.08)}
-.licht-detail .tile-icon{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;font-size:1.15rem;margin-bottom:.6rem}
-.licht-detail h3{margin:0 0 .5rem;font-size:1.05rem}
-.licht-detail p{margin:0;font-size:.92rem;line-height:1.62;color:var(--text-body,#425852)}
 .licht-info-card{display:flex;gap:1rem;align-items:flex-start;background:#eef6fb;border:1px solid #cfe4f2;border-radius:16px;padding:1.3rem 1.4rem;margin:1.2rem 0 2rem}
 .licht-info-card .tile-icon{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;font-size:1.15rem;background:#d9ecf7;color:#1f6fa8;flex-shrink:0}
 .licht-info-card p{margin:0;font-size:.94rem;line-height:1.65;color:#2c4a5e}
-@media(max-width:900px){.licht-tile-grid{grid-template-columns:repeat(2,1fr)}.licht-scale-grid{grid-template-columns:repeat(2,1fr)}.licht-detail-grid{grid-template-columns:1fr}}
+@media(max-width:900px){.licht-tile-grid{grid-template-columns:repeat(2,1fr)}.licht-scale-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.licht-tile-grid,.licht-scale-grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -77,7 +72,6 @@
       <div class="cat-page-title-wrap">
         <h1>Licht</h1>
       </div>
-      <p class="lead">Nicht jedes Licht ist gleich hell – und nicht jedes hellere Licht ist erlaubt. Funktionsweise, Leuchtkraft und rechtliche Grenzen der wichtigsten Beleuchtungsarten im Überblick.</p>
     </div>
 
     <section class="knigge-quote-card knigge-quote-licht" aria-label="Knigge-Tipp: Beleuchtung">
@@ -96,22 +90,22 @@
         <div class="licht-tile t-halogen">
           <div class="tile-icon">💡</div>
           <h3>Halogen</h3>
-          <p>Glühwendel in Gasfüllung, günstig und einfach zu tauschen. Warmweißes Licht, moderate Lichtausbeute – der Klassiker im Serienauto.</p>
+          <p>Glühwendel in Halogengas-Füllung – simpel, robust, bis heute Basisausstattung vieler Fahrzeuge. Moderate Lichtausbeute, dafür in Minuten preiswert selbst getauscht.</p>
         </div>
         <div class="licht-tile t-xenon">
           <div class="tile-icon">⚡</div>
           <h3>Xenon / HID</h3>
-          <p>Lichtbogen in einer Gasentladungslampe statt Glühwendel. Deutlich heller und bläulicher, braucht Zündgerät und ist gesetzlich an Scheinwerferreinigung und Leuchtweitenregulierung gekoppelt.</p>
+          <p>Lichtbogen zwischen zwei Elektroden statt Glühwendel, braucht ein Zündgerät. Deutlich heller und bläulicher – gesetzlich zwingend mit Leuchtweitenregulierung und Scheinwerferreinigung gekoppelt, um andere nicht zu blenden.</p>
         </div>
         <div class="licht-tile t-led">
           <div class="tile-icon">🔆</div>
           <h3>LED</h3>
-          <p>Halbleiter statt Glühwendel oder Gas: effizient, langlebig, präzise steuerbar. Basis für moderne Matrix- und Tagfahrlicht-Systeme.</p>
+          <p>Halbleiter erzeugen Licht direkt aus Strom – effizient, langlebig, exakt bis auf einzelne Segmente steuerbar. Basis für moderne Matrix- und Tagfahrlicht-Systeme.</p>
         </div>
         <div class="licht-tile t-laser">
           <div class="tile-icon">🔦</div>
           <h3>Laserlicht</h3>
-          <p>Ergänzt als Zusatzfernlicht in der Oberklasse extrem punktgenau und reichweitenstark – selten, teuer und nur als Zusatz zum LED-Abblendlicht zugelassen.</p>
+          <p>Laserdioden regen einen Leuchtstoff an, das Licht wird stark gebündelt – enorme Reichweite. Nur als Zusatz zum LED-Abblendlicht zugelassen, mit Sicherheitsabschaltung bei erkannten Objekten.</p>
         </div>
         <div class="licht-tile t-tfl">
           <div class="tile-icon">🌤️</div>
@@ -132,32 +126,6 @@
           <div class="tile-icon">🚦</div>
           <h3>Blinker &amp; Rückleuchten</h3>
           <p>Meist separat geregelt, zunehmend als LED mit dynamischem Lauflicht – Funktionskontrolle gehört zum Pflichtcheck vor jeder Fahrt.</p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Funktionsweise im Detail: Warum die Technik den Unterschied macht</h2>
-      <div class="licht-detail-grid">
-        <div class="licht-detail t-halogen">
-          <div class="tile-icon">💡</div>
-          <h3>Halogen</h3>
-          <p>Erzeugt Licht klassisch über eine glühende Wolfram-Wendel in einer Halogengas-Füllung – simpel, robust und deshalb bis heute die Basisausstattung vieler Fahrzeuge. Die Lichtausbeute ist im Vergleich zu moderneren Technologien begrenzt, dafür ist der Austausch meist in wenigen Minuten preiswert erledigt.</p>
-        </div>
-        <div class="licht-detail t-xenon">
-          <div class="tile-icon">⚡</div>
-          <h3>Xenon (HID)</h3>
-          <p>Erzeugt Licht durch einen Lichtbogen zwischen zwei Elektroden in einer Gasentladungsröhre. Das braucht ein Zündgerät für die Hochspannung beim Start, liefert dafür deutlich mehr Licht bei geringerem Stromverbrauch. Weil Xenon-Licht so viel heller strahlt, schreibt der Gesetzgeber eine automatische Leuchtweitenregulierung und eine Scheinwerferreinigungsanlage zwingend vor – beides soll verhindern, dass entgegenkommende Fahrer geblendet werden.</p>
-        </div>
-        <div class="licht-detail t-led">
-          <div class="tile-icon">🔆</div>
-          <h3>LED</h3>
-          <p>Nutzt Halbleiter, die bei Stromfluss direkt Licht erzeugen – ohne Glühwendel oder Gasentladung. Das macht LEDs sehr effizient, langlebig und exakt steuerbar. Genau diese Steuerbarkeit ist die Grundlage für Matrix-Licht, das bei eingeschaltetem Fernlicht Gegenverkehr gezielt aussparen kann.</p>
-        </div>
-        <div class="licht-detail t-laser">
-          <div class="tile-icon">🔦</div>
-          <h3>Laserlicht</h3>
-          <p>Hier regen Laserdioden einen Leuchtstoff zum Strahlen an, das Ergebnis wird stark gebündelt. So lassen sich Reichweiten erzielen, die mit LED allein kaum möglich sind – allerdings nur als Zusatzmodul zum reduzierten LED-Abblendlicht, mit Sicherheitsabschaltung, sobald ein Objekt im Strahl erkannt wird.</p>
         </div>
       </div>
     </section>
