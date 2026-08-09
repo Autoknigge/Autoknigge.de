@@ -10,6 +10,25 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f241d">
+<style>
+.innen-tile-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:1.3rem 0 2rem}
+.innen-tile{border-radius:16px;padding:1.2rem 1.25rem;border:1px solid rgba(10,28,22,.08)}
+.innen-tile .tile-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;font-size:1.25rem;margin-bottom:.7rem}
+.innen-tile h3{margin:0 0 .35rem;font-size:1rem}
+.innen-tile p{margin:0;font-size:.88rem;line-height:1.55;color:var(--text-body,#425852)}
+.innen-tile.t-hygiene{background:#fdecec;border-color:#f5c6c6}.innen-tile.t-hygiene .tile-icon{background:#fad9d9;color:#dc2626}
+.innen-tile.t-wert{background:#fdf3e2;border-color:#f7dfa8}.innen-tile.t-wert .tile-icon{background:#faeac6;color:#b45309}
+.innen-tile.t-geruch{background:#eaf2fb;border-color:#c9defa}.innen-tile.t-geruch .tile-icon{background:#d7e7fb;color:#2563eb}
+.innen-tile.t-material{background:#eaf7ef;border-color:#c8ecd4}.innen-tile.t-material .tile-icon{background:#d4f0dd;color:#059669}
+.innen-step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.3rem 0 2rem}
+.innen-step{border-radius:16px;padding:1.2rem 1.25rem;border:1px solid rgba(10,28,22,.08);background:#f4f8fc}
+.innen-step .step-no{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:#0f241d;color:#fff;font-weight:800;font-size:.85rem;margin-bottom:.6rem}
+.innen-step .tile-icon{font-size:1.3rem;margin-left:.5rem}
+.innen-step h3{margin:0 0 .35rem;font-size:.98rem}
+.innen-step p{margin:0;font-size:.86rem;line-height:1.5;color:var(--text-body,#425852)}
+@media(max-width:900px){.innen-tile-grid{grid-template-columns:repeat(2,1fr)}.innen-step-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.innen-tile-grid,.innen-step-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <header class="site-header header-logo-large" id="top">
@@ -42,9 +61,8 @@
     </nav>
     <div class="cat-page-header cat-pflege">
       <div class="cat-page-title-wrap">
-        <h1>Innenraum-Werterhalt: Hygienisch sauber mit den richtigen Helfern</h1>
+        <h1>Innenraum</h1>
       </div>
-      <p class="lead">Ein sauberer Innenraum ist nicht nur eine Frage der Ästhetik, sondern auch der Hygiene und des Werterhalts. Mit der richtigen Pflege und den passenden Werkzeugen bleibt Ihr Auto lange frisch und gepflegt.</p>
     </div>
 
     <section class="knigge-quote-card knigge-quote-pflege" aria-label="Knigge-Tipp: KFZ-Pflege">
@@ -58,36 +76,42 @@
 </section>
     <section>
       <h2>Warum gründliche Innenraumpflege so wichtig ist</h2>
-      <p>Der Innenraum Ihres Fahrzeugs ist täglich einer Vielzahl von Belastungen ausgesetzt. Staub, kleine Steinchen, Krümel, verschüttete Getränke und nicht zuletzt Bakterien und Allergene setzen sich in Polstern und Teppichen fest. Eine regelmäßige, oberflächliche Reinigung entfernt zwar den sichtbaren Schmutz, aber die tiefer liegenden Rückstände bleiben oft erhalten. Diese können nicht nur unangenehme Gerüche verursachen, sondern auch das Material angreifen und so den Wert Ihres Fahrzeugs mindern. Eine gründliche Tiefenreinigung ist daher keine Luxus-Anschaffung, sondern eine sinnvolle Investition in die Langlebigkeit und den Werterhalt Ihres Autos – und nicht zuletzt in Ihr eigenes Wohlbefinden am Steuer.</p>
-    </section>
-    <section>
-      <h2>Die Tiefenreinigung: Nasssauger & Multireiniger im Einsatz</h2>
-      <p>Um Polster und Teppiche wirklich gründlich zu reinigen, führt an einem <strong>Nasssauger</strong> oft kein Weg vorbei. Im Gegensatz zu herkömmlichen Staubsaugern arbeiten diese Geräte mit Wasser und einem speziellen Reinigungsmittel. Der Schmutz wird gelöst und mit dem Wasser zusammen abgesaugt, sodass die Fasern von innen heraus sauber werden. Die Kombination aus einem leistungsstarken Nasssauger und einem hochwertigen Multireiniger ist dabei das A und O für ein hygienisch sauberes Ergebnis.</p>
-      <div class="partner-section" style="margin: 2rem 0;">
-        <h3>🧼 Gründliche Hygiene für Polster & Teppich</h3>
-        <p class="partner-desc">Für die Tiefenreinigung und den Werterhalt Ihres Fahrzeuginnenraums empfehle ich diese Produkte. Ein leistungsstarker Nasssauger entfernt selbst hartnäckigen Schmutz aus Polstern und Teppichen. In Kombination mit einem speziellen Multireiniger erzielen Sie ein hygienisch sauberes Ergebnis, das den Innenraum auffrischt und vor vorzeitigem Verschleiß schützt.</p>
-        <div class="partner-buttons">
-          <a href="https://link.amazon/B0hxdeNk1" target="_blank" rel="noopener sponsored" class="partner-button">
-            <span class="partner-icon">🧹</span>
-            <span class="partner-name">Nasssauger für Polster & Teppich*</span>
-            <span class="partner-arrow">→</span>
-          </a>
-          <a href="https://link.amazon/B0icdToR8" target="_blank" rel="noopener sponsored" class="partner-button">
-            <span class="partner-icon">🧴</span>
-            <span class="partner-name">Multireiniger für Hygiene*</span>
-            <span class="partner-arrow">→</span>
-          </a>
+      <p>Der Innenraum Ihres Fahrzeugs ist täglich einer Vielzahl von Belastungen ausgesetzt. Eine regelmäßige, oberflächliche Reinigung entfernt zwar den sichtbaren Schmutz, aber die tiefer liegenden Rückstände bleiben oft erhalten.</p>
+      <div class="innen-tile-grid">
+        <div class="innen-tile t-hygiene">
+          <div class="tile-icon">🦠</div>
+          <h3>Hygiene</h3>
+          <p>Staub, Krümel, Bakterien und Allergene setzen sich in Polstern fest – oberflächliches Saugen entfernt oft nur, was sichtbar ist.</p>
+        </div>
+        <div class="innen-tile t-wert">
+          <div class="tile-icon">💰</div>
+          <h3>Werterhalt</h3>
+          <p>Tiefer sitzender Schmutz und Flecken mindern den Wiederverkaufswert – bei der Besichtigung fällt das schnell auf.</p>
+        </div>
+        <div class="innen-tile t-geruch">
+          <div class="tile-icon">👃</div>
+          <h3>Gerüche</h3>
+          <p>Eingezogene Feuchtigkeit und Rückstände können unangenehme Gerüche verursachen, die sich kaum überdecken lassen.</p>
+        </div>
+        <div class="innen-tile t-material">
+          <div class="tile-icon">🧵</div>
+          <h3>Material</h3>
+          <p>Sand und Krümel wirken wie Schleifpapier und schädigen Fasern und Polster auf Dauer, wenn sie nicht entfernt werden.</p>
         </div>
       </div>
+    </section>
+    <section>
+      <h2>Tiefenreinigung</h2>
+      <p>Um Polster und Teppiche wirklich gründlich zu reinigen, führt an einem <a href="https://link.amazon/B0hxdeNk1" target="_blank" rel="noopener sponsored" class="gold-inline-link">Nasssauger</a><span class="star">*</span> oft kein Weg vorbei. Im Gegensatz zu herkömmlichen Staubsaugern arbeiten diese Geräte mit Wasser und einem speziellen Reinigungsmittel. Der Schmutz wird gelöst und mit dem Wasser zusammen abgesaugt, sodass die Fasern von innen heraus sauber werden. In Kombination mit einem hochwertigen <a href="https://link.amazon/B0icdToR8" target="_blank" rel="noopener sponsored" class="gold-inline-link">Multireiniger</a><span class="star">*</span> erzielen Sie ein hygienisch sauberes Ergebnis, das den Innenraum auffrischt und vor vorzeitigem Verschleiß schützt.</p>
       <h3>Anwendung: Schritt für Schritt zur sauberen Sache</h3>
-      <ol>
-        <li><strong>Vorbereitung:</strong> Saugen Sie lose Verschmutzungen und groben Staub gründlich mit einem handelsüblichen Staubsauger ab.</li>
-        <li><strong>Reinigungslösung ansetzen:</strong> Bereiten Sie den Multireiniger gemäß der Herstellerangaben in klarem Wasser vor.</li>
-        <li><strong>Einsaugen:</strong> Tragen Sie die Reinigungslösung mit dem Nasssauger auf die Polster und Teppiche auf. Arbeiten Sie in Bahnen, um keine Stelle auszulassen.</li>
-        <li><strong>Einwirken:</strong> Lassen Sie den Reiniger für die empfohlene Zeit einwirken, damit er den Schmutz lösen kann.</li>
-        <li><strong>Aussaugen:</strong> Saugen Sie die gelöste Schmutzflüssigkeit gründlich mit dem Nasssauger wieder ab.</li>
-        <li><strong>Trocknen:</strong> Lassen Sie den Innenraum bei geöffneten Fenstern oder Türen vollständig trocknen, um Schimmelbildung zu vermeiden.</li>
-      </ol>
+      <div class="innen-step-grid">
+        <div class="innen-step"><span class="step-no">1</span><span class="tile-icon">🧹</span><h3>Vorbereitung</h3><p>Lose Verschmutzungen und groben Staub gründlich mit einem handelsüblichen Staubsauger abziehen.</p></div>
+        <div class="innen-step"><span class="step-no">2</span><span class="tile-icon">🧪</span><h3>Reinigungslösung ansetzen</h3><p>Den Multireiniger gemäß Herstellerangaben in klarem Wasser vorbereiten.</p></div>
+        <div class="innen-step"><span class="step-no">3</span><span class="tile-icon">💦</span><h3>Einsaugen</h3><p>Die Reinigungslösung mit dem Nasssauger auftragen, in Bahnen arbeiten, keine Stelle auslassen.</p></div>
+        <div class="innen-step"><span class="step-no">4</span><span class="tile-icon">⏱️</span><h3>Einwirken</h3><p>Den Reiniger für die empfohlene Zeit einwirken lassen, damit er den Schmutz lösen kann.</p></div>
+        <div class="innen-step"><span class="step-no">5</span><span class="tile-icon">🌀</span><h3>Aussaugen</h3><p>Die gelöste Schmutzflüssigkeit gründlich mit dem Nasssauger wieder absaugen.</p></div>
+        <div class="innen-step"><span class="step-no">6</span><span class="tile-icon">🌬️</span><h3>Trocknen</h3><p>Bei geöffneten Fenstern oder Türen vollständig trocknen lassen, um Schimmelbildung zu vermeiden.</p></div>
+      </div>
       <p>Nach dieser Prozedur werden Sie nicht nur den optischen Unterschied sehen, sondern auch ein deutlich frischeres Raumklima im Auto genießen. Die regelmäßige Anwendung – etwa ein- bis zweimal pro Jahr – schützt Ihre Polster und Teppiche nachhaltig und trägt so erheblich zum Werterhalt Ihres Fahrzeugs bei.</p>
     </section>
   </div>
