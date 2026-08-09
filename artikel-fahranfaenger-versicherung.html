@@ -10,6 +10,23 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f241d">
+<style>
+.fa-tile-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1.2rem 0 1.5rem}
+.fa-tile{border-radius:16px;padding:1.2rem 1.25rem;border:1px solid rgba(10,28,22,.08)}
+.fa-tile .tile-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;font-size:1.25rem;margin-bottom:.7rem}
+.fa-tile h3{margin:0 0 .35rem;font-size:1rem}
+.fa-tile p{margin:0;font-size:.9rem;line-height:1.55;color:var(--text-body,#425852)}
+.fa-tile.t-a{background:#eaf2fb;border-color:#c9defa}.fa-tile.t-a .tile-icon{background:#d7e7fb;color:#2563eb}
+.fa-tile.t-b{background:#fdf3e2;border-color:#f7dfa8}.fa-tile.t-b .tile-icon{background:#faeac6;color:#b45309}
+.fa-tile.t-c{background:#eaf7ef;border-color:#c8ecd4}.fa-tile.t-c .tile-icon{background:#d4f0dd;color:#059669}
+.fa-tile.t-d{background:#f3eefb;border-color:#ddd0f5}.fa-tile.t-d .tile-icon{background:#e6ddf8;color:#7c3aed}
+.fa-step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.2rem 0 1.5rem}
+.fa-step{border-radius:16px;padding:1.2rem 1.25rem;border:1px solid rgba(10,28,22,.08);background:#f4f8fc}
+.fa-step .step-no{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:#0f241d;color:#fff;font-weight:800;font-size:.85rem;margin-bottom:.6rem}
+.fa-step h3{margin:0 0 .35rem;font-size:.98rem}
+.fa-step p{margin:0;font-size:.86rem;line-height:1.5;color:var(--text-body,#425852)}
+@media(max-width:700px){.fa-tile-grid,.fa-step-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <header class="site-header header-logo-large" id="top">
@@ -42,9 +59,8 @@
     </nav>
     <div class="cat-page-header cat-versicherung">
       <div class="cat-page-title-wrap">
-        <h1>Fahranfänger Versicherung – So sparen Sie bei der Kfz-Versicherung</h1>
+        <h1>Fahranfänger</h1>
       </div>
-      <p class="lead">Tipps für Fahranfänger, um die Kfz-Versicherung günstig zu halten – von der SF-Klasse bis zu Telematik-Tarifen.</p>
     </div>
 
     <section class="knigge-quote-card knigge-quote-versicherung" aria-label="Knigge-Tipp: Versicherung">
@@ -58,28 +74,28 @@
 </section>
     <section>
       <h2>🔰 Checkliste Spar-Strategien: So sparen Fahranfänger hunderte Euro</h2>
-      <ul>
-        <li><strong>Zweitwagen-Regelung nutzen:</strong> Das Erstauto über Eltern oder Partner einstufen lassen – das ermöglicht den Direkteinstieg in SF 1/2 oder SF 1 statt der teuren SF 0.</li>
-        <li><strong>Telematik-Tarif aktivieren:</strong> Über eine App oder einen Stecker vorsichtiges Fahren nachweisen und bis zu 30 % Zusatzrabatt sichern.</li>
-        <li><strong>Fahrzeug mit niedriger Typklasse wählen:</strong> Beliebte Anfängerautos (z.B. ältere VW Golf) sind oft unfallträchtig und teuer. Typklasse vor dem Kauf prüfen!</li>
-        <li><strong>Selbstbeteiligung & jährliche Zahlweise:</strong> 150/300 € Selbstbehalt wählen und den Beitrag einmal jährlich per SEPA abbuchen lassen (spart ca. 5–8 % Ratenaufschlag).</li>
-      </ul>
+      <div class="fa-tile-grid">
+        <div class="fa-tile t-a"><div class="tile-icon">👨‍👩‍👧</div><h3>Zweitwagen-Regelung nutzen</h3><p>Das Erstauto über Eltern oder Partner einstufen lassen – das ermöglicht den Direkteinstieg in SF 1/2 oder SF 1 statt der teuren SF 0.</p></div>
+        <div class="fa-tile t-b"><div class="tile-icon">📱</div><h3>Telematik-Tarif aktivieren</h3><p>Über eine App oder einen Stecker vorsichtiges Fahren nachweisen und bis zu 30 % Zusatzrabatt sichern.</p></div>
+        <div class="fa-tile t-c"><div class="tile-icon">🚗</div><h3>Fahrzeug mit niedriger Typklasse wählen</h3><p>Beliebte Anfängerautos (z. B. ältere VW Golf) sind oft unfallträchtig und teuer. Typklasse vor dem Kauf prüfen!</p></div>
+        <div class="fa-tile t-d"><div class="tile-icon">📆</div><h3>Selbstbeteiligung &amp; jährliche Zahlweise</h3><p>150/300 € Selbstbehalt wählen und den Beitrag einmal jährlich per SEPA abbuchen lassen (spart ca. 5–8 % Ratenaufschlag).</p></div>
+      </div>
     </section>
     <section>
       <h2>📈 Checkliste SF-Klassen: Der Weg zu günstigen Beiträgen</h2>
       <p>Als Fahranfänger starten Sie ohne Vorversicherungszeiten in der Schadenfreiheitsklasse SF 0 (Beitragssatz oft über 90–120 %). Mit jedem unfallfreien Jahr klettern Sie eine Stufe nach oben:</p>
-      <ol>
-        <li><strong>Fahranfänger-Start:</strong> SF 0 (Beitragssatz ca. 95–120 %)</li>
-        <li><strong>1. unfallfreies Jahr:</strong> Einstufung in SF 1 (Beitragssatz fällt spürbar auf ca. 60–70 %)</li>
-        <li><strong>3. unfallfreies Jahr:</strong> Einstufung in SF 3 (Beitrag halbiert sich im Vergleich zum Start)</li>
-      </ol>
+      <div class="fa-step-grid">
+        <div class="fa-step"><span class="step-no">1</span><h3>Fahranfänger-Start</h3><p>SF 0, Beitragssatz ca. 95–120 %.</p></div>
+        <div class="fa-step"><span class="step-no">2</span><h3>1. unfallfreies Jahr</h3><p>Einstufung in SF 1, Beitragssatz fällt spürbar auf ca. 60–70 %.</p></div>
+        <div class="fa-step"><span class="step-no">3</span><h3>3. unfallfreies Jahr</h3><p>Einstufung in SF 3, Beitrag halbiert sich im Vergleich zum Start.</p></div>
+      </div>
     </section>
     <section>
       <h2>🚘 Checkliste Fahrzeugauswahl: Worauf achten?</h2>
-      <ul>
-        <li><strong>Geringe Motorleistung:</strong> Fahrzeuge unter 100 PS werden von Versicherern im Schnitt günstiger eingestuft.</li>
-        <li><strong>Modell-Typklasse vergleichen:</strong> Vergleichen Sie vor dem Gebrauchtwagenkauf stets die Typklassen der Wunschanwärter.</li>
-      </ul>
+      <div class="fa-tile-grid">
+        <div class="fa-tile t-a"><div class="tile-icon">🐎</div><h3>Geringe Motorleistung</h3><p>Fahrzeuge unter 100 PS werden von Versicherern im Schnitt günstiger eingestuft.</p></div>
+        <div class="fa-tile t-b"><div class="tile-icon">📊</div><h3>Modell-Typklasse vergleichen</h3><p>Vergleichen Sie vor dem Gebrauchtwagenkauf stets die Typklassen der Wunschanwärter.</p></div>
+      </div>
     </section>
   </div>
 </main>

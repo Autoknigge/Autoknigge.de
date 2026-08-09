@@ -79,6 +79,17 @@
     justify-content: center;
     margin-top: 1.5rem;
   }
+
+  .ep-tile-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1.2rem 0 1.5rem}
+  .ep-tile{border-radius:16px;padding:1.2rem 1.25rem;border:1px solid rgba(10,28,22,.08)}
+  .ep-tile .tile-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;font-size:1.25rem;margin-bottom:.7rem}
+  .ep-tile h3{margin:0 0 .35rem;font-size:1rem}
+  .ep-tile p{margin:0;font-size:.9rem;line-height:1.55;color:var(--text-body,#425852)}
+  .ep-tile.t-a{background:#eaf2fb;border-color:#c9defa}.ep-tile.t-a .tile-icon{background:#d7e7fb;color:#2563eb}
+  .ep-tile.t-b{background:#fdf3e2;border-color:#f7dfa8}.ep-tile.t-b .tile-icon{background:#faeac6;color:#b45309}
+  .ep-tile.t-c{background:#eaf7ef;border-color:#c8ecd4}.ep-tile.t-c .tile-icon{background:#d4f0dd;color:#059669}
+  .ep-tile.t-d{background:#f3eefb;border-color:#ddd0f5}.ep-tile.t-d .tile-icon{background:#e6ddf8;color:#7c3aed}
+  @media(max-width:700px){.ep-tile-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -112,9 +123,8 @@
     </nav>
     <div class="cat-page-header cat-kauf">
       <div class="cat-page-title-wrap">
-        <h1>E-Auto Kaufprämie 2026 – Checkliste Förderung</h1>
+        <h1>Kaufprämie</h1>
       </div>
-      <p class="lead">Der Kauf eines Elektroautos wird in Deutschland finanziell und steuerlich stark gefördert. Alle Informationen zu Einkommensgrenzen, Fristen, Kinderboni sowie gewerblichen Sonderabschreibungen auf einen Blick.</p>
     </div>
 
     <section class="knigge-quote-card knigge-quote-kauf" aria-label="Knigge-Tipp: Autokauf">
@@ -195,13 +205,13 @@
         </table>
       </div>
 
-      <h3>2. Wichtige Fristen & Nachweis-Zeiträume</h3>
-      <ul>
-        <li><strong>Zulassungszeitraum:</strong> Das Fahrzeug muss ab dem <strong>01. August 2026</strong> erstmals in Deutschland neu zugelassen worden sein.</li>
-        <li><strong>Antragsfrist:</strong> Der Online-Antrag kann rückwirkend gestellt werden, muss jedoch spätestens <strong>innerhalb von 12 Monaten nach Erstzulassung</strong> eingereicht werden.</li>
-        <li><strong>Mindesthaltedauer:</strong> Du musst das geförderte Fahrzeug mindestens <strong>36 Monate (3 Jahre)</strong> ab Erstzulassung auf deinen Namen halten.</li>
-        <li><strong>Nachweis des Einkommens:</strong> Als Nachweis gilt der Durchschnitt der **zwei aktuellsten Einkommensteuerbescheide** aller im Haushalt lebenden Personen. Diese dürfen zum Antragszeitpunkt maximal 3 Kalenderjahre alt sein.</li>
-      </ul>
+      <h3>2. Wichtige Fristen &amp; Nachweis-Zeiträume</h3>
+      <div class="ep-tile-grid">
+        <div class="ep-tile t-a"><div class="tile-icon">📅</div><h3>Zulassungszeitraum</h3><p>Das Fahrzeug muss ab dem <strong>01. August 2026</strong> erstmals in Deutschland neu zugelassen worden sein.</p></div>
+        <div class="ep-tile t-b"><div class="tile-icon">⏳</div><h3>Antragsfrist</h3><p>Der Online-Antrag kann rückwirkend gestellt werden, muss aber spätestens <strong>innerhalb von 12 Monaten nach Erstzulassung</strong> eingereicht werden.</p></div>
+        <div class="ep-tile t-c"><div class="tile-icon">🔒</div><h3>Mindesthaltedauer</h3><p>Das geförderte Fahrzeug muss mindestens <strong>36 Monate (3 Jahre)</strong> ab Erstzulassung auf deinen Namen laufen.</p></div>
+        <div class="ep-tile t-d"><div class="tile-icon">📑</div><h3>Nachweis des Einkommens</h3><p>Als Nachweis gilt der Durchschnitt der zwei aktuellsten Einkommensteuerbescheide aller im Haushalt lebenden Personen, maximal 3 Kalenderjahre alt.</p></div>
+      </div>
 
       <div class="button-center-wrapper">
         <a href="https://www.bafa.de/DE/Energie/Energieeffizienz/E-Auto_Foerderung_2026/E-Auto_Foerderung_2026_node.html" target="_blank" rel="noopener" class="gold-button">
@@ -235,40 +245,38 @@
         </ul>
       </div>
 
-      <h3>Weitere Vorteile für Firmen & Selbstständige</h3>
-      <ul>
-        <li><strong>Dienstwagen-Besteuerung (0,25-%-Regel):</strong> Bei privater Nutzung deines rein elektrischen Dienstwagens musst du monatlich nur 0,25 % des Bruttolistenpreises als geldwerter Vorteil versteuern (gilt für Fahrzeuge bis 100.000 € Bruttolistenpreis).</li>
-        <li><strong>Vorsteuerabzug:</strong> Bist du vorsteuerabzugsberechtigt, kannst du die MwSt. auf den Fahrzeugkauf, deine Ladeinfrastruktur sowie Ladekosten als Vorsteuer geltend machen.</li>
-      </ul>
+      <h3>Weitere Vorteile für Firmen &amp; Selbstständige</h3>
+      <div class="ep-tile-grid">
+        <div class="ep-tile t-a"><div class="tile-icon">🚘</div><h3>Dienstwagen-Besteuerung (0,25-%-Regel)</h3><p>Bei privater Nutzung deines rein elektrischen Dienstwagens musst du monatlich nur 0,25 % des Bruttolistenpreises als geldwerter Vorteil versteuern (gilt für Fahrzeuge bis 100.000 € Bruttolistenpreis).</p></div>
+        <div class="ep-tile t-b"><div class="tile-icon">🧾</div><h3>Vorsteuerabzug</h3><p>Bist du vorsteuerabzugsberechtigt, kannst du die MwSt. auf den Fahrzeugkauf, deine Ladeinfrastruktur sowie Ladekosten als Vorsteuer geltend machen.</p></div>
+      </div>
     </section>
 
     <!-- Thema 3: Solarstrom -->
     <section class="section-card">
       <h2>Eigenen Solarstrom nutzen (PV-Anlage)</h2>
       <p>Die Kombination aus Elektroauto und einer eigenen Photovoltaikanlage bietet sowohl privat als auch für deinen Gewerbebetrieb enorme wirtschaftliche Synergien:</p>
-      <ul>
-        <li><strong>Tanken zum Selbstkostenpreis:</strong> Während öffentlicher Ladestrom oft 0,45 € bis 0,79 € pro kWh kostet, liegen deine Gestehungskosten für eigenen PV-Strom meist bei nur 0,06 € bis 0,10 € pro kWh.</li>
-        <li><strong>Gewerbliche PV-Integration:</strong> Parken deine Firmenwagen tagsüber auf dem Betriebsgelände, senkt PV-Überschussladen deine Fuhrpark-Betriebskosten drastisch und erhöht den Eigenverbrauch deiner Solaranlage.</li>
-        <li><strong>Steuerfreie Betriebskostenerstattung:</strong> Lädst du deinen Firmenwagen zu Hause mit Strom aus deiner eigenen PV-Anlage, kann der Ladestrom steuerfrei abgerechnet bzw. erstattet werden.</li>
-      </ul>
+      <div class="ep-tile-grid">
+        <div class="ep-tile t-a"><div class="tile-icon">🔋</div><h3>Tanken zum Selbstkostenpreis</h3><p>Während öffentlicher Ladestrom oft 0,45 € bis 0,79 € pro kWh kostet, liegen deine Gestehungskosten für eigenen PV-Strom meist bei nur 0,06 € bis 0,10 € pro kWh.</p></div>
+        <div class="ep-tile t-b"><div class="tile-icon">🏢</div><h3>Gewerbliche PV-Integration</h3><p>Parken deine Firmenwagen tagsüber auf dem Betriebsgelände, senkt PV-Überschussladen deine Fuhrpark-Betriebskosten drastisch und erhöht den Eigenverbrauch deiner Solaranlage.</p></div>
+        <div class="ep-tile t-c"><div class="tile-icon">💶</div><h3>Steuerfreie Betriebskostenerstattung</h3><p>Lädst du deinen Firmenwagen zu Hause mit Strom aus deiner eigenen PV-Anlage, kann der Ladestrom steuerfrei abgerechnet bzw. erstattet werden.</p></div>
+      </div>
     </section>
 
     <!-- Thema 4: Steuervorteile Privat -->
     <section class="section-card">
       <h2>Steuervorteile für Privatpersonen</h2>
-      <ul>
-        <li><strong>Kfz-Steuer-Befreiung:</strong> Dein rein elektrisches Fahrzeug ist ab Erstzulassung für bis zu 10 Jahre vollständig von der Kfz-Steuer befreit (bei Erstzulassung bis Ende 2030).</li>
-      </ul>
+      <p><strong>Kfz-Steuer-Befreiung:</strong> Dein rein elektrisches Fahrzeug ist ab Erstzulassung für bis zu 10 Jahre vollständig von der Kfz-Steuer befreit (bei Erstzulassung bis Ende 2030).</p>
     </section>
 
     <!-- Thema 5: Weitere Förderungen -->
     <section class="section-card">
-      <h2>Weitere Fördermöglichkeiten & Boni</h2>
-      <ul>
-        <li><strong>Ladesäulen- & Wallbox-Förderung:</strong> Zuschüsse von Bund, Ländern und Kommunen für die Installation deiner privaten oder gewerblichen Wallbox.</li>
-        <li><strong>Regionale Förderungen:</strong> Einige Städte und Bundesländer bieten dir zusätzliche Prämien, kostenlose Parkplätze oder Ladevergünstigungen.</li>
-        <li><strong>Hersteller-Rabatte:</strong> Viele Automobilhersteller gewähren zusätzliche eigene Sonderrabatte für deinen Umstieg auf E-Mobilität.</li>
-      </ul>
+      <h2>Weitere Fördermöglichkeiten &amp; Boni</h2>
+      <div class="ep-tile-grid">
+        <div class="ep-tile t-a"><div class="tile-icon">🔌</div><h3>Ladesäulen- &amp; Wallbox-Förderung</h3><p>Zuschüsse von Bund, Ländern und Kommunen für die Installation deiner privaten oder gewerblichen Wallbox.</p></div>
+        <div class="ep-tile t-b"><div class="tile-icon">📍</div><h3>Regionale Förderungen</h3><p>Einige Städte und Bundesländer bieten dir zusätzliche Prämien, kostenlose Parkplätze oder Ladevergünstigungen.</p></div>
+        <div class="ep-tile t-c"><div class="tile-icon">🏷️</div><h3>Hersteller-Rabatte</h3><p>Viele Automobilhersteller gewähren zusätzliche eigene Sonderrabatte für deinen Umstieg auf E-Mobilität.</p></div>
+      </div>
     </section>
   </div>
 </main>

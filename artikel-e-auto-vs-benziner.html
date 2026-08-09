@@ -10,6 +10,19 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f241d">
+<style>
+.evb-tile-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1.2rem 0 1.5rem}
+.evb-tile{border-radius:16px;padding:1.2rem 1.25rem;border:1px solid rgba(10,28,22,.08)}
+.evb-tile .tile-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;font-size:1.25rem;margin-bottom:.7rem}
+.evb-tile h3{margin:0 0 .35rem;font-size:1rem}
+.evb-tile p{margin:0;font-size:.9rem;line-height:1.55;color:var(--text-body,#425852)}
+.evb-tile .cost-badge{display:inline-block;margin-top:.5rem;font-weight:700;color:#0f241d;background:rgba(212,168,67,.22);padding:.2rem .6rem;border-radius:999px;font-size:.85rem}
+.evb-tile.t-a{background:#eaf2fb;border-color:#c9defa}.evb-tile.t-a .tile-icon{background:#d7e7fb;color:#2563eb}
+.evb-tile.t-b{background:#fdf3e2;border-color:#f7dfa8}.evb-tile.t-b .tile-icon{background:#faeac6;color:#b45309}
+.evb-tile.t-c{background:#eaf7ef;border-color:#c8ecd4}.evb-tile.t-c .tile-icon{background:#d4f0dd;color:#059669}
+.evb-tile.t-d{background:#f3eefb;border-color:#ddd0f5}.evb-tile.t-d .tile-icon{background:#e6ddf8;color:#7c3aed}
+@media(max-width:700px){.evb-tile-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <header class="site-header header-logo-large" id="top">
@@ -42,9 +55,8 @@
     </nav>
     <div class="cat-page-header cat-kauf">
       <div class="cat-page-title-wrap">
-        <h1>E-Auto vs. Benziner – Ein Kostenvergleich</h1>
+        <h1>E-Auto vs. Benziner</h1>
       </div>
-      <p class="lead">Die Entscheidung zwischen Elektroauto und Verbrenner ist eine der wichtigsten Fragen beim Autokauf. Ein umfassender Vergleich der Gesamtkosten hilft Ihnen bei der Entscheidung.</p>
     </div>
 
     <section class="knigge-quote-card knigge-quote-kauf" aria-label="Knigge-Tipp: Autokauf">
@@ -58,28 +70,34 @@
 </section>
     <section>
       <h2>⚡ Checkliste Systemvergleich: E-Auto vs. Benziner</h2>
-      <ul>
-        <li><strong>Anschaffungspreis:</strong> Elektroautos liegen in der Anschaffung meist höher, holen dies aber über Steuervorteile und niedrigere Betriebskosten auf.</li>
-        <li><strong>Laufende Betriebskosten:</strong> Strom zu Hause laden (z.B. mit PV-Anlage) ist signifikant günstiger als regelmäßiges Tanken von Super Plus oder Diesel.</li>
-        <li><strong>Wartung & Verschleiß:</strong> Kein Ölwechsel, keine Zündkerzen, kein Auspuff. Bremsen verschleißen dank Rekuperation wesentlich langsamer.</li>
-        <li><strong>Steuerliche Vorteile:</strong> Reine Stromer profitieren von 10 Jahren Befreiung bei der Kfz-Steuer sowie reduzierter Dienstwagenbesteuerung.</li>
-      </ul>
+      <div class="evb-tile-grid">
+        <div class="evb-tile t-a"><div class="tile-icon">💶</div><h3>Anschaffungspreis</h3><p>Elektroautos liegen in der Anschaffung meist höher, holen dies aber über Steuervorteile und niedrigere Betriebskosten auf.</p></div>
+        <div class="evb-tile t-b"><div class="tile-icon">🔌</div><h3>Laufende Betriebskosten</h3><p>Strom zu Hause laden (z. B. mit PV-Anlage) ist signifikant günstiger als regelmäßiges Tanken von Super Plus oder Diesel.</p></div>
+        <div class="evb-tile t-c"><div class="tile-icon">🔧</div><h3>Wartung &amp; Verschleiß</h3><p>Kein Ölwechsel, keine Zündkerzen, kein Auspuff. Bremsen verschleißen dank Rekuperation wesentlich langsamer.</p></div>
+        <div class="evb-tile t-d"><div class="tile-icon">📋</div><h3>Steuerliche Vorteile</h3><p>Reine Stromer profitieren von 10 Jahren Befreiung bei der Kfz-Steuer sowie reduzierter Dienstwagenbesteuerung.</p></div>
+      </div>
     </section>
     <section>
       <h2>📊 Kostenübersicht im Detail: Wo spart man wirklich?</h2>
       <p>Ein detaillierter Blick auf die einzelnen Posten bei ca. 15.000 km Jahresleistung:</p>
-      <ul>
-        <li><strong>Energie & Kraftstoff:</strong> <span class="cost-badge">Sparpotenzial ca. 600–900 € / Jahr</span> durch Strom laden statt Benzin tanken</li>
-        <li><strong>Wartung & Service:</strong> <span class="cost-badge">Ca. 30–50 % günstiger</span> dank weniger beweglicher Motorbauteile</li>
-        <li><strong>Kfz-Steuer:</strong> <span class="cost-badge">0 € für 10 Jahre</span> (Benziner liegt oft bei 100–250 € pro Jahr)</li>
-      </ul>
+      <div class="evb-tile-grid">
+        <div class="evb-tile t-a"><div class="tile-icon">⛽</div><h3>Energie &amp; Kraftstoff</h3><p>Durch Strom laden statt Benzin tanken.</p><span class="cost-badge">Sparpotenzial ca. 600–900 € / Jahr</span></div>
+        <div class="evb-tile t-b"><div class="tile-icon">🛠️</div><h3>Wartung &amp; Service</h3><p>Dank weniger beweglicher Motorbauteile.</p><span class="cost-badge">Ca. 30–50 % günstiger</span></div>
+        <div class="evb-tile t-c"><div class="tile-icon">🧾</div><h3>Kfz-Steuer</h3><p>Benziner liegt oft bei 100–250 € pro Jahr.</p><span class="cost-badge">0 € für 10 Jahre</span></div>
+      </div>
     </section>
     <section>
       <h2>🎯 Checkliste Entscheidung: Welcher Antrieb passt zu dir?</h2>
-      <ol>
-        <li><strong>E-Auto passt perfekt, wenn:</strong> du zu Hause oder beim Arbeitgeber laden kannst, überwiegend Kurz- und Mittelstrecken fährst und maximale Steuervorteile nutzen möchtest.</li>
-        <li><strong>Benziner/Hybrid passt besser, wenn:</strong> du regelmäßig lange Strecken ohne Ladepausen zurücklegst und keine eigene Lademöglichkeit am Wohnort hast.</li>
-      </ol>
+      <div class="deep-tile-grid">
+        <div class="deep-tile tint-a">
+          <h3><span class="tile-icon">🔋</span> E-Auto passt perfekt, wenn …</h3>
+          <p>… du zu Hause oder beim Arbeitgeber laden kannst, überwiegend Kurz- und Mittelstrecken fährst und maximale Steuervorteile nutzen möchtest.</p>
+        </div>
+        <div class="deep-tile tint-c">
+          <h3><span class="tile-icon">⛽</span> Benziner/Hybrid passt besser, wenn …</h3>
+          <p>… du regelmäßig lange Strecken ohne Ladepausen zurücklegst und keine eigene Lademöglichkeit am Wohnort hast.</p>
+        </div>
+      </div>
     </section>
 
     <div class="partner-section">
@@ -92,7 +110,6 @@
           <span class="partner-arrow">→</span>
         </a>
       </div>
-    </div>
     </div>
 
     <div class="editorial-box">

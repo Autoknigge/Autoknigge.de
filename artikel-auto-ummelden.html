@@ -10,6 +10,26 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f241d">
+<style>
+.um-tile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.3rem 0 2rem}
+.um-tile{border-radius:16px;padding:1.2rem 1.25rem;border:1px solid rgba(10,28,22,.08)}
+.um-tile .tile-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;font-size:1.25rem;margin-bottom:.7rem}
+.um-tile h3{margin:0 0 .35rem;font-size:1rem}
+.um-tile p{margin:0;font-size:.88rem;line-height:1.55;color:var(--text-body,#425852)}
+.um-tile.t-a{background:#eaf2fb;border-color:#c9defa}.um-tile.t-a .tile-icon{background:#d7e7fb;color:#2563eb}
+.um-tile.t-b{background:#fdf3e2;border-color:#f7dfa8}.um-tile.t-b .tile-icon{background:#faeac6;color:#b45309}
+.um-tile.t-c{background:#eaf7ef;border-color:#c8ecd4}.um-tile.t-c .tile-icon{background:#d4f0dd;color:#059669}
+.um-tile.t-d{background:#f3eefb;border-color:#ddd0f5}.um-tile.t-d .tile-icon{background:#e6ddf8;color:#7c3aed}
+.um-tile.t-e{background:#fdeef5;border-color:#f6cfe0}.um-tile.t-e .tile-icon{background:#fbdeeb;color:#db2777}
+.um-step-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:1.3rem 0 2rem}
+.um-step{border-radius:16px;padding:1.2rem 1.25rem;border:1px solid rgba(10,28,22,.08);background:#f4f8fc}
+.um-step .step-no{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:#0f241d;color:#fff;font-weight:800;font-size:.85rem;margin-bottom:.6rem}
+.um-step .tile-icon{font-size:1.3rem;margin-left:.5rem}
+.um-step h3{margin:0 0 .35rem;font-size:.96rem}
+.um-step p{margin:0;font-size:.86rem;line-height:1.5;color:var(--text-body,#425852)}
+@media(max-width:900px){.um-tile-grid{grid-template-columns:repeat(2,1fr)}.um-step-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.um-tile-grid,.um-step-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <header class="site-header header-logo-large" id="top">
@@ -42,9 +62,8 @@
     </nav>
     <div class="cat-page-header cat-zulassung">
       <div class="cat-page-title-wrap">
-        <h1>Auto ummelden – Bei Umzug oder Kennzeichenwechsel</h1>
+        <h1>Ummelden</h1>
       </div>
-      <p class="lead">Bei einem Umzug in eine andere Stadt oder bei einem Kennzeichenwechsel müssen Sie Ihr Auto ummelden. Hier erfahren Sie, was Sie beachten müssen.</p>
     </div>
 
     <section class="knigge-quote-card knigge-quote-zulassung" aria-label="Knigge-Tipp: Zulassung">
@@ -58,30 +77,30 @@
 </section>
     <section>
       <h2>📍 Checkliste Anlässe: Wann musst du ummelden?</h2>
-      <ul>
-        <li><strong>Bei Umzug in einen neuen Wohnort:</strong> Innerhalb von 2 bis 4 Wochen nach Wohnortwechsel erforderlich. Tipp: Altes Kennzeichen darf deutschlandweit behalten werden!</li>
-        <li><strong>Bei Namensänderung oder Halterwechsel:</strong> Z.B. nach Hochzeit, Scheidung oder Verkauf innerhalb der Familie.</li>
-        <li><strong>Bei Kennzeichenwunsch:</strong> Wenn du auf ein neues Ortskürzel oder Wunschkennzeichen umsteigen möchtest.</li>
-      </ul>
+      <div class="um-tile-grid">
+        <div class="um-tile t-a"><div class="tile-icon">🏠</div><h3>Umzug</h3><p>Innerhalb von 2 bis 4 Wochen nach Wohnortwechsel erforderlich. Das alte Kennzeichen darf deutschlandweit behalten werden.</p></div>
+        <div class="um-tile t-b"><div class="tile-icon">📝</div><h3>Namensänderung oder Halterwechsel</h3><p>Zum Beispiel nach Hochzeit, Scheidung oder Verkauf innerhalb der Familie.</p></div>
+        <div class="um-tile t-c"><div class="tile-icon">🔤</div><h3>Kennzeichenwunsch</h3><p>Beim Wechsel auf ein neues Ortskürzel oder Wunschkennzeichen.</p></div>
+      </div>
     </section>
     <section>
       <h2>📋 Checkliste Ummeldung: Was du mitbringen musst</h2>
-      <ul>
-        <li><strong>Personalausweis oder Reisepass</strong> inklusive neuer Meldebescheinigung</li>
-        <li><strong>Zulassungsbescheinigung Teil I & II</strong> (Fahrzeugschein und Fahrzeugbrief)</li>
-        <li><strong>eVB-Nummer</strong> der Versicherung (bei Adressänderung ohne Halterwechsel oft nicht nötig, aber sicherheitshalber bereithalten)</li>
-        <li><strong>Gültiger Hauptuntersuchungs-Bericht (TÜV)</strong></li>
-        <li><strong>SEPA-Lastschriftmandat</strong> für die Kfz-Steuer</li>
-      </ul>
+      <div class="um-tile-grid">
+        <div class="um-tile t-a"><div class="tile-icon">🪪</div><h3>Ausweisdokument</h3><p>Personalausweis oder Reisepass inklusive neuer Meldebescheinigung.</p></div>
+        <div class="um-tile t-b"><div class="tile-icon">📄</div><h3>Zulassungsbescheinigung</h3><p>Teil I &amp; II (Fahrzeugschein und Fahrzeugbrief).</p></div>
+        <div class="um-tile t-c"><div class="tile-icon">🛡️</div><h3>eVB-Nummer</h3><p>Der Versicherung – bei Adressänderung ohne Halterwechsel oft nicht nötig, aber sicherheitshalber bereithalten.</p></div>
+        <div class="um-tile t-d"><div class="tile-icon">✅</div><h3>HU-Bericht</h3><p>Gültiger Hauptuntersuchungs-Bericht (TÜV).</p></div>
+        <div class="um-tile t-e"><div class="tile-icon">💳</div><h3>SEPA-Lastschriftmandat</h3><p>Für die Kfz-Steuer.</p></div>
+      </div>
     </section>
     <section>
       <h2>🚀 Checkliste Ummeldung: An alles gedacht?</h2>
-      <ol>
-        <li><strong>Wohnsitz ummelden:</strong> Zuerst die neue Adresse beim Einwohnermeldeamt bestätigen lassen.</li>
-        <li><strong>Entscheidung Kennzeichen:</strong> Möchtest du dein altes Kennzeichen behalten (spart Geld!) oder ein neues Ortskennzeichen wählen?</li>
-        <li><strong>Termin buchen oder i-Kfz nutzen:</strong> Bei Beibehaltung des Kennzeichens reicht oft die einfache Adressänderung im Fahrzeugschein (Teil I).</li>
-        <li><strong>Gebühren begleichen:</strong> Zulassungsschein aktualisieren lassen und ggf. neue Plaketten anbringen.</li>
-      </ol>
+      <div class="um-step-grid">
+        <div class="um-step"><span class="step-no">1</span><span class="tile-icon">🏠</span><h3>Wohnsitz ummelden</h3><p>Zuerst die neue Adresse beim Einwohnermeldeamt bestätigen lassen.</p></div>
+        <div class="um-step"><span class="step-no">2</span><span class="tile-icon">🔤</span><h3>Entscheidung Kennzeichen</h3><p>Altes Kennzeichen behalten (spart Geld!) oder neues Ortskennzeichen wählen?</p></div>
+        <div class="um-step"><span class="step-no">3</span><span class="tile-icon">📅</span><h3>Termin buchen oder i-Kfz nutzen</h3><p>Bei Beibehaltung des Kennzeichens reicht oft die einfache Adressänderung im Fahrzeugschein (Teil I).</p></div>
+        <div class="um-step"><span class="step-no">4</span><span class="tile-icon">💶</span><h3>Gebühren begleichen</h3><p>Zulassungsschein aktualisieren lassen und ggf. neue Plaketten anbringen.</p></div>
+      </div>
     </section>
   </div>
 </main>
