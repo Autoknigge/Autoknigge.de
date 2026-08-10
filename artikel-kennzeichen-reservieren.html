@@ -10,6 +10,22 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f241d">
+<style>
+.kz-step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.2rem 0 1.5rem}
+.kz-step{border-radius:16px;padding:1.2rem 1.25rem;border:1px solid rgba(10,28,22,.08);background:#f4f8fc}
+.kz-step .step-no{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:#0f241d;color:#fff;font-weight:800;font-size:.85rem;margin-bottom:.6rem}
+.kz-step h3{margin:0 0 .35rem;font-size:.98rem}
+.kz-step p{margin:0;font-size:.86rem;line-height:1.5;color:var(--text-body,#425852)}
+.kz-tile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.2rem 0 1.5rem}
+.kz-tile{border-radius:16px;padding:1.2rem 1.25rem;border:1px solid rgba(10,28,22,.08)}
+.kz-tile .tile-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;font-size:1.25rem;margin-bottom:.7rem}
+.kz-tile h3{margin:0 0 .35rem;font-size:1rem}
+.kz-tile p{margin:0;font-size:.9rem;line-height:1.55;color:var(--text-body,#425852)}
+.kz-tile.t-a{background:#eaf2fb;border-color:#c9defa}.kz-tile.t-a .tile-icon{background:#d7e7fb;color:#2563eb}
+.kz-tile.t-b{background:#fdf3e2;border-color:#f7dfa8}.kz-tile.t-b .tile-icon{background:#faeac6;color:#b45309}
+.kz-tile.t-c{background:#eaf7ef;border-color:#c8ecd4}.kz-tile.t-c .tile-icon{background:#d4f0dd;color:#059669}
+@media(max-width:700px){.kz-step-grid,.kz-tile-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <header class="site-header header-logo-large" id="top">
@@ -42,9 +58,8 @@
     </nav>
     <div class="cat-page-header cat-zulassung">
       <div class="cat-page-title-wrap">
-        <h1>Dein Wunschkennzeichen</h1>
+        <h1>Wunschkennzeichen</h1>
       </div>
-      <p class="lead">Ein Wunschkennzeichen ist persönlich und macht Ihr Auto individuell. Mit der Online-Reservierung sichern Sie sich Ihre Wunsch-Kombination – und mit ein wenig Planung sparen Sie bares Geld.</p>
     </div>
 
     <section class="knigge-quote-card knigge-quote-zulassung" aria-label="Knigge-Tipp: Zulassung">
@@ -59,20 +74,20 @@
     <section>
       <h2>🚘 Checkliste Reservierung: Schritt für Schritt zum Wunschkennzeichen</h2>
       <p>Die Reservierung eines Wunschkennzeichens ist in fast allen Zulassungsbezirken online möglich. Sie wählen Ihre Lieblingskombination aus Buchstaben und Zahlen aus, prüfen die Verfügbarkeit und sichern diese für einen bestimmten Zeitraum (meist 14 bis 90 Tage).</p>
-      <ol>
-        <li><strong>Online-Verfügbarkeit prüfen:</strong> Auf der offiziellen Website deines Landkreises/deiner Stadt die Wunschkombination kostenlos testen.</li>
-        <li><strong>Schilder reservieren:</strong> Nach erfolgreicher Prüfung direkt online reservieren (Gebühr beträgt bundesweit einheitlich 12,80 € bei Zulassung).</li>
-        <li><strong>Schilder günstig im Netz bestellen:</strong> Mit der PIN/Reservierungsbestätigung Schilder online bestellen (kostet ca. 10–14 € pro Paar statt 30–40 € im Schilderladen an der Zulassungsstelle).</li>
-      </ol>
+      <div class="kz-step-grid">
+        <div class="kz-step"><span class="step-no">1</span><h3>Online-Verfügbarkeit prüfen</h3><p>Auf der offiziellen Website deines Landkreises/deiner Stadt die Wunschkombination kostenlos testen.</p></div>
+        <div class="kz-step"><span class="step-no">2</span><h3>Schilder reservieren</h3><p>Nach erfolgreicher Prüfung direkt online reservieren (Gebühr beträgt bundesweit einheitlich 12,80 € bei Zulassung).</p></div>
+        <div class="kz-step"><span class="step-no">3</span><h3>Schilder günstig im Netz bestellen</h3><p>Mit der PIN/Reservierungsbestätigung Schilder online bestellen (ca. 10–14 € pro Paar statt 30–40 € im Schilderladen an der Zulassungsstelle).</p></div>
+      </div>
     </section>
     <section>
       <h2>💰 Checkliste Spartipp: Warum sich Online-Prägung doppelt lohnt</h2>
       <p>Bis zu 70 % Ersparnis im Vergleich zur Schilderprägung direkt neben der Zulassungsstelle!</p>
-      <ul>
-        <li><strong>Bequemer Versand:</strong> Kennzeichen treffen in der Regel binnen 24–48 Stunden bei dir zu Hause ein.</li>
-        <li><strong>Kein Warten am Schalter:</strong> Du bringst die fertig geprägten Schilder direkt zur Zulassung mit – der Bearbeiter klebt nur noch die Plaketten auf.</li>
-        <li><strong>Standard- oder Carbon-Optik:</strong> Auch spezielle DIN-geprüfte Schilder in Carbon-Muster oder 3D-Kunststoff sind online deutlich preiswerter.</li>
-      </ul>
+      <div class="kz-tile-grid">
+        <div class="kz-tile t-a"><div class="tile-icon">📦</div><h3>Bequemer Versand</h3><p>Kennzeichen treffen in der Regel binnen 24–48 Stunden bei dir zu Hause ein.</p></div>
+        <div class="kz-tile t-b"><div class="tile-icon">⏱️</div><h3>Kein Warten am Schalter</h3><p>Du bringst die fertig geprägten Schilder direkt zur Zulassung mit – der Bearbeiter klebt nur noch die Plaketten auf.</p></div>
+        <div class="kz-tile t-c"><div class="tile-icon">🎨</div><h3>Standard- oder Carbon-Optik</h3><p>Auch spezielle DIN-geprüfte Schilder in Carbon-Muster oder 3D-Kunststoff sind online deutlich preiswerter.</p></div>
+      </div>
       <div class="partner-section" style="margin: 2rem 0;">
         <h3>🛒 Kennzeichen online bestellen – clever sparen</h3>
         <p class="partner-desc">Bestellen Sie Ihr Wunschkennzeichen bequem online und sparen Sie bis zu 70 % im Vergleich zur Zulassungsstelle.</p>

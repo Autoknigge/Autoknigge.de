@@ -10,6 +10,19 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f241d">
+<style>
+.lh-tile-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1.2rem 0 1.5rem}
+.lh-tile{border-radius:16px;padding:1.2rem 1.25rem;border:1px solid rgba(10,28,22,.08)}
+.lh-tile .tile-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;font-size:1.25rem;margin-bottom:.7rem}
+.lh-tile h3{margin:0 0 .35rem;font-size:1rem}
+.lh-tile p{margin:0;font-size:.9rem;line-height:1.55;color:var(--text-body,#425852)}
+.lh-tile.t-a{background:#eaf2fb;border-color:#c9defa}.lh-tile.t-a .tile-icon{background:#d7e7fb;color:#2563eb}
+.lh-tile.t-b{background:#fdf3e2;border-color:#f7dfa8}.lh-tile.t-b .tile-icon{background:#faeac6;color:#b45309}
+.lh-tile.t-c{background:#eaf7ef;border-color:#c8ecd4}.lh-tile.t-c .tile-icon{background:#d4f0dd;color:#059669}
+.lh-tile.t-d{background:#f3eefb;border-color:#ddd0f5}.lh-tile.t-d .tile-icon{background:#e6ddf8;color:#7c3aed}
+.lh-tile.t-e{background:#fdecec;border-color:#f5c6c6}.lh-tile.t-e .tile-icon{background:#fad9d9;color:#dc2626}
+@media(max-width:700px){.lh-tile-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <header class="site-header header-logo-large" id="top">
@@ -42,9 +55,8 @@
     </nav>
     <div class="cat-page-header cat-recht">
       <div class="cat-page-title-wrap">
-        <h1>Lichthupe, Drängler & Co. – Richtiges Verhalten im Straßenverkehr</h1>
+        <h1>Lichthupe &amp; Drängler</h1>
       </div>
-      <p class="lead">Die Lichthupe ist ein umstrittenes Verkehrsmittel. Wann ist sie erlaubt, wann ist sie Nötigung? Und wie verhalten Sie sich bei Dränglern richtig?</p>
     </div>
 
     <section class="knigge-quote-card knigge-quote-recht" aria-label="Knigge-Tipp: KFZ-Recht">
@@ -59,27 +71,27 @@
     <section>
       <h2>Wann ist die Lichthupe erlaubt?</h2>
       <p>Die Lichthupe ist in Deutschland nur in bestimmten Situationen erlaubt:</p>
-      <ul>
-        <li><strong>Außerhalb geschlossener Ortschaften:</strong> Die Lichthupe darf als Warnsignal verwendet werden, um auf Gefahren hinzuweisen oder zum Überholen aufzufordern.</li>
-        <li><strong>Innerhalb geschlossener Ortschaften:</strong> Die Lichthupe ist nur bei Gefahr erlaubt – nicht zum Auffordern zum Überholen.</li>
-      </ul>
+      <div class="lh-tile-grid">
+        <div class="lh-tile t-a"><div class="tile-icon">🛣️</div><h3>Außerhalb geschlossener Ortschaften</h3><p>Die Lichthupe darf als Warnsignal verwendet werden, um auf Gefahren hinzuweisen oder zum Überholen aufzufordern.</p></div>
+        <div class="lh-tile t-b"><div class="tile-icon">🏘️</div><h3>Innerhalb geschlossener Ortschaften</h3><p>Die Lichthupe ist nur bei Gefahr erlaubt – nicht zum Auffordern zum Überholen.</p></div>
+      </div>
       <p>Wird die Lichthupe missbräuchlich verwendet, kann das als Nötigung gewertet werden und mit Bußgeld oder Punkten geahndet werden.</p>
     </section>
     <section>
       <h2>Wie verhalten Sie sich bei Dränglern?</h2>
-      <ul>
-        <li><strong>Ruhig bleiben:</strong> Lassen Sie sich nicht provozieren – Drängler sind oft gestresst oder ungeduldig.</li>
-        <li><strong>Rechts fahren:</strong> Fahren Sie auf der rechten Spur und lassen Sie den Drängler vorbei, wenn möglich.</li>
-        <li><strong>Nicht bremsen:</strong> Vermeiden Sie abrupte Bremsungen – das kann zu gefährlichen Situationen führen.</li>
-        <li><strong>Bei Gefahr:</strong> Bei extremem Drängeln oder aggressivem Verhalten können Sie die Polizei rufen.</li>
-      </ul>
+      <div class="lh-tile-grid">
+        <div class="lh-tile t-a"><div class="tile-icon">😌</div><h3>Ruhig bleiben</h3><p>Lassen Sie sich nicht provozieren – Drängler sind oft gestresst oder ungeduldig.</p></div>
+        <div class="lh-tile t-b"><div class="tile-icon">➡️</div><h3>Rechts fahren</h3><p>Fahren Sie auf der rechten Spur und lassen Sie den Drängler vorbei, wenn möglich.</p></div>
+        <div class="lh-tile t-c"><div class="tile-icon">🚫</div><h3>Nicht bremsen</h3><p>Vermeiden Sie abrupte Bremsungen – das kann zu gefährlichen Situationen führen.</p></div>
+        <div class="lh-tile t-d"><div class="tile-icon">🚓</div><h3>Bei Gefahr</h3><p>Bei extremem Drängeln oder aggressivem Verhalten können Sie die Polizei rufen.</p></div>
+      </div>
     </section>
     <section>
       <h2>Rechtliche Konsequenzen</h2>
-      <ul>
-        <li><strong>Nötigung:</strong> Wer die Lichthupe missbraucht oder Drängler wird, kann wegen Nötigung belangt werden – das kann Punkte, Bußgeld oder sogar Fahrverbot zur Folge haben.</li>
-        <li><strong>Bußgelder:</strong> Für das Drängeln auf der Autobahn gibt es Bußgelder von bis zu 400 € und 2 Punkte.</li>
-      </ul>
+      <div class="lh-tile-grid">
+        <div class="lh-tile t-e"><div class="tile-icon">⚖️</div><h3>Nötigung</h3><p>Wer die Lichthupe missbraucht oder Drängler wird, kann wegen Nötigung belangt werden – das kann Punkte, Bußgeld oder sogar Fahrverbot zur Folge haben.</p></div>
+        <div class="lh-tile t-e"><div class="tile-icon">💶</div><h3>Bußgelder</h3><p>Für das Drängeln auf der Autobahn gibt es Bußgelder von bis zu 400 € und 2 Punkte.</p></div>
+      </div>
     </section>
 
     <section>
