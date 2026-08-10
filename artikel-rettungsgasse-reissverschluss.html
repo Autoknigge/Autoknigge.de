@@ -10,6 +10,20 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f241d">
+<style>
+.rg-tile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.2rem 0 1.5rem}
+.rg-tile{border-radius:16px;padding:1.2rem 1.25rem;border:1px solid rgba(10,28,22,.08)}
+.rg-tile .tile-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;font-size:1.25rem;margin-bottom:.7rem}
+.rg-tile h3{margin:0 0 .35rem;font-size:1rem}
+.rg-tile p{margin:0;font-size:.9rem;line-height:1.55;color:var(--text-body,#425852)}
+.rg-tile.t-a{background:#eaf2fb;border-color:#c9defa}.rg-tile.t-a .tile-icon{background:#d7e7fb;color:#2563eb}
+.rg-tile.t-b{background:#fdf3e2;border-color:#f7dfa8}.rg-tile.t-b .tile-icon{background:#faeac6;color:#b45309}
+.rg-tile.t-c{background:#eaf7ef;border-color:#c8ecd4}.rg-tile.t-c .tile-icon{background:#d4f0dd;color:#059669}
+.rg-tile.t-d{background:#f3eefb;border-color:#ddd0f5}.rg-tile.t-d .tile-icon{background:#e6ddf8;color:#7c3aed}
+.rg-tile.t-e{background:#fdeef5;border-color:#f6cfe0}.rg-tile.t-e .tile-icon{background:#fbdeeb;color:#db2777}
+@media(max-width:900px){.rg-tile-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.rg-tile-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <header class="site-header header-logo-large" id="top">
@@ -42,9 +56,8 @@
     </nav>
     <div class="cat-page-header cat-recht">
       <div class="cat-page-title-wrap">
-        <h1>Rettungsgasse & Reißverschluss – So verhalten Sie sich richtig</h1>
+        <h1>Rettungsgasse &amp; Reißverschluss</h1>
       </div>
-      <p class="lead">So bilden Sie richtig eine Rettungsgasse und verhalten sich im Stau – mit Tipps zum Reißverschluss-Verfahren.</p>
     </div>
 
     <section class="knigge-quote-card knigge-quote-recht" aria-label="Knigge-Tipp: KFZ-Recht">
@@ -59,22 +72,22 @@
     <section>
       <h2>Rettungsgasse richtig bilden</h2>
       <p>Bei einem Stau auf Autobahnen und mehrspurigen Straßen ist es gesetzlich vorgeschrieben, eine Rettungsgasse zu bilden. So geht es richtig:</p>
-      <ul>
-        <li><strong>Linke Spur:</strong> Fahren Sie so weit wie möglich nach links.</li>
-        <li><strong>Alle anderen Spuren:</strong> Fahren Sie so weit wie möglich nach rechts.</li>
-        <li><strong>Ziel:</strong> Eine freie Gasse für Rettungsfahrzeuge zwischen der linken und der mittleren Spur.</li>
-        <li><strong>Bei drei Spuren:</strong> Die Rettungsgasse wird zwischen der linken und der mittleren Spur gebildet.</li>
-        <li><strong>Bei zwei Spuren:</strong> Die Rettungsgasse wird zwischen der linken und der rechten Spur gebildet.</li>
-      </ul>
+      <div class="rg-tile-grid">
+        <div class="rg-tile t-a"><div class="tile-icon">⬅️</div><h3>Linke Spur</h3><p>Fahren Sie so weit wie möglich nach links.</p></div>
+        <div class="rg-tile t-b"><div class="tile-icon">➡️</div><h3>Alle anderen Spuren</h3><p>Fahren Sie so weit wie möglich nach rechts.</p></div>
+        <div class="rg-tile t-c"><div class="tile-icon">🚑</div><h3>Ziel</h3><p>Eine freie Gasse für Rettungsfahrzeuge zwischen der linken und der mittleren Spur.</p></div>
+        <div class="rg-tile t-d"><div class="tile-icon">3️⃣</div><h3>Bei drei Spuren</h3><p>Die Rettungsgasse wird zwischen der linken und der mittleren Spur gebildet.</p></div>
+        <div class="rg-tile t-e"><div class="tile-icon">2️⃣</div><h3>Bei zwei Spuren</h3><p>Die Rettungsgasse wird zwischen der linken und der rechten Spur gebildet.</p></div>
+      </div>
     </section>
     <section>
       <h2>Das Reißverschluss-Verfahren</h2>
       <p>Das Reißverschluss-Verfahren ist eine wichtige Regel, um den Verkehrsfluss zu verbessern und Staus zu reduzieren:</p>
-      <ul>
-        <li><strong>Bei Fahrstreifenwechsel:</strong> Wenn ein Fahrstreifen endet, wechseln die Fahrzeuge im Wechsel (wie bei einem Reißverschluss) auf den durchgehenden Fahrstreifen.</li>
-        <li><strong>Kein Überholen:</strong> Überholen Sie nicht in der Einfädelungsspur, sondern lassen Sie die Fahrzeuge im Wechsel einfädeln.</li>
-        <li><strong>Vorteile:</strong> Das Verfahren sorgt für einen gleichmäßigeren Verkehrsfluss und reduziert das Unfallrisiko.</li>
-      </ul>
+      <div class="rg-tile-grid">
+        <div class="rg-tile t-a"><div class="tile-icon">🔀</div><h3>Bei Fahrstreifenwechsel</h3><p>Wenn ein Fahrstreifen endet, wechseln die Fahrzeuge im Wechsel (wie bei einem Reißverschluss) auf den durchgehenden Fahrstreifen.</p></div>
+        <div class="rg-tile t-b"><div class="tile-icon">🚫</div><h3>Kein Überholen</h3><p>Überholen Sie nicht in der Einfädelungsspur, sondern lassen Sie die Fahrzeuge im Wechsel einfädeln.</p></div>
+        <div class="rg-tile t-c"><div class="tile-icon">✅</div><h3>Vorteile</h3><p>Das Verfahren sorgt für einen gleichmäßigeren Verkehrsfluss und reduziert das Unfallrisiko.</p></div>
+      </div>
     </section>
     <section>
       <h2>Warum diese Regeln wichtig sind</h2>
