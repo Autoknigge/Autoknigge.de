@@ -1252,6 +1252,10 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
   background-image: url('knigge-reifen-werkstatt.jpg');
   background-position: 55% center;
 }
+.knigge-quote-fahrerflucht .knigge-quote-image {
+  background-image: url('knigge-fahrerflucht.jpg');
+  background-position: center 20%;
+}
 .knigge-quote-licht .knigge-quote-image {
   background-image: url('knigge-motorrad-parkplatz.jpg');
   background-position: center 22%;
