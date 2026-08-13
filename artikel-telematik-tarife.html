@@ -10,6 +10,18 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f241d">
+<style>
+.tt-tile-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1.2rem 0 1.5rem}
+.tt-tile{border-radius:16px;padding:1.2rem 1.25rem;border:1px solid rgba(10,28,22,.08)}
+.tt-tile .tile-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;font-size:1.25rem;margin-bottom:.7rem}
+.tt-tile h3{margin:0 0 .35rem;font-size:1rem}
+.tt-tile p{margin:0;font-size:.9rem;line-height:1.55;color:var(--text-body,#425852)}
+.tt-tile.t-a{background:#eaf2fb;border-color:#c9defa}.tt-tile.t-a .tile-icon{background:#d7e7fb;color:#2563eb}
+.tt-tile.t-b{background:#fdf3e2;border-color:#f7dfa8}.tt-tile.t-b .tile-icon{background:#faeac6;color:#b45309}
+.tt-tile.t-c{background:#eaf7ef;border-color:#c8ecd4}.tt-tile.t-c .tile-icon{background:#d4f0dd;color:#059669}
+.tt-tile.t-d{background:#f3eefb;border-color:#ddd0f5}.tt-tile.t-d .tile-icon{background:#e6ddf8;color:#7c3aed}
+@media(max-width:700px){.tt-tile-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <header class="site-header header-logo-large" id="top">
@@ -42,9 +54,8 @@
     </nav>
     <div class="cat-page-header cat-versicherung">
       <div class="cat-page-title-wrap">
-        <h1>Telematik-Tarife – So funktioniert die Kfz-Versicherung per App</h1>
+        <h1>Telematik</h1>
       </div>
-      <p class="lead">Wie funktionieren Telematik-Tarife und für wen lohnen sie sich? Alle Vor- und Nachteile.</p>
     </div>
 
     <section class="knigge-quote-card knigge-quote-versicherung" aria-label="Knigge-Tipp: Versicherung">
@@ -62,19 +73,19 @@
     </section>
     <section>
       <h2>Wie funktioniert es?</h2>
-      <ul>
-        <li><strong>App oder Gerät:</strong> Sie nutzen eine App auf Ihrem Smartphone oder ein spezielles Gerät im Auto.</li>
-        <li><strong>Messung:</strong> Gemessen werden Beschleunigung, Bremsverhalten, Kurvenfahren und Geschwindigkeit.</li>
-        <li><strong>Auswertung:</strong> Die Daten werden ausgewertet und in eine Bewertung umgerechnet.</li>
-        <li><strong>Rabatt:</strong> Bei guter Bewertung erhalten Sie einen Rabatt auf Ihre Versicherungsprämie.</li>
-      </ul>
+      <div class="tt-tile-grid">
+        <div class="tt-tile t-a"><div class="tile-icon">📱</div><h3>App oder Gerät</h3><p>Sie nutzen eine App auf Ihrem Smartphone oder ein spezielles Gerät im Auto.</p></div>
+        <div class="tt-tile t-b"><div class="tile-icon">📊</div><h3>Messung</h3><p>Gemessen werden Beschleunigung, Bremsverhalten, Kurvenfahren und Geschwindigkeit.</p></div>
+        <div class="tt-tile t-c"><div class="tile-icon">🧮</div><h3>Auswertung</h3><p>Die Daten werden ausgewertet und in eine Bewertung umgerechnet.</p></div>
+        <div class="tt-tile t-d"><div class="tile-icon">💶</div><h3>Rabatt</h3><p>Bei guter Bewertung erhalten Sie einen Rabatt auf Ihre Versicherungsprämie.</p></div>
+      </div>
     </section>
     <section>
       <h2>Vorteile und Nachteile</h2>
-      <ul>
-        <li><strong>Vorteile:</strong> Bis zu 30 % Rabatt möglich, unabhängig von der SF-Klasse, fördert sicheres Fahren.</li>
-        <li><strong>Nachteile:</strong> Datenschutzbedenken, nicht jeder Versicherer bietet Telematik-Tarife an, die App muss aktiv genutzt werden.</li>
-      </ul>
+      <div class="tt-tile-grid">
+        <div class="tt-tile t-c"><div class="tile-icon">✅</div><h3>Vorteile</h3><p>Bis zu 30 % Rabatt möglich, unabhängig von der SF-Klasse, fördert sicheres Fahren.</p></div>
+        <div class="tt-tile t-b"><div class="tile-icon">⚠️</div><h3>Nachteile</h3><p>Datenschutzbedenken, nicht jeder Versicherer bietet Telematik-Tarife an, die App muss aktiv genutzt werden.</p></div>
+      </div>
     </section>
     <section>
       <h2>Für wen lohnt sich ein Telematik-Tarif?</h2>
