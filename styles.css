@@ -1932,3 +1932,22 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
   .cc-legal-note { font-size: 0.7rem; margin-top: 0.7rem; }
 }
 
+
+/* ===== AUSGEWÄHLTE RATGEBER – farbige Startseiten-Kacheln ===== */
+.featured-guides .grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.featured-guides .card {
+  background: linear-gradient(145deg, #ffffff 0%, #f7faf8 100%);
+  border-color: #d8e3de;
+}
+.featured-guides .card:nth-child(3n+1) { background: #fff8eb; border-color: #f1d49c; }
+.featured-guides .card:nth-child(3n+2) { background: #eef8f3; border-color: #c5e3d4; }
+.featured-guides .card:nth-child(3n) { background: #f3f5fa; border-color: #d1d9e8; }
+.featured-guides .card:nth-child(3n+1) .card-symbol { background: #fde9c7; border-color: #f2c987; }
+.featured-guides .card:nth-child(3n+2) .card-symbol { background: #d8eee2; border-color: #abd8c0; }
+.featured-guides .card:nth-child(3n) .card-symbol { background: #e3e8f1; border-color: #c4cddd; }
+.featured-guides .card::before { background: linear-gradient(90deg, var(--gold-600), var(--green-600)); }
+@media (max-width: 640px) {
+  .featured-guides .grid { grid-template-columns: 1fr; }
+}
