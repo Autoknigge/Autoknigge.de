@@ -1951,3 +1951,18 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
 @media (max-width: 640px) {
   .featured-guides .grid { grid-template-columns: 1fr; }
 }
+
+/* Servicehistorie / Garantie-Hinweis */
+.service-warranty-note {
+  margin-top: 1rem;
+  padding: 1rem 1.1rem;
+  border-left: 5px solid #d6a72c;
+  background: #fff8df;
+  border-radius: 10px;
+  color: #4d4938;
+  line-height: 1.55;
+}
+.service-warranty-note.ev-note {
+  border-left-color: #2c8a67;
+  background: #edf8f2;
+}
