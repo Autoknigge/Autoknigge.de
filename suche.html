@@ -48,7 +48,7 @@ const SEARCH_ALIASES={
 function norm(v){return String(v||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ß/g,'ss').replace(/[^a-z0-9]+/g,' ').trim();}
 function tokens(v){return norm(v).split(/\s+/).filter(Boolean);}
 function distance(a,b){if(a===b)return 0;if(!a||!b)return 99;if(Math.abs(a.length-b.length)>3)return 99;let p=Array.from({length:b.length+1},(_,i)=>i);for(let i=0;i<a.length;i++){let c=[i+1];for(let j=0;j<b.length;j++)c[j+1]=Math.min(c[j]+1,p[j+1]+1,p[j]+(a[i]===b[j]?0:1));p=c;}return p[b.length];}
-function close(a,b){if(a===b)return true;if(a.length<4||b.length<4)return false;if(Math.abs(a.length-b.length)<=2&&(a.includes(b)||b.includes(a)))return true;return distance(a,b)<= (a.length<=6?1:2);}
+function close(a,b){if(a===b)return true;if(a.length<4||b.length<4)return false;if(Math.abs(a.length-b.length)<=2&&(a.includes(b)||b.includes(a)))return true;const minLen=Math.min(a.length,b.length);if(minLen>=6&&(a.startsWith(b)||b.startsWith(a)))return true;return distance(a,b)<= (a.length<=6?1:2);}
 function canonicalToken(q){const n=norm(q);return SEARCH_ALIASES[n]||n;}
 function score(item,q){
   const qTokens=tokens(q), body=tokens(item.title+' '+item.desc+' '+item.text);
