@@ -13,6 +13,7 @@
 <meta content="#0f241d" name="theme-color"/>
 <style>
 .tire-tile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0 2rem}
+.tire-tile-grid-2col{grid-template-columns:repeat(2,1fr)}
 .tire-tile{border-radius:16px;padding:1.2rem 1.25rem;border:1px solid rgba(10,28,22,.08)}
 .tire-tile .tile-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;font-size:1.25rem;margin-bottom:.7rem}
 .tire-tile h3{margin:0 0 .35rem;font-size:1rem}
@@ -37,11 +38,17 @@
 .tire-tile.t-reichweite{background:#eafbf3;border-color:#bdecd6}.tire-tile.t-reichweite .tile-icon{background:#d0f5e3;color:#047857}
 .tire-tile.t-alter{background:#fff1e8;border-color:#f5d1b8}.tire-tile.t-alter .tile-icon{background:#fde0ca;color:#c2410c}
 .tire-tile.t-tests{background:#f1eefb;border-color:#ddd5f5}.tire-tile.t-tests .tile-icon{background:#e4ddf8;color:#6d28d9}
+.tire-tile.t-druckinfo{background:#eef4fb;border-color:#cfe0f5}.tire-tile.t-druckinfo .tile-icon{background:#ddebfa;color:#1d4ed8}
+.tire-tile.t-luftpumpe{background:#e9f7f4;border-color:#c2ece2}.tire-tile.t-luftpumpe .tile-icon{background:#d3f2ea;color:#0d8a72}
+.tire-tile.t-hinweis1{background:#f5f2ec;border-color:#e3dbc9}.tire-tile.t-hinweis1 .tile-icon{background:#eee6d3;color:#8a6d1f}
+.tire-tile.t-hinweis2{background:#eef2f7;border-color:#d3dfec}.tire-tile.t-hinweis2 .tile-icon{background:#dee8f3;color:#3a5f82}
+.tire-tile.t-hinweis3{background:#f2eff7;border-color:#ddd3ec}.tire-tile.t-hinweis3 .tile-icon{background:#e6dcf3;color:#6b4c96}
+.tire-tile-grid-3col{grid-template-columns:repeat(3,1fr)}
 .tire-test-section{margin-top:2rem}.small-note{font-size:.86rem;color:var(--text-body,#425852);margin-top:.6rem}
 .tire-tile .tile-price{display:block;font-weight:800;font-size:1.1rem;margin:.15rem 0 .4rem;color:inherit}
 .dot-example{display:inline-block;font-family:ui-monospace,Menlo,Consolas,monospace;background:#fff;border:1px solid #eee0b9;border-radius:6px;padding:.1rem .45rem;font-weight:700;color:#8a5a00}
 @media(max-width:900px){.tire-tile-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.tire-tile-grid{grid-template-columns:1fr}}.gold-inline-link{color:#96700f;font-weight:700;text-decoration:underline;text-decoration-color:rgba(150,112,15,.4);text-underline-offset:2px}
+@media(max-width:560px){.tire-tile-grid{grid-template-columns:1fr}.tire-tile-grid-2col{grid-template-columns:1fr}}.gold-inline-link{color:#96700f;font-weight:700;text-decoration:underline;text-decoration-color:rgba(150,112,15,.4);text-underline-offset:2px}
 .gold-inline-link:hover{color:#7a5a10}
 .gold-inline-link + .star{color:#96700f;font-weight:700}
 .footer-affiliate-note{font-size:.8rem;color:rgba(255,255,255,.55);margin-bottom:.6rem}
@@ -159,7 +166,18 @@
 </section>
 <section>
 <h2>Luftdruck regelmäßig selbst prüfen</h2>
-<p>Der richtige Luftdruck ist einer der einfachsten Hebel für Sicherheit und Spritverbrauch – zu wenig Druck erhöht Bremsweg, Verschleiß und Kraftstoffkosten spürbar. Mit einer eigenen <a class="gold-inline-link" href="https://link.amazon/B0cl8Dpna" rel="noopener sponsored" target="_blank">Luftpumpe</a><span class="star">*</span> lässt sich der Druck jederzeit zu Hause kontrollieren und anpassen, ohne extra zur Tankstelle zu fahren.</p>
+<div class="tire-tile-grid tire-tile-grid-2col">
+<div class="tire-tile t-druckinfo">
+<div class="tile-icon">📉</div>
+<h3>Warum es wichtig ist</h3>
+<p>Der richtige Luftdruck ist einer der einfachsten Hebel für Sicherheit und Spritverbrauch – zu wenig Druck erhöht Bremsweg, Verschleiß und Kraftstoffkosten spürbar, oft ohne dass man es dem Reifen ansieht.</p>
+</div>
+<div class="tire-tile t-luftpumpe">
+<div class="tile-icon">🔌</div>
+<h3>Selbst kontrollieren</h3>
+<p>Mit einer eigenen <a class="gold-inline-link" href="https://link.amazon/B0cl8Dpna" rel="noopener sponsored" target="_blank">Luftpumpe</a><span class="star">*</span> lässt sich der Druck jederzeit zu Hause prüfen und anpassen, ohne extra zur Tankstelle zu fahren.</p>
+</div>
+</div>
 </section>
 <section>
 <h2>Sommer-, Winter- oder Ganzjahresreifen?</h2>
@@ -202,7 +220,25 @@
 <p>Günstige Reifen, oft aus Fernost. Für wenig gefahrene Kilometer und trockene Bedingungen meist ausreichend.</p>
 </div>
 </div>
-<p>Der Preis allein sagt wenig über die Qualität aus. Entscheidend sind das konkrete Modell, die Dimension und der Einsatzzweck. Gerade bei Nässe können sich Bremsweg und Aquaplaningverhalten deutlich unterscheiden. Deshalb nicht einfach nach „Premium“, „Mittelklasse“ oder „Budget“ kaufen, sondern aktuelle Reifentests für die eigene Größe heranziehen. Wichtig: Ein Testsieger in 225/50 R17 ist nicht automatisch die beste Wahl in 205/55 R16 – Konstruktion und Mischung können sich je Dimension unterscheiden. Auch das Reifenlabel ist hilfreich, ersetzt aber keinen unabhängigen Test. Wer nach Größe und Test seine Wahl getroffen hat, kann <a class="gold-inline-link" href="https://link.amazon/B05RctAPX" rel="noopener sponsored" target="_blank">passende Reifen</a><span class="star">*</span> bequem online bestellen und sich liefern lassen.</p>
+<p style="margin-top:1.2rem">Der Preis allein sagt wenig über die Qualität aus – aktuelle Reifentests für die eigene Größe sind aussagekräftiger als die Preisklasse:</p>
+<div class="tire-tile-grid tire-tile-grid-3col">
+<div class="tire-tile t-hinweis1">
+<div class="tile-icon">🎯</div>
+<h3>Modell statt Preisklasse</h3>
+<p>Entscheidend sind das konkrete Modell, die Dimension und der Einsatzzweck – nicht das Preissegment „Premium", „Mittelklasse" oder „Budget".</p>
+</div>
+<div class="tire-tile t-hinweis2">
+<div class="tile-icon">📐</div>
+<h3>Testsieger sind größenabhängig</h3>
+<p>Ein Testsieger in 225/50 R17 ist nicht automatisch die beste Wahl in 205/55 R16 – Konstruktion und Gummimischung unterscheiden sich je Dimension.</p>
+</div>
+<div class="tire-tile t-hinweis3">
+<div class="tile-icon">🏷️</div>
+<h3>Label ergänzt, ersetzt aber keinen Test</h3>
+<p>Das EU-Reifenlabel ist eine hilfreiche Vorauswahl, ersetzt aber keinen unabhängigen Reifentest.</p>
+</div>
+</div>
+<p style="margin-top:1.2rem">Wer nach Größe und Test seine Wahl getroffen hat, kann <a class="gold-inline-link" href="https://link.amazon/B05RctAPX" rel="noopener sponsored" target="_blank">passende Reifen</a><span class="star">*</span> bequem online bestellen und sich liefern lassen.</p>
 </section>
 <section>
 <section aria-labelledby="aktuelle-tests" class="tire-test-section">
