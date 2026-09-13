@@ -1,0 +1,17 @@
+{
+  "name": "Autoknigge — Ratgeber für Autofahrer",
+  "short_name": "Autoknigge",
+  "description": "Ihr unabhängiger Ratgeber für Verhalten, Pflege & Autokauf",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#f8f9fb",
+  "theme_color": "#0f241d",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
