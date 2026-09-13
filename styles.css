@@ -2155,3 +2155,39 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
     font-size: 1.2rem;
   }
 }
+
+/* ===== KNIGGE-TIPP E-AUTO / LADEGESCHWINDIGKEIT =====
+   Eigenes Knigge-Foto: Bild links, Tipp rechts – auf Mobilgeräten als Bild mit
+   gut lesbarem Textbereich unten. */
+.knigge-quote-eauto .knigge-quote-image {
+  min-height: 420px;
+  background-image: url('knigge-eauto-laden.jpg');
+  background-position: center 42%;
+}
+.knigge-quote-eauto .knigge-quote-shade {
+  background: linear-gradient(90deg, rgba(5,12,10,.04) 0%, rgba(5,12,10,.10) 42%, rgba(5,12,10,.62) 62%, rgba(5,12,10,.94) 100%);
+}
+.knigge-quote-eauto .knigge-quote-content {
+  margin-left: auto;
+  margin-right: 0;
+  width: min(50%, 610px);
+  padding: 2.25rem 2.35rem;
+  background: rgba(5,12,10,.42);
+  backdrop-filter: blur(2px);
+}
+@media (max-width:760px) {
+  .knigge-quote-eauto .knigge-quote-image {
+    min-height: 570px;
+    background-position: 42% center;
+  }
+  .knigge-quote-eauto .knigge-quote-shade {
+    background: linear-gradient(0deg, rgba(5,12,10,.96) 0%, rgba(5,12,10,.82) 42%, rgba(5,12,10,.12) 78%, rgba(5,12,10,.02) 100%);
+  }
+  .knigge-quote-eauto .knigge-quote-content {
+    width: 100%;
+    margin: 0;
+    padding: 1.35rem 1.25rem 1.5rem;
+    background: rgba(5,12,10,.30);
+    backdrop-filter: none;
+  }
+}
