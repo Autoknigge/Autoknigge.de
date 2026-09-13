@@ -170,5 +170,5 @@ document.addEventListener('DOMContentLoaded', function(){
  buttons.forEach(btn=>btn.addEventListener('click',()=>{buttons.forEach(b=>b.classList.remove('active'));btn.classList.add('active');const f=btn.dataset.filter;cards.forEach(c=>{c.style.display=(f==='all'||c.dataset.types.split(' ').includes(f))?'flex':'none';});}));
 });
 </script>
-</body>
+<script src="section-cards.js"></script>\n</body>
 </html>
