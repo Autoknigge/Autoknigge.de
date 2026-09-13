@@ -4,7 +4,6 @@
 const CACHE_NAME = 'autoknigge-v3';
 const STATIC_CACHE_URLS = [
   '/',
-  '/index.html',
   '/styles.css',
   '/script.js',
   '/cookie-consent.js',
