@@ -2,6 +2,7 @@
   "name": "autoknigge",
   "compatibility_date": "2026-09-13",
   "assets": {
-    "directory": "./"
+    "directory": "./",
+    "html_handling": "none"
   }
 }
