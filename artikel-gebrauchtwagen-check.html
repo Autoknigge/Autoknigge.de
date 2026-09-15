@@ -33,10 +33,24 @@
 .affiliate{display:flex;gap:1rem;align-items:center;justify-content:space-between;padding:1.15rem 1.25rem;border:1px solid rgba(212,168,67,.35);background:#fffaf0;border-radius:18px;margin:1.4rem 0}.affiliate p{margin:.2rem 0;color:#4f5b55;line-height:1.5}.affiliate a{white-space:nowrap}
 .mini-table{width:100%;border-collapse:collapse;margin:.8rem 0}.mini-table th,.mini-table td{padding:.75rem;border-bottom:1px solid rgba(15,36,29,.11);text-align:left;vertical-align:top}.mini-table th{background:#f3f7f4}
 .source-note{font-size:.82rem;color:#68746e;line-height:1.55;margin-top:1.5rem}
+.check-progress{margin:.4rem 0 1.1rem}
+.check-progress-bar{height:10px;border-radius:6px;background:#e7ede9;overflow:hidden}
+.check-progress-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,#d4af37,#176246);transition:width .25s ease}
+.check-progress-text{font-size:.85rem;font-weight:700;color:#164c39;margin-top:.45rem}
+.check-item-toggle{cursor:pointer;align-items:flex-start;position:relative;transition:background .15s ease,border-color .15s ease}
+.check-item-toggle:hover{background:#f1f6f2}
+.check-box{margin-top:.2rem;width:19px;height:19px;flex:0 0 auto;accent-color:#176246;cursor:pointer}
+.check-item-toggle:has(.check-box:checked){background:#eaf6ee;border-color:#a9d9bb}
+.check-item-toggle:has(.check-box:checked) strong{text-decoration:line-through;color:#4c6a5b}
+.check-item-toggle:has(.check-box:checked) span{opacity:.7}
+.check-status{margin-top:1.1rem;padding:1rem 1.2rem;border-radius:14px;font-weight:700;font-size:.95rem;display:none}
+.check-status.open{display:block;background:#fff3f1;color:#9e2525;border:1px solid #efcbc8}
+.check-status.done{display:block;background:#eaf6ee;color:#164c39;border:1px solid #a9d9bb}
 @media(max-width:760px){.check-grid,.two-col{grid-template-columns:1fr}.cv-points{grid-template-columns:repeat(2,1fr)}.check-hero{min-height:420px;background-position:60% center}.check-hero-content{padding:2.2rem 1.25rem;max-width:100%;padding-top:14rem}.check-hero:after{background:linear-gradient(0deg,rgba(7,25,18,.94) 0%,rgba(7,25,18,.55) 58%,rgba(7,25,18,.08) 100%)}.affiliate{flex-direction:column;align-items:flex-start}.affiliate a{width:100%;text-align:center}}
 @media(max-width:480px){.cv-points{grid-template-columns:1fr}.info-card{padding:1.1rem}.check-item{padding:.9rem}}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Gebrauchtwagen-Check vor dem Kauf | Autoknigge", "description": "Gebrauchtwagen vor dem Kauf richtig prüfen: Checkliste zu Servicehistorie, Reifen, Lackdicke, Probefahrt und Tipps für gebrauchte E-Autos.", "url": "https://autoknigge.de/artikel-gebrauchtwagen-check.html", "inLanguage": "de-DE", "dateModified": "2026-09-12", "publisher": {"@type": "Organization", "name": "Autoknigge", "url": "https://autoknigge.de/", "logo": {"@type": "ImageObject", "url": "https://autoknigge.de/logo.png"}}}</script></head>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Gebrauchtwagen-Check vor dem Kauf | Autoknigge", "description": "Gebrauchtwagen vor dem Kauf richtig prüfen: Checkliste zu Servicehistorie, Reifen, Lackdicke, Probefahrt und Tipps für gebrauchte E-Autos.", "url": "https://autoknigge.de/artikel-gebrauchtwagen-check.html", "inLanguage": "de-DE", "dateModified": "2026-09-15", "publisher": {"@type": "Organization", "name": "Autoknigge", "url": "https://autoknigge.de/", "logo": {"@type": "ImageObject", "url": "https://autoknigge.de/logo.png"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Start", "item": "https://autoknigge.de/"}, {"@type": "ListItem", "position": 2, "name": "Kauf und Verkauf", "item": "https://autoknigge.de/kategorie-kauf.html"}, {"@type": "ListItem", "position": 3, "name": "Gebrauchtwagen-Check", "item": "https://autoknigge.de/artikel-gebrauchtwagen-check.html"}]}</script></head>
 <body>
 <header class="site-header header-logo-large" id="top">
 <div class="header-inner">
@@ -54,20 +68,34 @@
 <div class="check-hero-content"><div class="check-kicker">KNIGGE CHECK</div><h1>Gebrauchtwagen-Check vor dem Kauf</h1></div><p>Vom ersten Blick bis zur Probefahrt: Mit dieser Checkliste erkennst du typische Schwachstellen – und weißt, wann ein genauerer Blick lohnt.</p></div>
 </section>
 <section class="info-card"><h2>Erst prüfen, dann unterschreiben</h2><p>Ein gutes Inserat ersetzt keine Besichtigung. Idealerweise siehst du das Auto bei Tageslicht, prüfst die Unterlagen vor der Probefahrt und lässt dich nicht unter Zeitdruck setzen. Stimmen Fahrzeug, FIN, Kilometerstand und Dokumentation nicht schlüssig zusammen, sollte der Kauf zunächst warten.</p><div class="tip"><strong>Knigges Grundregel:</strong> Nicht nur fragen „Was ist kaputt?“, sondern auch „Was wurde wann gemacht – und wodurch lässt es sich belegen?“ Rechnungen, HU-Berichte und Serviceeinträge sind oft aussagekräftiger als eine mündliche Zusicherung.</div></section>
-<section class="info-card"><span class="level">🟢 FÜR ANFÄNGER</span><h2>Die 12-Punkte-Checkliste</h2><div class="check-grid">
-<div class="check-item"><div class="icon">🆔</div><div><strong>1. FIN abgleichen</strong><span>FIN am Fahrzeug mit Zulassungsbescheinigung Teil I und den Unterlagen vergleichen.</span></div></div>
-<div class="check-item"><div class="icon">📘</div><div><strong>2. Servicehistorie ansehen</strong><span>Wartungen, Kilometerstände, Rechnungen und HU-Berichte auf Plausibilität prüfen.</span></div></div>
-<div class="check-item"><div class="icon">🚗</div><div><strong>3. Karosserie rundum ansehen</strong><span>Farbunterschiede, ungleichmäßige Spaltmaße, Dellen, Rost und schlecht ausgeführte Reparaturen suchen.</span></div></div>
-<div class="check-item"><div class="icon">🎨</div><div><strong>4. Lack prüfen</strong><span>Unterschiedliche Glanzgrade, Staubeinschlüsse oder sichtbare Übergänge können auf Nachlackierungen hinweisen.</span></div></div>
-<div class="check-item"><div class="icon">🛞</div><div><strong>5. Reifen kontrollieren</strong><span>Profiltiefe, gleichmäßigen Abrieb, Beschädigungen, DOT-Alter und Reifenmarke prüfen.</span></div></div>
-<div class="check-item"><div class="icon">💡</div><div><strong>6. Beleuchtung &amp; Scheiben</strong><span>Leuchten, Blinker, Scheiben, Spiegel und Frontscheibe auf Schäden prüfen.</span></div></div>
-<div class="check-item"><div class="icon">🧰</div><div><strong>7. Motorraum &amp; Flüssigkeiten</strong><span>Auf offensichtliche Undichtigkeiten, ungewöhnliche Gerüche und Wartungsbedarf achten.</span></div></div>
-<div class="check-item"><div class="icon">🔑</div><div><strong>8. Schlüssel &amp; Zubehör</strong><span>Alle Schlüssel, Ladekabel, Bordwerkzeug, Gepäckraumabdeckung und vorhandenes Zubehör prüfen.</span></div></div>
-<div class="check-item"><div class="icon">❄️</div><div><strong>9. Klimaanlage testen</strong><span>Klimaanlage und Heizung auf Funktion prüfen – auch bei älteren Autos ein möglicher Kostenpunkt.</span></div></div>
-<div class="check-item"><div class="icon">🚦</div><div><strong>10. Probefahrt</strong><span>Kaltstart wenn möglich, Bremsen, Lenkung, Kupplung/Getriebe, Geräusche und Geradeauslauf prüfen.</span></div></div>
-<div class="check-item"><div class="icon">📄</div><div><strong>11. Kaufvertrag</strong><span>Bekannte Mängel, Zusicherungen, Zubehör, Kilometerstand und Preis schriftlich festhalten.</span></div></div>
-<div class="check-item"><div class="icon">🔎</div><div><strong>12. Zweifel ernst nehmen</strong><span>Bei widersprüchlichen Angaben oder verweigerter Prüfung lieber eine unabhängige Untersuchung veranlassen.</span></div></div>
-</div></section>
+<section class="info-card"><span class="level">🟢 INTERAKTIV</span><h2>Die Kauf-Checkliste zum Abhaken</h2><p style="margin-top:-.4rem;color:#53615b">Einfach bei der Besichtigung Punkt für Punkt abhaken – dein Fortschritt wird automatisch im Browser gespeichert.</p>
+<div class="check-progress" id="checkProgress">
+<div class="check-progress-bar"><div class="check-progress-fill" id="checkProgressFill" style="width:0%"></div></div>
+<div class="check-progress-text" id="checkProgressText">0 von 19 Punkten geprüft</div>
+</div>
+<div class="check-grid" id="checkGrid">
+<label class="check-item check-item-toggle"><input class="check-box" data-id="fin" type="checkbox"/><div class="icon">🆔</div><div><strong>FIN abgleichen</strong><span>FIN am Fahrzeug mit Zulassungsbescheinigung Teil I und den Unterlagen vergleichen.</span></div></label>
+<label class="check-item check-item-toggle"><input class="check-box" data-id="historie" type="checkbox"/><div class="icon">🔎</div><div><strong>VIN/Fahrzeughistorie geprüft</strong><span>Unfall-, Kilometer- und Halterhistorie z. B. über einen <a href="artikel-gebrauchtwagen-historie-carvertical.html">Fahrzeughistorie-Check</a> abfragen.</span></div></label>
+<label class="check-item check-item-toggle"><input class="check-box" data-id="service" type="checkbox"/><div class="icon">📘</div><div><strong>Servicehistorie vollständig?</strong><span>Wartungen, Kilometerstände, Rechnungen auf Plausibilität und Lückenlosigkeit prüfen.</span></div></label>
+<label class="check-item check-item-toggle"><input class="check-box" data-id="hu" type="checkbox"/><div class="icon">📋</div><div><strong>HU-Bericht geprüft</strong><span>Letzten Hauptuntersuchungsbericht auf Mängeleinträge und Fälligkeit der nächsten HU ansehen.</span></div></label>
+<label class="check-item check-item-toggle"><input class="check-box" data-id="trocken" type="checkbox"/><div class="icon">💧</div><div><strong>Fahrzeug innen trocken?</strong><span>Teppiche, Kofferraumboden und Sitzunterseiten auf Feuchtigkeit oder muffigen Geruch prüfen.</span></div></label>
+<label class="check-item check-item-toggle"><input class="check-box" data-id="karosserie" type="checkbox"/><div class="icon">🚗</div><div><strong>Karosserie &amp; Spaltmaße</strong><span>Farbunterschiede, ungleichmäßige Spaltmaße, Dellen und Rost rundum kontrollieren.</span></div></label>
+<label class="check-item check-item-toggle"><input class="check-box" data-id="lack" type="checkbox"/><div class="icon">🎨</div><div><strong>Lack auf Kratzer/Steinschläge</strong><span>Unterschiedliche Glanzgrade oder sichtbare Übergänge können auf Nachlackierungen hinweisen.</span></div></label>
+<label class="check-item check-item-toggle"><input class="check-box" data-id="lackdicke" type="checkbox"/><div class="icon">📏</div><div><strong>Lackdicke gemessen</strong><span>Mehrere Messpunkte pro Bauteil, linke und rechte Fahrzeugseite vergleichen.</span></div></label>
+<label class="check-item check-item-toggle"><input class="check-box" data-id="reifen" type="checkbox"/><div class="icon">🛞</div><div><strong>Reifen gleichmäßig abgefahren?</strong><span>Profiltiefe, Abrieb, DOT-Alter und Reifenmarke aller vier Reifen prüfen.</span></div></label>
+<label class="check-item check-item-toggle"><input class="check-box" data-id="bremsen" type="checkbox"/><div class="icon">🛑</div><div><strong>Bremsen geprüft</strong><span>Bei der Probefahrt auf Geräusche, Vibrationen und geraden Bremsweg achten.</span></div></label>
+<label class="check-item check-item-toggle"><input class="check-box" data-id="beleuchtung" type="checkbox"/><div class="icon">💡</div><div><strong>Beleuchtung &amp; Scheiben</strong><span>Leuchten, Blinker, Scheiben, Spiegel und Frontscheibe auf Schäden prüfen.</span></div></label>
+<label class="check-item check-item-toggle"><input class="check-box" data-id="motorraum" type="checkbox"/><div class="icon">🧰</div><div><strong>Motorraum &amp; Flüssigkeiten</strong><span>Auf Undichtigkeiten, ungewöhnliche Gerüche und Wartungsbedarf achten.</span></div></label>
+<label class="check-item check-item-toggle"><input class="check-box" data-id="kaltstart" type="checkbox"/><div class="icon">🔥</div><div><strong>Motor kalt gestartet?</strong><span>Kaltstart zeigt Ölverbrauch, Rauchbildung und ungewöhnliche Geräusche am ehesten.</span></div></label>
+<label class="check-item check-item-toggle"><input class="check-box" data-id="warnleuchten" type="checkbox"/><div class="icon">⚠️</div><div><strong>Warnleuchten kontrolliert?</strong><span>Nach dem Start kurz alle Kontrollleuchten im Cockpit beobachten.</span></div></label>
+<label class="check-item check-item-toggle"><input class="check-box" data-id="klima" type="checkbox"/><div class="icon">❄️</div><div><strong>Klimaanlage getestet?</strong><span>Klimaanlage und Heizung auf Funktion prüfen – auch bei älteren Autos ein möglicher Kostenpunkt.</span></div></label>
+<label class="check-item check-item-toggle"><input class="check-box" data-id="schluessel" type="checkbox"/><div class="icon">🔑</div><div><strong>Schlüssel &amp; Zubehör vollständig?</strong><span>Alle Schlüssel, Ladekabel, Bordwerkzeug und vorhandenes Zubehör prüfen.</span></div></label>
+<label class="check-item check-item-toggle"><input class="check-box" data-id="probefahrt" type="checkbox"/><div class="icon">🚦</div><div><strong>Probefahrt gemacht?</strong><span>Lenkung, Kupplung/Getriebe, Geräusche und Geradeauslauf bei verschiedenen Tempi prüfen.</span></div></label>
+<label class="check-item check-item-toggle"><input class="check-box" data-id="ev-batterie" type="checkbox"/><div class="icon">🔋</div><div><strong>Batterie bei E-Auto berücksichtigt?</strong><span>SoH-Zertifikat, Batteriegarantie und Ladefunktion prüfen (nur bei Elektroauto relevant).</span></div></label>
+<label class="check-item check-item-toggle"><input class="check-box" data-id="vertrag" type="checkbox"/><div class="icon">📄</div><div><strong>Kaufvertrag vorbereitet?</strong><span>Bekannte Mängel, Zusicherungen, Zubehör, Kilometerstand und Preis schriftlich festhalten.</span></div></label>
+</div>
+<div class="check-status" id="checkStatus"></div>
+</section>
 <section class="info-card"><span class="level pro">🟡 FÜR FORTGESCHRITTENE</span><h2>Was du genauer untersuchen kannst</h2><div class="two-col">
 <div><h3>🎨 Lackdickenmessung</h3><p>Ein Lackdickenmesser kann Hinweise auf Nachlackierungen und Spachtelarbeiten liefern. Entscheidend ist weniger eine einzelne Zahl als das <strong>Bild mehrerer Messpunkte</strong>. Serienlack kann je nach Hersteller und Bauteil unterschiedlich dick sein.</p><p><strong>Praxis:</strong> Türen, Kotflügel, Haube, Dach und Heck mehrfach messen und linke/rechte Fahrzeugseite vergleichen.</p></div>
 <div><h3>🛞 Reifen: nicht nur Profil</h3><p>Prüfe Marke, Modell, DOT, Profiltiefe und Abrieb. Vier Reifen müssen nicht gleich sein – aber unterschiedliche Reifenqualitäten oder stark unterschiedliche Zustände können ein Hinweis auf Mischbereifung oder einen früheren Schaden sein.</p><p>Die gesetzliche Mindestprofiltiefe liegt in Deutschland bei <strong>1,6 mm</strong>. Für die Kaufentscheidung zählt aber auch der tatsächliche Zustand und die zu erwartende Restlebensdauer.</p></div>
@@ -81,7 +109,68 @@
 <section class="info-card"><h2>Wann sollte ein Profi ran?</h2><p>Bei einem teuren Fahrzeug, einem möglichen Unfallschaden, widersprüchlicher Historie oder auffälligen Geräuschen ist eine unabhängige Gebrauchtwagenuntersuchung oft das bessere Geschäft als ein vermeintliches Schnäppchen. Besonders bei E-Autos kann zusätzlich ein Batteriecheck sinnvoll sein.</p><div class="danger"><strong>Finger weg vom Kauf:</strong> Wenn der Verkäufer eine Probefahrt, die Einsicht in Unterlagen oder die Prüfung durch einen unabhängigen Fachmann kategorisch verweigert, ist das ein starkes Warnsignal.</div></section>
 <p class="source-note"><strong>Hinweis:</strong> Die Checkliste ist eine praktische Orientierung und ersetzt keine individuelle technische Untersuchung. Reifen- und Lackwerte können je nach Fahrzeug variieren. Beim E-Auto sind insbesondere die jeweiligen Herstellerbedingungen für Batteriegarantie und Batteriezustand maßgeblich.</p>
 <div class="affiliate-note"><strong>Transparenz:</strong> Mit * gekennzeichnete Links sind Partner-/Affiliate-Links. Wenn du darüber kaufst oder einen Dienst nutzt, kann Autoknigge eine Provision erhalten. Für dich entsteht dadurch kein Aufpreis.</div>
+<section class="pk-related" style="margin:2.5rem 0">
+<h2>Passt zu diesem Thema</h2>
+<div class="pk-related-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1rem">
+<a class="pk-related-card" style="display:block;text-decoration:none;color:inherit;border-radius:14px;padding:1.1rem 1.2rem;border:1px solid rgba(10,28,22,.08);background:#fff;box-shadow:0 2px 8px rgba(15,36,29,.05)" href="artikel-gebrauchtwagen-historie-carvertical.html"><span class="icon" style="font-size:1.4rem;margin-bottom:.5rem;display:block">🔍</span><h3 style="margin:0 0 .3rem;font-size:.95rem">Fahrzeughistorie prüfen</h3><p style="margin:0;font-size:.8rem;color:var(--text-muted);line-height:1.5">Unfall- und Kilometerhistorie vor dem Kauf abfragen.</p></a>
+<a class="pk-related-card" style="display:block;text-decoration:none;color:inherit;border-radius:14px;padding:1.1rem 1.2rem;border:1px solid rgba(10,28,22,.08);background:#fff;box-shadow:0 2px 8px rgba(15,36,29,.05)" href="artikel-reifen.html"><span class="icon" style="font-size:1.4rem;margin-bottom:.5rem;display:block">🛞</span><h3 style="margin:0 0 .3rem;font-size:.95rem">Reifen richtig behandeln</h3><p style="margin:0;font-size:.8rem;color:var(--text-muted);line-height:1.5">Profiltiefe, Reifenlabel und wann sich der Aufpreis lohnt.</p></a>
+<a class="pk-related-card" style="display:block;text-decoration:none;color:inherit;border-radius:14px;padding:1.1rem 1.2rem;border:1px solid rgba(10,28,22,.08);background:#fff;box-shadow:0 2px 8px rgba(15,36,29,.05)" href="artikel-kfz-versicherung-wechseln.html"><span class="icon" style="font-size:1.4rem;margin-bottom:.5rem;display:block">🛡️</span><h3 style="margin:0 0 .3rem;font-size:.95rem">Kfz-Versicherung wechseln</h3><p style="margin:0;font-size:.8rem;color:var(--text-muted);line-height:1.5">Checkliste mit Spartipps für den neuen Gebrauchten.</p></a>
+<a class="pk-related-card" style="display:block;text-decoration:none;color:inherit;border-radius:14px;padding:1.1rem 1.2rem;border:1px solid rgba(10,28,22,.08);background:#fff;box-shadow:0 2px 8px rgba(15,36,29,.05)" href="auto-kostenrechner.html"><span class="icon" style="font-size:1.4rem;margin-bottom:.5rem;display:block">🧮</span><h3 style="margin:0 0 .3rem;font-size:.95rem">Was kostet mein Auto wirklich?</h3><p style="margin:0;font-size:.8rem;color:var(--text-muted);line-height:1.5">Alle laufenden Kosten auf einen Blick berechnen.</p></a>
+</div>
+</section>
 </div></main>
-<footer class="site-footer"><div class="wrap"><p><a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></p></div></footer>
+<button aria-label="Nach oben scrollen" class="back-to-top" id="backToTop">↑</button>
+<footer class="site-footer"><div class="wrap"><div class="footer-grid">
+<div class="footer-brand"><h3>Autoknigge</h3><p>Ihr unabhängiger Ratgeber für stilvolles, sicheres und wirtschaftlich cleveres Verhalten rund um das Automobil.</p></div>
+<div class="footer-col"><h4>Kategorien</h4><ul class="footer-links-list"><li><a href="kategorie-versicherung.html">Kfz-Versicherung</a></li><li><a href="kategorie-zulassung.html">Auto an-, um- &amp; abmelden ohne Stress</a></li><li><a href="kategorie-kauf.html">Kauf und Verkauf</a></li><li><a href="kategorie-pflege.html">Wartung und Pflege</a></li><li><a href="kategorie-recht.html">Recht &amp; Etikette</a></li><li><a href="kategorie-geld-sparen.html">Clever sparen</a></li><li><a href="ueber-knigge.html">Über Knigge</a></li></ul></div>
+<div class="footer-col"><h4>Downloads</h4><ul class="footer-links-list"><li><a download="" href="kfz-kaufvertrag.pdf">Kfz-Kaufvertrag (PDF)</a></li><li><a download="" href="vollmacht-kfz-zulassung.pdf">Zulassungsvollmacht (PDF)</a></li><li><a download="" href="Notfallcheckliste-Unfall.pdf">Notfallcheckliste Unfall (PDF)</a></li></ul></div>
+</div><div class="footer-bottom"><div>© 2026 Autoknigge — Alle Rechte vorbehalten. Unabhängige Ratgeber-Plattform.</div><div class="foot-links"><a href="impressum.html">Impressum</a> • <a href="datenschutz.html">Datenschutz</a> • <a href="#" id="cookie-settings-link">Cookie-Einstellungen</a></div></div></div></footer>
 <script src="script.js"></script>
-<script src="section-cards.js"></script>\n</body></html>
+<script src="section-cards.js"></script>
+<script>
+(function(){
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('.check-box'));
+  var total = boxes.length;
+  var fill = document.getElementById('checkProgressFill');
+  var text = document.getElementById('checkProgressText');
+  var status = document.getElementById('checkStatus');
+  var STORAGE_KEY = 'autoknigge-gwcheck-v1';
+
+  function load(){
+    try {
+      var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      boxes.forEach(function(b){ b.checked = !!saved[b.dataset.id]; });
+    } catch(e) {}
+  }
+  function save(){
+    var state = {};
+    boxes.forEach(function(b){ state[b.dataset.id] = b.checked; });
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
+  }
+  function update(){
+    var checked = boxes.filter(function(b){ return b.checked; }).length;
+    var pct = total ? Math.round(checked / total * 100) : 0;
+    fill.style.width = pct + '%';
+    text.textContent = checked + ' von ' + total + ' Punkten geprüft';
+    var open = total - checked;
+    if (checked === 0) {
+      status.className = 'check-status';
+      status.textContent = '';
+    } else if (open > 0) {
+      status.className = 'check-status open';
+      status.textContent = '⚠️ Noch ' + open + ' Punkt' + (open === 1 ? '' : 'e') + ' offen – Besichtigung nicht abschließen.';
+    } else {
+      status.className = 'check-status done';
+      status.textContent = '✅ Alle Punkte geprüft – gute Basis für die Kaufentscheidung.';
+    }
+  }
+
+  boxes.forEach(function(b){
+    b.addEventListener('change', function(){ save(); update(); });
+  });
+
+  load();
+  update();
+})();
+</script>
+</body></html>
