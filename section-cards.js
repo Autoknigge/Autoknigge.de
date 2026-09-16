@@ -5,14 +5,20 @@
 */
 (function () {
   function cardizeSections() {
-    document.querySelectorAll('main h2:not([class])').forEach(function (heading) {
+    // Statische Momentaufnahme vor der DOM-Veränderung.
+    var headings = Array.prototype.slice.call(document.querySelectorAll('main h2:not([class])'));
+
+    headings.forEach(function (heading) {
+      // Bereits durch einen vorherigen Durchlauf in eine Karte verschoben?
+      if (heading.closest('.auto-section-card')) return;
+
       var parent = heading.parentElement;
-      if (!parent || parent.dataset.sectionCardized === 'true') return;
+      if (!parent) return;
       if (parent.classList.contains('article-body')) return;
 
       // Nur echte, einfache Container bearbeiten. H2 innerhalb bestehender
       // Karten/Teaser/Grids besitzen in der Regel einen klassifizierten Parent.
-      if (parent.className && String(parent.className).trim()) return;
+      if (parent.className && parent.className.trim()) return;
 
       var card = document.createElement('div');
       card.className = 'auto-section-card';
@@ -27,7 +33,6 @@
         card.appendChild(node);
         node = next;
       }
-      parent.dataset.sectionCardized = 'true';
     });
   }
 

@@ -2191,3 +2191,14 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
     backdrop-filter: none;
   }
 }
+
+/* ===== "DAS KÖNNTE DICH AUCH INTERESSIEREN" (site-weite Related-Kacheln) ===== */
+.related-articles{margin:2.5rem 0}
+.related-articles h2{margin-bottom:.3rem}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem}
+.related-card{display:block;text-decoration:none;color:inherit;border-radius:14px;padding:1.1rem 1.2rem;border:1px solid rgba(10,28,22,.08);background:#fff;box-shadow:0 2px 8px rgba(15,36,29,.05);transition:transform .15s ease,box-shadow .15s ease}
+.related-card:hover{box-shadow:0 6px 16px rgba(15,36,29,.09);transform:translateY(-1px)}
+.related-card .icon{font-size:1.4rem;margin-bottom:.5rem;display:block}
+.related-card h3{margin:0 0 .3rem;font-size:.95rem;color:var(--green-800,#1a4a38)}
+.related-card p{margin:0;font-size:.83rem;color:var(--text-muted);line-height:1.5}
+@media(max-width:760px){.related-grid{grid-template-columns:1fr}}
