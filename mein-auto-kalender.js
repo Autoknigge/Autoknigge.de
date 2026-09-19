@@ -151,6 +151,7 @@
     if (tires) {
       var tireMonths = parseInt(data.tireMonths || '6', 10);
       add(addMonths(tires, tireMonths), 'Reifenwechsel prüfen', 'Saisonwechsel einplanen und Reifen auf Zustand, Profiltiefe und Luftdruck prüfen.', 14);
+      add(addDays(tires, 3), 'Radschrauben nachziehen', 'Nach einem Reifenwechsel setzen sich die Radschrauben in den ersten Kilometern minimal – nach ca. 50 km (meist nach wenigen Tagen erreicht) das Anzugsdrehmoment kontrollieren. Bei deutlich mehr oder weniger Fahrleistung selbst anpassen.', 1);
     }
 
     var warranty = parseDate(data.warrantyEnd);
