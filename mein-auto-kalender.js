@@ -20,14 +20,14 @@
   var MANUFACTURER_PROFILES = {
     'Alfa Romeo': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12 },
     'Audi': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'variabel', serviceMonths: 24, serviceKmHint: 'bis 30.000 km (Longlife)' },
-    'BMW': { warrantyYears: 3, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'variabel', serviceMonths: 24, serviceKmHint: 'bis 30.000 km (BMW Service Inclusive)' },
-    'BYD': { warrantyYears: 6, warrantyKm: 150000, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12, note: 'Garantiedauer ist bei BYD modellabhängig (Herstellerangaben schwanken zwischen 4 und 6 Jahren) – unbedingt Kaufvertrag prüfen.' },
+    'BMW': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'variabel', serviceMonths: 24, serviceKmHint: 'bis 30.000 km (BMW Service Inclusive)' },
+    'BYD': { warrantyYears: 6, warrantyKm: 150000, batteryYears: 8, batteryKm: 250000, serviceType: 'fest', serviceMonths: 12, note: 'Seit Januar 2026 gilt für die Blade-Batterie 8 Jahre/250.000 km (mind. 70 % Kapazität) – auch rückwirkend für Bestandsfahrzeuge. Der Elektroantrieb selbst bleibt separat bei 8 Jahren/150.000 km, Durchrostung 12 Jahre ohne km-Begrenzung.' },
     'Citroën': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12 },
     'Dacia': { warrantyYears: 3, warrantyKm: 100000, batteryYears: 8, batteryKm: 120000, serviceType: 'fest', serviceMonths: 12 },
     'Ford': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12 },
-    'Hyundai': { warrantyYears: 5, warrantyKm: null, batteryYears: 8, batteryKm: 200000, serviceType: 'fest', serviceMonths: 12 },
-    'Kia': { warrantyYears: 7, warrantyKm: 150000, batteryYears: 7, batteryKm: 150000, serviceType: 'fest', serviceMonths: 12 },
-    'Mercedes-Benz': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'variabel', serviceMonths: 24, serviceKmHint: 'bis 25.000 km (ASSYST)' },
+    'Hyundai': { warrantyYears: 5, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12, note: 'Bei einzelnen Modellen (z. B. IONIQ) werden teils bis zu 200.000 km auf die Batterie kommuniziert – Modellangabe im eigenen Garantieheft prüfen.' },
+    'Kia': { warrantyYears: 7, warrantyKm: 150000, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12, note: 'Die Batteriegarantie wurde für Modelljahr 2026 und neuer auf 8 Jahre/160.000 km angehoben (zuvor 7 Jahre/150.000 km); ältere Modelljahre bleiben bei 7 Jahren/150.000 km – im Kia-Garantieheft nachsehen.' },
+    'Mercedes-Benz': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'variabel', serviceMonths: 24, serviceKmHint: 'bis 25.000 km (ASSYST)', note: 'Bei EQS und EQE (inkl. SUV-Varianten) gibt Mercedes auf die Batterie sogar 10 Jahre/250.000 km – bei allen anderen Modellen gilt der Standard von 8 Jahren/160.000 km.' },
     'MG': { warrantyYears: 7, warrantyKm: 150000, batteryYears: 8, batteryKm: 150000, serviceType: 'fest', serviceMonths: 12 },
     'Nissan': { warrantyYears: 3, warrantyKm: 100000, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12 },
     'Opel': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12 },
@@ -35,11 +35,11 @@
     'Porsche': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'variabel', serviceMonths: 24, serviceKmHint: 'bis 30.000 km (Porsche LongLife)' },
     'Renault': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12 },
     'Škoda': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'variabel', serviceMonths: 24, serviceKmHint: 'bis 30.000 km (Longlife)' },
-    'Tesla': { warrantyYears: 4, warrantyKm: 80000, batteryYears: 8, batteryKm: 192000, serviceType: 'fest', serviceMonths: 12, note: 'Tesla gibt kein starres Wartungsintervall vor, empfiehlt aber eine jährliche Sichtprüfung. Batteriereichweite je nach Modell (Model S/X teils bis 240.000 km).' },
-    'Toyota': { warrantyYears: 3, warrantyKm: 100000, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12, note: 'Mit lückenlosem Toyota-Scheckheft ist bei vielen Modellen eine Garantieverlängerung bis zu 10 Jahre/185.000 km möglich (Toyota Relax).' },
+    'Tesla': { warrantyYears: 4, warrantyKm: 80000, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12, note: 'Tesla gibt kein starres Wartungsintervall vor, empfiehlt aber eine jährliche Sichtprüfung. Batteriereichweite modellabhängig: Model 3/Y Standard Range 160.000 km, Long Range/Performance 192.000 km, Model S/X bis 240.000 km – jeweils mit mind. 70 % Restkapazität.' },
+    'Toyota': { warrantyYears: 3, warrantyKm: 100000, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12, note: 'Mit jährlich bestandenem Batterietest im Rahmen der Inspektion verlängert Toyota Relax die Batterie-Kapazitätsgarantie bis zu 10 Jahre/max. 250.000 km. Einzelne neue Modelle (z. B. C-HR+) haben teils bereits werksseitig 10 Jahre/300.000 km ohne Testpflicht – Herstellerangabe zum konkreten Modell prüfen.' },
     'Volkswagen': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'variabel', serviceMonths: 24, serviceKmHint: 'bis 30.000 km (Longlife/WIV)' },
-    'Volvo': { warrantyYears: 3, warrantyKm: 100000, batteryYears: 8, batteryKm: 160000, serviceType: 'variabel', serviceMonths: 24 },
-    'XPeng': { warrantyYears: 6, warrantyKm: 150000, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12, note: 'XPeng ist neu auf dem deutschen Markt – Garantiebedingungen können sich noch ändern, bitte aktuellen Händlervertrag prüfen.' }
+    'Volvo': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'variabel', serviceMonths: 24, note: 'Ab Juli 2026 lässt sich die Batteriegarantie bei Volvo Selekt (Gebrauchtwagen-Zertifizierung) gegen Aufpreis auf bis zu 11 Jahre ohne km-Begrenzung verlängern.' },
+    'XPeng': { warrantyYears: 7, warrantyKm: 160000, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12, note: 'Zusätzlich: 12 Jahre Durchrostungsgarantie, 3 Jahre Lackgarantie, 5 Jahre Mobilitätsgarantie/Pannenhilfe. XPeng ist neu auf dem deutschen Markt – Bedingungen laut aktuellem Kundengarantie-Dokument des Vertragspartners prüfen.' }
   };
 
   function $(id) { return document.getElementById(id); }
