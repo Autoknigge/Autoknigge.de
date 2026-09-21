@@ -20,27 +20,117 @@
   var MANUFACTURER_PROFILES = {
     'Alfa Romeo': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12 },
     'Audi': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'variabel', serviceMonths: 24, serviceKmHint: 'bis 30.000 km (Longlife)' },
+    'Bentley': { warrantyYears: 3, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12, warrantyCheckDaysOverride: 90, note: 'Garantie ab Auslieferung an den Erstbesitzer, 3 Jahre ohne Kilometerbegrenzung. Garantiereparaturen müssen bei einem Bentley-Vertragshändler erfolgen.' },
     'BMW': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'variabel', serviceMonths: 24, serviceKmHint: 'bis 30.000 km (BMW Service Inclusive)' },
-    'BYD': { warrantyYears: 6, warrantyKm: 150000, batteryYears: 8, batteryKm: 250000, serviceType: 'fest', serviceMonths: 12, note: 'Seit Januar 2026 gilt für die Blade-Batterie 8 Jahre/250.000 km (mind. 70 % Kapazität) – auch rückwirkend für Bestandsfahrzeuge. Der Elektroantrieb selbst bleibt separat bei 8 Jahren/150.000 km, Durchrostung 12 Jahre ohne km-Begrenzung.' },
+    'Bugatti': { warrantyYears: 2, warrantyKm: null, batteryYears: null, batteryKm: null, serviceType: 'fest', serviceMonths: 12, warrantyCheckDaysOverride: 90, note: 'Garantie beginnt mit der Erstinbetriebnahme, 2 Jahre ohne Kilometerbegrenzung.' },
+    'BYD': { warrantyYears: 6, warrantyKm: 150000, batteryYears: 8, batteryKm: 250000, serviceType: 'fest', serviceMonths: 12,
+      note: 'Seit Januar 2026 gilt für die Blade-Batterie 8 Jahre/250.000 km (mind. 70 % Kapazität) – auch rückwirkend für Bestandsfahrzeuge.',
+      extras: [
+        { key: 'drivetrain', label: 'Elektroantrieb-Garantie', icon: '⚙️', years: 8, km: 150000 },
+        { key: 'rust', label: 'Durchrostungsgarantie', icon: '🛡️', years: 12, km: null }
+      ] },
     'Citroën': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12 },
+    'Cupra': { warrantyYears: 5, warrantyKm: 150000, batteryYears: 8, batteryKm: 160000, serviceType: 'variabel', serviceMonths: 24, serviceKmHint: 'bis 30.000 km (Longlife, MEB-Modelle)', note: 'Cupra bietet seit einiger Zeit 5 Jahre/150.000 km Fahrzeuggarantie statt der VW-Konzern-üblichen 2 Jahre – Schwestermarke SEAT bleibt bei 2 Jahren.' },
     'Dacia': { warrantyYears: 3, warrantyKm: 100000, batteryYears: 8, batteryKm: 120000, serviceType: 'fest', serviceMonths: 12 },
+    'DS Automobiles': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12,
+      extras: [ { key: 'rust', label: 'Durchrostungsgarantie', icon: '🛡️', years: 12, km: null } ] },
+    'Ferrari': { warrantyYears: 3, warrantyKm: null, batteryYears: null, batteryKm: null, serviceType: 'fest', serviceMonths: 12,
+      note: 'Ferrari-Garantie läuft unbegrenzt nach Kilometern über 3 Jahre; hinzu kommt ein 7-jähriges Wartungsprogramm (Genuine Maintenance Program). Bei Plug-in-Hybriden wird die Hochvoltbatterie im 8. und 16. Jahr kostenfrei erneuert statt einer klassischen Laufzeitgarantie – kein pauschaler Batterie-Endtermin.',
+      extras: [ { key: 'rust', label: 'Durchrostungsgarantie', icon: '🛡️', years: 12, km: null } ] },
+    'Fiat': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12,
+      extras: [ { key: 'rust', label: 'Durchrostungsgarantie', icon: '🛡️', years: 8, km: null } ] },
     'Ford': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12 },
     'Hyundai': { warrantyYears: 5, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12, note: 'Bei einzelnen Modellen (z. B. IONIQ) werden teils bis zu 200.000 km auf die Batterie kommuniziert – Modellangabe im eigenen Garantieheft prüfen.' },
-    'Kia': { warrantyYears: 7, warrantyKm: 150000, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12, note: 'Die Batteriegarantie wurde für Modelljahr 2026 und neuer auf 8 Jahre/160.000 km angehoben (zuvor 7 Jahre/150.000 km); ältere Modelljahre bleiben bei 7 Jahren/150.000 km – im Kia-Garantieheft nachsehen.' },
-    'Mercedes-Benz': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'variabel', serviceMonths: 24, serviceKmHint: 'bis 25.000 km (ASSYST)', note: 'Bei EQS und EQE (inkl. SUV-Varianten) gibt Mercedes auf die Batterie sogar 10 Jahre/250.000 km – bei allen anderen Modellen gilt der Standard von 8 Jahren/160.000 km.' },
+    'Jeep': { warrantyYears: 2, warrantyKm: 100000, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12,
+      extras: [ { key: 'rust', label: 'Durchrostungsgarantie', icon: '🛡️', years: 7, km: null } ] },
+    'Kia': { warrantyYears: 7, warrantyKm: 150000, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12,
+      note: 'Die Batteriegarantie wurde für Modelljahr 2026 und neuer auf 8 Jahre/160.000 km angehoben (zuvor 7 Jahre/150.000 km); ältere Modelljahre bleiben bei 7 Jahren/150.000 km.',
+      extras: [
+        { key: 'paint', label: 'Lackgarantie', icon: '🎨', years: 5, km: 150000 },
+        { key: 'starter', label: 'Starterbatterie-Garantie (12V)', icon: '🔋', years: 2, km: null },
+        { key: 'infotainment', label: 'Infotainment-Garantie', icon: '📻', years: 3, km: null }
+      ] },
+    'Lamborghini': { warrantyYears: 3, warrantyKm: null, batteryYears: 8, batteryKm: null, serviceType: 'fest', serviceMonths: 12,
+      note: 'Basis: 3 Jahre ohne Kilometerbegrenzung, inkl. 5 Jahre Wartung ab Werk. Über das Programm „Selezione Warranty Extension" lässt sich die Garantie bei aktuellen Modellen (Revuelto, Temerario, Urus SE) gegen Aufpreis auf bis zu 10 Jahre ohne km-Begrenzung verlängern. Batteriegarantie (Hybridmodelle) 8 Jahre, keine km-Begrenzung angegeben.',
+      extras: [ { key: 'rust', label: 'Durchrostungsgarantie', icon: '🛡️', years: 12, km: null } ] },
+    'Lancia': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12,
+      note: 'Lancia ist in Deutschland aktuell nur mit wenigen Modellen (u. a. Ypsilon) vertreten – Werte gelten primär für die elektrische Ypsilon-Variante.',
+      extras: [ { key: 'rust', label: 'Durchrostungsgarantie', icon: '🛡️', years: 8, km: null } ] },
+    'Maserati': { warrantyYears: 3, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12, note: 'Bei Maserati sind individuelle Werksgarantie-Verlängerungen üblich – konkrete Bedingungen unterscheiden sich je nach Modell und Vertragshändler deutlich stärker als bei Volumenherstellern.' },
+    'Mazda': { warrantyYears: 3, warrantyKm: 100000, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12 },
+    'Mercedes-Benz': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'variabel', serviceMonths: 24, serviceKmHint: 'bis 25.000 km (ASSYST)',
+      variantLabel: 'Modellreihe',
+      variants: {
+        'EQS / EQE (inkl. SUV)': { batteryYears: 10, batteryKm: 250000 },
+        'Andere Modelle': { batteryYears: 8, batteryKm: 160000 }
+      },
+      defaultVariant: 'Andere Modelle' },
     'MG': { warrantyYears: 7, warrantyKm: 150000, batteryYears: 8, batteryKm: 150000, serviceType: 'fest', serviceMonths: 12 },
     'Nissan': { warrantyYears: 3, warrantyKm: 100000, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12 },
     'Opel': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12 },
+    'Peugeot': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12 },
     'Polestar': { warrantyYears: 3, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 24 },
     'Porsche': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'variabel', serviceMonths: 24, serviceKmHint: 'bis 30.000 km (Porsche LongLife)' },
     'Renault': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12 },
+    'Rolls-Royce': { warrantyYears: 4, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12, warrantyCheckDaysOverride: 90, note: 'Garantie ab Erstverkauf bzw. Erstzulassung, je nachdem was früher eintritt, 4 Jahre ohne Kilometerbegrenzung.' },
+    'SEAT': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12 },
+    'smart': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12, note: 'smart wird seit dem Joint Venture mit Geely markenrechtlich unabhängig von Mercedes-Benz vermarktet – Garantiebedingungen im eigenen smart-Garantieheft prüfen.' },
     'Škoda': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'variabel', serviceMonths: 24, serviceKmHint: 'bis 30.000 km (Longlife)' },
-    'Tesla': { warrantyYears: 4, warrantyKm: 80000, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12, note: 'Tesla gibt kein starres Wartungsintervall vor, empfiehlt aber eine jährliche Sichtprüfung. Batteriereichweite modellabhängig: Model 3/Y Standard Range 160.000 km, Long Range/Performance 192.000 km, Model S/X bis 240.000 km – jeweils mit mind. 70 % Restkapazität.' },
-    'Toyota': { warrantyYears: 3, warrantyKm: 100000, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12, note: 'Mit jährlich bestandenem Batterietest im Rahmen der Inspektion verlängert Toyota Relax die Batterie-Kapazitätsgarantie bis zu 10 Jahre/max. 250.000 km. Einzelne neue Modelle (z. B. C-HR+) haben teils bereits werksseitig 10 Jahre/300.000 km ohne Testpflicht – Herstellerangabe zum konkreten Modell prüfen.' },
+    'Tesla': { warrantyYears: 4, warrantyKm: 80000, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12,
+      note: 'Tesla gibt kein starres Wartungsintervall vor, empfiehlt aber eine jährliche Sichtprüfung.',
+      variantLabel: 'Modell / Antriebsvariante',
+      variants: {
+        'Model 3 / Model Y – Standard Range (Hinterradantrieb)': { batteryYears: 8, batteryKm: 160000 },
+        'Model 3 / Model Y – Long Range / Performance': { batteryYears: 8, batteryKm: 192000 },
+        'Model S / Model X': { batteryYears: 8, batteryKm: 240000 }
+      },
+      defaultVariant: 'Model 3 / Model Y – Standard Range (Hinterradantrieb)',
+      extras: [
+        { key: 'restraint', label: 'Rückhaltesysteme-Garantie (Gurte, Airbags)', icon: '🪢', years: 5, km: 100000 },
+        { key: 'rust', label: 'Durchrostungsgarantie', icon: '🛡️', years: 12, km: null }
+      ] },
+    'Toyota': { warrantyYears: 3, warrantyKm: 100000, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12, note: 'Mit jährlich bestandenem Batterietest im Rahmen der Inspektion verlängert Toyota Relax die Batterie-Kapazitätsgarantie bis zu 10 Jahre/max. 250.000 km. Einzelne neue Modelle (z. B. C-HR+) haben teils bereits werksseitig 10 Jahre/300.000 km ohne Testpflicht.' },
     'Volkswagen': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'variabel', serviceMonths: 24, serviceKmHint: 'bis 30.000 km (Longlife/WIV)' },
     'Volvo': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'variabel', serviceMonths: 24, note: 'Ab Juli 2026 lässt sich die Batteriegarantie bei Volvo Selekt (Gebrauchtwagen-Zertifizierung) gegen Aufpreis auf bis zu 11 Jahre ohne km-Begrenzung verlängern.' },
-    'XPeng': { warrantyYears: 7, warrantyKm: 160000, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12, note: 'Zusätzlich: 12 Jahre Durchrostungsgarantie, 3 Jahre Lackgarantie, 5 Jahre Mobilitätsgarantie/Pannenhilfe. XPeng ist neu auf dem deutschen Markt – Bedingungen laut aktuellem Kundengarantie-Dokument des Vertragspartners prüfen.' }
+    'Xiaomi': { warrantyYears: null, warrantyKm: null, batteryYears: null, batteryKm: null, serviceType: 'fest', serviceMonths: 12, noOfficialWarranty: true,
+      note: 'Xiaomi steigt erst rund 2027 offiziell in den deutschen Markt ein. Aktuell in Deutschland verfügbare SU7/YU7 sind Importe einzelner Händler mit eigenen, unterschiedlichen Garantiepaketen – das ist nicht automatisch mit einer späteren offiziellen deutschen Herstellergarantie gleichzusetzen. Zum Vergleich nennt Xiaomi für den YU7 in China 5 Jahre/100.000 km Fahrzeuggarantie sowie 8 Jahre/160.000 km auf bestimmte Schlüsselkomponenten (u. a. Antrieb) – als reiner Anhaltspunkt, nicht als Zusage für ein Importfahrzeug. Es gibt daher bewusst keinen automatisch vorausgefüllten Richtwert – bitte die Angaben des jeweiligen Importeurs eintragen.' },
+    'XPeng': { warrantyYears: 7, warrantyKm: 160000, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12,
+      note: 'XPeng ist neu auf dem deutschen Markt – Bedingungen laut aktuellem Kundengarantie-Dokument des Vertragspartners prüfen.',
+      extras: [
+        { key: 'rust', label: 'Durchrostungsgarantie', icon: '🛡️', years: 12, km: null },
+        { key: 'paint', label: 'Lackgarantie', icon: '🎨', years: 3, km: null },
+        { key: 'roadside', label: 'Mobilitätsgarantie / Pannenhilfe', icon: '🛟', years: 5, km: null }
+      ] }
   };
+
+  var variantSelect = $('vehicleVariant');
+  var variantField = $('vehicleVariantField');
+
+  function getVariantProfile(profile) {
+    if (!profile.variants) return profile;
+    var chosen = (variantSelect && variantSelect.value) || profile.defaultVariant;
+    var v = profile.variants[chosen] || profile.variants[profile.defaultVariant];
+    var merged = {};
+    for (var k in profile) merged[k] = profile[k];
+    merged.batteryYears = v.batteryYears;
+    merged.batteryKm = v.batteryKm;
+    return merged;
+  }
+
+  function populateVariantField(name, profile) {
+    if (!profile || !profile.variants) { variantField.hidden = true; variantSelect.innerHTML = ''; return; }
+    var currentValue = variantSelect.value;
+    variantSelect.innerHTML = '';
+    Object.keys(profile.variants).forEach(function (label) {
+      var opt = document.createElement('option');
+      opt.value = label; opt.textContent = label;
+      variantSelect.appendChild(opt);
+    });
+    if (currentValue && profile.variants[currentValue]) variantSelect.value = currentValue;
+    else variantSelect.value = profile.defaultVariant;
+    variantField.hidden = false;
+    variantField.querySelector('label').firstChild.textContent = (profile.variantLabel || 'Modellvariante') + ' ';
+  }
 
   function $(id) { return document.getElementById(id); }
   function parseDate(value) {
@@ -85,21 +175,26 @@
   // -----------------------------------------------------------------
   function applyManufacturerDefaults() {
     var name = manufacturerSelect.value;
-    var profile = MANUFACTURER_PROFILES[name];
-    if (!profile) { mfrInfoEl.hidden = true; return; }
+    var baseProfile = MANUFACTURER_PROFILES[name];
+    if (!baseProfile) { mfrInfoEl.hidden = true; variantField.hidden = true; return; }
+
+    populateVariantField(name, baseProfile);
+    var profile = getVariantProfile(baseProfile);
 
     var refDateStr = $('firstRegistration').value || $('purchaseDate').value;
     var refDate = parseDate(refDateStr);
     var filled = [];
 
     if (refDate) {
-      var warrantyEl = $('warrantyEnd');
-      if (!warrantyEl.value) {
-        warrantyEl.value = isoDate(addYears(refDate, profile.warrantyYears));
-        if (!$('warrantyType').value) $('warrantyType').value = 'Herstellergarantie';
-        filled.push('Garantie-Ende');
+      if (profile.warrantyYears != null) {
+        var warrantyEl = $('warrantyEnd');
+        if (!warrantyEl.value) {
+          warrantyEl.value = isoDate(addYears(refDate, profile.warrantyYears));
+          if (!$('warrantyType').value) $('warrantyType').value = 'Herstellergarantie';
+          filled.push('Garantie-Ende');
+        }
       }
-      if (evCheck.checked) {
+      if (evCheck.checked && profile.batteryYears != null) {
         var batteryEl = $('batteryWarrantyEnd');
         if (!batteryEl.value) {
           batteryEl.value = isoDate(addYears(refDate, profile.batteryYears));
@@ -110,20 +205,33 @@
 
     // Info-Panel rendern
     var lines = [];
-    lines.push('<li>🛡️ Neuwagengarantie: <strong>' + profile.warrantyYears + ' Jahre' + (profile.warrantyKm ? ' / ' + fmtKm(profile.warrantyKm) : '') + '</strong></li>');
-    if (evCheck.checked) {
-      lines.push('<li>🔋 Batteriegarantie: <strong>' + profile.batteryYears + ' Jahre / ' + fmtKm(profile.batteryKm) + '</strong></li>');
+    if (profile.noOfficialWarranty) {
+      lines.push('<li>⚠️ <strong>Keine offizielle Herstellergarantie in Deutschland</strong> – siehe Hinweis unten.</li>');
+    } else {
+      lines.push('<li>🛡️ Neuwagengarantie: <strong>' + (profile.warrantyYears != null ? profile.warrantyYears + ' Jahre' + (profile.warrantyKm ? ' / ' + fmtKm(profile.warrantyKm) : ' / ohne km-Begrenzung') : 'k. A.') + '</strong></li>');
+      if (evCheck.checked && profile.batteryYears != null) {
+        lines.push('<li>🔋 Batteriegarantie: <strong>' + profile.batteryYears + ' Jahre / ' + fmtKm(profile.batteryKm) + '</strong></li>');
+      }
+      lines.push('<li>🔧 Wartung: <strong>' + (profile.serviceType === 'variabel' ? 'variables Intervall' : 'festes Intervall') + '</strong>' + (profile.serviceKmHint ? ' – üblich ' + profile.serviceKmHint : ' – üblich ca. ' + profile.serviceMonths + ' Monate') + '</li>');
+      if (baseProfile.extras) {
+        baseProfile.extras.forEach(function (extra) {
+          lines.push('<li>' + (extra.icon || '📌') + ' ' + extra.label + ': <strong>' + extra.years + ' Jahre' + (extra.km ? ' / ' + fmtKm(extra.km) : ' / ohne km-Begrenzung') + '</strong></li>');
+        });
+      }
+      if (baseProfile.warrantyCheckDaysOverride) {
+        lines.push('<li>⏰ Erinnerung vor Garantieablauf: <strong>' + baseProfile.warrantyCheckDaysOverride + ' Tage vorher</strong> (statt der üblichen Standardeinstellung)</li>');
+      }
     }
-    lines.push('<li>🔧 Wartung: <strong>' + (profile.serviceType === 'variabel' ? 'variables Intervall' : 'festes Intervall') + '</strong>' + (profile.serviceKmHint ? ' – üblich ' + profile.serviceKmHint : ' – üblich ca. ' + profile.serviceMonths + ' Monate') + '</li>');
 
     var html = '<h4>🏭 ' + name + ' – typische Richtwerte</h4>';
     if (filled.length) {
       html += '<p class="mfr-filled">✓ Automatisch eingetragen, da noch leer: ' + filled.join(', ') + '</p>';
     }
     html += '<ul>' + lines.join('') + '</ul>';
-    html += '<p class="mfr-note">Richtwerte auf Basis öffentlicher Herstellerangaben' + (profile.note ? ' – ' + profile.note : '') + ' Maßgeblich sind immer Kaufvertrag, Serviceheft und Garantieunterlagen des eigenen Fahrzeugs.</p>';
+    html += '<p class="mfr-note">Richtwerte auf Basis öffentlicher Herstellerangaben' + (baseProfile.note ? ' – ' + baseProfile.note : '') + ' Maßgeblich sind immer Kaufvertrag, Serviceheft und Garantieunterlagen des eigenen Fahrzeugs.</p>';
     mfrInfoEl.innerHTML = html;
     mfrInfoEl.hidden = false;
+    render();
   }
 
   function buildEvents(data) {
@@ -154,15 +262,29 @@
       add(addDays(tires, 3), 'Radschrauben nachziehen', 'Nach einem Reifenwechsel setzen sich die Radschrauben in den ersten Kilometern minimal – nach ca. 50 km (meist nach wenigen Tagen erreicht) das Anzugsdrehmoment kontrollieren. Bei deutlich mehr oder weniger Fahrleistung selbst anpassen.', 1);
     }
 
+    var profile = MANUFACTURER_PROFILES[data.manufacturer];
+    var checkDays = (profile && profile.warrantyCheckDaysOverride) || data.warrantyCheckDays;
+
     var warranty = parseDate(data.warrantyEnd);
     if (warranty) {
-      add(addDays(warranty, -data.warrantyCheckDays), 'End of Warranty Check', 'Garantieablauf naht: Fahrzeug gründlich prüfen, Mängel dokumentieren und offene Garantiearbeiten rechtzeitig melden.', 14);
+      add(addDays(warranty, -checkDays), 'End of Warranty Check', 'Garantieablauf naht: Fahrzeug gründlich prüfen, Mängel dokumentieren und offene Garantiearbeiten rechtzeitig melden.', 14);
       add(warranty, 'Herstellergarantie endet', 'Garantieende – Bedingungen und noch offene Ansprüche prüfen.', 30);
     }
     var batteryWarranty = parseDate(data.batteryWarrantyEnd);
     if (data.isEv && batteryWarranty) {
-      add(addDays(batteryWarranty, -data.warrantyCheckDays), 'End of Battery Warranty Check', 'E-Auto: Hochvoltbatterie und relevante Garantiebedingungen vor Ablauf prüfen.', 14);
+      add(addDays(batteryWarranty, -checkDays), 'End of Battery Warranty Check', 'E-Auto: Hochvoltbatterie und relevante Garantiebedingungen vor Ablauf prüfen.', 14);
       add(batteryWarranty, 'Batteriegarantie endet', 'Ende der eingetragenen Batteriegarantie.', 30);
+    }
+
+    // Zusatzgarantien je Hersteller (Durchrostung, Lack, Rückhaltesysteme, ...) als eigene Termine
+    var refDateExtras = parseDate(data.firstRegistration) || parseDate(data.purchaseDate);
+    if (profile && profile.extras && refDateExtras) {
+      profile.extras.forEach(function (extra) {
+        var end = addYears(refDateExtras, extra.years);
+        var kmText = extra.km ? ' (' + fmtKm(extra.km) + ')' : ' (ohne Kilometerbegrenzung)';
+        add(addDays(end, -checkDays), 'End of ' + extra.label + ' Check', (extra.icon ? extra.icon + ' ' : '') + extra.label + ' läuft in Kürze ab' + kmText + ' – rechtzeitig prüfen lassen.', 14);
+        add(end, extra.label + ' endet', (extra.icon ? extra.icon + ' ' : '') + extra.label + ' – Herstellerangabe: ' + extra.years + ' Jahre' + kmText + '.', 30);
+      });
     }
 
     var insurance = parseDate(data.insuranceEnd);
@@ -235,6 +357,7 @@
   form.addEventListener('input', handleInput);
   form.addEventListener('change', function(){ updateEvFields(); handleInput(); });
   manufacturerSelect.addEventListener('change', applyManufacturerDefaults);
+  variantSelect.addEventListener('change', applyManufacturerDefaults);
   $('firstRegistration').addEventListener('change', applyManufacturerDefaults);
   $('purchaseDate').addEventListener('change', applyManufacturerDefaults);
   evCheck.addEventListener('change', applyManufacturerDefaults);
