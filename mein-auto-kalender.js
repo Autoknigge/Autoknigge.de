@@ -78,7 +78,7 @@
     'Škoda': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'variabel', serviceMonths: 24, serviceKmHint: 'bis 30.000 km (Longlife)' },
     'Tesla': { warrantyYears: 4, warrantyKm: 80000, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12,
       note: 'Tesla gibt kein starres Wartungsintervall vor, empfiehlt aber eine jährliche Sichtprüfung.',
-      variantLabel: 'Modell / Antriebsvariante',
+      variantLabel: 'Antriebsvariante',
       variants: {
         'Model 3 / Model Y – Standard Range (Hinterradantrieb)': { batteryYears: 8, batteryKm: 160000 },
         'Model 3 / Model Y – Long Range / Performance': { batteryYears: 8, batteryKm: 192000 },
@@ -105,6 +105,62 @@
 
   var variantSelect = $('vehicleVariant');
   var variantField = $('vehicleVariantField');
+  var modelDatalist = $('modelSuggestions');
+
+  // Gängige aktuelle Modelle je Hersteller – bewusst keine Vollständigkeit,
+  // nur Tipp-Erleichterung per Autovervollständigung (datalist). Freie
+  // Eingabe bleibt jederzeit möglich.
+  var MODEL_SUGGESTIONS = {
+    'Alfa Romeo': ['Giulia', 'Stelvio', 'Tonale', 'Junior'],
+    'Audi': ['A1', 'A3', 'A4', 'A5', 'A6', 'Q2', 'Q3', 'Q4 e-tron', 'Q5', 'Q6 e-tron', 'Q8', 'e-tron GT'],
+    'Bentley': ['Continental GT', 'Flying Spur', 'Bentayga'],
+    'BMW': ['1er', '2er', '3er', '4er', '5er', '7er', 'X1', 'X2', 'X3', 'X5', 'X7', 'i4', 'iX1', 'iX3', 'iX'],
+    'Bugatti': ['Chiron', 'Tourbillon'],
+    'BYD': ['Dolphin', 'Seal', 'Seal U', 'Atto 3', 'Han', 'Tang'],
+    'Citroën': ['C3', 'C3 Aircross', 'C4', 'C5 Aircross', 'ë-C4', 'Berlingo'],
+    'Cupra': ['Born', 'Formentor', 'Leon', 'Terramar', 'Tavascan'],
+    'Dacia': ['Sandero', 'Duster', 'Jogger', 'Spring'],
+    'DS Automobiles': ['DS 3', 'DS 4', 'DS 7', 'DS 9'],
+    'Ferrari': ['Roma', 'Purosangue', '296', 'SF90'],
+    'Fiat': ['500', '500e', 'Panda', 'Tipo', '600'],
+    'Ford': ['Fiesta', 'Focus', 'Puma', 'Kuga', 'Explorer', 'Capri', 'Mustang Mach-E'],
+    'Hyundai': ['i10', 'i20', 'i30', 'Kona', 'Tucson', 'Santa Fe', 'IONIQ 5', 'IONIQ 6', 'IONIQ 9'],
+    'Jeep': ['Renegade', 'Compass', 'Avenger', 'Grand Cherokee'],
+    'Kia': ['Picanto', 'Rio', 'Ceed', 'Sportage', 'Sorento', 'EV3', 'EV6', 'EV9'],
+    'Lamborghini': ['Urus', 'Revuelto', 'Temerario'],
+    'Lancia': ['Ypsilon'],
+    'Maserati': ['Grecale', 'Levante', 'GranTurismo'],
+    'Mazda': ['Mazda2', 'Mazda3', 'CX-3', 'CX-30', 'CX-5', 'MX-30'],
+    'Mercedes-Benz': ['A-Klasse', 'C-Klasse', 'E-Klasse', 'S-Klasse', 'GLA', 'GLC', 'GLE', 'EQA', 'EQB', 'EQE', 'EQS'],
+    'MG': ['MG3', 'MG4', 'MG5', 'ZS', 'HS'],
+    'Nissan': ['Micra', 'Juke', 'Qashqai', 'X-Trail', 'Ariya', 'Leaf'],
+    'Opel': ['Corsa', 'Astra', 'Mokka', 'Grandland', 'Crossland'],
+    'Peugeot': ['208', '2008', '308', '3008', '5008', 'e-208'],
+    'Polestar': ['2', '3', '4'],
+    'Porsche': ['911', '718', 'Macan', 'Cayenne', 'Panamera', 'Taycan'],
+    'Renault': ['Clio', 'Captur', 'Megane', 'Austral', 'Scenic', '5 E-Tech'],
+    'Rolls-Royce': ['Ghost', 'Phantom', 'Cullinan', 'Spectre'],
+    'Škoda': ['Fabia', 'Scala', 'Octavia', 'Kamiq', 'Karoq', 'Kodiaq', 'Enyaq'],
+    'SEAT': ['Ibiza', 'Arona', 'Leon', 'Ateca', 'Tarraco'],
+    'smart': ['#1', '#3', '#5'],
+    'Tesla': ['Model 3', 'Model Y', 'Model S', 'Model X'],
+    'Toyota': ['Aygo X', 'Yaris', 'Corolla', 'C-HR', 'RAV4', 'bZ4X'],
+    'Volkswagen': ['Polo', 'Golf', 'Tiguan', 'Touran', 'Passat', 'T-Roc', 'T-Cross', 'ID.3', 'ID.4', 'ID.5', 'ID.7'],
+    'Volvo': ['EX30', 'EX40', 'EC40', 'XC60', 'XC90', 'V60', 'V90'],
+    'Xiaomi': ['SU7', 'YU7'],
+    'XPeng': ['G6', 'G9', 'P7']
+  };
+
+  function populateModelSuggestions(name) {
+    modelDatalist.innerHTML = '';
+    var list = MODEL_SUGGESTIONS[name];
+    if (!list) return;
+    list.forEach(function (m) {
+      var opt = document.createElement('option');
+      opt.value = m;
+      modelDatalist.appendChild(opt);
+    });
+  }
 
   function getVariantProfile(profile) {
     if (!profile.variants) return profile;
@@ -129,7 +185,7 @@
     if (currentValue && profile.variants[currentValue]) variantSelect.value = currentValue;
     else variantSelect.value = profile.defaultVariant;
     variantField.hidden = false;
-    variantField.querySelector('label').firstChild.textContent = (profile.variantLabel || 'Modellvariante') + ' ';
+    variantField.querySelector('label').firstChild.textContent = (profile.variantLabel || 'Antriebsvariante') + ' ';
   }
 
   function $(id) { return document.getElementById(id); }
@@ -176,9 +232,10 @@
   function applyManufacturerDefaults() {
     var name = manufacturerSelect.value;
     var baseProfile = MANUFACTURER_PROFILES[name];
-    if (!baseProfile) { mfrInfoEl.hidden = true; variantField.hidden = true; return; }
+    if (!baseProfile) { mfrInfoEl.hidden = true; variantField.hidden = true; modelDatalist.innerHTML = ''; return; }
 
     populateVariantField(name, baseProfile);
+    populateModelSuggestions(name);
     var profile = getVariantProfile(baseProfile);
 
     var refDateStr = $('firstRegistration').value || $('purchaseDate').value;
