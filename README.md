@@ -11,8 +11,8 @@ Autoknigge ist ein unabhängiger Ratgeber für Autofahrer mit den Schwerpunkten:
 - Clever sparen (Finanztipps & Partner-Angebote)
 
 ## Projektstruktur
-
-
-
-## Knigge-Bildzitate
-Auf den Kategorie-Seiten spricht Knigge jetzt direkt aus thematisch passenden Bildern. Die Zitate werden als HTML über dem Bild gesetzt, damit sie auf Desktop und Mobil sauber lesbar bleiben.
+## UI-Optimierung September 2026
+- Kapitelstarts wurden kompakter gestaltet: mehr Information auf einen Blick, weniger einleitende Textwand.
+- Mehrsätzige Lead-Texte zeigen zunächst nur den ersten Orientierungssatz; der übrige Text bleibt im HTML vorhanden.
+- Der erste inhaltliche Abschnitt wird als „Kurz & wichtig“ visuell hervorgehoben.
+- Keine relevanten Inhalte wurden aus den Artikeln entfernt.
