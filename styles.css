@@ -1228,10 +1228,13 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
 }
 .knigge-quote-versicherung .knigge-quote-image,
 .knigge-quote-sparen .knigge-quote-image,
-.knigge-quote-oel .knigge-quote-image,
 .knigge-quote-leasing .knigge-quote-image {
   background-image: url('knigge-buero-kaffee.jpg');
   background-position: center 22%;
+}
+.knigge-quote-oel .knigge-quote-image {
+  background-image: url('knigge-motorraum-pruefung.jpg');
+  background-position: center 35%;
 }
 .knigge-quote-recht .knigge-quote-image,
 .knigge-quote-schaden .knigge-quote-image,
@@ -1241,12 +1244,18 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
 }
 .knigge-quote-leasing .knigge-quote-content { margin-left: 0; margin-right: auto; }
 .knigge-quote-zulassung .knigge-quote-image,
-.knigge-quote-kauf .knigge-quote-image,
-.knigge-quote-pflege .knigge-quote-image,
 .knigge-quote-rabatt .knigge-quote-image,
 .knigge-quote-kennzeichen .knigge-quote-image {
   background-image: url('knigge-neu-werkstatt-wide.jpg');
   background-position: center center;
+}
+.knigge-quote-kauf .knigge-quote-image {
+  background-image: url('knigge-checkliste-kauf.jpg');
+  background-position: center 25%;
+}
+.knigge-quote-pflege .knigge-quote-image {
+  background-image: url('knigge-diagnose-nah.jpg');
+  background-position: center 30%;
 }
 .knigge-quote-reifen .knigge-quote-image {
   background-image: url('knigge-reifen-werkstatt.jpg');
@@ -1849,12 +1858,18 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
 @media(max-width:560px){ .oil-hero-image { background-image: linear-gradient(0deg,rgba(5,13,20,.88) 0%,rgba(5,13,20,.20) 65%), url('knigge-neu-werkstatt-mobile.jpg') !important; background-position:center center !important; } }
 @media (max-width:760px) {
   .knigge-quote-zulassung .knigge-quote-image,
-  .knigge-quote-kauf .knigge-quote-image,
-  .knigge-quote-pflege .knigge-quote-image,
   .knigge-quote-rabatt .knigge-quote-image,
   .knigge-quote-kennzeichen .knigge-quote-image {
     background-image: url('knigge-neu-werkstatt-mobile.jpg');
     background-position: center center;
+  }
+  .knigge-quote-kauf .knigge-quote-image {
+    background-image: url('knigge-checkliste-kauf.jpg');
+    background-position: center 20%;
+  }
+  .knigge-quote-pflege .knigge-quote-image {
+    background-image: url('knigge-diagnose-nah.jpg');
+    background-position: center 25%;
   }
   .knigge-quote-leasing .knigge-quote-image {
     background-image: url('knigge-neu-gespraech.jpg');
