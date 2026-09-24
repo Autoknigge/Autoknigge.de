@@ -2286,3 +2286,88 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
 .related-card h3{margin:0 0 .3rem;font-size:.95rem;color:var(--green-800,#1a4a38)}
 .related-card p{margin:0;font-size:.83rem;color:var(--text-muted);line-height:1.5}
 @media(max-width:760px){.related-grid{grid-template-columns:1fr}}
+
+/* ===== KATEGORIE-AUFMACHER – Knigge-Bildwelt ===== */
+.category-feature {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.95fr) minmax(0, 1.35fr);
+  min-height: 250px;
+  margin: 0 0 1.35rem;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background: linear-gradient(135deg, #f7faf8 0%, #ffffff 72%);
+  border: 1px solid #d9e4df;
+  border-radius: 20px;
+  box-shadow: 0 7px 22px rgba(15,36,29,.055);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.category-feature:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(15,36,29,.10);
+}
+.category-feature-reverse { grid-template-columns: minmax(0, 1.35fr) minmax(260px, .95fr); }
+.category-feature-reverse .category-feature-image { order: 2; }
+.category-feature-image {
+  min-height: 250px;
+  overflow: hidden;
+  background: #e8efeb;
+}
+.category-feature-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform .55s ease, filter .55s ease;
+}
+.category-feature:hover .category-feature-image img {
+  transform: scale(1.035);
+  filter: saturate(1.04);
+}
+.category-feature-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.8rem 2rem;
+}
+.category-feature-kicker {
+  display: inline-flex;
+  align-self: flex-start;
+  margin-bottom: .65rem;
+  padding: .28rem .62rem;
+  border-radius: 999px;
+  background: #e9f2ed;
+  color: var(--green-800, #1a4a38);
+  font-size: .72rem;
+  font-weight: 850;
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+.category-feature-content h3 {
+  margin: 0 0 .55rem;
+  color: var(--green-900, #163a2f);
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  line-height: 1.16;
+}
+.category-feature-content p {
+  max-width: 620px;
+  margin: 0 0 1rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+.category-feature-link {
+  margin-top: auto;
+  color: var(--green-800, #1a4a38);
+  font-size: .88rem;
+  font-weight: 850;
+}
+@media (max-width: 760px) {
+  .category-feature, .category-feature-reverse {
+    grid-template-columns: 1fr;
+  }
+  .category-feature-reverse .category-feature-image { order: 0; }
+  .category-feature-image { min-height: 205px; max-height: 270px; }
+  .category-feature-content { padding: 1.3rem 1.35rem 1.45rem; }
+  .category-feature-content h3 { font-size: 1.35rem; }
+}
