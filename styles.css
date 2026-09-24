@@ -2371,3 +2371,39 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
   .category-feature-content { padding: 1.3rem 1.35rem 1.45rem; }
   .category-feature-content h3 { font-size: 1.35rem; }
 }
+
+/* ===== KNIGGE BILDWELT: SEITENSPEZIFISCHE VARIATION ===== */
+
+/* Die gleiche Knigge-Figur bleibt erhalten, aber Unterseiten bekommen bewusst unterschiedliche Szenen. */
+.knigge-page-artikel-auto-ummelden .knigge-quote-image { background-image:url('knigge-neu-gespraech.jpg'); background-position:center center; }
+.knigge-page-artikel-auto-anmelden .knigge-quote-image { background-image:url('knigge-motorraum-pruefung.jpg'); background-position:center 38%; }
+.knigge-page-artikel-auto-abmelden .knigge-quote-image { background-image:url('knigge-buero-kaffee.jpg'); background-position:center 22%; }
+.knigge-page-artikel-kennzeichen-reservieren .knigge-quote-image { background-image:url('knigge-neu-werkstatt-mobile.jpg'); background-position:center center; }
+.knigge-page-artikel-auto-verkaufen .knigge-quote-image { background-image:url('knigge-neu-gespraech.jpg'); background-position:center 35%; }
+.knigge-page-artikel-e-auto-vs-benziner .knigge-quote-image { background-image:url('knigge-e-auto-ladesaeule.jpg'); background-position:center 40%; }
+.knigge-page-artikel-e-auto-kaufpraemie .knigge-quote-image { background-image:url('knigge-eauto-laden.jpg'); background-position:center 28%; }
+.knigge-page-artikel-zulassungszahlen .knigge-quote-image { background-image:url('knigge-typklassen.jpg'); background-position:center 25%; }
+.knigge-page-artikel-sf-klassen .knigge-quote-image { background-image:url('knigge-buero-kaffee.jpg'); background-position:center 22%; }
+.knigge-page-artikel-zweitwagen-versicherung .knigge-quote-image { background-image:url('knigge-neu-gespraech.jpg'); background-position:center 35%; }
+.knigge-page-artikel-fahranfaenger-versicherung .knigge-quote-image { background-image:url('knigge-auto-handy.jpg'); background-position:center 30%; }
+.knigge-page-regionalklassen .knigge-quote-image { background-image:url('knigge-typklassen.jpg'); background-position:center 25%; }
+.knigge-page-artikel-telematik-tarife .knigge-quote-image { background-image:url('knigge-auto-handy.jpg'); background-position:center 30%; }
+.knigge-page-artikel-kfz-leasing .knigge-quote-image { background-image:url('knigge-buero-kaffee.jpg'); background-position:center 22%; }
+.knigge-page-artikel-kfz-versicherung-wechseln .knigge-quote-image { background-image:url('knigge-neu-gespraech.jpg'); background-position:center 35%; }
+.knigge-page-artikel-polizeikontrolle .knigge-quote-image { background-image:url('knigge-neu-gespraech.jpg'); background-position:center 35%; }
+.knigge-page-artikel-fuehrerscheinentzug-mpu .knigge-quote-image { background-image:url('knigge-auto-handy.jpg'); background-position:center 30%; }
+.knigge-page-artikel-panne .knigge-quote-image { background-image:url('knigge-starterbatterie.jpg'); background-position:center 38%; }
+.knigge-page-artikel-wildunfall .knigge-quote-image { background-image:url('knigge-motorrad-parkplatz.jpg'); background-position:center 22%; }
+.knigge-page-artikel-kindersitz-vorschriften .knigge-quote-image { background-image:url('knigge-neu-gespraech.jpg'); background-position:center 30%; }
+.knigge-page-artikel-parken-alltag .knigge-quote-image { background-image:url('knigge-motorrad-parkplatz.jpg'); background-position:center 22%; }
+.knigge-page-artikel-lichthupe-draengler .knigge-quote-image { background-image:url('knigge-fahrerflucht.jpg'); background-position:center 20%; }
+.knigge-page-artikel-rettungsgasse-reissverschluss .knigge-quote-image { background-image:url('knigge-fahrerflucht.jpg'); background-position:center 25%; }
+.knigge-page-artikel-winter-checkliste .knigge-quote-image { background-image:url('knigge-reifen-werkstatt.jpg'); background-position:55% center; }
+.knigge-page-artikel-innenraum-werterhalt .knigge-quote-image { background-image:url('knigge-neu-werkstatt-wide.jpg'); background-position:center center; }
+.knigge-page-artikel-auto-waschen-knigge .knigge-quote-image { background-image:url('knigge-neu-werkstatt-wide.jpg'); background-position:center center; }
+.knigge-page-artikel-luftfilter .knigge-quote-image { background-image:url('knigge-luftfilter.jpg'); background-position:center 30%; }
+.knigge-page-artikel-oelwechsel-inspektion .knigge-quote-image { background-image:url('knigge-oelwechsel.jpg'); background-position:center 30%; }
+
+@media (min-width: 900px) {
+  .knigge-quote-card .knigge-quote-image { min-height: 360px; }
+}
