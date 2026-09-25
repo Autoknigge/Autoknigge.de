@@ -764,3 +764,29 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
   }
 }
 
+/* === Kapitelstarts kompakt: H1, Einleitung und Knigge-Tipp ohne Leerflächen === */
+main .wrap > h1 {
+  margin-bottom: .25rem !important;
+}
+main .wrap > .lead {
+  margin-top: .15rem !important;
+  margin-bottom: .35rem !important;
+}
+main .wrap > .lead + .quick-start-section {
+  margin-top: .3rem !important;
+}
+main .wrap > .lead + section {
+  margin-top: .3rem !important;
+}
+main .quick-start-section {
+  margin-top: .3rem !important;
+}
+
+@media (max-width: 700px) {
+  main .wrap > h1 { margin-bottom: .2rem !important; }
+  main .wrap > .lead { margin-top: .1rem !important; margin-bottom: .3rem !important; }
+  main .wrap > .lead + .quick-start-section,
+  main .wrap > .lead + section,
+  main .quick-start-section { margin-top: .25rem !important; }
+}
+
