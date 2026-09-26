@@ -1,0 +1,137 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Autoknigge//Mein Auto-Kalender//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Mein Auto-Kalender – Volkswagen Tiguan
+BEGIN:VEVENT
+UID:autoknigge-1789848889816-70f5eaeb1cebc8@autoknigge.de
+DTSTAMP:20260919T120000Z
+DTSTART;VALUE=DATE:20150109
+DTEND;VALUE=DATE:20150110
+SUMMARY:End of Warranty Check
+DESCRIPTION:Garantieablauf naht: Fahrzeug gründlich prüfen\, Mängel dokumentieren und offene Garantiearbeiten rechtzeitig melden.\nFahrzeug: Volkswagen Tiguan\nKennzeichen: Clp as 79
+BEGIN:VALARM
+TRIGGER:-P14D
+ACTION:DISPLAY
+DESCRIPTION:End of Warranty Check
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:autoknigge-1789848889816-ae9684c0bfea98@autoknigge.de
+DTSTAMP:20260919T120000Z
+DTSTART;VALUE=DATE:20150310
+DTEND;VALUE=DATE:20150311
+SUMMARY:Herstellergarantie endet
+DESCRIPTION:Garantieende – Bedingungen und noch offene Ansprüche prüfen.\nFahrzeug: Volkswagen Tiguan\nKennzeichen: Clp as 79
+BEGIN:VALARM
+TRIGGER:-P30D
+ACTION:DISPLAY
+DESCRIPTION:Herstellergarantie endet
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:autoknigge-1789848889816-b3310a5f33941@autoknigge.de
+DTSTAMP:20260919T120000Z
+DTSTART;VALUE=DATE:20250913
+DTEND;VALUE=DATE:20250914
+SUMMARY:Radschrauben nachziehen
+DESCRIPTION:Nach einem Reifenwechsel setzen sich die Radschrauben in den ersten Kilometern minimal – nach ca. 50 km (meist nach wenigen Tagen erreicht) das Anzugsdrehmoment kontrollieren. Bei deutlich mehr oder weniger Fahrleistung selbst anpassen.\nFahrzeug: Volkswagen Tiguan\nKennzeichen: Clp as 79
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Radschrauben nachziehen
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:autoknigge-1789848889816-65fa9f7be23488@autoknigge.de
+DTSTAMP:20260919T120000Z
+DTSTART;VALUE=DATE:20260910
+DTEND;VALUE=DATE:20260911
+SUMMARY:Ölwechsel / Ölservice
+DESCRIPTION:Zeitintervall seit dem letzten Ölwechsel. Zusätzlich Kilometerintervall beachten.\nFahrzeug: Volkswagen Tiguan\nKennzeichen: Clp as 79
+BEGIN:VALARM
+TRIGGER:-P21D
+ACTION:DISPLAY
+DESCRIPTION:Ölwechsel / Ölservice
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:autoknigge-1789848889816-8332ec353794a8@autoknigge.de
+DTSTAMP:20260919T120000Z
+DTSTART;VALUE=DATE:20260910
+DTEND;VALUE=DATE:20260911
+SUMMARY:Inspektion / Service
+DESCRIPTION:Nächsten Wartungstermin nach dem eingetragenen Intervall prüfen.\nFahrzeug: Volkswagen Tiguan\nKennzeichen: Clp as 79
+BEGIN:VALARM
+TRIGGER:-P30D
+ACTION:DISPLAY
+DESCRIPTION:Inspektion / Service
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:autoknigge-1789848889816-5b499f008b1278@autoknigge.de
+DTSTAMP:20260919T120000Z
+DTSTART;VALUE=DATE:20261015
+DTEND;VALUE=DATE:20261016
+SUMMARY:Winterreifen prüfen
+DESCRIPTION:Saisonaler Hinweis: Reifen und Wetterlage prüfen\; keine starre gesetzliche Wechselpflicht.\nFahrzeug: Volkswagen Tiguan\nKennzeichen: Clp as 79
+BEGIN:VALARM
+TRIGGER:-P14D
+ACTION:DISPLAY
+DESCRIPTION:Winterreifen prüfen
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:autoknigge-1789848889816-f2ea8ff4135608@autoknigge.de
+DTSTAMP:20260919T120000Z
+DTSTART;VALUE=DATE:20261016
+DTEND;VALUE=DATE:20261017
+SUMMARY:Kfz-Versicherung: Kündigung prüfen
+DESCRIPTION:Versicherungsvertrag prüfen und Kündigungsfrist beachten. Maßgeblich sind Vertrag und gesetzliche Regelungen.\nFahrzeug: Volkswagen Tiguan\nKennzeichen: Clp as 79
+BEGIN:VALARM
+TRIGGER:-P7D
+ACTION:DISPLAY
+DESCRIPTION:Kfz-Versicherung: Kündigung prüfen
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:autoknigge-1789848889816-18e8681bfd7d08@autoknigge.de
+DTSTAMP:20260919T120000Z
+DTSTART;VALUE=DATE:20270401
+DTEND;VALUE=DATE:20270402
+SUMMARY:Sommerreifen prüfen
+DESCRIPTION:Saisonaler Hinweis: Reifen und Wetterlage prüfen.\nFahrzeug: Volkswagen Tiguan\nKennzeichen: Clp as 79
+BEGIN:VALARM
+TRIGGER:-P14D
+ACTION:DISPLAY
+DESCRIPTION:Sommerreifen prüfen
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:autoknigge-1789848889816-1c156bc0745a98@autoknigge.de
+DTSTAMP:20260919T120000Z
+DTSTART;VALUE=DATE:20280710
+DTEND;VALUE=DATE:20280711
+SUMMARY:HU / AU fällig
+DESCRIPTION:Hauptuntersuchung – Termin rechtzeitig vereinbaren.\nFahrzeug: Volkswagen Tiguan\nKennzeichen: Clp as 79
+BEGIN:VALARM
+TRIGGER:-P30D
+ACTION:DISPLAY
+DESCRIPTION:HU / AU fällig
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:autoknigge-1789848889816-2d2bd173109f58@autoknigge.de
+DTSTAMP:20260919T120000Z
+DTSTART;VALUE=DATE:20350910
+DTEND;VALUE=DATE:20350911
+SUMMARY:Reifenwechsel prüfen
+DESCRIPTION:Saisonwechsel einplanen und Reifen auf Zustand\, Profiltiefe und Luftdruck prüfen.\nFahrzeug: Volkswagen Tiguan\nKennzeichen: Clp as 79
+BEGIN:VALARM
+TRIGGER:-P14D
+ACTION:DISPLAY
+DESCRIPTION:Reifenwechsel prüfen
+END:VALARM
+END:VEVENT
+END:VCALENDAR
