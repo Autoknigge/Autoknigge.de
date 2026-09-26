@@ -1,12 +1,14 @@
 // Simple Service Worker for Autoknigge
 // Provides offline caching for better performance
 
-const CACHE_NAME = 'autoknigge-v3';
+const CACHE_NAME = 'autoknigge-v1';
 const STATIC_CACHE_URLS = [
   '/',
+  '/index.html',
   '/styles.css',
   '/script.js',
   '/cookie-consent.js',
+  '/cookie.css',
   '/cookie.js',
   '/logo.png',
   '/manifest.json',
