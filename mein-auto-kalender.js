@@ -6,7 +6,8 @@
   var eventsEl = document.getElementById('calendarEvents');
   var countEl = document.getElementById('eventCount');
   var statusEl = document.getElementById('calendarStatus');
-  var evCheck = document.getElementById('isEv');
+  var drivetrainSelect = document.getElementById('drivetrainType');
+  function isEvDrivetrain() { var v = drivetrainSelect.value; return v === 'Elektro (BEV)' || v === 'Plug-in-Hybrid (PHEV)'; }
   var evFields = document.getElementById('evFields');
   var newCarCheck = document.getElementById('isNewCar');
   var mfrInfoEl = document.getElementById('manufacturerInfo');
@@ -208,7 +209,8 @@
   function getData() {
     var data = {};
     new FormData(form).forEach(function (v, k) { data[k] = v; });
-    data.isEv = evCheck.checked;
+    data.isEv = isEvDrivetrain();
+    data.drivetrainType = drivetrainSelect.value;
     data.isNewCar = newCarCheck.checked;
     data.warrantyCheckDays = parseInt($('warrantyCheckDays').value || '60', 10);
     data.insuranceReminderDays = parseInt($('insuranceReminderDays').value || '45', 10);
@@ -222,7 +224,7 @@
       if (el.type === 'checkbox') el.checked = !!data[k];
       else el.value = data[k];
     });
-    evCheck.checked = !!data.isEv;
+    if (data.drivetrainType) drivetrainSelect.value = data.drivetrainType;
     newCarCheck.checked = !!data.isNewCar;
     updateEvFields();
     updateNewCarFields();
@@ -255,7 +257,7 @@
           filled.push('Garantie-Ende');
         }
       }
-      if (evCheck.checked && profile.batteryYears != null) {
+      if (isEvDrivetrain() && profile.batteryYears != null) {
         var batteryEl = $('batteryWarrantyEnd');
         if (!batteryEl.value) {
           batteryEl.value = isoDate(addYears(refDate, profile.batteryYears));
@@ -270,7 +272,7 @@
       lines.push('<li>⚠️ <strong>Keine offizielle Herstellergarantie in Deutschland</strong> – siehe Hinweis unten.</li>');
     } else {
       lines.push('<li>🛡️ Neuwagengarantie: <strong>' + (profile.warrantyYears != null ? profile.warrantyYears + ' Jahre' + (profile.warrantyKm ? ' / ' + fmtKm(profile.warrantyKm) : ' / ohne km-Begrenzung') : 'k. A.') + '</strong></li>');
-      if (evCheck.checked && profile.batteryYears != null) {
+      if (isEvDrivetrain() && profile.batteryYears != null) {
         lines.push('<li>🔋 Batteriegarantie: <strong>' + profile.batteryYears + ' Jahre / ' + fmtKm(profile.batteryKm) + '</strong></li>');
       }
       lines.push('<li>🔧 Wartung: <strong>' + (profile.serviceType === 'variabel' ? 'variables Intervall' : 'festes Intervall') + '</strong>' + (profile.serviceKmHint ? ' – üblich ' + profile.serviceKmHint : ' – üblich ca. ' + profile.serviceMonths + ' Monate') + '</li>');
@@ -447,7 +449,7 @@
     statusEl.textContent = events.length + ' Termine als Kalenderdatei erstellt.';
   }
 
-  function updateEvFields() { evFields.hidden = !evCheck.checked; }
+  function updateEvFields() { evFields.hidden = !isEvDrivetrain(); }
 
   var newCarNote = document.getElementById('newCarNote');
   var huSection = document.getElementById('huSection');
@@ -476,7 +478,7 @@
   variantSelect.addEventListener('change', applyManufacturerDefaults);
   $('firstRegistration').addEventListener('change', applyManufacturerDefaults);
   $('purchaseDate').addEventListener('change', applyManufacturerDefaults);
-  evCheck.addEventListener('change', applyManufacturerDefaults);
+  drivetrainSelect.addEventListener('change', function(){ updateEvFields(); applyManufacturerDefaults(); });
   $('downloadICS').addEventListener('click', downloadICS);
   $('saveProfile').addEventListener('click', function(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(getData())); statusEl.textContent = 'Fahrzeugdaten wurden ausschließlich auf diesem Gerät gespeichert.'; });
   $('clearProfile').addEventListener('click', function(){ localStorage.removeItem(STORAGE_KEY); form.reset(); updateEvFields(); updateNewCarFields(); mfrInfoEl.hidden = true; render(); statusEl.textContent = 'Lokale Fahrzeugdaten wurden gelöscht.'; });
