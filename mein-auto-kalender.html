@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="google-adsense-account" content="ca-pub-7178658520690671">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7178658520690671" crossorigin="anonymous"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mein Auto-Kalender – HU, Wartung, Garantie & Versicherung | Autoknigge</title>
 <meta name="description" content="Mein Auto-Kalender von Autoknigge: Fahrzeugdaten einmal eintragen, wichtige Termine berechnen lassen und als ICS-Kalender für Google, Apple oder Outlook exportieren.">
@@ -32,7 +31,18 @@
 .mfr-info .mfr-note{font-size:.76rem;color:var(--text-muted);line-height:1.5;margin:0}
 .mfr-info .mfr-filled{font-size:.78rem;color:var(--green-700);font-weight:700;margin:0 0 .5rem}
 .status{min-height:1.4em;margin:.7rem 0 0;color:var(--green-700);font-size:.84rem;font-weight:600}.disclaimer{font-size:.78rem;color:var(--text-muted);line-height:1.55;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border-light)}
-@media(max-width:850px){.calendar-layout{grid-template-columns:1fr}}@media(max-width:600px){.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.calendar-event{grid-template-columns:1fr;gap:.35rem}.feature-grid{grid-template-columns:1fr}.calendar-hero{padding:1.5rem}.actions .btn-calendar{width:100%}}
+@media(max-width:850px){.calendar-layout{grid-template-columns:1fr}.explainer-steps{grid-template-columns:1fr}}@media(max-width:600px){.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.calendar-event{grid-template-columns:1fr;gap:.35rem}.feature-grid{grid-template-columns:1fr}.calendar-hero{padding:1.5rem}.actions .btn-calendar{width:100%}}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.calendar-explainer{margin:0 0 1.8rem}
+.explainer-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.explainer-step{display:flex;gap:.8rem;align-items:flex-start;background:#fff;border:1px solid var(--border-light);border-radius:14px;padding:1.1rem 1.2rem}
+.explainer-num{flex:0 0 auto;display:inline-grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--green-700);color:#fff;font-weight:800}
+.explainer-step strong{display:block;margin-bottom:.3rem;font-size:.96rem}
+.explainer-step p{margin:0;font-size:.86rem;line-height:1.55;color:var(--text-muted)}
+.calendar-faq{margin:2rem 0 1rem;padding:1.5rem 1.6rem;background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-lg)}
+.calendar-faq h2{font-size:1.05rem;margin:1.1rem 0 .4rem}
+.calendar-faq h2:first-child{margin-top:0}
+.calendar-faq p{margin:0 0 .3rem;line-height:1.6;color:var(--text-body,#425852);font-size:.94rem}
 </style>
 </head>
 <body>
@@ -44,6 +54,14 @@
 <main><div class="wrap">
 <nav aria-label="Breadcrumb" class="breadcrumb"><a href="/">Start</a> / <span>Mein Auto-Kalender</span></nav>
 <section class="calendar-hero"><div class="hero-badge"><span class="dot"></span> Kostenlos • ohne Anmeldung</div><h1>Mein Auto-Kalender</h1><p>Einmal die wichtigsten Fahrzeugdaten eintragen – Autoknigge berechnet daraus deine persönlichen Erinnerungen für HU, Wartung, Reifen, Versicherung und Garantie.</p><div class="privacy-note">🔒 <strong>Deine Daten bleiben auf deinem Gerät.</strong> Es ist keine Anmeldung erforderlich. Die Fahrzeugdaten werden nicht an einen Autoknigge-Server übertragen.</div></section>
+<section class="calendar-explainer">
+<h2 class="visually-hidden">So funktioniert der Auto-Kalender</h2>
+<div class="explainer-steps">
+<div class="explainer-step"><span class="explainer-num">1</span><div><strong>Fahrzeug &amp; Hersteller eintragen</strong><p>Marke, Modell, Erstzulassung – bei Tesla und Mercedes zusätzlich die Antriebsvariante, da sie die Batteriegarantie beeinflusst.</p></div></div>
+<div class="explainer-step"><span class="explainer-num">2</span><div><strong>Herstellerdaten werden vorgeschlagen</strong><p>Für 34 Marken hinterlegt: Garantiedauer, Batteriegarantie und Wartungsintervall – als Richtwert, jederzeit von dir überschreibbar.</p></div></div>
+<div class="explainer-step"><span class="explainer-num">3</span><div><strong>Termine berechnen &amp; exportieren</strong><p>HU, Ölwechsel, Reifenwechsel, Garantie-Enden – als fertige .ics-Datei für Google-, Apple- oder Outlook-Kalender, inklusive Erinnerung vor jedem Termin.</p></div></div>
+</div>
+</section>
 <div class="calendar-layout">
 <section class="calendar-panel"><h2>🚗 Mein Auto <small>Fahrzeugprofil</small></h2><form id="carCalendarForm">
 <div class="form-section"><h3>Fahrzeug</h3><div class="form-grid">
@@ -67,6 +85,14 @@
 </form></section>
 <section class="calendar-panel"><h2>📅 Deine nächsten Termine <small><span id="eventCount">0</span> Termine</small></h2><div id="calendarEvents"></div><div class="feature-grid"><div class="feature"><strong>End of Warranty Check</strong><span>Eigener Termin vor Garantieende – nicht übersehen.</span></div><div class="feature"><strong>Versicherung</strong><span>Rechtzeitig an Kündigung bzw. Vertragsprüfung denken.</span></div><div class="feature"><strong>HU & Wartung</strong><span>Aus deinen eingetragenen Daten berechnet.</span></div><div class="feature"><strong>Kalender-Export</strong><span>Eine .ics-Datei für gängige Kalender-Apps.</span></div></div><p class="disclaimer">Hinweis: Der Kalender ist eine persönliche Planungshilfe. Er ersetzt weder Herstellerunterlagen, Garantiebedingungen, Versicherungsvertrag noch HU-Prüfbericht. Bei Fristen ist immer das konkrete Dokument maßgeblich.</p></section>
 </div>
+<section class="calendar-faq">
+<h2>Woher kommen die Herstellerdaten?</h2>
+<p>Garantiedauer, Batteriegarantie und Wartungstyp basieren auf öffentlich kommunizierten Herstellerangaben (Stand September 2026), recherchiert für 34 Marken von Alfa Romeo bis XPeng – bei Tesla und Mercedes zusätzlich nach Antriebsvariante bzw. Modellreihe gestaffelt. Es sind Richtwerte zur Orientierung, keine Rechtsauskunft: Maßgeblich bleiben immer die Angaben in deinem eigenen Kaufvertrag und Serviceheft.</p>
+<h2>Warum lohnt sich der Kalender-Export?</h2>
+<p>Ein einmal exportierter Termin – etwa „Kfz-Versicherung kündigen" einen Monat vor Vertragsende – bleibt in deinem Kalender bestehen, auch wenn du Autoknigge danach nicht mehr besuchst. Gerade Fristen mit Geld-Konsequenz (verpasste Kündigungsfrist, abgelaufene Garantie) werden so nicht mehr vom Zufall abhängig.</p>
+<h2>Passt der Kalender auch zu bestehenden Artikeln?</h2>
+<p>Ja – wer zum Beispiel gerade die <a href="artikel-kfz-versicherung-wechseln.html">Kfz-Versicherung wechseln</a> will oder einen <a href="artikel-gebrauchtwagen-check.html">Gebrauchtwagen-Check</a> macht, kann die dort ermittelten Termine direkt hier eintragen und sich erinnern lassen.</p>
+</section>
 </div></main>
 <footer class="site-footer"><div class="wrap"><div class="footer-grid">
 <div class="footer-brand"><h3>Autoknigge</h3><p>Ihr unabhängiger Ratgeber für stilvolles, sicheres und wirtschaftlich cleveres Verhalten rund um das Automobil.</p></div>
