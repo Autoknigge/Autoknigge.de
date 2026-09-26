@@ -7,7 +7,6 @@ const STATIC_CACHE_URLS = [
   '/index.html',
   '/styles.css',
   '/script.js',
-  '/cookie-consent.js',
   '/cookie.css',
   '/cookie.js',
   '/logo.png',
