@@ -42,11 +42,24 @@
     'Fiat': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12,
       extras: [ { key: 'rust', label: 'Durchrostungsgarantie', icon: '🛡️', years: 8, km: null } ] },
     'Ford': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12 },
-    'Hyundai': { warrantyYears: 5, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12, note: 'Bei einzelnen Modellen (z. B. IONIQ) werden teils bis zu 200.000 km auf die Batterie kommuniziert – Modellangabe im eigenen Garantieheft prüfen.' },
+    'Hyundai': { warrantyYears: 5, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12,
+      note: 'Bei reinen E-Modellen (IONIQ-Reihe) kommunizieren einzelne Long-Range-Varianten bis zu 200.000 km auf die Batterie – Modellangabe im eigenen Garantieheft prüfen.',
+      variantLabel: 'Batterievariante (nur IONIQ-Modelle)',
+      variants: {
+        'Standard Range': { batteryYears: 8, batteryKm: 160000 },
+        'Long Range': { batteryYears: 8, batteryKm: 200000 }
+      },
+      defaultVariant: 'Standard Range' },
     'Jeep': { warrantyYears: 2, warrantyKm: 100000, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12,
       extras: [ { key: 'rust', label: 'Durchrostungsgarantie', icon: '🛡️', years: 7, km: null } ] },
     'Kia': { warrantyYears: 7, warrantyKm: 150000, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12,
-      note: 'Die Batteriegarantie wurde für Modelljahr 2026 und neuer auf 8 Jahre/160.000 km angehoben (zuvor 7 Jahre/150.000 km); ältere Modelljahre bleiben bei 7 Jahren/150.000 km.',
+      note: 'Die Batteriegarantie wurde für Modelljahr 2026 und neuer auf 8 Jahre/160.000 km angehoben (zuvor 7 Jahre/150.000 km); ältere Modelljahre bleiben bei 7 Jahren/150.000 km. Bei reinen E-Modellen (EV6/EV9) kommunizieren einzelne Long-Range-Varianten bis zu 200.000 km.',
+      variantLabel: 'Batterievariante (nur EV-Modelle)',
+      variants: {
+        'Standard Range': { batteryYears: 8, batteryKm: 160000 },
+        'Long Range': { batteryYears: 8, batteryKm: 200000 }
+      },
+      defaultVariant: 'Standard Range',
       extras: [
         { key: 'paint', label: 'Lackgarantie', icon: '🎨', years: 5, km: 150000 },
         { key: 'starter', label: 'Starterbatterie-Garantie (12V)', icon: '🔋', years: 2, km: null },
@@ -80,7 +93,7 @@
     'Škoda': { warrantyYears: 2, warrantyKm: null, batteryYears: 8, batteryKm: 160000, serviceType: 'variabel', serviceMonths: 24, serviceKmHint: 'bis 30.000 km (Longlife)' },
     'Tesla': { warrantyYears: 4, warrantyKm: 80000, batteryYears: 8, batteryKm: 160000, serviceType: 'fest', serviceMonths: 12,
       note: 'Tesla gibt kein starres Wartungsintervall vor, empfiehlt aber eine jährliche Sichtprüfung.',
-      variantLabel: 'Antriebsvariante',
+      variantLabel: 'Batterievariante',
       variants: {
         'Model 3 / Model Y – Standard Range (Hinterradantrieb)': { batteryYears: 8, batteryKm: 160000 },
         'Model 3 / Model Y – Long Range / Performance': { batteryYears: 8, batteryKm: 192000 },
@@ -187,7 +200,7 @@
     if (currentValue && profile.variants[currentValue]) variantSelect.value = currentValue;
     else variantSelect.value = profile.defaultVariant;
     variantField.hidden = false;
-    variantField.querySelector('label').firstChild.textContent = (profile.variantLabel || 'Antriebsvariante') + ' ';
+    variantField.querySelector('label').firstChild.textContent = (profile.variantLabel || 'Batterievariante') + ' ';
   }
 
   function $(id) { return document.getElementById(id); }
