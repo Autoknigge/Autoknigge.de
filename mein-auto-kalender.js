@@ -8,6 +8,7 @@
   var statusEl = document.getElementById('calendarStatus');
   var evCheck = document.getElementById('isEv');
   var evFields = document.getElementById('evFields');
+  var newCarCheck = document.getElementById('isNewCar');
   var mfrInfoEl = document.getElementById('manufacturerInfo');
   var manufacturerSelect = document.getElementById('manufacturer');
 
@@ -208,6 +209,7 @@
     var data = {};
     new FormData(form).forEach(function (v, k) { data[k] = v; });
     data.isEv = evCheck.checked;
+    data.isNewCar = newCarCheck.checked;
     data.warrantyCheckDays = parseInt($('warrantyCheckDays').value || '60', 10);
     data.insuranceReminderDays = parseInt($('insuranceReminderDays').value || '45', 10);
     return data;
@@ -221,7 +223,9 @@
       else el.value = data[k];
     });
     evCheck.checked = !!data.isEv;
+    newCarCheck.checked = !!data.isNewCar;
     updateEvFields();
+    updateNewCarFields();
   }
 
   // -----------------------------------------------------------------
@@ -291,35 +295,58 @@
     render();
   }
 
+  var excludedKeys = {}; // persistiert über Re-Renders, welche Termine der Nutzer abgewählt hat
+  function eventKey(e) { return e.title + '|' + isoDate(e.date); }
+
   function buildEvents(data) {
     var events = [];
+    var HORIZON_YEARS = 8;
     function add(date, title, desc, lead) {
       if (!date) return;
       events.push({ date: date, title: title, desc: desc, lead: lead || 7 });
     }
-    var hu = parseDate(data.lastHu);
-    if (hu) add(addMonths(hu, 24), 'HU / AU fällig', 'Hauptuntersuchung – Termin rechtzeitig vereinbaren.', 30);
-
-    var oil = parseDate(data.lastOil);
-    if (oil) {
-      var oilMonths = parseInt(data.oilMonths || '12', 10);
-      add(addMonths(oil, oilMonths), 'Ölwechsel / Ölservice', 'Zeitintervall seit dem letzten Ölwechsel. Zusätzlich Kilometerintervall beachten.', 21);
+    function addSeries(startDate, intervalMonths, maxYears, titleFn, descFn, lead) {
+      if (!startDate || !intervalMonths) return;
+      var count = Math.min(40, Math.ceil((maxYears * 12) / intervalMonths));
+      for (var i = 1; i <= count; i++) {
+        add(addMonths(startDate, intervalMonths * i), titleFn(i, count), descFn(i, count), lead);
+      }
     }
 
-    var service = parseDate(data.lastService);
-    if (service) {
-      var serviceMonths = parseInt(data.serviceMonths || '12', 10);
-      add(addMonths(service, serviceMonths), 'Inspektion / Service', 'Nächsten Wartungstermin nach dem eingetragenen Intervall prüfen.', 30);
+    var hu = parseDate(data.lastHu);
+    if (hu) addSeries(hu, 24, HORIZON_YEARS, function(i){ return 'HU / AU fällig' + (i>1?' (Termin '+i+')':''); }, function(){ return 'Hauptuntersuchung – Termin rechtzeitig vereinbaren.'; }, 30);
+
+    var profile = getVariantProfile(MANUFACTURER_PROFILES[data.manufacturer] || {});
+    var refDateNew = parseDate(data.firstRegistration) || parseDate(data.purchaseDate);
+
+    if (data.isNewCar && refDateNew) {
+      // Neuwagen: keine Historie vorhanden – komplette Service-Serie bis Garantieende (max. 8 Jahre)
+      var svcMonths = profile.serviceMonths || 12;
+      var warrantyYrs = Math.min(HORIZON_YEARS, profile.warrantyYears || HORIZON_YEARS);
+      addSeries(refDateNew, svcMonths, warrantyYrs,
+        function(i, count){ return 'Inspektion ' + i + ' von ' + count + ' (Garantie-Pflichtservice)'; },
+        function(i, count){ return 'Regelmäßige Inspektion zum Erhalt der Herstellergarantie' + (data.manufacturer ? ' bei ' + data.manufacturer : '') + '. Turnus lt. Herstellerangabe: alle ' + svcMonths + ' Monate.'; },
+        21);
+    } else {
+      var oil = parseDate(data.lastOil);
+      if (oil) {
+        var oilMonths = parseInt(data.oilMonths || '12', 10);
+        addSeries(oil, oilMonths, HORIZON_YEARS, function(i){ return 'Ölwechsel / Ölservice' + (i>1?' (Termin '+i+')':''); }, function(){ return 'Zeitintervall seit dem letzten Ölwechsel. Zusätzlich Kilometerintervall beachten.'; }, 21);
+      }
+      var service = parseDate(data.lastService);
+      if (service) {
+        var serviceMonths = parseInt(data.serviceMonths || '12', 10);
+        addSeries(service, serviceMonths, HORIZON_YEARS, function(i){ return 'Inspektion / Service' + (i>1?' (Termin '+i+')':''); }, function(){ return 'Nächsten Wartungstermin nach dem eingetragenen Intervall prüfen.'; }, 30);
+      }
     }
 
     var tires = parseDate(data.lastTireChange);
     if (tires) {
       var tireMonths = parseInt(data.tireMonths || '6', 10);
-      add(addMonths(tires, tireMonths), 'Reifenwechsel prüfen', 'Saisonwechsel einplanen und Reifen auf Zustand, Profiltiefe und Luftdruck prüfen.', 14);
+      addSeries(tires, tireMonths, HORIZON_YEARS, function(i){ return 'Reifenwechsel prüfen' + (i>1?' (Termin '+i+')':''); }, function(){ return 'Saisonwechsel einplanen und Reifen auf Zustand, Profiltiefe und Luftdruck prüfen.'; }, 14);
       add(addDays(tires, 3), 'Radschrauben nachziehen', 'Nach einem Reifenwechsel setzen sich die Radschrauben in den ersten Kilometern minimal – nach ca. 50 km (meist nach wenigen Tagen erreicht) das Anzugsdrehmoment kontrollieren. Bei deutlich mehr oder weniger Fahrleistung selbst anpassen.', 1);
     }
 
-    var profile = MANUFACTURER_PROFILES[data.manufacturer];
     var checkDays = (profile && profile.warrantyCheckDaysOverride) || data.warrantyCheckDays;
 
     var warranty = parseDate(data.warrantyEnd);
@@ -353,12 +380,17 @@
     if (purchase) add(purchase, 'Kaufdatum / Fahrzeughistorie', 'Kaufdatum als persönlicher Referenzpunkt.', 1);
 
     var firstReg = parseDate(data.firstRegistration);
-    if (firstReg && !hu) add(addMonths(firstReg, 36), 'Erste HU / AU (Richtwert)', 'Für einen Pkw gilt bei der ersten HU grundsätzlich ein dreijähriger Turnus; tatsächliche Fälligkeit anhand der Fahrzeugunterlagen prüfen.', 30);
+    if (firstReg && !hu) addSeries(addMonths(firstReg, 12), 24, HORIZON_YEARS,
+      function(i){ return (i===1?'Erste HU / AU (Richtwert)':'HU / AU fällig (Termin '+i+')'); },
+      function(i){ return i===1 ? 'Für einen Pkw gilt bei der ersten HU grundsätzlich ein dreijähriger Turnus; tatsächliche Fälligkeit anhand der Fahrzeugunterlagen prüfen.' : 'Hauptuntersuchung – Termin rechtzeitig vereinbaren.'; },
+      30);
 
-    // Feste Saisonhinweise: bewusst als Planungshilfe, nicht als gesetzliche Pflicht.
+    // Feste Saisonhinweise für die gesamte Vorausschau, nicht nur das laufende Jahr.
     var year = new Date().getFullYear();
-    add(new Date(year, 9, 15, 12), 'Winterreifen prüfen', 'Saisonaler Hinweis: Reifen und Wetterlage prüfen; keine starre gesetzliche Wechselpflicht.', 14);
-    add(new Date(year + 1, 3, 1, 12), 'Sommerreifen prüfen', 'Saisonaler Hinweis: Reifen und Wetterlage prüfen.', 14);
+    for (var y = 0; y < HORIZON_YEARS; y++) {
+      add(new Date(year + y, 9, 15, 12), 'Winterreifen prüfen', 'Saisonaler Hinweis: Reifen und Wetterlage prüfen; keine starre gesetzliche Wechselpflicht.', 14);
+      add(new Date(year + 1 + y, 3, 1, 12), 'Sommerreifen prüfen', 'Saisonaler Hinweis: Reifen und Wetterlage prüfen.', 14);
+    }
 
     events.sort(function (a,b) { return a.date - b.date; });
     return events;
@@ -368,16 +400,27 @@
     var data = getData();
     var events = buildEvents(data);
     eventsEl.innerHTML = '';
-    countEl.textContent = events.length;
+    var activeCount = events.filter(function(e){ return !excludedKeys[eventKey(e)]; }).length;
+    countEl.textContent = activeCount + ' / ' + events.length;
     if (!events.length) {
       eventsEl.innerHTML = '<div class="calendar-empty">Noch keine Termine. Tragen Sie oben die Daten Ihres Fahrzeugs ein.</div>';
       return events;
     }
     events.forEach(function (e) {
-      var card = document.createElement('div');
-      card.className = 'calendar-event';
-      card.innerHTML = '<div class="calendar-event-date"><strong>' + fmt(e.date) + '</strong><span>Erinnerung ' + e.lead + ' Tage vorher</span></div>' +
+      var key = eventKey(e);
+      var checked = !excludedKeys[key];
+      var card = document.createElement('label');
+      card.className = 'calendar-event calendar-event-toggle' + (checked ? '' : ' is-excluded');
+      card.innerHTML = '<input type="checkbox" class="calendar-event-check"' + (checked ? ' checked' : '') + '>' +
+        '<div class="calendar-event-date"><strong>' + fmt(e.date) + '</strong><span>Erinnerung ' + e.lead + ' Tage vorher</span></div>' +
         '<div class="calendar-event-main"><h3>' + e.title + '</h3><p>' + e.desc + '</p></div>';
+      var cb = card.querySelector('.calendar-event-check');
+      cb.addEventListener('change', function () {
+        if (cb.checked) { delete excludedKeys[key]; } else { excludedKeys[key] = true; }
+        card.classList.toggle('is-excluded', !cb.checked);
+        var n = events.filter(function (ev) { return !excludedKeys[eventKey(ev)]; }).length;
+        countEl.textContent = n + ' / ' + events.length;
+      });
       eventsEl.appendChild(card);
     });
     return events;
@@ -385,8 +428,8 @@
 
   function downloadICS() {
     var data = getData();
-    var events = buildEvents(data);
-    if (!events.length) { statusEl.textContent = 'Bitte mindestens einen Termin eintragen.'; return; }
+    var events = buildEvents(data).filter(function (e) { return !excludedKeys[eventKey(e)]; });
+    if (!events.length) { statusEl.textContent = 'Bitte mindestens einen Termin auswählen.'; return; }
     var carName = [data.manufacturer, data.model].filter(Boolean).join(' ');
     var lines = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Autoknigge//Mein Auto-Kalender//DE','CALSCALE:GREGORIAN','METHOD:PUBLISH','X-WR-CALNAME:' + escapeICS('Mein Auto-Kalender' + (carName ? ' – ' + carName : ''))];
     events.forEach(function (e) {
@@ -406,13 +449,29 @@
 
   function updateEvFields() { evFields.hidden = !evCheck.checked; }
 
+  var newCarNote = document.getElementById('newCarNote');
+  var huSection = document.getElementById('huSection');
+  var serviceSection = document.getElementById('serviceSection');
+  function updateNewCarFields() {
+    var isNew = newCarCheck.checked;
+    if (newCarNote) newCarNote.hidden = !isNew;
+    if (huSection) huSection.hidden = isNew;
+    if (serviceSection) serviceSection.hidden = isNew;
+    if (isNew) {
+      if ($('lastHu')) $('lastHu').value = '';
+      if ($('lastOil')) $('lastOil').value = '';
+      if ($('lastService')) $('lastService').value = '';
+    }
+  }
+
   function handleInput() {
     render();
     localStorage.setItem(STORAGE_KEY, JSON.stringify(getData()));
   }
 
   form.addEventListener('input', handleInput);
-  form.addEventListener('change', function(){ updateEvFields(); handleInput(); });
+  form.addEventListener('change', function(){ updateEvFields(); updateNewCarFields(); handleInput(); });
+  newCarCheck.addEventListener('change', function(){ updateNewCarFields(); applyManufacturerDefaults(); });
   manufacturerSelect.addEventListener('change', applyManufacturerDefaults);
   variantSelect.addEventListener('change', applyManufacturerDefaults);
   $('firstRegistration').addEventListener('change', applyManufacturerDefaults);
@@ -420,10 +479,11 @@
   evCheck.addEventListener('change', applyManufacturerDefaults);
   $('downloadICS').addEventListener('click', downloadICS);
   $('saveProfile').addEventListener('click', function(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(getData())); statusEl.textContent = 'Fahrzeugdaten wurden ausschließlich auf diesem Gerät gespeichert.'; });
-  $('clearProfile').addEventListener('click', function(){ localStorage.removeItem(STORAGE_KEY); form.reset(); updateEvFields(); mfrInfoEl.hidden = true; render(); statusEl.textContent = 'Lokale Fahrzeugdaten wurden gelöscht.'; });
+  $('clearProfile').addEventListener('click', function(){ localStorage.removeItem(STORAGE_KEY); form.reset(); updateEvFields(); updateNewCarFields(); mfrInfoEl.hidden = true; render(); statusEl.textContent = 'Lokale Fahrzeugdaten wurden gelöscht.'; });
 
   try { var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null'); if (saved) setData(saved); } catch(e) {}
   updateEvFields();
+  updateNewCarFields();
   if (manufacturerSelect.value) applyManufacturerDefaults();
   render();
 })();
