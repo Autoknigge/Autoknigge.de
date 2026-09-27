@@ -1219,13 +1219,29 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
 
 /* ===== KNIGGE ALS BILD-ZITAT =====
    Knigge spricht direkt aus dem Foto: keine zusätzliche "Knigge meint"-Box. */
+.cat-page-header:has(+ .knigge-quote-card), .page-banner:has(+ .knigge-quote-card) {
+  margin-bottom: 0.15rem;
+}
+h1:has(+ .knigge-quote-card) {
+  margin-bottom: 0.15rem;
+}
 .knigge-quote-card {
-  margin: 2rem 0 2.4rem;
+  margin: 0.15rem 0 2.4rem;
   border-radius: 24px;
   overflow: hidden;
   box-shadow: var(--shadow-md);
   border: 1px solid rgba(10,28,22,.12);
   background: #111;
+  position: relative;
+}
+.knigge-quote-card::before {
+  content: '';
+  display: block;
+  height: 2px;
+  margin: 0 auto .5rem;
+  width: 72px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold-600, #d4af37), transparent);
 }
 .knigge-quote-image {
   position: relative;
