@@ -1849,7 +1849,6 @@ h1:has(+ .knigge-quote-card) {
 .topic-tile li:last-child { margin-bottom: 0; }
 
 /* ===== AUTO WASCHEN — MODERN ARTICLE ===== */
-.wash-page{padding-bottom:4rem}
 .wash-hero{margin:.5rem 0 2.2rem;border-radius:24px;overflow:hidden;background:#111;box-shadow:0 18px 50px rgba(10,28,22,.18)}
 .wash-hero-photo{display:block;position:relative}
 .wash-hero-image{position:relative;width:100%;overflow:hidden;background:#111}
@@ -2519,7 +2518,12 @@ h1:has(+ .knigge-quote-card) {
 #CybotCookiebotDialog a:hover { color: var(--ak-gold-2) !important; }
 
 /* Buttons: Alle-akzeptieren = Gold-Verlauf, alle anderen = dezent transparent */
-#CybotCookiebotDialogBodyButtonAccept, #CybotCookiebotDialogBodyLevelButtonAccept {
+#CybotCookiebotDialogBodyButtonAccept, #CybotCookiebotDialogBodyLevelButtonAccept,
+#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll,
+#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowallSelection,
+#CybotCookiebotDialogBodyLevelButtonAcceptSelection,
+#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowallSelectionv2,
+a[id*="ButtonAccept"], a[id*="AllowAll"], a[id*="AllowallSelection"] {
   background: linear-gradient(135deg, var(--ak-gold-1) 0%, var(--ak-gold-2) 50%, var(--ak-gold-3) 100%) !important;
   color: var(--ak-green-dark) !important;
   border: none !important;
@@ -2528,7 +2532,8 @@ h1:has(+ .knigge-quote-card) {
   padding: .72rem 1.35rem !important;
 }
 #CybotCookiebotDialogBodyButtonDecline, #CybotCookiebotDialogBodyLevelButtonDecline,
-#CybotCookiebotDialogBodyButtonDetails {
+#CybotCookiebotDialogBodyButtonDetails, #CybotCookiebotDialogBodyLevelButtonLevelOptinDeclineAll,
+a[id*="ButtonDecline"], a[id*="DeclineAll"] {
   background: rgba(255,255,255,.1) !important;
   color: #ffffff !important;
   border: 1px solid rgba(255,255,255,.28) !important;
