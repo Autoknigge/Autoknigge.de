@@ -1344,6 +1344,10 @@ h1:has(+ .knigge-quote-card) {
   background-image: url('knigge-quiz-notizblock.jpg');
   background-position: center 20%;
 }
+.knigge-quote-bussgeld .knigge-quote-image {
+  background-image: url('knigge-bussgeld-portemonnaie.jpg');
+  background-position: center 15%;
+}
 .knigge-quote-pflege .knigge-quote-image {
   background-image: url('knigge-diagnose-nah.jpg');
   background-position: center 30%;
@@ -1972,6 +1976,10 @@ h1:has(+ .knigge-quote-card) {
   .knigge-quote-quiz .knigge-quote-image {
     background-image: url('knigge-quiz-notizblock.jpg');
     background-position: center 15%;
+  }
+  .knigge-quote-bussgeld .knigge-quote-image {
+    background-image: url('knigge-bussgeld-portemonnaie.jpg');
+    background-position: center 12%;
   }
   .knigge-quote-pflege .knigge-quote-image {
     background-image: url('knigge-diagnose-nah.jpg');
