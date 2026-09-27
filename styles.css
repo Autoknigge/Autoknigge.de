@@ -1273,6 +1273,10 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
   background-image: url('knigge-historie-werkstatt.jpg');
   background-position: center 20%;
 }
+.knigge-quote-gwcheck .knigge-quote-image {
+  background-image: url('knigge-gebrauchtwagen-check.jpg');
+  background-position: center 42%;
+}
 .knigge-quote-pflege .knigge-quote-image {
   background-image: url('knigge-diagnose-nah.jpg');
   background-position: center 30%;
@@ -1890,6 +1894,10 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
   .knigge-quote-historie .knigge-quote-image {
     background-image: url('knigge-historie-werkstatt.jpg');
     background-position: center 15%;
+  }
+  .knigge-quote-gwcheck .knigge-quote-image {
+    background-image: url('knigge-gebrauchtwagen-check.jpg');
+    background-position: center 35%;
   }
   .knigge-quote-pflege .knigge-quote-image {
     background-image: url('knigge-diagnose-nah.jpg');
