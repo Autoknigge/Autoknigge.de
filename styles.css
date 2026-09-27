@@ -93,6 +93,16 @@ p { color: var(--text-body); }
   margin: 0 auto;
   padding: 0 2rem;
 }
+.ak-tile-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+.ak-tile-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1rem}
+.ak-tile{background:#f7f8f7;border:1px solid rgba(10,28,22,.08);border-radius:16px;padding:1.2rem 1.3rem}
+.ak-tile .icon{font-size:1.4rem;margin-bottom:.5rem}
+.ak-tile h3{margin:0 0 .4rem;font-size:1rem}
+.ak-tile p{margin:0;font-size:.86rem;line-height:1.55;color:var(--text-muted)}
+.ak-tile-warn{background:#fff0ef;border-color:#efcbc8}
+@media (max-width: 700px) {
+  .ak-tile-grid-3, .ak-tile-grid-2 { grid-template-columns: 1fr; }
+}
 @media (max-width: 600px) {
   .wrap { padding: 0 1.25rem; }
 }
@@ -1220,28 +1230,29 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
 /* ===== KNIGGE ALS BILD-ZITAT =====
    Knigge spricht direkt aus dem Foto: keine zusätzliche "Knigge meint"-Box. */
 .cat-page-header:has(+ .knigge-quote-card), .page-banner:has(+ .knigge-quote-card) {
-  margin-bottom: 0.15rem;
+  margin-bottom: 0;
+}
+.cat-page-header:has(+ .knigge-quote-card)::after, .page-banner:has(+ .knigge-quote-card)::after,
+h1:has(+ .knigge-quote-card)::after {
+  content: '';
+  display: block;
+  height: 4px;
+  width: 100%;
+  margin-top: .5rem;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold-600, #d4af37) 50%, transparent);
 }
 h1:has(+ .knigge-quote-card) {
-  margin-bottom: 0.15rem;
+  margin-bottom: 0;
 }
 .knigge-quote-card {
-  margin: 0.15rem 0 2.4rem;
+  margin: .5rem 0 2.4rem;
   border-radius: 24px;
   overflow: hidden;
   box-shadow: var(--shadow-md);
   border: 1px solid rgba(10,28,22,.12);
   background: #111;
   position: relative;
-}
-.knigge-quote-card::before {
-  content: '';
-  display: block;
-  height: 2px;
-  margin: 0 auto .5rem;
-  width: 72px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold-600, #d4af37), transparent);
 }
 .knigge-quote-image {
   position: relative;
