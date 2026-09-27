@@ -93,6 +93,34 @@ p { color: var(--text-body); }
   margin: 0 auto;
   padding: 0 2rem;
 }
+.wrap:has(+ .knigge-quote-card) > *:last-child {
+  margin-bottom: 0;
+}
+.wrap:has(+ .knigge-quote-card)::after,
+.cat-page-header:has(+ .knigge-quote-card)::after, .page-banner:has(+ .knigge-quote-card)::after,
+h1:has(+ .knigge-quote-card)::after {
+  content: '';
+  display: block;
+  height: 4px;
+  width: 100%;
+  margin-top: .5rem;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold-600, #d4af37) 50%, transparent 100%);
+  background-size: 250% 100%;
+  animation: akGoldFloat 3.5s linear infinite;
+}
+@keyframes akGoldFloat {
+  0% { background-position: 250% 0; }
+  100% { background-position: -250% 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wrap:has(+ .knigge-quote-card)::after,
+  .cat-page-header:has(+ .knigge-quote-card)::after, .page-banner:has(+ .knigge-quote-card)::after,
+  h1:has(+ .knigge-quote-card)::after {
+    animation: none;
+    background-position: 0 0;
+  }
+}
 .ak-tile-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
 .ak-tile-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1rem}
 .ak-tile{background:#f7f8f7;border:1px solid rgba(10,28,22,.08);border-radius:16px;padding:1.2rem 1.3rem;display:flex;flex-wrap:wrap;align-items:center;column-gap:.55rem}
@@ -1231,16 +1259,6 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
    Knigge spricht direkt aus dem Foto: keine zusätzliche "Knigge meint"-Box. */
 .cat-page-header:has(+ .knigge-quote-card), .page-banner:has(+ .knigge-quote-card) {
   margin-bottom: 0;
-}
-.cat-page-header:has(+ .knigge-quote-card)::after, .page-banner:has(+ .knigge-quote-card)::after,
-h1:has(+ .knigge-quote-card)::after {
-  content: '';
-  display: block;
-  height: 4px;
-  width: 100%;
-  margin-top: .5rem;
-  border-radius: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold-600, #d4af37) 50%, transparent);
 }
 h1:has(+ .knigge-quote-card) {
   margin-bottom: 0;
