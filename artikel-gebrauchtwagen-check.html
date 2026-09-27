@@ -22,7 +22,16 @@
 .info-card{background:#fff;border:1px solid rgba(15,36,29,.12);border-radius:20px;padding:1.35rem 1.5rem;margin:1.25rem 0;box-shadow:0 7px 24px rgba(15,36,29,.055)}
 .info-card h2{margin-top:0}
 .check-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem}
-.check-item{display:flex;gap:.8rem;padding:1rem;border-radius:16px;border:1px solid rgba(15,36,29,.10);background:#f8faf8}
+.check-item{display:grid;grid-template-columns:auto auto 1fr;column-gap:.7rem;row-gap:.3rem;padding:1rem;border-radius:16px;border:1px solid rgba(15,36,29,.10);background:#f8faf8}
+.check-item .check-box{grid-column:1;grid-row:1;align-self:center}
+.check-item.check-item-toggle .icon{grid-column:2;grid-row:1;align-self:center}
+.check-item.check-item-toggle strong{grid-column:3;grid-row:1;align-self:center}
+.check-item.check-item-toggle p, .check-item.check-item-toggle span{grid-column:2 / -1;grid-row:2;margin:.3rem 0 0}
+.check-item:not(.check-item-toggle){grid-template-columns:auto 1fr}
+.check-item:not(.check-item-toggle) .icon{grid-column:1;grid-row:1;align-self:center}
+.check-item:not(.check-item-toggle) strong{grid-column:2;grid-row:1;align-self:center}
+.check-item:not(.check-item-toggle) p, .check-item:not(.check-item-toggle) span{grid-column:1 / -1;grid-row:2;margin:.3rem 0 0}
+.check-item > div:last-child{display:contents}
 .check-item .icon{font-size:1.25rem;line-height:1.2;flex:0 0 auto}.check-item strong{display:block;margin-bottom:.2rem}.check-item span{display:block;color:#53615b;line-height:1.48;font-size:.92rem}
 .level{display:inline-flex;align-items:center;gap:.45rem;padding:.35rem .7rem;border-radius:999px;font-size:.78rem;font-weight:900;background:#eaf4ef;color:#164c39;margin-bottom:.6rem}
 .level.pro{background:#fff3d5;color:#74520b}

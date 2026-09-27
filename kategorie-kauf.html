@@ -235,14 +235,19 @@
     gap: .85rem;
   }
   .usedcar-check-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: .8rem;
+    row-gap: .3rem;
     border-radius: 14px;
     padding: 1rem 1.05rem;
-    display: flex;
-    gap: .8rem;
-    align-items: flex-start;
+    align-items: start;
     border: 1px solid rgba(15,36,29,.08);
     min-height: 92px;
   }
+  .usedcar-check-item > div:last-child { display: contents; }
+  .usedcar-check-item strong { grid-column: 2; grid-row: 1; align-self: center; }
+  .usedcar-check-item span { grid-column: 1 / -1; grid-row: 2; margin-top: .3rem; }
   .usedcar-check-item:nth-child(3n+1) { background: #fff1f0; border-color: #ffd8d4; }
   .usedcar-check-item:nth-child(3n+2) { background: #fff8df; border-color: #f4e4a9; }
   .usedcar-check-item:nth-child(3n) { background: #eef8f3; border-color: #cce8da; }
