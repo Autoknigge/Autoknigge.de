@@ -1277,6 +1277,10 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
   background-image: url('knigge-gebrauchtwagen-check.jpg');
   background-position: center 42%;
 }
+.knigge-quote-kalender .knigge-quote-image {
+  background-image: url('knigge-buero-kaffee.jpg');
+  background-position: center 22%;
+}
 .knigge-quote-pflege .knigge-quote-image {
   background-image: url('knigge-diagnose-nah.jpg');
   background-position: center 30%;
@@ -1898,6 +1902,10 @@ hr { border: none; border-top: 1px solid var(--border-light); margin: 2rem 0; }
   .knigge-quote-gwcheck .knigge-quote-image {
     background-image: url('knigge-gebrauchtwagen-check.jpg');
     background-position: center 35%;
+  }
+  .knigge-quote-kalender .knigge-quote-image {
+    background-image: url('knigge-buero-kaffee.jpg');
+    background-position: center 18%;
   }
   .knigge-quote-pflege .knigge-quote-image {
     background-image: url('knigge-diagnose-nah.jpg');
