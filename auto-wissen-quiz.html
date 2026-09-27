@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="87380559-5fcb-497a-8f2e-2d1734030f85" data-blockingmode="auto" data-culture="DE" type="text/javascript"></script>
+<meta charset="UTF-8">
+<meta name="google-adsense-account" content="ca-pub-7178658520690671">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auto-Wissen-Quiz – Geschichte, Technik & Motorsport testen | Autoknigge</title>
+<meta name="description" content="Teste dein Auto-Wissen: 40 Fragen zu Geschichte, Technik, Fahrphysik, Motorsport und Mythen rund ums Automobil. Kostenlos, ohne Anmeldung.">
+<link rel="canonical" href="https://autoknigge.de/auto-wissen-quiz.html">
+<link rel="stylesheet" href="styles.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0f241d">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Quiz", "name": "Auto-Wissen-Quiz", "about": "Automobile", "educationalAlignment": {"@type": "AlignmentObject", "alignmentType": "educationalSubject", "targetName": "Fahrzeugtechnik und Automobilgeschichte"}, "publisher": {"@type": "Organization", "name": "Autoknigge", "url": "https://autoknigge.de/"}, "url": "https://autoknigge.de/auto-wissen-quiz.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Start", "item": "https://autoknigge.de/"}, {"@type": "ListItem", "position": 2, "name": "Auto-Wissen-Quiz", "item": "https://autoknigge.de/auto-wissen-quiz.html"}]}</script>
+<style>
+.quiz-hero{margin:1rem 0 2rem;padding:2rem;border-radius:24px;background:linear-gradient(145deg,var(--green-800),#17382d);color:#fff;box-shadow:var(--shadow-lg)}
+.quiz-hero .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.12);padding:.4rem .8rem;border-radius:999px;font-size:.82rem;font-weight:700;margin-bottom:.9rem}
+.quiz-hero .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:#4ade80}
+.quiz-hero h1{margin:0 0 .7rem;font-size:clamp(2rem,5vw,3rem);color:#fff}
+.quiz-hero p{max-width:780px;color:rgba(255,255,255,.86);font-size:1.05rem;line-height:1.65;margin:0}
+
+.quiz-cats{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin:1.6rem 0}
+@media(max-width:800px){.quiz-cats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.quiz-cats{grid-template-columns:1fr}}
+.quiz-cat-btn{display:flex;align-items:center;gap:.6rem;padding:1rem 1.1rem;border-radius:14px;border:1px solid rgba(10,28,22,.1);background:#fff;cursor:pointer;font:inherit;font-weight:700;font-size:.94rem;text-align:left;color:var(--text-dark);transition:transform .15s ease,box-shadow .15s ease}
+.quiz-cat-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.quiz-cat-btn .n{font-size:1.4rem}
+.quiz-cat-btn.active{border-color:#d4af37;background:#fffaf0}
+
+.quiz-panel{background:#fff;border:1px solid rgba(10,28,22,.08);border-radius:20px;padding:1.8rem;box-shadow:var(--shadow-sm);margin-bottom:2rem}
+.quiz-progress-wrap{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem;gap:1rem}
+.quiz-progress-bar{flex:1;height:8px;border-radius:4px;background:#eef1ef;overflow:hidden}
+.quiz-progress-fill{height:100%;background:linear-gradient(90deg,#d4af37,#f3e5ab);border-radius:4px;transition:width .3s ease}
+.quiz-progress-text{font-size:.82rem;font-weight:700;color:var(--text-muted);white-space:nowrap}
+.quiz-score-chip{font-size:.82rem;font-weight:800;color:var(--green-700);background:#eef4f0;padding:.3rem .65rem;border-radius:8px;white-space:nowrap}
+
+.quiz-question-cat{font-size:.76rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#aa7c11;margin-bottom:.5rem}
+.quiz-question{font-size:1.25rem;font-weight:800;margin:0 0 1.3rem;line-height:1.4}
+.quiz-options{display:grid;gap:.7rem}
+.quiz-option{display:flex;align-items:center;gap:.7rem;padding:.9rem 1.05rem;border-radius:12px;border:1.5px solid rgba(10,28,22,.12);background:#fafbfa;cursor:pointer;font:inherit;font-size:.96rem;text-align:left;color:var(--text-dark);transition:border-color .15s ease,background .15s ease}
+.quiz-option:hover:not(:disabled){border-color:#d4af37;background:#fffaf0}
+.quiz-option .letter{flex:0 0 auto;width:28px;height:28px;border-radius:50%;background:#eef1ef;display:grid;place-items:center;font-weight:800;font-size:.82rem;color:var(--green-700)}
+.quiz-option:disabled{cursor:default}
+.quiz-option.correct{border-color:#2e7d4f;background:#eaf7ee}
+.quiz-option.correct .letter{background:#2e7d4f;color:#fff}
+.quiz-option.wrong{border-color:#c0392b;background:#fdecea}
+.quiz-option.wrong .letter{background:#c0392b;color:#fff}
+
+.quiz-explain{margin-top:1.2rem;padding:1rem 1.1rem;border-radius:12px;background:#f7f8f7;border-left:4px solid #d4af37;font-size:.9rem;line-height:1.6;color:var(--text-body,#425852);display:none}
+.quiz-explain.show{display:block}
+.quiz-next-btn{margin-top:1.3rem;display:none;background:linear-gradient(135deg,#d4af37,#f3e5ab 50%,#aa7c11);color:#0f241d;border:none;border-radius:10px;padding:.85rem 1.6rem;font-weight:800;font-size:.96rem;cursor:pointer}
+.quiz-next-btn.show{display:inline-block}
+.quiz-next-btn:hover{filter:brightness(1.05)}
+
+.quiz-result{text-align:center;padding:1rem 0}
+.quiz-result .big-score{font-size:3.2rem;font-weight:900;color:var(--green-800);margin:.5rem 0}
+.quiz-result .big-score span{font-size:1.6rem;color:var(--text-muted);font-weight:700}
+.quiz-result-msg{font-size:1.1rem;font-weight:700;margin-bottom:1.5rem}
+.quiz-result-actions{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;margin-top:1.5rem}
+.quiz-btn-primary{background:linear-gradient(135deg,#d4af37,#f3e5ab 50%,#aa7c11);color:#0f241d;border:none;border-radius:10px;padding:.85rem 1.6rem;font-weight:800;font-size:.94rem;cursor:pointer;font:inherit}
+.quiz-btn-secondary{background:rgba(10,28,22,.06);color:var(--text-dark);border:1px solid rgba(10,28,22,.12);border-radius:10px;padding:.85rem 1.6rem;font-weight:700;font-size:.94rem;cursor:pointer;font:inherit}
+.quiz-intro-text{font-size:.94rem;color:var(--text-muted);margin-bottom:1.4rem}
+[hidden]{display:none !important}
+</style>
+</head>
+<body>
+<header class="site-header header-logo-large" id="top"><div class="header-inner">
+<a href="/" aria-label="Autoknigge Startseite" class="header-logo-link" style="display:flex;align-items:center;text-decoration:none"><img src="logo.png" alt="Autoknigge Logo" class="header-logo-mini" style="max-height:50px;width:auto;object-fit:contain"></a>
+<input type="checkbox" id="nav-toggle" class="nav-toggle-input"><label for="nav-toggle" class="menu-compact"><span class="menu-icon">&#9776;</span> Menü</label>
+<nav class="main-nav"><ul class="header-nav-list"><li><a href="/">Start</a></li><li><a aria-current="page" href="auto-wissen-quiz.html">🧠 Auto-Wissen-Quiz</a></li><li><a href="mein-auto-kalender.html">📅 Mein Auto-Kalender</a></li><li><a href="kategorie-versicherung.html">Versicherung</a></li><li><a href="kategorie-zulassung.html">Zulassung</a></li><li><a href="kategorie-kauf.html">Kauf und Verkauf</a></li><li><a href="kategorie-pflege.html">Wartung und Pflege</a></li><li><a href="kategorie-recht.html">Recht</a></li><li><a href="kategorie-geld-sparen.html">Clever sparen</a></li><li><a href="ueber-knigge.html">Über Knigge</a></li></ul></nav><a class="header-search-link" href="suche.html" aria-label="Autoknigge durchsuchen">🔍 Suchen</a>
+</div></header>
+<main><div class="wrap">
+<nav aria-label="Breadcrumb" class="breadcrumb"><a href="/">Start</a> / <span>Auto-Wissen-Quiz</span></nav>
+<section class="quiz-hero"><div class="hero-badge"><span class="dot"></span> Kostenlos • ohne Anmeldung</div><h1>🧠 Auto-Wissen-Quiz</h1><p>40 Fragen quer durchs Automobil: Geschichte, Technik, Fahrphysik, Motorsport und Mythen. Wähle eine Kategorie oder teste alles gemischt durcheinander.</p></section>
+
+<section aria-label="Knigge-Tipp zum Quiz" class="knigge-quote-card knigge-quote-quiz">
+<div aria-label="Knigge mit Notizblock in der Werkstatt" class="knigge-quote-image" role="img">
+<div class="knigge-quote-shade"></div>
+<div class="knigge-quote-content">
+<div class="knigge-quote-kicker">KNIGGE MEINT</div>
+<blockquote>„Wer sein Auto wirklich versteht, kommt auch beim nächsten Werkstattbesuch nicht mit einem Fragezeichen im Gesicht davon.“</blockquote>
+</div>
+</div>
+</section>
+
+<div id="quizStart">
+<h2 style="margin-bottom:.8rem">Kategorie wählen</h2>
+<p class="quiz-intro-text">Jede Runde hat 10 Fragen aus der gewählten Kategorie, bei „Alles gemischt" aus allen Themen zufällig zusammengestellt. Sofortiges Feedback nach jeder Antwort, am Ende deine Auswertung.</p>
+<div class="quiz-cats" id="quizCatButtons">
+<button class="quiz-cat-btn" data-cat="all"><span class="n">🎲</span> Alles gemischt</button>
+<button class="quiz-cat-btn" data-cat="technik"><span class="n">⚙️</span> Motoren &amp; Technik</button>
+<button class="quiz-cat-btn" data-cat="physik"><span class="n">🌀</span> Fahrphysik &amp; Fahrdynamik</button>
+<button class="quiz-cat-btn" data-cat="geschichte"><span class="n">🏛️</span> Geschichte &amp; Meilensteine</button>
+<button class="quiz-cat-btn" data-cat="sport"><span class="n">🏁</span> Motorsport &amp; Exoten</button>
+<button class="quiz-cat-btn" data-cat="mythen"><span class="n">💡</span> Fahrhilfen &amp; Mythen</button>
+</div>
+</div>
+
+<div id="quizPanel" class="quiz-panel" hidden>
+<div class="quiz-progress-wrap">
+<span class="quiz-progress-text" id="quizProgressText">Frage 1 / 10</span>
+<div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizProgressFill" style="width:0%"></div></div>
+<span class="quiz-score-chip" id="quizScoreChip">0 richtig</span>
+</div>
+<div class="quiz-question-cat" id="quizQCat"></div>
+<h2 class="quiz-question" id="quizQText"></h2>
+<div class="quiz-options" id="quizOptions"></div>
+<div class="quiz-explain" id="quizExplain"></div>
+<button class="quiz-next-btn" id="quizNextBtn">Nächste Frage →</button>
+</div>
+
+<div id="quizResult" class="quiz-panel quiz-result" hidden>
+<div class="quiz-question-cat">Ergebnis</div>
+<div class="big-score"><span id="quizFinalScore">0</span><span> / 10</span></div>
+<p class="quiz-result-msg" id="quizResultMsg"></p>
+<div class="quiz-result-actions">
+<button class="quiz-btn-primary" id="quizRestartBtn">Neue Runde starten</button>
+<button class="quiz-btn-secondary" id="quizHomeBtn">Andere Kategorie wählen</button>
+</div>
+</div>
+
+</div></main>
+
+<footer class="site-footer"><div class="wrap"><div class="footer-grid">
+<div class="footer-brand"><h3>Autoknigge</h3><p>Ihr unabhängiger Ratgeber für stilvolles, sicheres und wirtschaftlich cleveres Verhalten rund um das Automobil.</p></div>
+<div class="footer-col"><h4>Kategorien</h4><ul class="footer-links-list"><li><a href="kategorie-versicherung.html">Kfz-Versicherung</a></li><li><a href="kategorie-zulassung.html">Auto an-, um- &amp; abmelden ohne Stress</a></li><li><a href="kategorie-kauf.html">Kauf und Verkauf</a></li><li><a href="kategorie-pflege.html">Wartung und Pflege</a></li><li><a href="kategorie-recht.html">Recht &amp; Etikette</a></li><li><a href="kategorie-geld-sparen.html">Clever sparen</a></li><li><a href="ueber-knigge.html">Über Knigge</a></li></ul></div>
+<div class="footer-col"><h4>Downloads</h4><ul class="footer-links-list"><li><a download="" href="kfz-kaufvertrag.pdf">Kfz-Kaufvertrag (PDF)</a></li><li><a download="" href="vollmacht-kfz-zulassung.pdf">Zulassungsvollmacht (PDF)</a></li><li><a download="" href="Notfallcheckliste-Unfall.pdf">Notfallcheckliste Unfall (PDF)</a></li></ul></div>
+</div><div class="footer-bottom"><div>© 2026 Autoknigge — Alle Rechte vorbehalten. Unabhängige Ratgeber-Plattform.</div><div class="foot-links"><a href="impressum.html">Impressum</a> • <a href="datenschutz.html">Datenschutz</a> • <a href="#" id="cookie-settings-link" onclick="if(window.Cookiebot){Cookiebot.show();} return false;">Cookie-Einstellungen</a></div></div></div></footer>
+
+<script src="script.js"></script>
+<script src="section-cards.js"></script>
+<script>
+(function(){
+  var QUESTIONS = [
+    // ===== Motoren & Technik =====
+    {cat:'technik',catLabel:'Motoren & Technik',q:'Was beschreibt das Drehmoment (Nm) eines Motors?',opts:['Die Höchstgeschwindigkeit des Motors','Die Kraft, die der Motor auf die Kurbelwelle ausübt','Die Kraftstoffmenge pro Minute','Den Druck im Zylinder bei der Zündung'],a:1,ex:'Drehmoment beschreibt die Kraftwirkung um die Kurbelwellen-Drehachse – entscheidend fürs Durchzugsvermögen, unabhängig von der reinen PS-Zahl.'},
+    {cat:'technik',catLabel:'Motoren & Technik',q:'Welcher Motor gilt als erster serienmäßiger Wankelmotor in einem Pkw?',opts:['Mazda RX-7','NSU Wankel-Spider','Mercedes C 111','Citroën GS Birotor'],a:1,ex:'Der NSU Wankel-Spider kam 1964 auf den Markt – deutlich vor dem später bekannteren Mazda RX-7.'},
+    {cat:'technik',catLabel:'Motoren & Technik',q:'Was passiert beim „Turboloch"?',opts:['Der Turbo bekommt zu viel Öl','Bei niedriger Drehzahl reicht der Abgasdruck noch nicht für den Lader','Luft entweicht durch ein Leck im Ladeluftkühler','Die Elektronik regelt die Leistung ab'],a:1,ex:'Bis der Abgasstrom stark genug ist, um die Turbine anzutreiben, fehlt kurzzeitig Leistung – das „Loch" im Ansprechverhalten.'},
+    {cat:'technik',catLabel:'Motoren & Technik',q:'Was zeichnet einen Boxermotor aus?',opts:['Zylinder im 90°-Winkel zueinander','Kolben bewegen sich auf einer vertikalen Achse gegeneinander','Zylinder liegen sich waagerecht gegenüber und bewegen sich gegenläufig','Alle Zylinder teilen sich eine Einspritzdüse'],a:2,ex:'Die gegenüberliegenden, waagerecht angeordneten Zylinder erinnern an Boxhiebe – daher der Name. Bekannt u. a. von Porsche und Subaru.'},
+    {cat:'technik',catLabel:'Motoren & Technik',q:'Wofür steht „TDI" bei Volkswagen-Dieselmotoren?',opts:['Turbocharged Direct Injection','Turbo Diesel Injection','Twin Drive Injection','Turbo Diesel Intercooler'],a:0,ex:'TDI steht für Turbocharged Direct Injection – Turboaufladung mit Direkteinspritzung.'},
+    {cat:'technik',catLabel:'Motoren & Technik',q:'Was ist die Hauptaufgabe des Differenzials?',opts:['Verringert die Motordrehzahl beim Schalten','Ermöglicht unterschiedliche Raddrehzahlen bei Kurvenfahrt','Sperrt die Räder automatisch beim Bremsen','Verteilt Drehmoment gleichmäßig auf beide Achsen'],a:1,ex:'In der Kurve legt das kurveninnere Rad einen kürzeren Weg zurück als das äußere – das Differenzial gleicht diesen Drehzahlunterschied aus.'},
+    {cat:'technik',catLabel:'Motoren & Technik',q:'Was verhindert das Thermostat im Kühlkreislauf?',opts:['Dass Öl in den Kühler gelangt','Dass Kühlwasser im kalten Zustand sofort durch den großen Kühler fließt','Dass der Ladedruck zu hoch wird','Dass die Batterie überhitzt'],a:1,ex:'Solange der Motor kalt ist, hält das Thermostat den kleinen Kreislauf geschlossen, damit die Betriebstemperatur schneller erreicht wird.'},
+    {cat:'technik',catLabel:'Motoren & Technik',q:'Was misst ein Luftmassenmesser (LMM)?',opts:['Den Reifendruck','Die Masse der angesaugten Luft zur Berechnung der Einspritzmenge','Die Außentemperatur für die Klimaanlage','Die Luftfeuchtigkeit im Ansaugtrakt'],a:1,ex:'Nur mit der exakten Luftmasse kann die Motorsteuerung die passende Kraftstoffmenge für ein optimales Gemisch berechnen.'},
+    {cat:'technik',catLabel:'Motoren & Technik',q:'Wofür steht DOHC bei Zylinderköpfen?',opts:['Direct Overhead Camshaft','Double Overhead Camshaft – zwei obenliegende Nockenwellen','Dual Oil Heating Control','Diesel Overcharged Head Cylinder'],a:1,ex:'Zwei obenliegende Nockenwellen steuern getrennt Ein- und Auslassventile – ermöglicht präzisere Steuerzeiten als eine einzelne Nockenwelle.'},
+    // ===== Fahrphysik & Fahrdynamik =====
+    {cat:'physik',catLabel:'Fahrphysik & Fahrdynamik',q:'Was bedeutet „Untersteuern"?',opts:['Das Heck bricht aus und das Auto dreht sich ein','Das Fahrzeug schiebt über die Vorderräder aus der Kurve','Die Lenkung reagiert verzögert','Die Hinterräder verlieren beim Beschleunigen die Haftung'],a:1,ex:'Bei Untersteuern verliert die Vorderachse zuerst den Grip – das Auto „schiebt" geradeaus über die gewünschte Kurvenlinie hinaus.'},
+    {cat:'physik',catLabel:'Fahrphysik & Fahrdynamik',q:'Was bewirkt Aero-Abtrieb (Downforce) bei Sportwagen?',opts:['Das Auto wird leichter und schneller','Höhere Anpresskraft auf den Boden ermöglicht höhere Kurvengeschwindigkeiten','Der Luftwiderstand sinkt auf null','Die Reifen erwärmen sich langsamer'],a:1,ex:'Abtrieb presst das Fahrzeug förmlich auf die Straße – dadurch lässt sich in Kurven mehr Seitenkraft übertragen, ohne dass die Reifen rutschen.'},
+    {cat:'physik',catLabel:'Fahrphysik & Fahrdynamik',q:'Was versteht man unter Aquaplaning?',opts:['Verkleben der Reifen durch nasses Laub','Aufschwimmen des Reifens auf einem Wasserfilm, Kontakt zur Straße reißt ab','Ausfall des ABS bei starkem Regen','Beschlagen der Scheiben durch Luftfeuchtigkeit'],a:1,ex:'Bei zu viel Wasser und zu wenig Profiltiefe kann der Reifen das Wasser nicht mehr schnell genug verdrängen – er „schwimmt" auf und verliert den Bodenkontakt.'},
+    {cat:'physik',catLabel:'Fahrphysik & Fahrdynamik',q:'Was ist die „ungefederte Masse" eines Fahrzeugs?',opts:['Das Gewicht von Passagieren und Gepäck','Bauteile, die nicht von den Federn getragen werden (Räder, Bremsen, Radträger)','Das reine Motorgewicht ohne Getriebe','Die Zuladung auf der Dachreling'],a:1,ex:'Je geringer die ungefederte Masse, desto schneller kann das Fahrwerk auf Bodenunebenheiten reagieren – wichtig für Fahrkomfort und Traktion.'},
+    {cat:'physik',catLabel:'Fahrphysik & Fahrdynamik',q:'Warum haben Heckantrieb-Sportwagen oft breitere Hinterreifen?',opts:['Um den Verbrauch zu senken','Um die Bremskraft vorne zu reduzieren','Für mehr Traktion und Stabilität beim Beschleunigen','Rein aus optischen Gründen'],a:2,ex:'Bei Heckantrieb muss die Hinterachse die gesamte Antriebskraft übertragen – eine breitere Aufstandsfläche verbessert dabei den Grip.'},
+    {cat:'physik',catLabel:'Fahrphysik & Fahrdynamik',q:'Was ist die Aufgabe eines Differenzials in der Kurve?',opts:['Es lädt die Batterie','Es ermöglicht unterschiedliche Raddrehzahlen','Es kühlt den Motor','Es erhöht den Reifendruck'],a:1,ex:'Ohne Ausgleich würden die Räder einer Achse in der Kurve gegeneinander arbeiten, da sie unterschiedlich weite Wege zurücklegen.'},
+    {cat:'physik',catLabel:'Fahrphysik & Fahrdynamik',q:'Was beschreibt „Übersteuern" im Unterschied zum Untersteuern?',opts:['Beide Achsen verlieren gleichzeitig den Grip','Das Heck bricht aus, das Fahrzeug dreht sich stärker ein als gelenkt','Das Auto bleibt stur geradeaus','Nur die Bremsen sind betroffen'],a:1,ex:'Bei Übersteuern verliert die Hinterachse zuerst den Grip – typisch bei starkem Heckantrieb oder abruptem Lupfen des Gasses in der Kurve.'},
+    // ===== Geschichte & Meilensteine =====
+    {cat:'geschichte',catLabel:'Geschichte & Meilensteine',q:'In welchem Jahr meldete Carl Benz den Patent-Motorwagen zum Patent an?',opts:['1876','1886','1899','1908'],a:1,ex:'Am 29. Januar 1886 reichte Carl Benz das Patent Nr. 37435 ein – es gilt als die „Geburtsurkunde des Automobils".'},
+    {cat:'geschichte',catLabel:'Geschichte & Meilensteine',q:'Wie viele Räder hatte der ursprüngliche Benz Patent-Motorwagen von 1886?',opts:['2','3','4','6'],a:1,ex:'Der Patent-Motorwagen war ein Dreirad – Carl Benz vertraute den damaligen Lenksystemen für vier Räder noch nicht.'},
+    {cat:'geschichte',catLabel:'Geschichte & Meilensteine',q:'Wer unternahm 1888 die erste Langstreckenfahrt der Automobilgeschichte?',opts:['Carl Benz','Bertha Benz','Gottlieb Daimler','Wilhelm Maybach'],a:1,ex:'Bertha Benz fuhr ohne Wissen ihres Mannes von Mannheim nach Pforzheim – rund 100 km, ein entscheidender Werbeerfolg für den Motorwagen.'},
+    {cat:'geschichte',catLabel:'Geschichte & Meilensteine',q:'Welches Modell gilt als erstes in großem Stil am Fließband gefertigtes Auto?',opts:['VW Käfer','Ford Model T','Austin 7','Citroën Typ A'],a:1,ex:'Ab 1913 nutzte Ford die Fließbandfertigung für das Model T und machte das Auto damit für breite Bevölkerungsschichten erschwinglich.'},
+    {cat:'geschichte',catLabel:'Geschichte & Meilensteine',q:'Wer erfand den Dreipunkt-Sicherheitsgurt, wie wir ihn heute kennen?',opts:['Mercedes-Benz','Nils Bohlin (Volvo)','Ferdinand Porsche','Rudolf Diesel'],a:1,ex:'Volvo-Ingenieur Nils Bohlin entwickelte 1959 den Dreipunktgurt – und gab das Patent zum Schutz der Allgemeinheit kostenlos frei.'},
+    {cat:'geschichte',catLabel:'Geschichte & Meilensteine',q:'Welcher Hersteller führte 1978 das erste Serien-ABS ein?',opts:['BMW','Bosch/Mercedes-Benz','Audi','Porsche'],a:1,ex:'Bosch entwickelte das elektronische Antiblockiersystem, das 1978 erstmals in der Mercedes S-Klasse verbaut wurde.'},
+    {cat:'geschichte',catLabel:'Geschichte & Meilensteine',q:'Was war 1980 die Besonderheit des Audi quattro?',opts:['Erstes Auto mit Automatikgetriebe','Brachte permanenten Allradantrieb in leistungsstarke Straßen-Pkw','Erste Vollkarbon-Karosserie','Erster V12-Motor der Nachkriegszeit'],a:1,ex:'Zuvor war Allradantrieb vor allem Geländewagen vorbehalten – der quattro etablierte ihn im sportlichen Straßeneinsatz und im Rallyesport.'},
+    {cat:'geschichte',catLabel:'Geschichte & Meilensteine',q:'Welches Land gilt als Ursprungsland der Marke Volvo?',opts:['Deutschland','Frankreich','Schweden','Italien'],a:2,ex:'Volvo wurde 1927 in Göteborg, Schweden, gegründet.'},
+    // ===== Motorsport & Exoten =====
+    {cat:'sport',catLabel:'Motorsport & Exoten',q:'Welches Rennen gehört neben Monaco-GP und Indy 500 zur „Triple Crown" des Motorsports?',opts:['24h Nürburgring','24 Stunden von Le Mans','Rallye Monte Carlo','1000 km von Spa'],a:1,ex:'Nur wenige Fahrer haben je alle drei Rennen gewonnen – Graham Hill ist bislang der einzige mit der kompletten „Triple Crown".'},
+    {cat:'sport',catLabel:'Motorsport & Exoten',q:'Welches Motorenkonzept nutzt der Bugatti Chiron?',opts:['V12 Biturbo','W16 mit vier Turboladern','V10 Sauger','W12 Tri-Turbo'],a:1,ex:'Der Achtzehnzylinder-W16-Motor mit vier Turboladern leistet über 1500 PS.'},
+    {cat:'sport',catLabel:'Motorsport & Exoten',q:'Wofür steht „DRS" in der Formel 1?',opts:['Direct Race System','Drag Reduction System','Drive Recovery Safety','Downforce Regulation Switch'],a:1,ex:'DRS öffnet kurzzeitig einen Flügelklappen-Spalt am Heckflügel, reduziert den Luftwiderstand und erleichtert Überholmanöver auf Geraden.'},
+    {cat:'sport',catLabel:'Motorsport & Exoten',q:'Welcher deutsche Hersteller feierte mit dem „300 SL" und den Flügeltüren Welterfolge?',opts:['BMW','Porsche','Mercedes-Benz','Auto Union'],a:2,ex:'Der Mercedes-Benz 300 SL „Gullwing" (1954) gilt bis heute als einer der schönsten und begehrtesten Klassiker.'},
+    {cat:'sport',catLabel:'Motorsport & Exoten',q:'Welcher Hersteller brachte den „Quattro"-Allradantrieb im Rallyesport groß heraus?',opts:['Audi','BMW','Mercedes-Benz','Saab'],a:0,ex:'Der Audi quattro dominierte in den frühen 1980er-Jahren die Rallye-Weltmeisterschaft und revolutionierte den Sport.'},
+    {cat:'sport',catLabel:'Motorsport & Exoten',q:'Wie heißt die legendäre Rennstrecke, die als „Grüne Hölle" bekannt ist?',opts:['Hockenheimring','Nürburgring-Nordschleife','Sachsenring','Norisring'],a:1,ex:'Jackie Stewart prägte den Spitznamen wegen der Länge, der vielen Kurven und der unberechenbaren Streckenführung mitten im Wald.'},
+    // ===== Fahrhilfen, Elektronik & Mythen =====
+    {cat:'mythen',catLabel:'Fahrhilfen & Mythen',q:'Was macht das Elektronische Stabilitätsprogramm (ESP)?',opts:['Verhindert das Durchdrehen der Räder beim Anfahren','Bremst gezielt einzelne Räder ab, um Schleudern zu verhindern','Hält automatisch Abstand zum Vorausfahrenden','Schaltet bei Gefahrenbremsung das Warnblinklicht ein'],a:1,ex:'ESP erkennt drohendes Über- oder Untersteuern und bremst gezielt einzelne Räder ab, um das Fahrzeug wieder auf Kurs zu bringen.'},
+    {cat:'mythen',catLabel:'Fahrhilfen & Mythen',q:'Was beschreibt „Klopfen" bei einem Benzinmotor?',opts:['Ventile schlagen am Kolbenboden an','Unkontrollierte, vorzeitige Selbstentzündung des Gemischs','Ein defektes Radlager bei hoher Geschwindigkeit','Das Schaltgeräusch beim Gangwechsel'],a:1,ex:'Klopfen entsteht, wenn sich das Gemisch unkontrolliert vor dem eigentlichen Zündfunken selbst entzündet – auf Dauer schädlich für den Motor.'},
+    {cat:'mythen',catLabel:'Fahrhilfen & Mythen',q:'Welcher Kraftstoff hat die höchste Klopffestigkeit (Oktanzahl)?',opts:['Super 95','Super Plus (98 Oktan)','Rennbenzin/E85 (über 100 Oktan)','Diesel'],a:2,ex:'Je höher die Oktanzahl, desto klopffester ist der Kraftstoff – wichtig für hochverdichtende oder stark aufgeladene Motoren.'},
+    {cat:'mythen',catLabel:'Fahrhilfen & Mythen',q:'Was bewirkt eine Lachgaseinspritzung (NOS) kurzzeitig?',opts:['Kühlt den Kraftstoff, damit mehr in den Tank passt','Setzt bei Erhitzung Sauerstoff frei, wodurch mehr Kraftstoff verbrannt werden kann','Erhöht die Oktanzahl des Benzins auf 150','Reinigt die Zündkerzen von Rußablagerungen'],a:1,ex:'Lachgas zerfällt bei Hitze in Stickstoff und Sauerstoff – der zusätzliche Sauerstoff erlaubt kurzzeitig mehr Kraftstoffverbrennung und damit mehr Leistung.'},
+    {cat:'mythen',catLabel:'Fahrhilfen & Mythen',q:'Warum neigen Keramik-Bremsen (Carbon-Keramik) kaum zu „Fading"?',opts:['Sie sind extremer Hitze gewachsen und verlieren kaum Bremswirkung','Sie bremsen bei Kälte am besten','Sie müssen nie gewechselt werden','Sie machen das Auto beim Bremsen leiser'],a:0,ex:'Keramikscheiben widerstehen sehr hohen Temperaturen, ohne an Bremswirkung zu verlieren – ideal für Rennstrecken-Dauerbelastung.'},
+    {cat:'mythen',catLabel:'Fahrhilfen & Mythen',q:'Warum besitzen moderne Dieselmotoren einen Partikelfilter?',opts:['Um Abgasgeräusche zu reduzieren','Um Rußpartikel zurückzuhalten','Um den Ölverbrauch zu senken','Um die Batterie zu laden'],a:1,ex:'Der Partikelfilter fängt feinen Ruß aus der Dieselverbrennung ab, der sonst als Feinstaub in die Umgebungsluft gelangen würde.'},
+    {cat:'mythen',catLabel:'Fahrhilfen & Mythen',q:'Was bedeutet „Facelift" bei einem Auto?',opts:['Eine komplette Neuentwicklung','Eine optische und technische Überarbeitung eines bestehenden Modells','Eine Motorreparatur','Eine Neulackierung nach einem Unfall'],a:1,ex:'Ein Facelift frischt ein bestehendes Modell meist zur Modellmitte hin auf – Design, Technik und Ausstattung werden angepasst, die Plattform bleibt gleich.'},
+    // ===== Marken & Symbole (mit in "mythen" und "geschichte" verteilt, hier separat als Zusatzfragen) =====
+    {cat:'technik',catLabel:'Motoren & Technik',q:'Was ist beim Verbrennungsmotor oft der Grund für höheren Verbrauch auf Kurzstrecken?',opts:['Kalter Motor und Katalysator erreichen die Betriebstemperatur nicht','Mehr PS werden automatisch aktiviert','Höherer Luftdruck in den Reifen','Automatikgetriebe schaltet öfter'],a:0,ex:'Ein kalter Motor läuft ineffizienter, und der Katalysator arbeitet erst ab seiner Betriebstemperatur richtig – beides treibt den Verbrauch auf kurzen Strecken hoch.'},
+    {cat:'mythen',catLabel:'Fahrhilfen & Mythen',q:'Was sinkt bei niedrigen Außentemperaturen spürbar bei Elektroautos?',opts:['Die Ladezeit','Die Reichweite','Die Höchstgeschwindigkeit','Die Motorleistung dauerhaft'],a:1,ex:'Kälte erhöht den Innenwiderstand der Batterie und der Energiebedarf für die Innenraumheizung steigt – beides senkt die nutzbare Reichweite.'},
+    {cat:'geschichte',catLabel:'Geschichte & Meilensteine',q:'Wofür stehen die vier Ringe im Audi-Logo?',opts:['Vier Motorenarten','Vier Fusionsunternehmen der Auto Union','Vier Jahreszeiten','Vier Kontinente'],a:1,ex:'Die vier Ringe symbolisieren den Zusammenschluss von Audi, DKW, Horch und Wanderer zur Auto Union im Jahr 1932.'},
+    {cat:'geschichte',catLabel:'Geschichte & Meilensteine',q:'Welche Marke nutzt das springende Pferd (Cavallino Rampante) im Wappen?',opts:['Lamborghini','Ferrari','Porsche','Maserati'],a:1,ex:'Enzo Ferrari übernahm das Motiv von der Familie eines gefallenen Fliegerhelden des Ersten Weltkriegs als Glücksbringer.'},
+    {cat:'geschichte',catLabel:'Geschichte & Meilensteine',q:'In welcher Stadt hat Porsche seinen Firmensitz?',opts:['München','Wolfsburg','Stuttgart','Ingolstadt'],a:2,ex:'Porsche ist in Stuttgart-Zuffenhausen beheimatet, ebenso wie Mercedes-Benz im nahen Stuttgart-Untertürkheim.'},
+    {cat:'geschichte',catLabel:'Geschichte & Meilensteine',q:'Welcher Konzern ist Mutterunternehmen von Audi, Porsche, Škoda und SEAT?',opts:['BMW Group','Volkswagen Group','Stellantis','Daimler'],a:1,ex:'Alle vier Marken gehören zum Volkswagen-Konzern, der insgesamt über zehn Marken unter seinem Dach vereint.'},
+    {cat:'physik',catLabel:'Fahrphysik & Fahrdynamik',q:'Welches Auto wurde im Volksmund als „Ente" bekannt?',opts:['Citroën 2CV','Fiat 500','Renault 4','VW Polo'],a:0,ex:'Der Citroën 2CV wurde wegen seiner eigenwilligen Form und dem watschelnden Fahrverhalten liebevoll „Ente" genannt.'},
+    {cat:'technik',catLabel:'Motoren & Technik',q:'Was war die konstruktive Besonderheit des Wankelmotors?',opts:['Er arbeitet ohne Zündkerze','Ein rotierender Kolben (Rotor) statt herkömmlicher Hubkolben','Er besitzt immer zwölf Zylinder','Er benötigt kein Motoröl'],a:1,ex:'Statt auf und ab bewegter Kolben dreht sich beim Wankelmotor ein dreieckiger Rotor exzentrisch in einem ovalen Gehäuse.'},
+    {cat:'technik',catLabel:'Motoren & Technik',q:'Was trennt beim Schaltgetriebe Motor und Getriebe kurzzeitig voneinander?',opts:['Das Differenzial','Die Lichtmaschine','Die Kupplung','Der Anlasser'],a:2,ex:'Beim Treten des Kupplungspedals wird der Kraftfluss zwischen Motor und Getriebe unterbrochen – nötig zum Schalten oder Anfahren.'},
+    {cat:'physik',catLabel:'Fahrphysik & Fahrdynamik',q:'Was ist bei einem Reifen die „Profiltiefe"?',opts:['Die Dicke der Felge','Die Tiefe der Rillen im Reifenprofil','Der Reifendruck','Die Breite der Reifenflanke'],a:1,ex:'Die Profiltiefe entscheidet maßgeblich über die Wasserverdrängung – in Deutschland sind gesetzlich mindestens 1,6 mm vorgeschrieben, empfohlen werden bei Winterreifen mindestens 4 mm.'}
+  ];
+
+  var ROUND_SIZE = 10;
+  var catBtns = document.querySelectorAll('.quiz-cat-btn');
+  var startEl = document.getElementById('quizStart');
+  var panelEl = document.getElementById('quizPanel');
+  var resultEl = document.getElementById('quizResult');
+  var qCatEl = document.getElementById('quizQCat');
+  var qTextEl = document.getElementById('quizQText');
+  var optionsEl = document.getElementById('quizOptions');
+  var explainEl = document.getElementById('quizExplain');
+  var nextBtn = document.getElementById('quizNextBtn');
+  var progressText = document.getElementById('quizProgressText');
+  var progressFill = document.getElementById('quizProgressFill');
+  var scoreChip = document.getElementById('quizScoreChip');
+  var finalScoreEl = document.getElementById('quizFinalScore');
+  var resultMsgEl = document.getElementById('quizResultMsg');
+  var restartBtn = document.getElementById('quizRestartBtn');
+  var homeBtn = document.getElementById('quizHomeBtn');
+
+  var round = [];
+  var idx = 0;
+  var score = 0;
+  var answered = false;
+
+  function shuffle(arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+    }
+    return a;
+  }
+
+  function startRound(cat) {
+    var pool = cat === 'all' ? QUESTIONS : QUESTIONS.filter(function (q) { return q.cat === cat; });
+    round = shuffle(pool).slice(0, Math.min(ROUND_SIZE, pool.length));
+    idx = 0; score = 0; answered = false;
+    startEl.hidden = true; resultEl.hidden = true; panelEl.hidden = false;
+    renderQuestion();
+  }
+
+  function renderQuestion() {
+    answered = false;
+    var q = round[idx];
+    progressText.textContent = 'Frage ' + (idx + 1) + ' / ' + round.length;
+    progressFill.style.width = (idx / round.length * 100) + '%';
+    scoreChip.textContent = score + ' richtig';
+    qCatEl.textContent = q.catLabel;
+    qTextEl.textContent = q.q;
+    explainEl.classList.remove('show');
+    explainEl.textContent = '';
+    nextBtn.classList.remove('show');
+    optionsEl.innerHTML = '';
+    var letters = ['A', 'B', 'C', 'D'];
+    q.opts.forEach(function (opt, i) {
+      var btn = document.createElement('button');
+      btn.className = 'quiz-option';
+      btn.innerHTML = '<span class="letter">' + letters[i] + '</span><span>' + opt + '</span>';
+      btn.addEventListener('click', function () { selectAnswer(i, btn); });
+      optionsEl.appendChild(btn);
+    });
+  }
+
+  function selectAnswer(i, btnEl) {
+    if (answered) return;
+    answered = true;
+    var q = round[idx];
+    var allBtns = optionsEl.querySelectorAll('.quiz-option');
+    allBtns.forEach(function (b) { b.disabled = true; });
+    if (i === q.a) {
+      score++;
+      btnEl.classList.add('correct');
+    } else {
+      btnEl.classList.add('wrong');
+      allBtns[q.a].classList.add('correct');
+    }
+    explainEl.textContent = q.ex;
+    explainEl.classList.add('show');
+    nextBtn.classList.add('show');
+    scoreChip.textContent = score + ' richtig';
+  }
+
+  nextBtn.addEventListener('click', function () {
+    idx++;
+    if (idx >= round.length) {
+      showResult();
+    } else {
+      renderQuestion();
+    }
+  });
+
+  function showResult() {
+    panelEl.hidden = true; resultEl.hidden = false;
+    finalScoreEl.textContent = score;
+    document.querySelector('.quiz-result .big-score span').textContent = ' / ' + round.length;
+    var pct = score / round.length;
+    var msg;
+    if (pct === 1) msg = '🏆 Perfekt! Du kennst dich richtig gut aus.';
+    else if (pct >= 0.8) msg = '🥇 Stark! Nur eine Kleinigkeit hat gefehlt.';
+    else if (pct >= 0.6) msg = '👍 Solide Kenntnisse – ein paar Lücken sind noch drin.';
+    else if (pct >= 0.4) msg = '🤔 Geht schon, aber da ist noch Luft nach oben.';
+    else msg = '📚 Zeit, mal wieder ein bisschen zu stöbern – probier es gleich nochmal!';
+    resultMsgEl.textContent = msg;
+  }
+
+  restartBtn.addEventListener('click', function () {
+    var activeCat = document.querySelector('.quiz-cat-btn.active');
+    startRound(activeCat ? activeCat.getAttribute('data-cat') : 'all');
+  });
+
+  homeBtn.addEventListener('click', function () {
+    resultEl.hidden = true; startEl.hidden = false;
+  });
+
+  catBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      catBtns.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      startRound(btn.getAttribute('data-cat'));
+    });
+  });
+})();
+</script>
+</body>
+</html>
