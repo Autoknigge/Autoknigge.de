@@ -2517,13 +2517,30 @@ h1:has(+ .knigge-quote-card) {
 #CybotCookiebotDialog a { color: var(--ak-gold-1) !important; text-decoration: underline !important; }
 #CybotCookiebotDialog a:hover { color: var(--ak-gold-2) !important; }
 
+/* Sicherheitsnetz: ALLE Textelemente im Dialog hell einfärben (deckt auch den
+   "Details"-Tab mit Kategorien/Cookie-Tabellen ab, dessen genaue Unterklassen
+   Cookiebot nicht öffentlich einzeln dokumentiert). Buttons werden danach
+   gezielt wieder dunkel eingefärbt (siehe unten), Quellcode-Reihenfolge
+   entscheidet bei gleicher Spezifität. */
+#CybotCookiebotDialog, #CybotCookiebotDialog p, #CybotCookiebotDialog span,
+#CybotCookiebotDialog div, #CybotCookiebotDialog li, #CybotCookiebotDialog td,
+#CybotCookiebotDialog th, #CybotCookiebotDialog h1, #CybotCookiebotDialog h2,
+#CybotCookiebotDialog h3, #CybotCookiebotDialog h4, #CybotCookiebotDialog label,
+#CybotCookiebotDialog strong, #CybotCookiebotDialog table {
+  color: rgba(255,255,255,.9) !important;
+  background-color: transparent !important;
+}
+#CybotCookiebotDialog table, #CybotCookiebotDialog tr, #CybotCookiebotDialog td, #CybotCookiebotDialog th {
+  border-color: rgba(255,255,255,.2) !important;
+}
+
 /* Buttons: Alle-akzeptieren = Gold-Verlauf, alle anderen = dezent transparent */
-#CybotCookiebotDialogBodyButtonAccept, #CybotCookiebotDialogBodyLevelButtonAccept,
-#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll,
-#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowallSelection,
-#CybotCookiebotDialogBodyLevelButtonAcceptSelection,
-#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowallSelectionv2,
-a[id*="ButtonAccept"], a[id*="AllowAll"], a[id*="AllowallSelection"] {
+#CybotCookiebotDialog #CybotCookiebotDialogBodyButtonAccept, #CybotCookiebotDialog #CybotCookiebotDialogBodyLevelButtonAccept,
+#CybotCookiebotDialog #CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll,
+#CybotCookiebotDialog #CybotCookiebotDialogBodyLevelButtonLevelOptinAllowallSelection,
+#CybotCookiebotDialog #CybotCookiebotDialogBodyLevelButtonAcceptSelection,
+#CybotCookiebotDialog #CybotCookiebotDialogBodyLevelButtonLevelOptinAllowallSelectionv2,
+#CybotCookiebotDialog a[id*="ButtonAccept"], #CybotCookiebotDialog a[id*="AllowAll"], #CybotCookiebotDialog a[id*="AllowallSelection"] {
   background: linear-gradient(135deg, var(--ak-gold-1) 0%, var(--ak-gold-2) 50%, var(--ak-gold-3) 100%) !important;
   color: var(--ak-green-dark) !important;
   border: none !important;
@@ -2531,9 +2548,9 @@ a[id*="ButtonAccept"], a[id*="AllowAll"], a[id*="AllowallSelection"] {
   font-weight: 700 !important;
   padding: .72rem 1.35rem !important;
 }
-#CybotCookiebotDialogBodyButtonDecline, #CybotCookiebotDialogBodyLevelButtonDecline,
-#CybotCookiebotDialogBodyButtonDetails, #CybotCookiebotDialogBodyLevelButtonLevelOptinDeclineAll,
-a[id*="ButtonDecline"], a[id*="DeclineAll"] {
+#CybotCookiebotDialog #CybotCookiebotDialogBodyButtonDecline, #CybotCookiebotDialog #CybotCookiebotDialogBodyLevelButtonDecline,
+#CybotCookiebotDialog #CybotCookiebotDialogBodyButtonDetails, #CybotCookiebotDialog #CybotCookiebotDialogBodyLevelButtonLevelOptinDeclineAll,
+#CybotCookiebotDialog a[id*="ButtonDecline"], #CybotCookiebotDialog a[id*="DeclineAll"] {
   background: rgba(255,255,255,.1) !important;
   color: #ffffff !important;
   border: 1px solid rgba(255,255,255,.28) !important;
