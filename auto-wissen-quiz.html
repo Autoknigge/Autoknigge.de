@@ -5,8 +5,8 @@
 <meta charset="UTF-8">
 <meta name="google-adsense-account" content="ca-pub-7178658520690671">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Auto-Wissen-Quiz – Geschichte, Technik & Motorsport testen | Autoknigge</title>
-<meta name="description" content="Teste dein Auto-Wissen: 40 Fragen zu Geschichte, Technik, Fahrphysik, Motorsport und Mythen rund ums Automobil. Kostenlos, ohne Anmeldung.">
+<title>Auto-Wissen-Quiz – Geschichte, Technik, Motorsport & Motorrad | Autoknigge</title>
+<meta name="description" content="Teste dein Fahrzeug-Wissen: über 60 Fragen zu Geschichte, Technik, Fahrphysik, Motorsport, Motorrädern und Mythen. Kostenlos, ohne Anmeldung.">
 <link rel="canonical" href="https://autoknigge.de/auto-wissen-quiz.html">
 <link rel="stylesheet" href="styles.css">
 <link rel="manifest" href="manifest.json">
@@ -72,7 +72,7 @@
 </div></header>
 <main><div class="wrap">
 <nav aria-label="Breadcrumb" class="breadcrumb"><a href="/">Start</a> / <span>Auto-Wissen-Quiz</span></nav>
-<section class="quiz-hero"><div class="hero-badge"><span class="dot"></span> Kostenlos • ohne Anmeldung</div><h1>🧠 Auto-Wissen-Quiz</h1><p>40 Fragen quer durchs Automobil: Geschichte, Technik, Fahrphysik, Motorsport und Mythen. Wähle eine Kategorie oder teste alles gemischt durcheinander.</p></section>
+<section class="quiz-hero"><div class="hero-badge"><span class="dot"></span> Kostenlos • ohne Anmeldung</div><h1>🧠 Auto-Wissen-Quiz</h1><p>Über 60 Fragen quer durch Auto und Motorrad: Geschichte, Technik, Fahrphysik, Motorsport und Mythen. Wähle eine Kategorie oder teste alles gemischt durcheinander.</p></section>
 
 <section aria-label="Knigge-Tipp zum Quiz" class="knigge-quote-card knigge-quote-quiz">
 <div aria-label="Knigge mit Notizblock in der Werkstatt" class="knigge-quote-image" role="img">
@@ -93,6 +93,7 @@
 <button class="quiz-cat-btn" data-cat="physik"><span class="n">🌀</span> Fahrphysik &amp; Fahrdynamik</button>
 <button class="quiz-cat-btn" data-cat="geschichte"><span class="n">🏛️</span> Geschichte &amp; Meilensteine</button>
 <button class="quiz-cat-btn" data-cat="sport"><span class="n">🏁</span> Motorsport &amp; Exoten</button>
+<button class="quiz-cat-btn" data-cat="motorrad"><span class="n">🏍️</span> Motorrad</button>
 <button class="quiz-cat-btn" data-cat="mythen"><span class="n">💡</span> Fahrhilfen &amp; Mythen</button>
 </div>
 </div>
@@ -185,7 +186,33 @@
     {cat:'physik',catLabel:'Fahrphysik & Fahrdynamik',q:'Welches Auto wurde im Volksmund als „Ente" bekannt?',opts:['Citroën 2CV','Fiat 500','Renault 4','VW Polo'],a:0,ex:'Der Citroën 2CV wurde wegen seiner eigenwilligen Form und dem watschelnden Fahrverhalten liebevoll „Ente" genannt.'},
     {cat:'technik',catLabel:'Motoren & Technik',q:'Was war die konstruktive Besonderheit des Wankelmotors?',opts:['Er arbeitet ohne Zündkerze','Ein rotierender Kolben (Rotor) statt herkömmlicher Hubkolben','Er besitzt immer zwölf Zylinder','Er benötigt kein Motoröl'],a:1,ex:'Statt auf und ab bewegter Kolben dreht sich beim Wankelmotor ein dreieckiger Rotor exzentrisch in einem ovalen Gehäuse.'},
     {cat:'technik',catLabel:'Motoren & Technik',q:'Was trennt beim Schaltgetriebe Motor und Getriebe kurzzeitig voneinander?',opts:['Das Differenzial','Die Lichtmaschine','Die Kupplung','Der Anlasser'],a:2,ex:'Beim Treten des Kupplungspedals wird der Kraftfluss zwischen Motor und Getriebe unterbrochen – nötig zum Schalten oder Anfahren.'},
-    {cat:'physik',catLabel:'Fahrphysik & Fahrdynamik',q:'Was ist bei einem Reifen die „Profiltiefe"?',opts:['Die Dicke der Felge','Die Tiefe der Rillen im Reifenprofil','Der Reifendruck','Die Breite der Reifenflanke'],a:1,ex:'Die Profiltiefe entscheidet maßgeblich über die Wasserverdrängung – in Deutschland sind gesetzlich mindestens 1,6 mm vorgeschrieben, empfohlen werden bei Winterreifen mindestens 4 mm.'}
+    {cat:'physik',catLabel:'Fahrphysik & Fahrdynamik',q:'Was ist bei einem Reifen die „Profiltiefe"?',opts:['Die Dicke der Felge','Die Tiefe der Rillen im Reifenprofil','Der Reifendruck','Die Breite der Reifenflanke'],a:1,ex:'Die Profiltiefe entscheidet maßgeblich über die Wasserverdrängung – in Deutschland sind gesetzlich mindestens 1,6 mm vorgeschrieben, empfohlen werden bei Winterreifen mindestens 4 mm.'},
+    // ===== Weitere Auto-Fragen =====
+    {cat:'geschichte',catLabel:'Geschichte & Meilensteine',q:'Welcher Hersteller produziert den Porsche 911?',opts:['BMW','Mercedes-Benz','Porsche','Audi'],a:2,ex:'Der 911 wird seit 1964 durchgehend gebaut und ist bis heute das Aushängeschild der Marke Porsche.'},
+    {cat:'mythen',catLabel:'Fahrhilfen & Mythen',q:'Wofür steht die Abkürzung „ABS" im Auto?',opts:['Automatisches Brems-System','Anti-Blockier-System','Aktivierungs-Brems-Sensor','Allrad-Brems-Sicherheit'],a:1,ex:'Das Antiblockiersystem verhindert, dass die Räder beim Bremsen blockieren – dadurch bleibt das Fahrzeug lenkbar.'},
+    {cat:'technik',catLabel:'Motoren & Technik',q:'Welches Bauteil wandelt im Motor die lineare Kolbenbewegung in eine Drehbewegung um?',opts:['Nockenwelle','Kurbelwelle','Pleuelstange','Schwungscheibe'],a:1,ex:'Über die Pleuelstange wird die Auf-und-ab-Bewegung des Kolbens an die Kurbelwelle übertragen, die daraus eine Drehbewegung macht.'},
+    {cat:'technik',catLabel:'Motoren & Technik',q:'Welche Spannung hat eine vollgeladene 12-V-Autobatterie im Ruhezustand etwa?',opts:['ca. 10,5 V','ca. 12,0 V','ca. 12,6 V','ca. 14,4 V'],a:2,ex:'Rund 12,6 V gelten als voll geladen; 14,4 V ist eher die Ladespannung der Lichtmaschine während der Fahrt, nicht der Ruhewert.'},
+    {cat:'technik',catLabel:'Motoren & Technik',q:'Welche Ölviskosität wird für moderne Benzinmotoren häufig empfohlen?',opts:['SAE 20W-50','SAE 5W-30','SAE 75W-90','SAE 85W-140'],a:1,ex:'5W-30 ist bei vielen modernen Benzinern die Werksempfehlung – die genaue Freigabe steht aber immer im Fahrzeughandbuch.'},
+    {cat:'technik',catLabel:'Motoren & Technik',q:'Wofür steht „TFSI" bei Audi?',opts:['Turbo Fuel Spark Injection','Turbo Fuel Stratified Injection','Twin Fuel Spark Ignition','Turbo Four Spark Injection'],a:1,ex:'TFSI kombiniert Turboaufladung mit einer geschichteten (stratifizierten) Kraftstoffeinspritzung.'},
+    {cat:'geschichte',catLabel:'Geschichte & Meilensteine',q:'Welcher Hersteller verkaufte mit dem Prius das erste massentaugliche Serien-Hybridauto?',opts:['Honda','Toyota','Nissan','Hyundai'],a:1,ex:'Toyota brachte den Prius 1997 in Japan auf den Markt – heute gilt er als Pionier der Hybridtechnik.'},
+    {cat:'mythen',catLabel:'Fahrhilfen & Mythen',q:'Was ist die Hauptaufgabe des Katalysators?',opts:['Kraftstoffverbrauch senken','Schadstoffe im Abgas reduzieren','Motorleistung erhöhen','Geräuschentwicklung mindern'],a:1,ex:'Der Katalysator wandelt schädliche Abgasbestandteile wie Kohlenmonoxid und Stickoxide in weniger schädliche Stoffe um.'},
+    {cat:'geschichte',catLabel:'Geschichte & Meilensteine',q:'Welches dieser Modelle ist ein klassischer Sportwagen von Chevrolet?',opts:['Mustang','Challenger','Corvette','Camaro'],a:2,ex:'Die Corvette wird seit 1953 gebaut und gilt als das traditionsreichste US-Sportwagen-Modell von Chevrolet.'},
+    {cat:'geschichte',catLabel:'Geschichte & Meilensteine',q:'Welcher Hersteller wirbt seit Jahrzehnten mit dem Slogan „Freude am Fahren"?',opts:['Audi','BMW','Mercedes-Benz','Volkswagen'],a:1,ex:'BMW nutzt diesen Markenclaim seit 1970 – einer der langlebigsten Werbeslogans der Autobranche.'},
+    {cat:'technik',catLabel:'Motoren & Technik',q:'Was versteht man unter einem „Downsizing-Motor"?',opts:['Motor mit weniger Zylindern bei gleicher Leistung','Kleineren Hubraum, oft mit Turboaufladung, bei ähnlicher Leistung','Motor mit kleinerer Lichtmaschine','Motor mit reduziertem Ölverbrauch'],a:1,ex:'Downsizing verkleinert den Hubraum und gleicht die Leistung meist über Turboaufladung aus – Ziel ist ein geringerer Verbrauch im Teillastbetrieb.'},
+    {cat:'mythen',catLabel:'Fahrhilfen & Mythen',q:'Welche Reifenkennzeichnung steht traditionell für Winterreifen?',opts:['M+S','A+S','W+R','T+S'],a:0,ex:'M+S steht für „Matsch und Schnee". Seit Oktober 2024 reicht diese Kennzeichnung allein aber nicht mehr aus – nötig ist zusätzlich das Alpine-Symbol mit Schneeflocke.'},
+    // ===== Motorrad =====
+    {cat:'motorrad',catLabel:'Motorrad',q:'Welcher Hersteller ist für die „GS"-Modellreihe bekannt?',opts:['Honda','Yamaha','BMW','Kawasaki'],a:2,ex:'Die BMW GS-Reihe (u. a. R 1250 GS) zählt zu den meistverkauften Reiseenduros weltweit.'},
+    {cat:'motorrad',catLabel:'Motorrad',q:'Welches Land gilt als Heimat von Ducati?',opts:['Spanien','Italien','Österreich','Frankreich'],a:1,ex:'Ducati wurde 1926 in Bologna gegründet und steht bis heute für italienische Sportmotorräder.'},
+    {cat:'motorrad',catLabel:'Motorrad',q:'Welche Bauteile verbinden beim Kettenantrieb Motor und Hinterrad?',opts:['Ritzel und Kettenrad','Kurbelwelle und Nockenwelle','Pleuel und Schwungrad','Anlasser und Lichtmaschine'],a:0,ex:'Das Ritzel am Getriebeausgang treibt über die Kette das größere Kettenrad am Hinterrad an.'},
+    {cat:'motorrad',catLabel:'Motorrad',q:'Welcher Hersteller ist für die „Ninja"-Modelle bekannt?',opts:['Suzuki','Kawasaki','Honda','Yamaha'],a:1,ex:'Die Kawasaki-Ninja-Reihe reicht von Einsteiger- bis zu Superbike-Modellen wie der ZX-10R.'},
+    {cat:'motorrad',catLabel:'Motorrad',q:'Wofür steht „TCS" bei vielen Motorrädern?',opts:['Traction Control System','Turbo Charge System','Torque Control Sensor','Throttle Control Switch'],a:0,ex:'Die Traktionskontrolle verhindert durchdrehende Hinterräder beim Beschleunigen, etwa auf nasser oder rutschiger Fahrbahn.'},
+    {cat:'motorrad',catLabel:'Motorrad',q:'Welche Ölart wird typischerweise für 4-Takt-Motorräder mit Nasskupplung verwendet?',opts:['5W-30 Autoöl','Motorradöl mit JASO-MA-Freigabe','75W-90 Getriebeöl','2-Takt-Öl'],a:1,ex:'Normales Auto-Longlife-Öl enthält oft Reibungsminderer, die eine Nasskupplung zum Rutschen bringen können – Motorradöl mit JASO-MA-Freigabe ist speziell dafür ausgelegt.'},
+    {cat:'motorrad',catLabel:'Motorrad',q:'Was ist die Hauptaufgabe eines Sturzbügels?',opts:['Aerodynamik verbessern','Motor und Rahmen bei einem Sturz schützen','Den Gepäckträger ersetzen','Den Auspuff stabilisieren'],a:1,ex:'Sturzbügel fangen bei einem Umfaller den ersten Aufprall ab und schützen so Motorgehäuse und Verkleidung vor größeren Schäden.'},
+    {cat:'motorrad',catLabel:'Motorrad',q:'Welcher Hersteller hat die „Gold Wing" im Programm?',opts:['BMW','Honda','Harley-Davidson','Indian'],a:1,ex:'Die Honda Gold Wing gilt seit den 1970er-Jahren als eine der komfortabelsten Tourenmaschinen überhaupt.'},
+    {cat:'motorrad',catLabel:'Motorrad',q:'Was bezeichnet man im Motorradbereich als „Supermoto"?',opts:['Besonders schnelle reine Sportmotorräder','Motocross-Fahrwerke mit Straßenbereifung und -bremsen','Rein elektrische Motorräder','Tourenmotorräder mit großem Tank'],a:1,ex:'Supermotos kombinieren das leichte, wendige Fahrwerk von Motocross-Maschinen mit Straßenreifen und stärkeren Bremsen für den Asphalteinsatz.'},
+    {cat:'motorrad',catLabel:'Motorrad',q:'Wie heißt die klassische Harley-Davidson-Cruiser-Baureihe mit verstecktem Hinterradfederbein?',opts:['Sportster','Softail','Road King','Fat Boy'],a:1,ex:'Bei der Softail-Baureihe ist die Hinterradfederung unter dem Motor versteckt – das Motorrad wirkt dadurch wie ein Hardtail-Rahmen ohne sichtbare Federung.'},
+    {cat:'motorrad',catLabel:'Motorrad',q:'Was ist ein „Slipper-Clutch" (Anti-Hopping-Kupplung)?',opts:['Eine rutschfeste Kupplung für mehr Grip','Eine Kupplung, die beim harten Bremsen/Zurückschalten das Hinterrad-Stempeln reduziert','Eine automatisch schaltende Kupplung','Eine Kupplung ohne Kabelzug'],a:1,ex:'Beim aggressiven Herunterschalten verhindert die Slipper-Clutch, dass sich das Hinterrad durch die Motorbremswirkung aufstellt oder zu stempeln beginnt.'},
+    {cat:'motorrad',catLabel:'Motorrad',q:'In welchem Bereich liegt die Höchstdrehzahl vieler moderner 600er-Supersportler?',opts:['ca. 8.000 U/min','ca. 10.000 U/min','ca. 13.000–15.000 U/min','ca. 20.000 U/min'],a:2,ex:'Hochdrehende Vierzylinder-Supersportler wie die 600er-Klasse erreichen typischerweise Drehzahlen von 13.000 bis 15.000 U/min.'}
   ];
 
   var ROUND_SIZE = 10;
@@ -207,6 +234,7 @@
   var homeBtn = document.getElementById('quizHomeBtn');
 
   var round = [];
+  var currentOrder = [];
   var idx = 0;
   var score = 0;
   var answered = false;
@@ -241,27 +269,32 @@
     nextBtn.classList.remove('show');
     optionsEl.innerHTML = '';
     var letters = ['A', 'B', 'C', 'D'];
-    q.opts.forEach(function (opt, i) {
+    // Reihenfolge der Antworten bei jeder Anzeige neu mischen, damit die
+    // richtige Lösung nicht immer auf demselben Buchstaben landet.
+    var order = shuffle(q.opts.map(function (_, i) { return i; }));
+    currentOrder = order;
+    order.forEach(function (origIdx, i) {
       var btn = document.createElement('button');
       btn.className = 'quiz-option';
-      btn.innerHTML = '<span class="letter">' + letters[i] + '</span><span>' + opt + '</span>';
-      btn.addEventListener('click', function () { selectAnswer(i, btn); });
+      btn.innerHTML = '<span class="letter">' + letters[i] + '</span><span>' + q.opts[origIdx] + '</span>';
+      btn.addEventListener('click', function () { selectAnswer(origIdx, btn); });
       optionsEl.appendChild(btn);
     });
   }
 
-  function selectAnswer(i, btnEl) {
+  function selectAnswer(origIdx, btnEl) {
     if (answered) return;
     answered = true;
     var q = round[idx];
     var allBtns = optionsEl.querySelectorAll('.quiz-option');
     allBtns.forEach(function (b) { b.disabled = true; });
-    if (i === q.a) {
+    var correctPos = currentOrder.indexOf(q.a);
+    if (origIdx === q.a) {
       score++;
       btnEl.classList.add('correct');
     } else {
       btnEl.classList.add('wrong');
-      allBtns[q.a].classList.add('correct');
+      allBtns[correctPos].classList.add('correct');
     }
     explainEl.textContent = q.ex;
     explainEl.classList.add('show');
