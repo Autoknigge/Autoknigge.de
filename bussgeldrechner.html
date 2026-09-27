@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="87380559-5fcb-497a-8f2e-2d1734030f85" data-blockingmode="auto" data-culture="DE" type="text/javascript"></script>
+<meta charset="UTF-8">
+<meta name="google-adsense-account" content="ca-pub-7178658520690671">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bußgeldrechner 2026 – Bußgeld, Punkte & Fahrverbot berechnen | Autoknigge</title>
+<meta name="description" content="Bußgeldrechner: Verstoß auswählen (Geschwindigkeit, Rotlicht, Handy, Abstand, Parken, Alkohol) und sofort Bußgeld, Punkte und Fahrverbot laut Bußgeldkatalog 2026 sehen. Kostenlos, ohne Anmeldung.">
+<link rel="canonical" href="https://autoknigge.de/bussgeldrechner.html">
+<link rel="stylesheet" href="styles.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0f241d">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Bußgeldrechner", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "description": "Verstoß auswählen und sofort Bußgeld, Punkte und Fahrverbot laut Bußgeldkatalog 2026 berechnen.", "url": "https://autoknigge.de/bussgeldrechner.html", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "publisher": {"@type": "Organization", "name": "Autoknigge", "url": "https://autoknigge.de/", "logo": {"@type": "ImageObject", "url": "https://autoknigge.de/logo.png"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Start", "item": "https://autoknigge.de/"}, {"@type": "ListItem", "position": 2, "name": "Recht & Etikette", "item": "https://autoknigge.de/kategorie-recht.html"}, {"@type": "ListItem", "position": 3, "name": "Bußgeldrechner", "item": "https://autoknigge.de/bussgeldrechner.html"}]}</script>
+<style>
+.br-hero{margin:1rem 0 2rem;padding:2rem;border-radius:24px;background:linear-gradient(145deg,var(--green-800),#17382d);color:#fff;box-shadow:var(--shadow-lg)}
+.br-hero .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.12);padding:.4rem .8rem;border-radius:999px;font-size:.82rem;font-weight:700;margin-bottom:.9rem}
+.br-hero .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:#4ade80}
+.br-hero h1{margin:0 0 .7rem;font-size:clamp(2rem,5vw,3rem);color:#fff}
+.br-hero p{max-width:780px;color:rgba(255,255,255,.86);font-size:1.05rem;line-height:1.65;margin:0}
+
+.br-panel{background:#fff;border:1px solid rgba(10,28,22,.08);border-radius:20px;padding:1.8rem;box-shadow:var(--shadow-sm);margin-bottom:1.5rem}
+.br-step-label{font-size:.76rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#aa7c11;margin-bottom:.7rem}
+.br-cats{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem}
+@media(max-width:800px){.br-cats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.br-cats{grid-template-columns:1fr}}
+.br-cat-btn{display:flex;align-items:center;gap:.6rem;padding:.95rem 1.05rem;border-radius:14px;border:1.5px solid rgba(10,28,22,.1);background:#fafbfa;cursor:pointer;font:inherit;font-weight:700;font-size:.92rem;text-align:left;color:var(--text-dark);transition:border-color .15s ease,background .15s ease}
+.br-cat-btn:hover{border-color:#d4af37;background:#fffaf0}
+.br-cat-btn.active{border-color:#176246;background:#eef6f2}
+.br-cat-btn .n{font-size:1.3rem}
+
+.br-sub{margin-top:1.4rem}
+.br-sub select, .br-sub input[type=number]{width:100%;padding:.75rem .9rem;border-radius:10px;border:1.5px solid rgba(10,28,22,.15);font:inherit;font-size:.96rem;background:#fff}
+.br-sub label{display:block;font-weight:700;font-size:.88rem;margin-bottom:.4rem;color:var(--text-dark)}
+.br-radio-row{display:flex;gap:.6rem;flex-wrap:wrap}
+.br-radio-row label{display:flex;align-items:center;gap:.4rem;font-weight:600;font-size:.9rem;background:#fafbfa;border:1.5px solid rgba(10,28,22,.12);border-radius:10px;padding:.6rem .9rem;cursor:pointer;flex:1 1 auto;justify-content:center}
+.br-radio-row input{accent-color:#176246}
+.br-radio-row label:has(input:checked){border-color:#176246;background:#eef6f2}
+
+.br-result{margin-top:1.6rem;padding:1.4rem 1.5rem;border-radius:16px;background:linear-gradient(135deg,#0f241d,#17382d);color:#fff;display:none}
+.br-result.show{display:block}
+.br-result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+@media(max-width:600px){.br-result-grid{grid-template-columns:1fr}}
+.br-result-item{background:rgba(255,255,255,.08);border-radius:12px;padding:1rem;text-align:center}
+.br-result-item .val{font-size:1.7rem;font-weight:900;color:#f3d37b}
+.br-result-item .lbl{font-size:.78rem;color:rgba(255,255,255,.75);margin-top:.2rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.br-result-note{margin-top:1rem;font-size:.85rem;line-height:1.6;color:rgba(255,255,255,.82)}
+.br-flensburg{margin-top:.8rem;padding:.7rem .9rem;border-radius:10px;background:rgba(243,211,123,.15);border-left:3px solid #f3d37b;font-size:.85rem;line-height:1.55}
+
+.br-disclaimer{background:#f7f8f7;border:1px solid rgba(10,28,22,.08);border-left:4px solid #d4af37;border-radius:14px;padding:1.1rem 1.3rem;font-size:.86rem;line-height:1.6;color:var(--text-muted);margin-top:1.5rem}
+[hidden]{display:none !important}
+</style>
+</head>
+<body>
+<header class="site-header header-logo-large" id="top"><div class="header-inner">
+<a href="/" aria-label="Autoknigge Startseite" class="header-logo-link" style="display:flex;align-items:center;text-decoration:none"><img src="logo.png" alt="Autoknigge Logo" class="header-logo-mini" style="max-height:50px;width:auto;object-fit:contain"></a>
+<input type="checkbox" id="nav-toggle" class="nav-toggle-input"><label for="nav-toggle" class="menu-compact"><span class="menu-icon">&#9776;</span> Menü</label>
+<nav class="main-nav"><ul class="header-nav-list"><li><a href="/">Start</a></li><li><a href="auto-wissen-quiz.html">🧠 Auto-Wissen-Quiz</a></li><li><a href="mein-auto-kalender.html">📅 Mein Auto-Kalender</a></li><li><a aria-current="page" href="bussgeldrechner.html">🚨 Bußgeldrechner</a></li><li><a href="kategorie-versicherung.html">Versicherung</a></li><li><a href="kategorie-zulassung.html">Zulassung</a></li><li><a href="kategorie-kauf.html">Kauf und Verkauf</a></li><li><a href="kategorie-pflege.html">Wartung und Pflege</a></li><li><a href="kategorie-recht.html">Recht</a></li><li><a href="kategorie-geld-sparen.html">Clever sparen</a></li><li><a href="ueber-knigge.html">Über Knigge</a></li></ul></nav><a class="header-search-link" href="suche.html" aria-label="Autoknigge durchsuchen">🔍 Suchen</a>
+</div></header>
+<main><div class="wrap">
+<nav aria-label="Breadcrumb" class="breadcrumb"><a href="/">Start</a> / <a href="kategorie-recht.html">Recht &amp; Etikette</a> / <span>Bußgeldrechner</span></nav>
+<section class="br-hero"><div class="hero-badge"><span class="dot"></span> Kostenlos • ohne Anmeldung</div><h1>🚨 Bußgeldrechner</h1><p>Verstoß auswählen, Details angeben – sofort Bußgeld, Punkte und Fahrverbot laut Bußgeldkatalog 2026 sehen.</p></section>
+
+<section aria-label="Knigge-Tipp zum Bußgeldrechner" class="knigge-quote-card knigge-quote-bussgeld">
+<div aria-label="Knigge im passenden Umfeld zum Thema Bußgeld" class="knigge-quote-image" role="img">
+<div class="knigge-quote-shade"></div>
+<div class="knigge-quote-content">
+<div class="knigge-quote-kicker">KNIGGE MEINT</div>
+<blockquote>„Ein Bußgeldbescheid ist kein Grund zur Panik – aber ein guter Grund, genau hinzuschauen, bevor du zahlst.“</blockquote>
+</div>
+</div>
+</section>
+
+<div class="br-panel">
+<div class="br-step-label">Schritt 1 – Verstoß wählen</div>
+<div class="br-cats" id="brCats">
+<button class="br-cat-btn" data-cat="tempo"><span class="n">🚗</span> Geschwindigkeit</button>
+<button class="br-cat-btn" data-cat="rotlicht"><span class="n">🚦</span> Rotlichtverstoß</button>
+<button class="br-cat-btn" data-cat="handy"><span class="n">📱</span> Handy am Steuer</button>
+<button class="br-cat-btn" data-cat="abstand"><span class="n">↔️</span> Abstand</button>
+<button class="br-cat-btn" data-cat="parken"><span class="n">🅿️</span> Parken &amp; Halten</button>
+<button class="br-cat-btn" data-cat="alkohol"><span class="n">🍷</span> Alkohol</button>
+</div>
+
+<div class="br-sub" id="brSub" hidden></div>
+
+<div class="br-result" id="brResult">
+<div class="br-step-label" style="color:#f3d37b">Ergebnis</div>
+<div class="br-result-grid">
+<div class="br-result-item"><div class="val" id="brBussgeld">–</div><div class="lbl">Bußgeld</div></div>
+<div class="br-result-item"><div class="val" id="brPunkte">–</div><div class="lbl">Punkte Flensburg</div></div>
+<div class="br-result-item"><div class="val" id="brFahrverbot">–</div><div class="lbl">Fahrverbot</div></div>
+</div>
+<div class="br-result-note" id="brNote"></div>
+<div class="br-flensburg" id="brFlensburgHint" hidden></div>
+</div>
+</div>
+
+<div class="br-disclaimer">
+<strong>⚠️ Wichtiger Hinweis:</strong> Dieser Rechner zeigt die <strong>Regelsätze</strong> laut Bußgeldkatalog-Verordnung (BKatV) für den Normalfall. Im Einzelfall können abweichende Umstände gelten – etwa Voreintragungen, Vorsatz, besondere Gefährdung, die Probezeit oder ein Augenblicksversagen. Ein Bußgeldbescheid kann davon abweichen; für eine verbindliche Einschätzung deines konkreten Falls empfiehlt sich fachlicher Rat. Ausführliche Tabellen und Hintergründe findest du im <a href="artikel-bussgeldkatalog.html">Bußgeldkatalog-Ratgeber</a>.
+</div>
+
+</div></main>
+
+<footer class="site-footer"><div class="wrap"><div class="footer-grid">
+<div class="footer-brand"><h3>Autoknigge</h3><p>Ihr unabhängiger Ratgeber für stilvolles, sicheres und wirtschaftlich cleveres Verhalten rund um das Automobil.</p></div>
+<div class="footer-col"><h4>Kategorien</h4><ul class="footer-links-list"><li><a href="kategorie-versicherung.html">Kfz-Versicherung</a></li><li><a href="kategorie-zulassung.html">Auto an-, um- &amp; abmelden ohne Stress</a></li><li><a href="kategorie-kauf.html">Kauf und Verkauf</a></li><li><a href="kategorie-pflege.html">Wartung und Pflege</a></li><li><a href="kategorie-recht.html">Recht &amp; Etikette</a></li><li><a href="kategorie-geld-sparen.html">Clever sparen</a></li><li><a href="ueber-knigge.html">Über Knigge</a></li></ul></div>
+<div class="footer-col"><h4>Downloads</h4><ul class="footer-links-list"><li><a download="" href="kfz-kaufvertrag.pdf">Kfz-Kaufvertrag (PDF)</a></li><li><a download="" href="vollmacht-kfz-zulassung.pdf">Zulassungsvollmacht (PDF)</a></li><li><a download="" href="Notfallcheckliste-Unfall.pdf">Notfallcheckliste Unfall (PDF)</a></li></ul></div>
+</div><div class="footer-bottom"><div>© 2026 Autoknigge — Alle Rechte vorbehalten. Unabhängige Ratgeber-Plattform.</div><div class="foot-links"><a href="impressum.html">Impressum</a> • <a href="datenschutz.html">Datenschutz</a> • <a href="#" id="cookie-settings-link" onclick="if(window.Cookiebot){Cookiebot.show();} return false;">Cookie-Einstellungen</a></div></div></div></footer>
+
+<script src="script.js"></script>
+<script src="section-cards.js"></script>
+<script>
+(function(){
+  var catBtns = document.querySelectorAll('.br-cat-btn');
+  var subEl = document.getElementById('brSub');
+  var resultEl = document.getElementById('brResult');
+  var bussgeldEl = document.getElementById('brBussgeld');
+  var punkteEl = document.getElementById('brPunkte');
+  var fahrverbotEl = document.getElementById('brFahrverbot');
+  var noteEl = document.getElementById('brNote');
+  var flensburgHint = document.getElementById('brFlensburgHint');
+
+  function flensburgText(punkte) {
+    if (punkte >= 2) return 'Bei 8 Punkten insgesamt in Flensburg droht der Entzug der Fahrerlaubnis. Bereits ab 4–5 Punkten gibt es eine schriftliche Ermahnung.';
+    if (punkte === 1) return 'Einzelne Punkte werden zunächst nur vorgemerkt (1–3 Punkte gesamt) – erst ab 4 Punkten folgt eine Ermahnung.';
+    return '';
+  }
+
+  function showResult(bussgeld, punkte, fahrverbot, note) {
+    bussgeldEl.textContent = bussgeld;
+    punkteEl.textContent = punkte;
+    fahrverbotEl.textContent = fahrverbot;
+    noteEl.textContent = note || '';
+    resultEl.classList.add('show');
+    var fx = flensburgText(typeof punkte === 'number' ? punkte : parseInt(punkte, 10) || 0);
+    if (fx) { flensburgHint.textContent = '💡 ' + fx; flensburgHint.hidden = false; } else { flensburgHint.hidden = true; }
+  }
+
+  function clearResult() {
+    resultEl.classList.remove('show');
+  }
+
+  // ===== Datensätze (Regelsätze, Stand 2026) =====
+  var TEMPO_INNER = [
+    [10, '30 €', 0, '–'], [15, '50 €', 0, '–'], [20, '70 €', 0, '–'],
+    [25, '115 €', 1, '–'], [30, '180 €', 1, '–'], [40, '260 €', 2, '1 Monat'],
+    [50, '400 €', 2, '1 Monat'], [60, '560 €', 2, '2 Monate'], [70, '700 €', 2, '3 Monate'],
+    [999, '800 €', 2, '3 Monate']
+  ];
+  var TEMPO_OUTER = [
+    [10, '20 €', 0, '–'], [15, '40 €', 0, '–'], [20, '60 €', 0, '–'],
+    [25, '100 €', 1, '–'], [30, '150 €', 1, '–'], [40, '200 €', 1, '–'],
+    [50, '320 €', 2, '1 Monat'], [60, '480 €', 2, '1 Monat'], [70, '600 €', 2, '2 Monate'],
+    [999, '700 €', 2, '3 Monate']
+  ];
+
+  function buildSub(cat) {
+    subEl.innerHTML = '';
+    subEl.hidden = false;
+    clearResult();
+
+    if (cat === 'tempo') {
+      subEl.innerHTML =
+        '<label for="brOrt">Innerorts oder außerorts?</label>' +
+        '<div class="br-radio-row"><label><input checked name="brOrt" type="radio" value="innen"> Innerorts</label><label><input name="brOrt" type="radio" value="aussen"> Außerorts</label></div>' +
+        '<label for="brKmh" style="margin-top:1rem">Wie viel km/h zu schnell? (bereits um Messtoleranz bereinigt)</label>' +
+        '<input id="brKmh" type="number" min="1" max="150" placeholder="z. B. 24">';
+      var recalc = function () {
+        var kmh = parseInt(document.getElementById('brKmh').value, 10);
+        if (!kmh || kmh < 1) { clearResult(); return; }
+        var ort = document.querySelector('input[name="brOrt"]:checked').value;
+        var table = ort === 'innen' ? TEMPO_INNER : TEMPO_OUTER;
+        for (var i = 0; i < table.length; i++) {
+          if (kmh <= table[i][0]) {
+            showResult(table[i][1], table[i][2], table[i][3], 'Regelsatz für ' + kmh + ' km/h zu schnell, ' + (ort === 'innen' ? 'innerorts' : 'außerorts') + '. Ab 21 km/h gibt es mindestens 1 Punkt.');
+            return;
+          }
+        }
+      };
+      subEl.querySelector('#brKmh').addEventListener('input', recalc);
+      subEl.querySelectorAll('input[name="brOrt"]').forEach(function (r) { r.addEventListener('change', recalc); });
+    }
+
+    else if (cat === 'rotlicht') {
+      subEl.innerHTML =
+        '<label for="brRotSel">Wie lange war die Ampel schon rot?</label>' +
+        '<select id="brRotSel">' +
+        '<option value="kurz">Unter 1 Sekunde (einfacher Verstoß)</option>' +
+        '<option value="lang">Über 1 Sekunde (qualifizierter Verstoß)</option>' +
+        '<option value="gefaehrdung">Über 1 Sekunde, mit Gefährdung anderer</option>' +
+        '<option value="schaden">Über 1 Sekunde, mit Sachbeschädigung</option>' +
+        '</select>';
+      var map = {
+        kurz: ['90 €', 1, '–', 'Einfacher Rotlichtverstoß.'],
+        lang: ['200 €', 2, '1 Monat', 'Qualifizierter Rotlichtverstoß – Ampel war länger als 1 Sekunde rot.'],
+        gefaehrdung: ['320 €', 2, '1 Monat', 'Qualifizierter Rotlichtverstoß mit Gefährdung anderer Verkehrsteilnehmer.'],
+        schaden: ['360 €', 2, '1 Monat', 'Qualifizierter Rotlichtverstoß mit Sachbeschädigung.']
+      };
+      var sel = subEl.querySelector('#brRotSel');
+      var recalc2 = function () { var v = map[sel.value]; showResult(v[0], v[1], v[2], v[3]); };
+      sel.addEventListener('change', recalc2);
+      recalc2();
+    }
+
+    else if (cat === 'handy') {
+      subEl.innerHTML =
+        '<label for="brHandySel">Welche Situation trifft zu?</label>' +
+        '<select id="brHandySel">' +
+        '<option value="einfach">Handy in der Hand gehalten/benutzt</option>' +
+        '<option value="gefaehrdung">…dabei andere gefährdet</option>' +
+        '<option value="schaden">…dabei Sachschaden verursacht</option>' +
+        '<option value="rad">Als Radfahrer mit Handy am Lenker</option>' +
+        '</select>';
+      var map2 = {
+        einfach: ['100 €', 1, '–', 'Grundfall: Handy während der Fahrt in die Hand genommen.'],
+        gefaehrdung: ['150 €', 2, '1 Monat', 'Zusätzliche Gefährdung erhöht Bußgeld und Punkte.'],
+        schaden: ['200 €', 2, '1 Monat', 'Mit Sachbeschädigung – höchste Stufe beim Handyverstoß.'],
+        rad: ['55 €', 0, '–', 'Für Radfahrer gilt ein eigener, niedrigerer Satz ohne Punkte.']
+      };
+      var sel2 = subEl.querySelector('#brHandySel');
+      var recalc3 = function () { var v = map2[sel2.value]; showResult(v[0], v[1], v[2], v[3]); };
+      sel2.addEventListener('change', recalc3);
+      recalc3();
+    }
+
+    else if (cat === 'abstand') {
+      subEl.innerHTML =
+        '<label for="brAbstandSel">Wie eng war der Abstand (in Zehnteln des halben Tachowerts)?</label>' +
+        '<select id="brAbstandSel">' +
+        '<option value="a5">Weniger als 5/10</option>' +
+        '<option value="a4">Weniger als 4/10</option>' +
+        '<option value="a3">Weniger als 3/10</option>' +
+        '<option value="a2">Weniger als 2/10</option>' +
+        '<option value="a1">Weniger als 1/10</option>' +
+        '</select>' +
+        '<p class="hint" style="margin-top:.6rem">Faustformel für den nötigen Abstand: halber Tachowert in Metern (bei 100 km/h also 50 m).</p>';
+      var map3 = {
+        a5: ['75 €', 1, '–'], a4: ['100 €', 1, '–'], a3: ['160 €', 2, '1 Monat'],
+        a2: ['240 €', 2, '2 Monate'], a1: ['320–400 €', 2, '3 Monate']
+      };
+      var sel3 = subEl.querySelector('#brAbstandSel');
+      var recalc4 = function () { var v = map3[sel3.value]; showResult(v[0], v[1], v[2], 'Bewertung gilt vor allem bei Geschwindigkeiten über 80 km/h.'); };
+      sel3.addEventListener('change', recalc4);
+      recalc4();
+    }
+
+    else if (cat === 'parken') {
+      subEl.innerHTML =
+        '<label for="brParkSel">Welche Situation trifft am ehesten zu?</label>' +
+        '<select id="brParkSel">' +
+        '<option value="einfach">Ohne Parkschein / kurz im Halteverbot</option>' +
+        '<option value="halteverbot">Im eingeschränkten Halteverbot (länger als 1 Std.)</option>' +
+        '<option value="radweg">Auf Geh- oder Radweg geparkt</option>' +
+        '<option value="behinderung">…mit Behinderung anderer Verkehrsteilnehmer</option>' +
+        '<option value="rettung">Vor Feuerwehrzufahrt / mit Behinderung von Rettungskräften</option>' +
+        '<option value="autobahn">Auf Autobahn oder Kraftfahrstraße</option>' +
+        '<option value="schwerbehindert">Auf Schwerbehinderten-Parkplatz ohne Ausweis</option>' +
+        '</select>';
+      var map4 = {
+        einfach: ['15–25 €', 0, '–', 'Einfacher Parkverstoß ohne Behinderung.'],
+        halteverbot: ['25–40 €', 0, '–', 'Höher gestaffelt je nach Dauer der Überschreitung.'],
+        radweg: ['55–110 €', 0, '–', 'Parken auf Geh- oder Radwegen wurde deutlich teurer als früher.'],
+        behinderung: ['70–100 €', 1, '–', 'Kommt eine tatsächliche Behinderung anderer hinzu, gibt es meist einen Punkt zusätzlich.'],
+        rettung: ['100 €', 1, '–', 'Das Blockieren von Rettungswegen wird besonders streng geahndet.'],
+        autobahn: ['70 €', 1, '–', 'Halten/Parken auf der Autobahn ist grundsätzlich verboten und gilt als besonders gefährlich.'],
+        schwerbehindert: ['55 €', 0, '–', 'Gilt unabhängig davon, ob ein Behindertenausweis mitgeführt wird oder ganz fehlt.']
+      };
+      var sel4 = subEl.querySelector('#brParkSel');
+      var recalc5 = function () { var v = map4[sel4.value]; showResult(v[0], v[1], v[2], v[3]); };
+      sel4.addEventListener('change', recalc5);
+      recalc5();
+    }
+
+    else if (cat === 'alkohol') {
+      subEl.innerHTML =
+        '<label for="brAlkSel">Welche Situation trifft zu?</label>' +
+        '<select id="brAlkSel">' +
+        '<option value="probe">0,0 ‰ Grenze verletzt (Probezeit oder unter 21 Jahre)</option>' +
+        '<option value="stufe1">0,5–1,09 ‰, 1. Verstoß</option>' +
+        '<option value="stufe2">0,5–1,09 ‰, 2. Verstoß</option>' +
+        '<option value="stufe3">0,5–1,09 ‰, 3. Verstoß</option>' +
+        '<option value="straftat">Ab 1,1 ‰ (oder Ausfallerscheinungen)</option>' +
+        '</select>';
+      var map5 = {
+        probe: ['250 €', 1, '–', 'Für Fahranfänger in der Probezeit und unter 21-Jährige gilt absolutes Alkoholverbot – dazu kommt meist ein Aufbauseminar.'],
+        stufe1: ['500 €', 2, '1 Monat', 'Erster Verstoß in der 0,5-Promille-Stufe.'],
+        stufe2: ['1.000 €', 2, '3 Monate', 'Wiederholungsfall verschärft Bußgeld und Fahrverbot deutlich.'],
+        stufe3: ['1.500 €', 2, '3 Monate', 'Dritter Verstoß in dieser Promillestufe.'],
+        straftat: ['Geld-/Freiheitsstrafe', 3, 'Entzug der Fahrerlaubnis', 'Ab 1,1 ‰ handelt es sich strafrechtlich um eine Trunkenheitsfahrt (§ 316 StGB) – kein Bußgeld mehr, sondern eine Straftat mit Führerscheinentzug und in der Regel MPU.']
+      };
+      var sel5 = subEl.querySelector('#brAlkSel');
+      var recalc6 = function () { var v = map5[sel5.value]; showResult(v[0], v[1], v[2], v[3]); };
+      sel5.addEventListener('change', recalc6);
+      recalc6();
+    }
+  }
+
+  catBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      catBtns.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      buildSub(btn.getAttribute('data-cat'));
+    });
+  });
+})();
+</script>
+</body>
+</html>
