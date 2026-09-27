@@ -49,7 +49,11 @@ const SEARCH_ALIASES={
   nummernschild:'kennzeichen',nummernschilder:'kennzeichen',nummerschild:'kennzeichen',wunschkennzeichen:'kennzeichen',
   smartphone:'handy',mobiltelefon:'handy',telefon:'handy','handy am steuer':'handy',
   panne:'pannenstatistik',pannen:'pannenstatistik',pannenhilfe:'pannenstatistik',zuverlässigkeit:'pannenstatistik',zuverlaessigkeit:'pannenstatistik',
-  telematiktarif:'telematik','telematik tarif':'telematik',fahrdaten:'telematik',fahrverhalten:'telematik'
+  telematiktarif:'telematik','telematik tarif':'telematik',fahrdaten:'telematik',fahrverhalten:'telematik',
+  quis:'quiz',quitz:'quiz',quizz:'quiz',kwiz:'quiz',wissenstest:'quiz',autotest:'quiz',
+  fahrzeughistorie:'historie',fahrzeughistory:'historie',unfallcheck:'historie',carvertical:'historie',autodna:'historie',
+  lfp:'lfp',nmc:'lfp',akkuchemie:'lfp',batteriechemie:'lfp',
+  fahrerschutz:'versicherung',werkstattbindung:'versicherung',rabattschutz:'versicherung',schutzbrief:'versicherung'
 };
 function norm(v){return String(v||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ß/g,'ss').replace(/[^a-z0-9]+/g,' ').trim();}
 function tokens(v){return norm(v).split(/\s+/).filter(Boolean);}
