@@ -112,7 +112,7 @@
 
 <div id="quizResult" class="quiz-panel quiz-result" hidden>
 <div class="quiz-question-cat">Ergebnis</div>
-<div class="big-score"><span id="quizFinalScore">0</span><span> / 10</span></div>
+<div class="big-score"><span id="quizFinalScore">0</span><span id="quizScoreDenom"> / 10</span></div>
 <p class="quiz-result-msg" id="quizResultMsg"></p>
 <div class="quiz-result-actions">
 <button class="quiz-btn-primary" id="quizRestartBtn">Neue Runde starten</button>
@@ -281,7 +281,7 @@
   function showResult() {
     panelEl.hidden = true; resultEl.hidden = false;
     finalScoreEl.textContent = score;
-    document.querySelector('.quiz-result .big-score span').textContent = ' / ' + round.length;
+    document.getElementById('quizScoreDenom').textContent = ' / ' + round.length;
     var pct = score / round.length;
     var msg;
     if (pct === 1) msg = '🏆 Perfekt! Du kennst dich richtig gut aus.';
