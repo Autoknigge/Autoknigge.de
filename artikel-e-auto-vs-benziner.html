@@ -14,10 +14,10 @@
 <meta content="#0f241d" name="theme-color"/>
 <style>
 .evb-tile-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1.2rem 0 1.5rem}
-.evb-tile{border-radius:16px;padding:1.2rem 1.25rem;border:1px solid rgba(10,28,22,.08)}
-.evb-tile .tile-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;font-size:1.25rem;margin-bottom:.7rem}
-.evb-tile h3{margin:0 0 .35rem;font-size:1rem}
-.evb-tile p{margin:0;font-size:.9rem;line-height:1.55;color:var(--text-body,#425852)}
+.evb-tile{border-radius:16px;padding:1.2rem 1.25rem;border:1px solid rgba(10,28,22,.08);display:flex;flex-wrap:wrap;align-items:center;column-gap:.6rem}
+.evb-tile .tile-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;font-size:1.25rem;margin-bottom:0;}
+.evb-tile h3{margin:0;font-size:1rem}
+.evb-tile p{margin:.4rem 0 0;flex-basis:100%;font-size:.9rem;line-height:1.55;color:var(--text-body,#425852)}
 .evb-tile .cost-badge{display:inline-block;margin-top:.5rem;font-weight:700;color:#0f241d;background:rgba(212,168,67,.22);padding:.2rem .6rem;border-radius:999px;font-size:.85rem}
 .evb-tile.t-a{background:#eaf2fb;border-color:#c9defa}.evb-tile.t-a .tile-icon{background:#d7e7fb;color:#2563eb}
 .evb-tile.t-b{background:#fdf3e2;border-color:#f7dfa8}.evb-tile.t-b .tile-icon{background:#faeac6;color:#b45309}

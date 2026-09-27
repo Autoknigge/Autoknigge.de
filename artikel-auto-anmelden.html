@@ -34,17 +34,16 @@
   border-radius:18px;
   padding:1.25rem 1.25rem 1.3rem;
   border:1px solid rgba(10,28,22,.08);
-  box-shadow:var(--shadow-xs);
-}
+  box-shadow:var(--shadow-xs); display:flex; flex-wrap:wrap; align-items:center; column-gap:.6rem; }
 .zulassung-tile:nth-child(1){background:#eef6ff;border-color:#cbdff5}
 .zulassung-tile:nth-child(2){background:#edf8f3;border-color:#c8e5d7}
 .zulassung-tile:nth-child(3){background:#fff8ea;border-color:#f0d9a5}
 .zulassung-tile:nth-child(4){background:#f4f1fb;border-color:#ddd2f0}
 .zulassung-tile:nth-child(5){background:#fdf2f2;border-color:#f1cccc}
 .zulassung-tile:nth-child(6){background:#f0f8f8;border-color:#cbe3e3}
-.zulassung-tile .tile-icon { font-size:1.65rem; line-height:1; margin-bottom:.65rem; }
-.zulassung-tile h3 { margin:0 0 .45rem; font-size:1.08rem; color:var(--text-heading); overflow-wrap:anywhere; }
-.zulassung-tile p { margin:0; font-size:.94rem; line-height:1.55; color:var(--text-body); overflow-wrap:anywhere; }
+.zulassung-tile .tile-icon { font-size:1.65rem; line-height:1; margin-bottom:0; }
+.zulassung-tile h3 { margin:0;  font-size:1.08rem; color:var(--text-heading); overflow-wrap:anywhere; }
+.zulassung-tile p { margin:.4rem 0 0; flex-basis:100%;  font-size:.94rem; line-height:1.55; color:var(--text-body); overflow-wrap:anywhere; }
 .zulassung-tile strong { color:var(--text-heading); }
 .zulassung-steps { counter-reset: zulstep; }
 .zulassung-step {

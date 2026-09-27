@@ -14,10 +14,10 @@
 <meta content="#0f241d" name="theme-color"/>
 <style>
 .innen-tile-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:1.3rem 0 2rem}
-.innen-tile{border-radius:16px;padding:1.2rem 1.25rem;border:1px solid rgba(10,28,22,.08)}
-.innen-tile .tile-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;font-size:1.25rem;margin-bottom:.7rem}
-.innen-tile h3{margin:0 0 .35rem;font-size:1rem}
-.innen-tile p{margin:0;font-size:.88rem;line-height:1.55;color:var(--text-body,#425852)}
+.innen-tile{border-radius:16px;padding:1.2rem 1.25rem;border:1px solid rgba(10,28,22,.08);display:flex;flex-wrap:wrap;align-items:center;column-gap:.6rem}
+.innen-tile .tile-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;font-size:1.25rem;margin-bottom:0;}
+.innen-tile h3{margin:0;font-size:1rem}
+.innen-tile p{margin:.4rem 0 0;flex-basis:100%;font-size:.88rem;line-height:1.55;color:var(--text-body,#425852)}
 .innen-tile.t-hygiene{background:#fdecec;border-color:#f5c6c6}.innen-tile.t-hygiene .tile-icon{background:#fad9d9;color:#dc2626}
 .innen-tile.t-wert{background:#fdf3e2;border-color:#f7dfa8}.innen-tile.t-wert .tile-icon{background:#faeac6;color:#b45309}
 .innen-tile.t-geruch{background:#eaf2fb;border-color:#c9defa}.innen-tile.t-geruch .tile-icon{background:#d7e7fb;color:#2563eb}

@@ -14,10 +14,10 @@
 <meta content="#0f241d" name="theme-color"/>
 <style>
 .licht-tile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0 2rem}
-.licht-tile{border-radius:16px;padding:1.2rem 1.25rem;border:1px solid rgba(10,28,22,.08)}
-.licht-tile .tile-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;font-size:1.25rem;margin-bottom:.7rem}
-.licht-tile h3{margin:0 0 .35rem;font-size:1rem}
-.licht-tile p{margin:0;font-size:.88rem;line-height:1.55;color:var(--text-body,#425852)}
+.licht-tile{border-radius:16px;padding:1.2rem 1.25rem;border:1px solid rgba(10,28,22,.08);display:flex;flex-wrap:wrap;align-items:center;column-gap:.6rem}
+.licht-tile .tile-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;font-size:1.25rem;margin-bottom:0;}
+.licht-tile h3{margin:0;font-size:1rem}
+.licht-tile p{margin:.4rem 0 0;flex-basis:100%;font-size:.88rem;line-height:1.55;color:var(--text-body,#425852)}
 .licht-tile.t-halogen{background:#fdf3e2;border-color:#f7dfa8}.licht-tile.t-halogen .tile-icon{background:#faeac6;color:#b45309}
 .licht-tile.t-xenon{background:#eef2fb;border-color:#d3daf5}.licht-tile.t-xenon .tile-icon{background:#dee6fa;color:#3730a3}
 .licht-tile.t-led{background:#e8f7fa;border-color:#bfe8ef}.licht-tile.t-led .tile-icon{background:#d3f0f5;color:#0891b2}
