@@ -489,8 +489,10 @@ main .wrap > .lead {
 }
 
 .card {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: .65rem;
+  row-gap: .2rem;
   background: #fff;
   border-radius: var(--radius-lg);
   padding: 1.5rem 1.5rem 1.6rem;
@@ -538,6 +540,11 @@ main .wrap > .lead {
 .card-meta { display: flex; align-items: center; justify-content: space-between; gap: .6rem; margin-bottom: .6rem; }
 .card-meta .step { display: inline-block; background: #eef4f0; color: var(--green-700); font-weight: 800; font-size: .78rem; padding: .3rem .6rem; border-radius: 7px; }
 .card-meta .card-readtime { font-size: .78rem; color: var(--text-muted); font-weight: 600; white-space: nowrap; }
+/* Sonderfall: Karten ohne Icon-Symbol, dafür mit Meta-Badge (z. B. Kalender-Promo) */
+.card:has(.card-meta) { grid-template-columns: 1fr; }
+.card-meta { grid-column: 1 / -1; grid-row: 1; margin-bottom: .6rem; }
+.card:has(.card-meta) h3 { grid-column: 1 / -1; grid-row: 2; }
+.card:has(.card-meta) p { grid-row: 3; }
 
 /* ===== EINHEITLICHE DUNKELGRÜNE SEITEN-HEADER (UNTERSEITEN & KATEGORIEN) ===== */
 .cat-page-header, .page-banner {
@@ -656,16 +663,20 @@ main .wrap > .lead {
 
 .card h3 {
   font-size: 1.18rem;
-  margin: 0 0 0.5rem;
+  margin: 0;
   font-weight: 800;
   transition: color var(--transition-fast);
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
 }
 .card p {
   font-size: 0.94rem;
   color: var(--text-muted);
-  margin: 0;
-  flex: 1;
+  margin: .5rem 0 0;
   line-height: 1.55;
+  grid-column: 1 / -1;
+  grid-row: 2;
 }
 
 @media (max-width: 600px) {
@@ -799,11 +810,14 @@ main .wrap > .lead {
   background: #fef3c7;
   border: 1px solid #fde68a;
   font-size: 1.6rem;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0;
   line-height: 1;
   flex-shrink: 0;
   box-shadow: 0 2px 6px rgba(0,0,0,0.06);
   transition: transform var(--transition-fast), background-color var(--transition-fast);
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
 }
 
 .card:hover .card-symbol {
