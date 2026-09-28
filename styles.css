@@ -2644,7 +2644,7 @@ a.gl-link:hover {
   text-decoration-style: solid;
 }
 
-/* ===== Werkzeuge-Untermenü ===== */
+/* ===== Nützliche Tools – einklappbares Untermenü ===== */
 .main-nav ul li.nav-dd { position: relative; }
 .main-nav ul li.nav-dd > a::after { content: " \25BE"; font-size: 0.75em; opacity: 0.8; }
 .main-nav ul li.nav-dd.is-current > a {
@@ -2652,6 +2652,7 @@ a.gl-link:hover {
   background: rgba(212,168,67,0.18);
   box-shadow: inset 0 0 0 1px rgba(212,168,67,0.35);
 }
+.dd-caret { display: none; }
 .main-nav ul li.nav-dd > ul.nav-dd-list {
   display: none;
   position: absolute;
@@ -2669,21 +2670,34 @@ a.gl-link:hover {
   box-shadow: 0 14px 34px rgba(0,0,0,0.35);
   z-index: 1200;
 }
-.main-nav ul li.nav-dd:hover > ul.nav-dd-list,
-.main-nav ul li.nav-dd:focus-within > ul.nav-dd-list { display: flex; }
 .main-nav ul li.nav-dd > ul.nav-dd-list li a { display: block; white-space: nowrap; border-radius: 8px; }
+@media (min-width: 981px) {
+  .main-nav ul li.nav-dd:hover > ul.nav-dd-list,
+  .main-nav ul li.nav-dd:focus-within > ul.nav-dd-list { display: flex; }
+}
 @media (max-width: 980px) {
   .main-nav ul li.nav-dd > a::after { content: ""; }
+  .main-nav ul li.nav-dd > a { display: block; padding-right: 3.6rem; }
+  .dd-caret {
+    display: inline-flex; align-items: center; justify-content: center;
+    position: absolute; right: 0.3rem; top: 0.2rem;
+    width: 2.6rem; height: 2.6rem;
+    border: 1px solid rgba(255,255,255,0.18); border-radius: 10px;
+    background: rgba(255,255,255,0.08); color: #fff; font-size: 1rem; cursor: pointer;
+  }
+  .dd-caret::before { content: "\25BE"; transition: transform 0.2s ease; }
+  .main-nav ul li.nav-dd.is-open .dd-caret::before { transform: rotate(180deg); }
   .main-nav ul li.nav-dd > ul.nav-dd-list {
-    display: flex;
+    display: none;
     position: static;
     min-width: 0;
     background: transparent;
     border: none;
     box-shadow: none;
-    padding: 0 0 0.3rem 1rem;
+    padding: 0.1rem 0 0.3rem 1rem;
     margin: 0;
   }
+  .main-nav ul li.nav-dd.is-open > ul.nav-dd-list { display: flex; }
   .main-nav ul li.nav-dd > ul.nav-dd-list li a { font-size: 0.95rem; padding: 0.55rem 1rem; white-space: normal; }
 }
 

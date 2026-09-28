@@ -161,3 +161,16 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+
+// Einklappbares Untermenü "Nützliche Tools" (Handy-Menü)
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.nav-dd').forEach(function (li) {
+    var btn = li.querySelector('.dd-caret');
+    if (!btn) return;
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      var open = li.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+});
