@@ -119,6 +119,34 @@ h1:has(+ .knigge-quote-card)::after {
   h1:has(+ .knigge-quote-card)::after {
     animation: none;
     background-position: 0 0;
+    background-size: 100% 100%;
+  }
+}
+
+/* Werkzeug-Seiten (Kalender, Quiz, Bußgeld-, Leasing-Rechner): goldene laufende Linie
+   zwischen dunklem Hero-Kasten und Knigge-Box, wie bei den Artikelseiten. */
+.calendar-hero:has(+ .knigge-quote-card), .quiz-hero:has(+ .knigge-quote-card),
+.br-hero:has(+ .knigge-quote-card), .lk-hero:has(+ .knigge-quote-card) {
+  position: relative;
+  margin-bottom: 1.2rem;
+}
+.calendar-hero:has(+ .knigge-quote-card)::after, .quiz-hero:has(+ .knigge-quote-card)::after,
+.br-hero:has(+ .knigge-quote-card)::after, .lk-hero:has(+ .knigge-quote-card)::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -.7rem;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold-600, #d4af37) 50%, transparent 100%);
+  background-size: 250% 100%;
+  animation: akGoldFloat 3.5s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .calendar-hero:has(+ .knigge-quote-card)::after, .quiz-hero:has(+ .knigge-quote-card)::after,
+  .br-hero:has(+ .knigge-quote-card)::after, .lk-hero:has(+ .knigge-quote-card)::after {
+    animation: none;
+    background-position: 0 0;
+    background-size: 100% 100%;
   }
 }
 .ak-tile-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}

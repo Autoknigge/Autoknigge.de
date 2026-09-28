@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="87380559-5fcb-497a-8f2e-2d1734030f85" data-blockingmode="auto" data-culture="DE" type="text/javascript"></script>
+<meta charset="UTF-8">
+<meta name="google-adsense-account" content="ca-pub-7178658520690671">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leasing oder Kaufen? Kostenvergleich-Rechner | Autoknigge</title>
+<meta name="description" content="Leasing oder Kauf – was ist günstiger? Leasingrate, Laufzeit, Kaufpreis, Zinsen und Restwert eingeben und die Gesamtkosten beider Wege über denselben Zeitraum vergleichen. Kostenlos, ohne Anmeldung.">
+<link rel="canonical" href="https://autoknigge.de/leasing-kauf-rechner.html">
+<link rel="stylesheet" href="styles.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0f241d">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Leasing-oder-Kauf-Rechner", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "description": "Vergleicht die Gesamtkosten von Kfz-Leasing und Kauf (bar oder finanziert) über denselben Zeitraum.", "url": "https://autoknigge.de/leasing-kauf-rechner.html", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "publisher": {"@type": "Organization", "name": "Autoknigge", "url": "https://autoknigge.de/", "logo": {"@type": "ImageObject", "url": "https://autoknigge.de/logo.png"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Start", "item": "https://autoknigge.de/"}, {"@type": "ListItem", "position": 2, "name": "Kauf und Verkauf", "item": "https://autoknigge.de/kategorie-kauf.html"}, {"@type": "ListItem", "position": 3, "name": "Leasing oder Kaufen?", "item": "https://autoknigge.de/leasing-kauf-rechner.html"}]}</script>
+<style>
+.lk-hero{margin:1rem 0 2rem;padding:2rem;border-radius:24px;background:linear-gradient(145deg,var(--green-800),#17382d);color:#fff;box-shadow:var(--shadow-lg)}
+.lk-hero .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.12);padding:.4rem .8rem;border-radius:999px;font-size:.82rem;font-weight:700;margin-bottom:.9rem}
+.lk-hero .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:#4ade80}
+.lk-hero h1{margin:0 0 .7rem;font-size:clamp(2rem,5vw,3rem);color:#fff}
+.lk-hero p{max-width:780px;color:rgba(255,255,255,.86);font-size:1.05rem;line-height:1.65;margin:0}
+
+.lk-panel{background:#fff;border:1px solid rgba(10,28,22,.08);border-radius:20px;padding:1.8rem;box-shadow:var(--shadow-sm);margin-bottom:1.5rem}
+.lk-note{background:#fffaf0;border:1px solid #f0dfae;border-radius:12px;padding:.75rem 1rem;font-size:.86rem;line-height:1.5;margin-bottom:1.2rem}
+.lk-top{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.2rem}
+.lk-cols{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+@media(max-width:800px){.lk-top,.lk-cols{grid-template-columns:1fr}}
+.lk-col{border-radius:16px;padding:1.2rem 1.25rem;border:1px solid rgba(10,28,22,.08)}
+.lk-col-lease{background:#f4f8f6}
+.lk-col-buy{background:#fbf7ee}
+.lk-col h2{margin:0 0 1rem;font-size:1.15rem}
+.lk-field{margin-bottom:.95rem}
+.lk-field label,.lk-label{display:block;font-weight:700;font-size:.86rem;margin-bottom:.35rem;color:var(--text-dark)}
+.lk-field input[type=number]{width:100%;box-sizing:border-box;padding:.7rem .85rem;border-radius:10px;border:1.5px solid rgba(10,28,22,.15);font:inherit;font-size:.96rem;background:#fff}
+.lk-field input[type=number]:focus{outline:none;border-color:#176246;box-shadow:0 0 0 3px rgba(23,98,70,.12)}
+.lk-hint{display:block;font-size:.76rem;color:var(--text-muted);margin-top:.3rem;line-height:1.45}
+.lk-radio-row{display:flex;gap:.6rem;flex-wrap:wrap}
+.lk-radio-row label{display:flex;align-items:center;gap:.4rem;font-weight:600;font-size:.88rem;background:#fff;border:1.5px solid rgba(10,28,22,.12);border-radius:10px;padding:.55rem .85rem;cursor:pointer;flex:1 1 auto;justify-content:center;margin:0}
+.lk-radio-row input{accent-color:#176246}
+.lk-radio-row label:has(input:checked){border-color:#176246;background:#eef6f2}
+
+.lk-result{margin-top:1.6rem;padding:1.5rem;border-radius:16px;background:linear-gradient(135deg,#0f241d,#17382d);color:#fff}
+.lk-headline{font-size:1.15rem;font-weight:800;line-height:1.45;margin:0 0 1.1rem}
+.lk-headline .hl{color:#f3d37b}
+.lk-res-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:600px){.lk-res-grid{grid-template-columns:1fr}}
+.lk-res-card{background:rgba(255,255,255,.08);border:1.5px solid transparent;border-radius:14px;padding:1rem 1.1rem}
+.lk-res-card.win{border-color:#f3d37b;background:rgba(243,211,123,.12)}
+.lk-res-label{font-size:.78rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+.lk-res-total{font-size:1.9rem;font-weight:900;color:#f3d37b;margin:.2rem 0}
+.lk-res-sub{font-size:.85rem;color:rgba(255,255,255,.8)}
+.lk-bars{margin-top:1.2rem;display:grid;gap:.55rem}
+.lk-bar-row{display:grid;grid-template-columns:70px 1fr auto;gap:.6rem;align-items:center;font-size:.82rem}
+.lk-bar{height:12px;border-radius:6px;background:rgba(255,255,255,.12);overflow:hidden}
+.lk-bar i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,#d4af37,#f3e5ab)}
+.lk-bar-row:first-child .lk-bar i{background:linear-gradient(90deg,#4ade80,#a7f3d0)}
+.lk-be{margin-top:1.1rem;padding:.85rem 1rem;border-radius:10px;background:rgba(243,211,123,.14);border-left:3px solid #f3d37b;font-size:.88rem;line-height:1.55}
+.lk-details{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.2rem}
+@media(max-width:600px){.lk-details{grid-template-columns:1fr}}
+.lk-tbl{width:100%;border-collapse:collapse;font-size:.82rem}
+.lk-tbl caption{text-align:left;font-weight:800;font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.75);padding-bottom:.4rem}
+.lk-tbl td{padding:.3rem 0;border-bottom:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.88)}
+.lk-tbl td:last-child{text-align:right;white-space:nowrap;font-weight:700}
+.lk-tbl tr.tot td{border-bottom:0;padding-top:.5rem;color:#f3d37b;font-weight:800}
+.lk-assume{margin-top:1rem;font-size:.78rem;line-height:1.55;color:rgba(255,255,255,.7)}
+.lk-error{margin:0;font-weight:700;color:#fca5a5}
+
+.lk-disclaimer{background:#f7f8f7;border:1px solid rgba(10,28,22,.08);border-left:4px solid #d4af37;border-radius:14px;padding:1.1rem 1.3rem;font-size:.86rem;line-height:1.6;color:var(--text-muted);margin-top:1.5rem}
+[hidden]{display:none !important}
+</style>
+</head>
+<body>
+<header class="site-header header-logo-large" id="top"><div class="header-inner">
+<a href="/" aria-label="Autoknigge Startseite" class="header-logo-link" style="display:flex;align-items:center;text-decoration:none"><img src="logo.png" alt="Autoknigge Logo" class="header-logo-mini" style="max-height:50px;width:auto;object-fit:contain"></a>
+<input type="checkbox" id="nav-toggle" class="nav-toggle-input"><label for="nav-toggle" class="menu-compact"><span class="menu-icon">&#9776;</span> Menü</label>
+<nav class="main-nav"><ul class="header-nav-list"><li><a href="/">Start</a></li><li><a href="auto-wissen-quiz.html">🧠 Auto-Wissen-Quiz</a></li><li><a href="mein-auto-kalender.html">📅 Mein Auto-Kalender</a></li><li><a href="bussgeldrechner.html">🚨 Bußgeldrechner</a></li><li><a href="kategorie-versicherung.html">Versicherung</a></li><li><a href="kategorie-zulassung.html">Zulassung</a></li><li><a href="kategorie-kauf.html">Kauf und Verkauf</a></li><li><a href="kategorie-pflege.html">Wartung und Pflege</a></li><li><a href="kategorie-recht.html">Recht</a></li><li><a href="kategorie-geld-sparen.html">Clever sparen</a></li><li><a href="ueber-knigge.html">Über Knigge</a></li></ul></nav><a class="header-search-link" href="suche.html" aria-label="Autoknigge durchsuchen">🔍 Suchen</a>
+</div></header>
+<main><div class="wrap">
+<nav aria-label="Breadcrumb" class="breadcrumb"><a href="/">Start</a> / <a href="kategorie-kauf.html">Kauf und Verkauf</a> / <span>Leasing oder Kaufen?</span></nav>
+<section class="lk-hero"><div class="hero-badge"><span class="dot"></span> Kostenlos • ohne Anmeldung</div><h1>🧮 Leasing oder Kaufen?</h1><p>Rate, Laufzeit, Kaufpreis und Restwert eingeben – der Rechner stellt die Gesamtkosten beider Wege über denselben Zeitraum gegenüber.</p></section>
+
+<section aria-label="Knigge-Tipp zum Leasing-Rechner" class="knigge-quote-card knigge-quote-leasing">
+<div aria-label="Knigge im Beratungsgespräch zum Thema Leasing" class="knigge-quote-image" role="img">
+<div class="knigge-quote-shade"></div>
+<div class="knigge-quote-content">
+<div class="knigge-quote-kicker">KNIGGE MEINT</div>
+<blockquote>„Die niedrige Monatsrate ist der Köder, die Gesamtkosten sind der Fisch. Rechne beides, bevor du unterschreibst.“</blockquote>
+</div>
+</div>
+</section>
+
+<div class="lk-panel">
+<div class="lk-note">💡 Die Felder sind mit Beispielwerten vorbelegt – bitte durch die Zahlen aus deinem Angebot ersetzen. Das Ergebnis aktualisiert sich sofort.</div>
+
+<div class="lk-top">
+<div class="lk-field"><label for="lkMonths">Vergleichszeitraum (Monate)</label><input id="lkMonths" type="number" inputmode="numeric" min="1" max="240" step="1" value="48"><span class="lk-hint">Meist die Laufzeit des Leasingvertrags.</span></div>
+<div class="lk-field"><label for="lkAlt">Alternativzins auf gebundenes Kapital (% p. a.)</label><input id="lkAlt" type="number" inputmode="decimal" min="0" step="0.1" value="0"><span class="lk-hint">Optional: Was das Geld sonst bringen würde (z. B. Tagesgeld). Bei 0 wird die Kapitalbindung nicht bewertet.</span></div>
+</div>
+
+<div class="lk-cols">
+<div class="lk-col lk-col-lease">
+<h2>🔑 Leasing</h2>
+<div class="lk-field"><label for="lkRate">Monatliche Leasingrate (€)</label><input id="lkRate" type="number" inputmode="decimal" min="0" step="any" value="349"></div>
+<div class="lk-field"><label for="lkLeaseDown">Leasing-Sonderzahlung (€)</label><input id="lkLeaseDown" type="number" inputmode="decimal" min="0" step="any" value="3000"><span class="lk-hint">Einmalzahlung zu Vertragsbeginn.</span></div>
+<div class="lk-field"><label for="lkLeaseOnce">Einmalkosten Leasing (€)</label><input id="lkLeaseOnce" type="number" inputmode="decimal" min="0" step="any" value="0"><span class="lk-hint">Z. B. Überführung, Zulassung – soweit nicht in der Rate enthalten.</span></div>
+<div class="lk-field"><label for="lkLeaseExtra">Erwartete Mehrkilometer-/Rückgabekosten (€)</label><input id="lkLeaseExtra" type="number" inputmode="decimal" min="0" step="any" value="0"><span class="lk-hint">Schätzwert für Mehrkilometer und Schäden über normalen Verschleiß hinaus.</span></div>
+</div>
+
+<div class="lk-col lk-col-buy">
+<h2>🚗 Kauf</h2>
+<div class="lk-field"><label for="lkPrice">Kaufpreis (€)</label><input id="lkPrice" type="number" inputmode="decimal" min="0" step="any" value="35000"></div>
+<div class="lk-field"><span class="lk-label">Bezahlung</span><div class="lk-radio-row"><label><input checked name="lkPay" type="radio" value="fin"> Finanzierung</label><label><input name="lkPay" type="radio" value="cash"> Barkauf</label></div></div>
+<div id="lkFinWrap">
+<div class="lk-field"><label for="lkDown">Anzahlung (€)</label><input id="lkDown" type="number" inputmode="decimal" min="0" step="any" value="5000"></div>
+<div class="lk-field"><label for="lkInterest">Sollzins (% p. a.)</label><input id="lkInterest" type="number" inputmode="decimal" min="0" step="0.1" value="5"><span class="lk-hint">Sollzins laut Angebot. Der effektive Jahreszins liegt meist etwas höher.</span></div>
+</div>
+<div class="lk-field"><label for="lkResidual">Geschätzter Restwert nach dem Zeitraum (€)</label><input id="lkResidual" type="number" inputmode="decimal" min="0" step="any" value="18000"><span class="lk-hint">Was das Auto am Ende voraussichtlich noch wert ist – der wichtigste und zugleich unsicherste Wert.</span></div>
+<div class="lk-field"><label for="lkBuyOnce">Einmalkosten Kauf (€)</label><input id="lkBuyOnce" type="number" inputmode="decimal" min="0" step="any" value="0"><span class="lk-hint">Z. B. Überführung, Zulassung – soweit nicht im Kaufpreis enthalten.</span></div>
+<div class="lk-field"><label for="lkMaint">Zusätzliche Wartung/Reparatur pro Jahr (€)</label><input id="lkMaint" type="number" inputmode="decimal" min="0" step="any" value="300"><span class="lk-hint">Mehrkosten gegenüber Leasing, z. B. nach Ablauf der Garantie.</span></div>
+</div>
+</div>
+
+<div class="lk-result" id="lkResult" aria-live="polite"></div>
+</div>
+
+<section style="margin:2rem 0">
+<h2>So liest du das Ergebnis</h2>
+<div class="ak-tile-grid-2">
+<div class="ak-tile"><div class="icon">🎯</div><h3>Restwert entscheidet</h3><p>Beim Kauf trägst du das Wertverlust-Risiko. Der „Break-even-Restwert" zeigt, ab welchem Wert des Autos das Kaufen günstiger wird.</p></div>
+<div class="ak-tile"><div class="icon">🧾</div><h3>Was mitgerechnet wird</h3><p>Sonderzahlung, Raten, Einmalkosten, Zinsen, Wartungs-Mehrkosten, Restwert und – optional – die Kapitalbindung.</p></div>
+<div class="ak-tile"><div class="icon">⛽</div><h3>Was nicht enthalten ist</h3><p>Versicherung, Kfz-Steuer, Kraftstoff und Reifen fallen meist bei beiden Wegen an. Prüfe, ob dein Leasingvertrag Service- oder Verschleißpakete enthält.</p></div>
+<div class="ak-tile"><div class="icon">📏</div><h3>Kilometerlimit beachten</h3><p>Im Leasing sind Jahreskilometer vereinbart. <a href="artikel-kfz-leasing.html">Mehrkilometer können teuer werden</a> – trag sie oben als Schätzwert ein.</p></div>
+<div class="ak-tile"><div class="icon">🔄</div><h3>Flexibilität</h3><p>Leasing endet mit der Rückgabe, gekauft gehört das Auto dir – ohne Rückgabeprüfung und ohne Kilometergrenze.</p></div>
+<div class="ak-tile"><div class="icon">🏦</div><h3>Finanzierung</h3><p>Der Rechner tilgt den Kredit über den Vergleichszeitraum vollständig. Schlussraten oder Sondertilgungen sind nicht abgebildet.</p></div>
+</div>
+</section>
+
+<div class="lk-disclaimer">
+<strong>⚠️ Hinweis:</strong> Der Rechner ist eine Modellrechnung auf Basis deiner Eingaben und stark vom geschätzten Restwert abhängig. Er ersetzt weder eine Finanzberatung noch die genaue Prüfung der Vertragsbedingungen. Steuerliche Aspekte (z. B. bei gewerblicher Nutzung) sind nicht berücksichtigt – die Kapitalbindung wird vereinfacht als gebundenes Kapital × Zins × Zeit angesetzt.
+</div>
+
+<section class="related-articles"><h2>Das könnte dich auch interessieren</h2><div class="related-grid"><a class="related-card" href="artikel-kfz-leasing.html"><span class="icon">🔑</span><h3>Kfz-Leasing – Vor- und Nachteile</h3><p>Kostenfallen und Checkliste.</p></a><a class="related-card" href="auto-kostenrechner.html"><span class="icon">🧮</span><h3>Was kostet mein Auto wirklich?</h3><p>Alle laufenden Kosten berechnen.</p></a><a class="related-card" href="neuwagen-angebote.html"><span class="icon">🚙</span><h3>Neuwagen-Angebote</h3><p>Aktuelle Rabatte und Aktionen.</p></a></div></section>
+
+</div></main>
+
+<footer class="site-footer"><div class="wrap"><div class="footer-grid">
+<div class="footer-brand"><h3>Autoknigge</h3><p>Ihr unabhängiger Ratgeber für stilvolles, sicheres und wirtschaftlich cleveres Verhalten rund um das Automobil.</p></div>
+<div class="footer-col"><h4>Kategorien</h4><ul class="footer-links-list"><li><a href="kategorie-versicherung.html">Kfz-Versicherung</a></li><li><a href="kategorie-zulassung.html">Auto an-, um- &amp; abmelden ohne Stress</a></li><li><a href="kategorie-kauf.html">Kauf und Verkauf</a></li><li><a href="kategorie-pflege.html">Wartung und Pflege</a></li><li><a href="kategorie-recht.html">Recht &amp; Etikette</a></li><li><a href="kategorie-geld-sparen.html">Clever sparen</a></li><li><a href="ueber-knigge.html">Über Knigge</a></li></ul></div>
+<div class="footer-col"><h4>Downloads</h4><ul class="footer-links-list"><li><a download="" href="kfz-kaufvertrag.pdf">Kfz-Kaufvertrag (PDF)</a></li><li><a download="" href="vollmacht-kfz-zulassung.pdf">Zulassungsvollmacht (PDF)</a></li><li><a download="" href="Notfallcheckliste-Unfall.pdf">Notfallcheckliste Unfall (PDF)</a></li></ul></div>
+</div><div class="footer-bottom"><div>© 2026 Autoknigge — Alle Rechte vorbehalten. Unabhängige Ratgeber-Plattform.</div><div class="foot-links"><a href="impressum.html">Impressum</a> • <a href="datenschutz.html">Datenschutz</a> • <a href="#" id="cookie-settings-link" onclick="if(window.Cookiebot){Cookiebot.show();} return false;">Cookie-Einstellungen</a></div></div></div></footer>
+
+<script src="script.js"></script>
+<script src="section-cards.js"></script>
+<script>
+// <calc>
+function calcLeaseBuy(p) {
+  var n = Math.round(Number(p.months));
+  if (!(n >= 1) || n > 240) {
+    return { ok: false, msg: 'Bitte einen Vergleichszeitraum zwischen 1 und 240 Monaten eingeben.' };
+  }
+  var nz = function (x) { x = Number(x); return isFinite(x) && x > 0 ? x : 0; };
+  var alt = nz(p.altRate) / 100, years = n / 12;
+  var price = nz(p.price), down = Math.min(nz(p.down), price), residual = nz(p.residual);
+
+  // Leasing
+  var lRates = nz(p.leaseRate) * n;
+  var lDown = nz(p.leaseDown), lOnce = nz(p.leaseOnce), lExtra = nz(p.leaseExtra);
+  var lBase = lDown + lRates + lOnce + lExtra;
+  var lOpp = (lDown + lOnce) * alt * years;
+
+  // Kauf
+  var payMonthly = 0, payTotal = 0, interest = 0, loan = 0, outlay, capital;
+  if (p.financed) {
+    loan = price - down;
+    var i = nz(p.interest) / 100 / 12;
+    payMonthly = loan === 0 ? 0 : (i === 0 ? loan / n : loan * i / (1 - Math.pow(1 + i, -n)));
+    payTotal = payMonthly * n;
+    interest = payTotal - loan;
+    outlay = down + payTotal;
+    capital = down;
+  } else {
+    outlay = price;
+    capital = price;
+  }
+  var bOnce = nz(p.buyOnce), bMaint = nz(p.maint) * years;
+  outlay += bOnce;
+  capital += bOnce;
+  var bOpp = capital * alt * years;
+  var bBase = outlay + bMaint - residual;
+
+  var leaseAll = lBase + lOpp, buyAll = bBase + bOpp;
+  return {
+    ok: true, n: n, price: price, financed: !!p.financed, altRate: alt * 100,
+    lease: { down: lDown, rates: lRates, once: lOnce, extra: lExtra, opp: lOpp, total: leaseAll },
+    buy: { outlay: outlay, down: down, payMonthly: payMonthly, payTotal: payTotal, interest: interest, once: bOnce, maint: bMaint, residual: residual, opp: bOpp, total: buyAll },
+    diff: buyAll - leaseAll,
+    breakEven: outlay + bMaint + bOpp - leaseAll
+  };
+}
+// </calc>
+
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var num = function (id) { var v = parseFloat($(id).value); return isFinite(v) ? v : 0; };
+  var fmt = function (v, d) {
+    return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', minimumFractionDigits: d || 0, maximumFractionDigits: d || 0 }).format(v);
+  };
+  var resultEl = $('lkResult');
+
+  function read() {
+    return {
+      months: num('lkMonths'), altRate: num('lkAlt'),
+      leaseRate: num('lkRate'), leaseDown: num('lkLeaseDown'), leaseOnce: num('lkLeaseOnce'), leaseExtra: num('lkLeaseExtra'),
+      price: num('lkPrice'), down: num('lkDown'), interest: num('lkInterest'),
+      financed: document.querySelector('input[name="lkPay"]:checked').value === 'fin',
+      residual: num('lkResidual'), buyOnce: num('lkBuyOnce'), maint: num('lkMaint')
+    };
+  }
+
+  function row(label, value) { return '<tr><td>' + label + '</td><td>' + value + '</td></tr>'; }
+
+  function render() {
+    var r = calcLeaseBuy(read());
+    $('lkFinWrap').hidden = !document.querySelector('input[name="lkPay"][value="fin"]').checked;
+    if (!r.ok) { resultEl.innerHTML = '<p class="lk-error">' + r.msg + '</p>'; return; }
+
+    var leaseWins = r.diff > 0.5, buyWins = r.diff < -0.5;
+    var headline;
+    if (leaseWins) headline = 'In diesem Rechenbeispiel ist <span class="hl">Leasing</span> über ' + r.n + ' Monate um <span class="hl">' + fmt(r.diff) + '</span> günstiger.';
+    else if (buyWins) headline = 'In diesem Rechenbeispiel ist der <span class="hl">Kauf</span> über ' + r.n + ' Monate um <span class="hl">' + fmt(-r.diff) + '</span> günstiger.';
+    else headline = 'In diesem Rechenbeispiel kosten beide Wege über ' + r.n + ' Monate praktisch gleich viel.';
+
+    var max = Math.max(r.lease.total, r.buy.total, 1);
+    var bw = function (v) { return Math.max(0, Math.min(100, v / max * 100)).toFixed(1); };
+
+    var be;
+    if (r.breakEven <= 0) be = 'Der Kauf wäre hier selbst dann günstiger, wenn das Fahrzeug am Ende nichts mehr wert wäre.';
+    else if (r.price > 0 && r.breakEven > r.price) be = 'Auch bei einem Restwert in Höhe des Kaufpreises würde der Kauf in diesem Beispiel nicht günstiger als Leasing.';
+    else {
+      var pct = r.price > 0 ? ' (' + Math.round(r.breakEven / r.price * 100) + ' % des Kaufpreises)' : '';
+      var verb = r.buy.residual >= r.breakEven ? 'Der Kauf bleibt günstiger, solange' : 'Der Kauf wird erst günstiger, wenn';
+      be = '<strong>Break-even-Restwert:</strong> ' + verb + ' das Fahrzeug nach ' + r.n + ' Monaten mindestens <strong>' + fmt(r.breakEven) + '</strong>' + pct + ' wert ist. Dein Ansatz: ' + fmt(r.buy.residual) + '.';
+    }
+    if (!r.financed && r.altRate === 0 && r.price > 0) {
+      be += '<br><span style="opacity:.85">Hinweis: Beim Barkauf ist das gebundene Kapital hier nicht bewertet (Alternativzins 0 %). Trage oben einen Zins ein, um den Vergleich fairer zu machen.</span>';
+    }
+
+    var lt = '<table class="lk-tbl"><caption>Leasing im Detail</caption>' +
+      row('Sonderzahlung', fmt(r.lease.down)) +
+      row(r.n + ' × Leasingrate', fmt(r.lease.rates)) +
+      row('Einmalkosten', fmt(r.lease.once)) +
+      row('Mehrkilometer/Rückgabe', fmt(r.lease.extra)) +
+      (r.lease.opp > 0 ? row('Kapitalbindung', fmt(r.lease.opp)) : '') +
+      '<tr class="tot"><td>Gesamt</td><td>' + fmt(r.lease.total) + '</td></tr></table>';
+
+    var bt = '<table class="lk-tbl"><caption>Kauf im Detail</caption>' +
+      (r.financed
+        ? row('Anzahlung', fmt(r.buy.down)) + row(r.n + ' × Kreditrate (' + fmt(r.buy.payMonthly, 2) + ')', fmt(r.buy.payTotal)) + row('… davon Zinsen', fmt(r.buy.interest))
+        : row('Kaufpreis (bar)', fmt(r.price))) +
+      row('Einmalkosten', fmt(r.buy.once)) +
+      row('Wartung/Reparatur', fmt(r.buy.maint)) +
+      row('− Restwert', fmt(-r.buy.residual)) +
+      (r.buy.opp > 0 ? row('Kapitalbindung', fmt(r.buy.opp)) : '') +
+      '<tr class="tot"><td>Gesamt</td><td>' + fmt(r.buy.total) + '</td></tr></table>';
+
+    resultEl.innerHTML =
+      '<p class="lk-headline">' + headline + '</p>' +
+      '<div class="lk-res-grid">' +
+        '<div class="lk-res-card' + (leaseWins ? ' win' : '') + '"><div class="lk-res-label">Leasing – Gesamtkosten</div><div class="lk-res-total">' + fmt(r.lease.total) + '</div><div class="lk-res-sub">≈ ' + fmt(r.lease.total / r.n) + ' pro Monat</div></div>' +
+        '<div class="lk-res-card' + (buyWins ? ' win' : '') + '"><div class="lk-res-label">Kauf – Gesamtkosten</div><div class="lk-res-total">' + fmt(r.buy.total) + '</div><div class="lk-res-sub">≈ ' + fmt(r.buy.total / r.n) + ' pro Monat</div></div>' +
+      '</div>' +
+      '<div class="lk-bars">' +
+        '<div class="lk-bar-row"><span>Leasing</span><div class="lk-bar"><i style="width:' + bw(r.lease.total) + '%"></i></div><b>' + fmt(r.lease.total) + '</b></div>' +
+        '<div class="lk-bar-row"><span>Kauf</span><div class="lk-bar"><i style="width:' + bw(r.buy.total) + '%"></i></div><b>' + fmt(r.buy.total) + '</b></div>' +
+      '</div>' +
+      '<div class="lk-be">' + be + '</div>' +
+      '<div class="lk-details">' + lt + bt + '</div>' +
+      '<p class="lk-assume">Annahmen: Der Kredit wird über den Vergleichszeitraum vollständig getilgt. Beim Kauf zählt der Wertverlust (Kosten abzüglich Restwert), beim Leasing die Summe aller Zahlungen. Versicherung, Steuer und Kraftstoff sind nicht enthalten.</p>';
+  }
+
+  document.querySelectorAll('.lk-panel input').forEach(function (el) {
+    el.addEventListener('input', render);
+    el.addEventListener('change', render);
+  });
+  render();
+})();
+</script>
+</body>
+</html>

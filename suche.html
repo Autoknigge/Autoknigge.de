@@ -54,7 +54,9 @@ const SEARCH_ALIASES={
   fahrzeughistorie:'historie',fahrzeughistory:'historie',unfallcheck:'historie',carvertical:'historie',autodna:'historie',
   lfp:'lfp',nmc:'lfp',akkuchemie:'lfp',batteriechemie:'lfp',
   fahrerschutz:'versicherung',werkstattbindung:'versicherung',rabattschutz:'versicherung',schutzbrief:'versicherung',
-  motorbike:'motorrad',biker:'motorrad',zweirad:'motorrad',kraftrad:'motorrad'
+  motorbike:'motorrad',biker:'motorrad',zweirad:'motorrad',kraftrad:'motorrad',
+  leasen:'leasing',leasingrechner:'leasing',leasingrate:'leasing',kaufrechner:'leasing',
+  finanzierungsrechner:'finanzierung',kreditrechner:'finanzierung',ratenkauf:'finanzierung',finanzieren:'finanzierung'
 };
 function norm(v){return String(v||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ß/g,'ss').replace(/[^a-z0-9]+/g,' ').trim();}
 function tokens(v){return norm(v).split(/\s+/).filter(Boolean);}
