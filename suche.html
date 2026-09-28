@@ -16,7 +16,7 @@
 <a href="/" aria-label="Autoknigge Startseite"><img src="logo.png" alt="Autoknigge Logo" class="header-logo-mini"></a>
 <input type="checkbox" id="nav-toggle" class="nav-toggle-input"><label for="nav-toggle" class="menu-compact"><span class="menu-icon">&#9776;</span> Menü</label>
 <nav class="main-nav"><ul class="header-nav-list">
-<li><a href="/">Start</a></li><li><a href="auto-wissen-quiz.html">🧠 Auto-Wissen-Quiz</a></li><li><a href="bussgeldrechner.html">🚨 Bußgeldrechner</a></li><li><a href="mein-auto-kalender.html">📅 Mein Auto-Kalender</a></li><li><a href="kategorie-versicherung.html">Versicherung</a></li><li><a href="kategorie-zulassung.html">Zulassung</a></li><li><a href="kategorie-kauf.html">Kauf und Verkauf</a></li><li><a href="kategorie-pflege.html">Wartung und Pflege</a></li><li><a href="kategorie-recht.html">Recht</a></li><li><a href="kategorie-geld-sparen.html">Clever sparen</a></li><li><a href="ueber-knigge.html">Über Knigge</a></li></ul></nav>
+<li><a href="/">Start</a></li><li><a href="auto-wissen-quiz.html">🧠 Auto-Wissen-Quiz</a></li><li><a href="bussgeldrechner.html">🚨 Bußgeldrechner</a></li><li><a href="mein-auto-kalender.html">📅 Mein Auto-Kalender</a></li><li><a href="kfz-glossar.html">📖 Kfz-Glossar</a></li><li><a href="kategorie-versicherung.html">Versicherung</a></li><li><a href="kategorie-zulassung.html">Zulassung</a></li><li><a href="kategorie-kauf.html">Kauf und Verkauf</a></li><li><a href="kategorie-pflege.html">Wartung und Pflege</a></li><li><a href="kategorie-recht.html">Recht</a></li><li><a href="kategorie-geld-sparen.html">Clever sparen</a></li><li><a href="ueber-knigge.html">Über Knigge</a></li></ul></nav>
 <a class="header-search-link" href="suche.html" aria-current="page">🔍 Suchen</a></div></header>
 <main class="wrap search-page">
 <nav aria-label="Breadcrumb" class="breadcrumb"><a href="/">Start</a> / <span>Suche</span></nav>
@@ -54,6 +54,7 @@ const SEARCH_ALIASES={
   fahrzeughistorie:'historie',fahrzeughistory:'historie',unfallcheck:'historie',carvertical:'historie',autodna:'historie',
   lfp:'lfp',nmc:'lfp',akkuchemie:'lfp',batteriechemie:'lfp',
   fahrerschutz:'versicherung',werkstattbindung:'versicherung',rabattschutz:'versicherung',schutzbrief:'versicherung',
+  lexikon:'glossar',worterbuch:'glossar',fachbegriffe:'glossar',fachbegriff:'glossar',begriffe:'glossar',abkurzungen:'glossar',
   motorbike:'motorrad',biker:'motorrad',zweirad:'motorrad',kraftrad:'motorrad',
   leasen:'leasing',leasingrechner:'leasing',leasingrate:'leasing',kaufrechner:'leasing',
   finanzierungsrechner:'finanzierung',kreditrechner:'finanzierung',ratenkauf:'finanzierung',finanzieren:'finanzierung'
@@ -73,6 +74,7 @@ function score(item,q){
   }
   const nq=norm(q), nt=norm(item.title);
   if(nt.includes(nq)) total+=80;
+  else if(item.cat==='Glossar') total-=15;
   return total;
 }
 function snippet(item,q){
@@ -86,7 +88,7 @@ const input=document.getElementById('site-search'),results=document.getElementBy
 function esc(v){return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function render(){
  const raw=input.value.trim();
- if(!raw){meta.textContent=data.length+' Ratgeber durchsuchen';results.innerHTML='';return;}
+ if(!raw){const gl=data.filter(x=>x.cat==='Glossar').length;meta.textContent=(data.length-gl)+' Ratgeber und '+gl+' Glossar-Begriffe durchsuchen';results.innerHTML='';return;}
  const matches=data.map(x=>({x,s:score(x,raw)})).filter(o=>o.s>0).sort((a,b)=>b.s-a.s).slice(0,20).map(o=>o.x);
  meta.textContent=matches.length+' Treffer für „'+raw+'“';
  results.innerHTML=matches.map(x=>'<a class="search-result" href="'+x.url+'"><span class="search-category">'+esc(x.cat)+'</span><h2>'+esc(x.title.replace(/\s*\|\s*Autoknigge.*$/,''))+'</h2><p>'+esc(snippet(x,raw))+'</p></a>').join('')||'<div class="search-empty">Keine passenden Treffer gefunden. Versuche einen allgemeineren Begriff.</div>';
