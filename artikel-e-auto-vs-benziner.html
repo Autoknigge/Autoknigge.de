@@ -24,8 +24,27 @@
 .evb-tile.t-c{background:#eaf7ef;border-color:#c8ecd4}.evb-tile.t-c .tile-icon{background:#d4f0dd;color:#059669}
 .evb-tile.t-d{background:#f3eefb;border-color:#ddd0f5}.evb-tile.t-d .tile-icon{background:#e6ddf8;color:#7c3aed}
 @media(max-width:700px){.evb-tile-grid{grid-template-columns:1fr}}
+
+.tr-box{background:#fffaf0;border:1px solid #f0dfae;border-left:4px solid #d4af37;border-radius:12px;padding:.95rem 1.15rem;margin:1.2rem 0;font-size:.92rem;line-height:1.6}
+.tr-box[hidden]{display:none !important}
+.tr-box strong.tr-title{display:block;margin-bottom:.3rem;font-size:1rem}
+.tr-box p{margin:.3rem 0 0;color:inherit}
+.tr-calc{background:#f4f8f6;border:1px solid rgba(10,28,22,.1);border-radius:12px;padding:.95rem 1.15rem;margin:1.2rem 0;font-size:.92rem;line-height:1.6}
+
+.evb-table-wrap{overflow-x:auto;margin:1rem 0}
+.evb-table{width:100%;border-collapse:collapse;font-size:.92rem;min-width:520px}
+.evb-table th,.evb-table td{padding:.65rem .7rem;border-bottom:1px solid rgba(10,28,22,.12);text-align:left;vertical-align:top}
+.evb-table th{background:#f4f8f6;font-size:.78rem;text-transform:uppercase;letter-spacing:.03em}
+.evb-table td.num,.evb-table th.num{text-align:right;white-space:nowrap}
+.evb-table tr.hl td{background:#fffaf0}
+.evb-note{font-size:.84rem;line-height:1.6;color:#4a5b55;margin:.6rem 0}
+.evb-sum{background:linear-gradient(145deg,#f4f8f6,#fff);border:1px solid rgba(23,98,70,.25);border-left:5px solid #176246;border-radius:14px;padding:1.2rem 1.4rem;margin:1.4rem 0}
+.evb-sum h3{margin:0 0 .6rem}
+.evb-sum ul{margin:.6rem 0;padding-left:1.2rem;line-height:1.65}
+.evb-sum li{margin-bottom:.4rem}
+.evb-sum-total{background:#fff;border:1px dashed rgba(23,98,70,.4);border-radius:10px;padding:.7rem .9rem;margin:.8rem 0}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "E-Auto vs. Benziner – Ein Kostenvergleich | Autoknigge", "description": "Was ist günstiger: E-Auto oder Benziner? Ein umfassender Vergleich der Gesamtkosten – von Anschaffung bis Unterhalt.", "url": "https://autoknigge.de/artikel-e-auto-vs-benziner.html", "inLanguage": "de-DE", "dateModified": "2026-09-12", "publisher": {"@type": "Organization", "name": "Autoknigge", "url": "https://autoknigge.de/", "logo": {"@type": "ImageObject", "url": "https://autoknigge.de/logo.png"}}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Start", "item": "https://autoknigge.de/"}, {"@type": "ListItem", "position": 2, "name": "Kauf und Verkauf", "item": "https://autoknigge.de/kategorie-kauf.html"}, {"@type": "ListItem", "position": 3, "name": "E-Auto vs. Benziner", "item": "https://autoknigge.de/artikel-e-auto-vs-benziner.html"}]}</script></head>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "E-Auto vs. Benziner – Ein Kostenvergleich | Autoknigge", "description": "Was ist günstiger: E-Auto oder Benziner? Ein umfassender Vergleich der Gesamtkosten – von Anschaffung bis Unterhalt.", "url": "https://autoknigge.de/artikel-e-auto-vs-benziner.html", "inLanguage": "de-DE", "dateModified": "2026-09-28", "publisher": {"@type": "Organization", "name": "Autoknigge", "url": "https://autoknigge.de/", "logo": {"@type": "ImageObject", "url": "https://autoknigge.de/logo.png"}}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Start", "item": "https://autoknigge.de/"}, {"@type": "ListItem", "position": 2, "name": "Kauf und Verkauf", "item": "https://autoknigge.de/kategorie-kauf.html"}, {"@type": "ListItem", "position": 3, "name": "E-Auto vs. Benziner", "item": "https://autoknigge.de/artikel-e-auto-vs-benziner.html"}]}</script></head>
 <body>
 <header class="site-header header-logo-large" id="top">
 <div class="header-inner">
@@ -75,7 +94,7 @@
 <div class="evb-tile-grid">
 <div class="evb-tile t-a"><div class="tile-icon">💶</div><h3>Anschaffungspreis</h3><p>Elektroautos liegen in der Anschaffung meist höher, holen dies aber über Steuervorteile und niedrigere Betriebskosten auf.</p></div>
 <div class="evb-tile t-b"><div class="tile-icon">🔌</div><h3>Laufende Betriebskosten</h3><p>Strom zu Hause laden (z. B. mit PV-Anlage) ist signifikant günstiger als regelmäßiges Tanken von Super Plus oder Diesel.</p></div>
-<div class="evb-tile t-c"><div class="tile-icon">🔧</div><h3>Wartung &amp; Verschleiß</h3><p>Kein Ölwechsel, keine Zündkerzen, kein Auspuff. Bremsen verschleißen dank Rekuperation wesentlich langsamer.</p></div>
+<div class="evb-tile t-c"><div class="tile-icon">🔧</div><h3>Wartung &amp; Verschleiß</h3><p>Kein Ölwechsel, keine Zündkerzen, kein Auspuff. Bremsen verschleißen dank <a class="gl-link" href="kfz-glossar.html#rekuperation" title="Im Kfz-Glossar erklärt">Rekuperation</a> wesentlich langsamer.</p></div>
 <div class="evb-tile t-d"><div class="tile-icon">📋</div><h3>Steuerliche Vorteile</h3><p>Reine Stromer profitieren von 10 Jahren Befreiung bei der Kfz-Steuer sowie reduzierter Dienstwagenbesteuerung.</p></div>
 </div>
 </section>
@@ -83,10 +102,31 @@
 <h2>📊 Kostenübersicht im Detail: Wo spart man wirklich?</h2>
 <p>Ein detaillierter Blick auf die einzelnen Posten bei ca. 15.000 km Jahresleistung:</p>
 <div class="evb-tile-grid">
-<div class="evb-tile t-a"><div class="tile-icon">⛽</div><h3>Energie &amp; Kraftstoff</h3><p>Durch Strom laden statt Benzin tanken.</p><span class="cost-badge">Sparpotenzial ca. 600–900 € / Jahr</span></div>
+<div class="evb-tile t-a"><div class="tile-icon">⛽</div><h3>Energie &amp; Kraftstoff</h3><p>Durch Strom laden statt Benzin tanken.</p><span class="cost-badge">Sparpotenzial ca. 1.100–2.200 € / Jahr</span></div>
 <div class="evb-tile t-b"><div class="tile-icon">🛠️</div><h3>Wartung &amp; Service</h3><p>Dank weniger beweglicher Motorbauteile.</p><span class="cost-badge">Ca. 30–50 % günstiger</span></div>
 <div class="evb-tile t-c"><div class="tile-icon">🧾</div><h3>Kfz-Steuer</h3><p>Benziner liegt oft bei 100–250 € pro Jahr.</p><span class="cost-badge">0 € für 10 Jahre</span></div>
 </div>
+<div class="tr-box" data-until="2026-12-31" role="note"><strong class="tr-title">⛽ Tankrabatt vom 1. Oktober bis 31. Dezember 2026</strong><p>Die Energiesteuer auf Benzin und Diesel sinkt um 14,04 Cent je Liter – mit Mehrwertsteuer bis zu 16,7 Cent. Bundestag und Bundesrat haben das am 25. September beschlossen; eine Pflicht zur Weitergabe an der Zapfsäule gibt es nicht. Der Rabatt gilt nur für Kraftstoff, nicht für Ladestrom: Bei 7,5 l/100 km sind 16,7 Cent pro Liter rund 1,3 Cent pro Kilometer – das verringert den Kostenvorteil des E-Autos im vierten Quartal um etwa 47 €. Stand: 28.09.2026.</p></div>
+<h3>🧮 Rechenbeispiel: 15.000 km pro Jahr – wo du lädst, macht den Unterschied</h3>
+<p>Annahmen: Ein Benziner mit 7,5 l/100 km bei 2,20 € je Liter (August-Schnitt Super E10: 2,145 €, Diesel: 2,223 €) kostet <strong>2.475 € Kraftstoff pro Jahr</strong>. Ein E-Auto mit 17 kWh/100 km braucht <strong>2.550 kWh Strom pro Jahr</strong>.</p>
+<div class="evb-table-wrap"><table class="evb-table"><thead><tr><th>Wo du lädst</th><th class="num">Preis je kWh</th><th class="num">Strom pro Jahr</th><th class="num">Ersparnis pro Jahr</th></tr></thead><tbody>
+<tr><td>100&nbsp;% zu Hause mit eigener Solaranlage</td><td class="num">0–0,10&nbsp;€</td><td class="num">0–255&nbsp;€</td><td class="num"><strong>2.220–2.475&nbsp;€</strong></td></tr>
+<tr><td>100&nbsp;% zu Hause, Wallbox-/Autostromtarif</td><td class="num">0,30&nbsp;€</td><td class="num">765&nbsp;€</td><td class="num"><strong>1.710&nbsp;€</strong></td></tr>
+<tr><td>100&nbsp;% zu Hause, normaler Haushaltsstrom</td><td class="num">0,35–0,37&nbsp;€</td><td class="num">893–944&nbsp;€</td><td class="num"><strong>1.531–1.582&nbsp;€</strong></td></tr>
+<tr class="hl"><td><strong>Typischer Mix:</strong> 80&nbsp;% zu Hause (0,30&nbsp;€) + 20&nbsp;% unterwegs (0,39&nbsp;€)</td><td class="num">Ø 0,32&nbsp;€</td><td class="num">811&nbsp;€</td><td class="num"><strong>1.664&nbsp;€</strong></td></tr>
+<tr><td>100&nbsp;% unterwegs mit günstigem Ladetarif</td><td class="num">0,39&nbsp;€</td><td class="num">995&nbsp;€</td><td class="num"><strong>1.480&nbsp;€</strong></td></tr>
+<tr><td>100&nbsp;% unterwegs zum Durchschnittspreis (AC/DC)</td><td class="num">≈ 0,55&nbsp;€</td><td class="num">1.403&nbsp;€</td><td class="num"><strong>1.072&nbsp;€</strong></td></tr>
+</tbody></table></div>
+<p class="evb-note">Einordnung: 0,39 € je kWh bekommst du unterwegs mit einem günstigen Ladetarif; der ADAC nennt für 2026 im Schnitt 0,52 € (AC) bzw. 0,60 € (DC) – ohne Vertrag (Ad-hoc-Laden) kann es deutlich mehr sein. Normaler Haushaltsstrom kostet aktuell rund 0,35–0,37 € je kWh, mit eigenem Solarstrom sinken die Ladekosten gegen null. Die Ersparnis ist die Differenz zu den Kraftstoffkosten oben.</p>
+<div class="evb-sum"><h3>💶 Mit Förderung und Herstellernachlass: der Vorteil über vier Jahre</h3>
+<p>Beim typischen Mix (80&nbsp;% zu Hause) sparst du rund <strong>1.664 € pro Jahr</strong> an Energiekosten – über vier Jahre etwa <strong>6.656 €</strong>. Dazu kommen einmalige Vorteile:</p>
+<ul>
+<li><strong>Staatliche Förderung:</strong> je nach Einkommen und Kindern <strong>3.000 bis 6.000 €</strong> für reine E-Autos – bei einem zu versteuernden Haushaltseinkommen von 45.001–60.000 € (ohne Kinder) zum Beispiel 4.000 €. Alle Stufen: <a href="artikel-e-auto-kaufpraemie.html">E-Auto-Kaufprämie 2026</a>.</li>
+<li><strong>Herstellernachlässe:</strong> Mehrere Hersteller bieten aktuell eigene Boni von teils mehreren tausend Euro – unabhängig von der staatlichen Förderung. Aktuelle Aktionen: <a href="neuwagen-angebote.html">Neuwagen-Rabatte &amp; Angebote</a>.</li>
+<li><strong>Kfz-Steuer:</strong> 0 € statt meist 100–250 € pro Jahr beim Benziner.</li>
+</ul>
+<p class="evb-sum-total">Beispiel: 6.656 € geringere Energiekosten + 4.000 € Förderung = <strong>rund 10.650 €</strong> Vorteil in vier Jahren – noch ohne Herstellerbonus und Kfz-Steuer.</p>
+<p class="evb-note">Nicht eingerechnet sind der Preisunterschied zwischen konkreten Modellen, der Wertverlust und die Versicherung. Förderung und Nachlass können einen höheren Anschaffungspreis ganz oder teilweise ausgleichen – rechne dein Wunschmodell im <a href="auto-kostenrechner.html">Kostenrechner</a> oder im <a href="leasing-kauf-rechner.html">Leasing-oder-Kaufen-Rechner</a> durch.</p></div>
 </section>
 <section>
 <h2>🎯 Checkliste Entscheidung: Welcher Antrieb passt zu dir?</h2>
@@ -118,7 +158,6 @@
 <span>🔄 <strong>Zuletzt aktualisiert:</strong> September 2026</span>
 </div>
 <p>Kostenangaben sind Richtwerte auf Basis marktüblicher Preise bei ca. 15.000 km Jahresleistung und können je nach Fahrzeugmodell, Strom-/Kraftstoffpreis und Fahrverhalten abweichen.</p>
-</div>
 </div>
 <section class="related-articles"><h2>Das könnte dich auch interessieren</h2><div class="related-grid"><a class="related-card" href="artikel-e-auto-kaufpraemie.html"><span class="icon">💶</span><h3>E-Auto-Kaufprämie</h3><p>Aktuelle Förderungen im Überblick.</p></a><a class="related-card" href="elektroauto-reichweite-laden.html"><span class="icon">🔋</span><h3>Reichweite & Laden im Vergleich</h3><p>34 aktuelle E-Autos im Vergleich.</p></a><a class="related-card" href="auto-kostenrechner.html"><span class="icon">🧮</span><h3>Was kostet mein Auto wirklich?</h3><p>Alle laufenden Kosten berechnen.</p></a></div></section>
 </main>
@@ -164,5 +203,6 @@
 </footer>
 <script src="script.js"></script>
 
-<script src="section-cards.js"></script>\n</body>
+<script src="section-cards.js"></script>\n<script>(function(){var n=new Date();document.querySelectorAll(".tr-box[data-until]").forEach(function(b){var u=new Date(b.getAttribute("data-until")+"T23:59:59");if(n>u){b.hidden=true;}});})();</script>
+</body>
 </html>
