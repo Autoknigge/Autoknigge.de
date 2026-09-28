@@ -39,6 +39,20 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', onScroll, { passive: true });
   updateHeader();
 
+  // Android-Chrome-Fix: Ein sticky Header mit backdrop-filter lässt nach dem
+  // Laden/Navigieren manchmal kurz eine leere weiße Fläche unter sich stehen,
+  // bis der Nutzer scrollt (bekannter Compositing-Bug). Ein unsichtbarer
+  // 1px-Scroll erzwingt sofort ein Neu-Zeichnen, ohne dass die Seite sichtbar
+  // springt.
+  if (window.scrollY === 0) {
+    requestAnimationFrame(function () {
+      window.scrollTo(0, 1);
+      requestAnimationFrame(function () {
+        window.scrollTo(0, 0);
+      });
+    });
+  }
+
   // 2. Back to top button listener
   if (backToTopBtn) {
     backToTopBtn.addEventListener('click', function () {

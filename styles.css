@@ -195,6 +195,7 @@ h1:has(+ .knigge-quote-card)::after {
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
   will-change: transform;
+  isolation: isolate;
 }
 .site-header.is-scrolled {
   padding: 0.45rem 0;
