@@ -410,6 +410,13 @@ main {
   padding-top: 2.25rem;
   padding-bottom: 3.5rem;
 }
+/* Der großzügige Abstand oben (main padding-top + Breadcrumb-Rand) ist auf
+   dem Desktop kaum sichtbar, wirkt auf dem Handy aber wie eine leere
+   Fläche unter dem Header. Auf kleinen Bildschirmen deutlich straffen. */
+@media (max-width: 980px) {
+  main { padding-top: 1rem; }
+  .breadcrumb { margin: 0.5rem 0 0.4rem; padding: 0; }
+}
 
 /* ===== HEADING ALIGNMENT & TYPOGRAPHY ===== */
 h1, h2, h3, h4, .cat-heading, .cat-page-title-wrap h1, .cat-page-header h1, .topic-section h2 {
