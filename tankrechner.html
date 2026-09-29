@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="87380559-5fcb-497a-8f2e-2d1734030f85" data-blockingmode="auto" data-culture="DE" type="text/javascript"></script>
+<meta charset="UTF-8">
+<meta name="google-adsense-account" content="ca-pub-7178658520690671">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tankrechner & Verbrauchsrechner – Verbrauch pro 100 km berechnen | Autoknigge</title>
+<meta name="description" content="Tankrechner für Verbrenner und E-Autos: Strecke und getankte oder geladene Menge eingeben und den tatsächlichen Verbrauch pro 100 km berechnen – inklusive Kosten. Kostenlos, ohne Anmeldung.">
+<link rel="canonical" href="https://autoknigge.de/tankrechner.html">
+<link rel="stylesheet" href="styles.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0f241d">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Tankrechner", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "description": "Berechnet den tatsächlichen Verbrauch von Verbrennern und E-Autos aus Strecke sowie getankter oder geladener Menge, inklusive Kosten pro 100 km.", "url": "https://autoknigge.de/tankrechner.html", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "publisher": {"@type": "Organization", "name": "Autoknigge", "url": "https://autoknigge.de/", "logo": {"@type": "ImageObject", "url": "https://autoknigge.de/logo.png"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Start", "item": "https://autoknigge.de/"}, {"@type": "ListItem", "position": 2, "name": "Nützliche Tools", "item": "https://autoknigge.de/werkzeuge.html"}, {"@type": "ListItem", "position": 3, "name": "Tankrechner", "item": "https://autoknigge.de/tankrechner.html"}]}</script>
+<style>
+.tk-hero{margin:1rem 0 2rem;padding:2rem;border-radius:24px;background:linear-gradient(145deg,var(--green-800),#17382d);color:#fff;box-shadow:var(--shadow-lg)}
+.tk-hero .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.12);padding:.4rem .8rem;border-radius:999px;font-size:.82rem;font-weight:700;margin-bottom:.9rem}
+.tk-hero .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:#4ade80}
+.tk-hero h1{margin:0 0 .7rem;font-size:clamp(1.7rem,6vw,3rem);color:#fff}
+.tk-hero p{max-width:780px;color:rgba(255,255,255,.86);font-size:1.05rem;line-height:1.65;margin:0}
+
+.tk-panel{background:#fff;border:1px solid rgba(10,28,22,.08);border-radius:20px;padding:1.8rem;box-shadow:var(--shadow-sm);margin-bottom:1.5rem}
+.tk-mode{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:1.4rem}
+@media(max-width:520px){.tk-mode{grid-template-columns:1fr}}
+.tk-mode-btn{display:flex;align-items:center;justify-content:center;gap:.6rem;padding:1rem 1.1rem;border-radius:14px;border:1.5px solid rgba(10,28,22,.1);background:#fafbfa;cursor:pointer;font:inherit;font-weight:700;font-size:1rem;color:var(--text-dark);transition:border-color .15s ease,background .15s ease}
+.tk-mode-btn:hover{border-color:#d4af37;background:#fffaf0}
+.tk-mode-btn.active{border-color:#176246;background:#eef6f2}
+.tk-mode-btn .n{font-size:1.3rem}
+
+.tk-field{margin-bottom:1rem}
+.tk-field label{display:block;font-weight:700;font-size:.88rem;margin-bottom:.4rem;color:var(--text-dark)}
+.tk-field input[type=number]{width:100%;box-sizing:border-box;padding:.75rem .9rem;border-radius:10px;border:1.5px solid rgba(10,28,22,.15);font:inherit;font-size:.96rem;background:#fff}
+.tk-field input[type=number]:focus{outline:none;border-color:#176246;box-shadow:0 0 0 3px rgba(23,98,70,.12)}
+.tk-hint{display:block;font-size:.78rem;color:var(--text-muted);margin-top:.35rem;line-height:1.5}
+.tk-cols{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+@media(max-width:640px){.tk-cols{grid-template-columns:1fr}}
+
+.tk-alt{margin-top:.3rem}
+.tk-alt summary{cursor:pointer;font-size:.86rem;font-weight:700;color:#176246;list-style:none;display:inline-flex;align-items:center;gap:.35rem}
+.tk-alt summary::-webkit-details-marker{display:none}
+.tk-alt summary::before{content:'▸';transition:transform .15s ease}
+.tk-alt[open] summary::before{transform:rotate(90deg)}
+.tk-alt-body{margin-top:.7rem;padding:.9rem 1rem;border-radius:12px;background:#f4f8f6;border:1px solid rgba(23,98,70,.15)}
+
+.tk-result{margin-top:1.6rem;padding:1.5rem;border-radius:16px;background:linear-gradient(135deg,#0f241d,#17382d);color:#fff}
+.tk-res-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:600px){.tk-res-grid{grid-template-columns:1fr}}
+.tk-res-card{background:rgba(255,255,255,.08);border-radius:14px;padding:1rem 1.1rem;text-align:center}
+.tk-res-label{font-size:.78rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+.tk-res-total{font-size:1.9rem;font-weight:900;color:#f3d37b;margin:.2rem 0}
+.tk-res-sub{font-size:.85rem;color:rgba(255,255,255,.8)}
+.tk-compare{margin-top:1.1rem;padding:.85rem 1rem;border-radius:10px;background:rgba(243,211,123,.14);border-left:3px solid #f3d37b;font-size:.88rem;line-height:1.55}
+.tk-error{margin:0;font-weight:700;color:#fca5a5}
+
+.tk-disclaimer{background:#f7f8f7;border:1px solid rgba(10,28,22,.08);border-left:4px solid #d4af37;border-radius:14px;padding:1.1rem 1.3rem;font-size:.86rem;line-height:1.6;color:var(--text-muted);margin-top:1.5rem}
+[hidden]{display:none !important}
+</style>
+</head>
+<body>
+<header class="site-header header-logo-large" id="top"><div class="header-inner">
+<a href="/" aria-label="Autoknigge Startseite" class="header-logo-link" style="display:flex;align-items:center;text-decoration:none"><img src="logo.png" alt="Autoknigge Logo" class="header-logo-mini" style="max-height:50px;width:auto;object-fit:contain"></a>
+<input type="checkbox" id="nav-toggle" class="nav-toggle-input"><label for="nav-toggle" class="menu-compact"><span class="menu-icon">&#9776;</span> Menü</label>
+<nav class="main-nav"><ul class="header-nav-list">
+<li><a href="/">🏠 Start</a></li><li class="nav-top-quiz"><a href="auto-wissen-quiz.html">🧠 Auto-Wissen-Quiz</a></li><li class="nav-dd"><a href="werkzeuge.html">🛠️ Nützliche Tools</a><button type="button" class="dd-caret" aria-label="Untermenü Nützliche Tools ein- oder ausklappen" aria-expanded="false" aria-controls="nav-tools-list"></button><ul class="nav-dd-list" id="nav-tools-list"><li><a href="bussgeldrechner.html">🚨 Bußgeldrechner</a></li><li><a href="mein-auto-kalender.html">📅 Mein Auto-Kalender</a></li><li><a href="kfz-glossar.html">📖 Kfz-Glossar</a></li><li><a href="leasing-kauf-rechner.html">🧮 Leasing oder Kaufen?</a></li><li><a href="auto-kostenrechner.html">🚗 Kostenrechner</a></li><li><a href="sf-klassen-rechner.html">📊 SF-Klassen-Rechner</a></li><li><a href="regionalklassen.html">🗺️ Regionalklassen</a></li><li><a aria-current="page" href="tankrechner.html">⛽ Tankrechner</a></li></ul></li>
+<li><a href="kategorie-versicherung.html">🛡️ Versicherung</a></li>
+<li><a href="kategorie-zulassung.html">📄 Zulassung</a></li>
+<li><a href="kategorie-kauf.html">🛒 Kauf und Verkauf</a></li>
+<li><a href="kategorie-pflege.html">🔧 Wartung und Pflege</a></li>
+<li><a href="kategorie-recht.html">⚖️ Recht</a></li>
+<li><a href="kategorie-geld-sparen.html">💰 Clever sparen</a></li>
+<li><a href="ueber-knigge.html">👤 Über Knigge</a></li>
+</ul></nav><a class="header-search-link" href="suche.html" aria-label="Autoknigge durchsuchen">🔍 Suchen</a>
+</div></header>
+<main><div class="wrap">
+<section class="tk-hero"><div class="hero-badge"><span class="dot"></span> Kostenlos • ohne Anmeldung</div><h1>⛽ Tankrechner</h1><p>Verbrenner oder E-Auto wählen, Strecke und getankte oder geladene Menge eingeben – der Rechner zeigt deinen tatsächlichen Verbrauch pro 100 km.</p></section>
+
+<section aria-label="Knigge-Tipp zum Tankrechner" class="knigge-quote-card knigge-quote-tank">
+<div aria-label="Knigge beim Laden seines E-Autos" class="knigge-quote-image" role="img">
+<div class="knigge-quote-shade"></div>
+<div class="knigge-quote-content">
+<div class="knigge-quote-kicker">KNIGGE MEINT</div>
+<blockquote>„Seit ich elektrisch fahre, kostet mich der Blick auf die Ladesäule weniger Nerven als früher der Blick auf die Zapfsäule.“</blockquote>
+</div>
+</div>
+</section>
+
+<div class="tk-panel">
+<div class="tk-mode" id="tkMode">
+<button type="button" class="tk-mode-btn active" data-mode="verbrenner"><span class="n">⛽</span> Verbrenner</button>
+<button type="button" class="tk-mode-btn" data-mode="elektro"><span class="n">⚡</span> E-Auto</button>
+</div>
+
+<div class="tk-field"><label for="tkStrecke">Zurückgelegte Strecke seit dem letzten Volltanken/Vollladen (km)</label><input id="tkStrecke" type="number" inputmode="decimal" min="0" step="any" placeholder="z. B. 520"><span class="tk-hint">Am genauesten: von Tankstelle/Ladestation zu Tankstelle/Ladestation, jeweils bei (annähernd) gleichem Füllstand.</span></div>
+
+<div id="tkVerbrennerFields">
+<div class="tk-field"><label for="tkLiter">Getankte Menge (Liter)</label><input id="tkLiter" type="number" inputmode="decimal" min="0" step="any" placeholder="z. B. 34,5"></div>
+<div class="tk-field"><label for="tkPreisLiter">Preis pro Liter (€, optional)</label><input id="tkPreisLiter" type="number" inputmode="decimal" min="0" step="any" placeholder="z. B. 1,75"></div>
+</div>
+
+<div id="tkElektroFields" hidden>
+<div class="tk-field"><label for="tkKwh">Geladene Menge (kWh)</label><input id="tkKwh" type="number" inputmode="decimal" min="0" step="any" placeholder="z. B. 42,3"><span class="tk-hint">Am genauesten von der Ladekarten- oder App-Rechnung. Kein Beleg zur Hand? Unten schätzen.</span></div>
+<div class="tk-field"><label for="tkPreisKwh">Preis pro kWh (€, optional)</label><input id="tkPreisKwh" type="number" inputmode="decimal" min="0" step="any" placeholder="z. B. 0,35"></div>
+
+<details class="tk-alt" id="tkAltDetails">
+<summary>Keine geladene Menge bekannt? Aus Akkustand schätzen</summary>
+<div class="tk-alt-body">
+<div class="tk-cols">
+<div class="tk-field" style="margin-bottom:.6rem"><label for="tkAkkuKapazitaet">Akkukapazität deines Autos (kWh, brutto)</label><input id="tkAkkuKapazitaet" type="number" inputmode="decimal" min="0" step="any" placeholder="z. B. 58"><span class="tk-hint">Steht im Datenblatt oder in der Betriebsanleitung.</span></div>
+<div class="tk-field" style="margin-bottom:.6rem"><label for="tkAkkuProzent">Geladene Akku-Prozente (%)</label><input id="tkAkkuProzent" type="number" inputmode="decimal" min="0" max="100" step="any" placeholder="z. B. 55"><span class="tk-hint">Differenz zwischen Ladestand vorher und nachher, z. B. von 20 % auf 75 % = 55 %.</span></div>
+</div>
+<button type="button" class="tk-mode-btn" id="tkAltApply" style="width:100%">In „Geladene Menge" übernehmen</button>
+<p class="tk-hint" style="margin-top:.6rem">Diese Schätzung ist ungenauer als eine echte Ladeabrechnung, da Ladeverluste hier nicht erfasst werden.</p>
+</div>
+</details>
+</div>
+
+<div class="tk-result" id="tkResult" aria-live="polite"></div>
+</div>
+
+<section style="margin:2rem 0">
+<h2>So liest du das Ergebnis</h2>
+<div class="ak-tile-grid-2">
+<div class="ak-tile"><div class="icon">📏</div><h3>Möglichst genau messen</h3><p>Am zuverlässigsten wird der Wert, wenn du jeweils bei (annähernd) vollem Tank oder Akku misst – so gleichen sich Toleranzen beim Betanken aus.</p></div>
+<div class="ak-tile"><div class="icon">🌡️</div><h3>Schwankungen sind normal</h3><p>Kälte, Autobahntempo, Klimaanlage, Zuladung oder viel Stadtverkehr erhöhen den Verbrauch spürbar – ein einzelner Wert ist eine Momentaufnahme.</p></div>
+<div class="ak-tile"><div class="icon">🔋</div><h3>Ladeverluste beim E-Auto</h3><p>Die im Auto angezeigte „geladene" Energie ist meist etwas geringer als die von der Ladesäule abgerechnete kWh-Menge – nutze nach Möglichkeit die Rechnung.</p></div>
+<div class="ak-tile"><div class="icon">📊</div><h3>Mit dem WLTP-Wert vergleichen</h3><p>Der Werksangabe-Verbrauch (WLTP) entsteht unter Laborbedingungen und liegt im Alltag oft spürbar niedriger als das, was du hier misst.</p></div>
+<div class="ak-tile"><div class="icon">💶</div><h3>Kosten hochrechnen</h3><p>Mit dem ermittelten Verbrauch und deinem Preis lässt sich der <a href="auto-kostenrechner.html">Auto-Kostenrechner</a> noch genauer befüllen.</p></div>
+<div class="ak-tile"><div class="icon">⚡</div><h3>SoC &amp; SoH</h3><p>Was Akkustand und Batteriegesundheit genau bedeuten, erklärt das <a href="kfz-glossar.html#soc">Kfz-Glossar</a>.</p></div>
+</div>
+</section>
+
+<div class="tk-disclaimer">
+<strong>⚠️ Hinweis:</strong> Der Rechner ermittelt den Verbrauch ausschließlich aus deinen eigenen Eingaben. Er ersetzt keine geeichte Messung und ist so genau wie die eingegebenen Werte – insbesondere die Akkustand-Schätzung berücksichtigt keine Ladeverluste.
+</div>
+
+<section class="related-articles"><h2>Das könnte dich auch interessieren</h2><div class="related-grid"><a class="related-card" href="auto-kostenrechner.html"><span class="icon">🚗</span><h3>Was kostet mein Auto wirklich?</h3><p>Alle laufenden Kosten berechnen.</p></a><a class="related-card" href="elektroauto-reichweite-laden.html"><span class="icon">🔋</span><h3>E-Auto: Reichweite &amp; Laden</h3><p>Ladekosten und Reichweite im Alltag.</p></a><a class="related-card" href="artikel-e-auto-vs-benziner.html"><span class="icon">⚖️</span><h3>E-Autos vs. Verbrenner</h3><p>Kostenvergleich im Detail.</p></a></div></section>
+
+</div></main>
+
+<footer class="site-footer"><div class="wrap"><div class="footer-grid">
+<div class="footer-brand"><h3>Autoknigge</h3><p>Ihr unabhängiger Ratgeber für stilvolles, sicheres und wirtschaftlich cleveres Verhalten rund um das Automobil.</p></div>
+<div class="footer-col"><h4>Kategorien</h4><ul class="footer-links-list"><li><a href="kategorie-versicherung.html">Kfz-Versicherung</a></li><li><a href="kategorie-zulassung.html">Auto an-, um- &amp; abmelden ohne Stress</a></li><li><a href="kategorie-kauf.html">Kauf und Verkauf</a></li><li><a href="kategorie-pflege.html">Wartung und Pflege</a></li><li><a href="kategorie-recht.html">Recht &amp; Etikette</a></li><li><a href="kategorie-geld-sparen.html">Clever sparen</a></li><li><a href="ueber-knigge.html">Über Knigge</a></li></ul></div>
+<div class="footer-col"><h4>Downloads</h4><ul class="footer-links-list"><li><a download="" href="kfz-kaufvertrag.pdf">Kfz-Kaufvertrag (PDF)</a></li><li><a download="" href="vollmacht-kfz-zulassung.pdf">Zulassungsvollmacht (PDF)</a></li><li><a download="" href="Notfallcheckliste-Unfall.pdf">Notfallcheckliste Unfall (PDF)</a></li></ul></div>
+</div><div class="footer-bottom"><div>© 2026 Autoknigge — Alle Rechte vorbehalten. Unabhängige Ratgeber-Plattform.</div><div class="foot-links"><a href="impressum.html">Impressum</a> • <a href="datenschutz.html">Datenschutz</a> • <a href="#" id="cookie-settings-link" onclick="if(window.Cookiebot){Cookiebot.show();} return false;">Cookie-Einstellungen</a></div></div></div></footer>
+
+<script src="script.js"></script>
+<script src="section-cards.js"></script>
+<script>
+// <calc>
+function calcTank(p) {
+  var km = Number(p.km);
+  if (!(km > 0)) return { ok: false, msg: 'Bitte eine Strecke größer als 0 km eingeben.' };
+  var nz = function (x) { x = Number(x); return isFinite(x) && x > 0 ? x : 0; };
+  if (p.mode === 'verbrenner') {
+    var liter = nz(p.liter);
+    if (!(liter > 0)) return { ok: false, msg: 'Bitte die getankte Menge in Litern eingeben.' };
+    var per100 = liter / km * 100;
+    var out = { ok: true, mode: 'verbrenner', km: km, amount: liter, per100: per100, unit: 'l' };
+    var price = nz(p.price);
+    if (price > 0) {
+      out.cost = liter * price;
+      out.costPer100 = per100 * price;
+    }
+    return out;
+  }
+  var kwh = nz(p.kwh);
+  if (!(kwh > 0)) return { ok: false, msg: 'Bitte die geladene Menge in kWh eingeben (oder über den Akkustand schätzen).' };
+  var per100e = kwh / km * 100;
+  var oute = { ok: true, mode: 'elektro', km: km, amount: kwh, per100: per100e, unit: 'kWh' };
+  var pricee = nz(p.price);
+  if (pricee > 0) {
+    oute.cost = kwh * pricee;
+    oute.costPer100 = per100e * pricee;
+  }
+  return oute;
+}
+// </calc>
+
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var num = function (id) { var v = parseFloat($(id).value); return isFinite(v) ? v : 0; };
+  var fmt = function (v, d) { return new Intl.NumberFormat('de-DE', { minimumFractionDigits: d || 0, maximumFractionDigits: d || 2 }).format(v); };
+  var fmtEur = function (v) { return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v); };
+  var resultEl = $('tkResult');
+  var mode = 'verbrenner';
+
+  function render() {
+    var p = {
+      mode: mode, km: num('tkStrecke'),
+      liter: num('tkLiter'), kwh: num('tkKwh'),
+      price: mode === 'verbrenner' ? num('tkPreisLiter') : num('tkPreisKwh')
+    };
+    var r = calcTank(p);
+    if (!r.ok) {
+      resultEl.innerHTML = '<p class="tk-error">' + r.msg + '</p>';
+      return;
+    }
+    var wltpNote = r.mode === 'verbrenner'
+      ? 'Der Werks-Normverbrauch (WLTP) liegt bei den meisten Modellen deutlich niedriger als der Alltagswert.'
+      : 'Der Werks-Normverbrauch (WLTP) liegt bei den meisten Modellen niedriger, vor allem bei kalten Temperaturen und hohem Autobahntempo.';
+    var costBlock = '';
+    if (r.cost !== undefined) {
+      costBlock =
+        '<div class="tk-res-card"><div class="tk-res-label">Kosten insgesamt</div><div class="tk-res-total">' + fmtEur(r.cost) + '</div><div class="tk-res-sub">für ' + fmt(r.km) + ' km</div></div>' +
+        '<div class="tk-res-card"><div class="tk-res-label">Kosten pro 100 km</div><div class="tk-res-total">' + fmtEur(r.costPer100) + '</div><div class="tk-res-sub">bei diesem Preis</div></div>';
+    }
+    resultEl.innerHTML =
+      '<div class="tk-res-grid">' +
+        '<div class="tk-res-card"><div class="tk-res-label">Verbrauch pro 100 km</div><div class="tk-res-total">' + fmt(r.per100, 1) + ' ' + r.unit + '</div><div class="tk-res-sub">aus ' + fmt(r.amount, 1) + ' ' + r.unit + ' auf ' + fmt(r.km) + ' km</div></div>' +
+        costBlock +
+      '</div>' +
+      '<div class="tk-compare">💡 ' + wltpNote + '</div>';
+  }
+
+  document.querySelectorAll('.tk-mode-btn[data-mode]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      mode = btn.getAttribute('data-mode');
+      document.querySelectorAll('.tk-mode-btn[data-mode]').forEach(function (b) { b.classList.toggle('active', b === btn); });
+      $('tkVerbrennerFields').hidden = mode !== 'verbrenner';
+      $('tkElektroFields').hidden = mode !== 'elektro';
+      render();
+    });
+  });
+
+  $('tkAltApply').addEventListener('click', function () {
+    var kap = num('tkAkkuKapazitaet'), proz = num('tkAkkuProzent');
+    if (kap > 0 && proz > 0) {
+      $('tkKwh').value = (kap * proz / 100).toFixed(1);
+      $('tkAltDetails').removeAttribute('open');
+      render();
+    }
+  });
+
+  document.querySelectorAll('.tk-panel input').forEach(function (el) {
+    el.addEventListener('input', render);
+  });
+  render();
+})();
+</script>
+</body>
+</html>

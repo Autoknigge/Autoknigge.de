@@ -22,8 +22,13 @@
   .result-box .sf-detail { color: #495057; line-height: 1.6; }
   .info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem; margin-top: 1rem; }
   .info-grid .info-item { background: #fff; padding: 0.5rem 0.75rem; border-radius: 8px; border: 1px solid #e9ecef; font-size: 0.85rem; }
+  .sfk-hero{margin:1rem 0 2rem;padding:2rem;border-radius:24px;background:linear-gradient(145deg,var(--green-800),#17382d);color:#fff;box-shadow:var(--shadow-lg)}
+  .sfk-hero .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.12);padding:.4rem .8rem;border-radius:999px;font-size:.82rem;font-weight:700;margin-bottom:.9rem}
+  .sfk-hero .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:#4ade80}
+  .sfk-hero h1{margin:0 0 .7rem;font-size:clamp(1.7rem,6vw,3rem);color:#fff}
+  .sfk-hero p{max-width:780px;color:rgba(255,255,255,.86);font-size:1.05rem;line-height:1.65;margin:0}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "SF-Klassen Rechner – Ihre Schadenfreiheitsklasse berechnen | Autoknigge", "description": "Berechnen Sie Ihre Schadenfreiheitsklasse (SF-Klasse) für die Kfz-Versicherung. Einfach, schnell und kostenlos.", "url": "https://autoknigge.de/sf-klassen-rechner.html", "inLanguage": "de-DE", "dateModified": "2026-09-26", "publisher": {"@type": "Organization", "name": "Autoknigge", "url": "https://autoknigge.de/", "logo": {"@type": "ImageObject", "url": "https://autoknigge.de/logo.png"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "SF-Klassen Rechner – Ihre Schadenfreiheitsklasse berechnen | Autoknigge", "description": "Berechnen Sie Ihre Schadenfreiheitsklasse (SF-Klasse) für die Kfz-Versicherung. Einfach, schnell und kostenlos.", "url": "https://autoknigge.de/sf-klassen-rechner.html", "inLanguage": "de-DE", "dateModified": "2026-09-28", "publisher": {"@type": "Organization", "name": "Autoknigge", "url": "https://autoknigge.de/", "logo": {"@type": "ImageObject", "url": "https://autoknigge.de/logo.png"}}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Start", "item": "https://autoknigge.de/"}, {"@type": "ListItem", "position": 2, "name": "Versicherung", "item": "https://autoknigge.de/kategorie-versicherung.html"}, {"@type": "ListItem", "position": 3, "name": "SF-Klassen Rechner", "item": "https://autoknigge.de/sf-klassen-rechner.html"}]}</script>
 </head>
 <body>
@@ -32,13 +37,22 @@
 <a aria-label="Autoknigge Startseite" href="/"><img alt="Autoknigge Logo" class="header-logo-mini" src="logo.png"/></a>
 <input class="nav-toggle-input" id="nav-toggle" type="checkbox"/><label class="menu-compact" for="nav-toggle"><span class="menu-icon">☰</span> Menü</label>
 <nav class="main-nav"><ul class="header-nav-list">
-<li><a href="/">🏠 Start</a></li><li class="nav-top-quiz"><a href="auto-wissen-quiz.html">🧠 Auto-Wissen-Quiz</a></li><li class="nav-dd"><a href="werkzeuge.html">🛠️ Nützliche Tools</a><button type="button" class="dd-caret" aria-label="Untermenü Nützliche Tools ein- oder ausklappen" aria-expanded="false" aria-controls="nav-tools-list"></button><ul class="nav-dd-list" id="nav-tools-list"><li><a href="bussgeldrechner.html">🚨 Bußgeldrechner</a></li><li><a href="mein-auto-kalender.html">📅 Mein Auto-Kalender</a></li><li><a href="kfz-glossar.html">📖 Kfz-Glossar</a></li><li><a href="leasing-kauf-rechner.html">🧮 Leasing oder Kaufen?</a></li><li><a href="auto-kostenrechner.html">🚗 Kostenrechner</a></li><li><a aria-current="page" href="sf-klassen-rechner.html">📊 SF-Klassen-Rechner</a></li><li><a href="regionalklassen.html">🗺️ Regionalklassen</a></li></ul></li><li><a href="kategorie-versicherung.html">🛡️ Versicherung</a></li><li><a href="kategorie-zulassung.html">📄 Zulassung</a></li><li><a href="kategorie-kauf.html">🛒 Kauf und Verkauf</a></li><li><a href="kategorie-pflege.html">🔧 Wartung und Pflege</a></li><li><a href="kategorie-recht.html">⚖️ Recht</a></li><li><a href="kategorie-geld-sparen.html">💰 Clever sparen</a></li><li><a href="ueber-knigge.html">👤 Über Knigge</a></li>
+<li><a href="/">🏠 Start</a></li><li class="nav-top-quiz"><a href="auto-wissen-quiz.html">🧠 Auto-Wissen-Quiz</a></li><li class="nav-dd"><a href="werkzeuge.html">🛠️ Nützliche Tools</a><button type="button" class="dd-caret" aria-label="Untermenü Nützliche Tools ein- oder ausklappen" aria-expanded="false" aria-controls="nav-tools-list"></button><ul class="nav-dd-list" id="nav-tools-list"><li><a href="bussgeldrechner.html">🚨 Bußgeldrechner</a></li><li><a href="mein-auto-kalender.html">📅 Mein Auto-Kalender</a></li><li><a href="kfz-glossar.html">📖 Kfz-Glossar</a></li><li><a href="leasing-kauf-rechner.html">🧮 Leasing oder Kaufen?</a></li><li><a href="auto-kostenrechner.html">🚗 Kostenrechner</a></li><li><a aria-current="page" href="sf-klassen-rechner.html">📊 SF-Klassen-Rechner</a></li><li><a href="regionalklassen.html">🗺️ Regionalklassen</a></li><li><a href="tankrechner.html">⛽ Tankrechner</a></li></ul></li><li><a href="kategorie-versicherung.html">🛡️ Versicherung</a></li><li><a href="kategorie-zulassung.html">📄 Zulassung</a></li><li><a href="kategorie-kauf.html">🛒 Kauf und Verkauf</a></li><li><a href="kategorie-pflege.html">🔧 Wartung und Pflege</a></li><li><a href="kategorie-recht.html">⚖️ Recht</a></li><li><a href="kategorie-geld-sparen.html">💰 Clever sparen</a></li><li><a href="ueber-knigge.html">👤 Über Knigge</a></li>
 </ul></nav><a class="header-search-link" href="suche.html" aria-label="Autoknigge durchsuchen">🔍 Suchen</a></div></header>
 
 <main>
   <div class="wrap">
-    <h1>📊 SF-Klassen Rechner</h1>
-    <p class="lead">Berechnen Sie Ihre Schadenfreiheitsklasse (SF-Klasse) für die Kfz-Versicherung.</p>
+    <section class="sfk-hero"><div class="hero-badge"><span class="dot"></span> Kostenlos • ohne Anmeldung</div><h1>📊 SF-Klassen Rechner</h1><p>Berechnen Sie Ihre Schadenfreiheitsklasse (SF-Klasse) für die Kfz-Versicherung.</p></section>
+
+    <section aria-label="Knigge-Tipp: SF-Klasse" class="knigge-quote-card knigge-quote-versicherung">
+    <div aria-label="Knigge im passenden Umfeld zum Thema Versicherung" class="knigge-quote-image" role="img">
+    <div class="knigge-quote-shade"></div>
+    <div class="knigge-quote-content">
+    <div class="knigge-quote-kicker">KNIGGE MEINT</div>
+    <blockquote>„Je höher deine SF-Klasse, desto mehr lohnt sich ein Tarifvergleich – gute Konditionen bekommt nur, wer auch danach fragt.“</blockquote>
+    </div>
+    </div>
+    </section>
 
     <div class="calculator-box">
       <h3 style="margin-top: 0;">📊 Ihre Daten</h3>
@@ -118,7 +132,7 @@
       <h3>🛡 Kfz-Versicherung vergleichen</h3>
       <p class="partner-desc">Nachdem Sie Ihre SF-Klasse kennen, lohnt sich ein Blick auf die verschiedenen Versicherungsangebote.</p>
       <div class="partner-buttons">
-        <a href="https://tarifcheck.com/SFKBdbP" target="_blank" rel="noopener sponsored" class="partner-button">
+        <a href="https://tarifcheck.com/SFKBdbP" target="_blank" rel="noopener sponsored" class="partner-button cv-gold-partner-btn">
           <span class="partner-icon">🛡</span>
           <span class="partner-name">Kfz-Versicherung vergleichen</span>
           <span class="partner-arrow">→</span>

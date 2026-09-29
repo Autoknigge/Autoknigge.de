@@ -171,6 +171,11 @@
     .rk-list{margin:1rem 0;padding-left:1.2rem;line-height:1.65}
     .rk-list li{margin-bottom:.5rem}
     .rk-source{font-size:.78rem;color:#6b7c76;line-height:1.55;margin-top:.8rem}
+    .rk-hero{margin:1rem 0 2rem;padding:2rem;border-radius:24px;background:linear-gradient(145deg,var(--green-800),#17382d);color:#fff;box-shadow:var(--shadow-lg)}
+    .rk-hero .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.12);padding:.4rem .8rem;border-radius:999px;font-size:.82rem;font-weight:700;margin-bottom:.9rem}
+    .rk-hero .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:#4ade80}
+    .rk-hero h1{margin:0 0 .7rem;font-size:clamp(1.7rem,6vw,3rem);color:#fff}
+    .rk-hero p{max-width:780px;color:rgba(255,255,255,.86);font-size:1.05rem;line-height:1.65;margin:0}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Regionalklassen für Kfz-Versicherung — Autoknigge", "description": "Alle Regionalklassen im Überblick: Kfz-Haftpflicht (1-12), Vollkasko (1-9) und Teilkasko (1-16). Inklusive Direkt-Abfrage.", "url": "https://autoknigge.de/regionalklassen.html", "inLanguage": "de-DE", "dateModified": "2026-09-28", "publisher": {"@type": "Organization", "name": "Autoknigge", "url": "https://autoknigge.de/", "logo": {"@type": "ImageObject", "url": "https://autoknigge.de/logo.png"}}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Start", "item": "https://autoknigge.de/"}, {"@type": "ListItem", "position": 2, "name": "Versicherung", "item": "https://autoknigge.de/kategorie-versicherung.html"}, {"@type": "ListItem", "position": 3, "name": "Regionalklassen", "item": "https://autoknigge.de/regionalklassen.html"}]}</script></head>
@@ -185,7 +190,7 @@
     <label for="nav-toggle" class="menu-compact"><span class="menu-icon">&#9776;</span> Menü</label>
     <nav class="main-nav">
       <ul class="header-nav-list">
-        <li><a href="/">🏠 Start</a></li><li class="nav-top-quiz"><a href="auto-wissen-quiz.html">🧠 Auto-Wissen-Quiz</a></li><li class="nav-dd"><a href="werkzeuge.html">🛠️ Nützliche Tools</a><button type="button" class="dd-caret" aria-label="Untermenü Nützliche Tools ein- oder ausklappen" aria-expanded="false" aria-controls="nav-tools-list"></button><ul class="nav-dd-list" id="nav-tools-list"><li><a href="bussgeldrechner.html">🚨 Bußgeldrechner</a></li><li><a href="mein-auto-kalender.html">📅 Mein Auto-Kalender</a></li><li><a href="kfz-glossar.html">📖 Kfz-Glossar</a></li><li><a href="leasing-kauf-rechner.html">🧮 Leasing oder Kaufen?</a></li><li><a href="auto-kostenrechner.html">🚗 Kostenrechner</a></li><li><a href="sf-klassen-rechner.html">📊 SF-Klassen-Rechner</a></li><li><a aria-current="page" href="regionalklassen.html">🗺️ Regionalklassen</a></li></ul></li>
+        <li><a href="/">🏠 Start</a></li><li class="nav-top-quiz"><a href="auto-wissen-quiz.html">🧠 Auto-Wissen-Quiz</a></li><li class="nav-dd"><a href="werkzeuge.html">🛠️ Nützliche Tools</a><button type="button" class="dd-caret" aria-label="Untermenü Nützliche Tools ein- oder ausklappen" aria-expanded="false" aria-controls="nav-tools-list"></button><ul class="nav-dd-list" id="nav-tools-list"><li><a href="bussgeldrechner.html">🚨 Bußgeldrechner</a></li><li><a href="mein-auto-kalender.html">📅 Mein Auto-Kalender</a></li><li><a href="kfz-glossar.html">📖 Kfz-Glossar</a></li><li><a href="leasing-kauf-rechner.html">🧮 Leasing oder Kaufen?</a></li><li><a href="auto-kostenrechner.html">🚗 Kostenrechner</a></li><li><a href="sf-klassen-rechner.html">📊 SF-Klassen-Rechner</a></li><li><a aria-current="page" href="regionalklassen.html">🗺️ Regionalklassen</a></li><li><a href="tankrechner.html">⛽ Tankrechner</a></li></ul></li>
         <li><a href="kategorie-versicherung.html">🛡️ Versicherung</a></li>
         <li><a href="kategorie-zulassung.html">📄 Zulassung</a></li>
         <li><a href="kategorie-kauf.html">🛒 Kauf und Verkauf</a></li>
@@ -201,12 +206,7 @@
 
 <main>
   <div class="wrap">
-    <div class="cat-page-header cat-versicherung">
-      <div class="cat-page-title-wrap">
-        <h1>🗺️ Regionalklassen in der Kfz-Versicherung</h1>
-      </div>
-      <p class="lead">Die Regionalklasse spiegelt die Schaden- und Unfallbilanz Ihres Zulassungsbezirks wider. Hier finden Sie die Aufteilung sowie den direkten Zugriff auf die Datenbank des GDV.</p>
-    </div>
+    <section class="rk-hero"><div class="hero-badge"><span class="dot"></span> Kostenlos • ohne Anmeldung</div><h1>🗺️ Regionalklassen</h1><p>Die Regionalklasse spiegelt die Schaden- und Unfallbilanz Ihres Zulassungsbezirks wider. Hier finden Sie die Aufteilung sowie den direkten Zugriff auf die Datenbank des GDV.</p></section>
 
     <section class="knigge-quote-card knigge-quote-versicherung knigge-page-regionalklassen" aria-label="Knigge-Tipp: Versicherung">
   <div class="knigge-quote-image" role="img" aria-label="Knigge im passenden Umfeld zum Thema Versicherung">
