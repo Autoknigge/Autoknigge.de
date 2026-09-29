@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="87380559-5fcb-497a-8f2e-2d1734030f85" data-blockingmode="auto" data-culture="DE" type="text/javascript"></script>
+<meta charset="UTF-8">
+<meta name="google-adsense-account" content="ca-pub-7178658520690671">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dienstwagenrechner 2026 – Geldwerter Vorteil berechnen | Autoknigge</title>
+<meta name="description" content="Dienstwagenrechner: Bruttolistenpreis und Antriebsart eingeben und den geldwerten Vorteil nach der 1-%-, 0,5-%- oder 0,25-%-Regelung berechnen – inklusive Arbeitsweg-Zuschlag. Kostenlos, ohne Anmeldung.">
+<link rel="canonical" href="https://autoknigge.de/dienstwagenrechner.html">
+<link rel="stylesheet" href="styles.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0f241d">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Dienstwagenrechner", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "description": "Berechnet den geldwerten Vorteil eines Dienstwagens nach der 1-%-, 0,5-%- oder 0,25-%-Regelung, inklusive Zuschlag für Fahrten zwischen Wohnung und erster Tätigkeitsstätte.", "url": "https://autoknigge.de/dienstwagenrechner.html", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "publisher": {"@type": "Organization", "name": "Autoknigge", "url": "https://autoknigge.de/", "logo": {"@type": "ImageObject", "url": "https://autoknigge.de/logo.png"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Start", "item": "https://autoknigge.de/"}, {"@type": "ListItem", "position": 2, "name": "Nützliche Tools", "item": "https://autoknigge.de/werkzeuge.html"}, {"@type": "ListItem", "position": 3, "name": "Dienstwagenrechner", "item": "https://autoknigge.de/dienstwagenrechner.html"}]}</script>
+<style>
+.dw-hero{margin:1rem 0 2rem;padding:1.3rem 2rem;border-radius:24px;background:linear-gradient(145deg,var(--green-800),#17382d);color:#fff;box-shadow:var(--shadow-lg)}
+.dw-hero h1{margin:0;font-size:clamp(1.7rem,6vw,3rem);color:#fff}
+
+.dw-panel{background:#fff;border:1px solid rgba(10,28,22,.08);border-radius:20px;padding:1.8rem;box-shadow:var(--shadow-sm);margin-bottom:1.5rem}
+.dw-field{margin-bottom:1rem}
+.dw-field label{display:block;font-weight:700;font-size:.88rem;margin-bottom:.4rem;color:var(--text-dark)}
+.dw-field input[type=number]{width:100%;box-sizing:border-box;padding:.75rem .9rem;border-radius:10px;border:1.5px solid rgba(10,28,22,.15);font:inherit;font-size:.96rem;background:#fff}
+.dw-field input[type=number]:focus{outline:none;border-color:#176246;box-shadow:0 0 0 3px rgba(23,98,70,.12)}
+.dw-hint{display:block;font-size:.78rem;color:var(--text-muted);margin-top:.35rem;line-height:1.5}
+.dw-cols{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+@media(max-width:640px){.dw-cols{grid-template-columns:1fr}}
+
+.dw-mode{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;margin-bottom:1.4rem}
+@media(max-width:760px){.dw-mode{grid-template-columns:1fr 1fr}}
+.dw-mode-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;padding:.85rem .6rem;border-radius:14px;border:1.5px solid rgba(10,28,22,.1);background:#fafbfa;cursor:pointer;font:inherit;font-weight:700;font-size:.86rem;color:var(--text-dark);text-align:center;transition:border-color .15s ease,background .15s ease}
+.dw-mode-btn:hover{border-color:#d4af37;background:#fffaf0}
+.dw-mode-btn.active{border-color:#176246;background:#eef6f2}
+.dw-mode-btn .n{font-size:1.3rem}
+
+.dw-result{margin-top:1.6rem;padding:1.5rem;border-radius:16px;background:linear-gradient(135deg,#0f241d,#17382d);color:#fff}
+.dw-res-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:600px){.dw-res-grid{grid-template-columns:1fr}}
+.dw-res-card{background:rgba(255,255,255,.08);border-radius:14px;padding:1rem 1.1rem;text-align:center}
+.dw-res-label{font-size:.78rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+.dw-res-total{font-size:1.7rem;font-weight:900;color:#f3d37b;margin:.2rem 0}
+.dw-res-sub{font-size:.85rem;color:rgba(255,255,255,.8)}
+.dw-breakdown{margin-top:1rem}
+.dw-breakdown table{width:100%;border-collapse:collapse;font-size:.9rem}
+.dw-breakdown td{padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.dw-breakdown td:last-child{text-align:right;font-weight:700;white-space:nowrap}
+.dw-breakdown tr.tot td{border-bottom:0;padding-top:.6rem;color:#f3d37b;font-weight:800}
+.dw-compare{margin-top:1.1rem;padding:.85rem 1rem;border-radius:10px;background:rgba(243,211,123,.14);border-left:3px solid #f3d37b;font-size:.88rem;line-height:1.55}
+.dw-error{margin:0;font-weight:700;color:#fca5a5}
+
+.dw-disclaimer{background:#f7f8f7;border:1px solid rgba(10,28,22,.08);border-left:4px solid #d4af37;border-radius:14px;padding:1.1rem 1.3rem;font-size:.86rem;line-height:1.6;color:var(--text-muted);margin-top:1.5rem}
+[hidden]{display:none !important}
+</style>
+</head>
+<body>
+<header class="site-header header-logo-large" id="top"><div class="header-inner">
+<a href="/" aria-label="Autoknigge Startseite" class="header-logo-link" style="display:flex;align-items:center;text-decoration:none"><img src="logo.png" alt="Autoknigge Logo" class="header-logo-mini" style="max-height:50px;width:auto;object-fit:contain"></a>
+<input type="checkbox" id="nav-toggle" class="nav-toggle-input"><label for="nav-toggle" class="menu-compact"><span class="menu-icon">&#9776;</span> Menü</label>
+<nav class="main-nav"><ul class="header-nav-list">
+<li><a href="/">🏠 Start</a></li><li class="nav-top-quiz"><a href="auto-wissen-quiz.html">🧠 Auto-Wissen-Quiz</a></li><li class="nav-dd"><a href="werkzeuge.html">🛠️ Nützliche Tools</a><button type="button" class="dd-caret" aria-label="Untermenü Nützliche Tools ein- oder ausklappen" aria-expanded="false" aria-controls="nav-tools-list"></button><ul class="nav-dd-list" id="nav-tools-list"><li><a href="bussgeldrechner.html">🚨 Bußgeldrechner</a></li><li><a href="mein-auto-kalender.html">📅 Mein Auto-Kalender</a></li><li><a href="kfz-glossar.html">📖 Kfz-Glossar</a></li><li><a href="leasing-kauf-rechner.html">🧮 Leasing oder Kaufen?</a></li><li><a href="auto-kostenrechner.html">🚗 Kostenrechner</a></li><li><a href="sf-klassen-rechner.html">📊 SF-Klassen-Rechner</a></li><li><a href="regionalklassen.html">🗺️ Regionalklassen</a></li><li><a href="tankrechner.html">⛽ Tankrechner</a></li><li><a aria-current="page" href="dienstwagenrechner.html">💼 Dienstwagenrechner</a></li></ul></li>
+<li><a href="kategorie-versicherung.html">🛡️ Versicherung</a></li>
+<li><a href="kategorie-zulassung.html">📄 Zulassung</a></li>
+<li><a href="kategorie-kauf.html">🛒 Kauf und Verkauf</a></li>
+<li><a href="kategorie-pflege.html">🔧 Wartung und Pflege</a></li>
+<li><a href="kategorie-recht.html">⚖️ Recht</a></li>
+<li><a href="kategorie-geld-sparen.html">💰 Clever sparen</a></li>
+<li><a href="ueber-knigge.html">👤 Über Knigge</a></li>
+</ul></nav><a class="header-search-link" href="suche.html" aria-label="Autoknigge durchsuchen">🔍 Suchen</a>
+</div></header>
+<main><div class="wrap">
+<section class="dw-hero"><h1>💼 Dienstwagenrechner</h1></section>
+
+<section aria-label="Knigge-Tipp zum Dienstwagenrechner" class="knigge-quote-card knigge-quote-kauf">
+<div aria-label="Knigge bei der Fahrzeugübergabe" class="knigge-quote-image" role="img">
+<div class="knigge-quote-shade"></div>
+<div class="knigge-quote-content">
+<div class="knigge-quote-kicker">KNIGGE MEINT</div>
+<blockquote>„Der Dienstwagen fühlt sich kostenlos an – der geldwerte Vorteil sorgt trotzdem jeden Monat für ein Wiedersehen auf der Gehaltsabrechnung.“</blockquote>
+</div>
+</div>
+</section>
+
+<div class="dw-panel">
+<div class="dw-mode" id="dwMode">
+<button type="button" class="dw-mode-btn active" data-mode="verbrenner"><span class="n">⛽</span> Verbrenner</button>
+<button type="button" class="dw-mode-btn" data-mode="bev"><span class="n">⚡</span> Reines E-Auto</button>
+<button type="button" class="dw-mode-btn" data-mode="phev"><span class="n">🔌</span> Plug-in-Hybrid</button>
+<button type="button" class="dw-mode-btn" data-mode="phev-nein"><span class="n">🚫</span> PHEV ohne Förderung</button>
+</div>
+
+<div class="dw-field"><label for="dwPreis">Bruttolistenpreis (€, voller Betrag, nicht gerundet)</label><input id="dwPreis" type="number" inputmode="decimal" min="0" step="any" placeholder="z. B. 48500"><span class="dw-hint">Inländischer Listenpreis zum Zeitpunkt der Erstzulassung inklusive Sonderausstattung und Mehrwertsteuer – nicht der ausgehandelte Kaufpreis.</span></div>
+
+<div class="dw-field"><label for="dwKm">Einfache Entfernung Wohnung–erste Tätigkeitsstätte (km, optional)</label><input id="dwKm" type="number" inputmode="decimal" min="0" step="any" placeholder="z. B. 25"><span class="dw-hint">Wird der Dienstwagen auch für den Arbeitsweg genutzt, kommt hierfür ein weiterer geldwerter Vorteil hinzu. Ohne Angabe wird nur die reine Privatnutzung berechnet.</span></div>
+
+<div class="dw-field"><label for="dwSteuersatz">Persönlicher Grenzsteuersatz (%, optional)</label><input id="dwSteuersatz" type="number" inputmode="decimal" min="0" max="50" step="any" placeholder="z. B. 35"><span class="dw-hint">Für eine grobe Schätzung, wie viel zusätzliche Steuer im Monat wirklich anfällt. Den genauen Satz nennt dir die letzte Gehaltsabrechnung oder der Steuerbescheid.</span></div>
+
+<div class="dw-result" id="dwResult" aria-live="polite"></div>
+</div>
+
+<section style="margin:2rem 0">
+<h2>So funktioniert die Dienstwagenbesteuerung</h2>
+<div class="ak-tile-grid-2">
+<div class="ak-tile"><div class="icon">📊</div><h3>Was ist der geldwerte Vorteil?</h3><p>Darfst du den Dienstwagen auch privat nutzen, gilt das als zusätzliches Einkommen – dafür wird pauschal ein Prozentsatz des Bruttolistenpreises pro Monat versteuert, ganz unabhängig davon, wie viel du wirklich privat fährst.</p></div>
+<div class="ak-tile"><div class="icon">⚡</div><h3>0,25 % oder 0,5 %?</h3><p>Reine E-Autos mit Bruttolistenpreis bis 100.000 € werden nur mit 0,25 % versteuert, darüber mit 0,5 %. Plug-in-Hybride kommen nur bei Erfüllung der Förderbedingungen (u. a. Mindest-Reichweite oder niedriger CO₂-Ausstoß) auf 0,5 %, sonst gilt der volle Satz.</p></div>
+<div class="ak-tile"><div class="icon">🚗</div><h3>Arbeitsweg zählt extra</h3><p>Für Fahrten zwischen Wohnung und erster Tätigkeitsstätte kommt ein weiterer Vorteil hinzu: 0,03 % des Bruttolistenpreises je Entfernungskilometer und Monat – bei E-Autos entsprechend anteilig weniger.</p></div>
+<div class="ak-tile"><div class="icon">📝</div><h3>Alternative: Fahrtenbuch</h3><p>Statt der Pauschalregelung lässt sich der geldwerte Vorteil auch über ein lückenloses Fahrtenbuch nach den tatsächlichen Kosten ermitteln – bei wenig Privatnutzung oft günstiger, aber mit deutlich mehr Aufwand verbunden.</p></div>
+<div class="ak-tile"><div class="icon">🔋</div><h3>Nur reine E-Autos zählen als „E-Auto"</h3><p>Für die günstige 0,25-/0,5-%-Regelung braucht es ein rein batterieelektrisches Fahrzeug. Ein Plug-in-Hybrid fällt immer unter die eigenen PHEV-Regeln, nie unter die BEV-Regelung.</p></div>
+<div class="ak-tile"><div class="icon">💶</div><h3>Ladestrom-Erstattung</h3><p>Wird der Dienstwagen zu Hause geladen, kann der Arbeitgeber die Stromkosten pauschal oder nach Nachweis steuerfrei erstatten – das ist im geldwerten Vorteil oben nicht enthalten.</p></div>
+</div>
+</section>
+
+<div class="dw-disclaimer">
+<strong>⚠️ Hinweis:</strong> Dieser Rechner bildet die pauschale 1-%-/0,5-%-/0,25-%-Regelung nach § 6 Abs. 1 Nr. 4 EStG vereinfacht ab und ersetzt keine steuerliche Beratung. Die genaue Einordnung eines Plug-in-Hybrids (förderfähig oder nicht) hängt von CO₂-Ausstoß und elektrischer Mindestreichweite zum Zeitpunkt der Erstzulassung ab – frag im Zweifel deine Personalabteilung oder Steuerberatung. Die geschätzte Steuerlast unten ist eine grobe Näherung ohne Sozialversicherungsbeiträge, Kirchensteuer oder Solidaritätszuschlag.
+</div>
+
+<section class="related-articles"><h2>Das könnte dich auch interessieren</h2><div class="related-grid"><a class="related-card" href="artikel-e-auto-kaufpraemie.html"><span class="icon">💶</span><h3>E-Auto-Kaufprämie 2026</h3><p>Förderung beim Kauf oder Leasing.</p></a><a class="related-card" href="leasing-kauf-rechner.html"><span class="icon">🧮</span><h3>Leasing oder Kaufen?</h3><p>Gesamtkosten im Vergleich.</p></a><a class="related-card" href="elektroauto-reichweite-laden.html#ladetarife"><span class="icon">🔋</span><h3>Reichweite &amp; Laden</h3><p>Ladetarife und Reichweite im Alltag.</p></a></div></section>
+
+</div></main>
+
+<footer class="site-footer"><div class="wrap"><div class="footer-grid">
+<div class="footer-brand"><h3>Autoknigge</h3><p>Ihr unabhängiger Ratgeber für stilvolles, sicheres und wirtschaftlich cleveres Verhalten rund um das Automobil.</p></div>
+<div class="footer-col"><h4>Kategorien</h4><ul class="footer-links-list"><li><a href="kategorie-versicherung.html">Kfz-Versicherung</a></li><li><a href="kategorie-zulassung.html">Auto an-, um- &amp; abmelden ohne Stress</a></li><li><a href="kategorie-kauf.html">Kauf und Verkauf</a></li><li><a href="kategorie-pflege.html">Wartung und Pflege</a></li><li><a href="kategorie-recht.html">Recht &amp; Etikette</a></li><li><a href="kategorie-geld-sparen.html">Clever sparen</a></li><li><a href="ueber-knigge.html">Über Knigge</a></li></ul></div>
+<div class="footer-col"><h4>Downloads</h4><ul class="footer-links-list"><li><a download="" href="kfz-kaufvertrag.pdf">Kfz-Kaufvertrag (PDF)</a></li><li><a download="" href="vollmacht-kfz-zulassung.pdf">Zulassungsvollmacht (PDF)</a></li><li><a download="" href="Notfallcheckliste-Unfall.pdf">Notfallcheckliste Unfall (PDF)</a></li></ul></div>
+</div><div class="footer-bottom"><div>© 2026 Autoknigge — Alle Rechte vorbehalten. Unabhängige Ratgeber-Plattform.</div><div class="foot-links"><a href="impressum.html">Impressum</a> • <a href="datenschutz.html">Datenschutz</a> • <a href="#" id="cookie-settings-link" onclick="if(window.Cookiebot){Cookiebot.show();} return false;">Cookie-Einstellungen</a></div></div></div></footer>
+<button aria-label="Nach oben scrollen" class="back-to-top" id="backToTop">↑</button>
+
+<script src="script.js"></script>
+<script src="section-cards.js"></script>
+<script>
+// <calc>
+function calcDienstwagen(p) {
+  var preis = Number(p.preis);
+  if (!(preis > 0)) return { ok: false, msg: 'Bitte einen Bruttolistenpreis größer als 0 € eingeben.' };
+  var RATES = { verbrenner: 0.01, bev: preis > 100000 ? 0.005 : 0.0025, phev: 0.005, 'phev-nein': 0.01 };
+  var rate = RATES[p.mode];
+  if (rate === undefined) return { ok: false, msg: 'Unbekannte Antriebsart.' };
+
+  var privat = preis * rate;
+
+  var km = Number(p.km);
+  var pendler = 0;
+  if (isFinite(km) && km > 0) {
+    var pendlerRate = rate === 0.0025 ? 0.00075 : (rate === 0.005 ? 0.0015 : 0.0003);
+    pendler = preis * pendlerRate * km;
+  }
+
+  var gesamt = privat + pendler;
+
+  var out = { ok: true, mode: p.mode, preis: preis, rate: rate, privat: privat, km: km > 0 ? km : 0, pendler: pendler, gesamt: gesamt };
+
+  var satz = Number(p.steuersatz);
+  if (isFinite(satz) && satz > 0) {
+    out.steuersatz = satz;
+    out.steuerlast = gesamt * (satz / 100);
+  }
+  return out;
+}
+// </calc>
+
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var num = function (id) { var v = parseFloat($(id).value); return isFinite(v) ? v : 0; };
+  var fmt = function (v, d) { return new Intl.NumberFormat('de-DE', { minimumFractionDigits: d || 0, maximumFractionDigits: d || 2 }).format(v); };
+  var fmtEur = function (v) { return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v); };
+  var resultEl = $('dwResult');
+  var mode = 'verbrenner';
+
+  var LABELS = { verbrenner: 'Verbrenner (1 %)', bev: 'Reines E-Auto', phev: 'Plug-in-Hybrid, förderfähig (0,5 %)', 'phev-nein': 'Plug-in-Hybrid ohne Förderung (1 %)' };
+
+  function render() {
+    var p = { mode: mode, preis: num('dwPreis'), km: num('dwKm'), steuersatz: num('dwSteuersatz') };
+    var r = calcDienstwagen(p);
+    if (!r.ok) {
+      resultEl.innerHTML = '<p class="dw-error">' + r.msg + '</p>';
+      return;
+    }
+    var ratePct = (r.rate * 100).toString().replace('.', ',');
+    var modeLabel = r.mode === 'bev' ? (r.rate === 0.005 ? 'Reines E-Auto, über 100.000 € (0,5 %)' : 'Reines E-Auto, bis 100.000 € (0,25 %)') : LABELS[r.mode];
+
+    var rows =
+      '<tr><td>Bruttolistenpreis</td><td>' + fmtEur(r.preis) + '</td></tr>' +
+      '<tr><td>Antriebsart</td><td>' + modeLabel + '</td></tr>' +
+      '<tr><td>Privatnutzung (' + ratePct + ' % / Monat)</td><td>' + fmtEur(r.privat) + '</td></tr>';
+    if (r.km > 0) {
+      rows += '<tr><td>Arbeitsweg (' + fmt(r.km) + ' km einfach)</td><td>' + fmtEur(r.pendler) + '</td></tr>';
+    }
+    rows += '<tr class="tot"><td>Geldwerter Vorteil / Monat</td><td>' + fmtEur(r.gesamt) + '</td></tr>';
+
+    var taxCard = '';
+    if (r.steuerlast !== undefined) {
+      taxCard = '<div class="dw-res-card"><div class="dw-res-label">Geschätzte Mehrsteuer / Monat</div><div class="dw-res-total">' + fmtEur(r.steuerlast) + '</div><div class="dw-res-sub">bei ' + fmt(r.steuersatz) + ' % Grenzsteuersatz</div></div>';
+    }
+
+    resultEl.innerHTML =
+      '<div class="dw-res-grid">' +
+        '<div class="dw-res-card"><div class="dw-res-label">Geldwerter Vorteil</div><div class="dw-res-total">' + fmtEur(r.gesamt) + '</div><div class="dw-res-sub">pro Monat, zu versteuerndes Zusatzeinkommen</div></div>' +
+        taxCard +
+      '</div>' +
+      '<div class="dw-breakdown"><table>' + rows + '</table></div>' +
+      '<div class="dw-compare">💡 Diese Summe kommt zu deinem normalen Gehalt hinzu und wird wie Lohn versteuert – kein separater Steuersatz, sondern dein individueller Grenzsteuersatz.</div>';
+  }
+
+  document.querySelectorAll('.dw-mode-btn[data-mode]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      mode = btn.getAttribute('data-mode');
+      document.querySelectorAll('.dw-mode-btn[data-mode]').forEach(function (b) { b.classList.toggle('active', b === btn); });
+      render();
+    });
+  });
+
+  document.querySelectorAll('.dw-panel input').forEach(function (el) {
+    el.addEventListener('input', render);
+  });
+  render();
+})();
+</script>
+</body>
+</html>

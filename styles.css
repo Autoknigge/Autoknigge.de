@@ -127,13 +127,13 @@ h1:has(+ .knigge-quote-card)::after {
    zwischen dunklem Hero-Kasten und Knigge-Box, wie bei den Artikelseiten. */
 .calendar-hero:has(+ .knigge-quote-card), .quiz-hero:has(+ .knigge-quote-card),
 .br-hero:has(+ .knigge-quote-card), .lk-hero:has(+ .knigge-quote-card), .gl-hero:has(+ .knigge-quote-card),
-.sfk-hero:has(+ .knigge-quote-card), .rk-hero:has(+ .knigge-quote-card), .tk-hero:has(+ .knigge-quote-card) {
+.sfk-hero:has(+ .knigge-quote-card), .rk-hero:has(+ .knigge-quote-card), .tk-hero:has(+ .knigge-quote-card), .dw-hero:has(+ .knigge-quote-card) {
   position: relative;
   margin-bottom: 1.2rem;
 }
 .calendar-hero:has(+ .knigge-quote-card)::after, .quiz-hero:has(+ .knigge-quote-card)::after,
 .br-hero:has(+ .knigge-quote-card)::after, .lk-hero:has(+ .knigge-quote-card)::after, .gl-hero:has(+ .knigge-quote-card)::after,
-.sfk-hero:has(+ .knigge-quote-card)::after, .rk-hero:has(+ .knigge-quote-card)::after, .tk-hero:has(+ .knigge-quote-card)::after {
+.sfk-hero:has(+ .knigge-quote-card)::after, .rk-hero:has(+ .knigge-quote-card)::after, .tk-hero:has(+ .knigge-quote-card)::after, .dw-hero:has(+ .knigge-quote-card)::after {
   content: '';
   position: absolute;
   left: 0; right: 0; bottom: -.7rem;
@@ -146,7 +146,7 @@ h1:has(+ .knigge-quote-card)::after {
 @media (prefers-reduced-motion: reduce) {
   .calendar-hero:has(+ .knigge-quote-card)::after, .quiz-hero:has(+ .knigge-quote-card)::after,
   .br-hero:has(+ .knigge-quote-card)::after, .lk-hero:has(+ .knigge-quote-card)::after, .gl-hero:has(+ .knigge-quote-card)::after,
-  .sfk-hero:has(+ .knigge-quote-card)::after, .rk-hero:has(+ .knigge-quote-card)::after, .tk-hero:has(+ .knigge-quote-card)::after {
+  .sfk-hero:has(+ .knigge-quote-card)::after, .rk-hero:has(+ .knigge-quote-card)::after, .tk-hero:has(+ .knigge-quote-card)::after, .dw-hero:has(+ .knigge-quote-card)::after {
     animation: none;
     background-position: 0 0;
     background-size: 100% 100%;
