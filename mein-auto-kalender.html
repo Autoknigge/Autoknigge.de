@@ -29,7 +29,7 @@
 .calendar-event-check{margin-top:.35rem;width:18px;height:18px;accent-color:var(--green-700);cursor:pointer}
 .calendar-event-toggle.is-excluded{opacity:.4}
 .calendar-event-toggle.is-excluded .calendar-event-main h3{text-decoration:line-through}
-.feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:1rem}.feature{padding:.9rem;border:1px solid var(--border-light);border-radius:12px}.feature strong{display:block;margin-bottom:.25rem}.feature span{font-size:.82rem;color:var(--text-muted)}
+.feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:1rem}.feature{padding:.9rem;border:1px solid transparent;border-radius:12px}.feature:nth-of-type(4n+1){background:#e9f4ef;border-color:#c9e6d8}.feature:nth-of-type(4n+2){background:#eef1fb;border-color:#d3d9f4}.feature:nth-of-type(4n+3){background:#fdf3e7;border-color:#f3dfc0}.feature:nth-of-type(4n+4){background:#fdeef0;border-color:#f3cdd3}.feature strong{display:block;margin-bottom:.25rem}.feature span{font-size:.82rem;color:var(--text-muted)}
 .mfr-info{margin:1rem 0 0;padding:1rem 1.1rem;border-radius:14px;background:linear-gradient(145deg,#fbf8ee,#fff);border:1px solid var(--gold-600,#b48f34)}
 .mfr-info h4{margin:0 0 .55rem;font-size:.92rem;color:var(--green-800)}
 .mfr-info ul{margin:0 0 .6rem;padding-left:1.15rem;font-size:.86rem;line-height:1.6;color:var(--text-dark)}
@@ -37,9 +37,12 @@
 .mfr-info .mfr-filled{font-size:.78rem;color:var(--green-700);font-weight:700;margin:0 0 .5rem}
 .status{min-height:1.4em;margin:.7rem 0 0;color:var(--green-700);font-size:.84rem;font-weight:600}.disclaimer{font-size:.78rem;color:var(--text-muted);line-height:1.55;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border-light)}
 @media(max-width:850px){.calendar-layout{grid-template-columns:1fr}}@media(max-width:600px){.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.calendar-event{grid-template-columns:1fr;gap:.35rem}.calendar-event-toggle{grid-template-columns:20px 1fr}.feature-grid{grid-template-columns:1fr}.calendar-hero{padding:1.5rem}.actions .btn-calendar{width:100%}}
-.calendar-faq{margin:2rem 0 1rem;padding:1.5rem 1.6rem;background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-lg)}
-.calendar-faq h2{font-size:1.05rem;margin:1.1rem 0 .4rem}
-.calendar-faq h2:first-child{margin-top:0}
+.calendar-faq{margin:2rem 0 1rem;display:flex;flex-direction:column;gap:1rem}
+.calendar-faq-item{padding:1.3rem 1.5rem;border-radius:var(--radius-lg);border:1px solid transparent}
+.calendar-faq-item:nth-of-type(3n+1){background:#e9f4ef;border-color:#c9e6d8}
+.calendar-faq-item:nth-of-type(3n+2){background:#eef1fb;border-color:#d3d9f4}
+.calendar-faq-item:nth-of-type(3n+3){background:#fdf3e7;border-color:#f3dfc0}
+.calendar-faq h2{font-size:1.05rem;margin:0 0 .4rem}
 .calendar-faq p{margin:0 0 .3rem;line-height:1.6;color:var(--text-body,#425852);font-size:.94rem}
 .vehicle-tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.1rem}
 .vehicle-tab{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem .6rem .5rem .9rem;border-radius:999px;border:1.5px solid var(--border-light);background:var(--green-50);font-size:.86rem;font-weight:700;cursor:pointer;color:var(--text-dark);max-width:220px}
@@ -104,12 +107,18 @@
 <section class="calendar-panel"><h2>📅 Deine nächsten Termine <small><span id="eventCount">0</span> Termine</small></h2><div id="calendarEvents"></div><div class="feature-grid"><div class="feature"><strong>End of Warranty Check</strong><span>Eigener Termin vor Garantieende – nicht übersehen.</span></div><div class="feature"><strong>Versicherung</strong><span>Rechtzeitig an Kündigung bzw. Vertragsprüfung denken.</span></div><div class="feature"><strong>HU & Wartung</strong><span>Aus deinen eingetragenen Daten berechnet.</span></div><div class="feature"><strong>Kalender-Export</strong><span>Eine .ics-Datei für gängige Kalender-Apps.</span></div></div><p class="disclaimer">Hinweis: Der Kalender ist eine persönliche Planungshilfe. Er ersetzt weder Herstellerunterlagen, Garantiebedingungen, Versicherungsvertrag noch HU-Prüfbericht. Bei Fristen ist immer das konkrete Dokument maßgeblich.</p></section>
 </div>
 <section class="calendar-faq">
+<div class="calendar-faq-item">
 <h2>Woher kommen die Herstellerdaten?</h2>
 <p>Garantiedauer, Batteriegarantie und Wartungstyp basieren auf öffentlich kommunizierten Herstellerangaben (Stand September 2026), recherchiert für 34 Marken von Alfa Romeo bis XPeng – bei Tesla und Mercedes zusätzlich nach Antriebsvariante bzw. Modellreihe gestaffelt. Es sind Richtwerte zur Orientierung, keine Rechtsauskunft: Maßgeblich bleiben immer die Angaben in deinem eigenen Kaufvertrag und Serviceheft.</p>
+</div>
+<div class="calendar-faq-item">
 <h2>Warum lohnt sich der Kalender-Export?</h2>
 <p>Ein einmal exportierter Termin – etwa „Kfz-Versicherung kündigen" einen Monat vor Vertragsende – bleibt in deinem Kalender bestehen, auch wenn du Autoknigge danach nicht mehr besuchst. Gerade Fristen mit Geld-Konsequenz (verpasste Kündigungsfrist, abgelaufene Garantie) werden so nicht mehr vom Zufall abhängig.</p>
+</div>
+<div class="calendar-faq-item">
 <h2>Passt der Kalender auch zu bestehenden Artikeln?</h2>
 <p>Ja – wer zum Beispiel gerade die <a href="artikel-kfz-versicherung-wechseln.html">Kfz-Versicherung wechseln</a> will oder einen <a href="artikel-gebrauchtwagen-check.html">Gebrauchtwagen-Check</a> macht, kann die dort ermittelten Termine direkt hier eintragen und sich erinnern lassen.</p>
+</div>
 </section>
 </div></main>
 <button aria-label="Nach oben scrollen" class="back-to-top" id="backToTop">↑</button>
