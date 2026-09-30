@@ -23,6 +23,8 @@
 .dw-field input[type=number]{width:100%;box-sizing:border-box;padding:.75rem .9rem;border-radius:10px;border:1.5px solid rgba(10,28,22,.15);font:inherit;font-size:.96rem;background:#fff}
 .dw-field input[type=number]:focus{outline:none;border-color:#176246;box-shadow:0 0 0 3px rgba(23,98,70,.12)}
 .dw-hint{display:block;font-size:.78rem;color:var(--text-muted);margin-top:.35rem;line-height:1.5}
+.check-row-dw{display:flex;align-items:center;gap:.6rem;padding:.75rem .9rem;border:1.5px solid rgba(10,28,22,.15);border-radius:10px;background:#fafbfa;cursor:pointer;font-weight:700;font-size:.92rem}
+.check-row-dw input{width:18px;height:18px;flex:0 0 auto}
 .dw-cols{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
 @media(max-width:640px){.dw-cols{grid-template-columns:1fr}}
 
@@ -92,6 +94,12 @@
 
 <div class="dw-field"><label for="dwKm">Einfache Entfernung Wohnung–erste Tätigkeitsstätte (km, optional)</label><input id="dwKm" type="number" inputmode="decimal" min="0" step="any" placeholder="z. B. 25"><span class="dw-hint">Wird der Dienstwagen auch für den Arbeitsweg genutzt, kommt hierfür ein weiterer geldwerter Vorteil hinzu. Ohne Angabe wird nur die reine Privatnutzung berechnet.</span></div>
 
+<div class="dw-field"><label for="dwTageProMonat">Tage im Büro pro Monat (optional – 0,002-%-Einzelbewertung statt Pauschale)</label><input id="dwTageProMonat" type="number" inputmode="decimal" min="0" max="31" step="any" placeholder="z. B. 8"><span class="dw-hint">Wer selten ins Büro fährt (z. B. viel Homeoffice), kann statt der 0,03-%-Pauschale die tatsächlichen Tage mit 0,002 % je Kilometer und Tag ansetzen – das lohnt sich meist erst unter etwa 15 Tagen im Monat. Eingabe hier überschreibt die Pauschale.</span></div>
+
+<div class="dw-field"><label for="dwEigenbeteiligung">Eigenbeteiligung an den Kfz-Kosten (€/Monat, optional)</label><input id="dwEigenbeteiligung" type="number" inputmode="decimal" min="0" step="any" placeholder="z. B. 100"><span class="dw-hint">Zahlst du einen festen Monatsbetrag oder eine Leasingrate an deinen Arbeitgeber zu, mindert das den geldwerten Vorteil – maximal bis auf 0 €, ein negativer Vorteil entsteht dadurch nicht.</span></div>
+
+<div class="dw-field full"><label class="check-row-dw"><input id="dwAgPauschal" type="checkbox"><span>Arbeitgeber versteuert den Arbeitsweg-Anteil pauschal (§ 40 Abs. 2 EStG, 15 %)</span></label><span class="dw-hint">Übernimmt der Arbeitgeber die 15-%-Pauschalsteuer auf den Arbeitsweg-Anteil selbst, entfällt dieser Teil komplett aus deinem persönlich zu versteuernden geldwerten Vorteil – er kostet dich dann nichts, sondern nur den Arbeitgeber.</span></div>
+
 <div class="dw-field"><label for="dwSteuersatz">Persönlicher Grenzsteuersatz (%, optional)</label><input id="dwSteuersatz" type="number" inputmode="decimal" min="0" max="50" step="any" placeholder="z. B. 35"><span class="dw-hint">Für eine grobe Schätzung, wie viel zusätzliche Steuer im Monat wirklich anfällt. Den genauen Satz nennt dir die letzte Gehaltsabrechnung oder der Steuerbescheid.</span></div>
 
 <div class="dw-result" id="dwResult" aria-live="polite"></div>
@@ -139,19 +147,40 @@ function calcDienstwagen(p) {
 
   var km = Number(p.km);
   var pendler = 0;
+  var pendlerMethod = null;
+  var tage = Number(p.tageProMonat);
   if (isFinite(km) && km > 0) {
-    var pendlerRate = rate === 0.0025 ? 0.00075 : (rate === 0.005 ? 0.0015 : 0.0003);
-    pendler = preis * pendlerRate * km;
+    var pendlerRateMonat = rate === 0.0025 ? 0.00075 : (rate === 0.005 ? 0.0015 : 0.0003);
+    if (isFinite(tage) && tage > 0) {
+      var pendlerRateTag = pendlerRateMonat / 15; // 0,002 % statt 0,03 % je Tag (proportional bei 0,5/0,25 %)
+      pendler = preis * pendlerRateTag * km * tage;
+      pendlerMethod = 'tage';
+    } else {
+      pendler = preis * pendlerRateMonat * km;
+      pendlerMethod = 'pauschale';
+    }
   }
 
-  var gesamt = privat + pendler;
+  var vorteilVorEigenbeteiligung = privat + pendler;
 
-  var out = { ok: true, mode: p.mode, preis: preis, rate: rate, privat: privat, km: km > 0 ? km : 0, pendler: pendler, gesamt: gesamt };
+  var agPauschal = !!p.agPauschal && pendler > 0;
+  var persoenlicheBasis = agPauschal ? privat : vorteilVorEigenbeteiligung;
+
+  var eigenbeteiligungInput = Number(p.eigenbeteiligung);
+  var eigenbeteiligung = 0;
+  if (isFinite(eigenbeteiligungInput) && eigenbeteiligungInput > 0) {
+    eigenbeteiligung = Math.min(eigenbeteiligungInput, persoenlicheBasis);
+  }
+
+  var gesamt = persoenlicheBasis - eigenbeteiligung;
+
+  var out = { ok: true, mode: p.mode, preis: preis, rate: rate, privat: privat, km: km > 0 ? km : 0, pendler: pendler, pendlerMethod: pendlerMethod, tage: tage > 0 ? tage : 0, agPauschal: agPauschal, eigenbeteiligung: eigenbeteiligung, gesamt: gesamt };
 
   var satz = Number(p.steuersatz);
   if (isFinite(satz) && satz > 0) {
     out.steuersatz = satz;
     out.steuerlast = gesamt * (satz / 100);
+    out.nettoKosten = out.steuerlast + eigenbeteiligung;
   }
   return out;
 }
@@ -168,7 +197,7 @@ function calcDienstwagen(p) {
   var LABELS = { verbrenner: 'Verbrenner (1 %)', bev: 'Reines E-Auto', phev: 'Plug-in-Hybrid, förderfähig (0,5 %)', 'phev-nein': 'Plug-in-Hybrid ohne Förderung (1 %)' };
 
   function render() {
-    var p = { mode: mode, preis: num('dwPreis'), km: num('dwKm'), steuersatz: num('dwSteuersatz') };
+    var p = { mode: mode, preis: num('dwPreis'), km: num('dwKm'), tageProMonat: num('dwTageProMonat'), eigenbeteiligung: num('dwEigenbeteiligung'), agPauschal: $('dwAgPauschal').checked, steuersatz: num('dwSteuersatz') };
     var r = calcDienstwagen(p);
     if (!r.ok) {
       resultEl.innerHTML = '<p class="dw-error">' + r.msg + '</p>';
@@ -182,22 +211,31 @@ function calcDienstwagen(p) {
       '<tr><td>Antriebsart</td><td>' + modeLabel + '</td></tr>' +
       '<tr><td>Privatnutzung (' + ratePct + ' % / Monat)</td><td>' + fmtEur(r.privat) + '</td></tr>';
     if (r.km > 0) {
-      rows += '<tr><td>Arbeitsweg (' + fmt(r.km) + ' km einfach)</td><td>' + fmtEur(r.pendler) + '</td></tr>';
+      var pendlerLabel = r.pendlerMethod === 'tage' ? ('Arbeitsweg (' + fmt(r.km) + ' km, ' + fmt(r.tage) + ' Tage – 0,002-%-Methode)') : ('Arbeitsweg (' + fmt(r.km) + ' km, Pauschale)');
+      if (r.agPauschal) pendlerLabel += ' – vom AG pauschal versteuert';
+      rows += '<tr' + (r.agPauschal ? ' style="opacity:.6"' : '') + '><td>' + pendlerLabel + '</td><td>' + (r.agPauschal ? '<s>' + fmtEur(r.pendler) + '</s> 0,00 €' : fmtEur(r.pendler)) + '</td></tr>';
     }
-    rows += '<tr class="tot"><td>Geldwerter Vorteil / Monat</td><td>' + fmtEur(r.gesamt) + '</td></tr>';
+    if (r.eigenbeteiligung > 0) {
+      rows += '<tr><td>./. Eigenbeteiligung</td><td>−' + fmtEur(r.eigenbeteiligung) + '</td></tr>';
+    }
+    rows += '<tr class="tot"><td>Geldwerter Vorteil / Monat (brutto)</td><td>' + fmtEur(r.gesamt) + '</td></tr>';
 
-    var taxCard = '';
-    if (r.steuerlast !== undefined) {
-      taxCard = '<div class="dw-res-card"><div class="dw-res-label">Geschätzte Mehrsteuer / Monat</div><div class="dw-res-total">' + fmtEur(r.steuerlast) + '</div><div class="dw-res-sub">bei ' + fmt(r.steuersatz) + ' % Grenzsteuersatz</div></div>';
+    var cards = '';
+    if (r.nettoKosten !== undefined) {
+      cards += '<div class="dw-res-card"><div class="dw-res-label">Das kostet dich wirklich (netto)</div><div class="dw-res-total">' + fmtEur(r.nettoKosten) + '</div><div class="dw-res-sub">Mehrsteuer' + (r.eigenbeteiligung > 0 ? ' + Eigenbeteiligung' : '') + ', pro Monat</div></div>';
+      cards += '<div class="dw-res-card"><div class="dw-res-label">Geldwerter Vorteil (brutto)</div><div class="dw-res-total">' + fmtEur(r.gesamt) + '</div><div class="dw-res-sub">zu versteuerndes Zusatzeinkommen</div></div>';
+    } else {
+      cards += '<div class="dw-res-card"><div class="dw-res-label">Geldwerter Vorteil (brutto)</div><div class="dw-res-total">' + fmtEur(r.gesamt) + '</div><div class="dw-res-sub">pro Monat, zu versteuerndes Zusatzeinkommen</div></div>';
     }
+
+    var compareNote = r.nettoKosten !== undefined
+      ? '💡 „Netto" heißt hier: die Mehrsteuer, die durch den geldwerten Vorteil anfällt' + (r.eigenbeteiligung > 0 ? ', plus die Eigenbeteiligung, die du ohnehin selbst zahlst' : '') + '. Das ist dein tatsächlicher monatlicher Kostenblock – der Bruttowert selbst wird nicht von deinem Gehalt abgezogen, sondern nur mitversteuert.' + (r.agPauschal ? ' Der Arbeitsweg-Anteil ist hier nicht mehr enthalten, da dein Arbeitgeber ihn laut Angabe pauschal versteuert.' : '')
+      : '💡 Trage deinen Grenzsteuersatz ein, um zu sehen, was dich der Dienstwagen tatsächlich netto kostet – der Bruttowert oben wird nur mitversteuert, nicht direkt vom Gehalt abgezogen.';
 
     resultEl.innerHTML =
-      '<div class="dw-res-grid">' +
-        '<div class="dw-res-card"><div class="dw-res-label">Geldwerter Vorteil</div><div class="dw-res-total">' + fmtEur(r.gesamt) + '</div><div class="dw-res-sub">pro Monat, zu versteuerndes Zusatzeinkommen</div></div>' +
-        taxCard +
-      '</div>' +
+      '<div class="dw-res-grid">' + cards + '</div>' +
       '<div class="dw-breakdown"><table>' + rows + '</table></div>' +
-      '<div class="dw-compare">💡 Diese Summe kommt zu deinem normalen Gehalt hinzu und wird wie Lohn versteuert – kein separater Steuersatz, sondern dein individueller Grenzsteuersatz.</div>';
+      '<div class="dw-compare">' + compareNote + '</div>';
   }
 
   document.querySelectorAll('.dw-mode-btn[data-mode]').forEach(function (btn) {
