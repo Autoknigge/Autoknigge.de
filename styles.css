@@ -1350,6 +1350,10 @@ h1:has(+ .knigge-quote-card) {
   background-image: url('knigge-motorraum-pruefung.jpg');
   background-position: center 35%;
 }
+.knigge-quote-rabatt .knigge-quote-image {
+  background-image: url('knigge-neuwagen-einstieg.jpg');
+  background-position: center 20%;
+}
 .knigge-quote-tank .knigge-quote-image {
   background-image: url('knigge-eauto-laden.jpg');
   background-position: center 25%;

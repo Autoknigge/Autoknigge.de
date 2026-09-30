@@ -55,6 +55,8 @@
 
 .tk-disclaimer{background:#f7f8f7;border:1px solid rgba(10,28,22,.08);border-left:4px solid #d4af37;border-radius:14px;padding:1.1rem 1.3rem;font-size:.86rem;line-height:1.6;color:var(--text-muted);margin-top:1.5rem}
 [hidden]{display:none !important}
+.tk-thg-tile{background:linear-gradient(135deg,#fffaf0,#fff3d6);border:1.5px solid #d4af37;border-radius:14px;padding:.9rem 1.1rem;margin:-.2rem 0 1.2rem;font-size:.94rem;line-height:1.55;color:var(--text-dark)}
+.tk-thg-tile a{color:#176246;font-weight:700;text-decoration:underline}
 </style>
 </head>
 <body>
@@ -104,7 +106,7 @@
 <div id="tkElektroFields" hidden>
 <div class="tk-field"><label for="tkKwh">Geladene Menge (kWh)</label><input id="tkKwh" type="number" inputmode="decimal" min="0" step="any" placeholder="z. B. 42,3"><span class="tk-hint">Am genauesten von der Ladekarten- oder App-Rechnung. Kein Beleg zur Hand? Unten schätzen.</span></div>
 <div class="tk-field"><label for="tkPreisKwh">Preis pro kWh (€, optional)</label><input id="tkPreisKwh" type="number" inputmode="decimal" min="0" step="any" placeholder="z. B. 0,35"><span class="tk-hint">Deinen Preis nicht sicher? Ein <a href="elektroauto-reichweite-laden.html#ladetarife">Ladetarif-Vergleich</a> hilft weiter.</span></div>
-<p class="tk-hint" style="margin:-.4rem 0 1rem">💰 Reines E-Auto? Zusätzlich gibt es jährlich Geld über die <a href="artikel-thg-praemie.html">THG-Prämie</a> – unabhängig vom Laden.</p>
+<div class="tk-thg-tile">💰 <strong>Reines E-Auto?</strong> Zusätzlich gibt es jährlich Geld über die <a href="artikel-thg-praemie.html">THG-Prämie</a> – unabhängig vom Laden.</div>
 
 <details class="tk-alt" id="tkAltDetails">
 <summary>Keine geladene Menge bekannt? Aus Akkustand schätzen</summary>
@@ -148,6 +150,10 @@
 <footer class="site-footer"><div class="wrap"><div class="footer-grid">
 <div class="footer-brand"><h3>Autoknigge</h3><p>Ihr unabhängiger Ratgeber für stilvolles, sicheres und wirtschaftlich cleveres Verhalten rund um das Automobil.</p></div>
 <div class="footer-col"><h4>Kategorien</h4><ul class="footer-links-list"><li><a href="kategorie-versicherung.html">Kfz-Versicherung</a></li><li><a href="kategorie-zulassung.html">Auto an-, um- &amp; abmelden ohne Stress</a></li><li><a href="kategorie-kauf.html">Kauf und Verkauf</a></li><li><a href="kategorie-pflege.html">Wartung und Pflege</a></li><li><a href="kategorie-recht.html">Recht &amp; Etikette</a></li><li><a href="kategorie-geld-sparen.html">Clever sparen</a></li><li><a href="ueber-knigge.html">Über Knigge</a></li></ul></div>
+<div class="footer-col">
+<h4>Werkzeuge</h4>
+<ul class="footer-links-list"><li><a href="werkzeuge.html">Alle Werkzeuge</a></li><li><a href="auto-wissen-quiz.html">Auto-Wissen-Quiz</a></li><li><a href="bussgeldrechner.html">Bußgeldrechner</a></li><li><a href="mein-auto-kalender.html">Mein Auto-Kalender</a></li><li><a href="kfz-glossar.html">Kfz-Glossar</a></li><li><a href="leasing-kauf-rechner.html">Leasing oder Kaufen?</a></li><li><a href="auto-kostenrechner.html">Kostenrechner</a></li><li><a href="sf-klassen-rechner.html">SF-Klassen-Rechner</a></li><li><a href="regionalklassen.html">Regionalklassen</a></li><li><a href="tankrechner.html">Tankrechner</a></li><li><a href="dienstwagenrechner.html">Dienstwagenrechner</a></li></ul>
+</div>
 <div class="footer-col"><h4>Downloads</h4><ul class="footer-links-list"><li><a download="" href="kfz-kaufvertrag.pdf">Kfz-Kaufvertrag (PDF)</a></li><li><a download="" href="vollmacht-kfz-zulassung.pdf">Zulassungsvollmacht (PDF)</a></li><li><a download="" href="Notfallcheckliste-Unfall.pdf">Notfallcheckliste Unfall (PDF)</a></li></ul></div>
 </div><div class="footer-bottom"><div>© 2026 Autoknigge — Alle Rechte vorbehalten. Unabhängige Ratgeber-Plattform.</div><div class="foot-links"><a href="impressum.html">Impressum</a> • <a href="datenschutz.html">Datenschutz</a> • <a href="#" id="cookie-settings-link" onclick="if(window.Cookiebot){Cookiebot.show();} return false;">Cookie-Einstellungen</a></div></div></div></footer>
 

@@ -235,6 +235,7 @@
     data.isEv = isEvDrivetrain();
     data.drivetrainType = drivetrainSelect.value;
     data.isNewCar = newCarCheck.checked;
+    data.huGraceCheck = !!($('huGraceCheck') && $('huGraceCheck').checked);
     data.warrantyCheckDays = parseInt($('warrantyCheckDays').value || '60', 10);
     data.insuranceReminderDays = parseInt($('insuranceReminderDays').value || '45', 10);
     return data;
@@ -476,8 +477,14 @@
       }
     }
 
+    var huIntervalType = data.huIntervalType === 'vermietung' ? 'vermietung' : 'privat';
+    var huFirstMonths = huIntervalType === 'vermietung' ? 12 : 36;
+    var huRecurMonths = huIntervalType === 'vermietung' ? 12 : 24;
+    var huGraceMonths = data.huGraceCheck ? 2 : 0;
+    var huGraceNote = data.huGraceCheck ? ' Termin bereits um die laut Bußgeldkatalog bußgeldfreie 2-Monats-Frist verschoben – offiziell fällig ist die HU trotzdem schon 2 Monate früher; bei einer Kontrolle in der Zwischenzeit kann das auffallen, auch ohne Bußgeld.' : '';
+
     var hu = parseDate(data.lastHu);
-    if (hu) addSeries(hu, 24, HORIZON_YEARS, function(i){ return 'HU / AU fällig' + (i>1?' (Termin '+i+')':''); }, function(){ return 'Hauptuntersuchung – Termin rechtzeitig vereinbaren.'; }, 30);
+    if (hu) addSeries(addMonths(hu, huGraceMonths), huRecurMonths, HORIZON_YEARS, function(i){ return 'HU / AU fällig' + (i>1?' (Termin '+i+')':''); }, function(){ return 'Hauptuntersuchung – Termin rechtzeitig vereinbaren.' + huGraceNote; }, 30);
 
     var profile = getVariantProfile(MANUFACTURER_PROFILES[data.manufacturer] || {});
     var refDateNew = parseDate(data.firstRegistration) || parseDate(data.purchaseDate);
@@ -560,9 +567,9 @@
     if (purchase) add(purchase, 'Kaufdatum / Fahrzeughistorie', 'Kaufdatum als persönlicher Referenzpunkt.', 1);
 
     var firstReg = parseDate(data.firstRegistration);
-    if (firstReg && !hu) addSeries(addMonths(firstReg, 12), 24, HORIZON_YEARS,
+    if (firstReg && !hu) addSeries(addMonths(addMonths(firstReg, huFirstMonths - huRecurMonths), huGraceMonths), huRecurMonths, HORIZON_YEARS,
       function(i){ return (i===1?'Erste HU / AU (Richtwert)':'HU / AU fällig (Termin '+i+')'); },
-      function(i){ return i===1 ? 'Für einen Pkw gilt bei der ersten HU grundsätzlich ein dreijähriger Turnus; tatsächliche Fälligkeit anhand der Fahrzeugunterlagen prüfen.' : 'Hauptuntersuchung – Termin rechtzeitig vereinbaren.'; },
+      function(i){ return (i===1 ? ('Für einen Pkw gilt bei der ersten HU ' + (huIntervalType === 'vermietung' ? 'als Vermietfahrzeug/Taxi ohne Fahrer ein einjähriger' : 'grundsätzlich ein dreijähriger') + ' Turnus; tatsächliche Fälligkeit anhand der Fahrzeugunterlagen prüfen.') : 'Hauptuntersuchung – Termin rechtzeitig vereinbaren.') + huGraceNote; },
       30);
 
     // Feste Saisonhinweise für die gesamte Vorausschau, nicht nur das laufende Jahr.
