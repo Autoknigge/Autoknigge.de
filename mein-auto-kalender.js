@@ -1,7 +1,13 @@
 (function () {
   'use strict';
 
-  var STORAGE_KEY = 'autoknigge_mein_auto_v1';
+  var STORAGE_KEY = 'autoknigge_mein_auto_v1'; // Altformat einzelnes Fahrzeug – wird bei Bedarf migriert
+  var VEHICLES_KEY = 'autoknigge_mein_auto_vehicles_v1';
+  var vehicles = [];
+  var activeVehicleId = null;
+  var vehicleTabsEl = document.getElementById('vehicleTabs');
+  var vehicleEmptyEl = document.getElementById('vehicleEmpty');
+  var vehicleNameInput = document.getElementById('vehicleName');
   var form = document.getElementById('carCalendarForm');
   var eventsEl = document.getElementById('calendarEvents');
   var countEl = document.getElementById('eventCount');
@@ -234,6 +240,130 @@
     return data;
   }
 
+  function vehicleLabel(v) {
+    var name = (v.data && v.data.vehicleName || '').trim();
+    if (name) return name;
+    var mm = [v.data && v.data.manufacturer, v.data && v.data.model].filter(Boolean).join(' ');
+    return mm || 'Unbenanntes Fahrzeug';
+  }
+
+  function loadVehicles() {
+    try {
+      var raw = JSON.parse(localStorage.getItem(VEHICLES_KEY) || 'null');
+      if (raw && raw.vehicles && raw.vehicles.length) {
+        vehicles = raw.vehicles;
+        activeVehicleId = raw.activeId && vehicles.some(function (v) { return v.id === raw.activeId; }) ? raw.activeId : vehicles[0].id;
+        return;
+      }
+    } catch (e) {}
+    // Migration vom alten Einzel-Fahrzeug-Format, falls vorhanden
+    try {
+      var legacy = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+      if (legacy) {
+        var id = uuid();
+        vehicles = [{ id: id, data: legacy }];
+        activeVehicleId = id;
+        saveVehicles();
+        return;
+      }
+    } catch (e) {}
+    vehicles = [];
+    activeVehicleId = null;
+  }
+
+  function saveVehicles() {
+    localStorage.setItem(VEHICLES_KEY, JSON.stringify({ vehicles: vehicles, activeId: activeVehicleId }));
+  }
+
+  function getActiveVehicle() {
+    return vehicles.filter(function (v) { return v.id === activeVehicleId; })[0] || null;
+  }
+
+  function persistActiveFormData() {
+    var v = getActiveVehicle();
+    if (!v) return;
+    v.data = getData();
+    saveVehicles();
+  }
+
+  function renderTabs() {
+    vehicleTabsEl.innerHTML = '';
+    vehicles.forEach(function (v) {
+      var tab = document.createElement('button');
+      tab.type = 'button';
+      tab.className = 'vehicle-tab' + (v.id === activeVehicleId ? ' active' : '');
+      tab.innerHTML = '<span class="vt-name"></span><span class="vt-del" title="Dieses Fahrzeug löschen">×</span>';
+      tab.querySelector('.vt-name').textContent = vehicleLabel(v);
+      tab.addEventListener('click', function (ev) {
+        if (ev.target.classList.contains('vt-del')) {
+          ev.stopPropagation();
+          deleteVehicle(v.id);
+          return;
+        }
+        switchVehicle(v.id);
+      });
+      vehicleTabsEl.appendChild(tab);
+    });
+    var addTab = document.createElement('button');
+    addTab.type = 'button';
+    addTab.className = 'vehicle-tab vehicle-tab-add';
+    addTab.textContent = '➕ Fahrzeug hinzufügen';
+    addTab.addEventListener('click', addVehicle);
+    vehicleTabsEl.appendChild(addTab);
+    vehicleEmptyEl.hidden = vehicles.length > 0;
+    form.hidden = vehicles.length === 0;
+  }
+
+  function switchVehicle(id) {
+    if (id === activeVehicleId) return;
+    persistActiveFormData();
+    activeVehicleId = id;
+    excludedKeys = {};
+    saveVehicles();
+    form.reset();
+    var v = getActiveVehicle();
+    if (v) setData(v.data || {});
+    mfrInfoEl.hidden = true;
+    renderTabs();
+    render();
+    statusEl.textContent = '';
+  }
+
+  function addVehicle() {
+    persistActiveFormData();
+    var id = uuid();
+    vehicles.push({ id: id, data: {} });
+    activeVehicleId = id;
+    excludedKeys = {};
+    saveVehicles();
+    form.reset();
+    updateEvFields();
+    updateNewCarFields();
+    mfrInfoEl.hidden = true;
+    renderTabs();
+    render();
+    vehicleNameInput.focus();
+    statusEl.textContent = 'Neues Fahrzeug angelegt – bitte Daten eintragen.';
+  }
+
+  function deleteVehicle(id) {
+    var v = vehicles.filter(function (x) { return x.id === id; })[0];
+    if (!v) return;
+    if (!window.confirm('„' + vehicleLabel(v) + '" wirklich löschen? Alle zukünftigen Kalendertermine für dieses Fahrzeug werden entfernt.')) return;
+    vehicles = vehicles.filter(function (x) { return x.id !== id; });
+    if (activeVehicleId === id) {
+      activeVehicleId = vehicles.length ? vehicles[0].id : null;
+      excludedKeys = {};
+      form.reset();
+      if (activeVehicleId) setData(getActiveVehicle().data || {});
+      mfrInfoEl.hidden = true;
+    }
+    saveVehicles();
+    renderTabs();
+    render();
+    statusEl.textContent = 'Fahrzeug gelöscht.';
+  }
+
   function setData(data) {
     Object.keys(data || {}).forEach(function (k) {
       var el = $(k);
@@ -398,6 +528,18 @@
       add(batteryWarranty, 'Batteriegarantie endet', 'Ende der eingetragenen Batteriegarantie.', 30);
     }
 
+    // THG-Prämie: jährlich wiederkehrend, nur für reine E-Autos (nicht PHEV) – die
+    // gesetzliche Frist liegt beim Umweltbundesamt am 15. November, Anbieter wollen
+    // meist deutlich früher eingereicht bekommen.
+    if (drivetrainSelect.value === 'Elektro (BEV)') {
+      var thgStartYear = new Date().getFullYear();
+      for (var ty = 0; ty < HORIZON_YEARS; ty++) {
+        add(new Date(thgStartYear + ty, 9, 15, 12), 'THG-Prämie beantragen',
+          'Jährliche THG-Prämie für dein E-Auto beantragen – Frist beim Umweltbundesamt ist der 15. November, bei den meisten Anbietern früher. Details: autoknigge.de/artikel-thg-praemie.html',
+          21);
+      }
+    }
+
     // Zusatzgarantien je Hersteller (Durchrostung, Lack, Rückhaltesysteme, ...) als eigene Termine
     var refDateExtras = parseDate(data.firstRegistration) || parseDate(data.purchaseDate);
     if (profile && profile.extras && refDateExtras) {
@@ -435,6 +577,11 @@
   }
 
   function render() {
+    if (!activeVehicleId) {
+      eventsEl.innerHTML = '<div class="calendar-empty">Noch kein Fahrzeug angelegt. Lege oben dein erstes Fahrzeug an.</div>';
+      countEl.textContent = '0 / 0';
+      return [];
+    }
     var data = getData();
     var events = buildEvents(data);
     eventsEl.innerHTML = '';
@@ -465,6 +612,7 @@
   }
 
   function downloadICS() {
+    if (!activeVehicleId) { statusEl.textContent = 'Bitte zuerst ein Fahrzeug anlegen.'; return; }
     var data = getData();
     var events = buildEvents(data).filter(function (e) { return !excludedKeys[eventKey(e)]; });
     if (!events.length) { statusEl.textContent = 'Bitte mindestens einen Termin auswählen.'; return; }
@@ -504,7 +652,9 @@
 
   function handleInput() {
     render();
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(getData()));
+    persistActiveFormData();
+    var activeTab = vehicleTabsEl.querySelector('.vehicle-tab.active .vt-name');
+    if (activeTab) activeTab.textContent = vehicleLabel(getActiveVehicle() || { data: {} });
   }
 
   form.addEventListener('input', handleInput);
@@ -516,10 +666,13 @@
   $('purchaseDate').addEventListener('change', applyManufacturerDefaults);
   drivetrainSelect.addEventListener('change', function(){ updateEvFields(); applyManufacturerDefaults(); });
   $('downloadICS').addEventListener('click', downloadICS);
-  $('saveProfile').addEventListener('click', function(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(getData())); statusEl.textContent = 'Fahrzeugdaten wurden ausschließlich auf diesem Gerät gespeichert.'; });
-  $('clearProfile').addEventListener('click', function(){ localStorage.removeItem(STORAGE_KEY); form.reset(); updateEvFields(); updateNewCarFields(); mfrInfoEl.hidden = true; render(); statusEl.textContent = 'Lokale Fahrzeugdaten wurden gelöscht.'; });
+  $('saveProfile').addEventListener('click', function(){ persistActiveFormData(); statusEl.textContent = 'Fahrzeugdaten wurden ausschließlich auf diesem Gerät gespeichert.'; });
+  $('clearProfile').addEventListener('click', function(){ if (activeVehicleId) deleteVehicle(activeVehicleId); });
 
-  try { var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null'); if (saved) setData(saved); } catch(e) {}
+  loadVehicles();
+  var initVehicle = getActiveVehicle();
+  if (initVehicle) setData(initVehicle.data || {});
+  renderTabs();
   updateEvFields();
   updateNewCarFields();
   if (manufacturerSelect.value) applyManufacturerDefaults();
