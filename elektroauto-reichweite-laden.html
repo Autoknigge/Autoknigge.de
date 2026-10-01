@@ -30,6 +30,18 @@
 .ev-section{margin:2.5rem 0}
 .ev-note{background:#eef6f2;border:1px solid #cfe5da;border-left:5px solid #176246;border-radius:16px;padding:1.1rem 1.3rem;margin:1.3rem 0;line-height:1.6;font-size:.93rem}
 .ev-insights{display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem;margin-top:1rem}
+.ev-insights > div{border-radius:16px;padding:1.2rem 1.3rem;border:1px solid transparent}
+.ev-insights > div:nth-of-type(4n+1){background:#e9f4ef;border-color:#c9e6d8}
+.ev-insights > div:nth-of-type(4n+2){background:#eef1fb;border-color:#d3d9f4}
+.ev-insights > div:nth-of-type(4n+3){background:#fdf3e7;border-color:#f3dfc0}
+.ev-insights > div:nth-of-type(4n+4){background:#fdeef0;border-color:#f3cdd3}
+.ev-checklist{list-style:none;margin:1rem 0;padding:0;display:flex;flex-direction:column;gap:.7rem}
+.ev-checklist li{border-radius:14px;padding:.9rem 1.1rem;border:1px solid transparent;line-height:1.55}
+.ev-checklist li:nth-of-type(5n+1){background:#e9f4ef;border-color:#c9e6d8}
+.ev-checklist li:nth-of-type(5n+2){background:#eef1fb;border-color:#d3d9f4}
+.ev-checklist li:nth-of-type(5n+3){background:#fdf3e7;border-color:#f3dfc0}
+.ev-checklist li:nth-of-type(5n+4){background:#fdeef0;border-color:#f3cdd3}
+.ev-checklist li:nth-of-type(5n+5){background:#f1f7e8;border-color:#dbebc4}
 .ev-insights > div{background:#f7f8f7;border:1px solid rgba(10,28,22,.08);border-radius:16px;padding:1.2rem 1.3rem}
 .ev-insights strong{display:block;margin-bottom:.4rem;color:var(--green-900,#123);font-size:1.02rem}
 .ev-insights p{margin:0;font-size:.9rem;line-height:1.6;color:var(--text-body,#425852)}
@@ -136,8 +148,10 @@
 
 <section class="ev-section">
 <h2>📊 Warum wir 10–80 Prozent vergleichen</h2>
-<p>Beim Schnellladen ist ein Vergleich von 0 bis 100 Prozent wenig sinnvoll. Oberhalb von etwa 80 Prozent reduziert das Batteriemanagement die Ladeleistung deutlich. Für eine schnelle Weiterfahrt ist deshalb ein kurzer Stopp im Bereich von etwa 10 bis 80 Prozent meist effizienter.</p>
-<p>Der ADAC misst die Fahrzeuge unter vergleichbaren Bedingungen mit einem 300-kW-HPC-Lader und zeichnet die komplette Ladekurve auf. Die Fahrzeuge werden für die Messung vorkonditioniert. Dadurch sind die Ergebnisse untereinander deutlich aussagekräftiger als reine Herstellerangaben zur maximalen Ladeleistung.</p>
+<div class="ev-insights">
+<div><strong>🔋 Warum nicht 0–100 Prozent?</strong><p>Beim Schnellladen ist ein Vergleich von 0 bis 100 Prozent wenig sinnvoll. Oberhalb von etwa 80 Prozent reduziert das Batteriemanagement die Ladeleistung deutlich. Für eine schnelle Weiterfahrt ist deshalb ein kurzer Stopp im Bereich von etwa 10 bis 80 Prozent meist effizienter.</p></div>
+<div><strong>📏 Wie der ADAC misst</strong><p>Der ADAC misst die Fahrzeuge unter vergleichbaren Bedingungen mit einem 300-kW-HPC-Lader und zeichnet die komplette Ladekurve auf. Die Fahrzeuge werden für die Messung vorkonditioniert. Dadurch sind die Ergebnisse untereinander deutlich aussagekräftiger als reine Herstellerangaben zur maximalen Ladeleistung.</p></div>
+</div>
 <div class="ev-note"><strong>⚠️ Wichtig zu unterscheiden:</strong> Die 10–80-%-Zeit oben beschreibt, wie <strong>schnell</strong> ein Auto am Schnelllader lädt – das gilt unabhängig von der Akku-Chemie. Eine ganz andere Frage ist, auf <strong>wie viel Prozent</strong> man den Akku im Alltag laden sollte, um ihn zu schonen. Diese Antwort hängt stark davon ab, ob NMC- oder LFP-Zellen verbaut sind – dazu mehr im nächsten Abschnitt.</div>
 </section>
 
