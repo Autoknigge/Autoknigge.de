@@ -78,6 +78,8 @@ a { color: var(--green-700); text-decoration: none; transition: color var(--tran
 .content-link{color:#176246;font-weight:700;text-decoration:underline;text-decoration-color:rgba(23,98,70,.4)}
 .content-link:hover{text-decoration-color:#176246}
 .source-link{color:#80640f;text-decoration:underline}
+.gl-link{color:#176246;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:2px;cursor:help}
+.gl-link:hover{text-decoration-style:solid}
 a:hover { color: var(--gold-600); }
 
 h1, h2, h3, h4 {
