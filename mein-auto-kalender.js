@@ -236,6 +236,7 @@
     data.drivetrainType = drivetrainSelect.value;
     data.isNewCar = newCarCheck.checked;
     data.huGraceCheck = !!($('huGraceCheck') && $('huGraceCheck').checked);
+    data.allSeasonTires = !!($('allSeasonTires') && $('allSeasonTires').checked);
     data.warrantyCheckDays = parseInt($('warrantyCheckDays').value || '60', 10);
     data.insuranceReminderDays = parseInt($('insuranceReminderDays').value || '45', 10);
     return data;
@@ -325,6 +326,7 @@
     var v = getActiveVehicle();
     if (v) setData(v.data || {});
     mfrInfoEl.hidden = true;
+    updateTireFields();
     renderTabs();
     render();
     statusEl.textContent = '';
@@ -341,6 +343,7 @@
     updateEvFields();
     updateNewCarFields();
     mfrInfoEl.hidden = true;
+    updateTireFields();
     renderTabs();
     render();
     vehicleNameInput.focus();
@@ -358,6 +361,7 @@
       form.reset();
       if (activeVehicleId) setData(getActiveVehicle().data || {});
       mfrInfoEl.hidden = true;
+      updateTireFields();
     }
     saveVehicles();
     renderTabs();
@@ -516,7 +520,7 @@
     }
 
     var tires = parseDate(data.lastTireChange);
-    if (tires) {
+    if (tires && !data.allSeasonTires) {
       var tireMonths = parseInt(data.tireMonths || '6', 10);
       addSeries(tires, tireMonths, HORIZON_YEARS, function(i){ return 'Reifenwechsel prüfen' + (i>1?' (Termin '+i+')':''); }, function(){ return 'Saisonwechsel einplanen und Reifen auf Zustand, Profiltiefe und Luftdruck prüfen.'; }, 14);
       add(addDays(tires, 3), 'Radschrauben nachziehen', 'Nach einem Reifenwechsel setzen sich die Radschrauben in den ersten Kilometern minimal – nach ca. 50 km (meist nach wenigen Tagen erreicht) das Anzugsdrehmoment kontrollieren. Bei deutlich mehr oder weniger Fahrleistung selbst anpassen.', 1);
@@ -573,10 +577,13 @@
       30);
 
     // Feste Saisonhinweise für die gesamte Vorausschau, nicht nur das laufende Jahr.
-    var year = new Date().getFullYear();
-    for (var y = 0; y < HORIZON_YEARS; y++) {
-      add(new Date(year + y, 9, 15, 12), 'Winterreifen prüfen', 'Saisonaler Hinweis: Reifen und Wetterlage prüfen; keine starre gesetzliche Wechselpflicht.', 14);
-      add(new Date(year + 1 + y, 3, 1, 12), 'Sommerreifen prüfen', 'Saisonaler Hinweis: Reifen und Wetterlage prüfen.', 14);
+    // Entfällt komplett bei Ganzjahresreifen, da kein saisonaler Wechsel nötig ist.
+    if (!data.allSeasonTires) {
+      var year = new Date().getFullYear();
+      for (var y = 0; y < HORIZON_YEARS; y++) {
+        add(new Date(year + y, 9, 15, 12), 'Winterreifen prüfen', 'Saisonaler Hinweis: Reifen und Wetterlage prüfen; keine starre gesetzliche Wechselpflicht.', 14);
+        add(new Date(year + 1 + y, 3, 1, 12), 'Sommerreifen prüfen', 'Saisonaler Hinweis: Reifen und Wetterlage prüfen.', 14);
+      }
     }
 
     events.sort(function (a,b) { return a.date - b.date; });
@@ -641,6 +648,17 @@
   }
 
   function updateEvFields() { evFields.hidden = !isEvDrivetrain(); }
+  function updateTireFields() {
+    var cb = $('allSeasonTires');
+    var disabled = !!(cb && cb.checked);
+    ['lastTireChangeField', 'tireMonthsField'].forEach(function (id) {
+      var el = $(id);
+      if (!el) return;
+      el.style.opacity = disabled ? '.45' : '';
+      var input = el.querySelector('input');
+      if (input) input.disabled = disabled;
+    });
+  }
 
   var newCarNote = document.getElementById('newCarNote');
   var huSection = document.getElementById('huSection');
@@ -665,7 +683,7 @@
   }
 
   form.addEventListener('input', handleInput);
-  form.addEventListener('change', function(){ updateEvFields(); updateNewCarFields(); handleInput(); });
+  form.addEventListener('change', function(){ updateEvFields(); updateNewCarFields(); updateTireFields(); handleInput(); });
   newCarCheck.addEventListener('change', function(){ updateNewCarFields(); applyManufacturerDefaults(); });
   manufacturerSelect.addEventListener('change', applyManufacturerDefaults);
   variantSelect.addEventListener('change', applyManufacturerDefaults);
@@ -682,6 +700,7 @@
   renderTabs();
   updateEvFields();
   updateNewCarFields();
+  updateTireFields();
   if (manufacturerSelect.value) applyManufacturerDefaults();
   render();
 })();
