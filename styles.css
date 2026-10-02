@@ -76,6 +76,8 @@ body {
 img { max-width: 100%; height: auto; display: block; }
 a { color: var(--green-700); text-decoration: none; transition: color var(--transition-fast); }
 .content-link{color:#176246;font-weight:700;text-decoration:underline;text-decoration-color:rgba(23,98,70,.4)}
+.versicherung-callout{display:flex;gap:1rem;align-items:flex-start;background:#eef6f2;border:1px solid #cfe5da;border-left:5px solid #176246;border-radius:16px;padding:1.3rem 1.5rem;margin:1.5rem 0}
+.callout-mark{flex:0 0 auto;width:32px;height:32px;border-radius:50%;background:#176246;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
 .content-link:hover{text-decoration-color:#176246}
 .source-link{color:#80640f;text-decoration:underline}
 .gl-link{color:#176246;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:2px;cursor:help}
