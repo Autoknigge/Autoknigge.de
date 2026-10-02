@@ -161,10 +161,10 @@ h1:has(+ .knigge-quote-card)::after {
 }
 .ak-tile-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
 .ak-tile-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1rem}
-.ak-tile{background:#f7f8f7;border:1px solid rgba(10,28,22,.08);border-radius:16px;padding:1.2rem 1.3rem;display:flex;flex-wrap:wrap;align-items:center;column-gap:.55rem}
-.ak-tile .icon{font-size:1.4rem;margin-bottom:0}
-.ak-tile h3{margin:0;font-size:1rem}
-.ak-tile p{margin:.35rem 0 0;font-size:.86rem;line-height:1.55;color:var(--text-muted);flex-basis:100%}
+.ak-tile{background:#f7f8f7;border:1px solid rgba(10,28,22,.08);border-radius:16px;padding:1.2rem 1.3rem;display:grid;grid-template-columns:auto 1fr;grid-template-areas:"icon title" ". desc";column-gap:.55rem;row-gap:.2rem}
+.ak-tile .icon{grid-area:icon;align-self:center;font-size:1.4rem}
+.ak-tile h3{grid-area:title;align-self:center;margin:0;font-size:1rem}
+.ak-tile p{grid-area:desc;margin:0;font-size:.86rem;line-height:1.55;color:var(--text-muted)}
 .ak-tile:not(.ak-tile-warn):nth-of-type(6n+1){background:#e9f4ef;border-color:#c9e6d8}
 .ak-tile:not(.ak-tile-warn):nth-of-type(6n+2){background:#eef1fb;border-color:#d3d9f4}
 .ak-tile:not(.ak-tile-warn):nth-of-type(6n+3){background:#fdf3e7;border-color:#f3dfc0}
@@ -2478,7 +2478,10 @@ h1:has(+ .knigge-quote-card) {
 .related-articles{margin:2.5rem 0}
 .related-articles h2{margin-bottom:.3rem}
 .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem}
-.related-card{display:flex;flex-wrap:wrap;align-items:center;column-gap:.55rem;text-decoration:none;color:inherit;border-radius:14px;padding:1.1rem 1.2rem;border:1px solid rgba(10,28,22,.08);background:#fff;box-shadow:0 2px 8px rgba(15,36,29,.05);transition:transform .15s ease,box-shadow .15s ease}
+.related-card{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"icon title" ". desc";column-gap:.55rem;row-gap:.2rem;text-decoration:none;color:inherit;border-radius:14px;padding:1.1rem 1.2rem;border:1px solid rgba(10,28,22,.08);background:#fff;box-shadow:0 2px 8px rgba(15,36,29,.05);transition:transform .15s ease,box-shadow .15s ease}
+.related-card .icon{grid-area:icon;align-self:center;font-size:1.4rem}
+.related-card h3{grid-area:title;align-self:center;margin:0;font-size:.95rem;color:var(--green-800,#1a4a38)}
+.related-card p{grid-area:desc;margin:0;font-size:.83rem;color:var(--text-muted);line-height:1.5}
 .related-card:hover{box-shadow:0 6px 16px rgba(15,36,29,.09);transform:translateY(-1px)}
 .related-card:nth-of-type(6n+1){background:#e9f4ef;border-color:#c9e6d8}
 .related-card:nth-of-type(6n+2){background:#eef1fb;border-color:#d3d9f4}
@@ -2486,9 +2489,6 @@ h1:has(+ .knigge-quote-card) {
 .related-card:nth-of-type(6n+4){background:#fdeef0;border-color:#f3cdd3}
 .related-card:nth-of-type(6n+5){background:#f1f7e8;border-color:#dbebc4}
 .related-card:nth-of-type(6n+6){background:#eef6f7;border-color:#c9e6ea}
-.related-card .icon{font-size:1.4rem;margin-bottom:0;display:block}
-.related-card h3{margin:0;font-size:.95rem;color:var(--green-800,#1a4a38)}
-.related-card p{margin:.3rem 0 0;font-size:.83rem;color:var(--text-muted);line-height:1.5;flex-basis:100%}
 @media(max-width:760px){.related-grid{grid-template-columns:1fr}}
 
 /* ===== KATEGORIE-AUFMACHER – Knigge-Bildwelt ===== */
