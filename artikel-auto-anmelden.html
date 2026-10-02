@@ -34,10 +34,7 @@
   border-radius:18px;
   padding:1.25rem 1.25rem 1.3rem;
   border:1px solid rgba(10,28,22,.08);
-  box-shadow:var(--shadow-xs); display:grid; grid-template-columns:auto 1fr; grid-template-areas:"icon title" ". desc"; column-gap:.6rem; row-gap:.2rem; }
-.zulassung-tile .tile-icon{grid-area:icon;align-self:center}
-.zulassung-tile h3{grid-area:title;align-self:center}
-.zulassung-tile p{grid-area:desc}
+  box-shadow:var(--shadow-xs); display:flex; flex-wrap:wrap; align-items:center; column-gap:.6rem; }
 .zulassung-tile:nth-child(1){background:#eef6ff;border-color:#cbdff5}
 .zulassung-tile:nth-child(2){background:#edf8f3;border-color:#c8e5d7}
 .zulassung-tile:nth-child(3){background:#fff8ea;border-color:#f0d9a5}
