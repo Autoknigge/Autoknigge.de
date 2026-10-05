@@ -20,7 +20,7 @@
 .ks-table tr:last-child td{border-bottom:0}
 .ks-table td.num{font-weight:700;color:#0f241d;white-space:nowrap}
 .ks-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1.1rem 0 1.6rem}
-.ks-tile{border-radius:16px;padding:1.2rem 1.3rem;border:1px solid rgba(10,28,22,.08);background:#f7f8f7;display:grid;grid-template-columns:40px 1fr;grid-template-areas:"icon title" ". desc";row-gap:.2rem;align-items:center;column-gap:.6rem}.ks-tile .icon{grid-area:icon;align-self:center}.ks-tile h3{grid-area:title;align-self:center;margin:0}.ks-tile p{grid-column:1/-1;margin:0}
+.ks-tile{border-radius:16px;padding:1.2rem 1.3rem;border:1px solid rgba(10,28,22,.08);background:#f7f8f7;display:grid;grid-template-columns:40px 1fr;grid-template-areas:"icon title" ". desc";row-gap:.2rem;align-items:center;column-gap:.6rem}.ks-tile>*:not(.icon):not(h3){grid-column:1/-1}.ks-tile .icon{grid-area:icon;align-self:center}.ks-tile h3{grid-area:title;align-self:center;margin:0}.ks-tile p{grid-column:1/-1;margin:0}
 .ks-tile .icon{display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:11px;font-size:1.2rem;margin-bottom:0;background:#e7f0ec}
 .ks-tile h3{margin:0;font-size:1.02rem}
 .ks-tile p{margin:.4rem 0 0;font-size:.9rem;line-height:1.58;color:var(--text-body,#425852);flex-basis:100%}

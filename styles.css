@@ -165,6 +165,7 @@ h1:has(+ .knigge-quote-card)::after {
 .ak-tile .icon{grid-area:icon;align-self:center;font-size:1.4rem}
 .ak-tile h3{grid-area:title;align-self:center;margin:0;font-size:1rem}
 .ak-tile p{grid-column:1/-1;margin:0;font-size:.86rem;line-height:1.55;color:var(--text-muted)}
+.ak-tile>*:not(.icon):not(h3){grid-column:1/-1}
 .ak-tile:not(.ak-tile-warn):nth-of-type(6n+1){background:#e9f4ef;border-color:#c9e6d8}
 .ak-tile:not(.ak-tile-warn):nth-of-type(6n+2){background:#eef1fb;border-color:#d3d9f4}
 .ak-tile:not(.ak-tile-warn):nth-of-type(6n+3){background:#fdf3e7;border-color:#f3dfc0}
@@ -2493,6 +2494,7 @@ h1:has(+ .knigge-quote-card) {
 .related-card .icon{grid-area:icon;align-self:center;font-size:1.4rem}
 .related-card h3{grid-area:title;align-self:center;margin:0;font-size:.95rem;color:var(--green-800,#1a4a38)}
 .related-card p{grid-column:1/-1;margin:0;font-size:.83rem;color:var(--text-muted);line-height:1.5}
+.related-card>*:not(.icon):not(h3){grid-column:1/-1}
 .related-card:hover{box-shadow:0 6px 16px rgba(15,36,29,.09);transform:translateY(-1px)}
 .related-card:nth-of-type(6n+1){background:#e9f4ef;border-color:#c9e6d8}
 .related-card:nth-of-type(6n+2){background:#eef1fb;border-color:#d3d9f4}
