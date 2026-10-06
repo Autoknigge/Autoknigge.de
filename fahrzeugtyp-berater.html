@@ -39,6 +39,14 @@
 .fb-btn:hover{background:#0f4c35}
 .fb-restart{background:none;border:1px solid var(--border-light,#dde5e1);color:var(--text-body,#425852);padding:.6rem 1.2rem;border-radius:999px;cursor:pointer;font-size:.88rem;margin-top:1rem}
 .fb-note{background:#eef6f2;border:1px solid #cfe5da;border-left:5px solid #176246;border-radius:16px;padding:1.1rem 1.3rem;margin:1.3rem 0;line-height:1.6;font-size:.92rem}
+.fb-why-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin:1.2rem 0 1.5rem}
+.fb-why-tile{border-radius:16px;padding:1.2rem 1.3rem;display:grid;grid-template-columns:40px 1fr;grid-template-areas:"icon title" ". desc";column-gap:.7rem;row-gap:.3rem;border:1px solid transparent}
+.fb-why-tile .tile-icon{grid-area:icon;align-self:center;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;font-size:1.25rem;background:rgba(255,255,255,.55)}
+.fb-why-tile h3{grid-area:title;align-self:center;margin:0;font-size:1.02rem}
+.fb-why-tile>*:not(.tile-icon):not(h3){grid-column:1/-1;margin:0;font-size:.92rem;line-height:1.6;color:var(--text-body,#425852)}
+.fb-why-tile:nth-of-type(6n+1){background:#e9f4ef;border-color:#c9e6d8}
+.fb-why-tile:nth-of-type(6n+2){background:#eef1fb;border-color:#d3d9f4}
+.fb-why-tile:nth-of-type(6n+3){background:#fdf3e7;border-color:#f3dfc0}
 </style>
 <body>
 <header class="site-header header-logo-large" id="top">
@@ -172,10 +180,10 @@
 
 <section>
 <h2>Warum diese Fragen?</h2>
-<div class="info-grid">
-<div class="info-item"><strong>🔋 Kurzstrecke spricht für Elektro</strong><br>Verbrennungsmotoren sind im Kaltstart und auf kurzen Strecken besonders ineffizient und verschleißanfällig – ein Elektromotor hat dieses Problem nicht und profitiert zusätzlich von günstigem Nachtstrom beim Laden zu Hause.</div>
-<div class="info-item"><strong>🏠 Lademöglichkeit entscheidet oft mehr als die Strecke</strong><br>Ohne eigene Lademöglichkeit zu Hause wird der Alltag mit einem E-Auto schnell umständlich – dann kann ein Hybrid oder Verbrenner praktikabler sein, selbst bei kurzen Strecken.</div>
-<div class="info-item"><strong>🛣️ Viel Autobahn relativiert den Verbrauchsvorteil</strong><br>E-Autos verbrauchen bei konstant hohem Tempo überproportional mehr Energie, und lange Ladestopps fallen bei Vielfahrern stärker ins Gewicht als bei Stadtnutzung.</div>
+<div class="fb-why-grid">
+<div class="fb-why-tile"><div class="tile-icon">🔋</div><h3>Kurzstrecke spricht für Elektro</h3><p>Verbrennungsmotoren sind im Kaltstart und auf kurzen Strecken besonders ineffizient und verschleißanfällig – ein Elektromotor hat dieses Problem nicht und profitiert zusätzlich von günstigem Nachtstrom beim Laden zu Hause.</p></div>
+<div class="fb-why-tile"><div class="tile-icon">🏠</div><h3>Lademöglichkeit entscheidet oft mehr als die Strecke</h3><p>Ohne eigene Lademöglichkeit zu Hause wird der Alltag mit einem E-Auto schnell umständlich – dann kann ein Hybrid oder Verbrenner praktikabler sein, selbst bei kurzen Strecken.</p></div>
+<div class="fb-why-tile"><div class="tile-icon">🛣️</div><h3>Viel Autobahn relativiert den Verbrauchsvorteil</h3><p>E-Autos verbrauchen bei konstant hohem Tempo überproportional mehr Energie, und lange Ladestopps fallen bei Vielfahrern stärker ins Gewicht als bei Stadtnutzung.</p></div>
 </div>
 </section>
 
