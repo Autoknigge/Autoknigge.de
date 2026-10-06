@@ -392,9 +392,20 @@
     <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>  <url>
+    <loc>https://autoknigge.de/artikel-anhaenger-anhaengerkupplung.html</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://autoknigge.de/artikel-umweltplakette-ausland-maut.html</loc>
+    <loc>https://autoknigge.de/artikel-umweltplakette.html</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://autoknigge.de/artikel-maut-vignetten-ausland.html</loc>
     <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
