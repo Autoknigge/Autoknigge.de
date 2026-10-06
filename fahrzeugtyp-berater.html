@@ -127,6 +127,32 @@
 </div>
 </div>
 
+<div class="fb-field">
+<label class="fb-q">7. Hast du eine eigene Solaranlage zu Hause?</label>
+<div class="fb-options">
+<label class="fb-option"><input name="solar" type="radio" value="ja"><span>Ja, vorhanden</span></label>
+<label class="fb-option"><input name="solar" type="radio" value="geplant"><span>Geplant, noch nicht installiert</span></label>
+<label class="fb-option"><input name="solar" type="radio" value="nein"><span>Nein</span></label>
+</div>
+</div>
+
+<div class="fb-field">
+<label class="fb-q">8. Wie viele Personen fährst du regelmäßig mit, Kinder eingeschlossen?</label>
+<div class="fb-options">
+<label class="fb-option"><input name="personen" type="radio" value="1-2"><span>1–2 Personen</span></label>
+<label class="fb-option"><input name="personen" type="radio" value="3-4"><span>3–4 Personen</span></label>
+<label class="fb-option"><input name="personen" type="radio" value="5plus"><span>5 oder mehr Personen</span></label>
+</div>
+</div>
+
+<div class="fb-field">
+<label class="fb-q">9. Transportierst du regelmäßig sperrige Sportausrüstung (Fahrräder, Ski, Hund, Kinderwagen)?</label>
+<div class="fb-options">
+<label class="fb-option"><input name="sport" type="radio" value="ja"><span>Ja, regelmäßig</span></label>
+<label class="fb-option"><input name="sport" type="radio" value="nein"><span>Nein, selten oder nie</span></label>
+</div>
+</div>
+
 <button class="fb-btn" id="fbSubmit" type="submit">🧭 Empfehlung anzeigen</button>
 </form>
 
@@ -135,6 +161,10 @@
 <p id="fbResultIntro"></p>
 <ul class="fb-result-reasons" id="fbResultReasons"></ul>
 <div class="fb-scorebar" id="fbScorebar"></div>
+<div id="fbSizeBox" style="margin-top:1.3rem;padding-top:1.1rem;border-top:1px solid rgba(10,28,22,.12)">
+<strong id="fbSizeTitle"></strong>
+<p id="fbSizeText" style="margin:.4rem 0 0"></p>
+</div>
 <button class="fb-restart" id="fbRestart" type="button">↺ Noch einmal ausfüllen</button>
 </div>
 
@@ -178,7 +208,8 @@
     e.preventDefault();
     var data = new FormData(form);
     var km = data.get('km'), strecke = data.get('strecke'), laden = data.get('laden'),
-        budget = data.get('budget'), umgebung = data.get('umgebung'), anhaenger = data.get('anhaenger');
+        budget = data.get('budget'), umgebung = data.get('umgebung'), anhaenger = data.get('anhaenger'),
+        solar = data.get('solar'), personen = data.get('personen'), sport = data.get('sport');
 
     var missing = [];
     if(!km) missing.push('Frage 1');
@@ -187,6 +218,9 @@
     if(!budget) missing.push('Frage 4');
     if(!umgebung) missing.push('Frage 5');
     if(!anhaenger) missing.push('Frage 6');
+    if(!solar) missing.push('Frage 7');
+    if(!personen) missing.push('Frage 8');
+    if(!sport) missing.push('Frage 9');
     if(missing.length){
       alert('Bitte noch beantworten: ' + missing.join(', '));
       return;
@@ -225,6 +259,10 @@
     // Anhaenger
     if(anhaenger === 'ja'){ score.verbrenner += 2; score.hybrid += 1; reasons.push('Beim regelmäßigen Ziehen von Anhängern sinkt die Reichweite eines E-Autos spürbar stärker als bei einem Verbrenner oder Hybrid.'); }
 
+    // Solaranlage
+    if(solar === 'ja'){ score.elektro += 3; reasons.push('Mit eigener Solaranlage lädst du einen Teil des Stroms praktisch zum Nulltarif – das macht ein Elektroauto wirtschaftlich besonders attraktiv.'); }
+    if(solar === 'geplant'){ score.elektro += 1; reasons.push('Eine geplante Solaranlage würde sich gut mit einem Elektroauto ergänzen, sobald sie installiert ist.'); }
+
     var max = Math.max(score.elektro, score.hybrid, score.verbrenner);
     var winner = 'verbrenner';
     if(score.elektro === max) winner = 'elektro';
@@ -236,13 +274,13 @@
       verbrenner: '⛽ Unsere Empfehlung: Verbrenner'
     };
     var intros = {
-      elektro: 'Nach deinen Angaben passt ein Elektroauto gut zu deinem Alltag – vor allem wegen der Kombination aus Fahrstrecke und Lademöglichkeit.',
+      elektro: 'Nach deinen Angaben passt ein Elektroauto gut zu deinem Alltag – vor allem wegen der Kombination aus Fahrstrecke und Lademöglichkeit. Ob und in welcher Höhe aktuell noch Förderung möglich ist, zeigt der Artikel zur <a href="artikel-e-auto-kaufpraemie.html" class="content-link">E-Auto-Kaufprämie</a>.',
       hybrid: 'Ein Hybrid dürfte für dich ein guter Kompromiss sein: niedrigerer Verbrauch im Alltag, aber ohne Abhängigkeit von Ladeinfrastruktur.',
       verbrenner: 'Nach deinen Angaben spricht aktuell einiges für einen klassischen Verbrenner – meist wegen Fahrleistung, fehlender Lademöglichkeit oder Einsatzzweck.'
     };
 
     title.textContent = titles[winner];
-    intro.textContent = intros[winner];
+    intro.innerHTML = intros[winner];
     reasonsEl.innerHTML = '';
     reasons.forEach(function(r){
       var li = document.createElement('li');
@@ -264,6 +302,26 @@
       item.innerHTML = '<div class="fb-scorebar-track"><div class="fb-scorebar-fill" style="width:' + pct + '%;background:' + b.color + '"></div></div>' + b.label + ' ' + pct + '%';
       scorebar.appendChild(item);
     });
+
+    // Fahrzeuggröße unabhängig vom Antrieb
+    var sizeScore = 0;
+    if(personen === '3-4') sizeScore += 1;
+    if(personen === '5plus') sizeScore += 2;
+    if(sport === 'ja') sizeScore += 1;
+    if(anhaenger === 'ja') sizeScore += 1;
+
+    var sizeTitle = document.getElementById('fbSizeTitle');
+    var sizeText = document.getElementById('fbSizeText');
+    if(sizeScore >= 3){
+      sizeTitle.textContent = '🚐 Fahrzeuggröße: Van oder großer Kombi/SUV';
+      sizeText.textContent = 'Bei 5 oder mehr Personen plus regelmäßigem Sportgepäck oder Anhängerbetrieb wird es in einem normalen Kombi eng. Ein Van oder großes SUV mit variabler Sitzkonfiguration passt besser.';
+    } else if(sizeScore >= 1){
+      sizeTitle.textContent = '🚙 Fahrzeuggröße: Kombi oder kompaktes SUV';
+      sizeText.textContent = 'Mit 3–4 Personen und etwas Sport- oder Hobbygepäck bietet ein Kombi oder ein kompaktes SUV genug Platz, ohne unnötig groß zu sein.';
+    } else {
+      sizeTitle.textContent = '🚗 Fahrzeuggröße: Klein- oder Kompaktwagen reicht';
+      sizeText.textContent = 'Bei 1–2 Personen und ohne regelmäßiges Sperrgepäck reicht ein kleineres Fahrzeug meist völlig aus – günstiger im Kauf und im Unterhalt.';
+    }
 
     result.className = 'fb-result show r-' + winner;
     result.scrollIntoView({behavior:'smooth', block:'start'});
