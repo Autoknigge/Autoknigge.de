@@ -2788,3 +2788,21 @@ a.gl-link:hover {
 .aff-item p { margin: 0; font-size: 0.9rem; line-height: 1.55; flex: 1; }
 .aff-item .partner-buttons { margin-top: 0.3rem; }
 .partner-buttons--center { justify-content: center; }
+
+/* ===== ERGÄNZUNGS-KACHELN (ergz-) – zusätzliche Erklärungen weiter unten auf der Seite ===== */
+.ergz-sec{margin:2.5rem 0}
+.ergz-intro{margin:.4rem 0 1rem;color:var(--text-muted,#5b6f68)}
+.ergz-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:1rem}
+.ergz-tile{display:grid;grid-template-columns:40px 1fr;column-gap:.8rem;row-gap:.3rem;align-items:center;border-radius:16px;padding:1.1rem 1.2rem;border:1px solid transparent}
+.ergz-tile>.ergz-ic{grid-column:1;width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.ergz-tile>h3{grid-column:2;margin:0;font-size:1.05rem}
+.ergz-tile>*:not(.ergz-ic):not(h3){grid-column:1/-1;margin:.2rem 0 0;font-size:.92rem;line-height:1.6}
+.ergz-grid>.ergz-tile:nth-of-type(6n+1){background:#e9f4ef;border-color:#c9e6d8}
+.ergz-grid>.ergz-tile:nth-of-type(6n+2){background:#eef1fb;border-color:#d3d9f4}
+.ergz-grid>.ergz-tile:nth-of-type(6n+3){background:#fdf3e7;border-color:#f3dfc0}
+.ergz-grid>.ergz-tile:nth-of-type(6n+4){background:#f6eef8;border-color:#e3cdec}
+.ergz-grid>.ergz-tile:nth-of-type(6n+5){background:#f1f7e8;border-color:#dbebc4}
+.ergz-grid>.ergz-tile:nth-of-type(6n+6){background:#eef6f7;border-color:#c9e6ea}
+.ergz-grid>.ergz-tile.ergz-warn:nth-of-type(odd){background:#fdeef0;border-color:#f3cdd3}
+.ergz-grid>.ergz-tile.ergz-warn:nth-of-type(even){background:#fef6e3;border-color:#f6e4ae}
+.ergz-src{margin-top:.8rem;font-size:.82rem;color:var(--text-muted,#5b6f68)}
