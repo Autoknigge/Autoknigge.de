@@ -1,13 +1,11 @@
 // Simple Service Worker for Autoknigge
 // Provides offline caching for better performance
 
-const CACHE_NAME = 'autoknigge-v3';
+const CACHE_NAME = 'autoknigge-v4';
 const STATIC_CACHE_URLS = [
   '/',
   '/styles.css',
   '/script.js',
-  '/cookie-consent.js',
-  '/cookie.js',
   '/logo.png',
   '/manifest.json',
   '/404.html',
@@ -66,33 +64,22 @@ self.addEventListener('fetch', function (event) {
     return;
   }
 
+  // Netzwerk zuerst: Besucher sehen immer die neueste Version.
+  // Der Zwischenspeicher dient nur als Offline-Fallback.
   event.respondWith(
-    caches.match(event.request).then(function (cachedResponse) {
-      if (cachedResponse) {
-        // Return cached response, but fetch in background to update cache
-        fetch(event.request).then(function (networkResponse) {
-          if (networkResponse && networkResponse.status === 200) {
-            caches.open(CACHE_NAME).then(function (cache) {
-              cache.put(event.request, networkResponse.clone());
-            });
-          }
-        }).catch(function () {
-          // Network fetch failed - just use cache
+    fetch(event.request).then(function (networkResponse) {
+      if (networkResponse && networkResponse.status === 200) {
+        var copy = networkResponse.clone();
+        caches.open(CACHE_NAME).then(function (cache) {
+          cache.put(event.request, copy);
         });
-        return cachedResponse;
       }
-
-      // Not in cache - fetch from network
-      return fetch(event.request).then(function (networkResponse) {
-        if (networkResponse && networkResponse.status === 200) {
-          caches.open(CACHE_NAME).then(function (cache) {
-            cache.put(event.request, networkResponse.clone());
-          });
-        }
-        return networkResponse;
-      }).catch(function () {
-        // If fetch fails and it's an HTML request, return the 404 page
-        if (event.request.headers.get('accept').includes('text/html')) {
+      return networkResponse;
+    }).catch(function () {
+      return caches.match(event.request).then(function (cachedResponse) {
+        if (cachedResponse) { return cachedResponse; }
+        var accept = event.request.headers.get('accept') || '';
+        if (accept.includes('text/html')) {
           return caches.match('/404.html');
         }
         return new Response('Offline - Please check your connection', {
