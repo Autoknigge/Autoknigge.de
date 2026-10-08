@@ -2811,3 +2811,14 @@ a.gl-link:hover {
 p.intro-tile{background:#eef6f0;border:1px solid rgba(0,0,0,.07);border-left:5px solid #6aa87c;border-radius:14px;padding:.85rem 1.1rem;margin:.8rem 0 1.1rem;line-height:1.55}
 p.intro-tile:nth-of-type(3n+2){background:#eef0fb;border-left-color:#7b8bd6}
 p.intro-tile:nth-of-type(3n+3){background:#fdf3e6;border-left-color:#e0a050}
+
+/* ===== Partner-Karten: Symbol und Überschrift in einer Zeile, Text bündig links ===== */
+.partner-card{display:grid!important;grid-template-columns:40px minmax(0,1fr);grid-template-areas:"icon title" "desc desc" "cta cta";column-gap:.7rem;row-gap:.45rem;align-items:center!important}
+.partner-card .partner-card-icon{grid-area:icon;display:inline-flex!important;align-items:center;justify-content:center;width:40px;height:40px;margin:0!important;border-radius:11px;font-size:1.25rem!important;background:rgba(255,255,255,.6)}
+.partner-card h4{grid-area:title;margin:0!important}
+.partner-card p{grid-area:desc;margin:0!important;align-self:start}
+.partner-card .partner-card-cta{grid-area:cta;justify-self:start;margin-top:.2rem}
+.newcar-highlight{display:block}
+.newcar-highlight h2{margin:0 0 .5rem}
+.newcar-highlight p.intro-tile{margin:.5rem 0 0}
+.newcar-highlight p.intro-tile a{font-weight:700;color:var(--green-700,#176246);text-decoration:underline;text-underline-offset:3px}
