@@ -1,1 +1,0 @@
-/* Legacy cookie script replaced by DSGVO-compliant cookie-consent.js */
