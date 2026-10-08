@@ -2806,3 +2806,8 @@ a.gl-link:hover {
 .ergz-grid>.ergz-tile.ergz-warn:nth-of-type(odd){background:#fdeef0;border-color:#f3cdd3}
 .ergz-grid>.ergz-tile.ergz-warn:nth-of-type(even){background:#fef6e3;border-color:#f6e4ae}
 .ergz-src{margin-top:.8rem;font-size:.82rem;color:var(--text-muted,#5b6f68)}
+
+/* ===== Einleitungs-Kachel (intro-tile) ===== */
+p.intro-tile{background:#eef6f0;border:1px solid rgba(0,0,0,.07);border-left:5px solid #6aa87c;border-radius:14px;padding:.85rem 1.1rem;margin:.8rem 0 1.1rem;line-height:1.55}
+p.intro-tile:nth-of-type(3n+2){background:#eef0fb;border-left-color:#7b8bd6}
+p.intro-tile:nth-of-type(3n+3){background:#fdf3e6;border-left-color:#e0a050}
