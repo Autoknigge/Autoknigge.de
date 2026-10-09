@@ -2949,3 +2949,10 @@ p.intro-tile:nth-of-type(3n+3){background:#fdf3e6;border-left-color:#e0a050}
 .related-articles>h2{display:flex;align-items:center;gap:.6rem;margin:0 0 1rem;padding:.95rem 1.2rem;border-radius:16px;border:1px solid #e6d9a8;border-left:6px solid #d4af37;background:linear-gradient(135deg,#fdf6dc 0%,#eef6ec 100%);color:#0f241d;font-size:1.2rem;line-height:1.3}
 .related-articles>h2::before{content:"🔗";font-size:1.3rem}
 .related-grid{margin-top:0}
+
+/* ===== Hinweis-Band: ab hier klickbare Artikel-Karten ===== */
+.link-hint{display:flex;align-items:center;gap:.8rem;margin:2rem 0 1rem;padding:.9rem 1.1rem;border-radius:16px;border:1px solid #c9e6d8;border-left:6px solid #176246;background:linear-gradient(135deg,#e9f4ef 0%,#eef1fb 100%)}
+.link-hint-ic{font-size:1.5rem;flex:0 0 auto}
+.link-hint strong{display:block;color:#0f241d}
+.link-hint span:not(.link-hint-ic){display:block;color:#53615b;font-size:.92rem;line-height:1.45;margin-top:.15rem}
+.link-hint span:not(.link-hint-ic){color:#0f241d;font-weight:600;font-size:1rem;margin:0}
