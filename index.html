@@ -131,16 +131,17 @@
         <p class="section-lead">Neue und überarbeitete Inhalte – damit wichtige Informationen nicht nur verständlich, sondern auch aktuell bleiben.</p>
       </div>
       <div class="search-results" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));display:grid;">
-        <a class="search-result" href="artikel-gebrauchtwagen-check.html"><span class="search-category">Kauf</span><h2>Gebrauchtwagen-Check</h2><p>Servicehistorie, Garantiebedingungen, E-Auto-Batterie und praktische Prüfpunkte vor dem Kauf.</p></a>
-        <a class="search-result" href="artikel-bremsen-bremsbelaege.html"><span class="search-category">Wartung</span><h2>Bremsen &amp; Bremsbeläge</h2><p>Warnzeichen, Verschleiß und wichtige Hinweise für sichere Bremsanlagen.</p></a>
-        <a class="search-result" href="artikel-starterbatterie.html"><span class="search-category">Wartung</span><h2>Starterbatterie</h2><p>AGM, EFB, Start-Stopp und typische Fehler bei der Auswahl und beim Wechsel.</p></a>
-        <a class="search-result" href="artikel-auto-waschen-knigge.html"><span class="search-category">Pflege</span><h2>Autowäsche</h2><p>Lack schonen, richtig waschen und typische Fehler bei Waschstraße und Handwäsche vermeiden.</p></a>
-        <a class="search-result" href="artikel-kfz-versicherung-wechseln.html"><span class="search-category">Versicherung</span><h2>Kfz-Versicherung wechseln</h2><p>Fristen, Tarifvergleich und wichtige Punkte für einen sauberen Versicherungswechsel.</p></a>
-        <a class="search-result" href="artikel-lichthupe-draengler.html"><span class="search-category">Recht &amp; Etikette</span><h2>Lichthupe &amp; Drängler</h2><p>Was erlaubt ist, wo die Grenzen liegen und wie man in kritischen Situationen gelassen reagiert.</p></a>
+        <a class="search-result" href="artikel-gebrauchtwagen-check.html"><span class="search-category">Kauf</span><h2>🔎 Gebrauchtwagen-Check</h2><p>Servicehistorie, Garantiebedingungen, E-Auto-Batterie und praktische Prüfpunkte vor dem Kauf.</p></a>
+        <a class="search-result" href="artikel-bremsen-bremsbelaege.html"><span class="search-category">Wartung</span><h2>🛑 Bremsen &amp; Bremsbeläge</h2><p>Warnzeichen, Verschleiß und wichtige Hinweise für sichere Bremsanlagen.</p></a>
+        <a class="search-result" href="artikel-starterbatterie.html"><span class="search-category">Wartung</span><h2>🔋 Starterbatterie</h2><p>AGM, EFB, Start-Stopp und typische Fehler bei der Auswahl und beim Wechsel.</p></a>
+        <a class="search-result" href="artikel-auto-waschen-knigge.html"><span class="search-category">Pflege</span><h2>🧼 Autowäsche</h2><p>Lack schonen, richtig waschen und typische Fehler bei Waschstraße und Handwäsche vermeiden.</p></a>
+        <a class="search-result" href="artikel-kfz-versicherung-wechseln.html"><span class="search-category">Versicherung</span><h2>🛡️ Kfz-Versicherung wechseln</h2><p>Fristen, Tarifvergleich und wichtige Punkte für einen sauberen Versicherungswechsel.</p></a>
+        <a class="search-result" href="artikel-lichthupe-draengler.html"><span class="search-category">Recht &amp; Etikette</span><h2>💡 Lichthupe &amp; Drängler</h2><p>Was erlaubt ist, wo die Grenzen liegen und wie man in kritischen Situationen gelassen reagiert.</p></a>
       </div>
     </section>
 
     <section class="topic-section" style="margin-top:2rem;">
+      <div class="grid">
       <a class="card" href="mein-auto-kalender.html" style="background:linear-gradient(145deg,var(--green-50),#fff);">
         <div class="card-meta"><span class="step">Mein Auto</span><span class="card-readtime">Kostenlos</span></div>
         <h3>📅 Mein Auto-Kalender</h3>
@@ -149,7 +150,7 @@
       <a class="card" href="auto-wissen-quiz.html" style="background:linear-gradient(145deg,#fffaf0,#fff);">
         <div class="card-meta"><span class="step">Quiz</span><span class="card-readtime">Kostenlos</span></div>
         <h3>🧠 Auto-Wissen-Quiz</h3>
-        <p>40 Fragen zu Geschichte, Technik, Fahrphysik und Motorsport – teste, wie gut du dich wirklich auskennst.</p>
+        <p><span data-quiz-count>137</span> Fragen zu Geschichte, Technik, Fahrphysik und Motorsport – teste, wie gut du dich wirklich auskennst.</p>
       </a>
       <a class="card" href="bussgeldrechner.html" style="background:linear-gradient(145deg,#fdf2f2,#fff);">
         <div class="card-meta"><span class="step">Rechner</span><span class="card-readtime">Kostenlos</span></div>
@@ -162,10 +163,11 @@
         <p>Rate, Laufzeit, Kaufpreis und Restwert eingeben – die Gesamtkosten beider Wege im Vergleich.</p>
       </a>
       <a class="card" href="kfz-glossar.html" style="background:linear-gradient(145deg,#f4f8f6,#fff);">
-        <div class="card-meta"><span class="step">Nachschlagen</span><span class="card-readtime">98 Begriffe</span></div>
+        <div class="card-meta"><span class="step">Nachschlagen</span><span class="card-readtime"><span data-glossary-count>130</span> Begriffe</span></div>
         <h3>📖 Kfz-Glossar</h3>
         <p>Fachbegriffe von ABS bis Zweitwagenregelung einfach erklärt – mit Suche und Filter.</p>
       </a>
+    </div>
     </section>
 
     <!-- KATEGORIE 1: VERSICHERUNG -->
@@ -504,6 +506,7 @@
 </footer>
 
 <script src="script.js"></script>
+<script src="quiz-count.js"></script>
 
 
 <script>
