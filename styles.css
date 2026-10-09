@@ -2977,3 +2977,7 @@ p.intro-tile:nth-of-type(3n+3){background:#fdf3e6;border-left-color:#e0a050}
 .wash-rule>:not(.wash-rule-icon):not(h3){grid-column:1 / -1;margin:.4rem 0 0!important}
 :is(.tk-info-card,.licht-info-card){gap:.7rem!important;padding:.9rem 1rem!important}
 :is(.tk-info-card,.licht-info-card) .tile-icon{flex:0 0 32px}
+
+/* Untermenü nach Klick einklappen; Sprungziele nicht unter dem Kopfbereich verstecken */
+.main-nav ul li.nav-dd.dd-closed > ul.nav-dd-list { display: none !important; }
+section[id], div[id].anchor-target, h2[id], h3[id] { scroll-margin-top: 96px; }

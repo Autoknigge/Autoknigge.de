@@ -188,3 +188,22 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+// Untermenü "Nützliche Tools": nach Klick auf einen Eintrag sofort einklappen (auch bei Sprung auf derselben Seite)
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.nav-dd').forEach(function (li) {
+    var btn = li.querySelector('.dd-caret');
+    li.querySelectorAll('.nav-dd-list a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        li.classList.remove('is-open');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+        li.classList.add('dd-closed');
+        try { a.blur(); } catch (e) {}
+      });
+    });
+    var reopen = function () { li.classList.remove('dd-closed'); };
+    li.addEventListener('mouseleave', reopen);
+    li.addEventListener('touchstart', function (e) { if (e.target.closest('.dd-caret')) reopen(); }, { passive: true });
+    if (btn) btn.addEventListener('click', reopen);
+  });
+});
