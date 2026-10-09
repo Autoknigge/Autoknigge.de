@@ -156,7 +156,8 @@ out=document.getElementById('wvErgebnis'),r=R[a][y];
 if(!p){out.textContent='Bitte einen Listenpreis eingeben.';return;}
 if(!r){out.textContent='Für Elektroautos nach 10 Jahren gibt es noch keine belastbare Schätzung.';return;}
 var lo=p*r[0]/100,hi=p*r[1]/100,vl1=paid-hi,vl2=paid-lo,yrs=parseInt(y,10);
-out.innerHTML='Restwert: <strong>'+fmt(lo)+' bis '+fmt(hi)+'</strong> ('+r[0]+' bis '+r[1]+' % vom Listenpreis)<br>Wertverlust gegenüber dem gezahlten Preis: etwa <strong>'+fmt(Math.max(vl1,0))+' bis '+fmt(Math.max(vl2,0))+'</strong>, das sind rund '+fmt(Math.max(vl1,0)/yrs)+' bis '+fmt(Math.max(vl2,0)/yrs)+' pro Jahr.<br><small>Orientierungswert, keine individuelle Fahrzeugbewertung.</small>';
+var vlL=Math.max(p-hi,0),vlL2=Math.max(p-lo,0),rab=Math.max(p-paid,0);
+out.innerHTML='Restwert: <strong>'+fmt(lo)+' bis '+fmt(hi)+'</strong> ('+r[0]+' bis '+r[1]+' % vom Listenpreis)<br>Wertverlust ab Listenpreis: <strong>'+fmt(vlL)+' bis '+fmt(vlL2)+'</strong>'+(rab>0?'<br>Davon schon durch deinen Rabatt ('+fmt(rab)+') abgedeckt<br>Dein tatsächlicher Wertverlust: <strong>'+fmt(Math.max(vl1,0))+' bis '+fmt(Math.max(vl2,0))+'</strong>, das sind rund '+fmt(Math.max(vl1,0)/yrs)+' bis '+fmt(Math.max(vl2,0)/yrs)+' pro Jahr':', das sind rund '+fmt(vlL/yrs)+' bis '+fmt(vlL2/yrs)+' pro Jahr')+'<br><small>Orientierungswert, keine individuelle Fahrzeugbewertung.</small>';
 }
 ['wvPreis','wvBezahlt','wvAntrieb','wvAlter'].forEach(function(i){document.getElementById(i).addEventListener('input',run);document.getElementById(i).addEventListener('change',run);});
 run();
