@@ -1,0 +1,24 @@
+name: Suchindex aktualisieren
+on:
+  push:
+    branches: [main, master]
+    paths-ignore: ['search-index.js']
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python tools/build-search-index.py .
+      - name: Änderung committen
+        run: |
+          if ! git diff --quiet search-index.js; then
+            git config user.name "autoknigge-bot"
+            git config user.email "actions@users.noreply.github.com"
+            git add search-index.js
+            git commit -m "Suchindex automatisch aktualisiert"
+            git push
+          fi
