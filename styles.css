@@ -2956,3 +2956,24 @@ p.intro-tile:nth-of-type(3n+3){background:#fdf3e6;border-left-color:#e0a050}
 .link-hint strong{display:block;color:#0f241d}
 .link-hint span:not(.link-hint-ic){display:block;color:#53615b;font-size:.92rem;line-height:1.45;margin-top:.15rem}
 .link-hint span:not(.link-hint-ic){color:#0f241d;font-weight:600;font-size:1rem;margin:0}
+
+/* ===== PLATZSPAREND / LINKSBÜNDIG: Text unter Symbol+Überschrift nutzt die volle Kachelbreite (alle Seiten) ===== */
+:is(.up-tile,.ah-tile,.tire-tile,.tk-tile,.fb-why-tile,.ergz-tile)>:not(.tile-icon):not(.ergz-ic):not(h3){grid-column:1 / -1!important;margin-left:0!important}
+:is(.up-tile,.ah-tile,.tire-tile,.tk-tile,.fb-why-tile,.ergz-tile)>:is(.tile-icon,.ergz-ic){grid-column:1!important;grid-row:1!important}
+:is(.up-tile,.ah-tile,.tire-tile,.tk-tile,.fb-why-tile,.ergz-tile)>h3{grid-column:2!important;grid-row:1!important;align-self:center;margin:0!important}
+.zulassung-step{grid-template-columns:40px minmax(0,1fr)!important;align-items:center}
+.zulassung-step>div:not(.zulassung-step-number){display:contents}
+.zulassung-step-number{grid-column:1;grid-row:1}
+.zulassung-step h3{grid-column:2;grid-row:1;margin:0!important}
+.zulassung-step>div:not(.zulassung-step-number)>:not(h3){grid-column:1 / -1;margin-top:.3rem!important}
+.versicherung-callout{display:grid!important;grid-template-columns:38px minmax(0,1fr);column-gap:.7rem;align-items:center}
+.versicherung-callout>div:not(.callout-mark){display:contents}
+.versicherung-callout .callout-mark{grid-column:1;grid-row:1}
+.versicherung-callout h2{grid-column:2;grid-row:1;margin:0!important}
+.versicherung-callout>div:not(.callout-mark)>:not(h2){grid-column:1 / -1;margin-top:.5rem!important}
+.wash-rule{display:grid!important;grid-template-columns:44px minmax(0,1fr);column-gap:.6rem;align-items:center;padding-left:1rem!important;position:relative}
+.wash-rule .wash-rule-icon{position:static!important;grid-column:1;grid-row:1;margin:0!important}
+.wash-rule h3{grid-column:2;grid-row:1;margin:0!important}
+.wash-rule>:not(.wash-rule-icon):not(h3){grid-column:1 / -1;margin:.4rem 0 0!important}
+:is(.tk-info-card,.licht-info-card){gap:.7rem!important;padding:.9rem 1rem!important}
+:is(.tk-info-card,.licht-info-card) .tile-icon{flex:0 0 32px}
