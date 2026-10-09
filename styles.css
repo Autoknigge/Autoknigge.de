@@ -2932,3 +2932,14 @@ p.intro-tile:nth-of-type(3n+3){background:#fdf3e6;border-left-color:#e0a050}
 @media(max-width:600px){.partner-buttons{width:100%}.partner-buttons .partner-button{width:100%}}
 .notfall-box-wrap>*,.knigge-checklist-box,.knigge-checklist,.knigge-checklist li,.knigge-checklist li>*{min-width:0;max-width:100%;box-sizing:border-box}
 .knigge-checklist-box,.knigge-checklist li{overflow-wrap:break-word}
+
+/* ===== BUTTONS: kräftigere Schrift + feine dunkle Innenlinie (alle Seiten) ===== */
+.partner-button,.gold-button,.gold-cta-btn{font-weight:800!important;letter-spacing:.01em}
+.partner-button .partner-name,.partner-button .partner-arrow{font-weight:800!important}
+.partner-button .partner-icon{grid-row:1!important;grid-column:1!important}
+.partner-button .partner-name{grid-row:1!important;grid-column:2!important;color:inherit!important}
+.partner-button .partner-arrow{grid-row:1!important;grid-column:3!important;color:inherit!important;opacity:.85}
+.partner-button[rel~="sponsored"],.partner-button.cv-gold-partner-btn,.gold-button,.gold-cta-btn{
+  color:#0f241d!important;outline:1.5px solid rgba(15,36,29,.85);outline-offset:-5px;
+  text-shadow:0 1px 0 rgba(255,255,255,.35)}
+.partner-button[rel~="sponsored"]:hover,.partner-button.cv-gold-partner-btn:hover{outline-color:#0f241d}
