@@ -68,6 +68,10 @@
 .lk-disclaimer{background:#f7f8f7;border:1px solid rgba(10,28,22,.08);border-left:4px solid #d4af37;border-radius:14px;padding:1.1rem 1.3rem;font-size:.86rem;line-height:1.6;color:var(--text-muted);margin-top:1.5rem}
 [hidden]{display:none !important}
 </style>
+<style>.wv-helper{margin:.5rem 0 1rem;padding:.8rem 1rem;border:1px dashed #c9b27a;border-radius:14px;background:#fff8e8;grid-column:1/-1}
+.wv-helper b{display:block;margin-bottom:.4rem}.wv-helper select{padding:.45rem .6rem;border:1px solid #cdd5d1;border-radius:8px;font:inherit;margin:.15rem .3rem .15rem 0;max-width:100%}
+.wv-helper button{padding:.5rem .9rem;border-radius:999px;border:1px solid #176246;background:#176246;color:#fff;font:inherit;font-weight:700;cursor:pointer;margin:.15rem 0}
+.wv-helper small{display:block;margin-top:.45rem;line-height:1.5;color:#53615b}</style>
 </head>
 <body>
 <header class="site-header header-logo-large" id="top"><div class="header-inner">
@@ -114,6 +118,7 @@
 <div class="lk-field"><label for="lkInterest">Sollzins (% p. a.)</label><input id="lkInterest" type="number" inputmode="decimal" min="0" step="0.1" value="5"><span class="lk-hint">Sollzins laut Angebot. Der effektive Jahreszins liegt meist etwas höher.</span></div>
 </div>
 <div class="lk-field"><label for="lkResidual">Geschätzter Restwert nach dem Zeitraum (€)</label><input id="lkResidual" type="number" inputmode="decimal" min="0" step="any" value="18000"><span class="lk-hint">Was das Auto am Ende voraussichtlich noch wert ist – der wichtigste und zugleich unsicherste Wert.</span></div>
+<div class="wv-helper"><b>💡 Restwert vorschlagen lassen</b><select id="lkWvA" aria-label="Antrieb"><option value="b">Benziner</option><option value="d">Diesel</option><option value="e">Elektro (BEV)</option></select><button type="button" id="lkWvBtn">Aus Kaufpreis &amp; Zeitraum berechnen</button><small id="lkWvOut">Nutzt Kaufpreis und Vergleichszeitraum von oben und die Orientierungswerte (Restwert in % vom Listenpreis). Orientierungswert, keine individuelle Fahrzeugbewertung. Details im Artikel <a class="content-link" href="artikel-wertverlust-restwert.html">Wertverlust &amp; Restwert</a>.</small></div>
 <div class="lk-field"><label for="lkBuyOnce">Einmalkosten Kauf (€)</label><input id="lkBuyOnce" type="number" inputmode="decimal" min="0" step="any" value="0"><span class="lk-hint">Z. B. Überführung, Zulassung – soweit nicht im Kaufpreis enthalten.</span></div>
 <div class="lk-field"><label for="lkMaint">Zusätzliche Wartung/Reparatur pro Jahr (€)</label><input id="lkMaint" type="number" inputmode="decimal" min="0" step="any" value="300"><span class="lk-hint">Mehrkosten gegenüber Leasing, z. B. nach Ablauf der Garantie.</span></div>
 </div>
@@ -292,5 +297,6 @@ function calcLeaseBuy(p) {
   render();
 })();
 </script>
+<script>(function(){var T={b:[[0,100],[1,78.5],[2,68.5],[3,60],[4,53],[5,46],[10,22.5]],d:[[0,100],[1,78.5],[2,68.5],[3,58],[4,51],[5,44],[10,21.5]],e:[[0,100],[1,72.5],[2,62.5],[3,50.5],[4,45],[5,39]]};function pct(a,y){var t=T[a];if(y>t[t.length-1][0])return null;for(var i=1;i<t.length;i++){if(y<=t[i][0]){var p=t[i-1],q=t[i];return p[1]+(q[1]-p[1])*(y-p[0])/(q[0]-p[0]);}}return null;}document.getElementById('lkWvBtn').addEventListener('click',function(){var a=document.getElementById('lkWvA').value,m=parseFloat(document.getElementById('lkMonths').value)||0,p=parseFloat(document.getElementById('lkPrice').value)||0,o=document.getElementById('lkWvOut'),r=pct(a,m/12);if(!p||!m){o.textContent='Bitte zuerst Kaufpreis und Vergleichszeitraum eintragen.';return;}if(r==null){o.textContent='Für diesen Zeitraum gibt es keine belastbare Schätzung. Bitte den Restwert selbst eintragen.';return;}var v=Math.round(p*r/100/100)*100,i=document.getElementById('lkResidual');i.value=v;i.dispatchEvent(new Event('input',{bubbles:true}));o.textContent='Übernommen: rund '+v.toLocaleString('de-DE')+' € ('+Math.round(r)+' % vom Kaufpreis nach '+m+' Monaten). Orientierungswert, keine individuelle Fahrzeugbewertung.';});})();</script>
 </body>
 </html>
