@@ -19,6 +19,7 @@ KEYWORDS={
  'dienstwagenrechner.html':'AfA Abschreibung Absetzung für Abnutzung Firmenwagen Firmenauto Geschäftswagen Dienstauto Fahrtenbuch 1 Prozent Regelung geldwerter Vorteil',
  'leasing-kauf-rechner.html':'AfA Abschreibung Restwert Wertverlust Mietkauf leasen',
  'auto-kostenrechner.html':'AfA Abschreibung Wertverlust Restwert Unterhaltskosten Betriebskosten Fixkosten',
+ 'artikel-e-auto-vs-benziner.html':'Fahrzeugvergleich Vergleichsrechner Kostenvergleich Autovergleich Elektro Benzin Diesel Gesamtkosten Rechner',
  'artikel-reifen.html':'Schluffen Gummis Pneus Walzen Latschen Profiltiefe Reifendruck Bereifung',
  'artikel-bussgeldkatalog.html':'Knöllchen Strafzettel Verwarngeld Blitzer Geblitzt Raser Flensburg Punkte Lappen Ordnungswidrigkeit',
 }
