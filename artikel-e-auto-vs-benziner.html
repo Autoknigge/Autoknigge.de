@@ -130,6 +130,12 @@
 .vg-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1rem 0}
 .vg-car{padding:1rem;border-radius:16px;border:1px solid rgba(10,28,22,.08)}
 .vg-a{background:#eef1fb;border-color:#d3d9f4}.vg-b{background:#e9f4ef;border-color:#c9e6d8}
+.vg-g{margin:.2rem 0 .8rem;padding:.6rem;border-radius:12px;background:rgba(255,255,255,.65);border:1px dashed #9fb3aa}
+.vg-g select{width:100%;box-sizing:border-box;padding:.5rem .6rem;border:1px solid #cdd5d1;border-radius:10px;font:inherit;background:#fff}
+.vg-gb{display:flex;gap:.5rem;margin-top:.45rem;flex-wrap:wrap}
+.vg-gb button{padding:.45rem .8rem;border-radius:999px;border:1px solid #176246;background:#176246;color:#fff;font:inherit;font-weight:700;font-size:.88rem;cursor:pointer}
+.vg-gb .vg-gdel{background:#fff;color:#8a2b2b;border-color:#e0b4b4}
+.vg-gs{display:block;font-size:.8rem;color:#425852;margin-top:.35rem;line-height:1.4;min-height:1em}
 .vg-car h3{margin:0 0 .6rem}
 .vg-f{margin:.55rem 0}.vg-f label{display:block;font-weight:700;font-size:.86rem;margin-bottom:.2rem;line-height:1.3}
 .vg-f input,.vg-f select{width:100%;box-sizing:border-box;padding:.55rem .65rem;border:1px solid #cdd5d1;border-radius:10px;font:inherit;background:#fff}
@@ -142,6 +148,7 @@
 <h2>🧮 Fahrzeugvergleich: Auto A gegen Auto B</h2>
 <p class="intro-tile">Trage zwei Fahrzeuge ein, zum Beispiel ein E-Auto und einen Benziner. Der Rechner zeigt dir die Gesamtkosten über deine Haltedauer, inklusive Wertverlust. Die Startwerte sind Beispielwerte, bitte trage deine eigenen Zahlen ein. Wechselst du den Antrieb, werden typische Werte für Verbrauch, Energiepreis, Steuer, Wartung und THG-Prämie vorgeschlagen.</p>
 <div class="vg-grid"><div class="vg-car vg-a"><h3>Auto A</h3>
+<div class="vg-g" data-g="A"><select class="vg-gsel" aria-label="Gespeichertes Auto laden"><option value="">Gespeichertes Auto laden …</option></select><div class="vg-gb"><button type="button" class="vg-gsave">💾 Speichern</button><button type="button" class="vg-gdel">🗑 Löschen</button></div><span class="vg-gs" aria-live="polite"></span></div>
 <div class="vg-f"><label for="vgA_n">Bezeichnung</label><input id="vgA_n" type="text" value="Elektroauto" maxlength="30"></div>
 <div class="vg-f"><label for="vgA_a">Antrieb</label><select id="vgA_a"><option value="e" selected>Elektro (BEV)</option><option value="b">Benziner</option><option value="d">Diesel</option></select></div>
 <div class="vg-f"><label for="vgA_l">Listenpreis laut Preisliste, vor Rabatt (€)</label><input id="vgA_l" type="text" inputmode="decimal" autocomplete="off" value="42000"></div>
@@ -154,6 +161,7 @@
 <div class="vg-f"><label for="vgA_wa">Wartung &amp; Reparaturen (€/Jahr)</label><input id="vgA_wa" type="text" inputmode="decimal" autocomplete="off" value="350"></div>
 <div class="vg-f"><label for="vgA_th">THG-Prämie (€/Jahr)</label><input id="vgA_th" type="text" inputmode="decimal" autocomplete="off" value="300"><span class="vg-h">Nur reine E-Autos, etwa 250 bis 400 €.</span></div>
 </div><div class="vg-car vg-b"><h3>Auto B</h3>
+<div class="vg-g" data-g="B"><select class="vg-gsel" aria-label="Gespeichertes Auto laden"><option value="">Gespeichertes Auto laden …</option></select><div class="vg-gb"><button type="button" class="vg-gsave">💾 Speichern</button><button type="button" class="vg-gdel">🗑 Löschen</button></div><span class="vg-gs" aria-live="polite"></span></div>
 <div class="vg-f"><label for="vgB_n">Bezeichnung</label><input id="vgB_n" type="text" value="Benziner" maxlength="30"></div>
 <div class="vg-f"><label for="vgB_a">Antrieb</label><select id="vgB_a"><option value="e">Elektro (BEV)</option><option value="b" selected>Benziner</option><option value="d">Diesel</option></select></div>
 <div class="vg-f"><label for="vgB_l">Listenpreis laut Preisliste, vor Rabatt (€)</label><input id="vgB_l" type="text" inputmode="decimal" autocomplete="off" value="36000"></div>
@@ -215,6 +223,35 @@ function calc(){
 });
 [].forEach.call(document.querySelectorAll('#fahrzeugvergleich input,#fahrzeugvergleich select'),function(e){e.addEventListener('input',calc);e.addEventListener('change',calc);});
 ['vgA','vgB'].forEach(function(p){var t=TY[$(p+'_a').value];$(p+'_vbu').textContent=t.vu;$(p+'_epu').textContent=t.eu;});
+
+/* Garage: bis zu 10 Autos unter einer Kurzbezeichnung speichern und wieder laden */
+var GK='ak-garage:e-auto-vs-benziner',MAXG=10,FL=['n','a','l','k','fo','vb','ep','vs','st','wa','th'];
+function gload(){try{var g=JSON.parse(localStorage.getItem(GK)||'[]');return Array.isArray(g)?g:[];}catch(e){return [];}}
+function gsave(g){try{localStorage.setItem(GK,JSON.stringify(g));return true;}catch(e){return false;}}
+function gfill(){var g=gload();[].forEach.call(document.querySelectorAll('.vg-g'),function(box){var s=box.querySelector('.vg-gsel'),cur=s.value;
+ s.innerHTML='<option value="">Gespeicherte Autos ('+g.length+'/'+MAXG+') …</option>'+g.map(function(c,i){return '<option value="'+i+'">'+esc(c.name)+'</option>';}).join('');
+ if(cur!==''&&g[cur])s.value=cur;});}
+function gmsg(box,m){box.querySelector('.vg-gs').textContent=m;}
+[].forEach.call(document.querySelectorAll('.vg-g'),function(box){
+ var p='vg'+box.getAttribute('data-g'),s=box.querySelector('.vg-gsel');
+ s.addEventListener('change',function(){var g=gload(),c=g[s.value];if(!c){gmsg(box,'');return;}
+  FL.forEach(function(f){var e=$(p+'_'+f);e.value=c.v[f];});
+  ['n','vb','ep','l','k','fo','vs','st','wa','th'].forEach(function(f){$(p+'_'+f).dispatchEvent(new Event('input',{bubbles:true}));});
+  $(p+'_a').dispatchEvent(new Event('change',{bubbles:true}));
+  gmsg(box,'„'+c.name+'“ geladen. Du kannst die Werte jetzt anpassen.');});
+ box.querySelector('.vg-gsave').addEventListener('click',function(){
+  var name=$(p+'_n').value.trim().slice(0,30);if(!name){gmsg(box,'Bitte oben eine Kurzbezeichnung eintragen, zum Beispiel „ID.3 Pro“.');return;}
+  var g=gload(),v={};FL.forEach(function(f){v[f]=$(p+'_'+f).value;});
+  var i=g.findIndex(function(c){return c.name.toLowerCase()===name.toLowerCase();});
+  if(i>=0){g[i]={name:name,v:v};gmsg(box,'„'+name+'“ wurde aktualisiert.');}
+  else if(g.length>=MAXG){gmsg(box,'Du hast schon '+MAXG+' Autos gespeichert. Lösche zuerst eines, dann geht es wieder.');return;}
+  else{g.unshift({name:name,v:v});gmsg(box,'„'+name+'“ gespeichert.');}
+  if(!gsave(g)){gmsg(box,'Speichern ist in diesem Browser gerade nicht möglich.');return;}
+  gfill();var gi=gload().findIndex(function(c){return c.name.toLowerCase()===name.toLowerCase();});[].forEach.call(document.querySelectorAll('.vg-gsel'),function(x){x.value='';});s.value=String(gi);});
+ box.querySelector('.vg-gdel').addEventListener('click',function(){var g=gload(),i=s.value;if(i===''||!g[i]){gmsg(box,'Wähle zuerst ein gespeichertes Auto aus der Liste.');return;}
+  var nm=g[i].name;g.splice(+i,1);gsave(g);gfill();gmsg(box,'„'+nm+'“ gelöscht.');});
+});
+gfill();
 calc();
 })();
 </script>
