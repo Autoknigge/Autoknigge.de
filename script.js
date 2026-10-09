@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var navLinks = document.querySelectorAll('.header-nav-list a');
     navLinks.forEach(function (link) {
       link.addEventListener('click', function () {
-        if (window.innerWidth <= 768 && navToggle.checked) {
+        if (navToggle.checked) {
           navToggle.checked = false;
         }
       });
@@ -205,8 +205,26 @@ document.addEventListener('DOMContentLoaded', function () {
     // Beim Laden einer Seite bleibt das Untermenü zu, auch wenn die Maus gerade darüber steht (z. B. nach Klick auf einen Menüpunkt)
     li.classList.add('dd-closed');
     li.addEventListener('keydown', reopen);
+    // Erst bei echter Mausbewegung (mind. 6 px) über dem Menü wieder aufklappen
+    var ref = null;
+    li.addEventListener('mousemove', function (e) {
+      if (!li.classList.contains('dd-closed')) return;
+      if (!ref) { ref = { x: e.clientX, y: e.clientY }; return; }
+      if (Math.abs(e.clientX - ref.x) + Math.abs(e.clientY - ref.y) >= 6) { ref = null; reopen(); }
+    });
+    li.addEventListener('mouseleave', function () { ref = null; });
     li.addEventListener('mouseleave', reopen);
     li.addEventListener('touchstart', function (e) { if (e.target.closest('.dd-caret')) reopen(); }, { passive: true });
     if (btn) btn.addEventListener('click', reopen);
   });
 });
+
+// Menü auch bei Sprung auf einen Abschnitt derselben Seite (#anker) und beim Zurück-Button schließen
+(function () {
+  function closeMenu() {
+    var t = document.getElementById('nav-toggle');
+    if (t && t.checked) t.checked = false;
+  }
+  window.addEventListener('hashchange', closeMenu);
+  window.addEventListener('pageshow', closeMenu);
+})();
