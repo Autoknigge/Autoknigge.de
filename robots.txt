@@ -1,8 +1,4 @@
 User-agent: *
 Allow: /
 
-# Respectful crawling — one request per second
-Crawl-delay: 1
-
-# Sitemap location
 Sitemap: https://autoknigge.de/sitemap.xml
