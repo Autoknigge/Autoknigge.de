@@ -160,6 +160,7 @@
 </div><div class="footer-bottom"><div>© 2026 Autoknigge — Alle Rechte vorbehalten. Unabhängige Ratgeber-Plattform.</div><div class="foot-links"><a href="impressum.html">Impressum</a> • <a href="datenschutz.html">Datenschutz</a> • <a href="#" id="cookie-settings-link" onclick="if(window.Cookiebot){Cookiebot.show();} return false;">Cookie-Einstellungen</a></div></div></div></footer>
 
 <script src="script.js"></script>
+<script src="zahlen.js"></script>
 <script src="section-cards.js"></script>
 <script>
 // <calc>
@@ -213,7 +214,7 @@ function calcTank(p) {
 
 (function () {
   var $ = function (id) { return document.getElementById(id); };
-  var num = function (id) { var v = parseFloat($(id).value); return isFinite(v) ? v : 0; };
+  var num = function (id) { var v = parseDE($(id)); return isFinite(v) ? v : 0; };
   var fmt = function (v, d) { return new Intl.NumberFormat('de-DE', { minimumFractionDigits: d || 0, maximumFractionDigits: d || 2 }).format(v); };
   var fmtEur = function (v) { return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v); };
   var resultEl = $('tkResult');

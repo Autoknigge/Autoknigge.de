@@ -109,10 +109,10 @@
 </section>
 <section class="wv-calc" id="rechner">
 <h2 style="margin-top:0">🧮 Restwert-Schätzer</h2>
-<p>Gib den Listenpreis, den Antrieb und das Alter ein. Du siehst eine grobe Spanne, keine Bewertung deines Autos.</p>
+<p>Gib den Listenpreis (Preis vor Rabatt), den Antrieb und das Alter ein. Hast du Rabatt bekommen, trage zusätzlich den Preis ein, den du tatsächlich bezahlt hast. Ohne Rabatt lässt du dieses Feld leer. Du siehst eine grobe Spanne, keine Bewertung deines Autos.</p>
 <div class="wv-calc-grid">
-<div><label for="wvPreis">Listenpreis (€)</label><input id="wvPreis" type="number" inputmode="numeric" min="1000" step="500" value="35000"></div>
-<div><label for="wvBezahlt">Tatsächlich bezahlt (€, optional)</label><input id="wvBezahlt" type="number" inputmode="numeric" min="0" step="500" placeholder="z. B. 31500"></div>
+<div><label for="wvPreis">Listenpreis laut Preisliste, vor Rabatt (€)</label><input id="wvPreis" type="number" inputmode="numeric" min="1000" step="500" value="35000"></div>
+<div><label for="wvBezahlt">Tatsächlich bezahlter Preis nach Rabatt (€, optional)</label><input id="wvBezahlt" type="number" inputmode="numeric" min="0" step="500" placeholder="z. B. 31500"></div>
 <div><label for="wvAntrieb">Antrieb</label><select id="wvAntrieb"><option value="b">Benziner</option><option value="d">Diesel</option><option value="e">Elektro (BEV)</option></select></div>
 <div><label for="wvAlter">Alter</label><select id="wvAlter"><option value="1">1 Jahr</option><option value="2">2 Jahre</option><option value="3" selected>3 Jahre</option><option value="4">4 Jahre</option><option value="5">5 Jahre</option><option value="10">10 Jahre</option></select></div>
 </div>
@@ -142,14 +142,15 @@
 </div>
 </div>
 <section class="related-articles"><h2>Das könnte dich auch interessieren</h2><div class="related-grid"><a class="related-card" href="auto-kostenrechner.html"><span class="icon">🧮</span><h3>Was kostet mein Auto wirklich?</h3><p>Alle laufenden Kosten auf einen Blick berechnen.</p></a><a class="related-card" href="leasing-kauf-rechner.html"><span class="icon">📊</span><h3>Leasing oder Kaufen?</h3><p>Rate, Laufzeit und Restwert im Vergleich.</p></a><a class="related-card" href="artikel-gebrauchtwagen-check.html"><span class="icon">✅</span><h3>Gebrauchtwagen-Check</h3><p>Interaktive Checkliste zum Abhaken.</p></a><a class="related-card" href="artikel-auto-verkaufen.html"><span class="icon">🤝</span><h3>Auto verkaufen</h3><p>Vom Wertgutachten bis zum Kaufvertrag.</p></a></div></section>
+<script src="zahlen.js"></script>
 <script>
 (function(){
 var R={b:{1:[72,85],2:[62,75],3:[56,64],4:[48,58],5:[40,52],10:[15,30]},d:{1:[72,85],2:[62,75],3:[54,62],4:[46,56],5:[38,50],10:[15,28]},e:{1:[65,80],2:[55,70],3:[46,55],4:[40,50],5:[33,45],10:null}};
 var f=function(n){return Math.round(n/100)*100;};
 var fmt=function(n){return f(n).toLocaleString('de-DE')+' €';};
 function run(){
-var p=parseFloat(document.getElementById('wvPreis').value)||0,
-paid=parseFloat(document.getElementById('wvBezahlt').value)||p,
+var p=parseDE(document.getElementById('wvPreis'))||0,
+paid=parseDE(document.getElementById('wvBezahlt'))||p,
 a=document.getElementById('wvAntrieb').value,y=document.getElementById('wvAlter').value,
 out=document.getElementById('wvErgebnis'),r=R[a][y];
 if(!p){out.textContent='Bitte einen Listenpreis eingeben.';return;}

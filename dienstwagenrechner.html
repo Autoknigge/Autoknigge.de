@@ -149,6 +149,7 @@
 <button aria-label="Nach oben scrollen" class="back-to-top" id="backToTop">↑</button>
 
 <script src="script.js"></script>
+<script src="zahlen.js"></script>
 <script src="section-cards.js"></script>
 <script>
 // <calc>
@@ -204,7 +205,7 @@ function calcDienstwagen(p) {
 
 (function () {
   var $ = function (id) { return document.getElementById(id); };
-  var num = function (id) { var v = parseFloat($(id).value); return isFinite(v) ? v : 0; };
+  var num = function (id) { var v = parseDE($(id)); return isFinite(v) ? v : 0; };
   var fmt = function (v, d) { return new Intl.NumberFormat('de-DE', { minimumFractionDigits: d || 0, maximumFractionDigits: d || 2 }).format(v); };
   var fmtEur = function (v) { return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v); };
   var resultEl = $('dwResult');
