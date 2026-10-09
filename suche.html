@@ -45,6 +45,7 @@
 <div class="footer-col"><h4>Downloads</h4><ul class="footer-links-list"><li><a download="" href="kfz-kaufvertrag.pdf">Kfz-Kaufvertrag (PDF)</a></li><li><a download="" href="vollmacht-kfz-zulassung.pdf">Zulassungsvollmacht (PDF)</a></li><li><a download="" href="Notfallcheckliste-Unfall.pdf">Notfallcheckliste Unfall (PDF)</a></li></ul></div>
 </div><div class="footer-bottom"><div>© 2026 Autoknigge — Alle Rechte vorbehalten. Unabhängige Ratgeber-Plattform.</div><div class="foot-links"><a href="impressum.html">Impressum</a> • <a href="datenschutz.html">Datenschutz</a> • <a href="#" id="cookie-settings-link" onclick="if(window.Cookiebot){Cookiebot.show();} return false;">Cookie-Einstellungen</a></div></div></div></footer>
 <script src="search-index.js"></script>
+<script src="search-synonyms.js"></script>
 <script>
 /* Moderne Suche: Live-Treffer beim Tippen, Vorschläge (Autovervollständigung), Filter, Hervorhebung. */
 const SEARCH_ALIASES={
@@ -72,23 +73,76 @@ const SEARCH_ALIASES={
   motorbike:'motorrad',biker:'motorrad',zweirad:'motorrad',kraftrad:'motorrad',
   leasen:'leasing',leasingrechner:'leasing',leasingrate:'leasing',kaufrechner:'leasing',
   verbrauchsrechner:'tankrechner',spritrechner:'tankrechner',stromverbrauch:'tankrechner',reichweitenrechner:'tankrechner',
-  finanzierungsrechner:'finanzierung',kreditrechner:'finanzierung',ratenkauf:'finanzierung',finanzieren:'finanzierung'
+  finanzierungsrechner:'finanzierung',kreditrechner:'finanzierung',ratenkauf:'finanzierung',finanzieren:'finanzierung',
+  /* Synonyme, Fachbegriffe, Umgangssprache */
+  'afa':'wertverlust','abschreibung':'wertverlust','abschreibungen':'wertverlust','absetzung fur abnutzung':'wertverlust','abnutzung':'wertverlust','wertminderung':'wertverlust',
+  'wertentwicklung':'wertverlust','restwert':'wertverlust','wiederverkaufswert':'wertverlust','zeitwert':'wertverlust','marktwert':'wertverlust','fahrzeugwert':'wertverlust',
+  'wertverfall':'wertverlust','werteverfall':'wertverlust','depreciation':'wertverlust','gasol':'diesel','dieselmotor':'diesel','selbstzunder':'diesel',
+  'tdi':'diesel','cdi':'diesel','hdi':'diesel','dci':'diesel','tdci':'diesel','stinker':'diesel',
+  'dieselkraftstoff':'diesel','sprit':'benzin','benziner':'benzin','ottomotor':'benzin','superbenzin':'benzin','tsi':'benzin',
+  'tfsi':'benzin','ottokraftstoff':'benzin','e10':'benzin','schluffen':'reifen','schluffe':'reifen','schlappen':'reifen',
+  'latschen':'reifen','gummis':'reifen','walzen':'reifen','bereifung':'reifen','reifenprofil':'reifen','profiltiefe':'reifen',
+  'reifendruck':'reifen','autonummer':'kennzeichen','strafzettel':'bussgeld','knollchen':'bussgeld','knolle':'bussgeld','verwarngeld':'bussgeld',
+  'verwarnung':'bussgeld','bussgeldbescheid':'bussgeld','anhorungsbogen':'bussgeld','geblitzt':'bussgeld','raser':'bussgeld','ordnungswidrigkeit':'bussgeld',
+  'ordnungswidrigkeiten':'bussgeld','owi':'bussgeld','radarfalle':'blitzer','radar':'blitzer','starenkasten':'blitzer','laserpistole':'blitzer',
+  'geschwindigkeitsmessung':'blitzer','geschwindigkeitskontrolle':'blitzer','blechschaden':'unfall','auffahrunfall':'unfall','karambolage':'unfall','unfallflucht':'unfall',
+  'parkrempler':'unfall','bumser':'unfall','wildschaden':'wildunfall','reh':'wildunfall','hirsch':'wildunfall','wildschwein':'wildunfall',
+  'wildwechsel':'wildunfall','rotwild':'wildunfall','pkw':'auto','karre':'auto','kiste':'auto','schlitten':'auto',
+  'bolide':'auto','automobil':'auto','kraftfahrzeug':'auto','dekra':'hu','gtu':'hu','plakette':'hu',
+  'prufplakette':'hu','abgasuntersuchung':'hu','schrauber':'werkstatt','autowerkstatt':'werkstatt','fachwerkstatt':'werkstatt','vertragswerkstatt':'werkstatt',
+  'abschleppdienst':'abschleppen','abschlepper':'abschleppen','fuhrerschein':'fuehrerschein','lappen':'fuehrerschein','fahrerlaubnis':'fuehrerschein','mpu':'fuehrerschein',
+  'idiotentest':'fuehrerschein','flensburg':'fuehrerschein','verkehrssunderkartei':'fuehrerschein','fahreignungsregister':'fuehrerschein','leasingvertrag':'leasing','mietkauf':'leasing',
+  'kredit':'finanzierung','autokredit':'finanzierung','ratenkredit':'finanzierung','dreiwegefinanzierung':'finanzierung','schlussrate':'finanzierung','ballonfinanzierung':'finanzierung',
+  'assekuranz':'versicherung','deckungskarte':'versicherung','doppelkarte':'versicherung','evb':'versicherung','versicherungsbestatigung':'versicherung','zulassungsstelle':'zulassung',
+  'strassenverkehrsamt':'zulassung','zulassungsbehorde':'zulassung','bev':'eauto','batterieauto':'eauto','vollelektrisch':'eauto','phev':'hybrid',
+  'mildhybrid':'hybrid','mhev':'hybrid','vollhybrid':'hybrid','ladestation':'wallbox','ladesaule':'wallbox','ladesaeule':'wallbox',
+  'heimladestation':'wallbox','ladepunkt':'wallbox','treibhausgasquote':'thg','firmenwagen':'dienstwagen','geschaftswagen':'dienstwagen','firmenauto':'dienstwagen',
+  'dienstauto':'dienstwagen','fahrtenbuch':'dienstwagen','hanger':'anhaenger','anhangerkupplung':'anhaenger','ahk':'anhaenger','wohnwagen':'anhaenger',
+  'caravan':'anhaenger','wohnanhanger':'anhaenger','fernlicht':'lichthupe','drangler':'lichthupe','bremsklotze':'bremsen','klotze':'bremsen',
+  'uberbrucken':'batterie','starthilfe':'batterie','spritpreis':'tanken','spritkosten':'tanken','literpreis':'tanken','parkplatz':'parken',
+  'parkverbot':'parken','parkschein':'parken','parkscheibe':'parken','parkgebuhr':'parken','falschparker':'parken','feinstaubplakette':'umweltplakette',
+  'umweltzone':'umweltplakette','reissverschluss':'rettungsgasse','jahreswagen':'gebrauchtwagen','vorfuhrwagen':'gebrauchtwagen','tageszulassung':'gebrauchtwagen','rabatt':'neuwagen',
+  'nachlass':'neuwagen','kaufpramie':'neuwagen','inzahlungnahme':'verkaufen','privatverkauf':'verkaufen','loswerden':'verkaufen','babyschale':'kindersitz',
+  'reboarder':'kindersitz','sitzerhohung':'kindersitz','isofix':'kindersitz'
 };
 function norm(v){return String(v||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ß/g,'ss').replace(/[^a-z0-9]+/g,' ').trim();}
 function tokens(v){return norm(v).split(/\s+/).filter(Boolean);}
 function distance(a,b){if(a===b)return 0;if(!a||!b)return 99;if(Math.abs(a.length-b.length)>3)return 99;let p=Array.from({length:b.length+1},(_,i)=>i);for(let i=0;i<a.length;i++){let c=[i+1];for(let j=0;j<b.length;j++)c[j+1]=Math.min(c[j]+1,p[j+1]+1,p[j]+(a[i]===b[j]?0:1));p=c;}return p[b.length];}
 function close(a,b){if(a===b)return true;if(a.length<4||b.length<4)return false;if(Math.abs(a.length-b.length)<=2&&(a.includes(b)||b.includes(a)))return true;const minLen=Math.min(a.length,b.length);if(minLen>=6&&(a.startsWith(b)||b.startsWith(a)))return true;return distance(a,b)<= (a.length<=6?1:2);}
 function canonicalToken(q){const n=norm(q);return SEARCH_ALIASES[n]||n;}
+/* Synonymgruppen (search-synonyms.js): Wörter UND Mehrwort-Begriffe; Gruppen-Treffer zählen als 92 */
+const SYN=(typeof SEARCH_SYNONYM_GROUPS!=='undefined'?SEARCH_SYNONYM_GROUPS:[]).map(g=>{
+  const mem=g.map(norm).filter(Boolean), single=mem.filter(m=>m.indexOf(' ')<0), multi=mem.filter(m=>m.indexOf(' ')>=0);
+  const alts=new Set(single);
+  multi.forEach(m=>{ if(single.length===0){const t=m.split(' ').sort((a,b)=>b.length-a.length)[0]; if(t.length>3)alts.add(t);} });
+  return {mem,multi,alts:[...alts]};
+});
+const SYN_BY_WORD={};SYN.forEach(g=>g.alts.forEach(w=>{(SYN_BY_WORD[w]=SYN_BY_WORD[w]||[]).push(g);}));
+function queryUnits(q){
+  let toks=tokens(q),units=[];
+  const phr=[];SYN.forEach(g=>g.multi.forEach(m=>phr.push({m,g,n:m.split(' ').length})));phr.sort((a,b)=>b.n-a.n);
+  const used=new Array(toks.length).fill(false);
+  phr.forEach(p=>{const pt=p.m.split(' ');for(let i=0;i+pt.length<=toks.length;i++){
+    if(pt.every((w,k)=>!used[i+k]&&toks[i+k]===w)){for(let k=0;k<pt.length;k++)used[i+k]=true;units.push({pos:i,alts:p.g.alts,raw:null});}}});
+  toks.forEach((t,i)=>{if(used[i])return;const alts=[];(SYN_BY_WORD[t]||[]).forEach(g=>g.alts.forEach(a=>{if(a!==t)alts.push(a);}));units.push({pos:i,raw:t,alts});});
+  return units.sort((a,b)=>a.pos-b.pos);
+}
 function score(item,q){
   const qTokens=tokens(q), body=tokens(item.title+' '+item.desc+' '+item.text);
   if(!qTokens.length)return 0; let total=0;
-  for(const raw of qTokens){
-    const qw=canonicalToken(raw); let best=0;
-    for(const tw of body){if(tw===raw)best=Math.max(best,100);else if(tw===qw)best=Math.max(best,92);else if(close(raw,tw))best=Math.max(best,72);else if(close(qw,tw))best=Math.max(best,68);}
+  for(const u of queryUnits(q)){
+    let best=0;
+    if(u.raw){
+      const raw=u.raw,qw=canonicalToken(raw);
+      for(const tw of body){if(tw===raw)best=Math.max(best,100);else if(tw===qw)best=Math.max(best,92);else if(close(raw,tw))best=Math.max(best,72);else if(close(qw,tw))best=Math.max(best,68);}
+    }
+    if(best<92)for(const a of u.alts){for(const tw of body){if(tw===a)best=Math.max(best,92);else if(close(a,tw))best=Math.max(best,66);}}
     if(!best)return 0; total+=best;
   }
   const nq=norm(q), nt=norm(item.title);
+  const cq=qTokens.map(canonicalToken).join(' ');
   if(nt.includes(nq)) total+=80;
+  else if(cq!==nq&&nt.includes(norm(cq))) total+=50;
   else if(item.cat==='Glossar') total-=15;
   return total;
 }

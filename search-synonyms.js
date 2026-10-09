@@ -1,0 +1,41 @@
+/* Synonymgruppen für die Autoknigge-Suche (zentral pflegbar).
+   Jede Zeile ist eine Gruppe: Wer eines der Wörter eingibt, findet auch Seiten mit den anderen.
+   Mehrwort-Begriffe sind erlaubt ("bremsen quietschen"). Groß-/Kleinschreibung und Umlaute sind egal.
+   Nur Begriffe in dieselbe Gruppe, die für Besucher wirklich dasselbe meinen. */
+const SEARCH_SYNONYM_GROUPS=[
+ ["Motorradbekleidung","Bikerbekleidung","Motorradschutzkleidung","Schutzkleidung","Motorradkleidung","Motorradjacke","Bikerjacke"],
+ ["Mofa","Moped","Mokick","Kleinkraftrad"],
+ ["E-Scooter","Elektroroller","Elektrotretroller","E-Roller"],
+ ["SUV","Geländewagen","Offroader","Stadtgeländewagen"],
+ ["Hinterradantrieb","Heckantrieb","Hecktriebler"],
+ ["Schaltgetriebe","manuelles Getriebe","Handschaltung","Handschalter"],
+ ["Automatikgetriebe","Automatik","automatische Schaltung","Wandlerautomatik"],
+ ["Doppelkupplungsgetriebe","DKG","DSG","DCT","Doppelkupplung"],
+ ["CVT-Getriebe","CVT","stufenloses Getriebe","Variomatik"],
+ ["Kupplung","Kraftschlusskupplung","Fahrzeugkupplung"],
+ ["Kupplungsschaden","Kupplungsdefekt","verschlissene Kupplung"],
+ ["Servolenkung","Lenkhilfe","Servounterstützung"],
+ ["Lenkgetriebe","Lenkungsgetriebe","Zahnstangenlenkung"],
+ ["Unwucht","Radunwucht","Unwucht am Rad","Räder wuchten","Auswuchten"],
+ ["Vibrationen","Schwingungen","Zittern","Vibrieren","Lenkradzittern"],
+ ["Poltern","Fahrwerksklappern","Klopfgeräusche","Klappern"],
+ ["Bremsen quietschen","Bremsenquietschen","Bremsquietschen","Quietschgeräusche beim Bremsen","Bremse quietscht"],
+ ["Bremsen rubbeln","Bremsvibrationen","pulsierendes Bremsgefühl","Bremse rubbelt","Bremsrubbeln"],
+ ["Handbremse","Feststellbremse","Parkbremse","Standbremse"],
+ ["eVB-Nummer","eVB","elektronische Versicherungsbestätigung","Versicherungsnummer für die Zulassung","Doppelkarte"],
+ ["Wunschkennzeichen online","Kennzeichenreservierung","Online-Reservierung","Wunschkennzeichen reservieren"],
+ ["Saisonkennzeichen","saisonales Kennzeichen","Saison-Zulassung","Saisonzulassung"],
+ ["H-Kennzeichen","Oldtimerkennzeichen","historisches Kennzeichen","Oldtimer-Kennzeichen"],
+ ["Kurzzeitkennzeichen","Überführungskennzeichen","5-Tages-Kennzeichen","Überführungsnummernschild","Fünf-Tages-Kennzeichen"],
+ ["Ausfuhrkennzeichen","Exportkennzeichen","Zollkennzeichen"],
+ ["Einparkhilfe","Parksensoren","Parkassistent","Parkpiepser","PDC"],
+ ["Rückfahrkamera","Heckkamera","Rückfahrvideosystem","Rückfahrkamera nachrüsten"],
+ ["Totwinkelassistent","Blind-Spot-Assistent","Toter-Winkel-Warner","Spurwechselassistent"],
+ ["Notbremsassistent","automatischer Notbremsassistent","AEB","Notbremsfunktion"],
+ ["Spurhalteassistent","Spurführungsassistent","Lane Keeping Assist","Spurassistent"],
+ ["Abstandsregeltempomat","ACC","adaptive Geschwindigkeitsregelung","adaptiver Tempomat"],
+ ["Tempomat","Geschwindigkeitsregelanlage","Cruise Control","GRA"],
+ ["Wertverlust","AfA","Abschreibung","Absetzung für Abnutzung","Wertminderung"],
+ ["Diesel","Gasöl","Selbstzünder"],
+ ["Reifen","Schluffen","Pneus","Gummis"]
+];
