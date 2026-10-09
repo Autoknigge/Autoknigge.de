@@ -19,10 +19,19 @@
 <li><a href="/">🏠 Start</a></li><li class="nav-top-quiz"><a href="auto-wissen-quiz.html">🧠 Quiz</a></li><li class="nav-dd"><a href="werkzeuge.html">🛠️ Nützliche Tools</a><button type="button" class="dd-caret" aria-label="Untermenü Nützliche Tools ein- oder ausklappen" aria-expanded="false" aria-controls="nav-tools-list"></button><ul class="nav-dd-list" id="nav-tools-list"><li><a href="bussgeldrechner.html">🚨 Bußgeldrechner</a></li><li><a href="mein-auto-kalender.html">📅 Mein Auto-Kalender</a></li><li><a href="kfz-glossar.html">📖 Kfz-Glossar</a></li><li><a href="leasing-kauf-rechner.html">🧮 Leasing oder Kaufen?</a></li><li><a href="auto-kostenrechner.html">🚗 Kostenrechner</a></li><li><a href="sf-klassen-rechner.html">📊 SF-Klassen-Rechner</a></li><li><a href="regionalklassen.html">🗺️ Regionalklassen</a></li><li><a href="tankrechner.html">⛽ Tankrechner</a></li><li><a href="dienstwagenrechner.html">💼 Dienstwagenrechner</a></li><li><a href="artikel-maut-vignetten-ausland.html#vignettenrechner">🛣️ Vignetten-Rechner</a></li><li><a href="fahrzeugtyp-berater.html">🧭 Fahrzeugtyp-Berater</a></li></ul></li><li><a href="kategorie-versicherung.html">🛡️ Versicherung</a></li><li><a href="kategorie-zulassung.html">📄 Zulassung</a></li><li><a href="kategorie-kauf.html">🛒 Kauf und Verkauf</a></li><li><a href="kategorie-pflege.html">🔧 Wartung und Pflege</a></li><li><a href="kategorie-recht.html">⚖️ Recht</a></li><li><a href="kategorie-geld-sparen.html">💰 Clever sparen</a></li><li><a href="ueber-knigge.html">👤 Über Knigge</a></li></ul></nav>
 <a class="header-search-link" href="suche.html" aria-current="page">🔍 Suchen</a></div></header>
 <main class="wrap search-page">
-<h1>Autoknigge durchsuchen</h1>
-<p class="lead">Finde schnell den passenden Ratgeber. Suche nach Begriffen wie „Bremsen“, „SF-Klasse“, „Auto anmelden“ oder „Reifen“.</p>
-<div class="search-box-wrap"><label for="site-search" class="sr-only">Suchbegriff</label><input id="site-search" class="search-box" type="search" placeholder="Was möchtest du wissen?" autocomplete="off"><div id="search-meta" class="search-meta"></div></div>
-<div id="search-results" class="search-results"></div>
+<section class="sx-hero">
+<h1>🔍 Was suchst du?</h1>
+<div class="sx-box" role="search">
+<span class="sx-lupe" aria-hidden="true">🔍</span>
+<input id="site-search" class="sx-input" type="search" placeholder="z. B. Bremsen, SF-Klasse, Auto anmelden …" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" role="combobox" aria-expanded="false" aria-controls="sx-suggest" aria-autocomplete="list">
+<button type="button" id="sx-clear" class="sx-clear" aria-label="Eingabe löschen" hidden>✕</button>
+<ul id="sx-suggest" class="sx-suggest" role="listbox" hidden></ul>
+</div>
+<p id="search-meta" class="sx-meta" aria-live="polite"></p>
+<div id="sx-chips" class="sx-chips"></div>
+</section>
+<div id="sx-filter" class="sx-filter" hidden></div>
+<div id="search-results" class="sx-results"></div>
 </main>
 <button aria-label="Nach oben scrollen" class="back-to-top" id="backToTop">↑</button>
 
@@ -37,7 +46,7 @@
 </div><div class="footer-bottom"><div>© 2026 Autoknigge — Alle Rechte vorbehalten. Unabhängige Ratgeber-Plattform.</div><div class="foot-links"><a href="impressum.html">Impressum</a> • <a href="datenschutz.html">Datenschutz</a> • <a href="#" id="cookie-settings-link" onclick="if(window.Cookiebot){Cookiebot.show();} return false;">Cookie-Einstellungen</a></div></div></div></footer>
 <script src="search-index.js"></script>
 <script>
-/* Intelligente Suche: durchsucht den tatsächlichen Artikeltext, erkennt Synonyme und typische Tippfehler. */
+/* Moderne Suche: Live-Treffer beim Tippen, Vorschläge (Autovervollständigung), Filter, Hervorhebung. */
 const SEARCH_ALIASES={
   batterie:'batterie',baterie:'batterie',battarie:'batterie',batterri:'batterie',batterrie:'batterie',batteri:'batterie',autobatterie:'batterie',starterbatterie:'batterie',akku:'batterie','12v batterie':'batterie','12 volt batterie':'batterie',agm:'batterie',efb:'batterie',
   bremse:'bremsen',bremsbelag:'bremsen',bremsbeläge:'bremsen',bremsscheibe:'bremsen',bremsanlage:'bremsen',brake:'bremsen',
@@ -84,22 +93,87 @@ function score(item,q){
   return total;
 }
 function snippet(item,q){
-  const text=item.text||item.desc||''; const terms=tokens(q).map(canonicalToken).filter(Boolean); const n=norm(text);
+  let text=(item.text||item.desc||'');if(item.cat!=='Glossar'){const ti=text.indexOf(item.title);if(ti===0)text=text.slice(item.title.length).trim();}
+  const nd=norm(item.desc||'');if(item.cat!=='Glossar'&&item.desc&&tokens(q).map(canonicalToken).some(t=>nd.includes(t)))return item.desc; const terms=tokens(q).map(canonicalToken).filter(Boolean); const n=norm(text);
   let pos=-1; for(const term of terms){const i=n.indexOf(term);if(i>=0){pos=i;break;}}
   if(pos<0)return item.desc||text.slice(0,180)+'…';
   const start=Math.max(0,pos-75), end=Math.min(text.length,pos+145); return (start?'…':'')+text.slice(start,end).replace(/\s+/g,' ')+'…';
 }
 const data=AUTOKNIGGE_SEARCH_DATA;
-const input=document.getElementById('site-search'),results=document.getElementById('search-results'),meta=document.getElementById('search-meta');
+const input=document.getElementById('site-search'),results=document.getElementById('search-results'),meta=document.getElementById('search-meta'),
+      sug=document.getElementById('sx-suggest'),clr=document.getElementById('sx-clear'),chips=document.getElementById('sx-chips'),filt=document.getElementById('sx-filter');
 function esc(v){return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function render(){
- const raw=input.value.trim();
- if(!raw){const gl=data.filter(x=>x.cat==='Glossar').length;meta.textContent=(data.length-gl)+' Ratgeber und '+gl+' Glossar-Begriffe durchsuchen';results.innerHTML='';return;}
- const matches=data.map(x=>({x,s:score(x,raw)})).filter(o=>o.s>0).sort((a,b)=>b.s-a.s).slice(0,20).map(o=>o.x);
- meta.textContent=matches.length+' Treffer für „'+raw+'“';
- results.innerHTML=matches.map(x=>'<a class="search-result" href="'+x.url+'"><span class="search-category">'+esc(x.cat)+'</span><h2>'+esc(x.title.replace(/\s*\|\s*Autoknigge.*$/,''))+'</h2><p>'+esc(snippet(x,raw))+'</p></a>').join('')||'<div class="search-empty">Keine passenden Treffer gefunden. Versuche einen allgemeineren Begriff.</div>';
+function cleanTitle(t){return t.replace(/\s*\|\s*Autoknigge.*$/,'');}
+const ICON={'Glossar':'📖','Versicherung':'🛡️','Zulassung':'📑','Wartung und Pflege':'🔧','Kauf und Verkauf':'🛒','Recht & Etikette':'⚖️','Recht':'⚖️','Nützliche Tools':'🛠️','Geld sparen':'💰','Clever sparen':'💰','Über Knigge':'👤','Ratgeber':'📘'};
+const COL=['#e9f4ef|#c9e6d8','#eef1fb|#d3d9f4','#fdf3e7|#f3dfc0','#f6eef8|#e3cdec','#f1f7e8|#dbebc4','#eef6f7|#c9e6ea'];
+function catColor(c){let h=0;for(const ch of c)h=(h*31+ch.charCodeAt(0))%COL.length;return COL[h].split('|');}
+function hl(text,q){
+  let out=esc(text);const ts=[...new Set(tokens(q).concat(tokens(q).map(canonicalToken)))].filter(t=>t.length>1);
+  ts.forEach(t=>{try{const re=new RegExp('('+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'[a-zäöüß]*)','gi');out=out.replace(re,'<mark>$1</mark>');}catch(e){}});
+  return out;
 }
-input.addEventListener('input',render); const params=new URLSearchParams(location.search); input.value=params.get('q')||''; render();
+const articles=data.filter(x=>x.cat!=='Glossar'),gloss=data.length-articles.length;
+const POPULAR=['Bremsen','Auto anmelden','Versicherung wechseln','Bußgeld','Reifen','Vignette','Umweltplakette','Leasing'];
+let activeCat='Alle',sel=-1,curMatches=[];
+function ranked(q){return data.map(x=>({x,s:score(x,q)})).filter(o=>o.s>0).sort((a,b)=>b.s-a.s).map(o=>o.x);}
+function card(x,q){
+  const [bg,bd]=catColor(x.cat),ic=ICON[x.cat]||'📄';
+  return '<a class="sx-card" style="background:'+bg+';border-color:'+bd+'" href="'+x.url+'"><span class="sx-ic">'+ic+'</span><span class="sx-cat">'+esc(x.cat)+'</span><h2>'+hl(cleanTitle(x.title),q)+'</h2><p>'+hl(snippet(x,q),q)+'</p></a>';
+}
+function render(){
+  const raw=input.value.trim(); clr.hidden=!raw;
+  if(!raw){
+    meta.textContent=articles.length+' Ratgeber und '+gloss+' Glossar-Begriffe durchsuchen';
+    results.innerHTML='';filt.hidden=true;activeCat='Alle';
+    chips.innerHTML='<span class="sx-chips-l">Beliebt:</span>'+POPULAR.map(p=>'<button type="button" class="sx-chip" data-q="'+esc(p)+'">'+esc(p)+'</button>').join('');
+    return;
+  }
+  chips.innerHTML='';
+  const all=ranked(raw);
+  const cats={};all.forEach(x=>{const k=x.cat==='Glossar'?'Glossar':'Ratgeber';cats[k]=(cats[k]||0)+1;});
+  let shown=all.filter(x=>activeCat==='Alle'||(activeCat==='Glossar'?x.cat==='Glossar':x.cat!=='Glossar')).slice(0,30);
+  curMatches=shown;
+  meta.textContent=all.length?(all.length+(all.length===1?' Treffer':' Treffer')+' für „'+raw+'“'):'';
+  filt.hidden=!all.length;
+  filt.innerHTML=['Alle','Ratgeber','Glossar'].filter(k=>k==='Alle'||cats[k]).map(k=>'<button type="button" class="sx-f'+(k===activeCat?' on':'')+'" data-c="'+k+'">'+k+(k==='Alle'?' ('+all.length+')':' ('+cats[k]+')')+'</button>').join('');
+  results.innerHTML=shown.map(x=>card(x,raw)).join('')||'<div class="sx-none"><div class="sx-none-ic">🤔</div><h2>Dazu habe ich nichts gefunden</h2><p>Versuch es mit einem kürzeren oder anderen Wort – oder stöbere in den beliebten Themen:</p><div class="sx-chips">'+POPULAR.map(p=>'<button type="button" class="sx-chip" data-q="'+esc(p)+'">'+esc(p)+'</button>').join('')+'</div></div>';
+}
+/* Autovervollständigung: Titel, die mit dem Eingegebenen beginnen oder es enthalten */
+function suggest(){
+  const raw=input.value.trim(),n=norm(raw);sel=-1;
+  if(n.length<2){sug.hidden=true;input.setAttribute('aria-expanded','false');return;}
+  const seen=new Set(),list=[];
+  const starts=[],has=[];
+  data.forEach(x=>{const t=cleanTitle(x.title),nt=norm(t);if(seen.has(nt))return;
+    if(nt.startsWith(n)||nt.split(' ').some(w=>w.startsWith(n))){starts.push(x);seen.add(nt);}
+    else if(nt.includes(n)){has.push(x);seen.add(nt);}});
+  const pick=starts.concat(has).slice(0,6);
+  if(!pick.length){sug.hidden=true;input.setAttribute('aria-expanded','false');return;}
+  sug.innerHTML=pick.map((x,i)=>'<li role="option" id="sx-o'+i+'" data-url="'+x.url+'"><span class="sx-s-ic">'+(ICON[x.cat]||'📄')+'</span><span class="sx-s-t">'+hl(cleanTitle(x.title),raw)+'</span><span class="sx-s-c">'+esc(x.cat)+'</span></li>').join('');
+  sug.hidden=false;input.setAttribute('aria-expanded','true');
+}
+function closeSug(){sug.hidden=true;input.setAttribute('aria-expanded','false');sel=-1;}
+input.addEventListener('input',()=>{activeCat='Alle';render();suggest();});
+input.addEventListener('focus',suggest);
+input.addEventListener('keydown',e=>{
+  const opts=[...sug.querySelectorAll('li')];
+  if(e.key==='ArrowDown'&&opts.length){e.preventDefault();sel=(sel+1)%opts.length;}
+  else if(e.key==='ArrowUp'&&opts.length){e.preventDefault();sel=(sel-1+opts.length)%opts.length;}
+  else if(e.key==='Enter'){if(sel>=0&&opts[sel]){location.href=opts[sel].dataset.url;}else closeSug();return;}
+  else if(e.key==='Escape'){closeSug();return;}
+  else return;
+  opts.forEach((o,i)=>{o.classList.toggle('on',i===sel);});
+  if(sel>=0)input.setAttribute('aria-activedescendant','sx-o'+sel);
+});
+sug.addEventListener('mousedown',e=>{const li=e.target.closest('li');if(li){e.preventDefault();location.href=li.dataset.url;}});
+document.addEventListener('click',e=>{if(!e.target.closest('.sx-box'))closeSug();});
+clr.addEventListener('click',()=>{input.value='';render();closeSug();input.focus();});
+document.addEventListener('click',e=>{
+  const c=e.target.closest('.sx-chip');if(c){input.value=c.dataset.q;activeCat='Alle';render();suggest();closeSug();input.focus();}
+  const f=e.target.closest('.sx-f');if(f){activeCat=f.dataset.c;render();}
+});
+const params=new URLSearchParams(location.search);input.value=params.get('q')||'';render();
+if(!input.value)input.focus({preventScroll:true});
 </script>
 <script src="script.js"></script>
 <script src="section-cards.js"></script>
