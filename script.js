@@ -202,6 +202,9 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
     var reopen = function () { li.classList.remove('dd-closed'); };
+    // Beim Laden einer Seite bleibt das Untermenü zu, auch wenn die Maus gerade darüber steht (z. B. nach Klick auf einen Menüpunkt)
+    li.classList.add('dd-closed');
+    li.addEventListener('keydown', reopen);
     li.addEventListener('mouseleave', reopen);
     li.addEventListener('touchstart', function (e) { if (e.target.closest('.dd-caret')) reopen(); }, { passive: true });
     if (btn) btn.addEventListener('click', reopen);
