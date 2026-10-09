@@ -90,6 +90,7 @@
 .vg-car h3{margin:0 0 .6rem}
 .vg-f{margin:.55rem 0}.vg-f label{display:block;font-weight:700;font-size:.86rem;margin-bottom:.2rem;line-height:1.3}
 .vg-f input,.vg-f select{width:100%;box-sizing:border-box;padding:.55rem .65rem;border:1px solid #cdd5d1;border-radius:10px;font:inherit;background:#fff}
+.vg-car .vg-ph{display:none}.vg-car.is-p .vg-ph{display:block}
 .vg-h{display:block;font-size:.76rem;color:#53615b;margin-top:.15rem;line-height:1.4}
 .vg-shared{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;padding:1rem;border-radius:16px;background:#fdf3e7;border:1px solid #f3dfc0;margin:1rem 0}
 .vg-win{padding:1rem 1.2rem;border-radius:14px;background:#fff8e8;border:1px solid #eee0b9;font-size:1.05rem;line-height:1.55;margin:1rem 0}
@@ -97,16 +98,19 @@
 @media(max-width:800px){.vg-grid,.vg-shared{grid-template-columns:1fr}}
 </style>
 <h2>🧮 Fahrzeugvergleich: Auto A gegen Auto B</h2>
-<p class="intro-tile">Trage zwei Fahrzeuge ein, zum Beispiel ein E-Auto und einen Benziner. Der Rechner zeigt dir die Gesamtkosten über deine Haltedauer, inklusive Wertverlust. Die Startwerte sind Beispielwerte, bitte trage deine eigenen Zahlen ein. Wechselst du den Antrieb, werden typische Werte für Verbrauch, Energiepreis, Steuer, Wartung und THG-Prämie vorgeschlagen.</p>
+<p class="intro-tile">Trage zwei Fahrzeuge ein, zum Beispiel ein E-Auto und einen Benziner oder einen Hybrid. Der Rechner zeigt dir die Gesamtkosten über deine Haltedauer, inklusive Wertverlust. Die Startwerte sind Beispielwerte, bitte trage deine eigenen Zahlen ein. Wechselst du den Antrieb, werden typische Werte für Verbrauch, Energiepreis, Steuer, Wartung und THG-Prämie vorgeschlagen. Beim Plug-in-Hybrid gibst du Strom- und Kraftstoffverbrauch getrennt ein und legst fest, welchen Anteil du elektrisch fährst.</p>
 <div class="vg-grid"><div class="vg-car vg-a"><h3>Auto A</h3>
 <div class="vg-g" data-g="A"><select class="vg-gsel" aria-label="Gespeichertes Auto laden"><option value="">Gespeichertes Auto laden …</option></select><div class="vg-gb"><button type="button" class="vg-gsave">💾 Speichern</button><button type="button" class="vg-gdel">🗑 Löschen</button></div><span class="vg-gs" aria-live="polite"></span></div>
 <div class="vg-f"><label for="vgA_n">Bezeichnung</label><input id="vgA_n" type="text" value="Elektroauto" maxlength="30"></div>
-<div class="vg-f"><label for="vgA_a">Antrieb</label><select id="vgA_a"><option value="e" selected>Elektro (BEV)</option><option value="b">Benziner</option><option value="d">Diesel</option></select></div>
+<div class="vg-f"><label for="vgA_a">Antrieb</label><select id="vgA_a"><option value="e" selected>Elektro (BEV)</option><option value="b">Benziner</option><option value="d">Diesel</option><option value="p">Plug-in-Hybrid (PHEV)</option><option value="h">Vollhybrid (ohne Stecker)</option></select></div>
 <div class="vg-f"><label for="vgA_l">Listenpreis laut Preisliste, vor Rabatt (€)</label><input id="vgA_l" type="text" inputmode="decimal" autocomplete="off" value="42000"></div>
 <div class="vg-f"><label for="vgA_k">Kaufpreis (€), was du tatsächlich bezahlst, nach Rabatt</label><input id="vgA_k" type="text" inputmode="decimal" autocomplete="off" value="39000"><span class="vg-h">Leer lassen = kein Rabatt</span></div>
-<div class="vg-f"><label for="vgA_fo">Staatliche Förderung (€, einmalig)</label><input id="vgA_fo" type="text" inputmode="decimal" autocomplete="off" value="0"><span class="vg-h">Nur für reine E-Autos, je nach Einkommen 3.000 bis 6.000 €. Ohne Förderung 0.</span></div>
+<div class="vg-f"><label for="vgA_fo">Staatliche Förderung (€, einmalig)</label><input id="vgA_fo" type="text" inputmode="decimal" autocomplete="off" value="0"><span class="vg-h">Nur, wenn dein Modell förderfähig ist (Bedingungen vorher prüfen). Ohne Förderung 0.</span></div>
 <div class="vg-f"><label for="vgA_vb">Verbrauch (<span id="vgA_vbu">kWh</span> je 100 km)</label><input id="vgA_vb" data-dp="1" type="text" inputmode="decimal" autocomplete="off" value="17"></div>
 <div class="vg-f"><label for="vgA_ep">Energiepreis (€ je <span id="vgA_epu">kWh</span>)</label><input id="vgA_ep" data-dp="1" type="text" inputmode="decimal" autocomplete="off" value="0,32"></div>
+<div class="vg-f vg-ph"><label for="vgA_vb2">Stromverbrauch (kWh je 100 km, im Elektrobetrieb)</label><input id="vgA_vb2" data-dp="1" type="text" inputmode="decimal" autocomplete="off" value="18"></div>
+<div class="vg-f vg-ph"><label for="vgA_ep2">Strompreis (€ je kWh)</label><input id="vgA_ep2" data-dp="1" type="text" inputmode="decimal" autocomplete="off" value="0,32"></div>
+<div class="vg-f vg-ph"><label for="vgA_ea">Anteil der Strecke, die elektrisch gefahren wird (%)</label><input id="vgA_ea" type="text" inputmode="decimal" autocomplete="off" value="50"><span class="vg-h">Bei regelmäßigem Laden zuhause oft 40 bis 70 %, ohne Laden nahe 0. Der Rest läuft mit Kraftstoff.</span></div>
 <div class="vg-f"><label for="vgA_vs">Versicherung (€/Jahr)</label><input id="vgA_vs" type="text" inputmode="decimal" autocomplete="off" value="750"></div>
 <div class="vg-f"><label for="vgA_st">Kfz-Steuer (€/Jahr)</label><input id="vgA_st" type="text" inputmode="decimal" autocomplete="off" value="0"></div>
 <div class="vg-f"><label for="vgA_wa">Wartung &amp; Reparaturen (€/Jahr)</label><input id="vgA_wa" type="text" inputmode="decimal" autocomplete="off" value="350"></div>
@@ -114,12 +118,15 @@
 </div><div class="vg-car vg-b"><h3>Auto B</h3>
 <div class="vg-g" data-g="B"><select class="vg-gsel" aria-label="Gespeichertes Auto laden"><option value="">Gespeichertes Auto laden …</option></select><div class="vg-gb"><button type="button" class="vg-gsave">💾 Speichern</button><button type="button" class="vg-gdel">🗑 Löschen</button></div><span class="vg-gs" aria-live="polite"></span></div>
 <div class="vg-f"><label for="vgB_n">Bezeichnung</label><input id="vgB_n" type="text" value="Benziner" maxlength="30"></div>
-<div class="vg-f"><label for="vgB_a">Antrieb</label><select id="vgB_a"><option value="e">Elektro (BEV)</option><option value="b" selected>Benziner</option><option value="d">Diesel</option></select></div>
+<div class="vg-f"><label for="vgB_a">Antrieb</label><select id="vgB_a"><option value="e">Elektro (BEV)</option><option value="b" selected>Benziner</option><option value="d">Diesel</option><option value="p">Plug-in-Hybrid (PHEV)</option><option value="h">Vollhybrid (ohne Stecker)</option></select></div>
 <div class="vg-f"><label for="vgB_l">Listenpreis laut Preisliste, vor Rabatt (€)</label><input id="vgB_l" type="text" inputmode="decimal" autocomplete="off" value="36000"></div>
 <div class="vg-f"><label for="vgB_k">Kaufpreis (€), was du tatsächlich bezahlst, nach Rabatt</label><input id="vgB_k" type="text" inputmode="decimal" autocomplete="off" value="34000"><span class="vg-h">Leer lassen = kein Rabatt</span></div>
-<div class="vg-f"><label for="vgB_fo">Staatliche Förderung (€, einmalig)</label><input id="vgB_fo" type="text" inputmode="decimal" autocomplete="off" value="0"><span class="vg-h">Nur für reine E-Autos, je nach Einkommen 3.000 bis 6.000 €. Ohne Förderung 0.</span></div>
+<div class="vg-f"><label for="vgB_fo">Staatliche Förderung (€, einmalig)</label><input id="vgB_fo" type="text" inputmode="decimal" autocomplete="off" value="0"><span class="vg-h">Nur, wenn dein Modell förderfähig ist (Bedingungen vorher prüfen). Ohne Förderung 0.</span></div>
 <div class="vg-f"><label for="vgB_vb">Verbrauch (<span id="vgB_vbu">l</span> je 100 km)</label><input id="vgB_vb" data-dp="1" type="text" inputmode="decimal" autocomplete="off" value="7,5"></div>
 <div class="vg-f"><label for="vgB_ep">Energiepreis (€ je <span id="vgB_epu">Liter</span>)</label><input id="vgB_ep" data-dp="1" type="text" inputmode="decimal" autocomplete="off" value="2,20"></div>
+<div class="vg-f vg-ph"><label for="vgB_vb2">Stromverbrauch (kWh je 100 km, im Elektrobetrieb)</label><input id="vgB_vb2" data-dp="1" type="text" inputmode="decimal" autocomplete="off" value="18"></div>
+<div class="vg-f vg-ph"><label for="vgB_ep2">Strompreis (€ je kWh)</label><input id="vgB_ep2" data-dp="1" type="text" inputmode="decimal" autocomplete="off" value="0,32"></div>
+<div class="vg-f vg-ph"><label for="vgB_ea">Anteil der Strecke, die elektrisch gefahren wird (%)</label><input id="vgB_ea" type="text" inputmode="decimal" autocomplete="off" value="50"><span class="vg-h">Bei regelmäßigem Laden zuhause oft 40 bis 70 %, ohne Laden nahe 0. Der Rest läuft mit Kraftstoff.</span></div>
 <div class="vg-f"><label for="vgB_vs">Versicherung (€/Jahr)</label><input id="vgB_vs" type="text" inputmode="decimal" autocomplete="off" value="800"></div>
 <div class="vg-f"><label for="vgB_st">Kfz-Steuer (€/Jahr)</label><input id="vgB_st" type="text" inputmode="decimal" autocomplete="off" value="150"></div>
 <div class="vg-f"><label for="vgB_wa">Wartung &amp; Reparaturen (€/Jahr)</label><input id="vgB_wa" type="text" inputmode="decimal" autocomplete="off" value="550"></div>
@@ -131,13 +138,14 @@
 </div>
 <div class="vg-win" id="vgWin" aria-live="polite"></div>
 <div class="vg-res"><div class="evb-table-wrap"><table class="evb-table"><thead><tr><th>Kostenposten</th><th class="num" id="vgHA">Auto A</th><th class="num" id="vgHB">Auto B</th></tr></thead><tbody id="vgBody"></tbody></table></div></div>
-<p class="evb-note"><strong>Orientierungswert, keine individuelle Fahrzeugbewertung.</strong> Der Wertverlust wird aus Orientierungswerten für den Restwert vom Listenpreis geschätzt (<a class="content-link" href="artikel-wertverlust-restwert.html">mehr dazu</a>). Dein Rabatt wird dabei abgezogen, denn er ist schon in deinem Kaufpreis gespart. Nicht enthalten sind Finanzierungszinsen (dafür der <a class="content-link" href="leasing-kauf-rechner.html">Leasing-oder-Kaufen-Rechner</a>), Parken, Maut, Reifen und Pflege. Die Förderung hängt von deinem Einkommen ab, Details bei der <a class="content-link" href="artikel-e-auto-kaufpraemie.html">E-Auto-Kaufprämie</a>.</p>
+<p class="evb-note"><strong>Orientierungswert, keine individuelle Fahrzeugbewertung.</strong> Der Wertverlust wird aus Orientierungswerten für den Restwert vom Listenpreis geschätzt, bei Hybriden mangels belastbarer Zahlen mit den Werten des Benziners (<a class="content-link" href="artikel-wertverlust-restwert.html">mehr dazu</a>). Dein Rabatt wird dabei abgezogen, denn er ist schon in deinem Kaufpreis gespart. Nicht enthalten sind Finanzierungszinsen (dafür der <a class="content-link" href="leasing-kauf-rechner.html">Leasing-oder-Kaufen-Rechner</a>), Parken, Maut, Reifen und Pflege. Die Förderung hängt von deinem Einkommen ab, Details bei der <a class="content-link" href="artikel-e-auto-kaufpraemie.html">E-Auto-Kaufprämie</a>.</p>
 </section>
 <script src="zahlen.js"></script>
 <script>
 (function(){
 var AG=[0,1,2,3,4,5],LO={b:[100,72,62,56,48,40],d:[100,72,62,54,46,38],e:[100,65,55,46,40,33]},HI={b:[100,85,75,64,58,52],d:[100,85,75,62,56,50],e:[100,80,70,55,50,45]};
-var TY={e:{vb:17,ep:0.32,st:0,wa:350,th:300,vu:'kWh',eu:'kWh'},b:{vb:7.5,ep:2.2,st:150,wa:550,th:0,vu:'l',eu:'Liter'},d:{vb:6,ep:2.2,st:250,wa:600,th:0,vu:'l',eu:'Liter'}};
+LO.h=LO.p=LO.b;HI.h=HI.p=HI.b; /* für Hybride gibt es keine belastbaren Werte: Benziner-Werte als Näherung */
+var TY={e:{vb:17,ep:0.32,st:0,wa:350,th:300,vu:'kWh',eu:'kWh'},b:{vb:7.5,ep:2.2,st:150,wa:550,th:0,vu:'l',eu:'Liter'},d:{vb:6,ep:2.2,st:250,wa:600,th:0,vu:'l',eu:'Liter'},h:{vb:5.5,ep:2.2,st:130,wa:500,th:0,vu:'l',eu:'Liter'},p:{vb:6.5,ep:2.2,st:100,wa:550,th:0,vu:'l',eu:'Liter',vb2:18,ep2:0.32,ea:50}};
 var $=function(i){return document.getElementById(i);};
 var num=function(i){var v=parseDE($(i));return isFinite(v)?v:0;};
 var eur=function(n){return (Math.round(n)).toLocaleString('de-DE')+' €';};var jr=function(y){return y===1?'1 Jahr':y+' Jahre';};var sg=function(n,neg){return Math.round(n)===0?'–':(neg?'−':'')+eur(n);};
@@ -146,14 +154,16 @@ function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').repl
 function car(p,y,km){
  var a=$(p+'_a').value,l=num(p+'_l'),kRaw=$(p+'_k').value.trim(),k=kRaw===''||isNaN(parseDE($(p+'_k')))?l:num(p+'_k'),fo=num(p+'_fo');
  var rest=l*mid(a,y)/100,wv=Math.max(0,k-rest);
- var en=km/100*num(p+'_vb')*num(p+'_ep')*y,vs=num(p+'_vs')*y,st=num(p+'_st')*y,wa=num(p+'_wa')*y,th=num(p+'_th')*y;
+ var isP=a==='p',ea=Math.min(100,Math.max(0,num(p+'_ea')))/100;
+ var enS=a==='e'?km/100*num(p+'_vb')*num(p+'_ep')*y:(isP?km*ea/100*num(p+'_vb2')*num(p+'_ep2')*y:0);
+ var enK=a==='e'?0:km*(isP?1-ea:1)/100*num(p+'_vb')*num(p+'_ep')*y,en=enS+enK,vs=num(p+'_vs')*y,st=num(p+'_st')*y,wa=num(p+'_wa')*y,th=num(p+'_th')*y;
  var sum=wv+en+vs+st+wa-th-fo;
- return {name:$(p+'_n').value.trim()||('Auto '+p.slice(2)),wv:wv,rest:rest,en:en,vs:vs,st:st,wa:wa,th:th,fo:fo,sum:sum};
+ return {enS:enS,enK:enK,name:$(p+'_n').value.trim()||('Auto '+p.slice(2)),wv:wv,rest:rest,en:en,vs:vs,st:st,wa:wa,th:th,fo:fo,sum:sum};
 }
 function calc(){
  var y=+$('vgY').value,km=num('vgKm'),A=car('vgA',y,km),B=car('vgB',y,km);
  $('vgHA').textContent=A.name;$('vgHB').textContent=B.name;
- var rows=[['Wertverlust (nach Abzug Rabatt)','wv'],['Energie (Strom bzw. Kraftstoff)','en'],['Versicherung','vs'],['Kfz-Steuer','st'],['Wartung &amp; Reparaturen','wa'],['− THG-Prämie','th',1],['− Förderung','fo',1]];
+ var rows=[['Wertverlust (nach Abzug Rabatt)','wv'],['Strom','enS'],['Kraftstoff','enK'],['Versicherung','vs'],['Kfz-Steuer','st'],['Wartung &amp; Reparaturen','wa'],['− THG-Prämie','th',1],['− Förderung','fo',1]];
  var h='';
  rows.forEach(function(r){h+='<tr><td>'+r[0]+'</td><td class="num">'+sg(A[r[1]],r[2])+'</td><td class="num">'+sg(B[r[1]],r[2])+'</td></tr>';});
  var bA=A.sum<=B.sum,pk=function(c){return km>0?(c.sum/y/km*100).toFixed(1).replace('.',',')+' ct':'–';};
@@ -166,17 +176,18 @@ function calc(){
  var d=Math.abs(A.sum-B.sum),w=bA?A:B,o=bA?B:A;
  $('vgWin').innerHTML=d<50?'Beide Fahrzeuge kosten über '+jr(y)+' etwa gleich viel.':'<strong>'+esc(w.name)+'</strong> ist über '+jr(y)+' rund <strong>'+eur(d)+'</strong> günstiger als '+esc(o.name)+' (etwa '+eur(d/y)+' pro Jahr, '+eur(d/y/12)+' pro Monat).';
 }
+function vis(p){var c=$(p+'_a').closest('.vg-car');c.classList.toggle('is-p',$(p+'_a').value==='p');}
 ['vgA','vgB'].forEach(function(p){
  $(p+'_a').addEventListener('change',function(ev){
-  var t=TY[this.value];$(p+'_vbu').textContent=t.vu;$(p+'_epu').textContent=t.eu;
-  if(ev.isTrusted){['vb','ep','st','wa','th'].forEach(function(f){$(p+'_'+f).value=String(t[f]).replace('.',',');$(p+'_'+f).dispatchEvent(new Event('input',{bubbles:true}));});}
+  var t=TY[this.value];$(p+'_vbu').textContent=t.vu;$(p+'_epu').textContent=t.eu;vis(p);
+  if(ev.isTrusted){['vb','ep','st','wa','th','vb2','ep2','ea'].forEach(function(f){if(t[f]===undefined)return;$(p+'_'+f).value=String(t[f]).replace('.',',');$(p+'_'+f).dispatchEvent(new Event('input',{bubbles:true}));});}
  });
 });
 [].forEach.call(document.querySelectorAll('#fahrzeugvergleich input,#fahrzeugvergleich select'),function(e){e.addEventListener('input',calc);e.addEventListener('change',calc);});
-['vgA','vgB'].forEach(function(p){var t=TY[$(p+'_a').value];$(p+'_vbu').textContent=t.vu;$(p+'_epu').textContent=t.eu;});
+['vgA','vgB'].forEach(function(p){var t=TY[$(p+'_a').value];$(p+'_vbu').textContent=t.vu;$(p+'_epu').textContent=t.eu;vis(p);});
 
 /* Garage: bis zu 10 Autos unter einer Kurzbezeichnung speichern und wieder laden */
-var GK='ak-garage:e-auto-vs-benziner',MAXG=10,FL=['n','a','l','k','fo','vb','ep','vs','st','wa','th'];
+var GK='ak-garage:e-auto-vs-benziner',MAXG=10,FL=['n','a','l','k','fo','vb','ep','vs','st','wa','th','vb2','ep2','ea'];
 function gload(){try{var g=JSON.parse(localStorage.getItem(GK)||'[]');return Array.isArray(g)?g:[];}catch(e){return [];}}
 function gsave(g){try{localStorage.setItem(GK,JSON.stringify(g));return true;}catch(e){return false;}}
 function gfill(){var g=gload();[].forEach.call(document.querySelectorAll('.vg-g'),function(box){var s=box.querySelector('.vg-gsel'),cur=s.value;
@@ -186,8 +197,8 @@ function gmsg(box,m){box.querySelector('.vg-gs').textContent=m;}
 [].forEach.call(document.querySelectorAll('.vg-g'),function(box){
  var p='vg'+box.getAttribute('data-g'),s=box.querySelector('.vg-gsel');
  s.addEventListener('change',function(){var g=gload(),c=g[s.value];if(!c){gmsg(box,'');return;}
-  FL.forEach(function(f){var e=$(p+'_'+f);e.value=c.v[f];});
-  ['n','vb','ep','l','k','fo','vs','st','wa','th'].forEach(function(f){$(p+'_'+f).dispatchEvent(new Event('input',{bubbles:true}));});
+  FL.forEach(function(f){var e=$(p+'_'+f);if(c.v[f]!==undefined)e.value=c.v[f];});
+  ['n','vb','ep','l','k','fo','vs','st','wa','th','vb2','ep2','ea'].forEach(function(f){$(p+'_'+f).dispatchEvent(new Event('input',{bubbles:true}));});
   $(p+'_a').dispatchEvent(new Event('change',{bubbles:true}));
   gmsg(box,'„'+c.name+'“ geladen. Du kannst die Werte jetzt anpassen.');});
  box.querySelector('.vg-gsave').addEventListener('click',function(){
