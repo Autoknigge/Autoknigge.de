@@ -94,7 +94,17 @@
 .vg-h{display:block;font-size:.76rem;color:#53615b;margin-top:.15rem;line-height:1.4}
 .vg-shared{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;padding:1rem;border-radius:16px;background:#fdf3e7;border:1px solid #f3dfc0;margin:1rem 0}
 .vg-win{padding:1rem 1.2rem;border-radius:14px;background:#fff8e8;border:1px solid #eee0b9;font-size:1.05rem;line-height:1.55;margin:1rem 0}
-.vg-res .evb-table td.best{background:#e9f4ef;font-weight:700}
+.vg-res{display:grid;grid-template-columns:1fr;gap:.8rem;margin:1rem 0}
+@media(min-width:760px){.vg-res{grid-template-columns:1fr 1fr}}
+.vg-t{padding:1rem;border-radius:16px;border:2px solid transparent;min-width:0}
+.vg-t.a{background:#eef1fb;border-color:#d3d9f4}.vg-t.b{background:#e9f4ef;border-color:#c9e6d8}
+.vg-t.best{border-color:#176246;box-shadow:0 2px 10px rgba(23,98,70,.18)}
+.vg-t h3{margin:0 0 .15rem;font-size:1.05rem;overflow-wrap:anywhere}
+.vg-badge{display:inline-block;font-size:.76rem;font-weight:700;background:#176246;color:#fff;border-radius:999px;padding:.12rem .55rem;margin-left:.4rem;vertical-align:middle}
+.vg-tot{font-size:1.9rem;font-weight:800;line-height:1.2;margin:.2rem 0}
+.vg-sub{font-size:.88rem;color:#425852;margin-bottom:.6rem}
+.vg-r{display:flex;justify-content:space-between;gap:.8rem;padding:.38rem 0;border-top:1px solid rgba(10,28,22,.1);font-size:.93rem}
+.vg-r span:first-child{min-width:0}.vg-r span:last-child{white-space:nowrap;font-weight:600}
 @media(max-width:800px){.vg-grid,.vg-shared{grid-template-columns:1fr}}
 </style>
 <h2>🧮 Fahrzeugvergleich: Auto A gegen Auto B</h2>
@@ -137,7 +147,7 @@
 <div class="vg-f"><label for="vgY">Haltedauer</label><select id="vgY"><option value="1">1 Jahr</option><option value="2">2 Jahre</option><option value="3">3 Jahre</option><option value="4" selected>4 Jahre</option><option value="5">5 Jahre</option></select></div>
 </div>
 <div class="vg-win" id="vgWin" aria-live="polite"></div>
-<div class="vg-res"><div class="evb-table-wrap"><table class="evb-table"><thead><tr><th>Kostenposten</th><th class="num" id="vgHA">Auto A</th><th class="num" id="vgHB">Auto B</th></tr></thead><tbody id="vgBody"></tbody></table></div></div>
+<div class="vg-res" id="vgTiles"></div>
 <p class="evb-note"><strong>Orientierungswert, keine individuelle Fahrzeugbewertung.</strong> Der Wertverlust wird aus Orientierungswerten für den Restwert vom Listenpreis geschätzt, bei Hybriden mangels belastbarer Zahlen mit den Werten des Benziners (<a class="content-link" href="artikel-wertverlust-restwert.html">mehr dazu</a>). Dein Rabatt wird dabei abgezogen, denn er ist schon in deinem Kaufpreis gespart. Nicht enthalten sind Finanzierungszinsen (dafür der <a class="content-link" href="leasing-kauf-rechner.html">Leasing-oder-Kaufen-Rechner</a>), Parken, Maut, Reifen und Pflege. Die Förderung hängt von deinem Einkommen ab, Details bei der <a class="content-link" href="artikel-e-auto-kaufpraemie.html">E-Auto-Kaufprämie</a>.</p>
 </section>
 <script src="zahlen.js"></script>
@@ -162,17 +172,13 @@ function car(p,y,km){
 }
 function calc(){
  var y=+$('vgY').value,km=num('vgKm'),A=car('vgA',y,km),B=car('vgB',y,km);
- $('vgHA').textContent=A.name;$('vgHB').textContent=B.name;
  var rows=[['Wertverlust (nach Abzug Rabatt)','wv'],['Strom','enS'],['Kraftstoff','enK'],['Versicherung','vs'],['Kfz-Steuer','st'],['Wartung &amp; Reparaturen','wa'],['− THG-Prämie','th',1],['− Förderung','fo',1]];
- var h='';
- rows.forEach(function(r){h+='<tr><td>'+r[0]+'</td><td class="num">'+sg(A[r[1]],r[2])+'</td><td class="num">'+sg(B[r[1]],r[2])+'</td></tr>';});
  var bA=A.sum<=B.sum,pk=function(c){return km>0?(c.sum/y/km*100).toFixed(1).replace('.',',')+' ct':'–';};
- h+='<tr class="hl"><td><strong>Gesamtkosten in '+jr(y)+'</strong></td><td class="num'+(bA?' best':'')+'"><strong>'+eur(A.sum)+'</strong></td><td class="num'+(!bA?' best':'')+'"><strong>'+eur(B.sum)+'</strong></td></tr>';
- h+='<tr><td>pro Jahr</td><td class="num">'+eur(A.sum/y)+'</td><td class="num">'+eur(B.sum/y)+'</td></tr>';
- h+='<tr><td>pro Monat</td><td class="num">'+eur(A.sum/y/12)+'</td><td class="num">'+eur(B.sum/y/12)+'</td></tr>';
- h+='<tr><td>pro Kilometer</td><td class="num">'+pk(A)+'</td><td class="num">'+pk(B)+'</td></tr>';
- h+='<tr><td>Geschätzter Restwert am Ende</td><td class="num">'+eur(A.rest)+'</td><td class="num">'+eur(B.rest)+'</td></tr>';
- $('vgBody').innerHTML=h;
+ var tile=function(c,cls,best){var h='<div class="vg-t '+cls+(best?' best':'')+'"><h3>'+esc(c.name)+(best?'<span class="vg-badge">günstiger</span>':'')+'</h3>';
+  h+='<div class="vg-tot">'+eur(c.sum)+'</div><div class="vg-sub">Gesamtkosten in '+jr(y)+'</div>';
+  rows.forEach(function(r){if(Math.round(c[r[1]])===0&&(r[1]==='enS'||r[1]==='enK'||r[1]==='th'||r[1]==='fo'))return;h+='<div class="vg-r"><span>'+r[0]+'</span><span>'+sg(c[r[1]],r[2])+'</span></div>';});
+  h+='<div class="vg-r"><span>pro Jahr</span><span>'+eur(c.sum/y)+'</span></div><div class="vg-r"><span>pro Monat</span><span>'+eur(c.sum/y/12)+'</span></div><div class="vg-r"><span>pro Kilometer</span><span>'+pk(c)+'</span></div><div class="vg-r"><span>Restwert am Ende (geschätzt)</span><span>'+eur(c.rest)+'</span></div></div>';return h;};
+ $('vgTiles').innerHTML=tile(A,'a',bA&&Math.abs(A.sum-B.sum)>=50)+tile(B,'b',!bA&&Math.abs(A.sum-B.sum)>=50);
  var d=Math.abs(A.sum-B.sum),w=bA?A:B,o=bA?B:A;
  $('vgWin').innerHTML=d<50?'Beide Fahrzeuge kosten über '+jr(y)+' etwa gleich viel.':'<strong>'+esc(w.name)+'</strong> ist über '+jr(y)+' rund <strong>'+eur(d)+'</strong> günstiger als '+esc(o.name)+' (etwa '+eur(d/y)+' pro Jahr, '+eur(d/y/12)+' pro Monat).';
 }
