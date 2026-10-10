@@ -9,7 +9,7 @@
 <title>Fahrzeugvergleich: Auto A gegen Auto B – Kostenrechner | Autoknigge</title>
 <meta content="Fahrzeugvergleich: Zwei Autos gegenüberstellen und Gesamtkosten inklusive Wertverlust, Energie, Förderung und Rabatt berechnen. Bis zu 10 Autos speicherbar, kostenlos." name="description"/>
 <link href="https://autoknigge.de/fahrzeugvergleich.html" rel="canonical"/>
-<link href="styles.css" rel="stylesheet"/>
+<link href="styles.css?v=20261010" rel="stylesheet"/>
 <link href="manifest.json" rel="manifest"/>
 <meta content="#0f241d" name="theme-color"/>
 <style>
@@ -100,6 +100,8 @@
 .vg-t.a{background:#eef1fb;border-color:#d3d9f4}.vg-t.b{background:#e9f4ef;border-color:#c9e6d8}
 .vg-t.best{border-color:#176246;box-shadow:0 2px 10px rgba(23,98,70,.18)}
 .vg-t h3{margin:0 0 .15rem;font-size:1.05rem;overflow-wrap:anywhere}
+.vg-sv{display:block;width:100%;margin-top:.7rem;padding:.6rem .8rem;border-radius:12px;border:2px solid #176246;background:#176246;color:#fff;font:inherit;font-weight:700;font-size:.92rem;cursor:pointer}
+.vg-sv.ch{background:#fff;color:#176246}.vg-sv.ok{background:transparent;border-color:transparent;color:#425852;cursor:default;font-weight:600}
 .vg-badge{display:inline-block;font-size:.76rem;font-weight:700;background:#176246;color:#fff;border-radius:999px;padding:.12rem .55rem;margin-left:.4rem;vertical-align:middle}
 .vg-tot{font-size:1.9rem;font-weight:800;line-height:1.2;margin:.2rem 0}
 .vg-sub{font-size:.88rem;color:#425852;margin-bottom:.6rem}
@@ -144,15 +146,16 @@
 </div></div>
 <div class="vg-shared">
 <div class="vg-f"><label for="vgKm">Fahrleistung pro Jahr (km)</label><input id="vgKm" type="text" inputmode="decimal" autocomplete="off" value="15000"></div>
-<div class="vg-f"><label for="vgY">Haltedauer</label><select id="vgY"><option value="1">1 Jahr</option><option value="2">2 Jahre</option><option value="3">3 Jahre</option><option value="4" selected>4 Jahre</option><option value="5">5 Jahre</option></select></div>
+<div class="vg-f"><label for="vgY">Haltedauer</label><select id="vgY"><option value="1">1 Jahr</option><option value="2">2 Jahre</option><option value="3">3 Jahre</option><option value="4" selected>4 Jahre</option><option value="5">5 Jahre</option><option value="6">6 Jahre</option><option value="7">7 Jahre</option><option value="8">8 Jahre</option><option value="9">9 Jahre</option><option value="10">10 Jahre</option></select></div>
 </div>
 <div class="vg-win" id="vgWin" aria-live="polite"></div>
 <div class="vg-res" id="vgTiles"></div>
+<p class="vg-h" id="vgLong" style="display:none">Ab 6 Jahren Haltedauer sind die Restwerte besonders unsicher, bei E-Autos beruhen sie auf einer Fortschreibung. <a class="content-link" href="artikel-wertverlust-restwert.html">Mehr dazu</a></p>
 </section>
 <script src="zahlen.js"></script>
 <script>
 (function(){
-var AG=[0,1,2,3,4,5],LO={b:[100,72,62,56,48,40],d:[100,72,62,54,46,38],e:[100,65,55,46,40,33]},HI={b:[100,85,75,64,58,52],d:[100,85,75,62,56,50],e:[100,80,70,55,50,45]};
+var LO={b:[100,72,62,56,48,40,32,28,25,20,15],d:[100,72,62,54,46,38,30,26,24,19,15],e:[100,65,55,46,40,33,27,24,21,17,13]},HI={b:[100,85,75,64,58,52,45,40,38,34,30],d:[100,85,75,62,56,50,43,38,36,32,28],e:[100,80,70,55,50,45,38,34,32,29,26]};
 LO.h=LO.p=LO.b;HI.h=HI.p=HI.b; /* für Hybride gibt es keine belastbaren Werte: Benziner-Werte als Näherung */
 var TY={e:{vb:17,ep:0.32,st:0,wa:350,th:300,vu:'kWh',eu:'kWh'},b:{vb:7.5,ep:2.2,st:150,wa:550,th:0,vu:'l',eu:'Liter'},d:{vb:6,ep:2.2,st:250,wa:600,th:0,vu:'l',eu:'Liter'},h:{vb:5.5,ep:2.2,st:130,wa:500,th:0,vu:'l',eu:'Liter'},p:{vb:6.5,ep:2.2,st:100,wa:550,th:0,vu:'l',eu:'Liter',vb2:18,ep2:0.32,ea:50}};
 var $=function(i){return document.getElementById(i);};
@@ -169,15 +172,23 @@ function car(p,y,km){
  var sum=wv+en+vs+st+wa-th-fo;
  return {enS:enS,enK:enK,name:$(p+'_n').value.trim()||('Auto '+p.slice(2)),wv:wv,rest:rest,en:en,vs:vs,st:st,wa:wa,th:th,fo:fo,sum:sum};
 }
+function cstate(p){var nm=$(p+'_n').value.trim().slice(0,30);if(!nm)return 'none';var g=gload(),c=g.filter(function(x){return x.name.toLowerCase()===nm.toLowerCase();})[0];if(!c)return 'new';
+ return FL.every(function(f){return String(c.v[f]===undefined?'':c.v[f])===String($(p+'_'+f).value);})?'same':'changed';}
+function svbtn(p,n){var st=cstate(p),q='„'+esc(n)+'“';
+ if(st==='none')return '<button type="button" class="vg-sv ok" data-p="'+p+'" disabled>Zum Speichern oben eine Bezeichnung eintragen</button>';
+ if(st==='same')return '<button type="button" class="vg-sv ok" data-p="'+p+'" disabled>✓ '+q+' ist gespeichert</button>';
+ if(st==='changed')return '<button type="button" class="vg-sv ch" data-p="'+p+'">💾 Änderungen an '+q+' speichern</button>';
+ return '<button type="button" class="vg-sv" data-p="'+p+'">💾 '+q+' für später speichern</button>';}
 function calc(){
  var y=+$('vgY').value,km=num('vgKm'),A=car('vgA',y,km),B=car('vgB',y,km);
  var rows=[['Wertverlust (nach Abzug Rabatt)','wv'],['Strom','enS'],['Kraftstoff','enK'],['Versicherung','vs'],['Kfz-Steuer','st'],['Wartung &amp; Reparaturen','wa'],['− THG-Prämie','th',1],['− Förderung','fo',1]];
  var bA=A.sum<=B.sum,pk=function(c){return km>0?(c.sum/y/km*100).toFixed(1).replace('.',',')+' ct':'–';};
- var tile=function(c,cls,best){var h='<div class="vg-t '+cls+(best?' best':'')+'"><h3>'+esc(c.name)+(best?'<span class="vg-badge">günstiger</span>':'')+'</h3>';
+ var tile=function(c,cls,best,pp){var h='<div class="vg-t '+cls+(best?' best':'')+'"><h3>'+esc(c.name)+(best?'<span class="vg-badge">günstiger</span>':'')+'</h3>';
   h+='<div class="vg-tot">'+eur(c.sum)+'</div><div class="vg-sub">Gesamtkosten in '+jr(y)+'</div>';
   rows.forEach(function(r){if(Math.round(c[r[1]])===0&&(r[1]==='enS'||r[1]==='enK'||r[1]==='th'||r[1]==='fo'))return;h+='<div class="vg-r"><span>'+r[0]+'</span><span>'+sg(c[r[1]],r[2])+'</span></div>';});
-  h+='<div class="vg-r"><span>pro Jahr</span><span>'+eur(c.sum/y)+'</span></div><div class="vg-r"><span>pro Monat</span><span>'+eur(c.sum/y/12)+'</span></div><div class="vg-r"><span>pro Kilometer</span><span>'+pk(c)+'</span></div><div class="vg-r"><span>Restwert am Ende (geschätzt)</span><span>'+eur(c.rest)+'</span></div></div>';return h;};
- $('vgTiles').innerHTML=tile(A,'a',bA&&Math.abs(A.sum-B.sum)>=50)+tile(B,'b',!bA&&Math.abs(A.sum-B.sum)>=50);
+  h+='<div class="vg-r"><span>pro Jahr</span><span>'+eur(c.sum/y)+'</span></div><div class="vg-r"><span>pro Monat</span><span>'+eur(c.sum/y/12)+'</span></div><div class="vg-r"><span>pro Kilometer</span><span>'+pk(c)+'</span></div><div class="vg-r"><span>Restwert am Ende (geschätzt)</span><span>'+eur(c.rest)+'</span></div>'+svbtn(pp,c.name)+'</div>';return h;};
+ $('vgLong').style.display=y>5?'block':'none';
+ $('vgTiles').innerHTML=tile(A,'a',bA&&Math.abs(A.sum-B.sum)>=50,'vgA')+tile(B,'b',!bA&&Math.abs(A.sum-B.sum)>=50,'vgB');
  var d=Math.abs(A.sum-B.sum),w=bA?A:B,o=bA?B:A;
  $('vgWin').innerHTML=d<50?'Beide Fahrzeuge kosten über '+jr(y)+' etwa gleich viel.':'<strong>'+esc(w.name)+'</strong> ist über '+jr(y)+' rund <strong>'+eur(d)+'</strong> günstiger als '+esc(o.name)+' (etwa '+eur(d/y)+' pro Jahr, '+eur(d/y/12)+' pro Monat).';
 }
@@ -206,7 +217,7 @@ function gmsg(box,m){box.querySelector('.vg-gs').textContent=m;}
   ['n','vb','ep','l','k','fo','vs','st','wa','th','vb2','ep2','ea'].forEach(function(f){$(p+'_'+f).dispatchEvent(new Event('input',{bubbles:true}));});
   $(p+'_a').dispatchEvent(new Event('change',{bubbles:true}));
   gmsg(box,'„'+c.name+'“ geladen. Du kannst die Werte jetzt anpassen.');});
- box.querySelector('.vg-gsave').addEventListener('click',function(){
+ box._save=function(){
   var name=$(p+'_n').value.trim().slice(0,30);if(!name){gmsg(box,'Bitte oben eine Kurzbezeichnung eintragen, zum Beispiel „ID.3 Pro“.');return;}
   var g=gload(),v={};FL.forEach(function(f){v[f]=$(p+'_'+f).value;});
   var i=g.findIndex(function(c){return c.name.toLowerCase()===name.toLowerCase();});
@@ -214,10 +225,13 @@ function gmsg(box,m){box.querySelector('.vg-gs').textContent=m;}
   else if(g.length>=MAXG){gmsg(box,'Du hast schon '+MAXG+' Autos gespeichert. Lösche zuerst eines, dann geht es wieder.');return;}
   else{g.unshift({name:name,v:v});gmsg(box,'„'+name+'“ gespeichert.');}
   if(!gsave(g)){gmsg(box,'Speichern ist in diesem Browser gerade nicht möglich.');return;}
-  gfill();var gi=gload().findIndex(function(c){return c.name.toLowerCase()===name.toLowerCase();});[].forEach.call(document.querySelectorAll('.vg-gsel'),function(x){x.value='';});s.value=String(gi);});
+  gfill();var gi=gload().findIndex(function(c){return c.name.toLowerCase()===name.toLowerCase();});[].forEach.call(document.querySelectorAll('.vg-gsel'),function(x){x.value='';});s.value=String(gi);calc();};
+ box.querySelector('.vg-gsave').addEventListener('click',box._save);
  box.querySelector('.vg-gdel').addEventListener('click',function(){var g=gload(),i=s.value;if(i===''||!g[i]){gmsg(box,'Wähle zuerst ein gespeichertes Auto aus der Liste.');return;}
-  var nm=g[i].name;g.splice(+i,1);gsave(g);gfill();gmsg(box,'„'+nm+'“ gelöscht.');});
+  var nm=g[i].name;g.splice(+i,1);gsave(g);gfill();gmsg(box,'„'+nm+'“ gelöscht.');calc();});
 });
+$('vgTiles').addEventListener('click',function(ev){var b=ev.target.closest&&ev.target.closest('.vg-sv');if(!b||b.disabled)return;
+ var box=document.querySelector('.vg-g[data-g="'+b.getAttribute('data-p').slice(2)+'"]');if(box&&box._save)box._save();});
 gfill();
 calc();
 })();
@@ -276,7 +290,7 @@ calc();
 </div>
 </div>
 </footer>
-<script src="script.js"></script>
+<script src="script.js?v=20261010"></script>
 
 <script src="section-cards.js"></script>\n<script>(function(){var n=new Date();document.querySelectorAll(".tr-box[data-until]").forEach(function(b){var u=new Date(b.getAttribute("data-until")+"T23:59:59");if(n>u){b.hidden=true;}});})();</script>
 </body>

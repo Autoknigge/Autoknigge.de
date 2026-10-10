@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // bis der Nutzer scrollt (bekannter Compositing-Bug). Ein unsichtbarer
   // 1px-Scroll erzwingt sofort ein Neu-Zeichnen, ohne dass die Seite sichtbar
   // springt.
-  if (window.scrollY === 0) {
+  if (window.scrollY === 0 && !location.hash) {
     requestAnimationFrame(function () {
       window.scrollTo(0, 1);
       requestAnimationFrame(function () {
@@ -193,17 +193,23 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.nav-dd').forEach(function (li) {
     var btn = li.querySelector('.dd-caret');
+    var ul = li.querySelector('.nav-dd-list');
+    // zusätzlich per Inline-Stil, damit es auch mit einer älteren, noch zwischengespeicherten styles.css funktioniert
+    var setClosed = function (on) {
+      li.classList.toggle('dd-closed', on);
+      if (ul) { if (on) ul.style.setProperty('display', 'none', 'important'); else ul.style.removeProperty('display'); }
+    };
     li.querySelectorAll('.nav-dd-list a').forEach(function (a) {
       a.addEventListener('click', function () {
         li.classList.remove('is-open');
         if (btn) btn.setAttribute('aria-expanded', 'false');
-        li.classList.add('dd-closed');
+        setClosed(true);
         try { a.blur(); } catch (e) {}
       });
     });
-    var reopen = function () { li.classList.remove('dd-closed'); };
+    var reopen = function () { setClosed(false); };
     // Beim Laden einer Seite bleibt das Untermenü zu, auch wenn die Maus gerade darüber steht (z. B. nach Klick auf einen Menüpunkt)
-    li.classList.add('dd-closed');
+    setClosed(true);
     li.addEventListener('keydown', reopen);
     // Erst bei echter Mausbewegung (mind. 6 px) über dem Menü wieder aufklappen
     var ref = null;
