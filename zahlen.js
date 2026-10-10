@@ -26,19 +26,25 @@
   function get(k){try{return localStorage.getItem(P+k);}catch(e){return null;}}
   function set(k,v){try{localStorage.setItem(P+k,v);}catch(e){}}
   var els=[].filter.call(document.querySelectorAll('input,select,textarea'),function(e){
-    return e.id&&e.type!=='button'&&e.type!=='submit'&&e.type!=='hidden';});
+    if(e.type==='button'||e.type==='submit'||e.type==='hidden')return false;
+    if(e.id==='nav-toggle'||(e.closest&&e.closest('header,nav,footer')))return false; /* Menü- und Kopfzeilen-Elemente nie merken */
+    return e.type==='radio'?!!e.name:!!e.id;});
+  var key=function(e){return e.type==='radio'?'r:'+e.name:e.id;};
+  try{Object.keys(localStorage).forEach(function(k){if(k.indexOf('ak-rechner:')===0&&/:nav-toggle$/.test(k))localStorage.removeItem(k);});}catch(e){}
   var restored=[];
   els.forEach(function(e){
-    var v=get(e.id);
+    var v=get(key(e));
     if(v===null)return;
-    if(e.type==='checkbox'||e.type==='radio'){e.checked=v==='1';}
+    if(e.type==='radio'){if(e.value===v){e.checked=true;restored.push(e);}return;}
+    if(e.type==='checkbox'){e.checked=v==='1';}
     else if(e.tagName==='SELECT'){if([].some.call(e.options,function(o){return o.value===v;}))e.value=v;else return;}
     else e.value=v;
     restored.push(e);
   });
   els.forEach(function(e){
-    var save=function(){set(e.id,(e.type==='checkbox'||e.type==='radio')?(e.checked?'1':'0'):e.value);
-      if(e.type==='radio'&&e.name)[].forEach.call(document.querySelectorAll('input[type="radio"][name="'+e.name+'"]'),function(r){if(r.id)set(r.id,r.checked?'1':'0');});};
+    var save=function(){
+      if(e.type==='radio'){if(e.checked)set(key(e),e.value);}
+      else set(key(e),e.type==='checkbox'?(e.checked?'1':'0'):e.value);};
     e.addEventListener('input',save);e.addEventListener('change',save);
   });
   document.addEventListener('DOMContentLoaded',function(){
