@@ -233,4 +233,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   window.addEventListener('hashchange', closeMenu);
   window.addEventListener('pageshow', closeMenu);
+  // Das Handy-Menü startet auf jeder Seite zu, auch wenn der Browser einen alten Zustand wiederherstellen will
+  closeMenu();
+  document.addEventListener('DOMContentLoaded', closeMenu);
+  window.addEventListener('load', function () { closeMenu(); setTimeout(closeMenu, 150); });
 })();
