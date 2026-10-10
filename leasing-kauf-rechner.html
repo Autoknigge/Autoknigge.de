@@ -164,7 +164,7 @@
 <script src="script.js?v=20261010"></script>
 <script src="zahlen.js"></script>
 <script src="garage.js"></script>
-<script>document.addEventListener("DOMContentLoaded",function(){var G=window.akGarage,a=document.querySelector('.lk-top');G.mount(a,function(k){G.set('lkPrice',G.fmt(k.price||k.list));G.set('lkWvL',k.list&&k.list!==k.price?G.fmt(k.list):'');G.set('lkWvA',k.drive);});});</script>
+<script>document.addEventListener("DOMContentLoaded",function(){var G=window.akGarage,a=document.querySelector('.lk-top');G.mount(a,function(k){G.set('lkPrice',G.fmt(k.price||k.list));G.set('lkWvL',k.list&&k.list!==k.price?G.fmt(k.list):'');G.set('lkWvA',k.drive);},'',function(){var V=function(i){return document.getElementById(i).value;},kp=V('lkPrice'),lp=V('lkWvL');return {_p:1,a:V('lkWvA'),l:(parseDE(lp)>0?lp:kp),k:kp};});});</script>
 <script src="section-cards.js"></script>
 <script>
 // <calc>
