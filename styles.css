@@ -2981,3 +2981,9 @@ p.intro-tile:nth-of-type(3n+3){background:#fdf3e6;border-left-color:#e0a050}
 /* Untermenü nach Klick einklappen; Sprungziele nicht unter dem Kopfbereich verstecken */
 .main-nav ul li.nav-dd.dd-closed > ul.nav-dd-list { display: none !important; }
 section[id], div[id].anchor-target, h2[id], h3[id] { scroll-margin-top: 96px; }
+
+/* carVertical-Kacheln: Text bleibt in der Kachel, Symbol entfällt */
+.history-badges .history-badge{display:block!important;text-align:center!important;min-width:0;overflow:hidden;padding:.9rem .6rem!important}
+.history-badges .history-badge>span{display:none!important}
+.history-badges .history-badge>strong{display:block!important;font-size:.95rem!important;line-height:1.25;margin:0 0 .3rem!important;overflow-wrap:anywhere;hyphens:auto;color:#fff!important}
+.history-badges .history-badge>small{display:block!important;margin:0!important;overflow-wrap:anywhere}
