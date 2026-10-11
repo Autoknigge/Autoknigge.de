@@ -100,7 +100,7 @@
 .vg-t.a{background:#eef1fb;border-color:#d3d9f4}.vg-t.b{background:#e9f4ef;border-color:#c9e6d8}
 .vg-t.best{border-color:#176246;box-shadow:0 2px 10px rgba(23,98,70,.18)}
 .vg-t h3{margin:0 0 .15rem;font-size:1.05rem;overflow-wrap:anywhere}
-.vg-exp{margin:.4rem 0 1rem}.vg-exp button{padding:.6rem 1rem;border-radius:12px;border:2px solid #176246;background:#fff;color:#176246;font:inherit;font-weight:700;font-size:.92rem;cursor:pointer}.vg-exp button:hover{background:#176246;color:#fff}
+.vg-exp{margin:.4rem 0 1rem}.vg-exp button{padding:.6rem 1rem;border-radius:12px;border:2px solid #176246;background:#fff;color:#176246;font:inherit;font-weight:700;font-size:.92rem;cursor:pointer}.vg-exp button.vg-sec{border-color:#8aa89b;color:#3d5c50;font-weight:600}.vg-exp button:hover{background:#176246;color:#fff}
 .vg-sv{display:block;width:100%;margin-top:.7rem;padding:.6rem .8rem;border-radius:12px;border:2px solid #176246;background:#176246;color:#fff;font:inherit;font-weight:700;font-size:.92rem;cursor:pointer}
 .vg-sv.ch{background:#fff;color:#176246}.vg-sv.ok{background:transparent;border-color:transparent;color:#425852;cursor:default;font-weight:600}
 .vg-badge{display:inline-block;font-size:.76rem;font-weight:700;background:#176246;color:#fff;border-radius:999px;padding:.12rem .55rem;margin-left:.4rem;vertical-align:middle}
@@ -154,7 +154,7 @@
 </div>
 <div class="vg-win" id="vgWin" aria-live="polite"></div>
 <div class="vg-res" id="vgTiles"></div>
-<div class="vg-exp"><button type="button" id="vgExport">📥 Vergleich als CSV exportieren</button><span class="vg-h">Öffnet sich in Excel, LibreOffice und Google Tabellen. Enthält deine Eingaben und alle Ergebnisse. Die Datei wird nur auf deinem Gerät erzeugt.</span></div>
+<div class="vg-exp"><button type="button" id="vgImg">🖼️ Vergleich als Bild speichern</button> <button type="button" id="vgExport" class="vg-sec">📥 Als CSV (Excel)</button></div>
 <p class="vg-h" id="vgCap" style="display:none">Alter beim Kauf plus Haltedauer geht über 10 Jahre hinaus. Gerechnet wird mit dem Wert für 10 Jahre.</p>
 <p class="vg-h" id="vgLong" style="display:none">Ab 6 Jahren Haltedauer sind die Restwerte besonders unsicher, bei E-Autos beruhen sie auf einer Fortschreibung. <a class="content-link" href="artikel-wertverlust-restwert.html">Mehr dazu</a></p>
 </section>
@@ -241,6 +241,51 @@ function gmsg(box,m){box.querySelector('.vg-gs').textContent=m;}
 $('vgTiles').addEventListener('click',function(ev){var b=ev.target.closest&&ev.target.closest('.vg-sv');if(!b||b.disabled)return;
  var box=document.querySelector('.vg-g[data-g="'+b.getAttribute('data-p').slice(2)+'"]');if(box&&box._save)box._save();});
 
+/* Export als Bild (PNG), komplett im Browser gezeichnet */
+$('vgImg').addEventListener('click',function(){
+ var y=+$('vgY').value,km=num('vgKm'),A=car('vgA',y,km),B=car('vgB',y,km);
+ var E=function(v){v=Math.round(v);return (v===0?'0':v.toLocaleString('de-DE'))+' €';};
+ var tx=function(i){var v=$(i).value.trim();return /^\d+$/.test(v)?(+v).toLocaleString('de-DE'):v;};
+ var sc=2,W=1000,P=36,cw=(W-2*P-300)/2,x0=P+300;
+ var rows=[['Wertverlust (nach Abzug Rabatt)',A.wv,B.wv],['Strom',A.enS,B.enS],['Kraftstoff',A.enK,B.enK],['Versicherung',A.vs,B.vs],['Kfz-Steuer',A.st,B.st],['Wartung & Reparaturen',A.wa,B.wa]];
+ if(A.th||B.th)rows.push(['− THG-Quote',-A.th,-B.th]);
+ if(A.fo||B.fo)rows.push(['− Förderung',-A.fo,-B.fo]);
+ var per=[['Kosten pro Jahr',E(A.sum/y),E(B.sum/y)],['Kosten pro Monat',E(A.sum/y/12),E(B.sum/y/12)]];
+ if(km>0)per.push(['Kosten pro km',(A.sum/y/km*100).toFixed(1).replace('.',',')+' ct',(B.sum/y/km*100).toFixed(1).replace('.',',')+' ct']);
+ per.push(['Restwert am Ende (geschätzt)',E(A.rest),E(B.rest)]);
+ var inp=[['Listenpreis',tx('vgA_l'),tx('vgB_l')],['Kaufpreis nach Rabatt, vor Förderung',tx('vgA_k'),tx('vgB_k')],['Staatliche Förderung',tx('vgA_fo'),tx('vgB_fo')],['Verbrauch je 100 km',tx('vgA_vb'),tx('vgB_vb')],['Energiepreis',tx('vgA_ep'),tx('vgB_ep')]].filter(function(r){return r[1]||r[2];});
+ var H=170+110+rows.length*40+30+per.length*38+50+inp.length*30+130;
+ var c=document.createElement('canvas');c.width=W*sc;c.height=H*sc;var g=c.getContext('2d');g.scale(sc,sc);
+ var F='-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif';
+ var rr=function(x,y2,w,h,r,f){g.beginPath();g.moveTo(x+r,y2);g.arcTo(x+w,y2,x+w,y2+h,r);g.arcTo(x+w,y2+h,x,y2+h,r);g.arcTo(x,y2+h,x,y2,r);g.arcTo(x,y2,x+w,y2,r);g.closePath();g.fillStyle=f;g.fill();};
+ var T=function(t,x,y2,font,col,al){g.font=font;g.fillStyle=col;g.textAlign=al||'left';g.fillText(t,x,y2);};
+ var fit=function(t,w,font){g.font=font;while(t.length>3&&g.measureText(t).width>w)t=t.slice(0,-2);return t;};
+ g.fillStyle='#f4f8f6';g.fillRect(0,0,W,H);
+ rr(0,0,W,120,0,'#0f241d');
+ T('⚖️ Fahrzeugvergleich',P,58,'700 30px '+F,'#ffffff');
+ T(y+' Jahre Haltedauer · '+(km>0?km.toLocaleString('de-DE')+' km pro Jahr':'')+' · Stand '+new Date().toLocaleDateString('de-DE'),P,92,'400 15px '+F,'#cfe3da');
+ var y2=140;
+ rr(x0,y2,cw-10,48,12,'#dcefe6');rr(x0+cw,y2,cw-10,48,12,'#fdeccf');
+ T(fit(A.name||'Auto A',cw-40,'700 17px '+F),x0+(cw-10)/2,y2+30,'700 17px '+F,'#176246','center');
+ T(fit(B.name||'Auto B',cw-40,'700 17px '+F),x0+cw+(cw-10)/2,y2+30,'700 17px '+F,'#8a5a0b','center');
+ y2+=68;
+ var win=A.sum<B.sum?0:1,diff=Math.abs(A.sum-B.sum);
+ rr(P,y2,W-2*P,86,16,'#ffffff');g.strokeStyle='#d6e4dd';g.lineWidth=1;g.stroke();
+ T('Gesamtkosten über '+y+' Jahre',P+20,y2+36,'600 17px '+F,'#0f241d');
+ T(diff>=1?'„'+fit((win?B.name||'Auto B':A.name||'Auto A'),300,'700 14px '+F)+'“ ist um '+E(diff)+' günstiger':'Beide gleich teuer',P+20,y2+62,'700 14px '+F,'#176246');
+ [A,B].forEach(function(o,i){var x=x0+i*cw+(cw-10)/2;if(i===win&&diff>=1)rr(x0+i*cw+6,y2+12,cw-22,62,12,'#dcefe6');T(E(o.sum),x,y2+52,'700 26px '+F,i===win&&diff>=1?'#176246':'#0f241d','center');});
+ y2+=116;
+ T('Kosten im Detail',P,y2,'700 16px '+F,'#0f241d');y2+=14;
+ rows.forEach(function(r,i){if(i%2===0)rr(P,y2,W-2*P,40,8,'#eaf2ee');T(r[0],P+14,y2+26,'400 15px '+F,'#2a3b35');T(E(r[1]),x0+(cw-10)/2,y2+26,'500 15px '+F,r[1]<0?'#176246':'#0f241d','center');T(E(r[2]),x0+cw+(cw-10)/2,y2+26,'500 15px '+F,r[2]<0?'#176246':'#0f241d','center');y2+=40;});
+ y2+=30;
+ per.forEach(function(r,i){rr(P,y2,W-2*P,34,8,i%2?'#ffffff':'#fdf3e2');T(r[0],P+14,y2+23,'600 14px '+F,'#2a3b35');T(r[1],x0+(cw-10)/2,y2+23,'600 14px '+F,'#0f241d','center');T(r[2],x0+cw+(cw-10)/2,y2+23,'600 14px '+F,'#0f241d','center');y2+=38;});
+ y2+=34;
+ T('Deine Eingaben',P,y2,'700 14px '+F,'#4a5b55');y2+=10;
+ inp.forEach(function(r){T(r[0],P+14,y2+20,'400 13px '+F,'#4a5b55');T(r[1]||'–',x0+(cw-10)/2,y2+20,'400 13px '+F,'#4a5b55','center');T(r[2]||'–',x0+cw+(cw-10)/2,y2+20,'400 13px '+F,'#4a5b55','center');y2+=30;});
+ T('Orientierungswerte auf Basis deiner Eingaben, keine verbindliche Kalkulation.',P,H-48,'400 12px '+F,'#6b7c76');
+ T('autoknigge.de/fahrzeugvergleich.html',P,H-24,'700 13px '+F,'#176246');
+ c.toBlob(function(b){var d=new Date(),pad=function(n){return (n<10?'0':'')+n;};var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='fahrzeugvergleich-'+d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate())+'.png';document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},500);},'image/png');
+});
 /* Export: Eingaben und Ergebnisse als CSV (Semikolon, UTF-8 mit BOM, Dezimalkomma: öffnet direkt in deutschem Excel) */
 $('vgExport').addEventListener('click',function(){
  var y=+$('vgY').value,km=num('vgKm'),A=car('vgA',y,km),B=car('vgB',y,km);
