@@ -117,6 +117,8 @@
 <div class="vg-f"><label for="vgA_a">Antrieb</label><select id="vgA_a"><option value="e" selected>Elektro (BEV)</option><option value="b">Benziner</option><option value="d">Diesel</option><option value="p">Plug-in-Hybrid (PHEV)</option><option value="h">Vollhybrid (ohne Stecker)</option></select></div>
 <div class="vg-f"><label for="vgA_l">Listenpreis laut Preisliste, vor Rabatt (€)</label><input id="vgA_l" type="text" inputmode="decimal" autocomplete="off" value="42000"></div>
 <div class="vg-f"><label for="vgA_k">Kaufpreis (€), was du tatsächlich bezahlst, nach Rabatt</label><input id="vgA_k" type="text" inputmode="decimal" autocomplete="off" value="39000"><span class="vg-h">Leer lassen = kein Rabatt</span></div>
+<div class="vg-f"><label for="vgA_ag">Alter beim Kauf (Jahre)</label><input id="vgA_ag" type="text" inputmode="numeric" autocomplete="off" value="0"><span class="vg-h">0 = Neuwagen. Bei Gebrauchten zählt dein Kaufpreis.</span></div>
+<div class="vg-f"><label for="vgA_rw">Restwert am Ende (€), falls bekannt</label><input id="vgA_rw" type="text" inputmode="decimal" autocomplete="off" value=""><span class="vg-h">Leer lassen = Schätzung.</span></div>
 <div class="vg-f"><label for="vgA_fo">Staatliche Förderung (€, einmalig)</label><input id="vgA_fo" type="text" inputmode="decimal" autocomplete="off" value="0"><span class="vg-h">Nur, wenn dein Modell förderfähig ist (Bedingungen vorher prüfen). Ohne Förderung 0.</span></div>
 <div class="vg-f"><label for="vgA_vb">Verbrauch (<span id="vgA_vbu">kWh</span> je 100 km)</label><input id="vgA_vb" data-dp="1" type="text" inputmode="decimal" autocomplete="off" value="17"></div>
 <div class="vg-f"><label for="vgA_ep">Energiepreis (€ je <span id="vgA_epu">kWh</span>)</label><input id="vgA_ep" data-dp="1" type="text" inputmode="decimal" autocomplete="off" value="0,32"></div>
@@ -133,6 +135,8 @@
 <div class="vg-f"><label for="vgB_a">Antrieb</label><select id="vgB_a"><option value="e">Elektro (BEV)</option><option value="b" selected>Benziner</option><option value="d">Diesel</option><option value="p">Plug-in-Hybrid (PHEV)</option><option value="h">Vollhybrid (ohne Stecker)</option></select></div>
 <div class="vg-f"><label for="vgB_l">Listenpreis laut Preisliste, vor Rabatt (€)</label><input id="vgB_l" type="text" inputmode="decimal" autocomplete="off" value="36000"></div>
 <div class="vg-f"><label for="vgB_k">Kaufpreis (€), was du tatsächlich bezahlst, nach Rabatt</label><input id="vgB_k" type="text" inputmode="decimal" autocomplete="off" value="34000"><span class="vg-h">Leer lassen = kein Rabatt</span></div>
+<div class="vg-f"><label for="vgB_ag">Alter beim Kauf (Jahre)</label><input id="vgB_ag" type="text" inputmode="numeric" autocomplete="off" value="0"><span class="vg-h">0 = Neuwagen. Bei Gebrauchten zählt dein Kaufpreis.</span></div>
+<div class="vg-f"><label for="vgB_rw">Restwert am Ende (€), falls bekannt</label><input id="vgB_rw" type="text" inputmode="decimal" autocomplete="off" value=""><span class="vg-h">Leer lassen = Schätzung.</span></div>
 <div class="vg-f"><label for="vgB_fo">Staatliche Förderung (€, einmalig)</label><input id="vgB_fo" type="text" inputmode="decimal" autocomplete="off" value="0"><span class="vg-h">Nur, wenn dein Modell förderfähig ist (Bedingungen vorher prüfen). Ohne Förderung 0.</span></div>
 <div class="vg-f"><label for="vgB_vb">Verbrauch (<span id="vgB_vbu">l</span> je 100 km)</label><input id="vgB_vb" data-dp="1" type="text" inputmode="decimal" autocomplete="off" value="7,5"></div>
 <div class="vg-f"><label for="vgB_ep">Energiepreis (€ je <span id="vgB_epu">Liter</span>)</label><input id="vgB_ep" data-dp="1" type="text" inputmode="decimal" autocomplete="off" value="2,20"></div>
@@ -150,6 +154,7 @@
 </div>
 <div class="vg-win" id="vgWin" aria-live="polite"></div>
 <div class="vg-res" id="vgTiles"></div>
+<p class="vg-h" id="vgCap" style="display:none">Alter beim Kauf plus Haltedauer geht über 10 Jahre hinaus. Gerechnet wird mit dem Wert für 10 Jahre.</p>
 <p class="vg-h" id="vgLong" style="display:none">Ab 6 Jahren Haltedauer sind die Restwerte besonders unsicher, bei E-Autos beruhen sie auf einer Fortschreibung. <a class="content-link" href="artikel-wertverlust-restwert.html">Mehr dazu</a></p>
 </section>
 <script src="zahlen.js"></script>
@@ -165,15 +170,17 @@ function mid(a,y){var lo=LO[a][y],hi=HI[a][y];return (lo+hi)/2;}
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function car(p,y,km){
  var a=$(p+'_a').value,l=num(p+'_l'),kRaw=$(p+'_k').value.trim(),k=kRaw===''||isNaN(parseDE($(p+'_k')))?l:num(p+'_k'),fo=num(p+'_fo');
- var rest=l*mid(a,y)/100,wv=Math.max(0,k-rest);
+ var ag=Math.min(9,Math.max(0,Math.floor(num(p+'_ag')))),ye=Math.min(10,ag+y),capd=ag+y>10,rwRaw=$(p+'_rw').value.trim(),rest;
+ if(rwRaw!==''&&isFinite(parseDE($(p+'_rw'))))rest=num(p+'_rw');else if(ag>0)rest=k*mid(a,ye)/mid(a,ag);else rest=l*mid(a,y)/100;
+ var wv=Math.max(0,k-rest);
  var isP=a==='p',ea=Math.min(100,Math.max(0,num(p+'_ea')))/100;
  var enS=a==='e'?km/100*num(p+'_vb')*num(p+'_ep')*y:(isP?km*ea/100*num(p+'_vb2')*num(p+'_ep2')*y:0);
  var enK=a==='e'?0:km*(isP?1-ea:1)/100*num(p+'_vb')*num(p+'_ep')*y,en=enS+enK,vs=num(p+'_vs')*y,st=num(p+'_st')*y,wa=num(p+'_wa')*y,th=num(p+'_th')*y;
  var sum=wv+en+vs+st+wa-th-fo;
- return {enS:enS,enK:enK,name:$(p+'_n').value.trim()||('Auto '+p.slice(2)),wv:wv,rest:rest,en:en,vs:vs,st:st,wa:wa,th:th,fo:fo,sum:sum};
+ return {capd:capd,enS:enS,enK:enK,name:$(p+'_n').value.trim()||('Auto '+p.slice(2)),wv:wv,rest:rest,en:en,vs:vs,st:st,wa:wa,th:th,fo:fo,sum:sum};
 }
 function cstate(p){var nm=$(p+'_n').value.trim().slice(0,30);if(!nm)return 'none';var g=gload(),c=g.filter(function(x){return x.name.toLowerCase()===nm.toLowerCase();})[0];if(!c)return 'new';
- return FL.every(function(f){return String(c.v[f]===undefined?'':c.v[f])===String($(p+'_'+f).value);})?'same':'changed';}
+ return FL.every(function(f){var cv=c.v[f]===undefined?(f==='ag'?'0':''):c.v[f];return String(cv)===String($(p+'_'+f).value);})?'same':'changed';}
 function svbtn(p,n){var st=cstate(p),q='„'+esc(n)+'“';
  if(st==='none')return '<button type="button" class="vg-sv ok" data-p="'+p+'" disabled>Zum Speichern oben eine Bezeichnung eintragen</button>';
  if(st==='same')return '<button type="button" class="vg-sv ok" data-p="'+p+'" disabled>✓ '+q+' ist gespeichert</button>';
@@ -187,7 +194,7 @@ function calc(){
   h+='<div class="vg-tot">'+eur(c.sum)+'</div><div class="vg-sub">Gesamtkosten in '+jr(y)+'</div>';
   rows.forEach(function(r){if(Math.round(c[r[1]])===0&&(r[1]==='enS'||r[1]==='enK'||r[1]==='th'||r[1]==='fo'))return;h+='<div class="vg-r"><span>'+r[0]+'</span><span>'+sg(c[r[1]],r[2])+'</span></div>';});
   h+='<div class="vg-r"><span>pro Jahr</span><span>'+eur(c.sum/y)+'</span></div><div class="vg-r"><span>pro Monat</span><span>'+eur(c.sum/y/12)+'</span></div><div class="vg-r"><span>pro Kilometer</span><span>'+pk(c)+'</span></div><div class="vg-r"><span>Restwert am Ende (geschätzt)</span><span>'+eur(c.rest)+'</span></div>'+svbtn(pp,c.name)+'</div>';return h;};
- $('vgLong').style.display=y>5?'block':'none';
+ $('vgLong').style.display=y>5||A.capd||B.capd?'block':'none';$('vgCap').style.display=A.capd||B.capd?'block':'none';
  $('vgTiles').innerHTML=tile(A,'a',bA&&Math.abs(A.sum-B.sum)>=50,'vgA')+tile(B,'b',!bA&&Math.abs(A.sum-B.sum)>=50,'vgB');
  var d=Math.abs(A.sum-B.sum),w=bA?A:B,o=bA?B:A;
  $('vgWin').innerHTML=d<50?'Beide Fahrzeuge kosten über '+jr(y)+' etwa gleich viel.':'<strong>'+esc(w.name)+'</strong> ist über '+jr(y)+' rund <strong>'+eur(d)+'</strong> günstiger als '+esc(o.name)+' (etwa '+eur(d/y)+' pro Jahr, '+eur(d/y/12)+' pro Monat).';
@@ -203,7 +210,7 @@ function vis(p){var c=$(p+'_a').closest('.vg-car');c.classList.toggle('is-p',$(p
 ['vgA','vgB'].forEach(function(p){var t=TY[$(p+'_a').value];$(p+'_vbu').textContent=t.vu;$(p+'_epu').textContent=t.eu;vis(p);});
 
 /* Garage: bis zu 10 Autos unter einer Kurzbezeichnung speichern und wieder laden */
-var GK='ak-garage:e-auto-vs-benziner',MAXG=10,FL=['n','a','l','k','fo','vb','ep','vs','st','wa','th','vb2','ep2','ea'];
+var GK='ak-garage:e-auto-vs-benziner',MAXG=10,FL=['n','a','l','k','ag','rw','fo','vb','ep','vs','st','wa','th','vb2','ep2','ea'];
 function gload(){try{var g=JSON.parse(localStorage.getItem(GK)||'[]');return Array.isArray(g)?g:[];}catch(e){return [];}}
 function gsave(g){try{localStorage.setItem(GK,JSON.stringify(g));return true;}catch(e){return false;}}
 function gfill(){var g=gload();[].forEach.call(document.querySelectorAll('.vg-g'),function(box){var s=box.querySelector('.vg-gsel'),cur=s.value;
@@ -213,8 +220,8 @@ function gmsg(box,m){box.querySelector('.vg-gs').textContent=m;}
 [].forEach.call(document.querySelectorAll('.vg-g'),function(box){
  var p='vg'+box.getAttribute('data-g'),s=box.querySelector('.vg-gsel');
  s.addEventListener('change',function(){var g=gload(),c=g[s.value];if(!c){gmsg(box,'');return;}
-  FL.forEach(function(f){var e=$(p+'_'+f);if(c.v[f]!==undefined)e.value=c.v[f];});
-  ['n','vb','ep','l','k','fo','vs','st','wa','th','vb2','ep2','ea'].forEach(function(f){$(p+'_'+f).dispatchEvent(new Event('input',{bubbles:true}));});
+  FL.forEach(function(f){var e=$(p+'_'+f);if(c.v[f]!==undefined)e.value=c.v[f];else if(f==='ag')e.value='0';else if(f==='rw')e.value='';});
+  ['n','vb','ep','l','k','ag','rw','fo','vs','st','wa','th','vb2','ep2','ea'].forEach(function(f){$(p+'_'+f).dispatchEvent(new Event('input',{bubbles:true}));});
   $(p+'_a').dispatchEvent(new Event('change',{bubbles:true}));
   gmsg(box,'„'+c.name+'“ geladen. Du kannst die Werte jetzt anpassen.');});
  box._save=function(){
