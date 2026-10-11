@@ -30,6 +30,16 @@
   }.section-card:nth-of-type(6n+1){background:#e9f4ef!important;border-color:#c9e6d8!important}.section-card:nth-of-type(6n+2){background:#eef1fb!important;border-color:#d3d9f4!important}.section-card:nth-of-type(6n+3){background:#fdf3e7!important;border-color:#f3dfc0!important}.section-card:nth-of-type(6n+4){background:#fdeef0!important;border-color:#f3cdd3!important}.section-card:nth-of-type(6n+5){background:#f1f7e8!important;border-color:#dbebc4!important}.section-card:nth-of-type(6n+6){background:#eef6f7!important;border-color:#c9e6ea!important}
 
   /* Styling für die Förder-Tabelle */
+  .fp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1rem 0 1.5rem}
+  .fp-tier{border-radius:16px;padding:1.1rem 1.15rem;border:1px solid rgba(10,28,22,.08)}
+  .fp-tier:nth-child(1){background:#e9f4ef;border-color:#c9e6d8}.fp-tier:nth-child(2){background:#eef1fb;border-color:#d3d9f4}.fp-tier:nth-child(3){background:#fdf3e7;border-color:#f3dfc0}.fp-tier:nth-child(4){background:#f6eef8;border-color:#e3cdec}.fp-tier:nth-child(5){background:#eef6f7;border-color:#c9e6ea}
+  .fp-tier.fp-none{background:#fff0ef;border-color:#efcbc8}.fp-tier.fp-none p{margin:.4rem 0 0;font-size:.88rem;line-height:1.5}
+  .fp-tier h4{margin:0 0 .6rem;font-size:.98rem}
+  .fp-row{margin-top:.55rem}.fp-lab{display:block;font-size:.78rem;font-weight:700;color:#425852;margin-bottom:.25rem}
+  .fp-chips{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem}
+  .fp-chip{background:rgba(255,255,255,.75);border-radius:10px;padding:.35rem .3rem;text-align:center;line-height:1.25}
+  .fp-chip small{display:block;font-size:.68rem;color:#5b6f68}.fp-chip b{font-size:.86rem;white-space:nowrap}.fp-no b{color:#8a6f6f;font-weight:600}
+  @media(max-width:900px){.fp-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.fp-grid{grid-template-columns:1fr}}
   .foerder-table-wrapper {
     overflow-x: auto;
     margin: 1.5rem 0;
@@ -169,107 +179,19 @@
 <!-- Thema 1: Staatliche Förderung (E-Auto-Förderung 2026) mit Staffelung & Einkommensgrenzen -->
 <section class="section-card">
 <h2>Die E-Auto-Förderung 2026 für Privatpersonen (bis zu 6.000 €)</h2>
+<p class="topf-stand">🕐 Stand: 11.10.2026 (BAFA-Zahlen zum 1. Oktober)</p>
 <p>Die staatliche Kaufprämie für private Elektrofahrzeuge ist sozial gestaffelt und berücksichtigt das zu versteuernde Haushaltseinkommen (zvE) sowie die Anzahl minderjähriger Kinder.</p>
-<h3>1. Förderhöhen für reine E-Autos (BEV)</h3>
-<div class="foerder-table-wrapper">
-<table class="foerder-table">
-<thead>
-<tr>
-<th>Zu versteuerndes Haushaltseinkommen (zvE)</th>
-<th>Haushalt ohne Kinder</th>
-<th>Haushalt mit 1 Kind</th>
-<th>Haushalt mit 2+ Kindern</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>bis 45.000 €</strong></td>
-<td>5.000 €</td>
-<td>5.500 €</td>
-<td><strong>6.000 € (Maximum)</strong></td>
-</tr>
-<tr>
-<td><strong>45.001 € bis 60.000 €</strong></td>
-<td>4.000 €</td>
-<td>4.500 €</td>
-<td>5.000 €</td>
-</tr>
-<tr>
-<td><strong>60.001 € bis 80.000 €</strong></td>
-<td>3.000 €</td>
-<td>3.500 €</td>
-<td>4.000 €</td>
-</tr>
-<tr>
-<td><strong>80.001 € bis 85.000 €</strong></td>
-<td><em>Keine Förderung</em></td>
-<td>3.500 €</td>
-<td>4.000 €</td>
-</tr>
-<tr>
-<td><strong>85.001 € bis 90.000 €</strong></td>
-<td><em>Keine Förderung</em></td>
-<td><em>Keine Förderung</em></td>
-<td>4.000 €</td>
-</tr>
-<tr>
-<td><strong>über 90.000 €</strong></td>
-<td colspan="3" style="text-align: center;"><em>Keine Förderung möglich</em></td>
-</tr>
-</tbody>
-</table>
+<h3>1. Förderhöhen nach Einkommen und Kindern</h3>
+<p>Maßgeblich ist das zu versteuernde Haushaltseinkommen. Kinder zählen, solange sie minderjährig sind (maximal zwei).</p>
+<div class="fp-grid">
+<div class="fp-tier"><h4>💶 Einkommen bis 45.000 €</h4><div class="fp-row"><span class="fp-lab">🔋 Reines E-Auto</span><div class="fp-chips"><span class="fp-chip"><small>ohne Kind</small><b>5.000 €</b></span><span class="fp-chip"><small>1 Kind</small><b>5.500 €</b></span><span class="fp-chip"><small>2+ Kinder</small><b>6.000 €</b></span></div></div><div class="fp-row"><span class="fp-lab">🔌 Plug-in-Hybrid &amp; Range-Extender</span><div class="fp-chips"><span class="fp-chip"><small>ohne Kind</small><b>3.500 €</b></span><span class="fp-chip"><small>1 Kind</small><b>4.000 €</b></span><span class="fp-chip"><small>2+ Kinder</small><b>4.500 €</b></span></div></div></div>
+<div class="fp-tier"><h4>💶 Einkommen 45.001 – 60.000 €</h4><div class="fp-row"><span class="fp-lab">🔋 Reines E-Auto</span><div class="fp-chips"><span class="fp-chip"><small>ohne Kind</small><b>4.000 €</b></span><span class="fp-chip"><small>1 Kind</small><b>4.500 €</b></span><span class="fp-chip"><small>2+ Kinder</small><b>5.000 €</b></span></div></div><div class="fp-row"><span class="fp-lab">🔌 Plug-in-Hybrid &amp; Range-Extender</span><div class="fp-chips"><span class="fp-chip"><small>ohne Kind</small><b>2.500 €</b></span><span class="fp-chip"><small>1 Kind</small><b>3.000 €</b></span><span class="fp-chip"><small>2+ Kinder</small><b>3.500 €</b></span></div></div></div>
+<div class="fp-tier"><h4>💶 Einkommen 60.001 – 80.000 €</h4><div class="fp-row"><span class="fp-lab">🔋 Reines E-Auto</span><div class="fp-chips"><span class="fp-chip"><small>ohne Kind</small><b>3.000 €</b></span><span class="fp-chip"><small>1 Kind</small><b>3.500 €</b></span><span class="fp-chip"><small>2+ Kinder</small><b>4.000 €</b></span></div></div><div class="fp-row"><span class="fp-lab">🔌 Plug-in-Hybrid &amp; Range-Extender</span><div class="fp-chips"><span class="fp-chip"><small>ohne Kind</small><b>1.500 €</b></span><span class="fp-chip"><small>1 Kind</small><b>2.000 €</b></span><span class="fp-chip"><small>2+ Kinder</small><b>2.500 €</b></span></div></div></div>
+<div class="fp-tier"><h4>💶 Einkommen 80.001 – 85.000 €</h4><div class="fp-row"><span class="fp-lab">🔋 Reines E-Auto</span><div class="fp-chips"><span class="fp-chip fp-no"><small>ohne Kind</small><b>keine</b></span><span class="fp-chip"><small>1 Kind</small><b>3.500 €</b></span><span class="fp-chip"><small>2+ Kinder</small><b>4.000 €</b></span></div></div><div class="fp-row"><span class="fp-lab">🔌 Plug-in-Hybrid &amp; Range-Extender</span><div class="fp-chips"><span class="fp-chip fp-no"><small>ohne Kind</small><b>keine</b></span><span class="fp-chip"><small>1 Kind</small><b>2.000 €</b></span><span class="fp-chip"><small>2+ Kinder</small><b>2.500 €</b></span></div></div></div>
+<div class="fp-tier"><h4>💶 Einkommen 85.001 – 90.000 €</h4><div class="fp-row"><span class="fp-lab">🔋 Reines E-Auto</span><div class="fp-chips"><span class="fp-chip fp-no"><small>ohne Kind</small><b>keine</b></span><span class="fp-chip fp-no"><small>1 Kind</small><b>keine</b></span><span class="fp-chip"><small>2+ Kinder</small><b>4.000 €</b></span></div></div><div class="fp-row"><span class="fp-lab">🔌 Plug-in-Hybrid &amp; Range-Extender</span><div class="fp-chips"><span class="fp-chip fp-no"><small>ohne Kind</small><b>keine</b></span><span class="fp-chip fp-no"><small>1 Kind</small><b>keine</b></span><span class="fp-chip"><small>2+ Kinder</small><b>2.500 €</b></span></div></div></div>
+<div class="fp-tier fp-none"><h4>🚫 Einkommen über 90.000 €</h4><p>Keine Förderung möglich. Die Grenze liegt bei 80.000 € und steigt je minderjährigem Kind (maximal zwei) um 5.000 €.</p></div>
 </div>
-<h3>2. Förderhöhen für Plug-in-Hybride &amp; Range-Extender</h3>
-<p>Plug-in-Hybride und E-Autos mit Range-Extender sind nur bei <strong>Erstzulassung vom 1. Januar 2026 bis 30. Juni 2027</strong> förderfähig – und nur, wenn sie höchstens <strong>60 g CO₂ pro Kilometer</strong> ausstoßen <strong>oder</strong> eine elektrische Reichweite von mindestens <strong>80 Kilometern</strong> haben (Nachweis über die EU-Konformitätsbescheinigung).</p>
-<div class="foerder-table-wrapper">
-<table class="foerder-table">
-<thead>
-<tr>
-<th>Zu versteuerndes Haushaltseinkommen (zvE)</th>
-<th>Haushalt ohne Kinder</th>
-<th>Haushalt mit 1 Kind</th>
-<th>Haushalt mit 2+ Kindern</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>bis 45.000 €</strong></td>
-<td>3.500 €</td>
-<td>4.000 €</td>
-<td><strong>4.500 € (Maximum)</strong></td>
-</tr>
-<tr>
-<td><strong>45.001 € bis 60.000 €</strong></td>
-<td>2.500 €</td>
-<td>3.000 €</td>
-<td>3.500 €</td>
-</tr>
-<tr>
-<td><strong>60.001 € bis 80.000 €</strong></td>
-<td>1.500 €</td>
-<td>2.000 €</td>
-<td>2.500 €</td>
-</tr>
-<tr>
-<td><strong>80.001 € bis 85.000 €</strong></td>
-<td><em>Keine Förderung</em></td>
-<td>2.000 €</td>
-<td>2.500 €</td>
-</tr>
-<tr>
-<td><strong>85.001 € bis 90.000 €</strong></td>
-<td><em>Keine Förderung</em></td>
-<td><em>Keine Förderung</em></td>
-<td>2.500 €</td>
-</tr>
-<tr>
-<td><strong>über 90.000 €</strong></td>
-<td colspan="3" style="text-align: center;"><em>Keine Förderung möglich</em></td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3>3. Wichtige Fristen, Bedingungen &amp; Nachweise</h3>
+<h3>2. Fristen, Bedingungen &amp; Nachweise</h3>
 <div class="ep-tile-grid">
 <div class="ep-tile t-a"><div class="tile-icon">📅</div><h3>Zulassungszeitraum</h3><p>Das Fahrzeug muss ab dem <strong>01. Januar 2026</strong> erstmals in Deutschland neu zugelassen worden sein.</p></div>
 <div class="ep-tile t-b"><div class="tile-icon">⏳</div><h3>Antragsfrist</h3><p>Der Online-Antrag kann rückwirkend gestellt werden, muss aber spätestens <strong>innerhalb von 12 Monaten nach Erstzulassung</strong> eingereicht werden.</p></div>
@@ -280,8 +202,8 @@
 <div class="ep-tile t-b"><div class="tile-icon">🪪</div><h3>Antrag nur digital mit BundID</h3><p>Der Antrag läuft ausschließlich online über die Förderzentrale. Nötig ist ein <a class="gl-link" href="kfz-glossar.html#bundid" title="Im Kfz-Glossar erklärt">BundID</a>-Konto – z. B. mit Online-Ausweis samt PIN oder mit ELSTER-Zertifikat.</p></div>
 <div class="ep-tile t-c"><div class="tile-icon">🚗</div><h3>Nur Neuwagen, nur privat</h3><p>Gebrauchte Fahrzeuge werden nicht gefördert. Selbstständige sind nur als Privatperson antragsberechtigt – das Fahrzeug darf nicht zum Betriebsvermögen gehören.</p></div>
 <div class="ep-tile t-d"><div class="tile-icon">👤</div><h3>Halter &amp; Limit</h3><p>Antragsteller muss der eingetragene Halter sein. Die Förderung gibt es <strong>pro Person einmal</strong>, maximal zwei Anträge pro Haushalt.</p></div>
+<div class="ep-tile t-a"><div class="tile-icon">📎</div><h3>Unterlagen für den Antrag</h3><p>Fahrzeug-Identifizierungsnummer (FIN), die beiden aktuellsten Steuerbescheide (höchstens drei Jahre alt), bei Kinderbonus ein Kindergeld-Nachweis und bei Plug-in-Hybriden die EU-Konformitätsbescheinigung. Bei Fragen hilft die BAFA-Hotline unter 06196 908-1009.</p></div>
 </div>
-<p><strong>📎 Unterlagen für den Antrag:</strong> Fahrzeug-Identifizierungsnummer (FIN), die beiden aktuellsten Steuerbescheide (höchstens drei Jahre alt), bei Kinderbonus ein Kindergeld-Nachweis und bei Plug-in-Hybriden die EU-Konformitätsbescheinigung. Bei Fragen hilft die BAFA-Hotline unter 06196 908-1009.</p>
 <div class="button-center-wrapper">
 <a class="gold-button" href="https://www.bafa.de/DE/Energie/Energieeffizienz/E-Auto_Foerderung_2026/E-Auto_Foerderung_2026_node.html" rel="noopener" target="_blank">
           📝 Zur E-Auto-Förderung 2026
@@ -304,7 +226,7 @@
 <h3>Wie lange reicht das Geld?</h3>
 <ul class="topf-list">
 <li><strong>Tempo:</strong> Im September zahlte die BAFA rund <strong>202 Mio. €</strong> aus – fast doppelt so viel wie im August (113 Mio. €). Die Bewilligungen haben sich mit 45.317 im September fast verdoppelt, die 100.000-Anträge-Marke wurde kurz nach dem Stichtag überschritten.</li>
-<li><strong>Jahresansatz 2026:</strong> Nur noch <strong>118 Mio. €</strong> der 550 Mio. € sind übrig. Beim Septembertempo wäre dieser Betrag binnen weniger Wochen aufgebraucht – praktisch sofort nach diesem Stichtag. Ob die BAFA dann Anträge stoppt oder Mittel aus späteren Jahren vorzieht, ist weiterhin offen.</li>
+<li><strong>Jahresansatz 2026:</strong> Nur noch <strong>118 Mio. €</strong> der 550 Mio. € sind übrig. Beim Septembertempo wäre dieser Betrag binnen weniger Wochen aufgebraucht – praktisch sofort nach diesem Stichtag. Einen Antragsstopp hat die BAFA bisher nicht verkündet; laut Regierungssprecher soll ein Ende „rechtzeitig vorher“ angekündigt werden. Ob dann Mittel aus späteren Jahren vorgezogen werden, ist offen.</li>
 <li><strong>Gesamttopf:</strong> Bei gleichem Tempo würde er in etwa <strong>13 Monaten</strong>, also um den Jahreswechsel 2027/2028, aufgebraucht sein – deutlich vor dem geplanten Laufzeitende 2029. Der Bund hat mit rund 3.750 € je Fahrzeug kalkuliert (800.000 Fahrzeuge); tatsächlich fließen im Schnitt 4.418 € – damit reichen 3 Mrd. € für rund 679.000 Fahrzeuge statt der geplanten 800.000.</li>
 <li><strong>Einordnung:</strong> Das sind eigene Hochrechnungen, keine amtlichen Prognosen. Das Tempo hat sich zuletzt deutlich beschleunigt – in den nächsten Monaten kann es nochmals schwanken, insbesondere falls die BAFA auf die absehbare Erschöpfung des Jahresansatzes reagiert.</li>
 </ul>
@@ -323,7 +245,7 @@
 </ul>
 <!-- Praxisbeispiel -->
 <div style="background-color: #f0f4f2; border-left: 5px solid #0f241d; padding: 1.25rem; margin: 1.5rem 0; border-radius: 4px;">
-<h4 style="margin-top:0; color: #0f241d;">📊 Rechenbeispiel für deine Firma (z. B. Tesla Model Y):</h4>
+<h4 style="margin-top:0; color: #0f241d;">📊 Rechenbeispiel für deine Firma (Elektroauto, 52.000 € brutto):</h4>
 <ul style="margin-bottom:0;">
 <li><strong>Brutto-Kaufpreis:</strong> 52.000 €</li>
 <li><strong>Vorsteuerabzug (19 % MwSt.):</strong> 8.302,52 € erstattet dir das Finanzamt direkt zurück.</li>
@@ -363,7 +285,14 @@
 <div class="ep-tile t-c"><div class="tile-icon">🏷️</div><h3>Hersteller-Rabatte</h3><p>Viele Automobilhersteller gewähren zusätzliche eigene Sonderrabatte für deinen Umstieg auf E-Mobilität.</p></div>
 </div>
 </section>
-<section class="related-articles"><h2>Das könnte dich auch interessieren</h2><div class="related-grid"><a class="related-card" href="artikel-thg-praemie.html"><span class="icon">💰</span><h3>THG-Prämie</h3><p>Bis zu 400 € im Jahr für dein E-Auto.</p></a><a class="related-card" href="artikel-e-auto-vs-benziner.html"><span class="icon">⚡</span><h3>E-Autos vs. Verbrenner</h3><p>Kostenvergleich der Antriebsarten.</p></a><a class="related-card" href="elektroauto-reichweite-laden.html"><span class="icon">🔋</span><h3>Reichweite & Laden im Vergleich</h3><p>34 aktuelle E-Autos im Vergleich.</p></a><a class="related-card" href="neuwagen-angebote.html"><span class="icon">🚙</span><h3>Neuwagen-Angebote</h3><p>Aktuelle Rabatte und Aktionen.</p></a></div></section>
+<div class="versicherung-callout">
+<div class="callout-mark">✓</div>
+<div>
+<h2>Fazit (Stand 11.10.2026)</h2>
+<p>Die Kaufprämie lohnt sich für Haushalte bis 90.000 € zu versteuerndem Einkommen: reine E-Autos bringen bis zu 6.000 €, Plug-in-Hybride bis zu 4.500 €. Antragsberechtigt bist du erst nach der Zulassung, und das Geld wird nach Eingang vergeben, einen Rechtsanspruch gibt es nicht. Da vom Jahresansatz 2026 schon rund 79 % ausgezahlt sind, stelle den Antrag gleich nach der Zulassung. Kfz-Steuerbefreiung und <a href="artikel-thg-praemie.html" class="content-link">THG-Prämie</a> kommen für reine E-Autos zusätzlich dazu.</p>
+</div>
+</div>
+<section class="related-articles"><h2>Das könnte dich auch interessieren</h2><div class="related-grid"><a class="related-card" href="artikel-thg-praemie.html"><span class="icon">💰</span><h3>THG-Prämie</h3><p>Rund 250 bis 425 € im Jahr für dein E-Auto.</p></a><a class="related-card" href="artikel-e-auto-vs-benziner.html"><span class="icon">⚡</span><h3>E-Autos vs. Verbrenner</h3><p>Kostenvergleich der Antriebsarten.</p></a><a class="related-card" href="elektroauto-reichweite-laden.html"><span class="icon">🔋</span><h3>Reichweite & Laden im Vergleich</h3><p>41 aktuelle E-Autos im Vergleich.</p></a><a class="related-card" href="neuwagen-angebote.html"><span class="icon">🚙</span><h3>Neuwagen-Angebote</h3><p>Aktuelle Rabatte und Aktionen.</p></a></div></section>
 </main>
 <button aria-label="Nach oben scrollen" class="back-to-top" id="backToTop">↑</button>
 <footer class="site-footer">
