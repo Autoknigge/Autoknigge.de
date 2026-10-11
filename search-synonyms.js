@@ -3,6 +3,9 @@
    Mehrwort-Begriffe sind erlaubt ("bremsen quietschen"). Groß-/Kleinschreibung und Umlaute sind egal.
    Nur Begriffe in dieselbe Gruppe, die für Besucher wirklich dasselbe meinen. */
 const SEARCH_SYNONYM_GROUPS=[
+ ["V2L","V2Load","Vehicle-to-Load","Vehicle to Load","Auto als Steckdose","V2L-Adapter"],
+ ["V2H","V2Home","Vehicle-to-Home","Vehicle to Home"],
+ ["V2G","Vehicle-to-Grid","Vehicle to Grid"],
  ["Motorradbekleidung","Bikerbekleidung","Motorradschutzkleidung","Schutzkleidung","Motorradkleidung","Motorradjacke","Bikerjacke"],
  ["Mofa","Moped","Mokick","Kleinkraftrad"],
  ["E-Scooter","Elektroroller","Elektrotretroller","E-Roller"],
