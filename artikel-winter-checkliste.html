@@ -35,6 +35,13 @@
 .wc-sources{margin-top:2rem;padding-top:1.3rem;border-top:1px solid rgba(10,28,22,.1);font-size:.82rem;line-height:1.65;color:var(--text-muted)}
 .wc-sources a{color:#80640f;text-decoration:underline}
 @media(max-width:760px){.wc-grid{grid-template-columns:1fr}}
+.wc-item em{font-style:normal;font-size:1.35rem;margin-right:.5rem;vertical-align:-.1em}.wc-item{border-width:1px}.wc-blue{background:#eaf3fc;border-color:#bcd7f2}.wc-yellow{background:#fff8d9;border-color:#ecd985}.wc-teal{background:#e3f6f4;border-color:#a8dcd6}.wc-purple{background:#f0eafa;border-color:#cdbdea}.wc-orange{background:#fff1e0;border-color:#f3cf9c}.wc-pink{background:#fdeaf3;border-color:#f0bcd6}.wc-red{background:#fdecec;border-color:#f0bcbc}.wc-item:hover{filter:brightness(.98)}
+.wc-need{display:flex;gap:.7rem;align-items:center;background:#e6f6ec;border:1px solid #a9dcba;border-radius:16px;padding:.8rem 1.1rem;margin:1rem 0}.wc-need span{font-size:1.5rem}.wc-need p{margin:0}
+.wc-fines{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.8rem;margin:.6rem 0 1.6rem}.wc-fine{border-radius:18px;padding:1rem 1.1rem;border:1px solid transparent;display:flex;flex-direction:column;gap:.3rem}.wc-fine strong{font-size:1rem}.wc-fine span{font-size:.88rem;line-height:1.45}.wc-amt{font-size:1.9rem;font-weight:800;line-height:1}.wc-amt small{display:block;font-size:.75rem;font-weight:700;opacity:.7;margin-top:.2rem}
+.f1{background:#fff8d9;border-color:#ecd985}.f2{background:#fff1e0;border-color:#f3cf9c}.f3{background:#fde6dc;border-color:#f0b9a2}.f4{background:#fdecec;border-color:#f0bcbc}
+.wc-sub{margin:-.3rem 0 .8rem}.wc-ins{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:.6rem 0 1.6rem}.wc-ins>div{border-radius:18px;padding:1rem 1.2rem}.wc-ins h4{margin:0 0 .4rem}.wc-ins p{margin:0;line-height:1.55}.wc-i1{background:#eaf3fc;border:1px solid #bcd7f2}.wc-i2{background:#f0eafa;border:1px solid #cdbdea}
+@media(max-width:760px){.wc-ins{grid-template-columns:1fr}}
+.wc-fine:last-child{grid-column:1/-1;flex-direction:row;align-items:center;gap:1.3rem;flex-wrap:wrap}.wc-fine:last-child .wc-amt{min-width:90px}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Winter-Checkliste", "description": "Winter-Checkliste fürs Auto: Reifendruck, Batterie, Frostschutz und Notfallausrüstung – kompakt zum Abhaken vor dem ersten Schnee.", "url": "https://autoknigge.de/artikel-winter-checkliste.html", "inLanguage": "de-DE", "dateModified": "2026-09-30", "publisher": {"@type": "Organization", "name": "Autoknigge", "url": "https://autoknigge.de/", "logo": {"@type": "ImageObject", "url": "https://autoknigge.de/logo.png"}}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Start", "item": "https://autoknigge.de/"}, {"@type": "ListItem", "position": 2, "name": "Wartung und Pflege", "item": "https://autoknigge.de/kategorie-pflege.html"}, {"@type": "ListItem", "position": 3, "name": "Winter-Checkliste", "item": "https://autoknigge.de/artikel-winter-checkliste.html"}]}</script></head>
@@ -63,42 +70,33 @@
 </section>
 
 <div class="wrap">
-<h2>Die Checkliste zum Abhaken</h2>
+<h2>✅ Die Checkliste zum Abhaken</h2>
 <div class="wc-progress" id="wcProgress">
 <div class="wc-progress-bar"><div class="wc-progress-fill" id="wcProgressFill" style="width:0%"></div></div>
 <div class="wc-progress-text" id="wcProgressText">0 von 10 Punkten erledigt</div>
 </div>
 <div class="wc-grid" id="wcGrid">
-<label class="wc-item"><input class="wc-box" data-id="reifen" type="checkbox"/><div><strong>Winterreifen montiert</strong><span>Profiltiefe mindestens 4 mm, Alpine-Symbol vorhanden. Reifendruck kontrollieren: Er sinkt um ca. 0,1 bar pro 10 °C – bei einem Sprung von 30 °C auf −20 °C (50 °C Differenz) macht das rund 0,5 bar aus, aus 2,5 bar werden also nur noch etwa 2,0 bar.</span></div></label>
-<label class="wc-item"><input class="wc-box" data-id="batterie" type="checkbox"/><div><strong>Batterie geprüft</strong><span>Kälte fordert die Batterie am meisten – Ladezustand testen lassen.</span></div></label>
-<label class="wc-item"><input class="wc-box" data-id="frostschutz" type="checkbox"/><div><strong>Frostschutz kontrolliert</strong><span>Kühlmittel und Scheibenwaschanlage bis mindestens −20 °C.</span></div></label>
-<label class="wc-item"><input class="wc-box" data-id="scheibenwischer" type="checkbox"/><div><strong>Scheibenwischerblätter geprüft</strong><span>Kante auf Risse und Verhärtung kontrollieren – nur intakte Blätter machen die Scheibe bei Schneematsch wirklich sauber.</span></div></label>
-<label class="wc-item"><input class="wc-box" data-id="licht" type="checkbox"/><div><strong>Beleuchtung geprüft</strong><span>Alle Leuchten funktionsfähig, Scheinwerfer richtig eingestellt.</span></div></label>
-<label class="wc-item"><input class="wc-box" data-id="tuerdichtung" type="checkbox"/><div><strong>Türdichtungen gepflegt</strong><span>Mit Silikonspray oder spezieller Gummipflege behandeln, damit nichts festfriert.</span></div></label>
-<label class="wc-item"><input class="wc-box" data-id="eiskratzer" type="checkbox"/><div><strong>Eiskratzer, Handbesen &amp; Enteisungsspray griffbereit</strong><span>Im Fahrzeug, nicht in der Garage – sonst nützen sie nichts. Enteisungsspray ergänzt den Eiskratzer sinnvoll und löst dünne Eisschichten oft schneller.</span></div></label>
-<label class="wc-item"><input class="wc-box" data-id="decke" type="checkbox"/><div><strong>Decke &amp; Warnweste im Auto</strong><span>Für den Fall einer Panne oder eines Staus im Winter.</span></div></label>
-<label class="wc-item"><input class="wc-box" data-id="klimaanlage" type="checkbox"/><div><strong>Klimaanlage genutzt</strong><span>Auch im Winter regelmäßig laufen lassen – gegen beschlagene Scheiben und für die Anlage selbst.</span></div></label>
-<label class="wc-item"><input class="wc-box" data-id="reserve" type="checkbox"/><div><strong>Notfallausrüstung komplett</strong><span>Starthilfekabel, Taschenlampe, ggf. Schneeketten bei Bergstrecken.</span></div></label>
+<label class="wc-item wc-blue"><input class="wc-box" data-id="reifen" type="checkbox"/><div><strong><em>🛞</em>Winterreifen montiert</strong><span>Profiltiefe empfohlen mindestens 4 mm, Alpine-Symbol vorhanden. Der Reifendruck sinkt um etwa 0,1 bar je 10 °C Temperaturabfall, also regelmäßig kontrollieren.</span></div></label>
+<label class="wc-item wc-yellow"><input class="wc-box" data-id="batterie" type="checkbox"/><div><strong><em>🔋</em>Batterie geprüft</strong><span>Kälte fordert die Batterie am meisten – Ladezustand testen lassen.</span></div></label>
+<label class="wc-item wc-teal"><input class="wc-box" data-id="frostschutz" type="checkbox"/><div><strong><em>🧊</em>Frostschutz kontrolliert</strong><span>Kühlmittel und Scheibenwaschanlage bis mindestens −20 °C.</span></div></label>
+<label class="wc-item wc-purple"><input class="wc-box" data-id="scheibenwischer" type="checkbox"/><div><strong><em>🌧️</em>Scheibenwischerblätter geprüft</strong><span>Kante auf Risse und Verhärtung kontrollieren – nur intakte Blätter machen die Scheibe bei Schneematsch wirklich sauber.</span></div></label>
+<label class="wc-item wc-orange"><input class="wc-box" data-id="licht" type="checkbox"/><div><strong><em>💡</em>Beleuchtung geprüft</strong><span>Alle Leuchten funktionsfähig, Scheinwerfer richtig eingestellt.</span></div></label>
+<label class="wc-item wc-pink"><input class="wc-box" data-id="tuerdichtung" type="checkbox"/><div><strong><em>🚪</em>Türdichtungen gepflegt</strong><span>Mit Silikonspray oder spezieller Gummipflege behandeln, damit nichts festfriert.</span></div></label>
+<label class="wc-item wc-blue"><input class="wc-box" data-id="eiskratzer" type="checkbox"/><div><strong><em>🧤</em>Eiskratzer, Handbesen &amp; Enteisungsspray griffbereit</strong><span>Im Fahrzeug, nicht in der Garage – sonst nützen sie nichts. Enteisungsspray ergänzt den Eiskratzer sinnvoll und löst dünne Eisschichten oft schneller.</span></div></label>
+<label class="wc-item wc-red"><input class="wc-box" data-id="decke" type="checkbox"/><div><strong><em>🦺</em>Decke &amp; Warnweste im Auto</strong><span>Für den Fall einer Panne oder eines Staus im Winter.</span></div></label>
+<label class="wc-item wc-teal"><input class="wc-box" data-id="klimaanlage" type="checkbox"/><div><strong><em>❄️</em>Klimaanlage genutzt</strong><span>Auch im Winter regelmäßig laufen lassen – gegen beschlagene Scheiben und für die Anlage selbst.</span></div></label>
+<label class="wc-item wc-yellow"><input class="wc-box" data-id="reserve" type="checkbox"/><div><strong><em>🧰</em>Notfallausrüstung komplett</strong><span>Starthilfekabel, Taschenlampe, ggf. Schneeketten bei Bergstrecken.</span></div></label>
 </div>
 
-<h2>O-Pflicht: Was das Gesetz vorschreibt</h2>
+<h2>⚖️ O-Pflicht: Was das Gesetz vorschreibt</h2>
 <p class="intro-tile">In Deutschland gibt es keine zeitlich festgelegte Winterreifenpflicht (wie „Oktober bis Ostern"), sondern eine <strong>situative</strong> Pflicht: Bei Glatteis, Schneeglätte, Schneematsch, Eis- oder Reifglätte muss das Fahrzeug passend bereift sein – unabhängig vom Kalenderdatum.</p>
-<div class="wc-table-wrap"><table class="wc-table"><thead><tr><th>Situation</th><th>Pflicht</th><th>Bußgeld</th></tr></thead><tbody>
-<tr><td>Einfacher Verstoß bei winterlichen Verhältnissen</td><td>Winter- oder Ganzjahresreifen mit Alpine-Symbol</td><td class="num">60 €, 1 Punkt</td></tr>
-<tr><td>… mit Behinderung anderer</td><td>siehe oben</td><td class="num">80 €, 1 Punkt</td></tr>
-<tr><td>… mit Gefährdung anderer</td><td>siehe oben</td><td class="num">100 €, 1 Punkt</td></tr>
-<tr><td>… mit Unfallverursachung</td><td>siehe oben</td><td class="num">120 €, 1 Punkt</td></tr>
-<tr><td>Halter lässt/ordnet Fahrt ohne passende Reifen an (z. B. Firmenwagen)</td><td>Halter mitverantwortlich</td><td class="num">75 €, 1 Punkt</td></tr>
-</tbody></table></div>
+<div class="wc-need"><span>✅</span><p><strong>Pflicht:</strong> Winter- oder Ganzjahresreifen mit Alpine-Symbol.</p></div><div class="wc-fines"><div class="wc-fine f1"><div class="wc-amt">60 €<small>1 Punkt</small></div><strong>Einfacher Verstoß</strong><span>bei winterlichen Verhältnissen</span></div><div class="wc-fine f2"><div class="wc-amt">80 €<small>1 Punkt</small></div><strong>Mit Behinderung</strong><span>anderer Verkehrsteilnehmer</span></div><div class="wc-fine f3"><div class="wc-amt">100 €<small>1 Punkt</small></div><strong>Mit Gefährdung</strong><span>anderer Verkehrsteilnehmer</span></div><div class="wc-fine f4"><div class="wc-amt">120 €<small>1 Punkt</small></div><strong>Mit Unfallverursachung</strong></div><div class="wc-fine f2"><div class="wc-amt">75 €<small>1 Punkt</small></div><strong>Halter-Verantwortung</strong><span>Fahrt ohne passende Reifen angeordnet oder zugelassen, z. B. Firmenwagen</span></div></div>
 <div class="wc-note">
 <h3>ℹ️ Seit 1. Oktober 2024: Nur noch Alpine-Symbol zählt</h3>
 <p>Reifen mit ausschließlich alter M+S-Kennzeichnung („Matsch und Schnee", ohne Alpine-Symbol) gelten bei winterlichen Verhältnissen nicht mehr als zulässig. Erlaubt sind nur noch Reifen mit dem <strong>Alpine-Symbol</strong> (Bergpiktogramm mit Schneeflocke, „3PMSF") – das gilt auch für Allwetter- und Ganzjahresreifen, sofern sie dieses Symbol tragen. Ein fester Kalenderzeitraum existiert weiterhin nicht: Bei Glätte zählt der Zustand der Straße, nicht das Datum.</p>
 </div>
-<h3>Versicherung & Haftung bei falscher Bereifung</h3>
-<div class="wc-table-wrap"><table class="wc-table"><thead><tr><th>Versicherung</th><th>Folge bei Unfall mit falschen Reifen</th></tr></thead><tbody>
-<tr><td>Kaskoversicherung</td><td>Leistungskürzung oder vollständige Ablehnung wegen grober Fahrlässigkeit möglich</td></tr>
-<tr><td>Haftpflichtversicherung</td><td>Mithaftung droht selbst bei unverschuldetem Unfall, da das Fahrzeug nicht verkehrssicher ausgerüstet war</td></tr>
-</tbody></table></div>
+<h3>🛡️ Versicherung &amp; Haftung bei falscher Bereifung</h3><p class="wc-sub">Das droht bei einem Unfall mit falschen Reifen:</p>
+<div class="wc-ins"><div class="wc-i1"><h4>🚗 Kaskoversicherung</h4><p>Leistungskürzung oder vollständige Ablehnung wegen grober Fahrlässigkeit möglich.</p></div><div class="wc-i2"><h4>⚖️ Haftpflichtversicherung</h4><p>Mithaftung droht selbst bei unverschuldetem Unfall, da das Fahrzeug nicht verkehrssicher ausgerüstet war.</p></div></div>
 
 <section class="aff-box" aria-label="Passendes Zubehör">
 <h2>🛒 Passendes Zubehör</h2>
