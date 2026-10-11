@@ -239,6 +239,7 @@
     data.allSeasonTires = !!($('allSeasonTires') && $('allSeasonTires').checked);
     data.warrantyCheckDays = parseInt($('warrantyCheckDays').value || '60', 10);
     data.insuranceReminderDays = parseInt($('insuranceReminderDays').value || '45', 10);
+    data.powerReminderDays = parseInt(($('powerReminderDays') && $('powerReminderDays').value) || '60', 10);
     return data;
   }
 
@@ -565,6 +566,11 @@
     var insurance = parseDate(data.insuranceEnd);
     if (insurance) {
       add(addDays(insurance, -data.insuranceReminderDays), 'Kfz-Versicherung: Kündigung prüfen', 'Versicherungsvertrag prüfen und Kündigungsfrist beachten. Maßgeblich sind Vertrag und gesetzliche Regelungen.', 7);
+    }
+
+    var power = parseDate(data.powerEnd);
+    if (power) {
+      add(addDays(power, -data.powerReminderDays), 'Stromvertrag: Tarif vergleichen und wechseln', 'Preisgarantie bzw. Vertragslaufzeit endet bald. Aktuelle Neukundentarife vergleichen (oft deutlich günstiger als die Grundversorgung) und Kündigungsfrist laut Vertrag beachten. Vergleich: autoknigge.de/artikel-e-auto-vs-benziner.html', 7);
     }
 
     var purchase = parseDate(data.purchaseDate);
