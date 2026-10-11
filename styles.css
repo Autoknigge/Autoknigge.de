@@ -2996,3 +2996,12 @@ section[id], div[id].anchor-target, h2[id], h3[id] { scroll-margin-top: 96px; }
 .history-badges .history-badge>span{display:none!important}
 .history-badges .history-badge>strong{display:block!important;font-size:.95rem!important;line-height:1.25;margin:0 0 .3rem!important;overflow-wrap:anywhere;hyphens:auto;color:#fff!important}
 .history-badges .history-badge>small{display:block!important;margin:0!important;overflow-wrap:anywhere}
+
+/* carVertical-Kacheln kompakt: Symbol und Überschrift in einer Zeile, keine leeren Flächen */
+.history-sale-card .history-badges{grid-template-columns:repeat(2,1fr);gap:.7rem}
+.history-sale-card .history-badges .history-badge{display:grid!important;grid-template-columns:34px 1fr;grid-template-areas:"i t" "i s";column-gap:.65rem;row-gap:.1rem;align-items:center;text-align:left!important;min-height:0!important;padding:.8rem .85rem!important}
+.history-sale-card .history-badges .history-badge>span{grid-area:i;display:grid!important;place-items:center;width:34px;height:34px;margin:0!important;border-radius:10px;font-size:1rem;background:rgba(255,255,255,.12);color:#f5d77d}
+.history-sale-card .history-badges .history-badge>strong{grid-area:t;align-self:end;margin:0!important;font-size:.92rem!important;overflow-wrap:normal;hyphens:none;white-space:nowrap}
+.history-sale-card .history-badges .history-badge>small{grid-area:s;align-self:start;margin:0!important;font-size:.74rem;line-height:1.3}
+@media(max-width:600px){.history-sale-card .history-badges{grid-template-columns:repeat(2,1fr);gap:.55rem}.history-sale-card .history-badges .history-badge{grid-template-columns:26px 1fr;column-gap:.45rem;padding:.65rem .6rem!important}.history-sale-card .history-badges .history-badge>span{width:26px;height:26px;border-radius:8px;font-size:.8rem}.history-sale-card .history-badges .history-badge>strong{font-size:.8rem!important}.history-sale-card .history-badges .history-badge>small{font-size:.68rem}}
+@media(min-width:701px){.history-sale-card .cv-bottom-action{min-width:340px}}
