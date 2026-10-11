@@ -38,6 +38,8 @@
 .lk-table small{color:#5b6f68}
 .lk-bars{margin-top:.6rem}.lk-bar{display:grid;grid-template-columns:7.2rem 1fr 3.2rem;align-items:center;gap:.5rem;margin:.28rem 0;font-size:.84rem}.lk-bn{font-weight:600}.lk-bt{background:rgba(0,0,0,.07);border-radius:6px;height:.8rem;overflow:hidden}.lk-bt i{display:block;height:100%;background:#176246;border-radius:6px}.lk-bv{text-align:right;font-weight:700}.lk-src{font-size:.78rem;color:#5b6f68;margin:.6rem 0 0}.lk-net{font-size:.78rem;color:#5b6f68;margin-top:.1rem}
 @media(max-width:420px){.lk-bar{grid-template-columns:5.6rem 1fr 2.9rem;gap:.35rem;font-size:.8rem}}
+.lk-l1,.lk-cost{display:grid;grid-template-columns:9rem 1fr;gap:.15rem .6rem;align-items:center}.lk-l1 .lk-kind{margin-left:.2rem}
+.lk-res-table td[data-l^="Art"]::before{display:none}
 .lk-cost{font-size:.82rem;font-weight:500;color:#425852;margin-top:.15rem}
 .lk-note-cell{font-size:.8rem;color:#425852}
 .lk-kind{display:inline-block;border-radius:999px;padding:.1rem .6rem;font-size:.75rem;font-weight:600}
@@ -192,7 +194,7 @@
 (function(){
 var D=[{"n": "EWE Go – Ladetarif (Eigennetz)", "fee": 0, "ac": 0.52, "d50": 0.52, "d": 0.52, "k": "Betreiber", "lim": 0}, {"n": "EWE Go – Ad-hoc (QR/Karte)", "fee": 0, "ac": 0.79, "d50": 0.79, "d": 0.84, "k": "Ad-hoc", "lim": 0}, {"n": "Shell Recharge – Basic", "fee": 0, "ac": 0.52, "d50": 0.52, "d": 0.62, "k": "Betreiber", "lim": 0}, {"n": "Shell Recharge – e-Deal", "fee": 5.99, "ac": 0.39, "d50": 0.39, "d": 0.47, "k": "Betreiber", "lim": 0}, {"n": "Aral pulse – Klassik", "fee": 0, "ac": 0.47, "d50": 0.52, "d": 0.62, "k": "Betreiber", "lim": 0}, {"n": "Aral pulse – Extra", "fee": 2.99, "ac": 0.41, "d50": 0.46, "d": 0.54, "k": "Betreiber", "lim": 0}, {"n": "Aral pulse – Ad-hoc", "fee": 0, "ac": 0.59, "d50": 0.69, "d": 0.79, "k": "Ad-hoc", "lim": 0}, {"n": "Ionity – Direct (Ad-hoc)", "fee": 0, "ac": null, "d50": 0.76, "d": 0.76, "k": "Ad-hoc", "lim": 0}, {"n": "Ionity – Go (App, ohne Abo)", "fee": 0, "ac": null, "d50": 0.68, "d": 0.68, "k": "Betreiber", "lim": 0}, {"n": "Ionity – Motion", "fee": 5.99, "ac": null, "d50": 0.51, "d": 0.51, "k": "Betreiber", "lim": 0}, {"n": "Ionity – Power", "fee": 11.99, "ac": null, "d50": 0.41, "d": 0.41, "k": "Betreiber", "lim": 0}, {"n": "EnBW mobility+ – S", "fee": 0, "ac": 0.56, "d50": 0.56, "d": 0.56, "k": "Betreiber", "lim": 0}, {"n": "EnBW mobility+ – M", "fee": 5.99, "ac": 0.46, "d50": 0.56, "d": 0.56, "k": "Betreiber", "lim": 0}, {"n": "EnBW mobility+ – L", "fee": 11.99, "ac": 0.39, "d50": 0.56, "d": 0.56, "k": "Betreiber", "lim": 0}, {"n": "EnBW mobility+ – Ad-hoc", "fee": 0, "ac": 0.59, "d50": 0.59, "d": 0.66, "k": "Ad-hoc", "lim": 0}, {"n": "Tesla Supercharger – Fremdmarke ohne Mitgliedschaft", "fee": 0, "ac": null, "d50": 0.59, "d": 0.59, "k": "Betreiber", "lim": 0}, {"n": "Tesla Supercharger – Fremdmarke mit Mitgliedschaft", "fee": 12.99, "ac": null, "d50": 0.46, "d": 0.46, "k": "Betreiber", "lim": 0}, {"n": "Electra – Smart", "fee": 4.99, "ac": null, "d50": 0.34, "d": 0.34, "k": "Betreiber", "lim": 0}, {"n": "Fastned – Ad-hoc", "fee": 0, "ac": null, "d50": 0.69, "d": 0.69, "k": "Ad-hoc", "lim": 0}, {"n": "MAINGAU – Autostrom Vorteil", "fee": 0, "ac": 0.42, "d50": 0.52, "d": 0.52, "k": "Roaming", "lim": 0}, {"n": "ADAC e-Charge – für Mitglieder", "fee": 0, "ac": 0.55, "d50": 0.55, "d": 0.55, "k": "Roaming", "lim": 0}, {"n": "Lidl / Kaufland – App im eigenen Netz", "fee": 0, "ac": 0.29, "d50": 0.44, "d": 0.47, "k": "Betreiber", "lim": 1}, {"n": "Aldi Süd – App im eigenen Netz", "fee": 0, "ac": null, "d50": 0.44, "d": 0.47, "k": "Betreiber", "lim": 1}, {"n": "IKEA – an eigenen Säulen", "fee": 0, "ac": 0.49, "d50": 0.57, "d": 0.69, "k": "Betreiber", "lim": 1}, {"n": "Entega – Ladekarte", "fee": 0, "ac": 0.49, "d50": 0.55, "d": 0.55, "k": "Roaming", "lim": 1}, {"n": "Vattenfall InCharge – Einheitspreis", "fee": 0, "ac": 0.46, "d50": 0.46, "d": 0.46, "k": "Betreiber", "lim": 1}, {"n": "Electra – Standard", "fee": 0, "ac": null, "d50": 0.54, "d": 0.54, "k": "Betreiber", "lim": 0}, {"n": "Plugsurfing – Roaming-Karte", "fee": 0, "ac": 0.59, "d50": 0.85, "d": 0.85, "k": "Roaming", "lim": 0}, {"n": "Elli – Free", "fee": 0, "ac": 0.69, "d50": 0.89, "d": 0.89, "k": "Roaming", "lim": 0}, {"n": "Ø Ad-hoc (Kreditkarte) – typischer Marktwert", "fee": 0, "ac": 0.59, "d50": 0.69, "d": 0.79, "k": "Ad-hoc", "lim": 0}];
 var $=function(i){return document.getElementById(i)};
-function eur(v){return v.toFixed(2).replace('.',',')+' €'}
+function eur(v){return v.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2})+' €'}
 var NETS=[['EnBW',27.2],['Tesla',13.4],['EWE Go',10.2],['Aral pulse',9.4],['Ionity',7.9]];
 function netInfo(t){
  if(t.lim)return '⚠️ nur an eigenen Standorten';
@@ -223,8 +225,13 @@ function calc(){
   var vals=[(i+1)+'.',r.t.n,null,adh?(r.c<=adh.c?'−'+eur(adh.c-r.c):'+'+eur(r.c-adh.c)):''];
   var lab=['Platz','Tarif','Art · Preis · Kosten','gegenüber Ad-hoc-Ø (Monat)'];
   vals.forEach(function(v,j){var td=document.createElement('td');td.setAttribute('data-l',lab[j]);
-   if(j===2){var l1=document.createElement('div');var b=document.createElement('span');b.className='lk-kind '+kc;b.textContent=r.t.k;l1.appendChild(b);var pr=document.createElement('strong');pr.textContent=' '+pk.toFixed(2).replace('.',',')+' €/kWh';l1.appendChild(pr);
-    var l2=document.createElement('div');l2.className='lk-cost';l2.textContent=eur(r.c)+' / Monat · '+eur(r.c*12)+' / Jahr';td.appendChild(l1);td.appendChild(l2);}
+   if(j===2){var l1=document.createElement('div');l1.className='lk-l1';
+    var x=document.createElement('span');x.appendChild(document.createTextNode('Art: '));var bd=document.createElement('span');bd.className='lk-kind '+kc;bd.textContent=r.t.k;x.appendChild(bd);
+    var y=document.createElement('span');y.appendChild(document.createTextNode('Preis: '));var pr=document.createElement('strong');pr.textContent=pk.toFixed(2).replace('.',',')+' €/kWh';y.appendChild(pr);
+    l1.appendChild(x);l1.appendChild(y);
+    var l2=document.createElement('div');l2.className='lk-cost';
+    var m1=document.createElement('span');m1.textContent=eur(r.c)+'/Monat';var m2=document.createElement('span');m2.textContent=eur(r.c*12)+'/Jahr';l2.appendChild(m1);l2.appendChild(m2);
+    td.appendChild(l1);td.appendChild(l2);}
    else if(j===1){td.textContent=v;var nt=netInfo(r.t);if(nt){var l3=document.createElement('div');l3.className='lk-net';l3.textContent=nt;td.appendChild(l3);}}
    else td.textContent=v;
    tr.appendChild(td)});
