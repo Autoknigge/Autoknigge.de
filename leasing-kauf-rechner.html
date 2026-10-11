@@ -98,6 +98,7 @@
 <div class="lk-top">
 <div class="lk-field"><label for="lkMonths">Vergleichszeitraum (Monate)</label><input id="lkMonths" type="number" inputmode="numeric" min="1" max="240" step="1" value="48"><span class="lk-hint">Meist die Laufzeit des Leasingvertrags.</span></div>
 <div class="lk-field"><label for="lkAlt">Alternativzins auf gebundenes Kapital (% p. a.)</label><input id="lkAlt" type="number" inputmode="decimal" min="0" step="0.1" value="0"><span class="lk-hint">Optional: Was das Geld sonst bringen würde (z. B. Tagesgeld). Bei 0 wird die Kapitalbindung nicht bewertet.</span></div>
+<div class="lk-field"><label for="lkFo">Staatliche Förderung (€, einmalig)</label><input id="lkFo" type="number" inputmode="decimal" min="0" step="any" value="0"><span class="lk-hint">Gilt für Kauf und Leasing gleich. Hier eintragen, nicht vom Kaufpreis abziehen (<a href="artikel-e-auto-kaufpraemie.html" class="content-link">Höhe der Kaufprämie</a>). Ohne Förderung 0.</span></div>
 </div>
 
 <div class="lk-cols">
@@ -111,7 +112,7 @@
 
 <div class="lk-col lk-col-buy">
 <h2>🚗 Kauf</h2>
-<div class="lk-field"><label for="lkPrice">Kaufpreis (€) <span class="lk-hint" style="display:inline">– was du tatsächlich bezahlst, nach Rabatt</span></label><input id="lkPrice" type="number" inputmode="decimal" min="0" step="any" value="35000"></div>
+<div class="lk-field"><label for="lkPrice">Kaufpreis (€) <span class="lk-hint" style="display:inline">– nach Rabatt, vor Abzug der Förderung</span></label><input id="lkPrice" type="number" inputmode="decimal" min="0" step="any" value="35000"></div>
 <div class="lk-field"><span class="lk-label">Bezahlung</span><div class="lk-radio-row"><label><input checked name="lkPay" type="radio" value="fin"> Finanzierung</label><label><input name="lkPay" type="radio" value="cash"> Barkauf</label></div></div>
 <div id="lkFinWrap">
 <div class="lk-field"><label for="lkDown">Anzahlung (€)</label><input id="lkDown" type="number" inputmode="decimal" min="0" step="any" value="5000"></div>
@@ -164,7 +165,7 @@
 <script src="script.js?v=20261010"></script>
 <script src="zahlen.js"></script>
 <script src="garage.js"></script>
-<script>document.addEventListener("DOMContentLoaded",function(){var G=window.akGarage,a=document.querySelector('.lk-top');G.mount(a,function(k){G.set('lkPrice',G.fmt(k.price||k.list));G.set('lkWvL',k.list&&k.list!==k.price?G.fmt(k.list):'');G.set('lkWvA',k.drive);},'',function(){var V=function(i){return document.getElementById(i).value;},kp=V('lkPrice'),lp=V('lkWvL');return {_p:1,a:V('lkWvA'),l:(parseDE(lp)>0?lp:kp),k:kp};});});</script>
+<script>document.addEventListener("DOMContentLoaded",function(){var G=window.akGarage,a=document.querySelector('.lk-top');G.mount(a,function(k){G.set('lkPrice',G.fmt(k.price||k.list));G.set('lkFo',G.fmt(k.fo||0));G.set('lkWvL',k.list&&k.list!==k.price?G.fmt(k.list):'');G.set('lkWvA',k.drive);},'',function(){var V=function(i){return document.getElementById(i).value;},kp=V('lkPrice'),lp=V('lkWvL');return {_p:1,a:V('lkWvA'),l:(parseDE(lp)>0?lp:kp),k:kp,fo:V('lkFo')};});});</script>
 <script src="section-cards.js"></script>
 <script>
 // <calc>
@@ -175,7 +176,7 @@ function calcLeaseBuy(p) {
   }
   var nz = function (x) { x = Number(x); return isFinite(x) && x > 0 ? x : 0; };
   var alt = nz(p.altRate) / 100, years = n / 12;
-  var price = nz(p.price), down = Math.min(nz(p.down), price), residual = nz(p.residual);
+  var fo = nz(p.fo), price = nz(p.price), down = Math.min(nz(p.down), price), residual = nz(p.residual);
 
   // Leasing
   var lRates = nz(p.leaseRate) * n;
@@ -203,13 +204,13 @@ function calcLeaseBuy(p) {
   var bOpp = capital * alt * years;
   var bBase = outlay + bMaint - residual;
 
-  var leaseAll = lBase + lOpp, buyAll = bBase + bOpp;
+  var leaseAll = lBase + lOpp - fo, buyAll = bBase + bOpp - fo;
   return {
-    ok: true, n: n, price: price, financed: !!p.financed, altRate: alt * 100,
+    ok: true, n: n, price: price, fo: fo, financed: !!p.financed, altRate: alt * 100,
     lease: { down: lDown, rates: lRates, once: lOnce, extra: lExtra, opp: lOpp, total: leaseAll },
     buy: { outlay: outlay, down: down, payMonthly: payMonthly, payTotal: payTotal, interest: interest, once: bOnce, maint: bMaint, residual: residual, opp: bOpp, total: buyAll },
     diff: buyAll - leaseAll,
-    breakEven: outlay + bMaint + bOpp - leaseAll
+    breakEven: outlay + bMaint + bOpp - fo - leaseAll
   };
 }
 // </calc>
@@ -226,7 +227,7 @@ function calcLeaseBuy(p) {
     return {
       months: num('lkMonths'), altRate: num('lkAlt'),
       leaseRate: num('lkRate'), leaseDown: num('lkLeaseDown'), leaseOnce: num('lkLeaseOnce'), leaseExtra: num('lkLeaseExtra'),
-      price: num('lkPrice'), down: num('lkDown'), interest: num('lkInterest'),
+      price: num('lkPrice'), fo: num('lkFo'), down: num('lkDown'), interest: num('lkInterest'),
       financed: document.querySelector('input[name="lkPay"]:checked').value === 'fin',
       residual: num('lkResidual'), buyOnce: num('lkBuyOnce'), maint: num('lkMaint')
     };
@@ -266,6 +267,7 @@ function calcLeaseBuy(p) {
       row('Einmalkosten', fmt(r.lease.once)) +
       row('Mehrkilometer/Rückgabe', fmt(r.lease.extra)) +
       (r.lease.opp > 0 ? row('Kapitalbindung', fmt(r.lease.opp)) : '') +
+      (r.fo > 0 ? row('− Förderung', fmt(-r.fo)) : '') +
       '<tr class="tot"><td>Gesamt</td><td>' + fmt(r.lease.total) + '</td></tr></table>';
 
     var bt = '<table class="lk-tbl"><caption>Kauf im Detail</caption>' +
@@ -276,6 +278,7 @@ function calcLeaseBuy(p) {
       row('Wartung/Reparatur', fmt(r.buy.maint)) +
       row('− Restwert', fmt(-r.buy.residual)) +
       (r.buy.opp > 0 ? row('Kapitalbindung', fmt(r.buy.opp)) : '') +
+      (r.fo > 0 ? row('− Förderung', fmt(-r.fo)) : '') +
       '<tr class="tot"><td>Gesamt</td><td>' + fmt(r.buy.total) + '</td></tr></table>';
 
     resultEl.innerHTML =

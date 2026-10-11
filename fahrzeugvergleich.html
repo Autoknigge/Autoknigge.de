@@ -100,6 +100,7 @@
 .vg-t.a{background:#eef1fb;border-color:#d3d9f4}.vg-t.b{background:#e9f4ef;border-color:#c9e6d8}
 .vg-t.best{border-color:#176246;box-shadow:0 2px 10px rgba(23,98,70,.18)}
 .vg-t h3{margin:0 0 .15rem;font-size:1.05rem;overflow-wrap:anywhere}
+.vg-exp{margin:.4rem 0 1rem}.vg-exp button{padding:.6rem 1rem;border-radius:12px;border:2px solid #176246;background:#fff;color:#176246;font:inherit;font-weight:700;font-size:.92rem;cursor:pointer}.vg-exp button:hover{background:#176246;color:#fff}
 .vg-sv{display:block;width:100%;margin-top:.7rem;padding:.6rem .8rem;border-radius:12px;border:2px solid #176246;background:#176246;color:#fff;font:inherit;font-weight:700;font-size:.92rem;cursor:pointer}
 .vg-sv.ch{background:#fff;color:#176246}.vg-sv.ok{background:transparent;border-color:transparent;color:#425852;cursor:default;font-weight:600}
 .vg-badge{display:inline-block;font-size:.76rem;font-weight:700;background:#176246;color:#fff;border-radius:999px;padding:.12rem .55rem;margin-left:.4rem;vertical-align:middle}
@@ -115,10 +116,10 @@
 <div class="vg-f"><label for="vgA_n">Bezeichnung</label><input id="vgA_n" type="text" value="Elektroauto" maxlength="30"></div>
 <div class="vg-f"><label for="vgA_a">Antrieb</label><select id="vgA_a"><option value="e" selected>Elektro (BEV)</option><option value="b">Benziner</option><option value="d">Diesel</option><option value="p">Plug-in-Hybrid (PHEV)</option><option value="h">Vollhybrid (ohne Stecker)</option></select></div>
 <div class="vg-f"><label for="vgA_l">Listenpreis laut Preisliste, vor Rabatt (€)</label><input id="vgA_l" type="text" inputmode="decimal" autocomplete="off" value="42000"></div>
-<div class="vg-f"><label for="vgA_k">Kaufpreis (€), was du tatsächlich bezahlst, nach Rabatt</label><input id="vgA_k" type="text" inputmode="decimal" autocomplete="off" value="39000"><span class="vg-h">Leer lassen = kein Rabatt</span></div>
+<div class="vg-f"><label for="vgA_k">Kaufpreis (€), nach Rabatt, vor Abzug der Förderung</label><input id="vgA_k" type="text" inputmode="decimal" autocomplete="off" value="39000"><span class="vg-h">Leer lassen = kein Rabatt</span></div>
 <div class="vg-f"><label for="vgA_ag">Alter beim Kauf (Jahre)</label><input id="vgA_ag" type="text" inputmode="numeric" autocomplete="off" value="0"><span class="vg-h">0 = Neuwagen. Bei Gebrauchten zählt dein Kaufpreis.</span></div>
 <div class="vg-f"><label for="vgA_rw">Restwert am Ende (€), falls bekannt</label><input id="vgA_rw" type="text" inputmode="decimal" autocomplete="off" value=""><span class="vg-h">Leer lassen = Schätzung.</span></div>
-<div class="vg-f"><label for="vgA_fo">Staatliche Förderung (€, einmalig)</label><input id="vgA_fo" type="text" inputmode="decimal" autocomplete="off" value="0"><span class="vg-h">Nur, wenn dein Modell förderfähig ist (Bedingungen vorher prüfen). Ohne Förderung 0.</span></div>
+<div class="vg-f"><label for="vgA_fo">Staatliche Förderung (€, einmalig)</label><input id="vgA_fo" type="text" inputmode="decimal" autocomplete="off" value="0"><span class="vg-h">Hier eintragen, nicht vom Kaufpreis abziehen. Nur, wenn dein Modell förderfähig ist (<a class="content-link" href="artikel-e-auto-kaufpraemie.html">Bedingungen prüfen</a>). Ohne Förderung 0.</span></div>
 <div class="vg-f"><label for="vgA_vb">Verbrauch (<span id="vgA_vbu">kWh</span> je 100 km)</label><input id="vgA_vb" data-dp="1" type="text" inputmode="decimal" autocomplete="off" value="17"></div>
 <div class="vg-f"><label for="vgA_ep">Energiepreis (€ je <span id="vgA_epu">kWh</span>)</label><input id="vgA_ep" data-dp="1" type="text" inputmode="decimal" autocomplete="off" value="0,32"></div>
 <div class="vg-f vg-ph"><label for="vgA_vb2">Stromverbrauch (kWh je 100 km, im Elektrobetrieb)</label><input id="vgA_vb2" data-dp="1" type="text" inputmode="decimal" autocomplete="off" value="18"></div>
@@ -133,10 +134,10 @@
 <div class="vg-f"><label for="vgB_n">Bezeichnung</label><input id="vgB_n" type="text" value="Benziner" maxlength="30"></div>
 <div class="vg-f"><label for="vgB_a">Antrieb</label><select id="vgB_a"><option value="e">Elektro (BEV)</option><option value="b" selected>Benziner</option><option value="d">Diesel</option><option value="p">Plug-in-Hybrid (PHEV)</option><option value="h">Vollhybrid (ohne Stecker)</option></select></div>
 <div class="vg-f"><label for="vgB_l">Listenpreis laut Preisliste, vor Rabatt (€)</label><input id="vgB_l" type="text" inputmode="decimal" autocomplete="off" value="36000"></div>
-<div class="vg-f"><label for="vgB_k">Kaufpreis (€), was du tatsächlich bezahlst, nach Rabatt</label><input id="vgB_k" type="text" inputmode="decimal" autocomplete="off" value="34000"><span class="vg-h">Leer lassen = kein Rabatt</span></div>
+<div class="vg-f"><label for="vgB_k">Kaufpreis (€), nach Rabatt, vor Abzug der Förderung</label><input id="vgB_k" type="text" inputmode="decimal" autocomplete="off" value="34000"><span class="vg-h">Leer lassen = kein Rabatt</span></div>
 <div class="vg-f"><label for="vgB_ag">Alter beim Kauf (Jahre)</label><input id="vgB_ag" type="text" inputmode="numeric" autocomplete="off" value="0"><span class="vg-h">0 = Neuwagen. Bei Gebrauchten zählt dein Kaufpreis.</span></div>
 <div class="vg-f"><label for="vgB_rw">Restwert am Ende (€), falls bekannt</label><input id="vgB_rw" type="text" inputmode="decimal" autocomplete="off" value=""><span class="vg-h">Leer lassen = Schätzung.</span></div>
-<div class="vg-f"><label for="vgB_fo">Staatliche Förderung (€, einmalig)</label><input id="vgB_fo" type="text" inputmode="decimal" autocomplete="off" value="0"><span class="vg-h">Nur, wenn dein Modell förderfähig ist (Bedingungen vorher prüfen). Ohne Förderung 0.</span></div>
+<div class="vg-f"><label for="vgB_fo">Staatliche Förderung (€, einmalig)</label><input id="vgB_fo" type="text" inputmode="decimal" autocomplete="off" value="0"><span class="vg-h">Hier eintragen, nicht vom Kaufpreis abziehen. Nur, wenn dein Modell förderfähig ist (<a class="content-link" href="artikel-e-auto-kaufpraemie.html">Bedingungen prüfen</a>). Ohne Förderung 0.</span></div>
 <div class="vg-f"><label for="vgB_vb">Verbrauch (<span id="vgB_vbu">l</span> je 100 km)</label><input id="vgB_vb" data-dp="1" type="text" inputmode="decimal" autocomplete="off" value="7,5"></div>
 <div class="vg-f"><label for="vgB_ep">Energiepreis (€ je <span id="vgB_epu">Liter</span>)</label><input id="vgB_ep" data-dp="1" type="text" inputmode="decimal" autocomplete="off" value="2,20"></div>
 <div class="vg-f vg-ph"><label for="vgB_vb2">Stromverbrauch (kWh je 100 km, im Elektrobetrieb)</label><input id="vgB_vb2" data-dp="1" type="text" inputmode="decimal" autocomplete="off" value="18"></div>
@@ -153,6 +154,7 @@
 </div>
 <div class="vg-win" id="vgWin" aria-live="polite"></div>
 <div class="vg-res" id="vgTiles"></div>
+<div class="vg-exp"><button type="button" id="vgExport">📥 Vergleich als CSV exportieren</button><span class="vg-h">Öffnet sich in Excel, LibreOffice und Google Tabellen. Enthält deine Eingaben und alle Ergebnisse. Die Datei wird nur auf deinem Gerät erzeugt.</span></div>
 <p class="vg-h" id="vgCap" style="display:none">Alter beim Kauf plus Haltedauer geht über 10 Jahre hinaus. Gerechnet wird mit dem Wert für 10 Jahre.</p>
 <p class="vg-h" id="vgLong" style="display:none">Ab 6 Jahren Haltedauer sind die Restwerte besonders unsicher, bei E-Autos beruhen sie auf einer Fortschreibung. <a class="content-link" href="artikel-wertverlust-restwert.html">Mehr dazu</a></p>
 </section>
@@ -238,6 +240,32 @@ function gmsg(box,m){box.querySelector('.vg-gs').textContent=m;}
 });
 $('vgTiles').addEventListener('click',function(ev){var b=ev.target.closest&&ev.target.closest('.vg-sv');if(!b||b.disabled)return;
  var box=document.querySelector('.vg-g[data-g="'+b.getAttribute('data-p').slice(2)+'"]');if(box&&box._save)box._save();});
+
+/* Export: Eingaben und Ergebnisse als CSV (Semikolon, UTF-8 mit BOM, Dezimalkomma: öffnet direkt in deutschem Excel) */
+$('vgExport').addEventListener('click',function(){
+ var y=+$('vgY').value,km=num('vgKm'),A=car('vgA',y,km),B=car('vgB',y,km);
+ var q=function(v){v=String(v==null?'':v);return /[;"\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;};
+ var nr=function(v,d){return (Math.round(v*Math.pow(10,d||0))/Math.pow(10,d||0)).toString().replace('.',',');};
+ var tx=function(i){return $(i).value.trim();};
+ var ty=function(p){var o=$(p+'_a');return o.options[o.selectedIndex].text;};
+ var R=[['Autoknigge Fahrzeugvergleich','Stand: '+new Date().toLocaleDateString('de-DE'),'https://autoknigge.de/fahrzeugvergleich.html'],[],
+ ['Haltedauer (Jahre)',y],['Fahrleistung pro Jahr (km)',nr(km)],[],['EINGABEN','Auto A','Auto B'],
+ ['Bezeichnung',A.name,B.name],['Antrieb',ty('vgA'),ty('vgB')],
+ ['Listenpreis (€)',tx('vgA_l'),tx('vgB_l')],['Kaufpreis nach Rabatt, vor Förderung (€)',tx('vgA_k'),tx('vgB_k')],
+ ['Alter beim Kauf (Jahre)',tx('vgA_ag'),tx('vgB_ag')],['Restwert am Ende, angegeben (€)',tx('vgA_rw'),tx('vgB_rw')],
+ ['Staatliche Förderung (€)',tx('vgA_fo'),tx('vgB_fo')],['Verbrauch je 100 km',tx('vgA_vb'),tx('vgB_vb')],['Energiepreis (€)',tx('vgA_ep'),tx('vgB_ep')],
+ ['Versicherung (€/Jahr)',tx('vgA_vs'),tx('vgB_vs')],['Kfz-Steuer (€/Jahr)',tx('vgA_st'),tx('vgB_st')],['Wartung & Reparaturen (€/Jahr)',tx('vgA_wa'),tx('vgB_wa')],['THG-Prämie (€/Jahr)',tx('vgA_th'),tx('vgB_th')],[],
+ ['ERGEBNIS über '+y+' Jahre (€)','Auto A','Auto B'],
+ ['Gesamtkosten',nr(A.sum),nr(B.sum)],['Wertverlust (nach Abzug Rabatt)',nr(A.wv),nr(B.wv)],['Strom',nr(A.enS),nr(B.enS)],['Kraftstoff',nr(A.enK),nr(B.enK)],
+ ['Versicherung',nr(A.vs),nr(B.vs)],['Kfz-Steuer',nr(A.st),nr(B.st)],['Wartung & Reparaturen',nr(A.wa),nr(B.wa)],['abzüglich THG-Prämie',nr(-A.th),nr(-B.th)],['abzüglich Förderung',nr(-A.fo),nr(-B.fo)],
+ ['Kosten pro Jahr',nr(A.sum/y),nr(B.sum/y)],['Kosten pro Monat',nr(A.sum/y/12),nr(B.sum/y/12)],['Kosten pro km (ct)',km>0?nr(A.sum/y/km*100,1):'',km>0?nr(B.sum/y/km*100,1):''],['Restwert am Ende, geschätzt',nr(A.rest),nr(B.rest)],[],
+ ['Hinweis','Orientierungswerte auf Basis deiner Eingaben, keine verbindliche Kalkulation.']];
+ var csv='\ufeff'+R.map(function(r){return r.map(q).join(';');}).join('\r\n');
+ var d=new Date(),pad=function(n){return (n<10?'0':'')+n;};
+ var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
+ a.download='fahrzeugvergleich-'+d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate())+'.csv';
+ document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},500);
+});
 gfill();
 calc();
 })();

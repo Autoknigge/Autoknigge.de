@@ -8,7 +8,7 @@
   function car(c){var v=c.v||{},a=v.a||'b',l=n(v.l),k=String(v.k||'').trim()===''?l:n(v.k),vb=n(v.vb),ep=n(v.ep),vb2=n(v.vb2),ep2=n(v.ep2),ea=Math.min(100,Math.max(0,n(v.ea,50)))/100;
     var verb=vb,preis=ep;
     if(a==='p'){var eq=ep>0?(1-ea)*vb+ea*vb2*ep2/ep:vb;verb=eq;preis=ep;}
-    return {name:c.name,type:a,drive:a==='e'?'e':a==='d'?'d':'b',list:l,price:k,verb:verb,preis:preis,ins:n(v.vs),tax:n(v.st),maint:n(v.wa),hybrid:a==='p'};}
+    return {name:c.name,type:a,drive:a==='e'?'e':a==='d'?'d':'b',list:l,price:k,verb:verb,preis:preis,fo:n(v.fo),ins:n(v.vs),tax:n(v.st),maint:n(v.wa),hybrid:a==='p'};}
   function set(id,val){var e=document.getElementById(id);if(!e)return;
     if(e.type==='checkbox'){e.checked=!!val;}else e.value=val;
     e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));}
