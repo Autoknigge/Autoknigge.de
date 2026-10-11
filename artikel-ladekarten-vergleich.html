@@ -38,8 +38,9 @@
 .lk-table small{color:#5b6f68}
 .lk-bars{margin-top:.6rem}.lk-bar{display:grid;grid-template-columns:7.2rem 1fr 3.2rem;align-items:center;gap:.5rem;margin:.28rem 0;font-size:.84rem}.lk-bn{font-weight:600}.lk-bt{background:rgba(0,0,0,.07);border-radius:6px;height:.8rem;overflow:hidden}.lk-bt i{display:block;height:100%;background:#176246;border-radius:6px}.lk-bv{text-align:right;font-weight:700}.lk-src{font-size:.78rem;color:#5b6f68;margin:.6rem 0 0}.lk-net{font-size:.78rem;color:#5b6f68;margin-top:.1rem}
 @media(max-width:420px){.lk-bar{grid-template-columns:5.6rem 1fr 2.9rem;gap:.35rem;font-size:.8rem}}
-.lk-l1,.lk-cost{display:grid;grid-template-columns:9rem 1fr;gap:.15rem .6rem;align-items:center}.lk-l1 .lk-kind{margin-left:.2rem}
+.lk-ac{display:grid;grid-template-columns:max-content max-content;gap:.2rem .9rem;align-items:center;font-size:.86rem}.lk-ac span{white-space:nowrap}.lk-ac .lk-kind{margin-left:.15rem}
 .lk-res-table td[data-l^="Art"]::before{display:none}
+@media(max-width:420px){.lk-ac{font-size:.8rem;column-gap:.6rem}}
 .lk-cost{font-size:.82rem;font-weight:500;color:#425852;margin-top:.15rem}
 .lk-note-cell{font-size:.8rem;color:#425852}
 .lk-kind{display:inline-block;border-radius:999px;padding:.1rem .6rem;font-size:.75rem;font-weight:600}
@@ -225,13 +226,12 @@ function calc(){
   var vals=[(i+1)+'.',r.t.n,null,adh?(r.c<=adh.c?'−'+eur(adh.c-r.c):'+'+eur(r.c-adh.c)):''];
   var lab=['Platz','Tarif','Art · Preis · Kosten','gegenüber Ad-hoc-Ø (Monat)'];
   vals.forEach(function(v,j){var td=document.createElement('td');td.setAttribute('data-l',lab[j]);
-   if(j===2){var l1=document.createElement('div');l1.className='lk-l1';
-    var x=document.createElement('span');x.appendChild(document.createTextNode('Art: '));var bd=document.createElement('span');bd.className='lk-kind '+kc;bd.textContent=r.t.k;x.appendChild(bd);
-    var y=document.createElement('span');y.appendChild(document.createTextNode('Preis: '));var pr=document.createElement('strong');pr.textContent=pk.toFixed(2).replace('.',',')+' €/kWh';y.appendChild(pr);
-    l1.appendChild(x);l1.appendChild(y);
-    var l2=document.createElement('div');l2.className='lk-cost';
-    var m1=document.createElement('span');m1.textContent=eur(r.c)+'/Monat';var m2=document.createElement('span');m2.textContent=eur(r.c*12)+'/Jahr';l2.appendChild(m1);l2.appendChild(m2);
-    td.appendChild(l1);td.appendChild(l2);}
+   if(j===2){var g=document.createElement('div');g.className='lk-ac';
+    function sp(t){var e=document.createElement('span');if(t)e.textContent=t;g.appendChild(e);return e}
+    var x=sp('Art: ');var bd=document.createElement('span');bd.className='lk-kind '+kc;bd.textContent=r.t.k;x.appendChild(bd);
+    var y=sp('Preis: ');var pr=document.createElement('strong');pr.textContent=pk.toFixed(2).replace('.',',')+' €/kWh';y.appendChild(pr);
+    sp(eur(r.c)+'/Monat');sp(eur(r.c*12)+'/Jahr');
+    td.appendChild(g);}
    else if(j===1){td.textContent=v;var nt=netInfo(r.t);if(nt){var l3=document.createElement('div');l3.className='lk-net';l3.textContent=nt;td.appendChild(l3);}}
    else td.textContent=v;
    tr.appendChild(td)});
