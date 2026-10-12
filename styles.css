@@ -3005,3 +3005,20 @@ section[id], div[id].anchor-target, h2[id], h3[id] { scroll-margin-top: 96px; }
 .history-sale-card .history-badges .history-badge>small{grid-area:s;align-self:start;margin:0!important;font-size:.74rem;line-height:1.3}
 @media(max-width:600px){.history-sale-card .history-badges{grid-template-columns:repeat(2,1fr);gap:.55rem}.history-sale-card .history-badges .history-badge{grid-template-columns:26px 1fr;column-gap:.45rem;padding:.65rem .6rem!important}.history-sale-card .history-badges .history-badge>span{width:26px;height:26px;border-radius:8px;font-size:.8rem}.history-sale-card .history-badges .history-badge>strong{font-size:.8rem!important}.history-sale-card .history-badges .history-badge>small{font-size:.68rem}}
 @media(min-width:701px){.history-sale-card .cv-bottom-action{min-width:340px}}
+
+
+/* ===== ANHÄNGER – KNIGGE-POSTER HOCHFORMAT NEBEN DEM TEXT ===== */
+.knigge-quote-anhaenger{display:grid;grid-template-columns:1.1fr .9fr;background:linear-gradient(135deg,#0f241d 0%,#163a2f 100%);color:#fff}
+.knigge-quote-anhaenger .kqa-text{padding:2.4rem 2.4rem 2.4rem 2.6rem;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:1.1rem}
+.knigge-quote-anhaenger .knigge-quote-kicker{color:#d4a843;margin:0}
+.knigge-quote-anhaenger blockquote{margin:0;color:#fff;font-family:var(--font-display);font-size:clamp(1.3rem,2.4vw,2rem);line-height:1.25;font-weight:800;letter-spacing:-.02em}
+.knigge-quote-anhaenger .kqa-sub{margin:0;color:rgba(255,255,255,.82);font-size:.95rem;line-height:1.55}
+.knigge-quote-anhaenger .kqa-btn{display:inline-block;background:linear-gradient(135deg,#d4a843,#b8860b);color:#1a1405;font-weight:800;padding:.7rem 1.2rem;border-radius:999px;text-decoration:none;font-size:.95rem;white-space:nowrap}
+.knigge-quote-anhaenger .kqa-btn:hover{filter:brightness(1.07)}
+.knigge-quote-anhaenger .kqa-photo{min-height:480px;background:url('knigge-anhaenger-tempo100.jpg') center 14%/cover no-repeat}
+@media (max-width:760px){
+  .knigge-quote-anhaenger{grid-template-columns:1fr}
+  .knigge-quote-anhaenger .kqa-photo{order:-1;min-height:400px;background-position:center 12%}
+  .knigge-quote-anhaenger .kqa-text{padding:1.5rem 1.25rem 1.7rem}
+  .knigge-quote-anhaenger blockquote{font-size:1.3rem}
+}
