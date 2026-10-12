@@ -11,7 +11,7 @@
 <link href="styles.css?v=20261010" rel="stylesheet"/>
 <link href="manifest.json" rel="manifest"/>
 <meta content="#0f241d" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Anhänger & Anhängerkupplung 2026 – Führerschein, Zuladung, Stützlast", "description": "Anhänger ziehen: Welcher Führerschein reicht, Zuladung und Stützlast berechnen, Tempolimits und häufige Fehler.", "url": "https://autoknigge.de/artikel-anhaenger-anhaengerkupplung.html", "inLanguage": "de-DE", "dateModified": "2026-10-08", "publisher": {"@type": "Organization", "name": "Autoknigge", "url": "https://autoknigge.de/", "logo": {"@type": "ImageObject", "url": "https://autoknigge.de/logo.png"}}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Start", "item": "https://autoknigge.de/"}, {"@type": "ListItem", "position": 2, "name": "Recht", "item": "https://autoknigge.de/kategorie-recht.html"}, {"@type": "ListItem", "position": 3, "name": "Anhänger & Anhängerkupplung", "item": "https://autoknigge.de/artikel-anhaenger-anhaengerkupplung.html"}]}</script></head>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Anhänger & Anhängerkupplung 2026 – Führerschein, Zuladung, Stützlast", "description": "Anhänger ziehen: Welcher Führerschein reicht, Zuladung und Stützlast berechnen, Tempolimits und häufige Fehler.", "url": "https://autoknigge.de/artikel-anhaenger-anhaengerkupplung.html", "inLanguage": "de-DE", "dateModified": "2026-10-12", "publisher": {"@type": "Organization", "name": "Autoknigge", "url": "https://autoknigge.de/", "logo": {"@type": "ImageObject", "url": "https://autoknigge.de/logo.png"}}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Start", "item": "https://autoknigge.de/"}, {"@type": "ListItem", "position": 2, "name": "Recht", "item": "https://autoknigge.de/kategorie-recht.html"}, {"@type": "ListItem", "position": 3, "name": "Anhänger & Anhängerkupplung", "item": "https://autoknigge.de/artikel-anhaenger-anhaengerkupplung.html"}]}</script></head>
 <style>
 .ah-tile-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin:1.2rem 0 1.5rem}
 .ah-tile{border-radius:16px;padding:1.2rem 1.3rem;display:grid;grid-template-columns:40px 1fr;grid-template-areas:"icon title" ". desc";column-gap:.7rem;row-gap:.3rem;border:1px solid transparent}
@@ -33,6 +33,24 @@
 .ah-tip{background:#eef6f2;border:1px solid #cfe5da;border-left:5px solid #176246;border-radius:16px;padding:1.1rem 1.3rem;margin:1.3rem 0;line-height:1.6;font-size:.92rem}
 .ah-section{margin:2.3rem 0}
 .ah-tile{min-width:0}.ah-tile:has(.tile-icon-wide){grid-template-columns:auto 1fr}.ah-tile .tile-icon-wide{width:auto;min-width:40px;padding:0 .45rem;font-size:1.05rem;letter-spacing:.05em}.ah-tile h3{overflow-wrap:anywhere}.ah-tile .tile-icon{flex-shrink:0}.ah-note,.ah-tip{overflow-wrap:anywhere}
+
+.ah-src{font-size:.82rem;color:#5b6f68;margin:.4rem 0 1rem}
+.t100-calc{background:#eef6f2;border:1px solid #cfe5da;border-left:5px solid #176246;border-radius:16px;padding:1.2rem 1.3rem;margin:1.8rem 0}
+.t100-calc h3{margin:0 0 .4rem}
+.t100-lead{margin:0 0 1rem;font-size:.92rem;line-height:1.6}
+.t100-grid{display:grid;grid-template-columns:1fr;gap:.8rem}
+@media(min-width:700px){.t100-grid{grid-template-columns:1fr 1fr}}
+.t100-grid label{display:flex;flex-direction:column;gap:.25rem;font-weight:600;font-size:.88rem;min-width:0}
+.t100-grid label span{font-weight:400;font-size:.78rem;color:#5b6f68}
+.t100-grid input,.t100-grid select{padding:.6rem .7rem;border:1px solid #b9d3c6;border-radius:10px;font-size:1rem;background:#fff;width:100%;box-sizing:border-box;font-family:inherit}
+.t100-checks{display:flex;flex-direction:column;gap:.4rem;margin:1rem 0;font-size:.9rem}
+.t100-checks label{display:flex;align-items:center;gap:.5rem}
+.t100-res{border-radius:14px;padding:1rem 1.1rem;background:#fff;border:1px solid #cfe5da;font-size:.93rem;line-height:1.6}
+.t100-res.ok{background:#e6f5ec;border-color:#9fd3b4}
+.t100-res.no{background:#fdeef0;border-color:#f3cdd3}
+.t100-res strong.big{display:block;font-size:1.1rem;margin-bottom:.3rem}
+.t100-res ul{margin:.5rem 0 0;padding-left:1.2rem}
+.t100-hint{margin:.8rem 0 0;font-size:.78rem;color:#5b6f68}
 </style>
 <body>
 <header class="site-header header-logo-large" id="top">
@@ -119,16 +137,51 @@
 <p>Neben den Einzelvoraussetzungen muss zusätzlich ein bestimmtes Verhältnis zwischen dem <strong>Leergewicht des Zugfahrzeugs</strong> und der <strong>zulässigen Gesamtmasse des Anhängers</strong> eingehalten werden – der sogenannte X-Faktor.</p>
 <div class="ah-table-wrap">
 <table class="ah-table">
-<thead><tr><th>Anhänger-Ausstattung</th><th>Faktor X</th><th>Formel</th></tr></thead>
+<thead><tr><th>Anhänger</th><th>Ausstattung</th><th>Faktor X</th></tr></thead>
 <tbody>
-<tr><td>Ungebremst, ohne hydraulische Stoßdämpfer</td><td>0,3</td><td>zul. Anhängergewicht ≤ 0,3 × Leergewicht Zugfahrzeug</td></tr>
-<tr><td>Gebremst, mit hydraulischen Radstoßdämpfern</td><td>1,1</td><td>zul. Anhängergewicht ≤ 1,1 × Leergewicht Zugfahrzeug</td></tr>
-<tr><td>Gebremst, mit Stoßdämpfern und Antischlingerkupplung</td><td>1,2</td><td>zul. Anhängergewicht ≤ 1,2 × Leergewicht Zugfahrzeug</td></tr>
+<tr><td>Alle Anhänger</td><td>Ungebremst, oder gebremst ohne hydraulische Radstoßdämpfer</td><td><strong>0,3</strong></td></tr>
+<tr><td>🏕️ Wohnwagen</td><td>Gebremst, mit hydraulischen Radstoßdämpfern</td><td><strong>0,8</strong></td></tr>
+<tr><td>🏕️ Wohnwagen</td><td>Zusätzlich mit Stabilisierung (Stabilisierungskupplung nach ISO 11555-1 oder bestätigte Gespannstabilisierung im Zugfahrzeug)</td><td><strong>1,0</strong></td></tr>
+<tr><td>🚜 Andere Anhänger</td><td>Gebremst, mit hydraulischen Radstoßdämpfern (z. B. Pkw-, Boots-, Pferdeanhänger)</td><td><strong>1,1</strong></td></tr>
+<tr><td>🚜 Andere Anhänger</td><td>Zusätzlich mit Stabilisierung</td><td><strong>1,2</strong></td></tr>
 </tbody>
 </table>
 </div>
+<p class="ah-src">Formel: zulässige Gesamtmasse des Anhängers ≤ X × Leermasse des Zugfahrzeugs. Bei 1,1 und 1,2 darf der Anhänger zusätzlich nicht mehr wiegen als das Zugfahrzeug selbst (zulässige Gesamtmasse) und nicht mehr als die zulässige Anhängelast in der Zulassungsbescheinigung Teil I.</p>
 <div class="ah-tile-grid">
 <div class="ah-tile"><div class="tile-icon">🐢</div><h3>Beispiel Golf 8: Tempo 100 fällt hier flach</h3><p>Ungebremst gilt X = 0,3, beim Golf 8 (1.490 kg Leergewicht) also maximal 447 kg Anhängergewicht für Tempo 100. Ein beladener Motorrad-Anhänger mit rund 584 kg (siehe Beispiel weiter unten) liegt klar darüber – unabhängig von Reifen oder ABS bleibt es hier bei Tempo 80.</p></div>
+</div>
+
+<h3 style="margin-top:1.8rem" id="tempo100-wohnwagen">🏕️ Sonderregeln für Wohnwagen</h3>
+<div class="ah-tile-grid">
+<div class="ah-tile"><div class="tile-icon">⚖️</div><h3>Strengerer Faktor als bei anderen Anhängern</h3><p>Ein gebremster Wohnwagen mit Stoßdämpfern bekommt nur den Faktor 0,8, ein Pkw-Anhänger dagegen 1,1. Der Grund: Wohnwagen sind hoch und schwingen leichter auf. Ein Wohnwagen darf also deutlich weniger wiegen als ein gleich schwerer Pkw-Anhänger, wenn du Tempo 100 fahren willst.</p></div>
+<div class="ah-tile"><div class="tile-icon">🛡️</div><h3>Stabilisierung bringt mehr Gewicht</h3><p>Mit einer Stabilisierungskupplung oder einer vom Hersteller bestätigten Gespannstabilisierung des Zugfahrzeugs steigt der Faktor von 0,8 auf 1,0. Der Wohnwagen darf dann so viel wiegen wie dein Auto leer. Die Gespannstabilisierung steckt in vielen modernen ESP-Systemen, steht aber nicht immer in den Papieren. Lass sie im Zweifel beim Gutachten bestätigen.</p></div>
+<div class="ah-tile"><div class="tile-icon">📅</div><h3>Ältere Wohnwagen: Herstellerfreigabe nötig</h3><p>Anhänger, die ab dem 01.01.1990 erstmals zugelassen wurden, müssen für 100 km/h geeignet sein. Bei älteren Wohnwagen braucht es eine Freigabe des Herstellers, sonst bleibt es bei 80 km/h.</p></div>
+<div class="ah-tile"><div class="tile-icon">🌍</div><h3>Nur in Deutschland</h3><p>Die Tempo-100-Zulassung gilt nur auf deutschen Autobahnen und Kraftfahrstraßen. Im Ausland gelten eigene Regeln für Gespanne. Informiere dich vor der Reise im jeweiligen Land.</p></div>
+<div class="ah-tile"><div class="tile-icon">⛽</div><h3>100 statt 80 kostet Sprit</h3><p>Laut promobil steigt der Verbrauch bei 100 statt 80 km/h um rund 11 % beim Diesel und rund 18 % beim Benziner. Elektroautos müssen entsprechend früher oder länger laden.</p></div>
+<div class="ah-tile"><div class="tile-icon">💶</div><h3>Das kostet die Zulassung</h3><p>Die gesiegelte Plakette kostet etwa 2,50 €, die Änderung in den Papieren mindestens 12 €. Hinzu kommen Gutachten, falls nötig, oder Nachrüstungen wie Radstoßdämpfer.</p></div>
+</div>
+
+<p class="ah-src">Quellen: <a href="https://www.gesetze-im-internet.de/stvoausnv_9/__1.html" class="content-link" target="_blank" rel="noopener">9. Ausnahmeverordnung zur StVO, § 1</a>, <a href="https://gtue-hein.de/ratgeber/tempo-100-anhaenger" class="content-link" target="_blank" rel="noopener">GTÜ: Tempo 100 Anhänger</a>, <a href="https://www.promobil.de/weitere-ratgeber/schneller-am-ziel-trotz-wohnwagen-mit-100-km-h-ueber-die-autobahn/" class="content-link" target="_blank" rel="noopener">promobil</a>, <a href="https://www.bussgeldkatalog.org/100er-zulassung/" class="content-link" target="_blank" rel="noopener">bussgeldkatalog.org</a> (Stand 12.10.2026).</p>
+
+<div class="t100-calc" id="tempo100-rechner">
+<h3>🧮 Tempo-100-Rechner: Darf mein Gespann 100 fahren?</h3>
+<p class="t100-lead">Trage die Werte aus deinen Papieren ein. Du bekommst den Faktor, das höchste erlaubte Anhängergewicht und, falls es nicht reicht, wie schwer dein Zugfahrzeug mindestens sein müsste.</p>
+<div class="t100-grid">
+<label>Leermasse Zugfahrzeug (kg)<span>Zulassungsbescheinigung Teil I, Feld G</span><input type="number" id="t100-leer" inputmode="numeric" min="0" step="1" placeholder="z. B. 1490"></label>
+<label>Zulässige Gesamtmasse Zugfahrzeug (kg)<span>Feld F.2</span><input type="number" id="t100-zgm" inputmode="numeric" min="0" step="1" placeholder="z. B. 2000"></label>
+<label>Zulässige Anhängelast gebremst (kg)<span>Feld O.1</span><input type="number" id="t100-last" inputmode="numeric" min="0" step="1" placeholder="z. B. 1600"></label>
+<label>Zulässige Gesamtmasse Anhänger (kg)<span>Anhänger-Papiere oder Typschild</span><input type="number" id="t100-azgm" inputmode="numeric" min="0" step="1" placeholder="z. B. 1300"></label>
+<label>Art des Anhängers<select id="t100-art"><option value="wohn">🏕️ Wohnwagen</option><option value="andere">🚜 Anderer Anhänger</option></select></label>
+<label>Bremse und Stoßdämpfer<select id="t100-bremse"><option value="gd">Gebremst, mit hydraulischen Radstoßdämpfern</option><option value="g">Gebremst, ohne Radstoßdämpfer</option><option value="u">Ungebremst</option></select></label>
+<label>Stabilisierung<select id="t100-stab"><option value="n">Keine</option><option value="k">Stabilisierungskupplung (ISO 11555-1)</option><option value="z">Gespannstabilisierung im Zugfahrzeug, bestätigt</option></select></label>
+</div>
+<div class="t100-checks">
+<label><input type="checkbox" id="t100-abs" checked> Zugfahrzeug hat ABS</label>
+<label><input type="checkbox" id="t100-reifen" checked> Reifen mindestens Index L und höchstens 6 Jahre alt</label>
+</div>
+<div class="t100-res" id="t100-res" aria-live="polite">Gib mindestens Leermasse und Anhängergewicht ein.</div>
+<p class="t100-hint">Orientierung nach der 9. Ausnahmeverordnung zur StVO, ohne Gewähr. Verbindlich ist das Gutachten von TÜV, DEKRA, GTÜ oder KÜS und der Eintrag der Zulassungsstelle.</p>
 </div>
 
 <div class="ah-note">⚠️ Alle Einzelvoraussetzungen (ABS, Reifen, Stoßdämpfer, Plakette) können erfüllt sein – reicht das Massenverhältnis nicht, gilt trotzdem nur Tempo 80. Dieser Punkt wird in der Praxis am häufigsten übersehen.</div>
@@ -220,6 +273,47 @@
 </div>
 <div class="footer-col"><h4>Downloads</h4><ul class="footer-links-list"><li><a download="" href="kfz-kaufvertrag.pdf">Kfz-Kaufvertrag (PDF)</a></li><li><a download="" href="vollmacht-kfz-zulassung.pdf">Zulassungsvollmacht (PDF)</a></li><li><a download="" href="Notfallcheckliste-Unfall.pdf">Notfallcheckliste Unfall (PDF)</a></li></ul></div>
 </div><div class="footer-bottom"><div>© 2026 Autoknigge — Alle Rechte vorbehalten. Unabhängige Ratgeber-Plattform.</div><div class="foot-links"><a href="/impressum.html">Impressum</a> • <a href="/datenschutz.html">Datenschutz</a> • <a href="#" id="cookie-settings-link" onclick="if(window.Cookiebot){Cookiebot.show();} return false;">Cookie-Einstellungen</a></div></div></div></footer>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var ids=['leer','zgm','last','azgm','art','bremse','stab','abs','reifen'];
+function n(id){var v=parseFloat($('t100-'+id).value);return isNaN(v)?0:v}
+function f(x){return Math.round(x).toLocaleString('de-DE')}
+function calc(){
+ var res=$('t100-res'),L=n('leer'),Z=n('zgm'),A=n('last'),W=n('azgm');
+ var art=$('t100-art').value,br=$('t100-bremse').value,st=$('t100-stab').value;
+ if(!(L>0&&W>0)){res.className='t100-res';res.textContent='Gib mindestens Leermasse und Anhängergewicht ein.';return}
+ var X,why;
+ if(br!=='gd'){X=0.3;why=br==='u'?'ungebremster Anhänger':'gebremst, aber ohne hydraulische Radstoßdämpfer'}
+ else if(art==='wohn'){if(st==='n'){X=0.8;why='Wohnwagen mit Radstoßdämpfern, ohne Stabilisierung'}else{X=1.0;why='Wohnwagen mit Radstoßdämpfern und Stabilisierung'}}
+ else{if(st==='n'){X=1.1;why='gebremster Anhänger mit Radstoßdämpfern'}else{X=1.2;why='gebremster Anhänger mit Radstoßdämpfern und Stabilisierung'}}
+ var max=X*L,caps=[];
+ if(X>=1.1){
+  if(Z>0&&Z<max){max=Z;caps.push('Zulässige Gesamtmasse des Zugfahrzeugs ('+f(Z)+' kg)')}
+  if(A>0&&A<max){max=A;caps.push('Zulässige Anhängelast ('+f(A)+' kg)')}
+ }
+ var okMass=W<=max+1e-9,probs=[];
+ if(Z>3500)probs.push('Das Zugfahrzeug darf höchstens 3.500 kg zulässige Gesamtmasse haben.');
+ if(!$('t100-abs').checked)probs.push('Das Zugfahrzeug braucht ABS.');
+ if(!$('t100-reifen').checked)probs.push('Die Reifen müssen mindestens Index L haben und höchstens 6 Jahre alt sein.');
+ var ok=okMass&&!probs.length;
+ var h='<strong class="big">'+(ok?'✅ Tempo 100 ist rechnerisch möglich':'❌ Tempo 100 ist so nicht möglich (es bleibt bei 80 km/h)')+'</strong>';
+ h+='Faktor X = '+X.toFixed(1).replace('.',',')+' ('+why+').<br>Höchstes Anhängergewicht für Tempo 100: <strong>'+f(max)+' kg</strong> bei '+f(L)+' kg Leermasse'+(caps.length?', begrenzt durch: '+caps.join(' und ')+'.':'.');
+ h+='<br>Dein Anhänger: <strong>'+f(W)+' kg</strong> ('+(okMass?f(max-W)+' kg Spielraum':f(W-max)+' kg zu viel')+').';
+ var li=[];
+ if(!okMass){
+  var need=W/X,hard=X>=1.1&&((Z>0&&W>Z)||(A>0&&W>A));if(hard)li.push('Der Anhänger ist schwerer als die zulässige Anhängelast oder die zulässige Gesamtmasse deines Zugfahrzeugs. Mehr Leermasse würde hier nicht helfen, es braucht ein stärkeres Zugfahrzeug oder einen leichteren Anhänger.');else li.push('Das Zugfahrzeug müsste bei diesem Faktor mindestens <strong>'+f(Math.ceil(need))+' kg</strong> Leermasse haben.');
+  if(art==='wohn'&&X<1.0&&br==='gd')li.push('Mit bestätigter Stabilisierung (Faktor 1,0) wären '+f(L)+' kg Leermasse für bis zu '+f(L)+' kg Anhänger genug'+(W<=L?' – dein Wohnwagen würde dann passen.':'.'));
+  if(art!=='wohn'&&X<1.1&&br==='g')li.push('Mit hydraulischen Radstoßdämpfern gilt Faktor 1,1.');
+ }
+ probs.forEach(function(p){li.push(p)});
+ li.push('Außerdem nötig: gesiegelte Tempo-100-Plakette am Heck und Eintrag in den Anhänger-Papieren.');
+ h+='<ul><li>'+li.join('</li><li>')+'</li></ul>';
+ res.className='t100-res '+(ok?'ok':'no');res.innerHTML=h;
+}
+ids.forEach(function(i){var e=$('t100-'+i);if(e){e.addEventListener('input',calc);e.addEventListener('change',calc)}});
+})();
+</script>
 <script src="script.js?v=20261010"></script>
 </body>
 </html>
