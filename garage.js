@@ -20,6 +20,7 @@
     return {ok:true,msg:'„'+nm+'“ ist jetzt in deiner Garage und steht im Fahrzeugvergleich und in den anderen Rechnern bereit.'+(filled?' Verbrauch, Versicherung, Steuer und Wartung sind mit typischen Werten vorbelegt, bitte im Fahrzeugvergleich prüfen.':'')};}
   var css=document.createElement('style');
   css.textContent='.ak-gp{margin:0 0 1.1rem;padding:.7rem .9rem;border-radius:12px;background:#f4f8f6;border:1px dashed #9fb3aa;font-size:.92rem;line-height:1.5}.ak-gp b{display:block;margin-bottom:.35rem}.ak-gp select{width:100%;box-sizing:border-box;padding:.5rem .6rem;border:1px solid #cdd5d1;border-radius:10px;font:inherit;background:#fff}.ak-gp .ak-gm{display:block;margin-top:.4rem;font-size:.82rem;color:#425852}.ak-gp .ak-sv{margin-top:.7rem;padding-top:.6rem;border-top:1px dashed #9fb3aa}.ak-gp .ak-sv input{width:100%;box-sizing:border-box;padding:.5rem .6rem;border:1px solid #cdd5d1;border-radius:10px;font:inherit;background:#fff}.ak-gp .ak-sv button{margin-top:.5rem;padding:.5rem .9rem;border-radius:999px;border:1px solid #176246;background:#176246;color:#fff;font:inherit;font-weight:700;font-size:.9rem;cursor:pointer}';
+  css.textContent+='.ak-sv button.ak-ok{background:#eef2f0!important;border-color:#d6e0db!important;color:#6b7b75!important;cursor:default}';
   document.head.appendChild(css);
   window.akGarage={load:load,car:car,set:set,fmt:fmt,save:save,
     mount:function(anchor,fill,note,collect){
@@ -31,13 +32,25 @@
         if(!g.length){box.innerHTML='<b>🚗 Aus meiner Garage übernehmen</b>'+(collect?'Noch kein Auto gespeichert. Trage unten die Werte deines Autos ein, gib hier eine Kurzbezeichnung ein und speichere es. Dann steht es auch im <a class="content-link" href="fahrzeugvergleich.html">Fahrzeugvergleich</a> und in den anderen Rechnern bereit.':'Hier erscheinen Autos, die du im <a class="content-link" href="fahrzeugvergleich.html">Fahrzeugvergleich</a> speicherst. Dann musst du Preis und Verbrauch nicht noch einmal eintragen.')+svRow();wire();return;}
         box.innerHTML='<b>🚗 Aus meiner Garage übernehmen</b><select aria-label="Gespeichertes Auto übernehmen"><option value="">Auto wählen …</option>'+g.map(function(c,i){return '<option value="'+i+'">'+String(c.name).replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</option>';}).join('')+'</select><span class="ak-gm ak-pm" aria-live="polite"></span>'+svRow();wire();
       }
+      function state(){var nm=String(nameVal||'').trim().slice(0,30);if(!nm||!collect)return 'new';
+        var c=load().filter(function(x){return String(x.name).toLowerCase()===nm.toLowerCase();})[0];if(!c)return 'new';
+        var cur=collect(),sv=c.v||{},same=true;
+        ['a','l','k','fo','vb','ep','vs','st','wa'].forEach(function(f){if(cur[f]===undefined||sv[f]===undefined)return;
+          if(f==='a'){if(sv.a!=='p'&&cur.a!==sv.a)same=false;return;}
+          if(sv.a==='p'&&(f==='vb'||f==='ep'))return;
+          if(Math.abs(n(cur[f])-n(sv[f]))>0.0001)same=false;});
+        return same?'same':'changed';}
+      function upd(){var btn=box.querySelector('.ak-gsave');if(!btn)return;var st=state();
+        btn.disabled=(st==='same');btn.classList.toggle('ak-ok',st==='same');
+        btn.textContent=st==='same'?'✓ Gespeichert':st==='changed'?'💾 Änderungen speichern':'💾 In meiner Garage speichern';}
       function wire(){var sel=box.querySelector('select');
-        if(sel)sel.addEventListener('change',function(){var c=load()[this.value];if(!c)return;var k=car(c);fill(k);
+        if(sel)sel.addEventListener('change',function(){var c=load()[this.value];if(!c)return;var k=car(c);fill(k);nameVal=c.name;var ni=box.querySelector('#akGpName');if(ni)ni.value=c.name;setTimeout(upd,0);
           box.querySelector('.ak-pm').textContent='„'+c.name+'“ übernommen.'+(k.hybrid&&note?' '+note:'');});
         var btn=box.querySelector('.ak-gsave'),inp=box.querySelector('#akGpName');
-        if(btn)btn.addEventListener('click',function(){nameVal=inp.value;var r=save(nameVal,collect());msg=r.msg;if(r.ok){nameVal='';}render();});
-        if(inp)inp.addEventListener('input',function(){nameVal=inp.value;});}
+        if(btn)btn.addEventListener('click',function(){nameVal=inp.value;var r=save(nameVal,collect());msg=r.msg;render();});
+        if(inp)inp.addEventListener('input',function(){nameVal=inp.value;upd();});upd();}
       render();anchor.parentNode.insertBefore(box,anchor);
       window.addEventListener('pageshow',render);
+      document.addEventListener('input',function(){upd();});document.addEventListener('change',function(){upd();});
     }};
 })();
