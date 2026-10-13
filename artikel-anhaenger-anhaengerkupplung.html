@@ -166,7 +166,7 @@
 
 <div class="t100-calc" id="tempo100-rechner">
 <h3>🧮 Tempo-100-Rechner: Darf mein Gespann 100 fahren?</h3>
-<p class="t100-lead">Trage die Werte aus deinen Papieren ein. Du bekommst den Faktor, das höchste erlaubte Anhängergewicht und, falls es nicht reicht, wie schwer dein Zugfahrzeug mindestens sein müsste.</p>
+<p class="t100-lead">Trage die Werte aus deinen Papieren ein. Du bekommst den Faktor, das höchste erlaubte Anhängergewicht, die nötige Führerscheinklasse und, falls es nicht reicht, wie schwer dein Zugfahrzeug mindestens sein müsste.</p>
 <div class="t100-grid">
 <label>Leermasse Zugfahrzeug (kg)<span>Zulassungsbescheinigung Teil I, Feld G</span><input type="number" id="t100-leer" inputmode="numeric" min="0" step="1" placeholder="z. B. 1490"></label>
 <label>Zulässige Gesamtmasse Zugfahrzeug (kg)<span>Feld F.2</span><input type="number" id="t100-zgm" inputmode="numeric" min="0" step="1" placeholder="z. B. 2000"></label>
@@ -300,6 +300,15 @@ function calc(){
  var h='<strong class="big">'+(ok?'✅ Tempo 100 ist rechnerisch möglich':'❌ Tempo 100 ist so nicht möglich (es bleibt bei 80 km/h)')+'</strong>';
  h+='Faktor X = '+X.toFixed(1).replace('.',',')+' ('+why+').<br>Höchstes Anhängergewicht für Tempo 100: <strong>'+f(max)+' kg</strong> bei '+f(L)+' kg Leermasse'+(caps.length?', begrenzt durch: '+caps.join(' und ')+'.':'.');
  h+='<br>Dein Anhänger: <strong>'+f(W)+' kg</strong> ('+(okMass?f(max-W)+' kg Spielraum':f(W-max)+' kg zu viel')+').';
+ var fk;
+ if(W>3500)fk='Mit Klasse B oder BE nicht fahrbar: Anhänger über 3.500 kg brauchen eine höhere Klasse (z. B. C1E).';
+ else if(W<=750)fk='<strong>Klasse B</strong> reicht (Anhänger bis 750 kg zGM).';
+ else if(Z<=0)fk='Trage oben die zulässige Gesamtmasse des Zugfahrzeugs ein, dann nenne ich dir die Klasse. Ohne Angabe: Klasse B nur, wenn Zugfahrzeug und Anhänger zusammen höchstens 3.500 kg zGM haben, sonst B96 oder BE.';
+ else if(Z+W<=3500)fk='<strong>Klasse B</strong> reicht (zGM zusammen '+f(Z+W)+' kg, höchstens 3.500 kg).';
+ else if(Z>3500)fk='Zugfahrzeug über 3.500 kg zGM: Klasse B und BE reichen nicht.';
+ else if(Z+W<=4250)fk='<strong>B96 oder BE</strong> nötig (zGM zusammen '+f(Z+W)+' kg, B96 erlaubt bis 4.250 kg). B96 braucht nur eine Schulung, BE eine Prüfung.';
+ else fk='<strong>Klasse BE</strong> nötig (zGM zusammen '+f(Z+W)+' kg, über 4.250 kg).';
+ h+='<br>🪪 Führerschein: '+fk+' Maßgeblich ist die zulässige Gesamtmasse laut Papieren, nicht das tatsächliche Gewicht.';
  var li=[];
  if(!okMass){
   var need=W/X,hard=X>=1.1&&((Z>0&&W>Z)||(A>0&&W>A));if(hard)li.push('Der Anhänger ist schwerer als die zulässige Anhängelast oder die zulässige Gesamtmasse deines Zugfahrzeugs. Mehr Leermasse würde hier nicht helfen, es braucht ein stärkeres Zugfahrzeug oder einen leichteren Anhänger.');else li.push('Das Zugfahrzeug müsste bei diesem Faktor mindestens <strong>'+f(Math.ceil(need))+' kg</strong> Leermasse haben.');
