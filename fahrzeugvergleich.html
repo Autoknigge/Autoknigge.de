@@ -103,7 +103,7 @@
 .vg-sv{display:block;width:100%;margin-top:.7rem;padding:.6rem .8rem;border-radius:12px;border:2px solid #176246;background:#176246;color:#fff;font:inherit;font-weight:700;font-size:.92rem;cursor:pointer}
 .vg-sv.ch{background:#fff;color:#176246}.vg-gsave.ok{background:#eef2f0;border-color:#d6e0db;color:#6b7b75;cursor:default}.vg-gsave.ch,.vg-gsave.nw{background:#176246;border-color:#176246;color:#fff;box-shadow:0 0 0 3px rgba(23,98,70,.2)}.vg-svb{margin-top:1rem}.vg-svb.ok{background:#eef2f0;border-color:#d6e0db;color:#6b7b75}.vg-svb.ch,.vg-svb.nw{background:#176246;border-color:#176246;color:#fff;box-shadow:0 0 0 3px rgba(23,98,70,.2)}.vg-sv.ok{background:transparent;border-color:transparent;color:#425852;cursor:default;font-weight:600}
 .vg-badge{display:inline-block;font-size:.76rem;font-weight:700;background:#176246;color:#fff;border-radius:999px;padding:.12rem .55rem;margin-left:.4rem;vertical-align:middle}
-.vg-tot{font-size:1.9rem;font-weight:800;line-height:1.2;margin:.2rem 0}
+.vg-tot{font-size:1.9rem;font-weight:800;line-height:1.2;margin:.2rem 0}.vg-top{display:flex;align-items:center;justify-content:space-between;gap:.6rem}.vg-seal{flex:none;width:4.3rem;height:4.3rem;border-radius:50%;border:1px solid #111;display:flex;align-items:center;justify-content:center;text-align:center;font-size:.74rem;font-weight:800;line-height:1.1;color:#fff;transform:rotate(-8deg)}.vg-seal.g{background:#1f9d62}.vg-seal.r{background:#d64545}
 .vg-sub{font-size:.88rem;color:#425852;margin-bottom:.6rem}
 .vg-r{display:flex;justify-content:space-between;gap:.8rem;padding:.38rem 0;border-top:1px solid rgba(10,28,22,.1);font-size:.93rem}
 .vg-r span:first-child{min-width:0}.vg-r span:last-child{white-space:nowrap;font-weight:600}
@@ -220,13 +220,13 @@ function calc(){
  var rows=[['Wertverlust (nach Abzug Rabatt)','wv'],['Strom','enS'],['Kraftstoff','enK'],['Versicherung','vs'],['Kfz-Steuer','st'],['Wartung &amp; Reparaturen','wa'],['− THG-Prämie','th',1],['− Förderung','fo',1]];
  var order=cars.map(function(c,i){return i;}).sort(function(a,b){return cars[a].sum-cars[b].sum;}),bi=order[0],gap=cars[order[1]].sum-cars[bi].sum;
  var pk=function(c){return km>0?(c.sum/y/km*100).toFixed(1).replace('.',',')+' ct':'–';};
- var tile=function(c,cls,best,pp){var h='<div class="vg-t '+cls+(best?' best':'')+'"><h3>'+esc(c.name)+(best?'<span class="vg-badge">günstiger</span>':'')+'</h3>';
-  h+='<div class="vg-tot">'+eur(c.sum)+'</div><div class="vg-sub">Gesamtkosten in '+jr(y)+'</div>';
+ var tile=function(c,cls,best,pp,worst){var h='<div class="vg-t '+cls+(best?' best':'')+'"><h3>'+esc(c.name)+'</h3>';
+  h+='<div class="vg-top"><div class="vg-tot">'+eur(c.sum)+'</div>'+(best?'<span class="vg-seal g">günstiger</span>':worst?'<span class="vg-seal r">'+(cars.length>2?'teuerster':'teurer')+'</span>':'')+'</div><div class="vg-sub">Gesamtkosten in '+jr(y)+'</div>';
   rows.forEach(function(r){if(Math.round(c[r[1]])===0&&(r[1]==='enS'||r[1]==='enK'||r[1]==='th'||r[1]==='fo'))return;h+='<div class="vg-r"><span>'+r[0]+'</span><span>'+sg(c[r[1]],r[2])+'</span></div>';});
   h+='<div class="vg-r"><span>pro Jahr</span><span>'+eur(c.sum/y)+'</span></div><div class="vg-r"><span>pro Monat</span><span>'+eur(c.sum/y/12)+'</span></div><div class="vg-r"><span>pro Kilometer</span><span>'+pk(c)+'</span></div><div class="vg-r"><span>Restwert am Ende (geschätzt)</span><span>'+eur(c.rest)+'</span></div>'+svbtn(pp,c.name)+'</div>';return h;};
- var capd=cars.some(function(c){return c.capd;});
+ var w0=cars[bi].sum,capd=cars.some(function(c){return c.capd;});
  $('vgLong').style.display=y>5||capd?'block':'none';$('vgCap').style.display=capd?'block':'none';
- $('vgTiles').innerHTML=cars.map(function(c,i){return tile(c,CL[i],i===bi&&gap>=50,ps()[i]);}).join('');
+ $('vgTiles').innerHTML=cars.map(function(c,i){return tile(c,CL[i],i===bi&&gap>=50,ps()[i],i===order[order.length-1]&&cars[order[order.length-1]].sum-w0>=50);}).join('');
  var w=cars[bi],msg;
  if(gap<50)msg=cars.length===2?'Beide Fahrzeuge kosten über '+jr(y)+' etwa gleich viel.':'Die günstigsten Fahrzeuge kosten über '+jr(y)+' etwa gleich viel.';
  else if(cars.length===2){var o=cars[order[1]];msg='<strong>'+esc(w.name)+'</strong> ist über '+jr(y)+' rund <strong>'+eur(gap)+'</strong> günstiger als '+esc(o.name)+' (etwa '+eur(gap/y)+' pro Jahr, '+eur(gap/y/12)+' pro Monat).';}
