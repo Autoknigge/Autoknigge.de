@@ -43,7 +43,7 @@ td.p{word-break:break-all}
 .msg.ok{background:#e4f5ea;color:#12502f}.msg.err{background:#fde8e6;color:#7a1710}.msg.info{background:#eef3ef;color:#2c453a}
 .bar{height:10px;background:#e3e9e5;border-radius:99px;overflow:hidden;margin-top:.7rem}
 .bar i{display:block;height:100%;width:0;background:var(--green);transition:width .2s}
-details{margin-top:.5rem}.accs{font-size:1.1rem;list-style:none}.accs small{font-weight:400;color:#5b6f68}#acc{margin-top:0}summary{cursor:pointer;font-weight:600}
+details{margin-top:.5rem}.delrow{display:flex;gap:.7rem;align-items:center;margin-top:1.4rem;padding-top:.8rem;border-top:1px dashed #e0cdb8}.mini{padding:.25rem .55rem!important;font-size:.8rem!important;min-height:0!important;flex:none}.delrow small{color:#5b6f68;line-height:1.35}.accs{font-size:1.1rem;list-style:none}.accs small{font-weight:400;color:#5b6f68}#acc{margin-top:0}summary{cursor:pointer;font-weight:600}
 ol,ul{padding-left:1.2rem;margin:.5rem 0}
 code{background:#eef3ef;padding:.05rem .35rem;border-radius:6px;font-size:.88em}
 a{color:#116041;font-weight:700}
@@ -94,14 +94,12 @@ Der Token gehört wie ein Passwort nur dir. Gib ihn niemandem und lade diese Dat
 <h2>✅ 3. Prüfen und speichern</h2>
 <div class="sum" id="sum"></div>
 <div style="overflow:auto"><table><thead><tr><th></th><th>Datei</th><th>Status</th><th>Größe</th></tr></thead><tbody id="list"></tbody></table></div>
-<div class="acts"><button class="btn2 tog" id="selchanged" type="button">Nur Änderungen</button><button class="btn2 tog" id="selall" type="button">Alle</button><button class="btn2 stor" id="storno" type="button">✖ Storno</button></div>
-<div class="acts"><button class="btn2 stor" id="delsel" type="button">🗑 Gewählte im Repository löschen</button></div>
-<small>Mit den Häkchen oben wählst du Dateien. „Auf GitHub speichern“ lädt sie hoch, „Gewählte löschen“ entfernt sie (nach Rückfrage) aus dem Repository.</small>
+<div class="acts"><button class="btn2 tog" id="selchanged" type="button">Nur Änderungen</button><button class="btn2 tog" id="selall" type="button">Alle</button><button class="btn2 stor" id="storno" type="button">✖ Storno</button><button class="btn" id="go">Auf GitHub speichern</button></div>
 <label for="del">Dateien im Repository löschen (optional, ein Pfad pro Zeile)</label>
 <textarea id="del" placeholder="alte-seite.html"></textarea>
 <label for="msg">Commit-Nachricht</label>
 <input id="msg" type="text" autocomplete="off">
-<div class="acts"><button class="btn" id="go">Auf GitHub speichern</button></div>
+<div class="delrow"><button class="btn2 stor mini" id="delsel" type="button" title="Angehakte Dateien im Repository löschen">🗑</button><small>Löscht die <b>angehakten</b> Dateien im Repository (mit Rückfrage). „Auf GitHub speichern“ lädt sie dagegen hoch.</small></div>
 <div class="bar" id="bar" hidden><i id="barI"></i></div>
 <div id="m2"></div>
 </div>
