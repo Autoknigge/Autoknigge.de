@@ -29,6 +29,16 @@
 .lk-grid>.lk-tile:nth-of-type(6n+6){background:#eef6f7;border-color:#c9e6ea}
 .lk-warn>.lk-tile:nth-of-type(odd){background:#fdeef0!important;border-color:#f3cdd3!important}
 .lk-warn>.lk-tile:nth-of-type(even){background:#fef6e3!important;border-color:#f6e4ae!important}
+.kl-hero{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:0;background:linear-gradient(135deg,#0f241d,#163a2f);border-radius:22px;overflow:hidden;margin:1rem auto 1.6rem;max-width:1080px;box-shadow:0 14px 36px rgba(15,36,29,.18)}
+.kl-poster{margin:0;background:#0f241d}.kl-poster img{display:block;width:100%;height:auto}
+.kl-text{padding:2.2rem 2.4rem;display:flex;flex-direction:column;justify-content:center;gap:1.1rem;color:#fff}
+.kl-kicker{color:#d4a843;font-weight:700;letter-spacing:.14em;font-size:.82rem}
+.kl-list{margin:0;padding:0;list-style:none;counter-reset:kl;display:grid;gap:1rem}
+.kl-list li{counter-increment:kl;position:relative;padding-left:2.6rem;font-size:1.08rem;line-height:1.55;color:rgba(255,255,255,.94)}
+.kl-list li::before{content:counter(kl);position:absolute;left:0;top:.05rem;width:1.9rem;height:1.9rem;border-radius:50%;background:#d4a843;color:#1a1400;font-weight:800;display:grid;place-items:center;font-size:.95rem}
+.kl-list a{color:#fff;font-weight:700;text-decoration:underline;text-decoration-color:#d4a843;text-underline-offset:3px}
+.kl-btn{align-self:flex-start;display:inline-block;background:linear-gradient(135deg,#d4a843,#b8860b);color:#1a1400;font-weight:700;text-decoration:none;border-radius:999px;padding:.7rem 1.3rem;margin-top:.3rem}
+@media(max-width:760px){.kl-hero{grid-template-columns:1fr;border-radius:18px}.kl-text{padding:1.4rem 1.2rem 1.6rem}}
 .lk-presets{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:.2rem 0 .8rem}.lk-presets>span{font-size:.88rem;color:#5b6f66}.lk-preset{border:1px solid #c9e6d8;background:#fff;border-radius:999px;padding:.45rem .9rem;font:inherit;font-size:.9rem;cursor:pointer;color:#10241c}.lk-preset:hover,.lk-preset.on{background:#fff7e0;border-color:#d4a843}
 .lk-more{background:#fff;border:1px solid #dfe6e1;border-radius:16px;padding:.2rem 1rem;margin:1rem 0}.lk-more>summary{cursor:pointer;font-weight:700;padding:.8rem 0;list-style:none}.lk-more>summary::-webkit-details-marker{display:none}.lk-more>summary::after{content:"▾";float:right;color:#5b6f66}.lk-more[open]>summary::after{content:"▴"}.lk-more .lk-sec{margin:1.2rem 0}.lk-more .lk-wrap{margin-top:.2rem}
 .lk-news{background:#fef6e3;border:1px solid #f6e4ae;border-left:5px solid #d99a1d;border-radius:16px;padding:1.1rem 1.3rem;margin:1.2rem 0;line-height:1.6;font-size:.93rem}
@@ -84,14 +94,16 @@
 <main><div class="wrap">
 <div class="cat-page-header cat-kauf"><div class="cat-page-title-wrap"><h1>⚡ Ladekarten &amp; Ladetarife im Vergleich</h1></div></div>
 </div>
-<section aria-label="Knigge-Tipp: Ladekarten" class="knigge-quote-card knigge-quote-eauto">
-<div class="knigge-quote-image" role="img" aria-label="Knigge an einer Ladesäule">
-<div class="knigge-quote-shade"></div>
-<div class="knigge-quote-content"><div class="knigge-quote-kicker">KNIGGE EMPFIEHLT</div>
-<blockquote>„Wer den Preis erst an der Ladesäule erfährt, hat meist schon zu viel bezahlt.“</blockquote></div>
-</div></section>
+<section class="kl-hero" aria-label="Knigge-Tipp: Ladekarten">
+<figure class="kl-poster"><img src="knigge-ladekarten-poster.jpg" width="832" height="1248" alt="Knigge an einer Ladesäule hält ein Smartphone mit dem Preis 0,45 € pro kWh. Darunter der Satz: Wer den Preis erst an der Ladesäule erfährt, hat meist schon zu viel bezahlt." fetchpriority="high"></figure>
+<div class="kl-text"><div class="kl-kicker">UNSER RAT IN DREI SÄTZEN</div>
+<ol class="kl-list"><li>Lade, wann immer möglich, zu Hause – siehe <a href="wallbox.html">Wallbox</a>.</li>
+<li>Hol dir für unterwegs mindestens einen Tarif ohne Grundgebühr, damit du nie ad hoc zahlen musst.</li>
+<li>Ein Abo lohnt sich erst, wenn du mit dem Rechner dauerhaft über der Break-even-Menge liegst – und es monatlich kündbar ist.</li></ol>
+<a class="kl-btn" href="#rechner">Zum Rechner ↓</a></div>
+</section>
 <div class="wrap">
-<section class="lk-sec"><h2>🧮 Ladekarten-Rechner: Welcher Tarif passt zu mir?</h2><div class="lk-calc">
+<section class="lk-sec" id="rechner"><h2>🧮 Ladekarten-Rechner: Welcher Tarif passt zu mir?</h2><div class="lk-calc">
 <div class="lk-presets"><span>Schnellstart:</span><button type="button" class="lk-preset" data-p="30,90,0">🏠 Gelegenheits-Lader</button><button type="button" class="lk-preset" data-p="150,50,0">🚉 Pendler</button><button type="button" class="lk-preset" data-p="400,0,1">🛣️ Vielfahrer</button></div>
 <div class="lk-form">
 <label>Fahrstrecke pro Monat (km)<input id="lk-km" type="number" min="0" value="1500" inputmode="numeric"></label>
@@ -106,7 +118,6 @@
 <p class="lk-skip" id="lk-skip"></p>
 <p class="lk-legend">Der Rechner nutzt die Richtwerte aus der Tabelle unten (Stand 13.10.2026), ohne Blockier-, Sitzungs- und Roaming-Aufschläge. Tarife mit „Ad-hoc“ sind enthalten, damit du den Unterschied siehst. Die Zeile „📍“ zeigt, wie stark das Netz genutzt wird (Anteil an den Schnellladungen im Q2 2026, siehe oben).</p>
 </div></section>
-<section class="lk-sec"><h2>✅ Unser Rat in drei Sätzen</h2><div class="lk-news" style="background:#eef6f2;border-color:#cfe5da;border-left-color:#176246"><p>1. Lade, wann immer möglich, zu Hause – siehe <a href="wallbox.html">Wallbox</a>.<br>2. Hol dir für unterwegs mindestens einen Tarif ohne Grundgebühr, damit du nie Ad-hoc zahlen musst.<br>3. Ein Abo lohnt sich erst, wenn du mit dem Rechner dauerhaft über der Break-even-Menge liegst – und es monatlich kündbar ist.</p></div></section>
 <section class="lk-sec"><h2>🔍 Ad-hoc, Tarif, Abo oder Roaming?</h2><div class="lk-grid"><div class="lk-tile"><div class="lk-ic">💳</div><h3>Ad-hoc: Kreditkarte oder QR-Code</h3><p>Kein Vertrag, keine Karte. Seit der EU-Verordnung AFIR (ab 13.04.2024) müssen neue Ladepunkte Kartenzahlung anbieten und den Preis je kWh vorher anzeigen. Dafür zahlst du oft deutlich mehr, siehe <a href="#fairness" class="content-link">Fairness-Check</a>.</p></div>
 <div class="lk-tile"><div class="lk-ic">📲</div><h3>Tarif ohne Grundgebühr</h3><p>Einmal App oder Karte anlegen, dann günstigerer kWh-Preis. Für fast alle die beste Wahl, solange sie nur gelegentlich öffentlich laden.</p></div>
 <div class="lk-tile"><div class="lk-ic">📅</div><h3>Abo mit Monatsgebühr</h3><p>Rechnet sich erst ab einer Mindestmenge (siehe Rechner). Wer weniger lädt, zahlt drauf.</p></div>
