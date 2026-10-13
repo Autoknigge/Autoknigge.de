@@ -306,8 +306,15 @@ $('storno').addEventListener('click',function(){
 });
 
 /* ---- Gewählte Dateien im Repository löschen (mit Nachfrage) ---- */
+function askDel(txt,yes){
+  var m=$('m2');m.innerHTML='<div class="msg err"><div class="askt"></div><div class="acts" style="margin-top:.7rem"><button class="btn2" type="button" id="askNo">Abbrechen</button><button class="btn" type="button" id="askYes" style="background:#a52a25;border-color:#a52a25">Ja, endgültig löschen</button></div></div>';
+  m.querySelector('.askt').textContent=txt;
+  $('askNo').addEventListener('click',function(){m.innerHTML=''});
+  $('askYes').addEventListener('click',function(){m.innerHTML='';yes()});
+  m.scrollIntoView({behavior:'smooth',block:'center'});
+}
 $('delsel').addEventListener('click',function(){
-  if(busy||!remote)return;var c;
+  if(busy)return;if(!remote){show('m2','err','Bitte zuerst die Dateien wählen und „Mit GitHub vergleichen“ drücken.');return}var c;
   try{c=cfg()}catch(e){show('m2','err',e.message);return}
   var sel=files.filter(function(f){return f.on});
   var dels=sel.filter(function(f){return remote.map[f.path]}).map(function(f){return f.path});
@@ -315,7 +322,8 @@ $('delsel').addEventListener('click',function(){
   if(!sel.length){show('m2','err','Nichts angehakt. Hake zuerst die Dateien an, die gelöscht werden sollen.');return}
   if(!dels.length){show('m2','err','Die angehakten Dateien sind im Repository gar nicht vorhanden. Es gibt nichts zu löschen.');return}
   var shown=dels.slice(0,15).join('\n')+(dels.length>15?'\n… und '+(dels.length-15)+' weitere':'');
-  if(!window.confirm('⚠️ '+dels.length+' Datei(en) im Repository '+c.repo+' ('+c.branch+') wirklich LÖSCHEN?\n\n'+shown+(skipped?'\n\n('+skipped+' angehakte Datei(en) sind im Repository nicht vorhanden und werden übersprungen.)':'')+'\n\nDas lässt sich über den GitHub-Verlauf wiederherstellen, ist aber ein Eingriff in deine Live-Seite.'))return;
+  var txt='⚠️ '+dels.length+' Datei(en) im Repository '+c.repo+' ('+c.branch+') wirklich LÖSCHEN?\n\n'+shown+(skipped?'\n\n('+skipped+' angehakte Datei(en) sind im Repository nicht vorhanden und werden übersprungen.)':'')+'\n\nDas lässt sich über den GitHub-Verlauf wiederherstellen, ist aber ein Eingriff in deine Live-Seite.';
+  askDel(txt,function(){
   var message='Löschen vom '+today()+' ('+dels.length+' '+(dels.length===1?'Datei':'Dateien')+')';
   busy=true;$('go').disabled=true;$('delsel').disabled=true;$('bar').hidden=false;prog(.2);
   show('m2','info','Lösche '+dels.length+' Datei(en) …');
@@ -333,6 +341,7 @@ $('delsel').addEventListener('click',function(){
     showHTML('m2','ok','Gelöscht: '+dels.length+' Datei(en). <a href="https://github.com/'+esc(c.repo)+'/commit/'+cm.sha+'" target="_blank" rel="noopener">Commit ansehen</a>. Zum Weiterarbeiten bitte erneut „Mit GitHub vergleichen“ drücken.');
     remote=null;files=[];renderList();$('step3').hidden=false;$('list').innerHTML='';$('sum').textContent='Fertig.';
   }).catch(function(e){show('m2','err',e.message||String(e))}).then(function(){busy=false;$('go').disabled=false;$('delsel').disabled=false});
+  });
 });
 
 /* ---- Speichern: Blobs → Tree → Commit → Branch ---- */
