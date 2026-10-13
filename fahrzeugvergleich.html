@@ -101,7 +101,7 @@
 .vg-t h3{margin:0 0 .15rem;font-size:1.05rem;overflow-wrap:anywhere}
 .vg-exp{margin:.4rem 0 1rem}.vg-exp button{padding:.6rem 1rem;border-radius:12px;border:2px solid #176246;background:#fff;color:#176246;font:inherit;font-weight:700;font-size:.92rem;cursor:pointer}.vg-exp button.vg-sec{border-color:#8aa89b;color:#3d5c50;font-weight:600}.vg-exp button:hover{background:#176246;color:#fff}
 .vg-sv{display:block;width:100%;margin-top:.7rem;padding:.6rem .8rem;border-radius:12px;border:2px solid #176246;background:#176246;color:#fff;font:inherit;font-weight:700;font-size:.92rem;cursor:pointer}
-.vg-sv.ch{background:#fff;color:#176246}.vg-svb{margin-top:1rem}.vg-svb.ok{background:#eef2f0;border-color:#d6e0db;color:#6b7b75}.vg-svb.ch,.vg-svb.nw{background:#176246;border-color:#176246;color:#fff;box-shadow:0 0 0 3px rgba(23,98,70,.2)}.vg-sv.ok{background:transparent;border-color:transparent;color:#425852;cursor:default;font-weight:600}
+.vg-sv.ch{background:#fff;color:#176246}.vg-gsave.ok{background:#eef2f0;border-color:#d6e0db;color:#6b7b75;cursor:default}.vg-gsave.ch,.vg-gsave.nw{background:#176246;border-color:#176246;color:#fff;box-shadow:0 0 0 3px rgba(23,98,70,.2)}.vg-svb{margin-top:1rem}.vg-svb.ok{background:#eef2f0;border-color:#d6e0db;color:#6b7b75}.vg-svb.ch,.vg-svb.nw{background:#176246;border-color:#176246;color:#fff;box-shadow:0 0 0 3px rgba(23,98,70,.2)}.vg-sv.ok{background:transparent;border-color:transparent;color:#425852;cursor:default;font-weight:600}
 .vg-badge{display:inline-block;font-size:.76rem;font-weight:700;background:#176246;color:#fff;border-radius:999px;padding:.12rem .55rem;margin-left:.4rem;vertical-align:middle}
 .vg-tot{font-size:1.9rem;font-weight:800;line-height:1.2;margin:.2rem 0}
 .vg-sub{font-size:.88rem;color:#425852;margin-bottom:.6rem}
@@ -207,7 +207,9 @@ function svbtn(p,n){var st=cstate(p),q='„'+esc(n)+'“';
 var dirty={};
 function svb(){['vgA','vgB','vgC'].forEach(function(p){var b=$(p+'_sv');if(!b)return;var st=cstate(p);
  b.className='vg-sv vg-svb'+(st==='changed'?' ch':(st==='new'&&dirty[p])?' nw':' ok');b.disabled=(st==='none'||st==='same');
- b.textContent=st==='none'?'💾 Zum Speichern oben eine Bezeichnung eintragen':st==='same'?'✓ Gespeichert':st==='changed'?'💾 Änderungen speichern':'💾 Auto speichern';});}
+ b.textContent=st==='none'?'💾 Zum Speichern oben eine Bezeichnung eintragen':st==='same'?'✓ Gespeichert':st==='changed'?'💾 Änderungen speichern':'💾 Auto speichern';});
+ [].forEach.call(document.querySelectorAll('.vg-g'),function(box){var p='vg'+box.getAttribute('data-g'),g=box.querySelector('.vg-gsave'),st=cstate(p);
+  g.classList.remove('ok','ch','nw');g.classList.add(st==='changed'?'ch':(st==='new'&&dirty[p])?'nw':'ok');g.disabled=(st==='none'||st==='same');});}
 ['vgA','vgB','vgC'].forEach(function(p){var c=$(p+'_n').closest('.vg-car'),b=document.createElement('button');b.type='button';b.id=p+'_sv';b.className='vg-sv vg-svb ok';b.disabled=true;
  b.addEventListener('click',function(){var box=document.querySelector('.vg-g[data-g="'+p.slice(2)+'"]');if(box&&box._save)box._save();});c.appendChild(b);c.addEventListener('input',function(ev){if(ev.isTrusted){dirty[p]=true;svb();}});});
 var cOn=false;
