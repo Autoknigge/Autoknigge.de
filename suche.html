@@ -220,6 +220,7 @@ function suggest(){
     if(nt.startsWith(n)||nt.split(' ').some(w=>w.startsWith(n))){starts.push(x);seen.add(nt);}
     else if(nt.includes(n)){has.push(x);seen.add(nt);}});
   const byUse=(a,b)=>uc(b)-uc(a);const pick=starts.slice().sort(byUse).concat(has.slice().sort(byUse)).slice(0,6);
+  if(n.length>=4&&Object.keys(BOOST_LADEN).some(k=>k.startsWith(n))){const lk=data.find(x=>x.url==='artikel-ladekarten-vergleich.html');if(lk){const i=pick.indexOf(lk);if(i>=0)pick.splice(i,1);pick.unshift(lk);if(pick.length>6)pick.length=6;}}
   if(!pick.length){sug.hidden=true;input.setAttribute('aria-expanded','false');return;}
   sug.innerHTML=pick.map((x,i)=>'<li role="option" id="sx-o'+i+'" data-url="'+x.url+'"><span class="sx-s-ic">'+(uc(x)?'⭐':(ICON[x.cat]||'📄'))+'</span><span class="sx-s-t">'+hl(cleanTitle(x.title),raw)+'</span><span class="sx-s-c">'+esc(x.cat)+'</span></li>').join('');
   sug.hidden=false;input.setAttribute('aria-expanded','true');
