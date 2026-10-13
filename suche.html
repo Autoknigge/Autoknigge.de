@@ -128,9 +128,18 @@ function queryUnits(q){
   toks.forEach((t,i)=>{if(used[i])return;const alts=[];(SYN_BY_WORD[t]||[]).forEach(g=>g.alts.forEach(a=>{if(a!==t)alts.push(a);}));units.push({pos:i,raw:t,alts});});
   return units.sort((a,b)=>a.pos-b.pos);
 }
-/* Gezielte Treffer-Verstärkung: Wer nach öffentlichem Laden sucht, soll zuerst bei den Ladekarten/Anbietern landen */
-const BOOST_LADEN={'ladesaule':1,'ladesaeule':1,'ladestation':1,'ladepunkt':1,'ladesaeulen':1,'ladesaulen':1,'ladestationen':1,'ladestrom':1,'ladetarif':1,'ladetarife':1,'laden unterwegs':1,'offentlich laden':1,'oeffentlich laden':1,'unterwegs laden':1,'ladenetz':1,'ladeanbieter':1,'ladeanbieter vergleich':1,'ac dc laden':1};
+/* Gezielte Treffer-Verstärkung: Für diese Begriffe steht die passende Ratgeber-/Rechnerseite vor dem Glossar-Eintrag */
+const BOOSTS={
+ 'artikel-ladekarten-vergleich.html':['ladesaule','ladesaeule','ladesaulen','ladestation','ladestationen','ladepunkt','ladestrom','ladetarif','ladetarife','ladevertrag','ladeanbieter','ladenetz','laden unterwegs','unterwegs laden','offentlich laden','oeffentlich laden','ac dc laden','ladekarte','ladekarten','e roaming','roaming','ad hoc laden','ewe go','ionity'],
+ 'elektroauto-reichweite-laden.html':['ladekurve','ccs und typ 2','ccs','typ 2','megawatt laden','schnellladen','ladeleistung','ladezeit','ladeplanung'],
+ 'wallbox.html':['schuko stecker','schuko','heimspeicher'],
+ 'artikel-auto-ummelden.html':['ummeldung','ummelden'],
+ 'artikel-auto-anmelden.html':['anmeldung','anmelden'],
+ 'artikel-auto-abmelden.html':['abmeldung','abmelden']
+};
+const BOOST_KEY={};Object.keys(BOOSTS).forEach(u=>BOOSTS[u].forEach(k=>{BOOST_KEY[k]=u;}));
 function score(item,q){
+  if(BOOST_KEY[norm(q)]===item.url)return 500;
   const qTokens=tokens(q), body=tokens(item.title+' '+item.desc+' '+item.text);
   if(!qTokens.length)return 0; let total=0;
   for(const u of queryUnits(q)){
@@ -147,7 +156,6 @@ function score(item,q){
   if(nt.includes(nq)) total+=80;
   else if(cq!==nq&&nt.includes(norm(cq))) total+=50;
   else if(item.cat==='Glossar') total-=15;
-  if(item.url==='artikel-ladekarten-vergleich.html'&&BOOST_LADEN[nq]&&total>0)total+=200;
   return total;
 }
 function snippet(item,q){
@@ -220,7 +228,7 @@ function suggest(){
     if(nt.startsWith(n)||nt.split(' ').some(w=>w.startsWith(n))){starts.push(x);seen.add(nt);}
     else if(nt.includes(n)){has.push(x);seen.add(nt);}});
   const byUse=(a,b)=>uc(b)-uc(a);const pick=starts.slice().sort(byUse).concat(has.slice().sort(byUse)).slice(0,6);
-  if(n.length>=4&&Object.keys(BOOST_LADEN).some(k=>k.startsWith(n))){const lk=data.find(x=>x.url==='artikel-ladekarten-vergleich.html');if(lk){const i=pick.indexOf(lk);if(i>=0)pick.splice(i,1);pick.unshift(lk);if(pick.length>6)pick.length=6;}}
+  if(n.length>=3){const bk=Object.keys(BOOST_KEY).find(k=>k.startsWith(n)),bu=bk&&BOOST_KEY[bk];if(bu){const lk=data.find(x=>x.url===bu);if(lk){const i=pick.indexOf(lk);if(i>=0)pick.splice(i,1);pick.unshift(lk);if(pick.length>6)pick.length=6;}}}
   if(!pick.length){sug.hidden=true;input.setAttribute('aria-expanded','false');return;}
   sug.innerHTML=pick.map((x,i)=>'<li role="option" id="sx-o'+i+'" data-url="'+x.url+'"><span class="sx-s-ic">'+(uc(x)?'⭐':(ICON[x.cat]||'📄'))+'</span><span class="sx-s-t">'+hl(cleanTitle(x.title),raw)+'</span><span class="sx-s-c">'+esc(x.cat)+'</span></li>').join('');
   sug.hidden=false;input.setAttribute('aria-expanded','true');
