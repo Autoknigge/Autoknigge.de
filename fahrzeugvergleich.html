@@ -125,7 +125,7 @@
 <div class="vg-f vg-ph"><label for="vgA_ea">Anteil der Strecke, die elektrisch gefahren wird (%)</label><input id="vgA_ea" type="text" inputmode="decimal" autocomplete="off" value="50"><span class="vg-h">Bei regelmäßigem Laden zuhause oft 40 bis 70 %, ohne Laden nahe 0. Der Rest läuft mit Kraftstoff.</span></div>
 <div class="vg-f"><label for="vgA_vs">Versicherung (€/Jahr)</label><input id="vgA_vs" type="text" inputmode="decimal" autocomplete="off" value="750"></div>
 <div class="vg-f"><label for="vgA_st">Kfz-Steuer (€/Jahr)</label><input id="vgA_st" type="text" inputmode="decimal" autocomplete="off" value="0"></div>
-<div class="vg-f"><label for="vgA_wa">Wartung &amp; Reparaturen (€/Jahr)</label><input id="vgA_wa" type="text" inputmode="decimal" autocomplete="off" value="350"></div>
+<div class="vg-f"><label for="vgA_wa">Wartung, Reparaturen &amp; TÜV (€/Jahr)</label><input id="vgA_wa" type="text" inputmode="decimal" autocomplete="off" value="350"></div>
 <div class="vg-f"><label for="vgA_th">THG-Prämie (€/Jahr)</label><input id="vgA_th" type="text" inputmode="decimal" autocomplete="off" value="300"><span class="vg-h">Nur reine E-Autos, etwa 250 bis 400 €.</span></div>
 </div><div class="vg-car vg-b"><h3>Auto B</h3>
 <div class="vg-g" data-g="B"><select class="vg-gsel" aria-label="Gespeichertes Auto laden" autocomplete="off"><option value="">Gespeichertes Auto laden …</option></select><div class="vg-gb"><button type="button" class="vg-gsave">💾 Speichern</button><button type="button" class="vg-gdel">🗑 Löschen</button></div><span class="vg-gs" aria-live="polite"></span></div>
@@ -143,7 +143,7 @@
 <div class="vg-f vg-ph"><label for="vgB_ea">Anteil der Strecke, die elektrisch gefahren wird (%)</label><input id="vgB_ea" type="text" inputmode="decimal" autocomplete="off" value="50"><span class="vg-h">Bei regelmäßigem Laden zuhause oft 40 bis 70 %, ohne Laden nahe 0. Der Rest läuft mit Kraftstoff.</span></div>
 <div class="vg-f"><label for="vgB_vs">Versicherung (€/Jahr)</label><input id="vgB_vs" type="text" inputmode="decimal" autocomplete="off" value="800"></div>
 <div class="vg-f"><label for="vgB_st">Kfz-Steuer (€/Jahr)</label><input id="vgB_st" type="text" inputmode="decimal" autocomplete="off" value="150"></div>
-<div class="vg-f"><label for="vgB_wa">Wartung &amp; Reparaturen (€/Jahr)</label><input id="vgB_wa" type="text" inputmode="decimal" autocomplete="off" value="550"></div>
+<div class="vg-f"><label for="vgB_wa">Wartung, Reparaturen &amp; TÜV (€/Jahr)</label><input id="vgB_wa" type="text" inputmode="decimal" autocomplete="off" value="550"></div>
 <div class="vg-f"><label for="vgB_th">THG-Prämie (€/Jahr)</label><input id="vgB_th" type="text" inputmode="decimal" autocomplete="off" value="0"><span class="vg-h">Nur reine E-Autos, etwa 250 bis 400 €.</span></div>
 </div><div class="vg-car vg-c" id="vgCbox" hidden><h3>Auto C <button type="button" id="vgDelC" class="vg-xc">✖ entfernen</button></h3>
 <div class="vg-g" data-g="C"><select class="vg-gsel" aria-label="Gespeichertes Auto laden" autocomplete="off"><option value="">Gespeichertes Auto laden …</option></select><div class="vg-gb"><button type="button" class="vg-gsave">💾 Speichern</button><button type="button" class="vg-gdel">🗑 Löschen</button></div><span class="vg-gs" aria-live="polite"></span></div>
@@ -161,7 +161,7 @@
 <div class="vg-f vg-ph"><label for="vgC_ea">Anteil der Strecke, die elektrisch gefahren wird (%)</label><input id="vgC_ea" type="text" inputmode="decimal" autocomplete="off" value="50"><span class="vg-h">Bei regelmäßigem Laden zuhause oft 40 bis 70 %, ohne Laden nahe 0. Der Rest läuft mit Kraftstoff.</span></div>
 <div class="vg-f"><label for="vgC_vs">Versicherung (€/Jahr)</label><input id="vgC_vs" type="text" inputmode="decimal" autocomplete="off" value="780"></div>
 <div class="vg-f"><label for="vgC_st">Kfz-Steuer (€/Jahr)</label><input id="vgC_st" type="text" inputmode="decimal" autocomplete="off" value="130"></div>
-<div class="vg-f"><label for="vgC_wa">Wartung &amp; Reparaturen (€/Jahr)</label><input id="vgC_wa" type="text" inputmode="decimal" autocomplete="off" value="500"></div>
+<div class="vg-f"><label for="vgC_wa">Wartung, Reparaturen &amp; TÜV (€/Jahr)</label><input id="vgC_wa" type="text" inputmode="decimal" autocomplete="off" value="500"></div>
 <div class="vg-f"><label for="vgC_th">THG-Prämie (€/Jahr)</label><input id="vgC_th" type="text" inputmode="decimal" autocomplete="off" value="0"><span class="vg-h">Nur reine E-Autos, etwa 250 bis 400 €.</span></div>
 </div>
 <div class="vg-addc"><button type="button" id="vgAddC">➕ Drittes Auto vergleichen</button></div>
@@ -217,7 +217,7 @@ function ps(){return cOn?['vgA','vgB','vgC']:['vgA','vgB'];}
 var CL=['a','b','c'];
 function calc(){
  var y=+$('vgY').value,km=num('vgKm'),cars=ps().map(function(p){return car(p,y,km);});
- var rows=[['Wertverlust (nach Abzug Rabatt)','wv'],['Strom','enS'],['Kraftstoff','enK'],['Versicherung','vs'],['Kfz-Steuer','st'],['Wartung &amp; Reparaturen','wa'],['− THG-Prämie','th',1],['− Förderung','fo',1]];
+ var rows=[['Wertverlust (nach Abzug Rabatt)','wv'],['Strom','enS'],['Kraftstoff','enK'],['Versicherung','vs'],['Kfz-Steuer','st'],['Wartung, Reparaturen &amp; TÜV','wa'],['− THG-Prämie','th',1],['− Förderung','fo',1]];
  var order=cars.map(function(c,i){return i;}).sort(function(a,b){return cars[a].sum-cars[b].sum;}),bi=order[0],gap=cars[order[1]].sum-cars[bi].sum;
  var pk=function(c){return km>0?(c.sum/y/km*100).toFixed(1).replace('.',',')+' ct':'–';};
  var tile=function(c,cls,best,pp,worst){var h='<div class="vg-t '+cls+(best?' best':'')+'"><h3>'+esc(c.name)+'</h3>';
@@ -281,7 +281,7 @@ $('vgImg').addEventListener('click',function(){
  var E=function(v){v=Math.round(v);return (v===0?'0':v.toLocaleString('de-DE'))+' €';};
  var tx=function(i){var v=$(i).value.trim();return /^\d+$/.test(v)?(+v).toLocaleString('de-DE'):v;};
  var sc=2,W=1000,P=36,cw=(W-2*P-300)/n,x0=P+300,cx=function(i){return x0+i*cw+(cw-10)/2;};
- var rows=[['Wertverlust (nach Abzug Rabatt)','wv'],['Strom','enS'],['Kraftstoff','enK'],['Versicherung','vs'],['Kfz-Steuer','st'],['Wartung & Reparaturen','wa']].map(function(r){return [r[0]].concat(cars.map(function(c){return c[r[1]];}));});
+ var rows=[['Wertverlust (nach Abzug Rabatt)','wv'],['Strom','enS'],['Kraftstoff','enK'],['Versicherung','vs'],['Kfz-Steuer','st'],['Wartung, Reparaturen & TÜV','wa']].map(function(r){return [r[0]].concat(cars.map(function(c){return c[r[1]];}));});
  if(cars.some(function(c){return c.th;}))rows.push(['− THG-Quote'].concat(cars.map(function(c){return -c.th;})));
  if(cars.some(function(c){return c.fo;}))rows.push(['− Förderung'].concat(cars.map(function(c){return -c.fo;})));
  var per=[['Kosten pro Jahr'].concat(cars.map(function(c){return E(c.sum/y);})),['Kosten pro Monat'].concat(cars.map(function(c){return E(c.sum/y/12);}))];
@@ -333,11 +333,11 @@ $('vgExport').addEventListener('click',function(){
  fr('Bezeichnung',function(c){return c.name;}),['Antrieb'].concat(P3.map(ty)),
  fi('Listenpreis (€)','l'),fi('Kaufpreis nach Rabatt, vor Förderung (€)','k'),fi('Alter beim Kauf (Jahre)','ag'),fi('Restwert am Ende, angegeben (€)','rw'),
  fi('Staatliche Förderung (€)','fo'),fi('Verbrauch je 100 km','vb'),fi('Energiepreis (€)','ep'),
- fi('Versicherung (€/Jahr)','vs'),fi('Kfz-Steuer (€/Jahr)','st'),fi('Wartung & Reparaturen (€/Jahr)','wa'),
+ fi('Versicherung (€/Jahr)','vs'),fi('Kfz-Steuer (€/Jahr)','st'),fi('Wartung, Reparaturen & TÜV (€/Jahr)','wa'),
  ['THG-Prämie (€/Jahr)'].concat(P3.map(function(p){return $(p+'_a').value==='e'?tx(p+'_th'):'';})),[],
  hd('ERGEBNIS über '+y+' Jahre (€)'),
  fr('Gesamtkosten',function(c){return nr(c.sum);}),fr('Wertverlust (nach Abzug Rabatt)',function(c){return nr(c.wv);}),fr('Strom',function(c){return nr(c.enS);}),fr('Kraftstoff',function(c){return nr(c.enK);}),
- fr('Versicherung',function(c){return nr(c.vs);}),fr('Kfz-Steuer',function(c){return nr(c.st);}),fr('Wartung & Reparaturen',function(c){return nr(c.wa);}),fr('abzüglich THG-Prämie',function(c){return nr(-c.th);}),fr('abzüglich Förderung',function(c){return nr(-c.fo);}),
+ fr('Versicherung',function(c){return nr(c.vs);}),fr('Kfz-Steuer',function(c){return nr(c.st);}),fr('Wartung, Reparaturen & TÜV',function(c){return nr(c.wa);}),fr('abzüglich THG-Prämie',function(c){return nr(-c.th);}),fr('abzüglich Förderung',function(c){return nr(-c.fo);}),
  fr('Kosten pro Jahr',function(c){return nr(c.sum/y);}),fr('Kosten pro Monat',function(c){return nr(c.sum/y/12);}),fr('Kosten pro km (ct)',function(c){return km>0?nr(c.sum/y/km*100,1):'';}),fr('Restwert am Ende, geschätzt',function(c){return nr(c.rest);}),[],
  ['Hinweis','Orientierungswerte auf Basis deiner Eingaben, keine verbindliche Kalkulation.']];
  var csv='﻿'+R.map(function(r){return r.map(q).join(';');}).join('\r\n');
