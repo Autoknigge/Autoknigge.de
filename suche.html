@@ -10,6 +10,7 @@
 <link rel="canonical" href="https://autoknigge.de/suche.html">
 <link rel="stylesheet" href="styles.css?v=20261010">
 <meta name="theme-color" content="#0f241d">
+<style>.sx-row{display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;width:100%;margin:.15rem 0}.sx-chip-link{text-decoration:none}.sx-hist-clear{border:0;background:none;color:#5b6f66;font-size:.8rem;text-decoration:underline;cursor:pointer;padding:.2rem .3rem}.sx-hist-clear:hover{color:#10241c}</style>
 </head>
 <body>
 <header class="site-header header-logo-large" id="top"><div class="header-inner">
@@ -169,7 +170,17 @@ function hl(text,q){
 const articles=data.filter(x=>x.cat!=='Glossar'),gloss=data.length-articles.length;
 const POPULAR=['Bremsen','Auto anmelden','Versicherung wechseln','Bußgeld','Reifen','Vignette','Umweltplakette','Leasing'];
 let activeCat='Alle',sel=-1,curMatches=[];
-function ranked(q){return data.map(x=>({x,s:score(x,q)})).filter(o=>o.s>0).sort((a,b)=>b.s-a.s).map(o=>o.x);}
+/* Merkt sich nur auf diesem Gerät (localStorage): letzte 3 Suchbegriffe und wie oft Seiten geöffnet wurden. */
+const LS={get(k,d){try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v;}catch(e){return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}};
+function recents(){const r=LS.get('ak_recent',[]);return Array.isArray(r)?r.filter(x=>typeof x==='string').slice(0,3):[];}
+function addRecent(q){q=String(q||'').trim();if(q.length<2)return;const r=recents().filter(x=>norm(x)!==norm(q));r.unshift(q);LS.set('ak_recent',r.slice(0,3));}
+function usage(){const u=LS.get('ak_usage',{});return u&&typeof u==='object'&&!Array.isArray(u)?u:{};}
+function ukey(url){return String(url).split('#')[0];}
+function bump(url){const u=usage(),k=ukey(url);u[k]=(u[k]||0)+1;const top=Object.entries(u).sort((a,b)=>b[1]-a[1]).slice(0,60);LS.set('ak_usage',Object.fromEntries(top));}
+function uc(x){return usage()[ukey(x.url)]||0;}
+function topUsed(n){const u=usage(),seen=new Set(),out=[];data.forEach(x=>{const k=ukey(x.url);if(u[k]&&!seen.has(k)){seen.add(k);out.push(x);}});return out.sort((a,b)=>uc(b)-uc(a)).slice(0,n);}
+function shorten(t,n){return t.length>n?t.slice(0,n-1).trim()+'…':t;}
+function ranked(q){const u=usage();return data.map(x=>({x,s:score(x,q)})).filter(o=>o.s>0).map(o=>({x:o.x,s:o.s+Math.min((u[ukey(o.x.url)]||0)*2,6)})).sort((a,b)=>b.s-a.s).map(o=>o.x);}
 function card(x,q){
   const [bg,bd]=catColor(x.cat),ic=ICON[x.cat]||'📄';
   return '<a class="sx-card" style="background:'+bg+';border-color:'+bd+'" href="'+x.url+'"><span class="sx-ic">'+ic+'</span><span class="sx-cat">'+esc(x.cat)+'</span><h2>'+hl(cleanTitle(x.title),q)+'</h2><p>'+hl(snippet(x,q),q)+'</p></a>';
@@ -179,7 +190,11 @@ function render(){
   if(!raw){
     meta.textContent=articles.length+' Ratgeber und '+gloss+' Glossar-Begriffe durchsuchen';
     results.innerHTML='';filt.hidden=true;activeCat='Alle';
-    chips.innerHTML='<span class="sx-chips-l">Beliebt:</span>'+POPULAR.map(p=>'<button type="button" class="sx-chip" data-q="'+esc(p)+'">'+esc(p)+'</button>').join('');
+    const rc=recents(),tu=topUsed(3);let rows='';
+    if(rc.length)rows+='<div class="sx-row"><span class="sx-chips-l">🕘 Zuletzt gesucht:</span>'+rc.map(p=>'<button type="button" class="sx-chip" data-q="'+esc(p)+'">'+esc(p)+'</button>').join('')+'<button type="button" class="sx-hist-clear">Verlauf löschen</button></div>';
+    if(tu.length)rows+='<div class="sx-row"><span class="sx-chips-l">⭐ Oft genutzt:</span>'+tu.map(x=>'<a class="sx-chip sx-chip-link" href="'+x.url+'">'+esc(shorten(cleanTitle(x.title),34))+'</a>').join('')+'</div>';
+    rows+='<div class="sx-row"><span class="sx-chips-l">Beliebt:</span>'+POPULAR.map(p=>'<button type="button" class="sx-chip" data-q="'+esc(p)+'">'+esc(p)+'</button>').join('')+'</div>';
+    chips.innerHTML=rows;
     return;
   }
   chips.innerHTML='';
@@ -201,9 +216,9 @@ function suggest(){
   data.forEach(x=>{const t=cleanTitle(x.title),nt=norm(t);if(seen.has(nt))return;
     if(nt.startsWith(n)||nt.split(' ').some(w=>w.startsWith(n))){starts.push(x);seen.add(nt);}
     else if(nt.includes(n)){has.push(x);seen.add(nt);}});
-  const pick=starts.concat(has).slice(0,6);
+  const byUse=(a,b)=>uc(b)-uc(a);const pick=starts.slice().sort(byUse).concat(has.slice().sort(byUse)).slice(0,6);
   if(!pick.length){sug.hidden=true;input.setAttribute('aria-expanded','false');return;}
-  sug.innerHTML=pick.map((x,i)=>'<li role="option" id="sx-o'+i+'" data-url="'+x.url+'"><span class="sx-s-ic">'+(ICON[x.cat]||'📄')+'</span><span class="sx-s-t">'+hl(cleanTitle(x.title),raw)+'</span><span class="sx-s-c">'+esc(x.cat)+'</span></li>').join('');
+  sug.innerHTML=pick.map((x,i)=>'<li role="option" id="sx-o'+i+'" data-url="'+x.url+'"><span class="sx-s-ic">'+(uc(x)?'⭐':(ICON[x.cat]||'📄'))+'</span><span class="sx-s-t">'+hl(cleanTitle(x.title),raw)+'</span><span class="sx-s-c">'+esc(x.cat)+'</span></li>').join('');
   sug.hidden=false;input.setAttribute('aria-expanded','true');
 }
 function closeSug(){sug.hidden=true;input.setAttribute('aria-expanded','false');sel=-1;}
@@ -213,17 +228,19 @@ input.addEventListener('keydown',e=>{
   const opts=[...sug.querySelectorAll('li')];
   if(e.key==='ArrowDown'&&opts.length){e.preventDefault();sel=(sel+1)%opts.length;}
   else if(e.key==='ArrowUp'&&opts.length){e.preventDefault();sel=(sel-1+opts.length)%opts.length;}
-  else if(e.key==='Enter'){if(sel>=0&&opts[sel]){location.href=opts[sel].dataset.url;}else closeSug();return;}
+  else if(e.key==='Enter'){if(sel>=0&&opts[sel]){addRecent(input.value);bump(opts[sel].dataset.url);location.href=opts[sel].dataset.url;}else{if(curMatches.length)addRecent(input.value);closeSug();}return;}
   else if(e.key==='Escape'){closeSug();return;}
   else return;
   opts.forEach((o,i)=>{o.classList.toggle('on',i===sel);});
   if(sel>=0)input.setAttribute('aria-activedescendant','sx-o'+sel);
 });
-sug.addEventListener('mousedown',e=>{const li=e.target.closest('li');if(li){e.preventDefault();location.href=li.dataset.url;}});
+sug.addEventListener('mousedown',e=>{const li=e.target.closest('li');if(li){e.preventDefault();addRecent(input.value);bump(li.dataset.url);location.href=li.dataset.url;}});
 document.addEventListener('click',e=>{if(!e.target.closest('.sx-box'))closeSug();});
 clr.addEventListener('click',()=>{input.value='';render();closeSug();input.focus();});
 document.addEventListener('click',e=>{
-  const c=e.target.closest('.sx-chip');if(c){input.value=c.dataset.q;activeCat='Alle';render();suggest();closeSug();input.focus();}
+  const a=e.target.closest('a.sx-card,a.sx-chip-link');if(a){if(a.classList.contains('sx-card'))addRecent(input.value);bump(a.getAttribute('href'));return;}
+  if(e.target.closest('.sx-hist-clear')){LS.set('ak_recent',[]);render();return;}
+  const c=e.target.closest('.sx-chip');if(c&&c.dataset.q!==undefined){input.value=c.dataset.q;activeCat='Alle';render();suggest();closeSug();input.focus();}
   const f=e.target.closest('.sx-f');if(f){activeCat=f.dataset.c;render();}
 });
 const params=new URLSearchParams(location.search);input.value=params.get('q')||'';render();
