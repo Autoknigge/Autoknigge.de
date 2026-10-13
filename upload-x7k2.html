@@ -28,6 +28,10 @@ textarea{min-height:70px;resize:vertical}
 button{font:inherit;cursor:pointer;border-radius:999px;border:1px solid transparent;padding:.65rem 1.2rem;font-weight:600}
 .btn{background:var(--gold);color:#1b1500}.btn:hover{filter:brightness(.96)}
 .btn2{background:#fff;border-color:#c5d0ca;color:var(--ink)}
+.btn2.tog.on{background:var(--green);border-color:var(--green);color:#fff}
+.btn2.tog.on::before{content:"✓ "}
+.btn2.stor{border-color:#e3b4b0;color:var(--bad)}
+.btn2.stor:hover{background:#fde8e6}
 button:disabled{opacity:.45;cursor:not-allowed}
 .acts{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.9rem}
 table{width:100%;border-collapse:collapse;font-size:.9rem;background:#fff;border-radius:12px;overflow:hidden}
@@ -50,7 +54,7 @@ a{color:#116041;font-weight:700}
 <body>
 <div class="wrap">
 <h1>🚀 GitHub-Upload für Autoknigge</h1>
-<p class="sub">ZIP hineinziehen, Änderungen ansehen, mit einem Klick als ein Commit speichern. Läuft nur in deinem Browser, nichts wird an Dritte gesendet außer an GitHub.</p>
+<p class="sub">ZIP oder einzelne Dateien (html, js, jpg …) auswählen, Änderungen ansehen, mit einem Klick als ein Commit speichern. Läuft nur in deinem Browser, nichts wird an Dritte gesendet außer an GitHub.</p>
 
 <div class="card c1">
 <h2>🔑 1. Zugang</h2>
@@ -75,9 +79,9 @@ Der Token gehört wie ein Passwort nur dir. Gib ihn niemandem und lade diese Dat
 </div>
 
 <div class="card c2">
-<h2>📦 2. ZIP auswählen</h2>
-<label class="drop" id="drop" for="file" style="display:block"><b>📂 ZIP-Datei auswählen</b><br>(am PC auch hierher ziehen)<br><small id="zipname">Noch keine Datei gewählt</small></label>
-<input id="file" class="vh" type="file">
+<h2>📦 2. Dateien oder ZIP auswählen</h2>
+<label class="drop" id="drop" for="file" style="display:block"><b>📂 Dateien oder ZIP auswählen</b><br>(auch mehrere, am PC auch hierher ziehen)<br><small id="zipname">Noch keine Datei gewählt</small></label>
+<input id="file" class="vh" type="file" multiple>
 <label class="chk"><input id="strip" type="checkbox" checked> Gemeinsamen Hauptordner im ZIP entfernen</label>
 <label for="prefix">Zielordner im Repository (leer lassen = Hauptverzeichnis)</label>
 <input id="prefix" type="text" placeholder="z. B. public" autocomplete="off" autocapitalize="off" spellcheck="false">
@@ -89,7 +93,7 @@ Der Token gehört wie ein Passwort nur dir. Gib ihn niemandem und lade diese Dat
 <h2>✅ 3. Prüfen und speichern</h2>
 <div class="sum" id="sum"></div>
 <div style="overflow:auto"><table><thead><tr><th></th><th>Datei</th><th>Status</th><th>Größe</th></tr></thead><tbody id="list"></tbody></table></div>
-<div class="acts"><button class="btn2" id="selchanged">Nur Änderungen wählen</button><button class="btn2" id="selall">Alle wählen</button></div>
+<div class="acts"><button class="btn2 tog" id="selchanged" type="button">Nur Änderungen</button><button class="btn2 tog" id="selall" type="button">Alle</button><button class="btn2 stor" id="storno" type="button">✖ Storno</button></div>
 <label for="del">Dateien im Repository löschen (optional, ein Pfad pro Zeile)</label>
 <textarea id="del" placeholder="alte-seite.html"></textarea>
 <label for="msg">Commit-Nachricht</label>
@@ -120,7 +124,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
 'use strict';
 var $=function(i){return document.getElementById(i)};
 var LS={get:function(k){try{return localStorage.getItem(k)}catch(e){return null}},set:function(k,v){try{localStorage.setItem(k,v)}catch(e){}},del:function(k){try{localStorage.removeItem(k)}catch(e){}}};
-var files=[],remote=null,zipFile=null,busy=false;
+var files=[],remote=null,picked=[],busy=false;
 
 /* ---- gespeicherte Eingaben ---- */
 $('repo').value=LS.get('gu_repo')||'';
@@ -142,11 +146,20 @@ function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').repl
 var drop=$('drop');
 ['dragenter','dragover'].forEach(function(ev){drop.addEventListener(ev,function(e){e.preventDefault();drop.classList.add('on')})});
 ['dragleave','drop'].forEach(function(ev){drop.addEventListener(ev,function(e){e.preventDefault();drop.classList.remove('on')})});
-drop.addEventListener('drop',function(e){var f=e.dataTransfer&&e.dataTransfer.files[0];if(f)setZip(f)});
-$('file').addEventListener('change',function(){if(this.files[0])setZip(this.files[0])});
-function setZip(f){
-  zipFile=f;$('zipname').textContent=f.name+' ('+fmt(f.size)+')';$('check').disabled=false;
-  $('step3').hidden=true;show('m1','','');
+drop.addEventListener('drop',function(e){var f=e.dataTransfer&&e.dataTransfer.files;if(f&&f.length)setPicked(f)});
+$('file').addEventListener('change',function(){if(this.files.length)setPicked(this.files)});
+/* Am PC (Chrome/Edge) öffnet die Auswahl direkt im Download-Ordner. Am Handy erlaubt der Browser das nicht, dort greift die normale Dateiauswahl. */
+drop.addEventListener('click',function(e){
+  if(!window.showOpenFilePicker||!window.isSecureContext)return;
+  e.preventDefault();
+  window.showOpenFilePicker({startIn:'downloads',multiple:true})
+  .then(function(hs){return Promise.all(hs.map(function(h){return h.getFile()}))}).then(setPicked)
+  .catch(function(err){if(err&&err.name!=='AbortError')$('file').click()});
+});
+function setPicked(list){
+  picked=Array.prototype.slice.call(list);var tot=picked.reduce(function(a,f){return a+f.size},0);
+  $('zipname').textContent=picked.length===1?picked[0].name+' ('+fmt(tot)+')':picked.length+' Dateien ('+fmt(tot)+'): '+picked.slice(0,3).map(function(f){return f.name}).join(', ')+(picked.length>3?' …':'');
+  $('check').disabled=false;$('step3').hidden=true;show('m1','','');
 }
 
 /* ---- Git-Blob-SHA-1 ---- */
@@ -201,20 +214,26 @@ function gh(c,method,path,body){
 $('check').addEventListener('click',function(){
   if(busy)return;var c;
   try{c=cfg()}catch(e){show('m1','err',e.message);return}
-  saveSettings();busy=true;$('check').disabled=true;show('m1','info','Lese ZIP und vergleiche mit GitHub …');
+  saveSettings();busy=true;$('check').disabled=true;show('m1','info','Lese Dateien und vergleiche mit GitHub …');
   var prefix=$('prefix').value.trim().replace(/^\/+|\/+$/g,'');
-  JSZip.loadAsync(zipFile).then(function(zip){
-    var names=Object.keys(zip.files).filter(function(n){var z=zip.files[n];return!z.dir&&!/(^|\/)(__MACOSX|\.DS_Store|Thumbs\.db)(\/|$)/.test(n)&&!/(^|\/)\._/.test(n)});
-    if(!names.length)throw new Error('Das ZIP enthält keine Dateien.');
-    var strip='';
-    if($('strip').checked){
-      var tops=names.map(function(n){return n.indexOf('/')>0?n.split('/')[0]:null});
-      if(tops.every(function(t){return t&&t===tops[0]}))strip=tops[0]+'/';
+  function readOne(f){
+    if(/\.zip$/i.test(f.name)){
+      return JSZip.loadAsync(f).then(function(zip){
+        var names=Object.keys(zip.files).filter(function(n){var z=zip.files[n];return!z.dir&&!/(^|\/)(__MACOSX|\.DS_Store|Thumbs\.db)(\/|$)/.test(n)&&!/(^|\/)\._/.test(n)});
+        if(!names.length)throw new Error('Das ZIP „'+f.name+'“ enthält keine Dateien.');
+        var strip='';
+        if($('strip').checked){
+          var tops=names.map(function(n){return n.indexOf('/')>0?n.split('/')[0]:null});
+          if(tops.every(function(t){return t&&t===tops[0]}))strip=tops[0]+'/';
+        }
+        return Promise.all(names.map(function(n){return zip.files[n].async('uint8array').then(function(bytes){return{path:n.slice(strip.length),bytes:bytes}})}));
+      });
     }
-    return Promise.all(names.map(function(n){return zip.files[n].async('uint8array').then(function(bytes){
-      var p=n.slice(strip.length);if(prefix)p=prefix+'/'+p;
-      return blobSha(bytes).then(function(sha){return{path:p,bytes:bytes,sha:sha}});
-    })}));
+    return f.arrayBuffer().then(function(buf){return[{path:f.name,bytes:new Uint8Array(buf)}]});
+  }
+  Promise.all(picked.map(readOne)).then(function(groups){
+    var map={};groups.forEach(function(g){g.forEach(function(x){map[x.path]=x})});
+    return Promise.all(Object.keys(map).map(function(k){var x=map[k],p=prefix?prefix+'/'+x.path:x.path;return blobSha(x.bytes).then(function(sha){return{path:p,bytes:x.bytes,sha:sha}})}));
   }).then(function(list){
     files=list;
     return gh(c,'GET','/git/ref/heads/'+encodeURIComponent(c.branch).replace(/%2F/g,'/')).then(function(ref){
@@ -247,8 +266,9 @@ function renderList(){
   updateSum();
 }
 function updateSum(){
+  markSel();
   var n=files.filter(function(f){return f.on}).length,nw=files.filter(function(f){return f.status==='new'}).length,md=files.filter(function(f){return f.status==='mod'}).length,sm=files.filter(function(f){return f.status==='same'}).length;
-  $('sum').textContent=files.length+' Dateien im ZIP: '+md+' geändert, '+nw+' neu, '+sm+' unverändert. Gewählt: '+n+'.';
+  $('sum').textContent=files.length+' Dateien: '+md+' geändert, '+nw+' neu, '+sm+' unverändert. Gewählt: '+n+'.';
   updateMsg();
 }
 function updateMsg(){
@@ -257,8 +277,19 @@ function updateMsg(){
   }
 }
 function setAll(fn){files.forEach(function(f){f.on=fn(f)});renderList()}
+function markSel(){
+  var chg=files.every(function(f){return f.on===(f.status!=='same')}),all=files.length>0&&files.every(function(f){return f.on});
+  $('selchanged').classList.toggle('on',chg&&!all);$('selall').classList.toggle('on',all);
+  $('selchanged').setAttribute('aria-pressed',String(chg&&!all));$('selall').setAttribute('aria-pressed',String(all));
+}
 $('selchanged').addEventListener('click',function(){setAll(function(f){return f.status!=='same'})});
 $('selall').addEventListener('click',function(){setAll(function(){return true})});
+$('storno').addEventListener('click',function(){
+  if(busy)return;
+  files=[];remote=null;picked=[];$('step3').hidden=true;$('list').innerHTML='';$('del').value='';
+  $('file').value='';$('zipname').textContent='Noch keine Datei gewählt';$('check').disabled=true;$('bar').hidden=true;
+  show('m1','info','Abgebrochen. Es wurde nichts hochgeladen.');show('m2','','');window.scrollTo({top:0,behavior:'smooth'});
+});
 
 /* ---- Speichern: Blobs → Tree → Commit → Branch ---- */
 $('go').addEventListener('click',function(){
