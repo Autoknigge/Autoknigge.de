@@ -128,6 +128,8 @@ function queryUnits(q){
   toks.forEach((t,i)=>{if(used[i])return;const alts=[];(SYN_BY_WORD[t]||[]).forEach(g=>g.alts.forEach(a=>{if(a!==t)alts.push(a);}));units.push({pos:i,raw:t,alts});});
   return units.sort((a,b)=>a.pos-b.pos);
 }
+/* Gezielte Treffer-Verstärkung: Wer nach öffentlichem Laden sucht, soll zuerst bei den Ladekarten/Anbietern landen */
+const BOOST_LADEN={'ladesaule':1,'ladesaeule':1,'ladestation':1,'ladepunkt':1,'ladesaeulen':1,'ladesaulen':1,'ladestationen':1,'ladestrom':1,'ladetarif':1,'ladetarife':1,'laden unterwegs':1,'offentlich laden':1,'oeffentlich laden':1,'unterwegs laden':1,'ladenetz':1,'ladeanbieter':1,'ladeanbieter vergleich':1,'ac dc laden':1};
 function score(item,q){
   const qTokens=tokens(q), body=tokens(item.title+' '+item.desc+' '+item.text);
   if(!qTokens.length)return 0; let total=0;
@@ -145,6 +147,7 @@ function score(item,q){
   if(nt.includes(nq)) total+=80;
   else if(cq!==nq&&nt.includes(norm(cq))) total+=50;
   else if(item.cat==='Glossar') total-=15;
+  if(item.url==='artikel-ladekarten-vergleich.html'&&BOOST_LADEN[nq]&&total>0)total+=200;
   return total;
 }
 function snippet(item,q){
