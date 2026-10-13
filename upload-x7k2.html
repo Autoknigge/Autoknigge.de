@@ -43,7 +43,7 @@ td.p{word-break:break-all}
 .msg.ok{background:#e4f5ea;color:#12502f}.msg.err{background:#fde8e6;color:#7a1710}.msg.info{background:#eef3ef;color:#2c453a}
 .bar{height:10px;background:#e3e9e5;border-radius:99px;overflow:hidden;margin-top:.7rem}
 .bar i{display:block;height:100%;width:0;background:var(--green);transition:width .2s}
-details{margin-top:.5rem}summary{cursor:pointer;font-weight:600}
+details{margin-top:.5rem}.accs{font-size:1.1rem;list-style:none}.accs small{font-weight:400;color:#5b6f68}#acc{margin-top:0}summary{cursor:pointer;font-weight:600}
 ol,ul{padding-left:1.2rem;margin:.5rem 0}
 code{background:#eef3ef;padding:.05rem .35rem;border-radius:6px;font-size:.88em}
 a{color:#116041;font-weight:700}
@@ -54,17 +54,17 @@ a{color:#116041;font-weight:700}
 <body>
 <div class="wrap">
 <h1>🚀 GitHub-Upload für Autoknigge</h1>
-<p class="sub">ZIP oder einzelne Dateien (html, js, jpg …) auswählen, Änderungen ansehen, mit einem Klick als ein Commit speichern. Läuft nur in deinem Browser, nichts wird an Dritte gesendet außer an GitHub.</p>
+<p class="sub">ZIP oder Dateien auswählen, Änderungen ansehen und speichern.</p>
 
 <div class="card c1">
-<h2>🔑 1. Zugang</h2>
+<details id="acc"><summary class="accs">🔑 1. Zugang <small id="accsum"></small></summary>
 <div class="row">
 <div><label for="repo">Repository (Name/Repo)</label><input id="repo" type="text" placeholder="meinname/autoknigge" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
 <div><label for="branch">Branch</label><input id="branch" type="text" value="main" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
 </div>
 <label for="token">Zugangs-Token (nur dieses eine Repository, Rechte „Contents: Read and write“)</label>
 <input id="token" type="password" placeholder="github_pat_…" autocomplete="off">
-<label class="chk"><input id="remember" type="checkbox" checked> Auf diesem Gerät merken (Browser-Speicher)</label>
+<label class="chk"><input id="remember" type="checkbox" checked> Auf diesem Gerät merken</label>
 <details><summary>Wie bekomme ich einen Token?</summary>
 <ol>
 <li>GitHub öffnen → Profilbild → <b>Settings</b> → ganz unten <b>Developer settings</b>.</li>
@@ -76,6 +76,7 @@ a{color:#116041;font-weight:700}
 </ol>
 Der Token gehört wie ein Passwort nur dir. Gib ihn niemandem und lade diese Datei nicht öffentlich hoch. Wenn du ihn nicht mehr brauchst, löschst du ihn bei GitHub.
 </details>
+</details>
 </div>
 
 <div class="card c2">
@@ -83,7 +84,7 @@ Der Token gehört wie ein Passwort nur dir. Gib ihn niemandem und lade diese Dat
 <label class="drop" id="drop" for="file" style="display:block"><b>📂 Dateien oder ZIP auswählen</b><br>(auch mehrere, am PC auch hierher ziehen)<br><small id="zipname">Noch keine Datei gewählt</small></label>
 <input id="file" class="vh" type="file" multiple>
 <label class="chk"><input id="strip" type="checkbox" checked> Gemeinsamen Hauptordner im ZIP entfernen</label>
-<label for="prefix">Zielordner im Repository (leer lassen = Hauptverzeichnis)</label>
+<label for="prefix">Ziel im Repository (leer = Hauptverzeichnis)</label>
 <input id="prefix" type="text" placeholder="z. B. public" autocomplete="off" autocapitalize="off" spellcheck="false">
 <div class="acts"><button class="btn" id="check" disabled>Mit GitHub vergleichen</button></div>
 <div id="m1"></div>
@@ -94,6 +95,8 @@ Der Token gehört wie ein Passwort nur dir. Gib ihn niemandem und lade diese Dat
 <div class="sum" id="sum"></div>
 <div style="overflow:auto"><table><thead><tr><th></th><th>Datei</th><th>Status</th><th>Größe</th></tr></thead><tbody id="list"></tbody></table></div>
 <div class="acts"><button class="btn2 tog" id="selchanged" type="button">Nur Änderungen</button><button class="btn2 tog" id="selall" type="button">Alle</button><button class="btn2 stor" id="storno" type="button">✖ Storno</button></div>
+<div class="acts"><button class="btn2 stor" id="delsel" type="button">🗑 Gewählte im Repository löschen</button></div>
+<small>Mit den Häkchen oben wählst du Dateien. „Auf GitHub speichern“ lädt sie hoch, „Gewählte löschen“ entfernt sie (nach Rückfrage) aus dem Repository.</small>
 <label for="del">Dateien im Repository löschen (optional, ein Pfad pro Zeile)</label>
 <textarea id="del" placeholder="alte-seite.html"></textarea>
 <label for="msg">Commit-Nachricht</label>
@@ -132,7 +135,9 @@ $('branch').value=LS.get('gu_branch')||'main';
 if(LS.get('gu_token')){$('token').value=LS.get('gu_token')}
 if(LS.get('gu_remember')==='0'){$('remember').checked=false}
 $('prefix').value=LS.get('gu_prefix')||'';
-function saveSettings(){
+function accUpdate(){var r=$('repo').value.trim(),t=$('token').value.trim();$('accsum').textContent=(r&&t)?'· '+r+' ✓ (antippen zum Ändern)':'· bitte ausfüllen';if(!(r&&t))$('acc').open=true}
+accUpdate();$('acc').open=!($('repo').value.trim()&&$('token').value.trim());
+function saveSettings(){accUpdate();
   LS.set('gu_repo',$('repo').value.trim());LS.set('gu_branch',$('branch').value.trim());LS.set('gu_prefix',$('prefix').value.trim());
   if($('remember').checked){LS.set('gu_token',$('token').value.trim());LS.set('gu_remember','1')}else{LS.del('gu_token');LS.set('gu_remember','0')}
 }
@@ -195,7 +200,9 @@ function b64(bytes){var s='',i,CH=0x8000;for(i=0;i<bytes.length;i+=CH){s+=String
 /* ---- GitHub-API ---- */
 function cfg(){
   var repo=$('repo').value.trim().replace(/^https?:\/\/github\.com\//,'').replace(/\.git$/,'').replace(/\/+$/,''),branch=$('branch').value.trim()||'main',token=$('token').value.trim();
+  if(!/^[\w.\-]+\/[\w.\-]+$/.test(repo)){$('acc').open=true}
   if(!/^[\w.\-]+\/[\w.\-]+$/.test(repo))throw new Error('Bitte das Repository im Format Name/Repo eintragen, z. B. meinname/autoknigge.');
+  if(!token){$('acc').open=true}
   if(!token)throw new Error('Bitte den Zugangs-Token eintragen.');
   return{repo:repo,branch:branch,token:token};
 }
@@ -289,6 +296,36 @@ $('storno').addEventListener('click',function(){
   files=[];remote=null;picked=[];$('step3').hidden=true;$('list').innerHTML='';$('del').value='';
   $('file').value='';$('zipname').textContent='Noch keine Datei gewählt';$('check').disabled=true;$('bar').hidden=true;
   show('m1','info','Abgebrochen. Es wurde nichts hochgeladen.');show('m2','','');window.scrollTo({top:0,behavior:'smooth'});
+});
+
+/* ---- Gewählte Dateien im Repository löschen (mit Nachfrage) ---- */
+$('delsel').addEventListener('click',function(){
+  if(busy||!remote)return;var c;
+  try{c=cfg()}catch(e){show('m2','err',e.message);return}
+  var sel=files.filter(function(f){return f.on});
+  var dels=sel.filter(function(f){return remote.map[f.path]}).map(function(f){return f.path});
+  var skipped=sel.length-dels.length;
+  if(!sel.length){show('m2','err','Nichts angehakt. Hake zuerst die Dateien an, die gelöscht werden sollen.');return}
+  if(!dels.length){show('m2','err','Die angehakten Dateien sind im Repository gar nicht vorhanden. Es gibt nichts zu löschen.');return}
+  var shown=dels.slice(0,15).join('\n')+(dels.length>15?'\n… und '+(dels.length-15)+' weitere':'');
+  if(!window.confirm('⚠️ '+dels.length+' Datei(en) im Repository '+c.repo+' ('+c.branch+') wirklich LÖSCHEN?\n\n'+shown+(skipped?'\n\n('+skipped+' angehakte Datei(en) sind im Repository nicht vorhanden und werden übersprungen.)':'')+'\n\nDas lässt sich über den GitHub-Verlauf wiederherstellen, ist aber ein Eingriff in deine Live-Seite.'))return;
+  var message='Löschen vom '+today()+' ('+dels.length+' '+(dels.length===1?'Datei':'Dateien')+')';
+  busy=true;$('go').disabled=true;$('delsel').disabled=true;$('bar').hidden=false;prog(.2);
+  show('m2','info','Lösche '+dels.length+' Datei(en) …');
+  var tree=dels.map(function(p){return{path:p,mode:'100644',type:'blob',sha:null}});
+  var bp=encodeURIComponent(c.branch).replace(/%2F/g,'/');
+  gh(c,'GET','/git/ref/heads/'+bp).then(function(ref){
+    if(ref.object.sha!==remote.commit)throw new Error('Der Branch wurde zwischenzeitlich geändert. Bitte noch einmal „Mit GitHub vergleichen“ drücken.');
+    return gh(c,'POST','/git/trees',{base_tree:remote.tree,tree:tree});
+  }).then(function(t){
+    prog(.6);return gh(c,'POST','/git/commits',{message:message,tree:t.sha,parents:[remote.commit]});
+  }).then(function(cm){
+    return gh(c,'PATCH','/git/refs/heads/'+bp,{sha:cm.sha,force:false}).then(function(){return cm});
+  }).then(function(cm){
+    prog(1);
+    showHTML('m2','ok','Gelöscht: '+dels.length+' Datei(en). <a href="https://github.com/'+esc(c.repo)+'/commit/'+cm.sha+'" target="_blank" rel="noopener">Commit ansehen</a>. Zum Weiterarbeiten bitte erneut „Mit GitHub vergleichen“ drücken.');
+    remote=null;files=[];renderList();$('step3').hidden=false;$('list').innerHTML='';$('sum').textContent='Fertig.';
+  }).catch(function(e){show('m2','err',e.message||String(e))}).then(function(){busy=false;$('go').disabled=false;$('delsel').disabled=false});
 });
 
 /* ---- Speichern: Blobs → Tree → Commit → Branch ---- */
