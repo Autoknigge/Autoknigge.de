@@ -14,7 +14,7 @@ h1{font-size:1.5rem;margin:.4rem 0 .2rem}
 .sub{color:var(--mut);margin:0 0 1rem}
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.1rem 1.2rem;margin:1rem 0}
 .card h2{font-size:1.1rem;margin:0 0 .7rem;display:flex;gap:.5rem;align-items:center}
-.c1{background:#e9f4ef;border-color:#c9e6d8}.c2{background:#eef1fb;border-color:#d3d9f4}.c3{background:#fdf3e7;border-color:#f3dfc0}
+.c1{background:#e9f4ef;border-color:#c9e6d8}.c2{background:#eef1fb;border-color:#d3d9f4}.c3{background:#fdf3e7;border-color:#f3dfc0}.c4{background:#f4eefb;border-color:#dccff3}
 label{display:block;font-size:.88rem;color:var(--mut);margin:.6rem 0 .2rem}
 input[type=text],input[type=password],textarea{width:100%;padding:.6rem .7rem;border:1px solid #c5d0ca;border-radius:12px;font:inherit;background:#fff;color:var(--ink)}
 textarea{min-height:70px;resize:vertical}
@@ -103,6 +103,14 @@ Der Token gehört wie ein Passwort nur dir. Gib ihn niemandem und lade diese Dat
 <div class="delrow"><button class="btn2 stor mini" id="delsel" type="button" title="Angehakte Dateien im Repository löschen">🗑</button><small>Löscht die <b>angehakten</b> Dateien im Repository (mit Rückfrage). „Auf GitHub speichern“ lädt sie dagegen hoch.</small></div>
 <div class="bar" id="bar" hidden><i id="barI"></i></div>
 <div id="m2"></div>
+</div>
+
+<div class="card c4">
+<h2>🛟 Sicherung der ganzen Website</h2>
+<p class="sub" style="margin:.2rem 0 .6rem;text-align:left">Lädt alle Dateien aus dem Repository (Branch aus Schritt 1) als ZIP auf dein Gerät, zum Beispiel vor größeren Änderungen.</p>
+<div class="acts"><button class="btn" id="bk">ZIP-Sicherung herunterladen</button></div>
+<div class="bar" id="bkbar" hidden><i id="bkI"></i></div>
+<div id="m3"></div>
 </div>
 
 <p class="sub" style="font-size:.85rem">Alle Änderungen landen als ein einziger Commit. Wenn dein Hosting (z. B. Cloudflare Pages) mit dem Repository verbunden ist, startet die Veröffentlichung danach automatisch.</p>
@@ -360,6 +368,31 @@ $('go').addEventListener('click',function(){
     showHTML('m2','ok','Gespeichert: '+sel.length+' Datei(en) hochgeladen'+(dels.length?', '+dels.length+' gelöscht':'')+'. <a href="https://github.com/'+esc(c.repo)+'/commit/'+cm.sha+'" target="_blank" rel="noopener">Commit ansehen</a>. Die Veröffentlichung startet jetzt, wenn dein Hosting mit GitHub verbunden ist.'+extra);
     remote=null;files=[];$('del').value='';
   }).catch(function(e){show('m2','err',e.message||String(e))}).then(function(){busy=false;$('go').disabled=false});
+});
+
+/* ---- Sicherung: komplettes Repository als ZIP ---- */
+$('bk').addEventListener('click',function(){
+  if(busy)return;var c;
+  try{c=cfg()}catch(e){show('m3','err',e.message);return}
+  saveSettings();busy=true;$('bk').disabled=true;$('bkbar').hidden=false;$('bkI').style.width='0%';show('m3','info','Lese Dateiliste von GitHub …');
+  var br=encodeURIComponent(c.branch).replace(/%2F/g,'/'),zip=new JSZip(),total=0,done=0,bytes=0;
+  gh(c,'GET','/git/trees/'+br+'?recursive=1').then(function(t){
+    if(t.truncated)throw new Error('Das Repository ist für eine Komplett-Sicherung zu groß.');
+    var list=t.tree.filter(function(e){return e.type==='blob'});total=list.length;
+    function one(e){return fetch('https://api.github.com/repos/'+c.repo+'/git/blobs/'+e.sha,{headers:{'Authorization':'Bearer '+c.token,'Accept':'application/vnd.github.raw+json'}}).then(function(r){
+      if(!r.ok)throw new Error('Datei „'+e.path+'“ konnte nicht geladen werden ('+r.status+').');return r.arrayBuffer()}).then(function(buf){
+      zip.file(e.path,buf);bytes+=buf.byteLength;done++;$('bkI').style.width=Math.round(done/total*90)+'%';show('m3','info','Lade Dateien: '+done+' von '+total+' …')})}
+    function worker(){var e=list.shift();if(!e)return Promise.resolve();return one(e).then(worker)}
+    var w=[];for(var i=0;i<6;i++)w.push(worker());return Promise.all(w);
+  }).then(function(){
+    show('m3','info','Packe ZIP …');
+    return zip.generateAsync({type:'blob',compression:'DEFLATE'},function(m){$('bkI').style.width=(90+m.percent/10)+'%'});
+  }).then(function(blob){
+    var d=new Date(),p=function(n){return ('0'+n).slice(-2)},name=c.repo.split('/')[1]+'-sicherung-'+d.getFullYear()+p(d.getMonth()+1)+p(d.getDate())+'.zip';
+    var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},4000);
+    show('m3','ok','Fertig: '+done+' Dateien ('+fmt(bytes)+') als „'+name+'“ gesichert.');
+  }).catch(function(e){show('m3','err',e.message||String(e))}).then(function(){busy=false;$('bk').disabled=false;setTimeout(function(){$('bkbar').hidden=true},1500)});
 });
 function prog(x){$('barI').style.width=Math.round(x*100)+'%'}
 ['repo','branch','prefix'].forEach(function(id){$(id).addEventListener('change',saveSettings)});
