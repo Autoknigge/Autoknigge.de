@@ -5,7 +5,7 @@ from html.parser import HTMLParser
 root=sys.argv[1] if len(sys.argv)>1 else '.'
 old=open(os.path.join(root,'search-index.js'),encoding='utf-8').read()
 old=json.loads(old[old.index('['):old.rindex(']')+1])
-known={x['url']:x['cat'] for x in old if x['cat']!='Glossar'}
+known={x['url']:x['cat'] for x in old if x['cat']!='Glossar' and '#' not in x['url'] and x['url'].endswith('.html')}
 EXCL={'404.html','suche.html','datenschutz.html','impressum.html'}
 pages=list(known.items())
 for f in sorted(os.listdir(root)):
@@ -15,6 +15,8 @@ for f in sorted(os.listdir(root)):
         pages.append((f,'Nützliche Tools' if f=='kfz-glossar.html' else 'Ratgeber')); print('NEU im Index:',f)
 # Zusätzliche Stichwörter je Seite (Synonyme, Fachbegriffe, Umgangssprache) – werden unsichtbar dem Suchtext hinzugefügt
 KEYWORDS={
+    'sf-klassen-rechner.html':'Schadensfreiheitsrabatt Schadenfreiheitsrabatt Schadensfreiheitsklasse Schadenfreiheitsklasse SF-Rabatt SFR Rabatt übertragen Rabattübertragung Übertragung Formular Formulare Vordruck Antrag Download herunterladen PDF Vorlage Zusatzblatt Verzichtserklärung Angehörige Kind Eltern Ehepartner Rabatt weitergeben',
+    'artikel-autokauf-verhandeln.html':'verhandeln Rabatt Preis feilschen Neuwagen Gebrauchtwagen Händler Nachlass Gewährleistung Kaufvertrag Probefahrt',
  'artikel-wertverlust-restwert.html':'AfA Abschreibung Absetzung für Abnutzung Wertminderung Zeitwert Marktwert Fahrzeugwert Wertverfall Wiederverkaufswert Restwert Schwacke DAT Wertentwicklung',
  'dienstwagenrechner.html':'AfA Abschreibung Absetzung für Abnutzung Firmenwagen Firmenauto Geschäftswagen Dienstauto Fahrtenbuch 1 Prozent Regelung geldwerter Vorteil',
  'leasing-kauf-rechner.html':'AfA Abschreibung Restwert Wertverlust Mietkauf leasen',
@@ -57,6 +59,16 @@ for m in re.finditer(r'<article class="gl-term" id="([^"]+)"([^>]*)>(.*?)</artic
     first=re.split(r'(?<=[.!?])\s',para)[0]
     al=clean(alias or '')
     items.append({'url':'kfz-glossar.html#'+id_,'title':title,'desc':first,'text':clean(para+' '+al+' '+name+' '+subt),'cat':'Glossar'})
+
+# Zusätzliche Treffer für Downloads (Formulare), die auf Ratgeberseiten liegen
+EXTRA=[
+ {'url':'sf-klassen-rechner.html#sf-uebertragung','title':'Formular: SF-Rabatt übertragen (PDF-Download)','desc':'Ausfüllbares Formular zur Übertragung des Schadenfreiheitsrabatts auf einen Angehörigen, eine Seite DIN A4.','text':'Formular SF-Rabatt Übertragung Schadenfreiheitsrabatt Schadensfreiheitsrabatt übertragen Download PDF herunterladen Vordruck Antrag Verzichtserklärung Versicherungsnehmer Angehörige Kind Eltern Ehepartner Vorlage ausfüllbar ausdrucken Rabattübertragung','cat':'Versicherung'},
+ {'url':'sf-klassen-rechner.html#sf-uebertragung','title':'Zusatzblatt für nicht verwandte Personen (PDF-Download)','desc':'Ausfüllbares Zusatzblatt zur SF-Rabatt-Übertragung, wenn Rabattinhaber und Empfänger nicht verwandt sind.','text':'Zusatzblatt Formular Download PDF herunterladen Vorlage Nutzungsverhältnis nicht verwandt Lebensgefährte Freund Nachbar SF-Rabatt Schadenfreiheitsrabatt Schadensfreiheitsrabatt Übertragung Erläuterung Nachweise','cat':'Versicherung'},
+ {'url':'artikel-auto-verkaufen.html#kaufvertrag','title':'Kfz-Kaufvertrag für Privatverkauf (PDF-Download)','desc':'Kostenlose Vorlage: Kaufvertrag über ein gebrauchtes Kraftfahrzeug, Privatverkauf unter Ausschluss der Sachmängelhaftung.','text':'Kaufvertrag Auto Vorlage Formular Download PDF herunterladen Gebrauchtwagen Privatverkauf Kfz Fahrzeug verkaufen kaufen Vertrag Muster Gewährleistungsausschluss Sachmängelhaftung Verkäufer Käufer Übergabe Checkliste Autoverkauf Kaufvertragsvorlage ausdrucken','cat':'Kauf und Verkauf'},
+ {'url':'artikel-auto-anmelden.html#vollmacht-download','title':'Vollmacht für die Kfz-Zulassung (PDF-Download)','desc':'Kostenlose Vorlage: Vollmacht für die An-, Um- oder Abmeldung eines Fahrzeugs durch eine dritte Person.','text':'Vollmacht Zulassung Kfz Vorlage Formular Download PDF herunterladen Anmeldung Ummeldung Abmeldung Zulassungsstelle Bevollmächtigter Vertretung Vollmachtsvorlage Muster ausdrucken Wunschkennzeichen Außerbetriebsetzung','cat':'Zulassung'},
+ {'url':'artikel-unfall-schadensfall.html#notfall-download','title':'Notfallcheckliste Unfall zum Ausdrucken (PDF-Download)','desc':'Checkliste fürs Handschuhfach: Was nach einem Unfall zu tun ist und welche Daten des Unfallgegners du notieren solltest.','text':'Notfallcheckliste Unfall Checkliste Download PDF herunterladen Vorlage Formular Handschuhfach ausdrucken Unfallbericht Unfallgegner Daten notieren Zeugen Warnweste Warndreieck Polizei Versicherung melden Unfallprotokoll Unfallstelle Pannen','cat':'Versicherung'},
+]
+items.extend(EXTRA)
 out='const AUTOKNIGGE_SEARCH_DATA='+json.dumps(items,ensure_ascii=False)+';'
 open(os.path.join(root,'search-index.js'),'w',encoding='utf-8').write(out)
 print(len(items),'Einträge;',sum(1 for i in items if i['cat']=='Glossar'),'Glossar')
