@@ -3,6 +3,9 @@
    Mehrwort-Begriffe sind erlaubt ("bremsen quietschen"). Groß-/Kleinschreibung und Umlaute sind egal.
    Nur Begriffe in dieselbe Gruppe, die für Besucher wirklich dasselbe meinen. */
 const SEARCH_SYNONYM_GROUPS=[
+ ["Schadensfreiheitsrabatt","Schadenfreiheitsrabatt","SF-Rabatt","SFR","Rabattübertragung","Rabatt übertragen","SF-Rabatt übertragen"],
+ ["Formular","Formulare","Vordruck","Vorlage","Antragsformular"],
+ ["Download","Downloads","herunterladen","PDF"],
  ["Fahrakku","Akku","Traktionsbatterie","Hochvoltbatterie","Hochvoltakku","Antriebsbatterie","Fahrbatterie","Antriebsakku"],
  ["Ladesäule","Ladestation","Ladepunkt","Ladekarte","Ladetarif","Ladestrom","EWE Go","Ionity","Shell Recharge","Aral pulse","EnBW","Roaming","Ad-hoc laden"],
  ["V2L","V2Load","Vehicle-to-Load","Vehicle to Load","Auto als Steckdose","V2L-Adapter"],
