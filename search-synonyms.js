@@ -3,6 +3,9 @@
    Mehrwort-Begriffe sind erlaubt ("bremsen quietschen"). Groß-/Kleinschreibung und Umlaute sind egal.
    Nur Begriffe in dieselbe Gruppe, die für Besucher wirklich dasselbe meinen. */
 const SEARCH_SYNONYM_GROUPS=[
+ ["Kaufvertrag","Autokaufvertrag","Kfz-Kaufvertrag","Fahrzeugkaufvertrag","Kaufvertrag Auto","Kaufvertragsvorlage","Kaufvertrag Vorlage"],
+ ["Vollmacht","Vollmachtsvorlage","Zulassungsvollmacht","Vollmacht Zulassung","Bevollmächtigung"],
+ ["Notfallcheckliste","Unfallcheckliste","Unfallprotokoll","Unfallbericht","Checkliste Unfall"],
  ["Schadensfreiheitsrabatt","Schadenfreiheitsrabatt","SF-Rabatt","SFR","Rabattübertragung","Rabatt übertragen","SF-Rabatt übertragen"],
  ["Formular","Formulare","Vordruck","Vorlage","Antragsformular"],
  ["Download","Downloads","herunterladen","PDF"],

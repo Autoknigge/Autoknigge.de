@@ -45,8 +45,8 @@
 </div>
 <div class="footer-col"><h4>Downloads</h4><ul class="footer-links-list"><li><a download="" href="kfz-kaufvertrag.pdf">Kfz-Kaufvertrag (PDF)</a></li><li><a download="" href="vollmacht-kfz-zulassung.pdf">Zulassungsvollmacht (PDF)</a></li><li><a download="" href="Notfallcheckliste-Unfall.pdf">Notfallcheckliste Unfall (PDF)</a></li></ul></div>
 </div><div class="footer-bottom"><div>© 2026 Autoknigge — Alle Rechte vorbehalten. Unabhängige Ratgeber-Plattform.</div><div class="foot-links"><a href="impressum.html">Impressum</a> • <a href="datenschutz.html">Datenschutz</a> • <a href="#" id="cookie-settings-link" onclick="if(window.Cookiebot){Cookiebot.show();} return false;">Cookie-Einstellungen</a></div></div></div></footer>
-<script src="search-index.js?v=20261015"></script>
-<script src="search-synonyms.js?v=20261015"></script>
+<script src="search-index.js?v=20261016"></script>
+<script src="search-synonyms.js?v=20261016"></script>
 <script>
 /* Moderne Suche: Live-Treffer beim Tippen, Vorschläge (Autovervollständigung), Filter, Hervorhebung. */
 const SEARCH_ALIASES={
@@ -108,8 +108,19 @@ const SEARCH_ALIASES={
 };
 function norm(v){return String(v||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ß/g,'ss').replace(/[^a-z0-9]+/g,' ').trim();}
 function tokens(v){return norm(v).split(/\s+/).filter(Boolean);}
-function distance(a,b){if(a===b)return 0;if(!a||!b)return 99;if(Math.abs(a.length-b.length)>3)return 99;let p=Array.from({length:b.length+1},(_,i)=>i);for(let i=0;i<a.length;i++){let c=[i+1];for(let j=0;j<b.length;j++)c[j+1]=Math.min(c[j]+1,p[j+1]+1,p[j]+(a[i]===b[j]?0:1));p=c;}return p[b.length];}
-function close(a,b){if(a===b)return true;if(a.length<4||b.length<4)return false;if(Math.abs(a.length-b.length)<=2&&(a.includes(b)||b.includes(a)))return true;const minLen=Math.min(a.length,b.length);if(minLen>=6&&(a.startsWith(b)||b.startsWith(a)))return true;return distance(a,b)<= (a.length<=6?1:2);}
+function distance(a,b){if(a===b)return 0;if(!a||!b)return 99;if(Math.abs(a.length-b.length)>3)return 99;const m=a.length,n=b.length,d=[];for(let i=0;i<=m;i++){d[i]=[i];}for(let j=0;j<=n;j++)d[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++){const c=a[i-1]===b[j-1]?0:1;d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+c);if(i>1&&j>1&&a[i-1]===b[j-2]&&a[i-2]===b[j-1])d[i][j]=Math.min(d[i][j],d[i-2][j-2]+1);}return d[m][n];}
+const FOLD_C={};function fold(s){let r=FOLD_C[s];if(r===undefined){r=s.replace(/ae/g,'a').replace(/oe/g,'o').replace(/ue/g,'u').replace(/ss/g,'s').replace(/ck/g,'k').replace(/ph/g,'f').replace(/ks/g,'x').replace(/(.)\1+/g,'$1');FOLD_C[s]=r;}return r;}
+/* Ähnlichkeit 0..1 (0 = kein Treffer): Buchstabendreher, Doppelbuchstaben, ae/oe/ue, ck/k, ss/ß werden großzügig behandelt */
+function fuzzy(a,b){if(a===b)return 1;if(a.length<4||b.length<4)return 0;
+  const fa=fold(a),fb=fold(b);if(fa===fb)return .95;
+  if(fa.length>=4&&fb.length>=4){const d=distance(fa,fb),mx=Math.max(fa.length,fb.length);if(d<=(Math.min(fa.length,fb.length)<=6?1:2))return Math.max(.55,.9-d*.12-(d/mx));}
+  if(Math.abs(a.length-b.length)<=2&&(a.includes(b)||b.includes(a)))return .6;
+  const minLen=Math.min(a.length,b.length);if(minLen>=6&&(a.startsWith(b)||b.startsWith(a)))return .5;
+  const d=distance(a,b);if(d<=(a.length<=6?1:2))return Math.max(.5,.85-d*.12);
+  /* Zusammensetzungen: Tippfehler im vorderen Wortteil (dinstwagen -> dienstwagenrechner) */
+  {const sh=a.length<=b.length?a:b,lg=a.length<=b.length?b:a;if(sh.length>=7&&lg.length>sh.length+2){const pre=lg.slice(0,sh.length),pf=lg.slice(0,sh.length+1);if(distance(sh,pre)<=1||distance(fold(sh),fold(pre))<=1||distance(sh,pf)<=1)return .55;}}
+  return 0;}
+function close(a,b){return fuzzy(a,b)>0;}
 function canonicalToken(q){const n=norm(q);return SEARCH_ALIASES[n]||n;}
 /* Synonymgruppen (search-synonyms.js): Wörter UND Mehrwort-Begriffe; Gruppen-Treffer zählen als 92 */
 const SYN=(typeof SEARCH_SYNONYM_GROUPS!=='undefined'?SEARCH_SYNONYM_GROUPS:[]).map(g=>{
@@ -130,6 +141,7 @@ function queryUnits(q){
 }
 /* Gezielte Treffer-Verstärkung: Für diese Begriffe steht die passende Ratgeber-/Rechnerseite vor dem Glossar-Eintrag */
 const BOOSTS={
+ 'artikel-anhaenger-anhaengerkupplung.html':['tempo 100','tempo100','tempo 100 rechner','tempo 100 anhanger','tempo 100 gespann','gespann','wohnwagen tempo 100'],
  'artikel-ladekarten-vergleich.html':['ladesaule','ladesaeule','ladesaulen','ladestation','ladestationen','ladepunkt','ladestrom','ladetarif','ladetarife','ladevertrag','ladeanbieter','ladenetz','laden unterwegs','unterwegs laden','offentlich laden','oeffentlich laden','ac dc laden','ladekarte','ladekarten','e roaming','roaming','ad hoc laden','ewe go','ionity'],
  'elektroauto-reichweite-laden.html':['ladekurve','ccs und typ 2','ccs','typ 2','megawatt laden','schnellladen','ladeleistung','ladezeit','ladeplanung'],
  'kfz-glossar.html#akku':['akku','fahrakku','antriebsakku'],
@@ -139,19 +151,21 @@ const BOOSTS={
  'artikel-auto-anmelden.html':['anmeldung','anmelden'],
  'artikel-auto-abmelden.html':['abmeldung','abmelden']
 };
-const BOOST_KEY={};Object.keys(BOOSTS).forEach(u=>BOOSTS[u].forEach(k=>{BOOST_KEY[k]=u;}));
+const BOOST_KEY={};Object.keys(BOOSTS).forEach(u=>BOOSTS[u].forEach(k=>{BOOST_KEY[k]=u;}));const BOOST_FUZZ=BOOSTS;
 function score(item,q){
   if(BOOST_KEY[norm(q)]===item.url)return 500;
-  const qTokens=tokens(q), body=tokens(item.title+' '+item.desc+' '+item.text);
+  { const nq0=norm(q); if(nq0.length>=6&&BOOST_FUZZ[item.url]&&BOOST_FUZZ[item.url].some(k=>k.length>=6&&fuzzy(nq0,k)>=.65))return 480; }
+  const qTokens=tokens(q), body=tokens(item.title+' '+item.desc+' '+item.text), tset=tokens(item.title);
   if(!qTokens.length)return 0; let total=0;
   for(const u of queryUnits(q)){
     let best=0;
     if(u.raw){
       const raw=u.raw,qw=canonicalToken(raw);
-      for(const tw of body){if(tw===raw)best=Math.max(best,100);else if(tw===qw)best=Math.max(best,92);else if(close(raw,tw))best=Math.max(best,72);else if(close(qw,tw))best=Math.max(best,68);}
+      for(const tw of body){if(tw===raw)best=Math.max(best,100);else if(tw===qw)best=Math.max(best,92);else{const f=fuzzy(raw,tw);if(f)best=Math.max(best,50+32*f);const g=qw!==raw?fuzzy(qw,tw):0;if(g)best=Math.max(best,48+30*g);}}
     }
-    if(best<92)for(const a of u.alts){for(const tw of body){if(tw===a)best=Math.max(best,92);else if(close(a,tw))best=Math.max(best,66);}}
+    if(best<92)for(const a of u.alts){for(const tw of body){if(tw===a)best=Math.max(best,92);else{const f=fuzzy(a,tw);if(f)best=Math.max(best,46+30*f);}}}
     if(!best)return 0; total+=best;
+    { let tb=0; const cand=[u.raw].concat(u.alts).filter(Boolean); for(const c of cand){for(const tw of tset){if(tw===c)tb=Math.max(tb,45);else{const f=fuzzy(c,tw);if(f)tb=Math.max(tb,15+25*f);}}} total+=tb; }
   }
   const nq=norm(q), nt=norm(item.title);
   const cq=qTokens.map(canonicalToken).join(' ');
