@@ -6,8 +6,8 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Apps testen – autoknigge.de</title>
 <style>
-:root{color-scheme:light dark;--bg:#ffffff;--fg:#1a2430;--muted:#5a6675;--line:#d9e0e8;--link:#1f4fd8;--tile:#f3f6fa;--btn:#1f4fd8;--btnfg:#ffffff}
-@media (prefers-color-scheme:dark){:root{--bg:#10161d;--fg:#e6ebf1;--muted:#9aa7b6;--line:#26323f;--link:#8fa3ff;--tile:#18212b;--btn:#8fa3ff;--btnfg:#10161d}}
+:root{color-scheme:light dark;--embg:#e8edf4;--bg:#ffffff;--fg:#1a2430;--muted:#5a6675;--line:#d9e0e8;--link:#1f4fd8;--tile:#f3f6fa;--btn:#1f4fd8;--btnfg:#ffffff}
+@media (prefers-color-scheme:dark){:root{--embg:#243142;--bg:#10161d;--fg:#e6ebf1;--muted:#9aa7b6;--line:#26323f;--link:#8fa3ff;--tile:#18212b;--btn:#8fa3ff;--btnfg:#10161d}}
 body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 main{max-width:42rem;margin:0 auto;padding:1.5rem 1rem 3rem}
 h1{font-size:1.7rem;line-height:1.2;margin:0 0 .5rem}
@@ -16,9 +16,15 @@ p{margin:.5rem 0}
 .lead{color:var(--muted)}
 ol{padding-left:1.3rem;margin:.4rem 0}
 li{margin:.4rem 0}
-.app{display:flex;gap:.8rem;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--tile);border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem;margin:.7rem 0}
-.app b{display:block}
-.app span{color:var(--muted);font-size:.93rem}
+.app{background:var(--tile);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin:.9rem 0}
+.app h3{display:flex;align-items:center;gap:.6rem;font-size:1.1rem;margin:0 0 .3rem}
+.app h3 .em{flex:none;width:2.3rem;height:2.3rem;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;background:var(--embg)}
+.app p{margin:.25rem 0 .7rem;color:var(--fg)}
+.app ul{margin:0 0 .8rem;padding-left:1.2rem;color:var(--muted);font-size:.95rem}
+.app li{margin:.15rem 0}
+.hero{display:grid;gap:.6rem;margin:1rem 0}
+.hero div{display:flex;gap:.7rem;align-items:flex-start}
+.hero .ic{flex:none;width:2rem;text-align:center;font-size:1.3rem}
 .btn{display:inline-block;background:var(--btn);color:var(--btnfg);text-decoration:none;font-weight:600;border-radius:10px;padding:.6rem 1rem;white-space:nowrap}
 .btn:focus-visible{outline:3px solid var(--link);outline-offset:2px}
 .tip{display:flex;gap:.8rem;align-items:flex-start;border-radius:14px;padding:.9rem 1rem;margin-top:1rem;font-size:.97rem;color:var(--tipfg)}
@@ -29,44 +35,55 @@ li{margin:.4rem 0}
 .t-friend{--tipbg:#e6edff;--icobg:#c6d5ff;--tipfg:#14274f}
 .t-help{--tipbg:#fff1d6;--icobg:#ffdc99;--tipfg:#4a3000}
 .t-safe{--tipbg:#eee9fb;--icobg:#d8cdf5;--tipfg:#2c1f5c}
+.t-key{--tipbg:#ffe4e1;--icobg:#ffc4bd;--tipfg:#5a1710}
 .tip{background:var(--tipbg)}
 @media (prefers-color-scheme:dark){
 .t-mail{--tipbg:#14302a;--icobg:#1f4d41;--tipfg:#d7f2e6}
 .t-friend{--tipbg:#182545;--icobg:#27407a;--tipfg:#dbe5ff}
 .t-help{--tipbg:#382a0e;--icobg:#5c4311;--tipfg:#ffe8b8}
-.t-safe{--tipbg:#271f45;--icobg:#41337a;--tipfg:#e6defc}}
+.t-safe{--tipbg:#271f45;--icobg:#41337a;--tipfg:#e6defc}
+.t-key{--tipbg:#40201d;--icobg:#6b2f2a;--tipfg:#ffdcd8}}
 footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
 a{color:var(--link)}
 </style>
 </head>
 <body>
 <main>
-<h1>Danke fürs Testen! 🙏</h1>
-<p class="lead">Google verlangt vor der Veröffentlichung einen Test: Mindestens 12 Leute müssen die Apps 14 Tage lang auf ihrem Android-Handy installiert haben. Du musst sie nicht benutzen, nur installiert lassen.</p>
+<h1>Probier meine Apps aus! 🙏</h1>
+<p class="lead">Ich habe mehrere kleine Android-Apps gebaut, die den Alltag einfacher machen. Alle sind kostenlos, brauchen kein Konto, und deine Dateien bleiben auf deinem Handy. Bevor Google sie freigibt, brauche ich Tester. Du bekommst die Apps früher und kannst mitbestimmen, was noch besser werden soll.</p>
 
-<h2>So geht’s</h2>
+<div class="hero">
+<div><span class="ic">✅</span><span><b>Kostenlos und ohne Konto</b> – einfach installieren und loslegen</span></div>
+<div><span class="ic">🔒</span><span><b>Deine Daten bleiben bei dir</b> – Dokumente und Fotos werden nur auf deinem Handy verarbeitet</span></div>
+<div><span class="ic">💬</span><span><b>Dein Wunsch zählt</b> – wenn dir etwas fehlt, sag es mir, ich baue es ein</span></div>
+</div>
+
+<h2>So wirst du Tester</h2>
 <ol>
-<li>Tippe unten bei einer App auf <b>„Tester werden“</b>. Öffne den Link mit dem Google-Konto, dessen Adresse du mir geschickt hast.</li>
-<li>Bestätige dort <b>„Tester werden“</b>.</li>
-<li>Tippe auf <b>„Im Google Play Store herunterladen“</b> und installiere die App.</li>
-<li>Lass sie installiert, bis ich dir Bescheid sage. Danach kannst du alles löschen.</li>
+<li><b>Schick mir deine Gmail-Adresse</b> (die, mit der du im Play Store angemeldet bist). Ich trage sie in die Teilnehmerliste ein.</li>
+<li>Ich sage dir Bescheid, sobald du eingetragen bist.</li>
+<li>Tippe unten bei den Apps, die dich interessieren, auf <b>„Tester werden“</b> und öffne den Link mit diesem Google-Konto.</li>
+<li>Bestätige <b>„Tester werden“</b>, tippe auf <b>„Im Google Play Store herunterladen“</b> und installiere die App.</li>
+<li>Lass sie installiert, bis ich dir Bescheid sage. Danach kannst du sie behalten oder löschen.</li>
 </ol>
-<p>Nimm so viele Apps, wie du magst. Jede einzelne hilft!</p>
+
+<div class="tip t-key"><span class="ico" aria-hidden="true">🔑</span><div><b>Wichtig: Die Links funktionieren erst nach deinem Eintrag</b><p>Google lässt nur Leute auf die Testseite, deren Adresse ich vorher in die Teilnehmerliste eingetragen habe. Sonst steht dort „kein Zugriff“. Schick mir also zuerst deine Gmail-Adresse. Das dauert bei mir meist nur kurz.</p></div></div>
 
 <h2>Die Apps</h2>
-<div class="app"><div><b>📄 PDF-Profi Werkstatt</b><span>PDFs bearbeiten und unterschreiben</span></div><a class="btn" href="https://play.google.com/apps/testing/de.autoknigge.pdfwerkstatt">Tester werden</a></div>
-<div class="app"><div><b>📖 PDF-Reader</b><span>PDFs lesen, vorlesen und unterschreiben</span></div><a class="btn" href="https://play.google.com/apps/testing/pdfreader.aab">Tester werden</a></div>
-<div class="app"><div><b>🖼 Fotos zu PDF</b><span>Fotos und Scans als PDF</span></div><a class="btn" href="https://play.google.com/apps/testing/de.autoknigge.fotopdf">Tester werden</a></div>
-<div class="app"><div><b>🎬 Video-Teiler</b><span>Videos in Teile schneiden</span></div><a class="btn" href="https://play.google.com/apps/testing/de.videoteiler.app">Tester werden</a></div>
-<div class="app"><div><b>💾 Status-Sicherer</b><span>WhatsApp-Status ansehen und sichern</span></div><a class="btn" href="https://play.google.com/apps/testing/de.statussicherer">Tester werden</a></div>
-<div class="app"><div><b>🎲 Zurück</b><span>Brettspiel für 1 bis 4 Personen</span></div><a class="btn" href="https://play.google.com/apps/testing/de.autoknigge.zurueck">Tester werden</a></div>
-<div class="app"><div><b>🔴 Line</b><span>Vier oder fünf in einer Reihe</span></div><a class="btn" href="https://play.google.com/apps/testing/de.autoknigge.line">Tester werden</a></div>
-<div class="app"><div><b>🏠 Kredo Immobilienrechner</b><span>Kaufnebenkosten und Darlehen rechnen</span></div><a class="btn" href="https://play.google.com/apps/testing/de.autoknigge.kredo">Tester werden</a></div>
+<p class="lead">Nimm so viele, wie du magst. Jede einzelne hilft mir!</p>
+<div class="app"><h3><span class="em" aria-hidden="true">📄</span>PDF-Profi Werkstatt</h3><p>Dein Werkzeugkasten für PDFs, direkt auf dem Handy.</p><ul><li>PDFs zusammenfügen, Seiten sortieren, drehen und löschen</li><li>Aufteilen, verkleinern, in Bilder umwandeln</li><li>Mit Passwort schützen, Seitenzahlen und Wasserzeichen einfügen</li><li>Formulare unterschreiben: Unterschrift einmal anlegen, dann nur noch platzieren</li></ul><a class="btn" href="https://play.google.com/apps/testing/de.autoknigge.pdfwerkstatt">Tester werden</a></div>
+<div class="app"><h3><span class="em" aria-hidden="true">📖</span>PDF-Reader</h3><p>Ein schneller, aufgeräumter PDF-Leser, der dir auch vorliest.</p><ul><li>Vorlesefunktion, Textsuche und Lesezeichen</li><li>Zuletzt geöffnete Dokumente, Lesemodus für die Augen</li><li>Direkt drucken, senden oder unterschreiben</li></ul><a class="btn" href="https://play.google.com/apps/testing/pdfreader.aab">Tester werden</a></div>
+<div class="app"><h3><span class="em" aria-hidden="true">🖼</span>Fotos zu PDF</h3><p>Aus Fotos und Scans werden saubere PDF-Dokumente.</p><ul><li>Zuschneiden und als Schwarzweiß-Dokument ausgeben</li><li>Bildfilter für bessere Lesbarkeit</li><li>Gleich teilen oder drucken</li></ul><a class="btn" href="https://play.google.com/apps/testing/de.autoknigge.fotopdf">Tester werden</a></div>
+<div class="app"><h3><span class="em" aria-hidden="true">🎬</span>Video-Teiler</h3><p>Lange Videos in handliche Teile schneiden.</p><ul><li>Ideal für Status und Nachrichten mit Zeitlimit</li><li>Einfach zu bedienen, ohne Vorkenntnisse</li></ul><a class="btn" href="https://play.google.com/apps/testing/de.videoteiler.app">Tester werden</a></div>
+<div class="app"><h3><span class="em" aria-hidden="true">💾</span>Status-Sicherer</h3><p>Angesehene WhatsApp-Status nicht mehr verlieren.</p><ul><li>Übersicht mit Vorschau</li><li>Kopien mit einem Tipp in der Galerie sichern</li></ul><a class="btn" href="https://play.google.com/apps/testing/de.statussicherer">Tester werden</a></div>
+<div class="app"><h3><span class="em" aria-hidden="true">🎲</span>Zurück</h3><p>Das Brettspiel für Familie und Freunde, für 1 bis 4 Personen.</p><ul><li>Gegen den Computer oder an einem Handy reihum</li><li>Sechs Designs aus Holz, Granit und Sandstein</li><li>Mit eigener Musik beim Spielen</li></ul><a class="btn" href="https://play.google.com/apps/testing/de.autoknigge.zurueck">Tester werden</a></div>
+<div class="app"><h3><span class="em" aria-hidden="true">🔴</span>Line</h3><p>Vier oder fünf in einer Reihe, zu zweit oder gegen den Computer.</p><ul><li>Drei Computerstufen von leicht bis stark</li><li>Fünf Brett-Designs, leuchtende Gewinnreihe</li><li>Zug zurück und Siegzähler</li></ul><a class="btn" href="https://play.google.com/apps/testing/de.autoknigge.line">Tester werden</a></div>
+<div class="app"><h3><span class="em" aria-hidden="true">🏠</span>Kredo Immobilienrechner</h3><p>Alles zum Immobilienkauf auf einen Blick.</p><ul><li>Nebenkosten nach Bundesland, Makler, Notar und Grundbuch</li><li>Darlehen mit Sonderzahlungen: Rate, Laufzeit und gesparte Zinsen</li><li>PDF-Übersicht zum Weitergeben an Bank oder Partner</li></ul><a class="btn" href="https://play.google.com/apps/testing/de.autoknigge.kredo">Tester werden</a></div>
 
 <div class="tip t-mail"><span class="ico" aria-hidden="true">📧</span><div><b>Du bist mit einer anderen Gmail-Adresse angemeldet?</b><p>Kein Problem: Schick mir kurz Bescheid, welche Adresse dein Handy im Play Store nutzt, dann trage ich sie gern in die Teilnehmerliste ein. Auch wenn du eine Adresse hast, die Google bisher nicht akzeptiert hat, melde dich einfach, wir finden eine Lösung.</p></div></div>
 <div class="tip t-friend"><span class="ico" aria-hidden="true">👥</span><div><b>Du kennst weitere Interessenten?</b><p>Wunderbar! Gib den Link gern weiter. Wer mitmachen möchte, schickt mir seine Gmail-Adresse (die im Play Store auf dem Handy angemeldet ist), und ich trage sie in die Teilnehmerliste ein. Je mehr dabei sind, desto schneller sind die Apps für alle im Store.</p></div></div>
-<div class="tip t-help"><span class="ico" aria-hidden="true">🛟</span><div><b>Klappt es nicht („kein Zugriff“ o. Ä.)?</b><p>Dann ist auf deinem Handy wahrscheinlich ein anderes Google-Konto aktiv. Tippe im Play Store oben rechts auf dein Profilbild, wähle das richtige Konto und öffne die Seite noch einmal. Sag mir sonst einfach Bescheid.</p></div></div>
-<div class="tip t-safe"><span class="ico" aria-hidden="true">🔒</span><div><b>Deine Daten</b><p>Es werden keine Daten von dir gespeichert. Die Installation läuft über den offiziellen Google Play Store.</p></div></div>
+<div class="tip t-help"><span class="ico" aria-hidden="true">🛟</span><div><b>Klappt es nicht („kein Zugriff“ o. Ä.)?</b><p>Dann ist auf deinem Handy wahrscheinlich ein anderes Google-Konto aktiv, oder ich habe dich noch nicht eingetragen. Tippe im Play Store oben rechts auf dein Profilbild, wähle das richtige Konto und öffne die Seite noch einmal. Sag mir sonst einfach Bescheid.</p></div></div>
+<div class="tip t-safe"><span class="ico" aria-hidden="true">🔒</span><div><b>Deine Daten</b><p>Es werden keine Daten von dir gespeichert. Die Installation läuft über den offiziellen Google Play Store. Die Apps zeigen etwas Werbung.</p></div></div>
 
 <footer>
 <p><a href="/">autoknigge.de</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></p>
