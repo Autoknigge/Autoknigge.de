@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Die tiefgreifende Enneagramm-Analyse | autoknigge.de</title>
-<meta name="description" content="Die umfangreiche Enneagramm-Analyse als PDF-Bericht zu deinem Ergebnis aus dem Typ-Finder: Typ, Untertyp, Flügel, Weiterentwicklung, Beruf und Beziehungen. Preis 99 Euro.">
+<meta name="description" content="Die umfangreiche Enneagramm-Analyse als PDF-Bericht zu deinem Ergebnis aus dem Typ-Finder: Typ, Untertyp, Flügel, Weiterentwicklung, Beruf und Beziehungen. Ab 99 Euro, mehrere Analysen rabattiert.">
 <style>
 :root{color-scheme:light dark;--bg:#ffffff;--fg:#1a2430;--muted:#5a6675;--line:#d9e0e8;--link:#1f4fd8;--tile:#f3f6fa;--gold:#8a6a10}
 @media (prefers-color-scheme:dark){:root{--bg:#10161d;--fg:#e6ebf1;--muted:#9aa7b6;--line:#26323f;--link:#8fa3ff;--tile:#18212b;--gold:#e0b84c}}
@@ -33,7 +33,7 @@ footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--line);color
 <p class="lead">Dein Ergebnis aus dem Typ-Finder, ausführlich erklärt: als persönlicher PDF-Bericht zum Nachlesen, Prüfen und Weitergeben.</p>
 
 <div class="tile" id="dein">
-<strong>Dein Ergebnis aus der App:</strong> <span id="ergebnis"></span>
+<strong>Dein Ergebnis aus der App (unten schon eingetragen):</strong> <span id="ergebnis"></span>
 </div>
 
 <h2>Was der Bericht enthält</h2>
@@ -47,19 +47,26 @@ footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--line);color
 <li><strong>Zum Prüfen:</strong> Fragen und Hinweise, mit denen du das Ergebnis selbst gegenlesen kannst.</li>
 </ul>
 
-<div class="tile">
-<p class="price">99 €</p>
-<p class="small">Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
+<div class="tile" id="bestellung">
+<p class="price">ab 99 €</p>
+<p class="small">Staffelpreis bei mehreren unterschiedlichen Analysen in einer Bestellung: <strong>1. Analyse 99 €</strong>, <strong>2. Analyse 89 €</strong>, <strong>3. und jede weitere 79 €</strong>. Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
+
+<h2 style="margin-top:1rem">Deine Bestellung</h2>
+<div id="liste"></div>
+<p><button type="button" id="plus" class="btn" style="background:transparent;color:var(--link);border:1px solid var(--link);cursor:pointer">+ Weitere Analyse hinzufügen</button></p>
+<p id="summe" style="font-weight:700"></p>
+<p class="small" id="dupe" style="display:none;color:#b3261e">Bitte wähle unterschiedliche Analysen. Zwei Zeilen mit gleichem Typ, Untertyp und Flügel zählen nur einmal.</p>
+
 <p><label><input type="checkbox" id="agb"> Ich habe die <a href="/agb/">Allgemeinen Geschäftsbedingungen</a> und die <a href="#widerruf">Widerrufsbelehrung</a> gelesen und akzeptiere sie.</label></p>
-<p><label><input type="checkbox" id="zustimmung"> Ich verlange ausdrücklich, dass mit der Erstellung meiner individuellen Analyse sofort, also vor Ablauf der Widerrufsfrist, begonnen wird. Mir ist bekannt, dass mein Widerrufsrecht erlischt, sobald die Analyse vollständig erbracht ist.</label></p>
+<p><label><input type="checkbox" id="zustimmung"> Ich verlange ausdrücklich, dass mit der Erstellung meiner individuellen Analyse(n) sofort, also vor Ablauf der Widerrufsfrist, begonnen wird. Mir ist bekannt, dass mein Widerrufsrecht erlischt, sobald die Analyse(n) vollständig erbracht ist/sind.</label></p>
 <a class="btn" id="gmail" href="#" target="_blank" rel="noopener" aria-disabled="true">Bestellung in Gmail öffnen</a>
 <a class="btn" id="mail" href="#" aria-disabled="true" style="background:transparent;color:var(--link);border:1px solid var(--link);margin-left:.4rem">Anderes E-Mail-Programm</a>
-<p class="small" id="hinweis">Bitte setze beide Häkchen. Dann öffnet sich die vorbereitete E-Mail: mit „Bestellung in Gmail öffnen“ im Gmail-Fenster, mit „Anderes E-Mail-Programm“ in deinem Standard-Mailprogramm. Die <a href="#widerruf">Widerrufsbelehrung</a> findest du weiter unten.</p>
+<p class="small" id="hinweis">Bitte wähle zuerst Typ und Untertyp und setze beide Häkchen. Dann öffnet sich die vorbereitete E-Mail: mit „Bestellung in Gmail öffnen“ im Gmail-Fenster, mit „Anderes E-Mail-Programm“ in deinem Standard-Mailprogramm. Die <a href="#widerruf">Widerrufsbelehrung</a> findest du weiter unten.</p>
 </div>
 
 <h2>So läuft die Bestellung</h2>
 <ol>
-<li><strong>Bestellung per E-Mail:</strong> Du schickst mir dein Ergebnis aus der App (Typ, Untertyp und Flügel) mit der vorbereiteten E-Mail. Darin steht deine ausdrückliche Zustimmung zum sofortigen Beginn.</li>
+<li><strong>Bestellung per E-Mail:</strong> Du wählst Typ, Untertyp und Flügel (bei mehreren Analysen für jede) und schickst mir die vorbereitete E-Mail. Darin steht deine ausdrückliche Zustimmung zum sofortigen Beginn.</li>
 <li><strong>Bestätigung und Zahlungsdaten:</strong> Du bekommst per E-Mail die Bestätigung mit der vollständigen Widerrufsbelehrung und die Zahlungsdaten. Die Zahlung erfolgt im Voraus (Vorkasse). Falls du keine Antwort findest, schau bitte auch im Spam-Ordner nach.</li>
 <li><strong>Erstellung und Lieferung:</strong> Nach Zahlungseingang erstelle ich deine Analyse und schicke sie dir als PDF per E-Mail. Die Lieferzeit beträgt etwa 3 bis 5 Tage ab Zahlungseingang, manchmal geht es schneller.</li>
 </ol>
@@ -98,24 +105,75 @@ Datum: ________ (Unterschrift nur bei Mitteilung auf Papier)</p>
 </main>
 <script>
 (function(){
-  var consent = 'Ich bestelle die tiefgreifende Enneagramm-Analyse zum Preis von 99 € (ohne Umsatzsteuer nach § 19 UStG). Ich habe die Allgemeinen Geschäftsbedingungen und die Widerrufsbelehrung gelesen und akzeptiere sie. Ich verlange ausdrücklich, dass mit der Erstellung meiner individuellen Analyse sofort, also vor Ablauf der Widerrufsfrist, begonnen wird. Mir ist bekannt, dass mein Widerrufsrecht erlischt, sobald die Analyse vollständig erbracht ist.';
-  var text = '', sub = '';
+  var PREISE = [99, 89, 79];            // 1., 2., ab der 3. Analyse
+  function preis(i){ return PREISE[Math.min(i, PREISE.length - 1)]; }
+  var TYPEN = ['1','2','3','4','5','6','7','8','9'];
+  var INST = [['SP','Selbsterhaltender Untertyp (sp)'],['SO','Sozialer Untertyp (so)'],['SX','Sexuell / Beziehungsorientierter Untertyp (sx, 1:1)']];
+  var WING = {1:[9,2],2:[1,3],3:[2,4],4:[3,5],5:[4,6],6:[5,7],7:[6,8],8:[7,9],9:[8,1]};
+  var eintraege = [];
+  var liste = document.getElementById('liste'), summe = document.getElementById('summe'), dupe = document.getElementById('dupe');
+  var box = document.getElementById('zustimmung'), agb = document.getElementById('agb');
+  var btn = document.getElementById('mail'), gbtn = document.getElementById('gmail'), hint = document.getElementById('hinweis');
+
+  // Vorbelegung aus der App: ?e=SP6-6w5
   try {
     var e = new URLSearchParams(location.search).get('e') || '';
     var m = /^(S[POX])(\d)(?:-(\d)w(\d))?$/i.exec(e.trim());
     if (m) {
-      sub = m[1].toUpperCase() + m[2];
-      text = 'Untertyp ' + sub + (m[3] ? ', Flügel ' + m[3] + 'w' + m[4] : '');
-      document.getElementById('ergebnis').textContent = text;
+      eintraege.push({typ: m[2], inst: m[1].toUpperCase(), wing: m[3] ? m[4] : ''});
+      document.getElementById('ergebnis').textContent = 'Untertyp ' + m[1].toUpperCase() + m[2] + (m[3] ? ', Flügel ' + m[3] + 'w' + m[4] : '');
       document.getElementById('dein').style.display = 'block';
     }
   } catch (err) {}
-  var box = document.getElementById('zustimmung'), agb = document.getElementById('agb'), btn = document.getElementById('mail'), gbtn = document.getElementById('gmail'), hint = document.getElementById('hinweis');
-  function update() {
-    var ok = box.checked && agb.checked;
+  if (!eintraege.length) eintraege.push({typ: '', inst: '', wing: ''});
+
+  function opt(v, label, sel){ var o = document.createElement('option'); o.value = v; o.textContent = label; if (sel) o.selected = true; return o; }
+  function sel(label, id){ var s = document.createElement('select'); s.setAttribute('aria-label', label); s.style.cssText = 'font:inherit;padding:.35rem;margin:.15rem .3rem .15rem 0;max-width:100%'; return s; }
+
+  function render(){
+    liste.innerHTML = '';
+    eintraege.forEach(function(en, i){
+      var row = document.createElement('div');
+      row.style.cssText = 'border:1px solid var(--line);border-radius:10px;padding:.6rem .7rem;margin:.5rem 0';
+      var head = document.createElement('div');
+      head.innerHTML = '<strong>Analyse ' + (i + 1) + '</strong> · ' + preis(i) + ' €';
+      row.appendChild(head);
+      var s1 = sel('Typ'); s1.appendChild(opt('', 'Typ wählen', !en.typ)); TYPEN.forEach(function(t){ s1.appendChild(opt(t, 'Typ ' + t, en.typ === t)); });
+      s1.onchange = function(){ en.typ = s1.value; en.wing = ''; render(); };
+      var s2 = sel('Untertyp'); s2.appendChild(opt('', 'Untertyp wählen', !en.inst)); INST.forEach(function(x){ s2.appendChild(opt(x[0], x[1], en.inst === x[0])); });
+      s2.onchange = function(){ en.inst = s2.value; update(); };
+      var s3 = sel('Flügel'); s3.appendChild(opt('', 'Flügel unbekannt', !en.wing));
+      if (en.typ) WING[en.typ].forEach(function(w){ s3.appendChild(opt(String(w), en.typ + 'w' + w, en.wing === String(w))); });
+      s3.disabled = !en.typ;
+      s3.onchange = function(){ en.wing = s3.value; update(); };
+      row.appendChild(s1); row.appendChild(s2); row.appendChild(s3);
+      if (i > 0) {
+        var rm = document.createElement('button'); rm.type = 'button'; rm.textContent = 'Entfernen';
+        rm.style.cssText = 'font:inherit;margin-left:.3rem;cursor:pointer';
+        rm.onclick = function(){ eintraege.splice(i, 1); render(); };
+        row.appendChild(rm);
+      }
+      liste.appendChild(row);
+    });
+    update();
+  }
+
+  function schluessel(en){ return en.typ + '|' + en.inst + '|' + en.wing; }
+  function beschreibung(en){ return 'Typ ' + en.typ + ', Untertyp ' + en.inst + en.typ + (en.wing ? ', Flügel ' + en.typ + 'w' + en.wing : ', Flügel unbekannt'); }
+
+  function update(){
+    var vollstaendig = eintraege.every(function(en){ return en.typ && en.inst; });
+    var seen = {}, doppelt = false;
+    eintraege.forEach(function(en){ var k = schluessel(en); if (seen[k]) doppelt = true; seen[k] = 1; });
+    dupe.style.display = doppelt ? 'block' : 'none';
+    var gesamt = 0; eintraege.forEach(function(_, i){ gesamt += preis(i); });
+    summe.textContent = eintraege.length + (eintraege.length === 1 ? ' Analyse' : ' Analysen') + ' · Gesamt ' + gesamt + ' €';
+    var ok = box.checked && agb.checked && vollstaendig && !doppelt;
     if (ok) {
-      var subject = '[ANALYSE-BESTELLUNG] Enneagramm-Analyse' + (sub ? ' ' + sub : '');
-      var body = 'Hallo Marc,\n\n' + consent + '\n\nMein Ergebnis aus dem Typ-Finder: ' + (text || '(bitte Typ, Untertyp und Flügel eintragen)') + '.\n\nViele Grüße';
+      var zeilen = eintraege.map(function(en, i){ return (i + 1) + '. ' + beschreibung(en) + ' – ' + preis(i) + ' €'; }).join('\n');
+      var consent = 'Ich bestelle ' + (eintraege.length === 1 ? 'die tiefgreifende Enneagramm-Analyse' : eintraege.length + ' tiefgreifende Enneagramm-Analysen') + ' zum Gesamtpreis von ' + gesamt + ' € (ohne Umsatzsteuer nach § 19 UStG; Staffelpreis 99 € / 89 € / ab der dritten Analyse 79 €). Ich habe die Allgemeinen Geschäftsbedingungen und die Widerrufsbelehrung gelesen und akzeptiere sie. Ich verlange ausdrücklich, dass mit der Erstellung sofort, also vor Ablauf der Widerrufsfrist, begonnen wird. Mir ist bekannt, dass mein Widerrufsrecht erlischt, sobald die Analyse(n) vollständig erbracht ist/sind.';
+      var body = 'Hallo Marc,\n\n' + consent + '\n\nMeine Bestellung:\n' + zeilen + '\nGesamt: ' + gesamt + ' €\n\nViele Grüße';
+      var subject = '[ANALYSE-BESTELLUNG] Enneagramm-Analyse' + (eintraege.length > 1 ? ' (' + eintraege.length + ' Analysen)' : ' ' + eintraege[0].inst + eintraege[0].typ);
       btn.href = 'mailto:krekler@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
       gbtn.href = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent('krekler@gmail.com') + '&su=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
       btn.removeAttribute('aria-disabled'); gbtn.removeAttribute('aria-disabled'); btn.style.opacity = '1'; gbtn.style.opacity = '1';
@@ -124,10 +182,11 @@ Datum: ________ (Unterschrift nur bei Mitteilung auf Papier)</p>
       btn.setAttribute('aria-disabled', 'true'); gbtn.setAttribute('aria-disabled', 'true'); btn.style.opacity = '.5'; gbtn.style.opacity = '.5';
     }
   }
-  function guard(ev) { if (!(box.checked && agb.checked)) { ev.preventDefault(); hint.style.fontWeight = '700'; } }
+  function guard(ev){ if (btn.getAttribute('aria-disabled') === 'true') { ev.preventDefault(); hint.style.fontWeight = '700'; } }
   btn.addEventListener('click', guard); gbtn.addEventListener('click', guard);
+  document.getElementById('plus').addEventListener('click', function(){ eintraege.push({typ: '', inst: '', wing: ''}); render(); });
   box.addEventListener('change', update); agb.addEventListener('change', update);
-  update();
+  render();
 })();
 </script>
 </body>
