@@ -49,7 +49,7 @@ footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--line);color
 
 <div class="tile" id="bestellung">
 <p class="price">ab 99 €</p>
-<p class="small">Staffelpreis bei mehreren unterschiedlichen Analysen in einer Bestellung: <strong>1. Analyse 99 €</strong>, <strong>2. Analyse 89 €</strong>, <strong>3. und jede weitere 79 €</strong>. Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
+<p class="small">Preis je Analyse bei mehreren unterschiedlichen Analysen in einer Bestellung: <strong>1 Analyse 99 €</strong>, <strong>2 Analysen je 89 €</strong>, <strong>3 oder mehr Analysen je 79 €</strong>. Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
 
 <h2 style="margin-top:1rem">Deine Bestellung</h2>
 <div id="liste"></div>
@@ -105,8 +105,9 @@ Datum: ________ (Unterschrift nur bei Mitteilung auf Papier)</p>
 </main>
 <script>
 (function(){
-  var PREISE = [99, 89, 79];            // 1., 2., ab der 3. Analyse
-  function preis(i){ return PREISE[Math.min(i, PREISE.length - 1)]; }
+  // Preis je Analyse nach Anzahl in der Bestellung: 1 = 99 €, 2 = je 89 €, ab 3 = je 79 €
+  function preisJe(n){ return n >= 3 ? 79 : (n === 2 ? 89 : 99); }
+  function preis(){ return preisJe(eintraege.length); }
   var TYPEN = ['1','2','3','4','5','6','7','8','9'];
   var INST = [['SP','Selbsterhaltender Untertyp (sp)'],['SO','Sozialer Untertyp (so)'],['SX','Sexuell / Beziehungsorientierter Untertyp (sx, 1:1)']];
   var WING = {1:[9,2],2:[1,3],3:[2,4],4:[3,5],5:[4,6],6:[5,7],7:[6,8],8:[7,9],9:[8,1]};
@@ -136,7 +137,7 @@ Datum: ________ (Unterschrift nur bei Mitteilung auf Papier)</p>
       var row = document.createElement('div');
       row.style.cssText = 'border:1px solid var(--line);border-radius:10px;padding:.6rem .7rem;margin:.5rem 0';
       var head = document.createElement('div');
-      head.innerHTML = '<strong>Analyse ' + (i + 1) + '</strong> · ' + preis(i) + ' €';
+      head.innerHTML = '<strong>Analyse ' + (i + 1) + '</strong> · ' + preis() + ' €';
       row.appendChild(head);
       var s1 = sel('Typ'); s1.appendChild(opt('', 'Typ wählen', !en.typ)); TYPEN.forEach(function(t){ s1.appendChild(opt(t, 'Typ ' + t, en.typ === t)); });
       s1.onchange = function(){ en.typ = s1.value; en.wing = ''; render(); };
@@ -166,12 +167,12 @@ Datum: ________ (Unterschrift nur bei Mitteilung auf Papier)</p>
     var seen = {}, doppelt = false;
     eintraege.forEach(function(en){ var k = schluessel(en); if (seen[k]) doppelt = true; seen[k] = 1; });
     dupe.style.display = doppelt ? 'block' : 'none';
-    var gesamt = 0; eintraege.forEach(function(_, i){ gesamt += preis(i); });
+    var gesamt = preis() * eintraege.length;
     summe.textContent = eintraege.length + (eintraege.length === 1 ? ' Analyse' : ' Analysen') + ' · Gesamt ' + gesamt + ' €';
     var ok = box.checked && agb.checked && vollstaendig && !doppelt;
     if (ok) {
-      var zeilen = eintraege.map(function(en, i){ return (i + 1) + '. ' + beschreibung(en) + ' – ' + preis(i) + ' €'; }).join('\n');
-      var consent = 'Ich bestelle ' + (eintraege.length === 1 ? 'die tiefgreifende Enneagramm-Analyse' : eintraege.length + ' tiefgreifende Enneagramm-Analysen') + ' zum Gesamtpreis von ' + gesamt + ' € (ohne Umsatzsteuer nach § 19 UStG; Staffelpreis 99 € / 89 € / ab der dritten Analyse 79 €). Ich habe die Allgemeinen Geschäftsbedingungen und die Widerrufsbelehrung gelesen und akzeptiere sie. Ich verlange ausdrücklich, dass mit der Erstellung sofort, also vor Ablauf der Widerrufsfrist, begonnen wird. Mir ist bekannt, dass mein Widerrufsrecht erlischt, sobald die Analyse(n) vollständig erbracht ist/sind.';
+      var zeilen = eintraege.map(function(en, i){ return (i + 1) + '. ' + beschreibung(en) + ' – ' + preis() + ' €'; }).join('\n');
+      var consent = 'Ich bestelle ' + (eintraege.length === 1 ? 'die tiefgreifende Enneagramm-Analyse' : eintraege.length + ' tiefgreifende Enneagramm-Analysen') + ' zum Gesamtpreis von ' + gesamt + ' € (ohne Umsatzsteuer nach § 19 UStG; Preis je Analyse: 99 € bei einer, 89 € bei zwei, 79 € bei drei oder mehr Analysen). Ich habe die Allgemeinen Geschäftsbedingungen und die Widerrufsbelehrung gelesen und akzeptiere sie. Ich verlange ausdrücklich, dass mit der Erstellung sofort, also vor Ablauf der Widerrufsfrist, begonnen wird. Mir ist bekannt, dass mein Widerrufsrecht erlischt, sobald die Analyse(n) vollständig erbracht ist/sind.';
       var body = 'Hallo Marc,\n\n' + consent + '\n\nMeine Bestellung:\n' + zeilen + '\nGesamt: ' + gesamt + ' €\n\nViele Grüße';
       var subject = '[ANALYSE-BESTELLUNG] Enneagramm-Analyse' + (eintraege.length > 1 ? ' (' + eintraege.length + ' Analysen)' : ' ' + eintraege[0].inst + eintraege[0].typ);
       btn.href = 'mailto:krekler@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
