@@ -19,6 +19,8 @@ a{color:var(--link)}
 .lead{color:var(--muted)}
 .tile{background:var(--tile);border:1px solid var(--line);border-radius:12px;padding:1rem 1.1rem;margin:1.2rem 0}
 .price{font-size:1.6rem;font-weight:700;color:var(--gold)}
+label{display:block;cursor:pointer}
+input[type=checkbox]{margin-right:.4rem}
 .btn{display:inline-block;background:var(--link);color:#fff;text-decoration:none;font-weight:600;border-radius:10px;padding:.7rem 1.1rem;margin-top:.5rem}
 .small{color:var(--muted);font-size:.95rem}
 #dein{display:none}
@@ -48,18 +50,35 @@ footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--line);color
 <div class="tile">
 <p class="price">99 €</p>
 <p class="small">Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
-<a class="btn" id="mail" href="#">Analyse per E-Mail bestellen</a>
+<p><label><input type="checkbox" id="zustimmung"> Ich verlange ausdrücklich, dass mit der Erstellung meiner individuellen Analyse sofort, also vor Ablauf der Widerrufsfrist, begonnen wird. Mir ist bekannt, dass mein Widerrufsrecht erlischt, sobald die Analyse vollständig erbracht ist.</label></p>
+<a class="btn" id="mail" href="#" aria-disabled="true">Analyse per E-Mail bestellen</a>
+<p class="small" id="hinweis">Bitte setze zuerst das Häkchen, dann öffnet sich die vorbereitete E-Mail. Die <a href="#widerruf">Widerrufsbelehrung</a> findest du weiter unten.</p>
 </div>
 
 <h2>So läuft die Bestellung</h2>
 <ol>
-<li><strong>Anfrage per E-Mail:</strong> Du schickst mir dein Ergebnis aus der App (Typ, Untertyp und Flügel). Mit dem Knopf oben öffnet sich eine vorbereitete E-Mail.</li>
-<li><strong>Zahlungsdaten:</strong> Die Zahlungsdaten bekommst du nach deiner Bestellung per E-Mail.</li>
+<li><strong>Bestellung per E-Mail:</strong> Du schickst mir dein Ergebnis aus der App (Typ, Untertyp und Flügel) mit der vorbereiteten E-Mail. Darin steht deine ausdrückliche Zustimmung zum sofortigen Beginn.</li>
+<li><strong>Bestätigung und Zahlungsdaten:</strong> Du bekommst per E-Mail die Bestätigung mit der vollständigen Widerrufsbelehrung und die Zahlungsdaten.</li>
 <li><strong>Lieferung:</strong> Du erhältst deine Analyse als PDF per E-Mail. Die Lieferzeit beträgt etwa 3 bis 5 Tage, manchmal geht es schneller.</li>
 </ol>
 
-<h2>Widerrufsrecht</h2>
-<p>Die Analyse wird nach deinen Angaben individuell für dich zusammengestellt. Mit deiner Bestell-E-Mail bittest du mich ausdrücklich, sofort mit der Erstellung zu beginnen. Du bestätigst dort außerdem, dass dein Widerrufsrecht erlischt, sobald ich die Analyse vollständig geliefert habe. Den entsprechenden Text enthält die vorbereitete E-Mail bereits.</p>
+<h2 id="widerruf">Widerrufsbelehrung</h2>
+<p><strong>Widerrufsrecht</strong></p>
+<p>Du hast das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag des Vertragsabschlusses.</p>
+<p>Um dein Widerrufsrecht auszuüben, musst du mich (Marc Krekler, Buresch 10, 49692 Cappeln, E-Mail: krekler@gmail.com) mittels einer eindeutigen Erklärung (zum Beispiel ein mit der Post versandter Brief oder eine E-Mail) über deinen Entschluss, diesen Vertrag zu widerrufen, informieren. Du kannst dafür das unten stehende Muster-Widerrufsformular verwenden, das jedoch nicht vorgeschrieben ist. Zur Wahrung der Widerrufsfrist reicht es aus, dass du die Mitteilung über die Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist absendest.</p>
+<p><strong>Folgen des Widerrufs</strong></p>
+<p>Wenn du diesen Vertrag widerrufst, habe ich dir alle Zahlungen, die ich von dir erhalten habe, unverzüglich und spätestens binnen vierzehn Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über deinen Widerruf dieses Vertrags bei mir eingegangen ist. Für diese Rückzahlung verwende ich dasselbe Zahlungsmittel, das du bei der ursprünglichen Transaktion eingesetzt hast, es sei denn, mit dir wurde ausdrücklich etwas anderes vereinbart. In keinem Fall werden dir wegen dieser Rückzahlung Entgelte berechnet.</p>
+<p>Hast du verlangt, dass die Leistung während der Widerrufsfrist beginnen soll, so hast du mir einen angemessenen Betrag zu zahlen, der dem Anteil der bis zu dem Zeitpunkt, zu dem du mich von der Ausübung des Widerrufsrechts hinsichtlich dieses Vertrags unterrichtest, bereits erbrachten Leistungen im Vergleich zum Gesamtumfang der im Vertrag vorgesehenen Leistungen entspricht.</p>
+<p><strong>Erlöschen des Widerrufsrechts</strong></p>
+<p>Das Widerrufsrecht erlischt, wenn ich die Leistung vollständig erbracht habe, nachdem du ausdrücklich zugestimmt hast, dass ich vor Ablauf der Widerrufsfrist mit der Ausführung beginne, und du bestätigt hast, dass du dein Widerrufsrecht bei vollständiger Vertragserfüllung durch mich verlierst.</p>
+<p><strong>Muster-Widerrufsformular</strong></p>
+<p class="small">(Wenn du den Vertrag widerrufen willst, fülle dieses Formular aus und sende es an mich zurück.)<br>
+An Marc Krekler, Buresch 10, 49692 Cappeln, krekler@gmail.com:<br>
+Hiermit widerrufe ich den von mir abgeschlossenen Vertrag über die Erbringung der folgenden Leistung: Enneagramm-Analyse<br>
+Bestellt am / erhalten am: ________<br>
+Name des Verbrauchers: ________<br>
+Anschrift des Verbrauchers: ________<br>
+Datum: ________ (Unterschrift nur bei Mitteilung auf Papier)</p>
 
 <h2>Wichtig zu wissen</h2>
 <ul>
@@ -75,9 +94,8 @@ footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--line);color
 </main>
 <script>
 (function(){
-  var consent = 'Ich bestelle die tiefgreifende Enneagramm-Analyse zum Preis von 99 € (ohne Umsatzsteuer nach § 19 UStG). Ich stimme ausdrücklich zu, dass mit der Erstellung sofort begonnen wird. Mir ist bekannt, dass mein Widerrufsrecht erlischt, sobald die Analyse vollständig geliefert ist.';
-  var text = '';
-  var sub = '';
+  var consent = 'Ich bestelle die tiefgreifende Enneagramm-Analyse zum Preis von 99 € (ohne Umsatzsteuer nach § 19 UStG). Ich verlange ausdrücklich, dass mit der Erstellung meiner individuellen Analyse sofort, also vor Ablauf der Widerrufsfrist, begonnen wird. Mir ist bekannt, dass mein Widerrufsrecht erlischt, sobald die Analyse vollständig erbracht ist.';
+  var text = '', sub = '';
   try {
     var e = new URLSearchParams(location.search).get('e') || '';
     var m = /^(S[POX])(\d)(?:-(\d)w(\d))?$/i.exec(e.trim());
@@ -88,8 +106,19 @@ footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--line);color
       document.getElementById('dein').style.display = 'block';
     }
   } catch (err) {}
-  var body = 'Hallo Marc,\n\n' + consent + '\n\nMein Ergebnis aus dem Typ-Finder: ' + (text || '(bitte Typ, Untertyp und Flügel eintragen)') + '.\n\nViele Grüße';
-  document.getElementById('mail').href = 'mailto:krekler@gmail.com?subject=' + encodeURIComponent('[ANALYSE-BESTELLUNG] Enneagramm-Analyse' + (sub ? ' ' + sub : '')) + '&body=' + encodeURIComponent(body);
+  var box = document.getElementById('zustimmung'), btn = document.getElementById('mail'), hint = document.getElementById('hinweis');
+  function update() {
+    if (box.checked) {
+      var body = 'Hallo Marc,\n\n' + consent + '\n\nMein Ergebnis aus dem Typ-Finder: ' + (text || '(bitte Typ, Untertyp und Flügel eintragen)') + '.\n\nViele Grüße';
+      btn.href = 'mailto:krekler@gmail.com?subject=' + encodeURIComponent('Enneagramm-Analyse bestellen' + (sub ? ' (' + sub + ')' : '')) + '&body=' + encodeURIComponent(body);
+      btn.removeAttribute('aria-disabled'); btn.style.opacity = '1';
+    } else {
+      btn.href = '#'; btn.setAttribute('aria-disabled', 'true'); btn.style.opacity = '.5';
+    }
+  }
+  btn.addEventListener('click', function (ev) { if (!box.checked) { ev.preventDefault(); hint.style.fontWeight = '700'; } });
+  box.addEventListener('change', update);
+  update();
 })();
 </script>
 </body>
