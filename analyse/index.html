@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Die tiefgreifende Enneagramm-Analyse | autoknigge.de</title>
+<meta name="description" content="Die umfangreiche Enneagramm-Analyse als PDF-Bericht zu deinem Ergebnis aus dem Typ-Finder: Typ, Untertyp, Flügel, Weiterentwicklung, Beruf und Beziehungen. Preis 99 Euro.">
+<style>
+:root{color-scheme:light dark;--bg:#ffffff;--fg:#1a2430;--muted:#5a6675;--line:#d9e0e8;--link:#1f4fd8;--tile:#f3f6fa;--gold:#8a6a10}
+@media (prefers-color-scheme:dark){:root{--bg:#10161d;--fg:#e6ebf1;--muted:#9aa7b6;--line:#26323f;--link:#8fa3ff;--tile:#18212b;--gold:#e0b84c}}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:42rem;margin:0 auto;padding:1.5rem 1rem 3rem}
+h1{font-size:1.9rem;line-height:1.2;margin:0 0 .4rem}
+h2{font-size:1.2rem;margin:1.8rem 0 .4rem}
+p{margin:.5rem 0}
+ul{margin:.5rem 0;padding-left:1.2rem}
+li{margin:.35rem 0}
+a{color:var(--link)}
+.lead{color:var(--muted)}
+.tile{background:var(--tile);border:1px solid var(--line);border-radius:12px;padding:1rem 1.1rem;margin:1.2rem 0}
+.price{font-size:1.6rem;font-weight:700;color:var(--gold)}
+.btn{display:inline-block;background:var(--link);color:#fff;text-decoration:none;font-weight:600;border-radius:10px;padding:.7rem 1.1rem;margin-top:.5rem}
+.small{color:var(--muted);font-size:.95rem}
+#dein{display:none}
+footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
+</style>
+</head>
+<body>
+<main>
+<h1>Die tiefgreifende Enneagramm-Analyse</h1>
+<p class="lead">Dein Ergebnis aus dem Typ-Finder, ausführlich erklärt: als persönlicher PDF-Bericht zum Nachlesen, Prüfen und Weitergeben.</p>
+
+<div class="tile" id="dein">
+<strong>Dein Ergebnis aus der App:</strong> <span id="ergebnis"></span>
+</div>
+
+<h2>Was der Bericht enthält</h2>
+<ul>
+<li><strong>Dein Typ:</strong> Kernmotiv, Strategie, Begabungen, Herausforderungen, Blick und Wirkung auf andere, Stress und Entspannung.</li>
+<li><strong>Dein Untertyp:</strong> Name und Tier, Art des Untertyps, Besonderheiten, typische Stärken und worauf du achten kannst.</li>
+<li><strong>Dein Flügel:</strong> Wie er deinen Typ färbt.</li>
+<li><strong>Weiterentwicklung:</strong> Wie du die Fixierung in Richtung Bewusstheit abmildern kannst, mit erstem Schritt, Übung und Entwicklungsimpuls.</li>
+<li><strong>Beruf und Berufung:</strong> Berufsfelder, besondere Fähigkeiten, persönliche Faibles und typische Fallen.</li>
+<li><strong>Beziehungen:</strong> Was dir wichtig ist, wie andere dich erreichen, typische Konflikte und was die Beziehung stärkt.</li>
+<li><strong>Zum Prüfen:</strong> Fragen und Hinweise, mit denen du das Ergebnis selbst gegenlesen kannst.</li>
+</ul>
+
+<div class="tile">
+<p class="price">99 €</p>
+<p>Die Analyse bestellst du per E-Mail. Du schickst mir dein Ergebnis aus der App (Typ, Untertyp und Flügel), und ich melde mich mit allen Einzelheiten zu Bezahlung und Lieferung.</p>
+<a class="btn" id="mail" href="mailto:krekler@gmail.com?subject=Enneagramm-Analyse%20bestellen">Analyse per E-Mail anfragen</a>
+</div>
+
+<h2>Wichtig zu wissen</h2>
+<ul>
+<li>Das Ergebnis des Typ-Finders ist eine Einladung zum Prüfen, kein festes Etikett und kein Diagnoseverfahren.</li>
+<li>Das Enneagramm ist ein Modell zur Selbstreflexion und Orientierung. Die Analyse ersetzt weder ärztlichen noch psychologischen oder therapeutischen Rat.</li>
+<li>Die Inhalte folgen dem Buch „Enneagramm – Matrix des Lebens“ von Marc Krekler.</li>
+</ul>
+<p class="small">Wenn du den Link aus der App öffnest, wird dein Ergebnis (zum Beispiel „SP6, Flügel 6w5“) in der Adresse mitgegeben und hier angezeigt. Es wird nirgends gespeichert. Du entscheidest selbst, ob du es per E-Mail schickst.</p>
+
+<footer>
+<p><a href="/">Zur Startseite</a> · <a href="/apps/">Apps</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></p>
+</footer>
+</main>
+<script>
+(function(){
+  try {
+    var e = new URLSearchParams(location.search).get('e') || '';
+    var m = /^(S[POX])(\d)(?:-(\d)w(\d))?$/i.exec(e.trim());
+    if (!m) return;
+    var sub = m[1].toUpperCase() + m[2];
+    var text = 'Untertyp ' + sub + (m[3] ? ', Flügel ' + m[3] + 'w' + m[4] : '');
+    document.getElementById('ergebnis').textContent = text;
+    document.getElementById('dein').style.display = 'block';
+    var body = 'Hallo Marc,\n\nich möchte die tiefgreifende Enneagramm-Analyse bestellen.\nMein Ergebnis aus dem Typ-Finder: ' + text + '.\n\nViele Grüße';
+    document.getElementById('mail').href = 'mailto:krekler@gmail.com?subject=' + encodeURIComponent('Enneagramm-Analyse bestellen (' + sub + ')') + '&body=' + encodeURIComponent(body);
+  } catch (err) {}
+})();
+</script>
+</body>
+</html>
