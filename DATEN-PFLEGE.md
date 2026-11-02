@@ -42,4 +42,6 @@ Nach jeder Prüfung: Seite lesen, Inhalte korrigieren, dann `set`, dann Eintrag 
 |---|---|---|
 | 01.11.2026 | Werkzeug `tools/stand.py` und diese Anleitung angelegt. sitemap.xml an die dateModified-Angaben der Seiten angeglichen (21 Einträge, vorher abweichend). Startseite und /apps/ in die Sitemap aufgenommen. Apps-Bereich mit „In Kürze bei Google Play“ auf Startseite, /apps/, Menü und Fußzeile. Es wurden **keine** Inhalte neu geprüft, daher keine „Stand“-Angaben der Artikel geändert. | Claude |
 
+| 02.11.2026 | Neue App „Enneagramm Typ-Finder“: Datenschutzseite /typfinder/, Eintrag auf Startseite, /apps/ und /testen/. | Claude |
+
 Offene Punkte aus dem ersten Bericht (01.11.2026): 8 Seiten fehlen in der sitemap.xml (artikel-gebrauchtwagen-historie-carvertical, artikel-kennzeichen-reservieren, artikel-kfz-versicherung-sparen, artikel-umweltplakette-ausland-maut, artikel-zweitwagen-versicherung, online-zulassung; suche und upload-x7k2 bewusst nicht). Mehrere Seiten haben zwei verschiedene Stand-Angaben (z. B. artikel-e-auto-vs-benziner: 28.09., 11.10. und „Oktober“). Seiten ohne dateModified: Rechner, Quiz, Glossar, Datenschutz, Impressum.
