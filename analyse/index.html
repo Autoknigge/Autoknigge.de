@@ -89,7 +89,7 @@ footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--line);color
     }
   } catch (err) {}
   var body = 'Hallo Marc,\n\n' + consent + '\n\nMein Ergebnis aus dem Typ-Finder: ' + (text || '(bitte Typ, Untertyp und Flügel eintragen)') + '.\n\nViele Grüße';
-  document.getElementById('mail').href = 'mailto:krekler@gmail.com?subject=' + encodeURIComponent('Enneagramm-Analyse bestellen' + (sub ? ' (' + sub + ')' : '')) + '&body=' + encodeURIComponent(body);
+  document.getElementById('mail').href = 'mailto:krekler@gmail.com?subject=' + encodeURIComponent('[ANALYSE-BESTELLUNG] Enneagramm-Analyse' + (sub ? ' ' + sub : '')) + '&body=' + encodeURIComponent(body);
 })();
 </script>
 </body>
