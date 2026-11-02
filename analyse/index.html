@@ -52,8 +52,9 @@ footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--line);color
 <p class="small">Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
 <p><label><input type="checkbox" id="agb"> Ich habe die <a href="/agb/">Allgemeinen Geschäftsbedingungen</a> und die <a href="#widerruf">Widerrufsbelehrung</a> gelesen und akzeptiere sie.</label></p>
 <p><label><input type="checkbox" id="zustimmung"> Ich verlange ausdrücklich, dass mit der Erstellung meiner individuellen Analyse sofort, also vor Ablauf der Widerrufsfrist, begonnen wird. Mir ist bekannt, dass mein Widerrufsrecht erlischt, sobald die Analyse vollständig erbracht ist.</label></p>
-<a class="btn" id="mail" href="#" aria-disabled="true">Analyse per E-Mail bestellen</a>
-<p class="small" id="hinweis">Bitte setze beide Häkchen, dann öffnet sich die vorbereitete E-Mail. Die <a href="#widerruf">Widerrufsbelehrung</a> findest du weiter unten.</p>
+<a class="btn" id="gmail" href="#" target="_blank" rel="noopener" aria-disabled="true">Bestellung in Gmail öffnen</a>
+<a class="btn" id="mail" href="#" aria-disabled="true" style="background:transparent;color:var(--link);border:1px solid var(--link);margin-left:.4rem">Anderes E-Mail-Programm</a>
+<p class="small" id="hinweis">Bitte setze beide Häkchen. Dann öffnet sich die vorbereitete E-Mail: mit „Bestellung in Gmail öffnen“ im Gmail-Fenster, mit „Anderes E-Mail-Programm“ in deinem Standard-Mailprogramm. Die <a href="#widerruf">Widerrufsbelehrung</a> findest du weiter unten.</p>
 </div>
 
 <h2>So läuft die Bestellung</h2>
@@ -109,17 +110,22 @@ Datum: ________ (Unterschrift nur bei Mitteilung auf Papier)</p>
       document.getElementById('dein').style.display = 'block';
     }
   } catch (err) {}
-  var box = document.getElementById('zustimmung'), agb = document.getElementById('agb'), btn = document.getElementById('mail'), hint = document.getElementById('hinweis');
+  var box = document.getElementById('zustimmung'), agb = document.getElementById('agb'), btn = document.getElementById('mail'), gbtn = document.getElementById('gmail'), hint = document.getElementById('hinweis');
   function update() {
-    if (box.checked && agb.checked) {
+    var ok = box.checked && agb.checked;
+    if (ok) {
+      var subject = '[ANALYSE-BESTELLUNG] Enneagramm-Analyse' + (sub ? ' ' + sub : '');
       var body = 'Hallo Marc,\n\n' + consent + '\n\nMein Ergebnis aus dem Typ-Finder: ' + (text || '(bitte Typ, Untertyp und Flügel eintragen)') + '.\n\nViele Grüße';
-      btn.href = 'mailto:krekler@gmail.com?subject=' + encodeURIComponent('[ANALYSE-BESTELLUNG] Enneagramm-Analyse' + (sub ? ' ' + sub : '')) + '&body=' + encodeURIComponent(body);
-      btn.removeAttribute('aria-disabled'); btn.style.opacity = '1';
+      btn.href = 'mailto:krekler@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      gbtn.href = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent('krekler@gmail.com') + '&su=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      btn.removeAttribute('aria-disabled'); gbtn.removeAttribute('aria-disabled'); btn.style.opacity = '1'; gbtn.style.opacity = '1';
     } else {
-      btn.href = '#'; btn.setAttribute('aria-disabled', 'true'); btn.style.opacity = '.5';
+      btn.href = '#'; gbtn.href = '#';
+      btn.setAttribute('aria-disabled', 'true'); gbtn.setAttribute('aria-disabled', 'true'); btn.style.opacity = '.5'; gbtn.style.opacity = '.5';
     }
   }
-  btn.addEventListener('click', function (ev) { if (!(box.checked && agb.checked)) { ev.preventDefault(); hint.style.fontWeight = '700'; } });
+  function guard(ev) { if (!(box.checked && agb.checked)) { ev.preventDefault(); hint.style.fontWeight = '700'; } }
+  btn.addEventListener('click', guard); gbtn.addEventListener('click', guard);
   box.addEventListener('change', update); agb.addEventListener('change', update);
   update();
 })();
