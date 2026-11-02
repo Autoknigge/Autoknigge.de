@@ -59,7 +59,7 @@ footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--line);color
 <h2>So läuft die Bestellung</h2>
 <ol>
 <li><strong>Bestellung per E-Mail:</strong> Du schickst mir dein Ergebnis aus der App (Typ, Untertyp und Flügel) mit der vorbereiteten E-Mail. Darin steht deine ausdrückliche Zustimmung zum sofortigen Beginn.</li>
-<li><strong>Bestätigung und Zahlungsdaten:</strong> Du bekommst per E-Mail die Bestätigung mit der vollständigen Widerrufsbelehrung und die Zahlungsdaten. Die Zahlung erfolgt im Voraus (Vorkasse).</li>
+<li><strong>Bestätigung und Zahlungsdaten:</strong> Du bekommst per E-Mail die Bestätigung mit der vollständigen Widerrufsbelehrung und die Zahlungsdaten. Die Zahlung erfolgt im Voraus (Vorkasse). Falls du keine Antwort findest, schau bitte auch im Spam-Ordner nach.</li>
 <li><strong>Erstellung und Lieferung:</strong> Nach Zahlungseingang erstelle ich deine Analyse und schicke sie dir als PDF per E-Mail. Die Lieferzeit beträgt etwa 3 bis 5 Tage ab Zahlungseingang, manchmal geht es schneller.</li>
 </ol>
 
@@ -113,7 +113,7 @@ Datum: ________ (Unterschrift nur bei Mitteilung auf Papier)</p>
   function update() {
     if (box.checked && agb.checked) {
       var body = 'Hallo Marc,\n\n' + consent + '\n\nMein Ergebnis aus dem Typ-Finder: ' + (text || '(bitte Typ, Untertyp und Flügel eintragen)') + '.\n\nViele Grüße';
-      btn.href = 'mailto:krekler@gmail.com?subject=' + encodeURIComponent('Enneagramm-Analyse bestellen' + (sub ? ' (' + sub + ')' : '')) + '&body=' + encodeURIComponent(body);
+      btn.href = 'mailto:krekler@gmail.com?subject=' + encodeURIComponent('[ANALYSE-BESTELLUNG] Enneagramm-Analyse' + (sub ? ' ' + sub : '')) + '&body=' + encodeURIComponent(body);
       btn.removeAttribute('aria-disabled'); btn.style.opacity = '1';
     } else {
       btn.href = '#'; btn.setAttribute('aria-disabled', 'true'); btn.style.opacity = '.5';
