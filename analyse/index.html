@@ -50,9 +50,10 @@ footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--line);color
 <div class="tile">
 <p class="price">99 €</p>
 <p class="small">Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
+<p><label><input type="checkbox" id="agb"> Ich habe die <a href="/agb/">Allgemeinen Geschäftsbedingungen</a> und die <a href="#widerruf">Widerrufsbelehrung</a> gelesen und akzeptiere sie.</label></p>
 <p><label><input type="checkbox" id="zustimmung"> Ich verlange ausdrücklich, dass mit der Erstellung meiner individuellen Analyse sofort, also vor Ablauf der Widerrufsfrist, begonnen wird. Mir ist bekannt, dass mein Widerrufsrecht erlischt, sobald die Analyse vollständig erbracht ist.</label></p>
 <a class="btn" id="mail" href="#" aria-disabled="true">Analyse per E-Mail bestellen</a>
-<p class="small" id="hinweis">Bitte setze zuerst das Häkchen, dann öffnet sich die vorbereitete E-Mail. Die <a href="#widerruf">Widerrufsbelehrung</a> findest du weiter unten.</p>
+<p class="small" id="hinweis">Bitte setze beide Häkchen, dann öffnet sich die vorbereitete E-Mail. Die <a href="#widerruf">Widerrufsbelehrung</a> findest du weiter unten.</p>
 </div>
 
 <h2>So läuft die Bestellung</h2>
@@ -71,6 +72,8 @@ footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--line);color
 <p>Hast du verlangt, dass die Leistung während der Widerrufsfrist beginnen soll, so hast du mir einen angemessenen Betrag zu zahlen, der dem Anteil der bis zu dem Zeitpunkt, zu dem du mich von der Ausübung des Widerrufsrechts hinsichtlich dieses Vertrags unterrichtest, bereits erbrachten Leistungen im Vergleich zum Gesamtumfang der im Vertrag vorgesehenen Leistungen entspricht.</p>
 <p><strong>Erlöschen des Widerrufsrechts</strong></p>
 <p>Das Widerrufsrecht erlischt, wenn ich die Leistung vollständig erbracht habe, nachdem du ausdrücklich zugestimmt hast, dass ich vor Ablauf der Widerrufsfrist mit der Ausführung beginne, und du bestätigt hast, dass du dein Widerrufsrecht bei vollständiger Vertragserfüllung durch mich verlierst.</p>
+<p><strong>Hinweis zum Ausschluss des Widerrufsrechts</strong></p>
+<p>Das Widerrufsrecht kann außerdem ausgeschlossen sein, soweit die Analyse nicht vorgefertigt ist und ihre Erstellung auf deinen individuellen Angaben beruht oder sie eindeutig auf deine persönlichen Bedürfnisse zugeschnitten ist (§ 312g Abs. 2 Satz 1 Nr. 1 BGB). Unabhängig davon gilt diese Widerrufsbelehrung vorsorglich in vollem Umfang, und ich beginne erst mit deiner ausdrücklichen Zustimmung zum sofortigen Beginn.</p>
 <p><strong>Muster-Widerrufsformular</strong></p>
 <p class="small">(Wenn du den Vertrag widerrufen willst, fülle dieses Formular aus und sende es an mich zurück.)<br>
 An Marc Krekler, Buresch 10, 49692 Cappeln, krekler@gmail.com:<br>
@@ -94,7 +97,7 @@ Datum: ________ (Unterschrift nur bei Mitteilung auf Papier)</p>
 </main>
 <script>
 (function(){
-  var consent = 'Ich bestelle die tiefgreifende Enneagramm-Analyse zum Preis von 99 € (ohne Umsatzsteuer nach § 19 UStG). Ich verlange ausdrücklich, dass mit der Erstellung meiner individuellen Analyse sofort, also vor Ablauf der Widerrufsfrist, begonnen wird. Mir ist bekannt, dass mein Widerrufsrecht erlischt, sobald die Analyse vollständig erbracht ist.';
+  var consent = 'Ich bestelle die tiefgreifende Enneagramm-Analyse zum Preis von 99 € (ohne Umsatzsteuer nach § 19 UStG). Ich habe die Allgemeinen Geschäftsbedingungen und die Widerrufsbelehrung gelesen und akzeptiere sie. Ich verlange ausdrücklich, dass mit der Erstellung meiner individuellen Analyse sofort, also vor Ablauf der Widerrufsfrist, begonnen wird. Mir ist bekannt, dass mein Widerrufsrecht erlischt, sobald die Analyse vollständig erbracht ist.';
   var text = '', sub = '';
   try {
     var e = new URLSearchParams(location.search).get('e') || '';
@@ -106,9 +109,9 @@ Datum: ________ (Unterschrift nur bei Mitteilung auf Papier)</p>
       document.getElementById('dein').style.display = 'block';
     }
   } catch (err) {}
-  var box = document.getElementById('zustimmung'), btn = document.getElementById('mail'), hint = document.getElementById('hinweis');
+  var box = document.getElementById('zustimmung'), agb = document.getElementById('agb'), btn = document.getElementById('mail'), hint = document.getElementById('hinweis');
   function update() {
-    if (box.checked) {
+    if (box.checked && agb.checked) {
       var body = 'Hallo Marc,\n\n' + consent + '\n\nMein Ergebnis aus dem Typ-Finder: ' + (text || '(bitte Typ, Untertyp und Flügel eintragen)') + '.\n\nViele Grüße';
       btn.href = 'mailto:krekler@gmail.com?subject=' + encodeURIComponent('Enneagramm-Analyse bestellen' + (sub ? ' (' + sub + ')' : '')) + '&body=' + encodeURIComponent(body);
       btn.removeAttribute('aria-disabled'); btn.style.opacity = '1';
@@ -116,8 +119,8 @@ Datum: ________ (Unterschrift nur bei Mitteilung auf Papier)</p>
       btn.href = '#'; btn.setAttribute('aria-disabled', 'true'); btn.style.opacity = '.5';
     }
   }
-  btn.addEventListener('click', function (ev) { if (!box.checked) { ev.preventDefault(); hint.style.fontWeight = '700'; } });
-  box.addEventListener('change', update);
+  btn.addEventListener('click', function (ev) { if (!(box.checked && agb.checked)) { ev.preventDefault(); hint.style.fontWeight = '700'; } });
+  box.addEventListener('change', update); agb.addEventListener('change', update);
   update();
 })();
 </script>
