@@ -13,7 +13,7 @@ main{max-width:42rem;margin:0 auto;padding:1.5rem 1rem 3rem}
 h1{font-size:1.9rem;line-height:1.2;margin:0 0 .4rem}
 h2{font-size:1.2rem;margin:1.8rem 0 .4rem}
 p{margin:.5rem 0}
-ul{margin:.5rem 0;padding-left:1.2rem}
+ul,ol{margin:.5rem 0;padding-left:1.4rem}
 li{margin:.35rem 0}
 a{color:var(--link)}
 .lead{color:var(--muted)}
@@ -47,9 +47,19 @@ footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--line);color
 
 <div class="tile">
 <p class="price">99 €</p>
-<p>Die Analyse bestellst du per E-Mail. Du schickst mir dein Ergebnis aus der App (Typ, Untertyp und Flügel), und ich melde mich mit allen Einzelheiten zu Bezahlung und Lieferung.</p>
-<a class="btn" id="mail" href="mailto:krekler@gmail.com?subject=Enneagramm-Analyse%20bestellen">Analyse per E-Mail anfragen</a>
+<p class="small">Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
+<a class="btn" id="mail" href="#">Analyse per E-Mail bestellen</a>
 </div>
+
+<h2>So läuft die Bestellung</h2>
+<ol>
+<li><strong>Anfrage per E-Mail:</strong> Du schickst mir dein Ergebnis aus der App (Typ, Untertyp und Flügel). Mit dem Knopf oben öffnet sich eine vorbereitete E-Mail.</li>
+<li><strong>Zahlungsdaten:</strong> Die Zahlungsdaten bekommst du nach deiner Bestellung per E-Mail.</li>
+<li><strong>Lieferung:</strong> Du erhältst deine Analyse als PDF per E-Mail. Die Lieferzeit beträgt etwa 3 bis 5 Tage, manchmal geht es schneller.</li>
+</ol>
+
+<h2>Widerrufsrecht</h2>
+<p>Die Analyse wird nach deinen Angaben individuell für dich zusammengestellt. Mit deiner Bestell-E-Mail bittest du mich ausdrücklich, sofort mit der Erstellung zu beginnen. Du bestätigst dort außerdem, dass dein Widerrufsrecht erlischt, sobald ich die Analyse vollständig geliefert habe. Den entsprechenden Text enthält die vorbereitete E-Mail bereits.</p>
 
 <h2>Wichtig zu wissen</h2>
 <ul>
@@ -65,17 +75,21 @@ footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--line);color
 </main>
 <script>
 (function(){
+  var consent = 'Ich bestelle die tiefgreifende Enneagramm-Analyse zum Preis von 99 € (ohne Umsatzsteuer nach § 19 UStG). Ich stimme ausdrücklich zu, dass mit der Erstellung sofort begonnen wird. Mir ist bekannt, dass mein Widerrufsrecht erlischt, sobald die Analyse vollständig geliefert ist.';
+  var text = '';
+  var sub = '';
   try {
     var e = new URLSearchParams(location.search).get('e') || '';
     var m = /^(S[POX])(\d)(?:-(\d)w(\d))?$/i.exec(e.trim());
-    if (!m) return;
-    var sub = m[1].toUpperCase() + m[2];
-    var text = 'Untertyp ' + sub + (m[3] ? ', Flügel ' + m[3] + 'w' + m[4] : '');
-    document.getElementById('ergebnis').textContent = text;
-    document.getElementById('dein').style.display = 'block';
-    var body = 'Hallo Marc,\n\nich möchte die tiefgreifende Enneagramm-Analyse bestellen.\nMein Ergebnis aus dem Typ-Finder: ' + text + '.\n\nViele Grüße';
-    document.getElementById('mail').href = 'mailto:krekler@gmail.com?subject=' + encodeURIComponent('Enneagramm-Analyse bestellen (' + sub + ')') + '&body=' + encodeURIComponent(body);
+    if (m) {
+      sub = m[1].toUpperCase() + m[2];
+      text = 'Untertyp ' + sub + (m[3] ? ', Flügel ' + m[3] + 'w' + m[4] : '');
+      document.getElementById('ergebnis').textContent = text;
+      document.getElementById('dein').style.display = 'block';
+    }
   } catch (err) {}
+  var body = 'Hallo Marc,\n\n' + consent + '\n\nMein Ergebnis aus dem Typ-Finder: ' + (text || '(bitte Typ, Untertyp und Flügel eintragen)') + '.\n\nViele Grüße';
+  document.getElementById('mail').href = 'mailto:krekler@gmail.com?subject=' + encodeURIComponent('Enneagramm-Analyse bestellen' + (sub ? ' (' + sub + ')' : '')) + '&body=' + encodeURIComponent(body);
 })();
 </script>
 </body>
