@@ -34,6 +34,7 @@ footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--line);color
 
 <div class="tile" id="dein">
 <strong>Dein Ergebnis aus der App (unten schon eingetragen):</strong> <span id="ergebnis"></span>
+<p class="small" id="auswertung" style="display:none;margin:.6rem 0 0"></p>
 </div>
 
 <h2>Was der Bericht enthält</h2>
@@ -62,6 +63,7 @@ footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--line);color
 <p class="small" id="dupe" style="display:none;color:#b3261e">Bitte wähle unterschiedliche Analysen. Zwei Zeilen mit gleichem Typ, Untertyp und Flügel zählen nur einmal.</p>
 
 <p><label><input type="checkbox" id="agb"> Ich habe die <a href="/agb/">Allgemeinen Geschäftsbedingungen</a> und die <a href="#widerruf">Widerrufsbelehrung</a> gelesen und akzeptiere sie.</label></p>
+<p id="codewahl" style="display:none"><label><input type="checkbox" id="codeok"> Ich möchte, dass mein vollständiges Testergebnis mit der Bestellung gesendet wird (Antworten des Tests, auch zu Körper und Gesundheit, als Ergebnis-Code in der E-Mail). Ich erlaube Marc Krekler, diese Angaben ausschließlich zur Erstellung meiner Analyse zu verwenden. Die Zustimmung ist freiwillig und kann entfallen, dann bekomme ich die Analyse nach Typ, Untertyp und Flügel.</label></p>
 <p><label><input type="checkbox" id="zustimmung"> Ich verlange ausdrücklich, dass mit der Erstellung meiner individuellen Analyse(n) sofort, also vor Ablauf der Widerrufsfrist, begonnen wird. Mir ist bekannt, dass mein Widerrufsrecht erlischt, sobald die Analyse(n) vollständig erbracht ist/sind.</label></p>
 <a class="btn" id="gmail" href="#" target="_blank" rel="noopener" aria-disabled="true">Bestellung in Gmail öffnen</a>
 <a class="btn" id="mail" href="#" aria-disabled="true" style="background:transparent;color:var(--link);border:1px solid var(--link);margin-left:.4rem">Anderes E-Mail-Programm</a>
@@ -131,6 +133,18 @@ Datum: ________ (Unterschrift nur bei Mitteilung auf Papier)</p>
       document.getElementById('dein').style.display = 'block';
     }
   } catch (err) {}
+  // Testergebnis aus der App: ?c=<Antworten>&z=<Kurzauswertung>. Streng gefiltert, wird nur als Text angezeigt.
+  var ergCode = '', ergKurz = '', ergStart = '';
+  try {
+    var qs = new URLSearchParams(location.search);
+    var cc = (qs.get('c') || '').trim(), zz = (qs.get('z') || '').replace(/[\u0000-\u001f]/g, ' ').trim();
+    if (eintraege.length && /^[A-Za-z0-9:;,\-]{1,3000}$/.test(cc)) {
+      ergCode = cc; ergKurz = zz.slice(0, 400);
+      ergStart = eintraege[0].inst + eintraege[0].typ + '|' + eintraege[0].wing;
+      document.getElementById('codewahl').style.display = 'block';
+      if (ergKurz) { var au = document.getElementById('auswertung'); au.textContent = 'Auswertung: ' + ergKurz; au.style.display = 'block'; }
+    }
+  } catch (err) {}
   if (!eintraege.length) eintraege.push({typ: '', inst: '', wing: ''});
 
   function opt(v, label, sel){ var o = document.createElement('option'); o.value = v; o.textContent = label; if (sel) o.selected = true; return o; }
@@ -178,7 +192,12 @@ Datum: ________ (Unterschrift nur bei Mitteilung auf Papier)</p>
     if (ok) {
       var zeilen = eintraege.map(function(en, i){ return (i + 1) + '. ' + beschreibung(en) + ' – ' + preis() + ' €'; }).join('\n');
       var consent = 'Ich bestelle ' + (eintraege.length === 1 ? 'die tiefgreifende Enneagramm-Analyse' : eintraege.length + ' tiefgreifende Enneagramm-Analysen') + ' zum Gesamtpreis von ' + gesamt + ' € (ohne Umsatzsteuer nach § 19 UStG; Preis je Analyse: 99 € bei einer, 89 € bei zwei, 79 € bei drei oder mehr Analysen). Ich habe die Allgemeinen Geschäftsbedingungen und die Widerrufsbelehrung gelesen und akzeptiere sie. Ich verlange ausdrücklich, dass mit der Erstellung sofort, also vor Ablauf der Widerrufsfrist, begonnen wird. Mir ist bekannt, dass mein Widerrufsrecht erlischt, sobald die Analyse(n) vollständig erbracht ist/sind.';
-      var body = 'Hallo Marc,\n\n' + consent + '\n\nMeine Bestellung:\n' + zeilen + '\nGesamt: ' + gesamt + ' €\n\nViele Grüße';
+      var testteil = '';
+      var gleich = ergCode && (eintraege[0].inst + eintraege[0].typ + '|' + eintraege[0].wing) === ergStart;
+      if (gleich && document.getElementById('codeok') && document.getElementById('codeok').checked) {
+        testteil = '\n\nMein Testergebnis (für Analyse 1, bitte nicht ändern):\n' + (ergKurz ? 'Auswertung: ' + ergKurz + '\n' : '') + 'Ergebnis-Code: ' + ergCode;
+      }
+      var body = 'Hallo Marc,\n\n' + consent + '\n\nMeine Bestellung:\n' + zeilen + '\nGesamt: ' + gesamt + ' €' + testteil + '\n\nViele Grüße';
       var subject = '[ANALYSE-BESTELLUNG] Enneagramm-Analyse' + (eintraege.length > 1 ? ' (' + eintraege.length + ' Analysen)' : ' ' + eintraege[0].inst + eintraege[0].typ);
       btn.href = 'mailto:krekler@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
       gbtn.href = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent('krekler@gmail.com') + '&su=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
@@ -190,6 +209,7 @@ Datum: ________ (Unterschrift nur bei Mitteilung auf Papier)</p>
   }
   function guard(ev){ if (btn.getAttribute('aria-disabled') === 'true') { ev.preventDefault(); hint.style.fontWeight = '700'; } }
   btn.addEventListener('click', guard); gbtn.addEventListener('click', guard);
+  var cok = document.getElementById('codeok'); if (cok) cok.addEventListener('change', function(){ render(); });
   document.getElementById('plus').addEventListener('click', function(){ eintraege.push({typ: '', inst: '', wing: ''}); render(); });
   box.addEventListener('change', update); agb.addEventListener('change', update);
   render();
