@@ -62,6 +62,15 @@ footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--line);color
 <p id="summe" style="font-weight:700"></p>
 <p class="small" id="dupe" style="display:none;color:#b3261e">Bitte wähle unterschiedliche Analysen. Zwei Zeilen mit gleichem Typ, Untertyp und Flügel zählen nur einmal.</p>
 
+<h3 style="margin-top:1rem">Angaben für die Analyse (freiwillig)</h3>
+<p class="small">Damit die Analyse dich persönlich anspricht und die Kopfzeile stimmt. Du kannst alles leer lassen. Die Angaben gelten für die erste Analyse, weitere Personen nennst du bitte in der E-Mail.</p>
+<p>
+<label>Anrede <select id="anr"><option value="">ohne Anrede</option><option value="Herr">Herr</option><option value="Frau">Frau</option></select></label><br>
+<label>Vorname <input type="text" id="vn" autocomplete="given-name" maxlength="60"></label><br>
+<label>Nachname <input type="text" id="nn" autocomplete="family-name" maxlength="60"></label><br>
+<label>Geburtsdatum (TT.MM.JJJJ) <input type="text" id="gb" inputmode="numeric" maxlength="10" placeholder="24.12.1980"></label>
+<span class="small" id="gbfehler" style="display:none;color:#b3261e"> Bitte so eingeben: 24.12.1980</span>
+</p>
 <p><label><input type="checkbox" id="agb"> Ich habe die <a href="/agb/">Allgemeinen Geschäftsbedingungen</a> und die <a href="#widerruf">Widerrufsbelehrung</a> gelesen und akzeptiere sie.</label></p>
 <p id="codewahl" style="display:none"><label><input type="checkbox" id="codeok"> Ich möchte, dass mein vollständiges Testergebnis mit der Bestellung gesendet wird (Antworten des Tests, auch zu Körper und Gesundheit, als Ergebnis-Code in der E-Mail). Ich erlaube Marc Krekler, diese Angaben ausschließlich zur Erstellung meiner Analyse zu verwenden. Die Zustimmung ist freiwillig und kann entfallen, dann bekomme ich die Analyse nach Typ, Untertyp und Flügel.</label></p>
 <p><label><input type="checkbox" id="zustimmung"> Ich verlange ausdrücklich, dass mit der Erstellung meiner individuellen Analyse(n) sofort, also vor Ablauf der Widerrufsfrist, begonnen wird. Mir ist bekannt, dass mein Widerrufsrecht erlischt, sobald die Analyse(n) vollständig erbracht ist/sind.</label></p>
@@ -197,7 +206,18 @@ Datum: ________ (Unterschrift nur bei Mitteilung auf Papier)</p>
       if (gleich && document.getElementById('codeok') && document.getElementById('codeok').checked) {
         testteil = '\n\nMein Testergebnis (für Analyse 1, bitte nicht ändern):\n' + (ergKurz ? 'Auswertung: ' + ergKurz + '\n' : '') + 'Ergebnis-Code: ' + ergCode;
       }
-      var body = 'Hallo Marc,\n\n' + consent + '\n\nMeine Bestellung:\n' + zeilen + '\nGesamt: ' + gesamt + ' €' + testteil + '\n\nViele Grüße';
+      var pers = [];
+      var vn = (document.getElementById('vn').value || '').replace(/[\u0000-\u001f]/g, ' ').trim(), nn = (document.getElementById('nn').value || '').replace(/[\u0000-\u001f]/g, ' ').trim();
+      var an = document.getElementById('anr').value, gb = (document.getElementById('gb').value || '').trim();
+      if (/^\d{8}$/.test(gb)) gb = gb.slice(0, 2) + '.' + gb.slice(2, 4) + '.' + gb.slice(4);
+      var gbok = !gb || /^(0?[1-9]|[12]\d|3[01])\.(0?[1-9]|1[0-2])\.(19|20)\d{2}$/.test(gb);
+      document.getElementById('gbfehler').style.display = gbok ? 'none' : 'inline';
+      if (an) pers.push('Anrede: ' + an);
+      if (vn) pers.push('Vorname: ' + vn);
+      if (nn) pers.push('Nachname: ' + nn);
+      if (gb && gbok) pers.push('Geburtsdatum: ' + gb);
+      var persteil = pers.length ? '\n\nAngaben für die Analyse 1:\n' + pers.join('\n') : '';
+      var body = 'Hallo Marc,\n\n' + consent + '\n\nMeine Bestellung:\n' + zeilen + '\nGesamt: ' + gesamt + ' €' + persteil + testteil + '\n\nViele Grüße';
       var subject = '[ANALYSE-BESTELLUNG] Enneagramm-Analyse' + (eintraege.length > 1 ? ' (' + eintraege.length + ' Analysen)' : ' ' + eintraege[0].inst + eintraege[0].typ);
       btn.href = 'mailto:krekler@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
       gbtn.href = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent('krekler@gmail.com') + '&su=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
@@ -209,6 +229,7 @@ Datum: ________ (Unterschrift nur bei Mitteilung auf Papier)</p>
   }
   function guard(ev){ if (btn.getAttribute('aria-disabled') === 'true') { ev.preventDefault(); hint.style.fontWeight = '700'; } }
   btn.addEventListener('click', guard); gbtn.addEventListener('click', guard);
+  ['anr','vn','nn','gb'].forEach(function(id){ var el = document.getElementById(id); if (el) { el.addEventListener('input', function(){ render(); }); el.addEventListener('change', function(){ render(); }); } });
   var cok = document.getElementById('codeok'); if (cok) cok.addEventListener('change', function(){ render(); });
   document.getElementById('plus').addEventListener('click', function(){ eintraege.push({typ: '', inst: '', wing: ''}); render(); });
   box.addEventListener('change', update); agb.addEventListener('change', update);
