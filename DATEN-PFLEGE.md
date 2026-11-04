@@ -47,3 +47,5 @@ Nach jeder Prüfung: Seite lesen, Inhalte korrigieren, dann `set`, dann Eintrag 
 | 02.11.2026 | Neue Seite /analyse/ (Enneagramm-Analyse, 99 €, Anfrage per E-Mail). Aus der einfachen Typ-Finder-App verlinkt. Preis und Bedingungen bei Änderungen hier prüfen. | Claude |
 
 Offene Punkte aus dem ersten Bericht (01.11.2026): 8 Seiten fehlen in der sitemap.xml (artikel-gebrauchtwagen-historie-carvertical, artikel-kennzeichen-reservieren, artikel-kfz-versicherung-sparen, artikel-umweltplakette-ausland-maut, artikel-zweitwagen-versicherung, online-zulassung; suche und upload-x7k2 bewusst nicht). Mehrere Seiten haben zwei verschiedene Stand-Angaben (z. B. artikel-e-auto-vs-benziner: 28.09., 11.10. und „Oktober“). Seiten ohne dateModified: Rechner, Quiz, Glossar, Datenschutz, Impressum.
+
+| 04.11.2026 | Neue App „Solarprognose“: Datenschutzseite /solarprognose/datenschutz.html, Eintrag auf /apps/ und in der Startseiten-Suche. Datenschutzseite nennt den Abruf-Server solar-api.autoknigge.de (Cloudflare) und Open-Meteo; bei Änderungen am Worker oder Anbieter prüfen. | Claude |
