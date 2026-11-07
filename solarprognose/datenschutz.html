@@ -29,7 +29,7 @@ footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--line);color
 <p class="stand">App „Solarprognose“ · Stand: 3. November 2026</p>
 
 <div class="kurz">
-<p><strong>Kurz gesagt:</strong> Die App zeigt dir die erwartete Stromerzeugung deiner Photovoltaik-Anlage. Deine Anlagen und Einstellungen bleiben auf deinem Gerät. Die App greift nicht auf deinen Standort zu, hat kein Benutzerkonto und enthält keine Werbung. Für Prognose, Jahreswerte und Börsenpreise ruft sie Daten über meinen Abruf-Server ab. Ich speichere keine personenbezogenen Daten über dich.</p>
+<p><strong>Kurz gesagt:</strong> Die App zeigt dir die erwartete Stromerzeugung deiner Photovoltaik-Anlage. Deine Anlagen und Einstellungen bleiben auf deinem Gerät. Die App greift nicht auf deinen Standort zu, hat kein Benutzerkonto und enthält keine Werbung. Für Prognose, Jahreswerte und Börsenpreise ruft sie Daten direkt bei Open-Meteo, der EU-Kommission (PVGIS) und Energy-Charts ab. Ich speichere keine personenbezogenen Daten über dich.</p>
 </div>
 
 <h2>Verantwortlicher</h2>
@@ -45,13 +45,13 @@ E-Mail: <a href="mailto:krekler@gmail.com">krekler@gmail.com</a>
 <p>Die App fragt keine Standortberechtigung ab und nutzt kein GPS. Den Ort deiner Anlage wählst du selbst über die Ortssuche.</p>
 
 <h2>Abruf der Wetterdaten, Jahreswerte und Börsenpreise</h2>
-<p>Für die Prognose sendet die App die Koordinaten des gewählten Ortes sowie Neigung und Ausrichtung der Module an meinen Abruf-Server unter solar-api.autoknigge.de. Für die Jahresprognose kommen die Systemverluste dazu. Bei der Ortssuche geht dein Suchbegriff an denselben Server. Die Börsenpreise ruft die App ohne Angaben zu dir oder deiner Anlage ab. Die Übertragung ist per HTTPS verschlüsselt.</p>
+<p>Die App ruft die Daten für die Prognose direkt bei den Anbietern ab. Es gibt keinen Zwischenserver von mir. Dabei sieht der jeweilige Anbieter technisch bedingt die IP-Adresse deines Geräts und die Angaben der Anfrage. Die Übertragung ist per HTTPS verschlüsselt. Ich selbst erhalte und speichere nichts davon.</p>
 <ul>
-<li><strong>Abruf-Server:</strong> Er läuft bei Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA. Technisch bedingt verarbeitet Cloudflare dabei deine IP-Adresse. Ich speichere keine Nutzerdaten und führe keine Protokolle über einzelne Nutzer. Der Server merkt sich Antworten kurzzeitig, damit nicht jede Anfrage neu abgerufen werden muss (Prognose etwa 30 Minuten, Börsenpreise etwa 10 Minuten, Ortssuche bis zu einen Tag, Jahreswerte bis zu 30 Tage). Cloudflare ist nach dem EU-US Data Privacy Framework zertifiziert.</li>
-<li><strong>Wetterdienst Open-Meteo:</strong> Der Server leitet Koordinaten (auf zwei Nachkommastellen gerundet), Neigung, Ausrichtung beziehungsweise den Suchbegriff an Open-Meteo (open-meteo.com) weiter, ohne deine IP-Adresse. Die Wetterdaten stammen von Open-Meteo.com und stehen unter der Lizenz CC BY 4.0. Hinweise des Anbieters stehen unter open-meteo.com/en/terms.</li>
-<li><strong>Jahreswerte (PVGIS):</strong> Für die Jahresprognose fragt der Server das Strahlungsmodell PVGIS der Gemeinsamen Forschungsstelle der Europäischen Kommission (re.jrc.ec.europa.eu) ab. Dabei gehen gerundete Koordinaten, Neigung, Ausrichtung und Systemverluste hin, ohne deine IP-Adresse.</li>
-<li><strong>Börsenpreise (Energy-Charts):</strong> Die Day-Ahead-Strompreise stammen von Energy-Charts des Fraunhofer-Instituts für Solare Energiesysteme ISE (api.energy-charts.info), Lizenz CC BY 4.0. Der Server fragt sie ohne jede Angabe zu dir ab.</li>
-<li><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b und f DSGVO, die Bereitstellung der Funktion, die du nutzt, und mein Interesse an einem sicheren und stabilen Betrieb.</li>
+<li><strong>Wetter und Strahlung (Open-Meteo, open-meteo.com):</strong> Die App sendet die Koordinaten des gewählten Ortes sowie Neigung und Ausrichtung der Module. Bei der Ortssuche geht dein Suchbegriff an den Ortssuchdienst von Open-Meteo. Die Wetterdaten stammen von Open-Meteo.com und stehen unter der Lizenz CC BY 4.0. Hinweise des Anbieters stehen unter open-meteo.com/en/terms.</li>
+<li><strong>Jahreswerte (PVGIS):</strong> Für die Jahresprognose fragt die App das Strahlungsmodell PVGIS der Gemeinsamen Forschungsstelle der Europäischen Kommission (re.jrc.ec.europa.eu) ab. Dabei gehen Koordinaten, Neigung, Ausrichtung und Systemverluste hin.</li>
+<li><strong>Börsenpreise (Energy-Charts):</strong> Die Day-Ahead-Strompreise stammen von Energy-Charts des Fraunhofer-Instituts für Solare Energiesysteme ISE (api.energy-charts.info), Lizenz CC BY 4.0. Die App sendet dabei keine Angaben zu dir oder deiner Anlage, nur die Anfrage nach den Preisen für heute und morgen.</li>
+<li><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO, die Bereitstellung der Funktion, die du nutzt.</li>
+<li><strong>Weitere Informationen:</strong> Die Anbieter verarbeiten die Daten nach ihren eigenen Datenschutzbestimmungen, auf die ich keinen Einfluss habe.</li>
 </ul>
 
 <h2>Widget und Benachrichtigung</h2>

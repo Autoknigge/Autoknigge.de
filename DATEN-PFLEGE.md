@@ -51,3 +51,5 @@ Offene Punkte aus dem ersten Bericht (01.11.2026): 8 Seiten fehlen in der sitema
 | 04.11.2026 | Neue App „Solarprognose“: Datenschutzseite /solarprognose/datenschutz.html, Eintrag auf /apps/ und in der Startseiten-Suche. Datenschutzseite nennt den Abruf-Server solar-api.autoknigge.de (Cloudflare) und Open-Meteo; bei Änderungen am Worker oder Anbieter prüfen. | Claude |
 
 | 05.11.2026 | Solarprognose: Werbung entfernt, Datenschutzseite angepasst (keine Werbung; neu PVGIS der EU-Kommission und Energy-Charts des Fraunhofer ISE über den Abruf-Server). Bei Änderungen an Quellen oder Worker prüfen. | Claude |
+
+| 07.11.2026 | Solarprognose: Datenschutzseite auf Direktabruf umgestellt (kein Zwischenserver; Open-Meteo, PVGIS, Energy-Charts). Falls der Worker solar-api.autoknigge.de später aktiviert wird, Seite wieder anpassen. | Claude |
