@@ -54,3 +54,4 @@ Offene Punkte aus dem ersten Bericht (01.11.2026): 8 Seiten fehlen in der sitema
 
 | 07.11.2026 | Solarprognose: Datenschutzseite auf Direktabruf umgestellt (kein Zwischenserver; Open-Meteo, PVGIS, Energy-Charts). Falls der Worker solar-api.autoknigge.de später aktiviert wird, Seite wieder anpassen. | Claude |
 | 08.11.2026 | Solarprognose: Datenschutzseite um Android-Datensicherung und Jahreswerte aus Open-Meteo-Archiv ergänzt. | Claude |
+| 09.11.2026 | Neue App „Hauskontor“: Datenschutzseite /hauskontor/datenschutz.html, Eintrag auf /apps/ und in der Startseiten-Suche. Seite nennt AdMob, lokale Texterkennung (ML Kit), Android-Datensicherung; bei Änderungen an Werbung oder SDKs prüfen. | Claude |
